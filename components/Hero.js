@@ -4,7 +4,7 @@ import classnames from "classnames";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import theme from "assets/js/theme";
-import Api from "services/api";
+import Api from "services/apis";
 
 const backgroundImage = require("assets/img/hero.jpg");
 
