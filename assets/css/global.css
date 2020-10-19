@@ -1,0 +1,25 @@
+body,
+html,
+#__next {
+    height: 100%;
+}
+
+.hero {
+    height: calc(100vh - 100px);
+    width: 100%;
+}
+
+.hero:before {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.hero:before {
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
