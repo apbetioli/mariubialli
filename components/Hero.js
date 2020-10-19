@@ -3,10 +3,10 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import classnames from "classnames";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import theme from "../assets/js/theme";
-import Api from "../services/api";
+import theme from "assets/js/theme";
+import Api from "services/api";
 
-const backgroundImage = require("../assets/img/hero.jpg");
+const backgroundImage = require("assets/img/hero.jpg");
 
 const useStyles = makeStyles((theme) => ({
   root: {

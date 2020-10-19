@@ -1,13 +1,13 @@
-import "../assets/css/global.css";
+import "assets/css/global.css";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Fab from "@material-ui/core/Fab";
 import { ThemeProvider } from "@material-ui/core/styles";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import Head from "next/head";
 import React from "react";
-import theme from "../assets/js/theme";
-import Header from "../components/Header";
-import ScrollTop from "../components/ScrollTop";
+import theme from "assets/js/theme";
+import Header from "components/Header";
+import ScrollTop from "components/ScrollTop";
 
 export default function App({ Component, pageProps }) {
   return (
