@@ -9,11 +9,12 @@ const useStyles = makeStyles((theme) => ({
     position: "fixed",
     bottom: theme.spacing(2),
     right: theme.spacing(2),
+    zIndex: 10,
   },
 }));
 
 export default function ScrollTop(props) {
-  const { children, window } = props;
+  const { children } = props;
   const classes = useStyles();
 
   const trigger = useScrollTrigger({
