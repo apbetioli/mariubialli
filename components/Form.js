@@ -1,9 +1,21 @@
-import { Button, TextField } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
+import {
+  Backdrop,
+  Button,
+  CircularProgress,
+  TextField,
+} from "@material-ui/core";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import theme from "assets/js/theme";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import Api from "services/apis";
+
+const useStyles = makeStyles((theme) => ({
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: "#fff",
+  },
+}));
 
 const MyTextField = withStyles({
   root: {
@@ -28,8 +40,11 @@ const MyTextField = withStyles({
 })(TextField);
 
 export default function Form(props) {
+  const classes = useStyles();
   const router = useRouter();
+
   const [email, setEmail] = useState("");
+  const [backdrop, setBackdrop] = useState(false);
 
   function handleEmailChange(event) {
     setEmail(event.target.value);
@@ -37,6 +52,7 @@ export default function Form(props) {
 
   async function onSubmit(event) {
     event.preventDefault();
+    setBackdrop(!backdrop);
 
     let form = {
       email,
@@ -49,6 +65,7 @@ export default function Form(props) {
       router.push("/obrigado?email=" + email);
     } catch (error) {
       console.log(error);
+      setBackdrop(false);
       alert("Ocorreu um erro ao se inscrever. Tente novamente mais tarde.");
     }
   }
@@ -73,6 +90,9 @@ export default function Form(props) {
       <Button variant="contained" color="primary" type="submit">
         Quero receber as apostilas em meu email
       </Button>
+      <Backdrop className={classes.backdrop} open={backdrop}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </form>
   );
 }
