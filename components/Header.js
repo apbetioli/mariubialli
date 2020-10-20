@@ -18,12 +18,10 @@ const useStyles = makeStyles((theme) => ({
   leftButtons: {
     flexGrow: 1,
     height: "100%",
-    display: "none",
   },
   rightButtons: {
     height: "100%",
     alignItems: "center",
-    display: "none",
   },
   toolbar: {
     height: "100px",
@@ -42,17 +40,20 @@ export default function Header(props) {
     <>
       <AppBar position="sticky">
         <Toolbar className={classes.toolbar}>
-          <div className={classes.leftButtons}>
-            <Button className={classes.toolbarButton}>Apostilas grátis</Button>
-            <Button className={classes.toolbarButton}>Cursos</Button>
-          </div>
+          <div className={classes.leftButtons}></div>
 
           <Link className={classes.logoWrapper} href="/">
             <img className={classes.logo} src="/logo.png" alt="" />
           </Link>
 
           <div className={classes.rightButtons}>
-            <Button className={classes.toolbarButton}>Login</Button>
+            <Button
+              component={Link}
+              href="mailto:contato@mariubialli.com"
+              className={classes.toolbarButton}
+            >
+              Contato
+            </Button>
           </div>
         </Toolbar>
       </AppBar>
