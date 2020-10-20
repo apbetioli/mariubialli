@@ -40,7 +40,7 @@ export default function Form(props) {
 
     let form = {
       email,
-      tag: "TESTE",
+      tag: "NEWSLETTER",
     };
 
     try {
