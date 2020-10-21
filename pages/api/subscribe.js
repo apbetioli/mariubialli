@@ -26,16 +26,18 @@ module.exports = async (req, res) => {
 
     lead.id = response.id;
 
-    await mailchimp.lists.updateListMemberTags(listId, subscriberHash, {
-      body: {
-        tags: [
-          {
-            name: lead.tag,
-            status: "active",
-          },
-        ],
-      },
-    });
+    if (lead.tag) {
+      await mailchimp.lists.updateListMemberTags(listId, subscriberHash, {
+        body: {
+          tags: [
+            {
+              name: lead.tag,
+              status: "active",
+            },
+          ],
+        },
+      });
+    }
 
     res.send(JSON.stringify(lead));
   } catch (e) {
