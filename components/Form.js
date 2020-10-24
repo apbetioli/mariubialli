@@ -8,7 +8,7 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import theme from "assets/js/theme";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import Api from "services/apis";
+import mailchimp from "services/mailchimp";
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
@@ -60,7 +60,7 @@ export default function Form(props) {
     };
 
     try {
-      await Api.post("/subscribe", form);
+      await mailchimp.post("/subscribe", form);
 
       router.push("/obrigado?email=" + email);
     } catch (error) {
