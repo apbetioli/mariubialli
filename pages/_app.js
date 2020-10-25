@@ -6,6 +6,7 @@ import "assets/css/global.css";
 import theme from "assets/js/theme";
 import Header from "components/Header";
 import ScrollTop from "components/ScrollTop";
+import Footer from "components/Footer";
 import Head from "next/head";
 import React from "react";
 
@@ -31,6 +32,8 @@ export default function App({ Component, pageProps }) {
             <KeyboardArrowUpIcon />
           </Fab>
         </ScrollTop>
+
+        <Footer />
       </ThemeProvider>
     </React.Fragment>
   );

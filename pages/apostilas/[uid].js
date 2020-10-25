@@ -5,6 +5,7 @@ import { Date, RichText } from "prismic-reactjs";
 import React from "react";
 import ImageGallery from "react-image-gallery";
 import { client } from "../../services/prismic";
+import classnames from "classnames";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,7 +69,7 @@ const Apostila = ({ apostila }) => {
   });
 
   return (
-    <Container className={classes.root}>
+    <Container className={classnames(classes.root, "fullHeight")}>
       <Link href="/apostilas">&lt; Voltar para apostilas</Link>
       {RichText.render(apostila.data.title)}
       Publicada em{" "}

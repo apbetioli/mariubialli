@@ -3,10 +3,12 @@ import {
   CardActionArea,
   CardContent,
   CardMedia,
+  Container,
   Grid,
   makeStyles,
   Typography
 } from "@material-ui/core";
+import classnames from "classnames";
 import Prismic from "prismic-javascript";
 import { RichText } from "prismic-reactjs";
 import React from "react";
@@ -14,6 +16,9 @@ import { client } from "../../services/prismic";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    marginBottom: 50,
+  },
+  card: {
     marginTop: 50,
     maxWidth: 345,
   },
@@ -29,7 +34,7 @@ function Apostila({ post }) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.card}>
       <CardActionArea href={"/apostilas/" + post.uid}>
         <CardMedia
           component="img"
@@ -51,16 +56,17 @@ function Apostila({ post }) {
 }
 
 export default function Apostilas({ posts }) {
+  const classes = useStyles();
   return (
-    <>
-      <Grid container direction="row" justify="center" alignItems="center">
+    <Container className="fullHeight">
+      <Grid container direction="row" justify="center" alignItems="center" className={classes.root}>
         {posts.results.map((post) => (
           <Grid item md={4}>
             <Apostila key={post.uid} post={post} />
           </Grid>
         ))}
       </Grid>
-    </>
+    </Container>
   );
 }
 

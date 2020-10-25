@@ -3,8 +3,11 @@ import React from "react";
 
 const useStyles = makeStyles((theme) => ({
   footer: {
-    backgroundColor: theme.palette.info.main,
-    height: "20px",
+    alignItems: "center",
+    backgroundColor: theme.palette.secondary.main,
+    display: "flex",
+    justifyContent: "center",
+    height: "30px",
   },
 }));
 
