@@ -56,7 +56,7 @@ export default function Form(props) {
 
     let form = {
       email,
-      tag: "NEWSLETTER",
+      tag: props.tag,
     };
 
     try {
@@ -96,3 +96,7 @@ export default function Form(props) {
     </form>
   );
 }
+
+Form.defaultProps = {
+  tag: "NEWSLETTER",
+};
