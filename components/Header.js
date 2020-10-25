@@ -6,6 +6,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Tooltip,
 } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
@@ -14,6 +15,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import HomeIcon from "@material-ui/icons/Home";
+import InfoIcon from "@material-ui/icons/Info";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import MailIcon from "@material-ui/icons/Mail";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -116,6 +118,13 @@ export default function Header(props) {
                   <ListItemText primary="Apostilas" />
                 </ListItemLink>
 
+                <ListItemLink button href="/about">
+                  <ListItemIcon>
+                    <InfoIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Sobre" />
+                </ListItemLink>
+
                 <Divider />
 
                 <ListItemLink
@@ -164,12 +173,11 @@ export default function Header(props) {
             </Drawer>
 
             <nav className={classes.desktopButtons}>
-              <Button
-                component={Link}
-                href="/apostilas"
-                className={classes.toolbarButton}
-              >
+              <Button href="/apostilas" className={classes.toolbarButton}>
                 Apostilas
+              </Button>
+              <Button href="/about" className={classes.toolbarButton}>
+                Sobre
               </Button>
             </nav>
           </div>
@@ -180,40 +188,44 @@ export default function Header(props) {
 
           <div className={classes.rightButtons}>
             <nav className={classes.desktopButtons}>
-              <Button
-                component={Link}
-                href="http://www.instagram.com/mariubialli"
-                target="_blank"
-                rel="noopener"
-                className={classes.toolbarButton}
-              >
-                <InstagramIcon />
-              </Button>
-              <Button
-                component={Link}
-                href="https://www.youtube.com/channel/UC8YxukVEnCQLNmbExz-ViAA"
-                target="_blank"
-                rel="noopener"
-                className={classes.toolbarButton}
-              >
-                <YouTubeIcon />
-              </Button>
-              <Button
-                component={Link}
-                href="http://www.facebook.com/mariubialli"
-                target="_blank"
-                rel="noopener"
-                className={classes.toolbarButton}
-              >
-                <FacebookIcon />
-              </Button>
-              <Button
-                component={Link}
-                href="mailto:contato@mariubialli.com"
-                className={classes.toolbarButton}
-              >
-                <MailIcon />
-              </Button>
+              <Tooltip title="Siga-me no instagram">
+                <Button
+                  href="http://www.instagram.com/mariubialli"
+                  target="_blank"
+                  rel="noopener"
+                  className={classes.toolbarButton}
+                >
+                  <InstagramIcon />
+                </Button>
+              </Tooltip>
+              <Tooltip title="Inscreva-se no meu canal">
+                <Button
+                  href="https://www.youtube.com/channel/UC8YxukVEnCQLNmbExz-ViAA"
+                  target="_blank"
+                  rel="noopener"
+                  className={classes.toolbarButton}
+                >
+                  <YouTubeIcon />
+                </Button>
+              </Tooltip>
+              <Tooltip title="Curta minha página">
+                <Button
+                  href="http://www.facebook.com/mariubialli"
+                  target="_blank"
+                  rel="noopener"
+                  className={classes.toolbarButton}
+                >
+                  <FacebookIcon />
+                </Button>
+              </Tooltip>
+              <Tooltip title="Entre em contato">
+                <Button
+                  href="mailto:contato@mariubialli.com"
+                  className={classes.toolbarButton}
+                >
+                  <MailIcon />
+                </Button>
+              </Tooltip>
             </nav>
           </div>
         </Toolbar>
