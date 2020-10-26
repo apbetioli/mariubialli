@@ -6,24 +6,25 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Tooltip,
+  Tooltip
 } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import HomeIcon from "@material-ui/icons/Home";
 import InfoIcon from "@material-ui/icons/Info";
 import InstagramIcon from "@material-ui/icons/Instagram";
+import LockIcon from "@material-ui/icons/Lock";
 import MailIcon from "@material-ui/icons/Mail";
 import MenuIcon from "@material-ui/icons/Menu";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import YouTubeIcon from "@material-ui/icons/YouTube";
+import useUser from "lib/useUser";
 import React from "react";
-
-const drawerWidth = 340;
 
 const useStyles = makeStyles((theme) => ({
   desktopButtons: {
@@ -69,6 +70,11 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     marginRight: theme.spacing(3),
   },
+  loginButton: {
+    color: "white",
+    height: "100%",
+    marginRight: theme.spacing(3),
+  },
 }));
 
 function ListItemLink(props) {
@@ -77,11 +83,47 @@ function ListItemLink(props) {
 
 export default function Header(props) {
   const classes = useStyles();
+  const { user, mutateUser } = useUser();
   const [drawerOpen, setDrawerOpen] = React.useState(false);
 
-  function handleDrawerToggle() {
+  const logout = async (event) => {
+    event.preventDefault();
+    await mutateUser(fetch("/api/logout"));
+  };
+
+  const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
-  }
+  };
+
+  const userButton = user?.isLoggedIn ? (
+    <Tooltip title="Sair">
+      <Button className={classes.toolbarButton} onClick={logout}>
+        <AccountCircleIcon />
+      </Button>
+    </Tooltip>
+  ) : (
+    <Tooltip title="Entrar">
+      <Button className={classes.loginButton} href="/login">
+        <LockIcon />
+      </Button>
+    </Tooltip>
+  );
+
+  const userListItem = user?.isLoggedIn ? (
+    <ListItemLink button href="/">
+      <ListItemIcon>
+        <AccountCircleIcon />
+      </ListItemIcon>
+      <ListItemText primary="Sair" />
+    </ListItemLink>
+  ) : (
+    <ListItemLink button href="/login">
+      <ListItemIcon>
+        <LockIcon />
+      </ListItemIcon>
+      <ListItemText primary="Entrar" />
+    </ListItemLink>
+  );
 
   return (
     <>
@@ -169,6 +211,10 @@ export default function Header(props) {
                   </ListItemIcon>
                   <ListItemText primary="Contato" />
                 </ListItemLink>
+
+                <Divider />
+
+                {userListItem}
               </List>
             </Drawer>
 
@@ -226,6 +272,8 @@ export default function Header(props) {
                   <MailIcon />
                 </Button>
               </Tooltip>
+
+              {userButton}
             </nav>
           </div>
         </Toolbar>
