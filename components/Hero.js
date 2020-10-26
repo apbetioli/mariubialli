@@ -20,16 +20,6 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     padding: "50px",
   },
-  title: {
-    color: theme.palette.primary.main,
-    fontSize: "3.3125rem",
-    lineHeight: "1.5em",
-  },
-  subtitle: {
-    color: theme.palette.primary.main,
-    fontSize: "1.125rem",
-    lineHeight: "1.5em",
-  },
   centered: {
     textAlign: "center",
   },

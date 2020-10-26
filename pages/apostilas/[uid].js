@@ -1,16 +1,12 @@
 import { Button, Container, Grid, Link, makeStyles } from "@material-ui/core";
+import { client } from "lib/prismic";
 import { useRouter } from "next/router";
 import Prismic from "prismic-javascript";
 import { Date, RichText } from "prismic-reactjs";
 import React from "react";
 import ImageGallery from "react-image-gallery";
-import { client } from "../../services/prismic";
-import classnames from "classnames";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    marginTop: 50,
-  },
   downloadButton: {
     width: "100%",
   },
@@ -69,7 +65,7 @@ const Apostila = ({ apostila }) => {
   });
 
   return (
-    <Container className={classnames(classes.root, "fullHeight")}>
+    <Container className="fullHeight">
       <Link href="/apostilas">&lt; Voltar para apostilas</Link>
       {RichText.render(apostila.data.title)}
       Publicada em{" "}

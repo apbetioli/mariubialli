@@ -6,18 +6,14 @@ import {
   Container,
   Grid,
   makeStyles,
-  Typography
+  Typography,
 } from "@material-ui/core";
-import classnames from "classnames";
 import Prismic from "prismic-javascript";
 import { RichText } from "prismic-reactjs";
 import React from "react";
-import { client } from "../../services/prismic";
+import { client } from "lib/prismic";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    marginBottom: 50,
-  },
   card: {
     marginTop: 50,
     maxWidth: 345,
@@ -59,7 +55,7 @@ export default function Apostilas({ posts }) {
   const classes = useStyles();
   return (
     <Container className="fullHeight">
-      <Grid container direction="row" justify="center" alignItems="center" className={classes.root}>
+      <Grid container direction="row" justify="center" alignItems="center">
         {posts.results.map((post) => (
           <Grid item md={4}>
             <Apostila key={post.uid} post={post} />

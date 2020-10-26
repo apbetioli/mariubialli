@@ -1,10 +1,7 @@
-import { Grid, makeStyles } from "@material-ui/core";
+import { Container, Grid, makeStyles } from "@material-ui/core";
 import React from "react";
 
 const useStyles = makeStyles((theme) => ({
-  grid: {
-    padding: "50px",
-  },
   title: {
     color: theme.palette.error.main,
     fontSize: "3.3125rem",
@@ -24,7 +21,7 @@ export default function Obrigado(props) {
   const classes = useStyles();
 
   return (
-    <div>
+    <Container className="fullHeight">
       <Grid className={classes.grid} container spacing={0}>
         <Grid item md={3}></Grid>
         <Grid className={classes.centered} item md={6}>
@@ -35,6 +32,6 @@ export default function Obrigado(props) {
           </h4>
         </Grid>
       </Grid>
-    </div>
+    </Container>
   );
 }

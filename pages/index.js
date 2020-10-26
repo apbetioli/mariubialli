@@ -5,12 +5,10 @@ import React from "react";
 
 const useStyles = makeStyles((theme) => ({
   title: {
-    color: theme.palette.primary.main,
     fontSize: "3.3125rem",
     lineHeight: "1.5em",
   },
   subtitle: {
-    color: theme.palette.primary.main,
     fontSize: "1.125rem",
     lineHeight: "1.5em",
   },
@@ -27,7 +25,10 @@ export default function Home(props) {
           que eu faço nos meus vídeos do youtube. E o melhor: são totalmente
           gratuitas.
         </h4>
-        <Form />
+        <Form
+          buttonText="Quero receber as apostilas em meu email"
+          redirectTo="/obrigado"
+        />
       </Hero>
     </>
   );

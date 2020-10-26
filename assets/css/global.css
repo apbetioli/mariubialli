@@ -9,5 +9,7 @@ html,
 .fullHeight,
 .hero {
     min-height: calc(100vh - 130px);
+    padding-bottom: 50px;
+    padding-top: 50px;
     width: 100%;
 }
