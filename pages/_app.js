@@ -4,21 +4,18 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import "assets/css/global.css";
 import theme from "assets/js/theme";
+import Footer from "components/Footer";
 import Header from "components/Header";
 import ScrollTop from "components/ScrollTop";
-import Footer from "components/Footer";
 import Head from "next/head";
 import React from "react";
 
 export default function App({ Component, pageProps }) {
+  const title = pageProps.title ? pageProps.title + " | " : "";
   return (
     <React.Fragment>
       <Head>
-        <title>Mari Ubialli - Artesanato Criativo</title>
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width"
-        />
+        <title>{title + "Mari Ubialli - Artesanato Criativo"}</title>
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />

@@ -1,10 +1,11 @@
 import { Button, Container, Grid, Link, makeStyles } from "@material-ui/core";
-import { client } from "lib/prismic";
+import PrismicClient from "lib/prismic";
 import { useRouter } from "next/router";
 import Prismic from "prismic-javascript";
-import { Date, RichText } from "prismic-reactjs";
+import { RichText } from "prismic-reactjs";
 import React from "react";
 import ImageGallery from "react-image-gallery";
+import useUser from "../../lib/useUser";
 
 const useStyles = makeStyles((theme) => ({
   downloadButton: {
@@ -25,12 +26,45 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function DownloadButton({ className, loggedIn, url, children }) {
+  const router = useRouter();
+
+  return loggedIn ? (
+    <Button
+      className={className}
+      variant="contained"
+      color="primary"
+      size="large"
+      href={url}
+      target="_blank"
+      rel="noopener"
+    >
+      {children}
+    </Button>
+  ) : (
+    <Button
+      className={className}
+      variant="contained"
+      color="primary"
+      size="large"
+      href={"/login?redirect=" + router.asPath}
+    >
+      {children}
+    </Button>
+  );
+}
+
 const Apostila = ({ apostila }) => {
   const classes = useStyles();
   const router = useRouter();
+  const { user } = useUser();
+
+  if (user?.isLoggedIn && router.query.redirect) {
+    window.open(apostila.data.download.url);
+  }
 
   const renderVideo = (item) => {
-    let embedUrl =
+    const embedUrl =
       item.embedUrl.replace(
         "https://youtu.be/",
         "https://www.youtube.com/embed/"
@@ -67,41 +101,42 @@ const Apostila = ({ apostila }) => {
   return (
     <Container className="fullHeight">
       <Link href="/apostilas">&lt; Voltar para apostilas</Link>
-      {RichText.render(apostila.data.title)}
-      Publicada em{" "}
-      <span>{Date(apostila.data.datetime).toLocaleDateString()}</span>
-      <Grid container spacing={3}>
-        <Grid item lg={6} xs={12}>
-          <ImageGallery
-            items={images}
-            showFullscreenButton={false}
-            showPlayButton={false}
-          />
+      <article>
+        {RichText.render(apostila.data.title)}
+        <Grid container spacing={3}>
+          <Grid item lg={6} xs={12}>
+            <ImageGallery
+              items={images}
+              showFullscreenButton={false}
+              showPlayButton={false}
+            />
+          </Grid>
+          <Grid item lg={6} xs={12}>
+            <DownloadButton
+              className={classes.downloadButton}
+              loggedIn={user?.isLoggedIn}
+              url={apostila.data.download.url}
+            >
+              Download
+            </DownloadButton>
+            {RichText.render(apostila.data.description)}
+          </Grid>
         </Grid>
-        <Grid item lg={6} xs={12}>
-          <Button
-            className={classes.downloadButton}
-            variant="contained"
-            color="primary"
-            size="large"
-            href={apostila.data.download.url}
-          >
-            Download grátis
-          </Button>
-          {RichText.render(apostila.data.description)}
-        </Grid>
-      </Grid>
+      </article>
     </Container>
   );
 };
 
 export async function getStaticProps(context) {
-  const apostila = await client.getByUID("post", context.params.uid);
-  return { props: { apostila }, unstable_revalidate: 1 };
+  const apostila = await PrismicClient.getByUID("post", context.params.uid);
+
+  const title = RichText.asText(apostila.data.title);
+
+  return { props: { apostila, title }, unstable_revalidate: 1 };
 }
 
 export async function getStaticPaths() {
-  const posts = await client.query(
+  const posts = await PrismicClient.query(
     Prismic.Predicates.at("document.type", "post"),
     { orderings: "[my.post.datetime desc]" }
   );

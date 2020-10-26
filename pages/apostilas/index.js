@@ -6,12 +6,12 @@ import {
   Container,
   Grid,
   makeStyles,
-  Typography,
+  Typography
 } from "@material-ui/core";
+import PrismicClient from "lib/prismic";
 import Prismic from "prismic-javascript";
 import { RichText } from "prismic-reactjs";
 import React from "react";
-import { client } from "lib/prismic";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -67,7 +67,7 @@ export default function Apostilas({ posts }) {
 }
 
 export async function getStaticProps() {
-  const posts = await client.query(
+  const posts = await PrismicClient.query(
     Prismic.Predicates.at("document.type", "post"),
     { orderings: "[my.post.datetime desc]" }
   );

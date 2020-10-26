@@ -2,7 +2,7 @@ import {
   Backdrop,
   Button,
   CircularProgress,
-  TextField
+  TextField,
 } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import theme from "assets/js/theme";
@@ -31,7 +31,7 @@ const MyTextField = withStyles({
     },
     "& .MuiOutlinedInput-root": {
       backgroundColor: "white",
-      
+
       "& fieldset": {
         borderColor: theme.palette.error.main,
       },
@@ -80,9 +80,9 @@ export default function Form(props) {
       await mailchimp.post("/subscribe", form);
       await login(form);
 
-      router.push(props.redirectTo);
+      router.push(props.redirectTo + "?redirect=true");
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setBackdrop(false);
       alert("Ops! Algo de errado não está certo. Tente novamente mais tarde.");
     }
@@ -123,5 +123,5 @@ export default function Form(props) {
 Form.defaultProps = {
   buttonText: "Entrar",
   redirectTo: "/",
-  tag: "NEWSLETTER",
+  tag: "LOGIN",
 };

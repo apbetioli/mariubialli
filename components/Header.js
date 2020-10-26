@@ -6,7 +6,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Tooltip
+  Tooltip,
 } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
@@ -25,6 +25,7 @@ import InboxIcon from "@material-ui/icons/MoveToInbox";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import useUser from "lib/useUser";
 import React from "react";
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles((theme) => ({
   desktopButtons: {
@@ -85,10 +86,13 @@ export default function Header(props) {
   const classes = useStyles();
   const { user, mutateUser } = useUser();
   const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const router = useRouter();
 
   const logout = async (event) => {
     event.preventDefault();
     await mutateUser(fetch("/api/logout"));
+    setDrawerOpen(false);
+    router.push("/");
   };
 
   const handleDrawerToggle = () => {
@@ -110,7 +114,7 @@ export default function Header(props) {
   );
 
   const userListItem = user?.isLoggedIn ? (
-    <ListItemLink button href="/">
+    <ListItemLink button onClick={logout}>
       <ListItemIcon>
         <AccountCircleIcon />
       </ListItemIcon>

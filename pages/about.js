@@ -1,5 +1,5 @@
 import { Container, Grid, makeStyles } from "@material-ui/core";
-import { client } from "lib/prismic";
+import PrismicClient from "lib/prismic";
 import { RichText } from "prismic-reactjs";
 import React from "react";
 
@@ -26,9 +26,6 @@ export default function QuemSouEu({ about }) {
 }
 
 export async function getStaticProps() {
-  const about = await client.getSingle("quem_sou_eu");
-
-  console.log(about);
-
+  const about = await PrismicClient.getSingle("quem_sou_eu");
   return { props: { about }, unstable_revalidate: 1 };
 }
