@@ -6,7 +6,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Tooltip,
+  Tooltip
 } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
@@ -19,13 +19,12 @@ import HomeIcon from "@material-ui/icons/Home";
 import InfoIcon from "@material-ui/icons/Info";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import LockIcon from "@material-ui/icons/Lock";
-import MailIcon from "@material-ui/icons/Mail";
 import MenuIcon from "@material-ui/icons/Menu";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import useUser from "lib/useUser";
-import React from "react";
 import { useRouter } from "next/router";
+import React from "react";
 
 const useStyles = makeStyles((theme) => ({
   desktopButtons: {
@@ -209,13 +208,6 @@ export default function Header(props) {
                   <ListItemText primary="Facebook" />
                 </ListItemLink>
 
-                <ListItemLink button href="mailto:contato@mariubialli.com">
-                  <ListItemIcon>
-                    <MailIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Contato" />
-                </ListItemLink>
-
                 <Divider />
 
                 {userListItem}
@@ -268,15 +260,6 @@ export default function Header(props) {
                   <FacebookIcon />
                 </Button>
               </Tooltip>
-              <Tooltip title="Entre em contato">
-                <Button
-                  href="mailto:contato@mariubialli.com"
-                  className={classes.toolbarButton}
-                >
-                  <MailIcon />
-                </Button>
-              </Tooltip>
-
               {userButton}
             </nav>
           </div>
