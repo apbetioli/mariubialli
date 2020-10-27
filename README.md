@@ -1,3 +1,6 @@
-Mari Ubialli site http://mariubialli.com.br
+http://mariubialli.com.br
 
-Created with Next.js
+React app created with Next.js
+Uses next-iron-session for handling session in cookies
+Uses prismic as headless CMS
+Collects emails into mailchimp
