@@ -198,7 +198,7 @@ export default function Header(props) {
 
                 <ListItemLink
                   button
-                  href="http://www.facebook.com/mariubialli"
+                  href="http://www.facebook.com/mariubialliart"
                   target="_blank"
                   rel="noopener"
                 >
