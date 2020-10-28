@@ -9,7 +9,6 @@ Collects emails into mailchimp
 
 These are the environment variables used in this project. Configure them according to your needs.
 
-NEXT_PUBLIC_API_URL=http://localhost:3000/api (This is the location of the api /pages/api)
 NEXT_PUBLIC_GTM_ID (The Google Tag Manager ID)
 MAILCHIMP_API_KEY
 MAILCHIMP_LIST_ID

@@ -36,5 +36,5 @@ export default function Home({ home }) {
 export async function getStaticProps() {
   const home = await PrismicClient.getSingle("home");
 
-  return { props: { home }, unstable_revalidate: 1 };
+  return { props: { home }, revalidate: 1 };
 }

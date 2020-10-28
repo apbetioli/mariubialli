@@ -6,7 +6,7 @@ import {
   Container,
   Grid,
   makeStyles,
-  Typography
+  Typography,
 } from "@material-ui/core";
 import PrismicClient from "lib/prismic";
 import Prismic from "prismic-javascript";
@@ -72,5 +72,5 @@ export async function getStaticProps() {
     { orderings: "[my.post.datetime desc]" }
   );
 
-  return { props: { posts }, unstable_revalidate: 1 };
+  return { props: { posts }, revalidate: 1 };
 }

@@ -132,7 +132,7 @@ export async function getStaticProps(context) {
 
   const title = RichText.asText(apostila.data.title);
 
-  return { props: { apostila, title }, unstable_revalidate: 1 };
+  return { props: { apostila, title }, revalidate: 1 };
 }
 
 export async function getStaticPaths() {

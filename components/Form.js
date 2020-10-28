@@ -6,7 +6,6 @@ import {
 } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import theme from "assets/js/theme";
-import mailchimp from "lib/mailchimp";
 import useUser from "lib/useUser";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -51,20 +50,29 @@ export default function Form(props) {
 
   const [email, setEmail] = useState("");
   const [backdrop, setBackdrop] = useState(false);
-  const { user, mutateUser } = useUser();
+  const { mutateUser } = useUser();
 
   function handleEmailChange(event) {
     setEmail(event.target.value);
   }
 
-  const login = async (form) => {
-    await mutateUser(
-      fetch("/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      })
-    );
+  const authenticate = async (form) => {
+    const user = await fetch("/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+    console.log(user);
+
+    await mutateUser(user);
+  };
+
+  const subscribe = async (form) => {
+    await fetch("/api/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
   };
 
   async function onSubmit(event) {
@@ -77,8 +85,8 @@ export default function Form(props) {
     };
 
     try {
-      await mailchimp.post("/subscribe", form);
-      await login(form);
+      await subscribe(form);
+      await authenticate(form);
 
       router.push(props.redirectTo + "?redirect=true");
     } catch (error) {
