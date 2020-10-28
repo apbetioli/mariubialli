@@ -31,6 +31,7 @@ function DownloadButton({ className, loggedIn, url, children }) {
 
   return loggedIn ? (
     <Button
+      id="download"
       className={className}
       variant="contained"
       color="primary"
@@ -43,6 +44,7 @@ function DownloadButton({ className, loggedIn, url, children }) {
     </Button>
   ) : (
     <Button
+      id="download"
       className={className}
       variant="contained"
       color="primary"
