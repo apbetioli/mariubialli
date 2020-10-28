@@ -5,7 +5,7 @@ import React from "react";
 
 const useStyles = makeStyles((theme) => ({
   photo: {
-    height: 400,
+    maxHeight: 400,
     maxWidth: "100%",
   },
   bio: {
