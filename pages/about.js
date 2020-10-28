@@ -2,8 +2,12 @@ import { Container, Grid, makeStyles } from "@material-ui/core";
 import PrismicClient from "lib/prismic";
 import { RichText } from "prismic-reactjs";
 import React from "react";
+import classnames from "classnames";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    width: "80%",
+  },
   photo: {
     maxHeight: 400,
     maxWidth: "100%",
@@ -16,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 export default function QuemSouEu({ about }) {
   const classes = useStyles();
   return (
-    <Container className="fullHeight">
+    <Container className={classnames("fullHeight", classes.root)}>
       <Grid
         container
         spacing={3}
@@ -36,6 +40,6 @@ export default function QuemSouEu({ about }) {
 }
 
 export async function getStaticProps() {
-  const about = await PrismicClient.getSingle("quem_sou_eu");
+  const about = await PrismicClient.getSingle("about");
   return { props: { about }, revalidate: 1 };
 }

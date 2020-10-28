@@ -6,7 +6,7 @@ import {
   Container,
   Grid,
   makeStyles,
-  Typography,
+  Typography
 } from "@material-ui/core";
 import PrismicClient from "lib/prismic";
 import Prismic from "prismic-javascript";
@@ -26,24 +26,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Apostila({ post }) {
+function Apostila({ asset }) {
   const classes = useStyles();
 
   return (
     <Card className={classes.card}>
-      <CardActionArea href={"/apostilas/" + post.uid}>
+      <CardActionArea href={"/apostilas/" + asset.uid}>
         <CardMedia
           component="img"
           height={classes.media.height}
           className={classes.media}
-          image={post.data.images[0].image.url}
+          image={asset.data.images[0].image.url}
         />
         <CardContent className={classes.content}>
           <Typography gutterBottom variant="h5" component="h2">
-            {RichText.asText(post.data.title)}
+            {RichText.asText(asset.data.title)}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {RichText.asText(post.data.subtitle)}
+            {RichText.asText(asset.data.subtitle)}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -51,14 +51,14 @@ function Apostila({ post }) {
   );
 }
 
-export default function Apostilas({ posts }) {
+export default function Apostilas({ assets }) {
   const classes = useStyles();
   return (
     <Container className="fullHeight">
       <Grid container direction="row" justify="center" alignItems="center">
-        {posts.results.map((post) => (
-          <Grid item md={4}>
-            <Apostila key={post.uid} post={post} />
+        {assets.results.map((asset) => (
+          <Grid key={asset.uid} item md={4}>
+            <Apostila asset={asset} />
           </Grid>
         ))}
       </Grid>
@@ -67,10 +67,9 @@ export default function Apostilas({ posts }) {
 }
 
 export async function getStaticProps() {
-  const posts = await PrismicClient.query(
-    Prismic.Predicates.at("document.type", "post"),
-    { orderings: "[my.post.datetime desc]" }
+  const assets = await PrismicClient.query(
+    Prismic.Predicates.at("document.type", "asset"),
+    { orderings: "[my.first_publication_date desc]" }
   );
-
-  return { props: { posts }, revalidate: 1 };
+  return { props: { assets }, revalidate: 1 };
 }

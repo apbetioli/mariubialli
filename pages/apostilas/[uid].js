@@ -61,7 +61,7 @@ const Apostila = ({ apostila }) => {
   const router = useRouter();
   const { user } = useUser();
 
-  if (user?.isLoggedIn && router.query.redirect) {
+  if (user?.isLoggedIn && router.query.redirect && apostila.data.download) {
     window.open(apostila.data.download.url);
   }
 
@@ -93,12 +93,14 @@ const Apostila = ({ apostila }) => {
     thumbnail: image.image.url,
   }));
 
-  images.unshift({
-    embedUrl: apostila.data.youtube_url.embed_url,
-    original: apostila.data.youtube_url.thumbnail_url,
-    thumbnail: apostila.data.youtube_url.thumbnail_url,
-    renderItem: renderVideo.bind(this),
-  });
+  if (apostila.data.youtube_url.embed_url) {
+    images.unshift({
+      embedUrl: apostila.data.youtube_url.embed_url,
+      original: apostila.data.youtube_url.thumbnail_url,
+      thumbnail: apostila.data.youtube_url.thumbnail_url,
+      renderItem: renderVideo.bind(this),
+    });
+  }
 
   return (
     <Container className="fullHeight">
@@ -114,13 +116,15 @@ const Apostila = ({ apostila }) => {
             />
           </Grid>
           <Grid item lg={6} xs={12}>
-            <DownloadButton
-              className={classes.downloadButton}
-              loggedIn={user?.isLoggedIn}
-              url={apostila.data.download.url}
-            >
-              Download
-            </DownloadButton>
+            {apostila.data.download.url && (
+              <DownloadButton
+                className={classes.downloadButton}
+                loggedIn={user?.isLoggedIn}
+                url={apostila.data.download.url}
+              >
+                Download Gratuito
+              </DownloadButton>
+            )}
             {RichText.render(apostila.data.description)}
           </Grid>
         </Grid>
@@ -130,7 +134,7 @@ const Apostila = ({ apostila }) => {
 };
 
 export async function getStaticProps(context) {
-  const apostila = await PrismicClient.getByUID("post", context.params.uid);
+  const apostila = await PrismicClient.getByUID("asset", context.params.uid);
 
   const title = RichText.asText(apostila.data.title);
 
@@ -138,13 +142,12 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const posts = await PrismicClient.query(
-    Prismic.Predicates.at("document.type", "post"),
-    { orderings: "[my.post.datetime desc]" }
+  const assets = await PrismicClient.query(
+    Prismic.Predicates.at("document.type", "asset")
   );
 
-  const paths = posts.results.map((post) => ({
-    params: { uid: post.uid },
+  const paths = assets.results.map((asset) => ({
+    params: { uid: asset.uid },
   }));
 
   return {
