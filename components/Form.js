@@ -2,7 +2,7 @@ import {
   Backdrop,
   Button,
   CircularProgress,
-  TextField,
+  TextField
 } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import theme from "assets/js/theme";
@@ -62,7 +62,6 @@ export default function Form(props) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
     });
-    console.log(user);
 
     await mutateUser(user);
   };

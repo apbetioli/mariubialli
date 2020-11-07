@@ -39,6 +39,7 @@ function DownloadButton({ className, loggedIn, url, children }) {
       href={url}
       target="_blank"
       rel="noopener"
+      onClick={() => router.push("/obrigado-download")}
     >
       {children}
     </Button>
@@ -63,6 +64,8 @@ const Apostila = ({ apostila }) => {
 
   if (user?.isLoggedIn && router.query.redirect && apostila.data.download) {
     window.open(apostila.data.download.url);
+    router.push("/obrigado-download");
+    return <div>Loading...</div>;
   }
 
   const renderVideo = (item) => {

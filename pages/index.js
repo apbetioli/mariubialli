@@ -25,7 +25,7 @@ export default function Home({ home }) {
         <h4 className={classes.subtitle}>{RichText.asText(home.data.subtitle)}</h4>
         <Form
           buttonText={RichText.asText(home.data.button)}
-          redirectTo="/obrigado"
+          redirectTo="/obrigado-newsletter"
           tag="NEWSLETTER"
         />
       </Hero>

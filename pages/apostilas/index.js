@@ -69,7 +69,7 @@ export default function Apostilas({ assets }) {
 export async function getStaticProps() {
   const assets = await PrismicClient.query(
     Prismic.Predicates.at("document.type", "asset"),
-    { orderings: "[my.first_publication_date desc]" }
+    { orderings: "[document.first_publication_date desc]" }
   );
   return { props: { assets }, revalidate: 1 };
 }
