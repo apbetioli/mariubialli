@@ -2,7 +2,7 @@ import { createMuiTheme } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
   footer: {
-    height: 30,
+    height: 100,
   },
   palette: {
     primary: {

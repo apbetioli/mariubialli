@@ -16,11 +16,13 @@ import Layout from "../../components/Layout";
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    marginTop: 50,
+    marginTop: 20,
     maxWidth: 345,
   },
   content: {
-    height: 150,
+    [theme.breakpoints.up("sm")]: {
+      height: 150,
+    },    
   },
   media: {
     height: 194,
@@ -56,7 +58,8 @@ export default function Apostilas(props) {
   return (
     <Layout {...props}>
       <Container className="fullHeight">
-        <Grid container direction="row" justify="center" alignItems="center">
+        <h1>Apostilas Gratuitas</h1>
+        <Grid container direction="row" justify="center" alignItems="center" spacing={2}>
           {props.assets.results.map((asset) => (
             <Grid key={asset.uid} item md={4}>
               <Apostila asset={asset} />

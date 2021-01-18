@@ -6,6 +6,7 @@ import Head from "next/head";
 import React from "react";
 
 export default function App({ Component, pageProps }) {
+
   const title = pageProps.title ? pageProps.title + " | " : "";
   return (
     <React.Fragment>
