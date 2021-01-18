@@ -3,6 +3,7 @@ import PrismicClient from "lib/prismic";
 import { RichText } from "prismic-reactjs";
 import React from "react";
 import classnames from "classnames";
+import Layout from "../components/Layout";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,25 +18,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function QuemSouEu({ about }) {
+export default function QuemSouEu(props) {
   const classes = useStyles();
+  const { about } = props;
   return (
-    <Container className={classnames("fullHeight", classes.root)}>
-      <Grid
-        container
-        spacing={3}
-        direction="row"
-        justify="center"
-        alignItems="center"
-      >
-        <Grid item md={6}>
-          <img src={about.data.photo.url} alt="" className={classes.photo} />
+    <Layout {...props}>
+      <Container className={classnames("fullHeight", classes.root)}>
+        <Grid
+          container
+          spacing={3}
+          direction="row"
+          justify="center"
+          alignItems="center"
+        >
+          <Grid item md={6}>
+            <img src={about.data.photo.url} alt="" className={classes.photo} />
+          </Grid>
+          <Grid item md={6} className={classes.bio}>
+            {RichText.render(about.data.bio)}
+          </Grid>
         </Grid>
-        <Grid item md={6} className={classes.bio}>
-          {RichText.render(about.data.bio)}
-        </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </Layout>
   );
 }
 

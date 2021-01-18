@@ -1,12 +1,7 @@
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Fab from "@material-ui/core/Fab";
 import { ThemeProvider } from "@material-ui/core/styles";
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import "assets/css/global.css";
 import theme from "assets/js/theme";
-import Footer from "components/Footer";
-import Header from "components/Header";
-import ScrollTop from "components/ScrollTop";
 import Head from "next/head";
 import React from "react";
 
@@ -28,18 +23,7 @@ export default function App({ Component, pageProps }) {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-
-        <Header />
-
         <Component {...pageProps} />
-
-        <ScrollTop {...pageProps}>
-          <Fab color="secondary" size="small" aria-label="scroll back to top">
-            <KeyboardArrowUpIcon />
-          </Fab>
-        </ScrollTop>
-
-        <Footer />
       </ThemeProvider>
     </React.Fragment>
   );

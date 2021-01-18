@@ -6,12 +6,13 @@ import {
   Container,
   Grid,
   makeStyles,
-  Typography
+  Typography,
 } from "@material-ui/core";
 import PrismicClient from "lib/prismic";
 import Prismic from "prismic-javascript";
 import { RichText } from "prismic-reactjs";
 import React from "react";
+import Layout from "../../components/Layout";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -51,18 +52,19 @@ function Apostila({ asset }) {
   );
 }
 
-export default function Apostilas({ assets }) {
-  const classes = useStyles();
+export default function Apostilas(props) {
   return (
-    <Container className="fullHeight">
-      <Grid container direction="row" justify="center" alignItems="center">
-        {assets.results.map((asset) => (
-          <Grid key={asset.uid} item md={4}>
-            <Apostila asset={asset} />
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+    <Layout {...props}>
+      <Container className="fullHeight">
+        <Grid container direction="row" justify="center" alignItems="center">
+          {props.assets.results.map((asset) => (
+            <Grid key={asset.uid} item md={4}>
+              <Apostila asset={asset} />
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </Layout>
   );
 }
 

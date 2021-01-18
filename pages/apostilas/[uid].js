@@ -5,6 +5,7 @@ import Prismic from "prismic-javascript";
 import { RichText } from "prismic-reactjs";
 import React from "react";
 import ImageGallery from "react-image-gallery";
+import Layout from "../../components/Layout";
 import useUser from "../../lib/useUser";
 
 const useStyles = makeStyles((theme) => ({
@@ -57,10 +58,11 @@ function DownloadButton({ className, loggedIn, url, children }) {
   );
 }
 
-const Apostila = ({ apostila }) => {
+const Apostila = (props) => {
   const classes = useStyles();
   const router = useRouter();
   const { user } = useUser();
+  const { apostila } = props;
 
   if (user?.isLoggedIn && router.query.redirect && apostila.data.download) {
     window.open(apostila.data.download.url);
@@ -106,33 +108,35 @@ const Apostila = ({ apostila }) => {
   }
 
   return (
-    <Container className="fullHeight">
-      <Link href="/apostilas">&lt; Voltar para apostilas</Link>
-      <article>
-        {RichText.render(apostila.data.title)}
-        <Grid container spacing={3}>
-          <Grid item lg={6} xs={12}>
-            <ImageGallery
-              items={images}
-              showFullscreenButton={false}
-              showPlayButton={false}
-            />
+    <Layout {...props}>
+      <Container className="fullHeight">
+        <Link href="/apostilas">&lt; Voltar para apostilas</Link>
+        <article>
+          {RichText.render(apostila.data.title)}
+          <Grid container spacing={3}>
+            <Grid item lg={6} xs={12}>
+              <ImageGallery
+                items={images}
+                showFullscreenButton={false}
+                showPlayButton={false}
+              />
+            </Grid>
+            <Grid item lg={6} xs={12}>
+              {apostila.data.download.url && (
+                <DownloadButton
+                  className={classes.downloadButton}
+                  loggedIn={user?.isLoggedIn}
+                  url={apostila.data.download.url}
+                >
+                  Download Gratuito
+                </DownloadButton>
+              )}
+              {RichText.render(apostila.data.description)}
+            </Grid>
           </Grid>
-          <Grid item lg={6} xs={12}>
-            {apostila.data.download.url && (
-              <DownloadButton
-                className={classes.downloadButton}
-                loggedIn={user?.isLoggedIn}
-                url={apostila.data.download.url}
-              >
-                Download Gratuito
-              </DownloadButton>
-            )}
-            {RichText.render(apostila.data.description)}
-          </Grid>
-        </Grid>
-      </article>
-    </Container>
+        </article>
+      </Container>
+    </Layout>
   );
 };
 
