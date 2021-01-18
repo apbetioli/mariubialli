@@ -105,11 +105,7 @@ export default function Header(props) {
       </Button>
     </Tooltip>
   ) : (
-    <Tooltip title="Entrar">
-      <Button className={classes.loginButton} href="/login">
-        <LockIcon />
-      </Button>
-    </Tooltip>
+    <></>
   );
 
   const userListItem = user?.isLoggedIn ? (
@@ -160,7 +156,7 @@ export default function Header(props) {
                   <ListItemIcon>
                     <InboxIcon />
                   </ListItemIcon>
-                  <ListItemText primary="Apostilas" />
+                  <ListItemText primary="Apostilas gratuitas" />
                 </ListItemLink>
 
                 <ListItemLink button href="/about">
@@ -216,7 +212,7 @@ export default function Header(props) {
 
             <nav className={classes.desktopButtons}>
               <Button href="/apostilas" className={classes.toolbarButton}>
-                Apostilas
+                Apostilas gratuitas
               </Button>
               <Button href="/about" className={classes.toolbarButton}>
                 Sobre
