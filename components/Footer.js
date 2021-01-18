@@ -18,7 +18,7 @@ export default function Footer(props) {
   return (
     <footer className={classes.footer}>
       <div className="copyright">
-        &copy; 2020 Mari Ubialli - Artesanato Criativo
+        &copy; 2020 Mari Ubialli - Todos os direitos reservados
       </div>
     </footer>
   );

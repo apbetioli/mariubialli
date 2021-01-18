@@ -105,24 +105,23 @@ export default function Header(props) {
       </Button>
     </Tooltip>
   ) : (
-    <></>
-  );
+      <></>
+    );
 
   const userListItem = user?.isLoggedIn ? (
-    <ListItemLink button onClick={logout}>
-      <ListItemIcon>
-        <AccountCircleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Sair" />
-    </ListItemLink>
+    <>
+      <Divider />
+      <ListItemLink button onClick={logout}>
+        <ListItemIcon>
+          <AccountCircleIcon />
+        </ListItemIcon>
+        <ListItemText primary="Sair" />
+      </ListItemLink>
+    </>
   ) : (
-    <ListItemLink button href="/login">
-      <ListItemIcon>
-        <LockIcon />
-      </ListItemIcon>
-      <ListItemText primary="Entrar" />
-    </ListItemLink>
-  );
+      <>
+      </>
+    );
 
   return (
     <>
@@ -204,8 +203,6 @@ export default function Header(props) {
                   <ListItemText primary="Facebook" />
                 </ListItemLink>
 
-                <Divider />
-
                 {userListItem}
               </List>
             </Drawer>
@@ -246,9 +243,9 @@ export default function Header(props) {
                   <YouTubeIcon />
                 </Button>
               </Tooltip>
-              <Tooltip title="Curta minha página">
+              <Tooltip title="Siga-me no facebook">
                 <Button
-                  href="http://www.facebook.com/mariubialli"
+                  href="http://www.facebook.com/mariubialliart"
                   target="_blank"
                   rel="noopener"
                   className={classes.toolbarButton}
