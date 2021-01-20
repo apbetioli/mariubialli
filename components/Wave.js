@@ -21,6 +21,6 @@ export default function Wave({ className }) {
     const classes = useStyles();
 
     return (
-        <div className={classnames(props.className, classes.wave)}></div>
+        <div className={classnames(className, classes.wave)}></div>
     );
 }
