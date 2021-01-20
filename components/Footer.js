@@ -5,6 +5,7 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     alignItems: "center",
     display: "flex",
+    fontSize: "0.675rem",
     justifyContent: "center",
     height: theme.footer.height,
     textAlign: "center"

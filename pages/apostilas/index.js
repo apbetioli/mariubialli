@@ -42,7 +42,7 @@ function Apostila({ asset }) {
           image={asset.data.images[0].image.url}
         />
         <CardContent className={classes.content}>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="h6" component="h2">
             {RichText.asText(asset.data.title)}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">

@@ -2,16 +2,16 @@ import { Button, makeStyles } from "@material-ui/core";
 import React from "react";
 import classnames from "classnames";
 
-const blue = {
+ColorButton.blue = {
     '--background-start': '#2196F3',
     '--background-end': '#21CBF3',
     '--box-shadow': 'rgba(33, 203, 243, .3)',
     '--box-shadow-hover': 'rgba(33, 203, 243, .6)',
 };
 
-const defaultStyle = {
-    '--background-start': '#FE6B8B',
-    '--background-end': '#FF8E53',
+ColorButton.defaultStyle = {
+    '--background-start': '#FE6BD4',
+    '--background-end': '#FE956B',
     '--box-shadow': 'rgba(255, 105, 135, .3)',
     '--box-shadow-hover': 'rgba(255, 105, 135, .6)',
 };
@@ -39,18 +39,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ColorButton(props) {
-
     const classes = useStyles();
 
     return (<Button
         variant="contained"
+        style={ColorButton.defaultStyle}
         {...props}
         className={classnames(props.className, classes.button)}
-        style={defaultStyle}
     >
         {props.children}
     </Button>);
-
 }
 
 ColorButton.defaultProps = {
