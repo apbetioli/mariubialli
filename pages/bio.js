@@ -1,7 +1,7 @@
 import { Container, Grid, Link, makeStyles } from "@material-ui/core";
 import React from "react";
 import ColorButton from "../components/ColorButton";
-import Wave from "../components/wave";
+import Wave from "../components/Wave";
 
 const useStyles = makeStyles((theme) => ({
     root: {

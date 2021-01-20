@@ -24,7 +24,7 @@ import YouTubeIcon from "@material-ui/icons/YouTube";
 import useUser from "lib/useUser";
 import { useRouter } from "next/router";
 import React from "react";
-import Wave from "./wave";
+import Wave from "./Wave";
 
 const useStyles = makeStyles((theme) => ({
   desktopButtons: {
