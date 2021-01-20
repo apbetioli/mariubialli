@@ -18,7 +18,6 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import HomeIcon from "@material-ui/icons/Home";
 import InfoIcon from "@material-ui/icons/Info";
 import InstagramIcon from "@material-ui/icons/Instagram";
-import LockIcon from "@material-ui/icons/Lock";
 import MenuIcon from "@material-ui/icons/Menu";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import YouTubeIcon from "@material-ui/icons/YouTube";
@@ -125,7 +124,7 @@ export default function Header(props) {
 
   return (
     <>
-      <AppBar position="sticky">
+      <AppBar position="static">
         <Toolbar className={classes.toolbar}>
           <div className={classes.leftButtons}>
             <IconButton

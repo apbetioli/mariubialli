@@ -1,5 +1,6 @@
 import { Button, Container, Grid, Link, makeStyles } from "@material-ui/core";
 import React from "react";
+import ColorButton from "../components/ColorButton";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -35,40 +36,28 @@ export default function Bio(props) {
                     </Link>
                 </Grid>
                 <Grid item xs={12}>
-                    <Button
+                    <ColorButton
                         href="/apostilas"
-                        variant="contained"
-                        color="primary"
-                        type="submit"
-                        size="large"
                         className={classes.button}
                     >
                         Apostilas e moldes gratuitos
-                    </Button>
+                    </ColorButton>
                 </Grid>
                 <Grid item xs={12}>
-                    <Button
+                    <ColorButton
                         href="https://www.youtube.com/channel/UC8YxukVEnCQLNmbExz-ViAA?sub_confirmation=1"
-                        variant="contained"
-                        color="primary"
-                        type="submit"
-                        size="large"
                         className={classes.button}
                     >
                         Inscreva-se no YouTube
-                    </Button>
+                    </ColorButton>
                 </Grid>
                 <Grid item xs={12}>
-                    <Button
+                    <ColorButton
                         href="/"
-                        variant="contained"
-                        color="primary"
-                        type="submit"
-                        size="large"
                         className={classes.button}
                     >
                         Visite meu site
-                    </Button>
+                    </ColorButton>
                 </Grid>
             </Grid>
         </Container>

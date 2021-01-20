@@ -6,9 +6,6 @@ import React from "react";
 const backgroundImage = require("assets/img/hero.jpg");
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
   hero: {
     background: `url('${backgroundImage}')`,
     backgroundSize: "cover",
@@ -16,9 +13,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center center",
   },
   grid: {
-    zIndex: 2,
-    position: "relative",
-    padding: "50px",
+    padding: "10px",
   },
   centered: {
     textAlign: "center",

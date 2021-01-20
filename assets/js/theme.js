@@ -1,8 +1,13 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
+  typography: {
+    button: {
+      borderRadius: 0
+    },
+  },
   footer: {
-    height: 100,
+    height: 80,
   },
   palette: {
     primary: {
