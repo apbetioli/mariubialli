@@ -24,6 +24,7 @@ import YouTubeIcon from "@material-ui/icons/YouTube";
 import useUser from "lib/useUser";
 import { useRouter } from "next/router";
 import React from "react";
+import Wave from "./wave";
 
 const useStyles = makeStyles((theme) => ({
   desktopButtons: {
@@ -37,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: theme.spacing(3),
   },
   logo: {
-    height: "100px",
+    height: "80px",
   },
   logoWrapper: {
     position: "absolute",
@@ -51,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   menuButton: {
+    color: theme.palette.primary.main,
     height: "100%",
     [theme.breakpoints.up("md")]: {
       display: "none",
@@ -60,17 +62,15 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     alignItems: "center",
   },
+  appbar: {
+    backgroundColor: "transparent",
+    boxShadow: "none",
+  },
   toolbar: {
     height: "100px",
-    backgroundColor: theme.palette.secondary.main,
   },
   toolbarButton: {
     color: theme.palette.primary.main,
-    height: "100%",
-    marginRight: theme.spacing(3),
-  },
-  loginButton: {
-    color: "white",
     height: "100%",
     marginRight: theme.spacing(3),
   },
@@ -124,7 +124,8 @@ export default function Header(props) {
 
   return (
     <>
-      <AppBar position="static">
+      <Wave/>
+      <AppBar position="static" className={classes.appbar}>
         <Toolbar className={classes.toolbar}>
           <div className={classes.leftButtons}>
             <IconButton

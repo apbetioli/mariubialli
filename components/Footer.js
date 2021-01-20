@@ -4,8 +4,6 @@ import React from "react";
 const useStyles = makeStyles((theme) => ({
   footer: {
     alignItems: "center",
-    backgroundColor: theme.palette.secondary.main,
-    color: theme.palette.primary.main,
     display: "flex",
     justifyContent: "center",
     height: theme.footer.height,

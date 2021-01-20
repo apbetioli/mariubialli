@@ -1,28 +1,29 @@
-import { Button, Container, Grid, Link, makeStyles } from "@material-ui/core";
+import { Container, Grid, Link, makeStyles } from "@material-ui/core";
 import React from "react";
 import ColorButton from "../components/ColorButton";
+import Wave from "../components/wave";
 
 const useStyles = makeStyles((theme) => ({
     root: {
         alignItems: "center",
-        backgroundColor: theme.palette.secondary.main,
         height: "100%",
         textAlign: "center",
-        paddingTop: "30px",
+        paddingTop: 30,
         width: "100%",
     },
     button: {
         width: "100%",
     },
     logo: {
-        height: "100px",
-    },
+        height: "80px",
+    }
 }));
 
 export default function Bio(props) {
     const classes = useStyles();
     return (
         <Container maxWidth="xl" className={classes.root}>
+            <Wave />
             <Grid
                 container
                 spacing={3}
