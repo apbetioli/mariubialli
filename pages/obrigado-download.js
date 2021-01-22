@@ -5,7 +5,7 @@ import Obrigado from "../components/Obrigado";
 export default function ObrigadoDownload(props) {
   return (
     <Layout {...props}>
-      <Obrigado>Seu download iniciará em instante!</Obrigado>
+      <Obrigado>Seu download iniciará em instantes!</Obrigado>
     </Layout>
   );
 }

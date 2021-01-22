@@ -1,10 +1,11 @@
-import { Button, Container, Grid, Link, makeStyles } from "@material-ui/core";
+import { Container, Grid, Link, makeStyles } from "@material-ui/core";
 import PrismicClient from "lib/prismic";
 import { useRouter } from "next/router";
 import Prismic from "prismic-javascript";
 import { RichText } from "prismic-reactjs";
 import React from "react";
 import ImageGallery from "react-image-gallery";
+import ColorButton from "../../components/ColorButton";
 import Layout from "../../components/Layout";
 import useUser from "../../lib/useUser";
 
@@ -31,31 +32,25 @@ function DownloadButton({ className, loggedIn, url, children }) {
   const router = useRouter();
 
   return loggedIn ? (
-    <Button
+    <ColorButton
       id="download"
       className={className}
-      variant="contained"
-      color="primary"
-      size="large"
       href={url}
       target="_blank"
       rel="noopener"
       onClick={() => router.push("/obrigado-download")}
     >
       {children}
-    </Button>
+    </ColorButton>
   ) : (
-    <Button
-      id="download"
-      className={className}
-      variant="contained"
-      color="primary"
-      size="large"
-      href={"/login?redirect=" + router.asPath}
-    >
-      {children}
-    </Button>
-  );
+      <ColorButton
+        id="download"
+        className={className}
+        href={"/login?redirect=" + router.asPath}
+      >
+        {children}
+      </ColorButton>
+    );
 }
 
 const Apostila = (props) => {

@@ -22,9 +22,9 @@ export default function Footer(props) {
     <footer className={classes.footer}>
       <Grid>
         <Grid item lg={12} className={classes.footerLinks}>
-          <Link href="/politica-de-privacidade">Política de privacidade</Link>
+          <Link href="/politica-de-privacidade" target="_blank" rel="noopener">Política de privacidade</Link>
           {" - "}
-          <Link href="/termos-de-uso">Termos de uso</Link>
+          <Link href="/termos-de-uso" target="_blank" rel="noopener">Termos de uso</Link>
         </Grid>
         <Hidden smUp>
           <Grid item lg={12}>

@@ -9,6 +9,7 @@ import theme from "assets/js/theme";
 import useUser from "lib/useUser";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import ColorButton from "./ColorButton";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -112,14 +113,14 @@ export default function Form(props) {
         value={email}
         onChange={handleEmailChange.bind(this)}
       />
-      <Button
+
+      <ColorButton
         variant="contained"
-        color="primary"
         type="submit"
         className={classes.button}
       >
         {props.buttonText}
-      </Button>
+      </ColorButton>
       <Backdrop className={classes.backdrop} open={backdrop}>
         <CircularProgress color="inherit" />
       </Backdrop>
