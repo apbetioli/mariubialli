@@ -2,8 +2,8 @@ import withSession from "lib/session";
 
 export default withSession(async (req, res) => {
   try {
-    const { email } = await req.body;
-    const user = { isLoggedIn: true, email };
+    const { email, source } = await req.body;
+    const user = { isLoggedIn: true, email, source };
     req.session.set("user", user);
     await req.session.save();
     res.json(user);

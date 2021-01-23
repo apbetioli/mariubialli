@@ -1,6 +1,5 @@
 import {
   Backdrop,
-  Button,
   CircularProgress,
   TextField
 } from "@material-ui/core";
@@ -8,7 +7,7 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import theme from "assets/js/theme";
 import useUser from "lib/useUser";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ColorButton from "./ColorButton";
 
 const useStyles = makeStyles((theme) => ({
@@ -81,8 +80,13 @@ export default function Form(props) {
 
     const form = {
       email,
-      tag: props.tag,
+      tag: props.tag
     };
+
+    const source = window.localStorage.getItem("utm_source");
+    if (source) {
+      form.source = source;
+    }
 
     try {
       await subscribe(form);

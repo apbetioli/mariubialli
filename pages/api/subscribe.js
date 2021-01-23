@@ -26,16 +26,23 @@ module.exports = async (req, res) => {
 
     lead.id = response.id;
 
+    let tags = [
+      {
+        name: lead.tag,
+        status: "active",
+      },
+    ];
+
+    if (lead.source) {
+      tags.push({
+        name: lead.source.toUpperCase(),
+        status: "active",
+      })
+    };
+
     if (lead.tag) {
       await mailchimp.lists.updateListMemberTags(listId, subscriberHash, {
-        body: {
-          tags: [
-            {
-              name: lead.tag,
-              status: "active",
-            },
-          ],
-        },
+        body: { tags }
       });
     }
 

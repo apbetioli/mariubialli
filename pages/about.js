@@ -31,11 +31,11 @@ export default function QuemSouEu(props) {
           justify="center"
           alignItems="center"
         >
-          <Grid item md={6}>
-            <img src={about.data.photo.url} alt="" className={classes.photo} />
-          </Grid>
           <Grid item md={6} className={classes.bio}>
             {RichText.render(about.data.bio)}
+          </Grid>
+          <Grid item md={6}>
+            <img src={about.data.photo.url} alt="" className={classes.photo} />
           </Grid>
         </Grid>
       </Container>

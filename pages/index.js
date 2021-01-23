@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Home(props) {
   const classes = useStyles();
-
   const { home } = props;
 
   return (

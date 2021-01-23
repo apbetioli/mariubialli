@@ -3,9 +3,21 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import "assets/css/global.css";
 import theme from "assets/js/theme";
 import Head from "next/head";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
+
+function populateUtmSource() {
+  const router = useRouter();
+  useEffect(() => {
+    const source = window.localStorage.getItem("utm_source");
+    if (router.query.utm_source && !source) {
+      window.localStorage.setItem("utm_source", router.query.utm_source);
+    }
+  }, []);
+}
 
 export default function App({ Component, pageProps }) {
+  populateUtmSource();
 
   const title = pageProps.title ? pageProps.title + " | " : "";
   return (
