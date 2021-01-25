@@ -1,5 +1,6 @@
 import { Container, Grid, Link, makeStyles } from "@material-ui/core";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 import ColorButton from "../components/ColorButton";
 import Wave from "../components/Wave";
 
@@ -19,8 +20,20 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+function populateUtmSource() {
+    const router = useRouter();
+    useEffect(() => {
+      const source = window.localStorage.getItem("utm_source");
+      if (!router.query.utm_source && !source) {
+        window.localStorage.setItem("utm_source", "instagram");
+      }
+    }, []);
+  }
+
 export default function Bio(props) {
+    populateUtmSource();
     const classes = useStyles();
+
     return (
         <Container maxWidth="xl" className={classes.root}>
             <Wave />
