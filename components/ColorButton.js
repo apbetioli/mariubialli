@@ -9,11 +9,18 @@ ColorButton.blue = {
     '--box-shadow-hover': 'rgba(33, 203, 243, .6)',
 };
 
+ColorButton.green = {
+    '--background-start': '#6BFEDE',
+    '--background-end': '#6BFEDE',
+    '--box-shadow': 'rgba(33, 203, 243, .3)',
+    '--box-shadow-hover': 'rgba(33, 203, 243, .6)',
+};
+
 ColorButton.youtube = {
     '--background-start': '#E62117',
     '--background-end': '#E62117',
-    '--box-shadow': 'rgba(255, 105, 135, .3)',
-    '--box-shadow-hover': 'rgba(255, 105, 135, .6)',
+    '--box-shadow': 'rgba(230, 33, 23, .3)',
+    '--box-shadow-hover': 'rgba(230, 33, 23, .6)',
 };
 
 ColorButton.defaultStyle = {
@@ -26,8 +33,8 @@ ColorButton.defaultStyle = {
 ColorButton.whatsapp = {
     '--background-start': '#25d366',
     '--background-end': '#25d366',
-    '--box-shadow': 'rgba(255, 105, 135, .3)',
-    '--box-shadow-hover': 'rgba(255, 105, 135, .6)',
+    '--box-shadow': 'rgba(37, 211, 102, .3)',
+    '--box-shadow-hover': 'rgba(37, 211, 102, .6)',
 };
 
 

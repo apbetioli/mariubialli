@@ -98,6 +98,7 @@ export default function Header(props) {
 
   return (
     <>
+      <div id="scrollTop" />
       <Wave />
       <AppBar position="static" className={classes.appbar}>
         <Toolbar className={classes.toolbar}>
@@ -229,7 +230,6 @@ export default function Header(props) {
           </div>
         </Toolbar>
       </AppBar>
-      <div id="scrollTop" />
     </>
   );
 }

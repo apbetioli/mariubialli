@@ -1,8 +1,12 @@
-import { Button, Card, CardContent, CardMedia, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Fab, Grid, Hidden, Link, SvgIcon, TextField } from "@material-ui/core";
-import Paper from '@material-ui/core/Paper';
+import { Card, CardContent, CardMedia, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Fab, Grid, Hidden, Link, SvgIcon, Tooltip } from "@material-ui/core";
+import Accordion from '@material-ui/core/Accordion';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from '@material-ui/core/Typography';
 import { WhatsApp } from "@material-ui/icons";
+import CheckIcon from '@material-ui/icons/Check';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Timeline from '@material-ui/lab/Timeline';
 import TimelineConnector from '@material-ui/lab/TimelineConnector';
 import TimelineContent from '@material-ui/lab/TimelineContent';
@@ -13,15 +17,18 @@ import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
 import { default as React } from "react";
 import ColorButton from "../components/ColorButton";
 import Footer from "../components/Footer";
+import Form from "../components/Form";
+import ScrollTo from "../components/ScrollTo";
 import Wave from "../components/Wave";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    fontSize: "1rem",
   },
   cta: {
+    textAlign: "center",
     width: "100%",
-    textAlign: "center"
   },
   grid: {
     paddingTop: 50,
@@ -29,14 +36,15 @@ const useStyles = makeStyles((theme) => ({
   },
   centered: {
     textAlign: "center",
+    width: "100%",
   },
   justify: {
     textAlign: "justify",
   },
   video: {
-    position: "absolute",
     left: 0,
     height: "100%",
+    position: "absolute",
     top: 0,
     width: "100%",
   },
@@ -44,14 +52,14 @@ const useStyles = makeStyles((theme) => ({
     height: 0,
     marginTop: 25,
     marginBottom: 25,
-    position: "relative",
     paddingBottom: "56.25%",
+    position: "relative",
   },
   whatsapp: {
-    color: "white",
-    backgroundColor: "#25d366",
-    position: "fixed",
     bottom: theme.spacing(2),
+    backgroundColor: "#25d366",
+    color: "white",
+    position: "fixed",
     right: theme.spacing(2),
     zIndex: 10,
     "&:hover": {
@@ -59,20 +67,22 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   card: {
+    backgroundColor: "transparent",
     margin: '16px 16px',
   },
-  sectionBlue: {
+  sectionConteudo: {
     backgroundColor: "#FFF5F7",
   },
   sectionGreen: {
     backgroundColor: "#6BFEDE",
   },
-  sectionRed: {
+  sectionSobreMim: {
     backgroundColor: "#FE6B8B",
+    color: "#FFF",
   },
   sectionWhats: {
-    color: "white",
     backgroundColor: "#25d366",
+    color: "white",
   },
   wave: {
     backgroundColor: "#FE6B8B",
@@ -80,12 +90,20 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     color: "white"
+  },
+  fotoPerfil: {
+    maxHeight: 300,
+    maxWidth: "100%",
+  },
+  heading: {
+    color: "#FE6B8B",
+    fontWeight: "bold"
   }
 }));
 
 const rocks = [
   { title: "Esmeralda", color: "#6BFEDE", image: require("assets/img/esmeralda.jpg"), description: "Esmeralda é um símbolo da verdade e do amor. Na Grécia e na Roma antigas, dizia-se que a esmeralda era a pedra preciosa da deusa Vênus, fornecedora de amor e esperança. Do outro lado do mundo, as esmeraldas eram reverenciadas pelos incas e consideradas pelos egípcios como uma fonte de vida eterna. As esmeraldas foram consideradas um presente de Thoth, o antigo deus da sabedoria. A esmeralda também é conhecida como uma pedra da intuição, associada à visão e à revelação de eventos e verdades futuras." },
-  { title: "Rubi", color: "#FE6B8B", image: require("assets/img/rubi.jpg"), description: "Rubi é protetora e pode trazer felicidade e paixão à vida de quem o usa. Acredita-se que tenha o poder de alinhar e emprestar energia ao corpo. Acredita-se que também protege contra entidades negativas que absorvem energia positiva, promovendo vitalidade espiritual e bem-estar em geral." },
+  { title: "Rubi", color: "#FE6B8B", image: require("assets/img/rubi.jpg"), description: "Rubi é protetora e pode trazer felicidade e paixão à vida de quem a usa. Acredita-se que tenha o poder de alinhar e emprestar energia ao corpo. Acredita-se que também protege contra entidades negativas que absorvem energia positiva, promovendo vitalidade espiritual e bem-estar em geral." },
   { title: "Ágata", color: "#6BFEDE", image: require("assets/img/agata.jpg"), description: "Ágata representa força e coragem; ela tonifica e fortalece a mente e o corpo, ancorando e estabilizando emoções e energia física. Ágata ajuda na aceitação de si mesmo e a ver a verdade. Suas qualidades de cura e limpeza eliminam as energias negativas, acalmando e acalmando a mente, corpo e espírito." },
   { title: "Angelita", color: "#FE6B8B", image: require("assets/img/cristal.jpg"), description: "Angelita é a pedra de grande consciência. Ajuda com uma comunicação clara, compassiva e verdadeira, permitindo que você fale a sua verdade. Angelita promove sentimentos de compaixão, compreensão e aceitação, permitindo que você encontre paz no assunto em questão. Também ajuda a facilitar o contato com o reino angélico, ao mesmo tempo que o ajuda a manter contato com a realidade cotidiana." },
   { title: "Jade", color: "#6BFEDE", image: require("assets/img/jade.jpg"), description: "Jade é uma poderosa balanceadora emocional, nutrindo e trazendo paz e pureza para sua vida, removendo pensamentos e energia negativos. Ela irradia o divino, promovendo amor incondicional, serenidade, clareza de espírito, coragem e sabedoria. Jade é considerada a pedra da sorte, prosperidade e amizade. Ela pode aprimorar seus sonhos, permitindo que você desperte conhecimentos ocultos e se torne quem você realmente é." },
@@ -93,7 +111,21 @@ const rocks = [
   { title: "Ametista", color: "#6BFEDE", image: require("assets/img/blenda.jpg"), description: "Ametista é a pedra da espiritualidade e do contentamento, confere estabilidade, força, paz interior. É uma grande pedra para meditação e para aumentar sua intuição e habilidades psíquicas com sua energia calmante e pacífica. A ametista fornece clareza e melhora a percepção e compreensão consciente." },
 ];
 
+const linkWhats = "https://api.whatsapp.com/send?phone=5544999114058&text=Oi!%20Gostaria%20de%20tirar%20minhas%20d%C3%BAvidas%20sobre%20a%20Cole%C3%A7%C3%A3o%20J%C3%B3ias%20Raras.";
+const checkoutURL = "";
+
 export function CTA(props) {
+  const classes = useStyles();
+  return (
+    <ScrollTo target="#pricing">
+      <ColorButton className={classes.cta}>
+        {props.children}
+      </ColorButton>
+    </ScrollTo>
+  );
+}
+
+export function CheckoutButton(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -114,57 +146,48 @@ export function CTA(props) {
         <DialogTitle id="form-dialog-title">Inscreva-se</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Entre com o seu email. Na próxima página você poderá escolher a forma de pagamento.
+            Digite seu email para iniciar sua inscrição agora.
+            <Typography variant="body2" color="textSecondary" component="p">
+              Na próxima página você poderá escolher a forma de pagamento à vista ou em até 12 parcelas.
+          </Typography>
           </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="email"
-            label="Email"
-            type="email"
-            fullWidth
-          />
+          <Form buttonText="Continuar inscrição &gt;" tag="PRECIOSAS-CHECKOUT" redirectTo={checkoutURL + "&email="} />
         </DialogContent>
         <DialogActions>
-          <ColorButton onClick={handleClose}>
-            Continuar &gt;&gt;
-          </ColorButton>
         </DialogActions>
       </Dialog>
     </div>
   );
 }
 
-function Conteudo() {
+function DedoNaFerida() {
   const classes = useStyles();
   return (
     <section>
       <Container maxWidth="md">
-        <Grid className={classes.grid} spacing={3}>
+        <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12}>
-            <h1>Peças que você irá criar</h1>
+            <h1>Conheça as meninas preciosas que você irá criar</h1>
             <p>
-              Esta coleção de bonecas foi inspirada nas pedras preciosas mais conhecidas e seus significados.
-              Conheça agora cada uma.
+              Esta coleção de bonecas foi inspirada nas pedras preciosas e seus significados. Conheça e conecte-se com cada uma.
             </p>
           </Grid>
           <Hidden xsDown>
             <Grid item className={classes.centered} xs={12}>
               <Timeline align="alternate">
                 {rocks.map((rock) => (
-                  <TimelineItem>
+                  <TimelineItem key={rock.title}>
                     <TimelineOppositeContent>
-                      <Paper elevation={0} className={classes.paper}>
-                        <Typography gutterBottom variant="h5" component="h2">
-                          {rock.title}
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                          {rock.description}
-                        </Typography>
-                      </Paper>
+
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {rock.title}
+                      </Typography>
+                      <Typography color="textSecondary" component="p">
+                        {rock.description}
+                      </Typography>
                     </TimelineOppositeContent>
                     <TimelineSeparator>
-                      <TimelineDot style={{backgroundColor: rock.color}}>
+                      <TimelineDot style={{ backgroundColor: rock.color }}>
                         <SvgIcon>
                           <svg viewBox="0 0 24 20">
                             <path fill="currentColor" d="M16,9H19L14,16M10,9H14L12,17M5,9H8L10,16M15,4H17L19,7H16M11,4H13L14,7H10M7,4H9L8,7H5M6,2L2,8L12,22L22,8L18,2H6Z" />
@@ -191,7 +214,7 @@ function Conteudo() {
           </Hidden>
           <Hidden smUp>
             {rocks.map((rock) => (
-              <Grid item xs={12} sm={4} spacing={3}>
+              <Grid container item xs={12} sm={4} spacing={3} key={rock.title}>
                 <Card raised={true} className={classes.card}>
                   <CardMedia
                     component="img"
@@ -204,7 +227,7 @@ function Conteudo() {
                     <Typography gutterBottom variant="h5" component="h2" className={classes.centered}   >
                       {rock.title}
                     </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p" className={classes.justify} >
+                    <Typography color="textSecondary" component="p" className={classes.justify} >
                       {rock.description}
                     </Typography>
                   </CardContent>
@@ -212,11 +235,6 @@ function Conteudo() {
               </Grid>
             ))}
           </Hidden>
-          <Grid item className={classes.centered} xs={12}>
-            <CTA>
-              Sim! Quero criar estas lindas peças!
-              </CTA>
-          </Grid>
         </Grid>
       </Container>
     </section>
@@ -229,10 +247,10 @@ function VideoVendas() {
     <section>
       <Wave className={classes.wave} />
       <Container maxWidth="md">
-        <Grid className={classes.grid} spacing={3} >
+        <Grid container className={classes.grid} spacing={3} >
           <Grid item xs={12}>
             <h1 className={classes.title}>São 7 joias raras para você confeccionar, personalizar e vender.</h1>
-            <p className={classes.title}>Estas lindas bonecas irão iluminar sua vida.</p>
+            <p className={classes.title}>Conheça as meninas preciosas: Esta coleção de bonecas foi inspirada nas pedras preciosas e seus significados. Conheça e conecte-se com cada uma. Estas lindas bonecas irão iluminar sua vida.</p>
 
             <div className={classes.videoWrapper}>
               <iframe
@@ -245,8 +263,7 @@ function VideoVendas() {
 
             <CTA>
               Sim! Quero iluminar minha vida!
-              </CTA>
-
+            </CTA>
           </Grid>
         </Grid>
       </Container>
@@ -254,17 +271,28 @@ function VideoVendas() {
   );
 }
 
-function DedoNaFerida() {
+function Conteudo() {
   const classes = useStyles();
   return (
-    <section className={classes.sectionBlue}>
+    <section className={classes.sectionConteudo}>
       <Container maxWidth="md">
-        <Grid className={classes.grid} spacing={3}>
-          <Grid item className={classes.centered} xs={12}>
-            <h1>Curso Meninas Preciosas</h1>
+        <Grid container className={classes.grid} spacing={3}>
+          <Grid item md={6}>
+            <p>
+              Colocar foto de todas
+            </p>
+          </Grid>
+          <Grid item md={6}>
+            <h1>O que você terá acesso?</h1>
             <p>
               Muito além de uma apostila de moldes, este é um curso completo, onde você irá aprender como confeccionar cada boneca com um passo a passo em video.
               Não importa se você é experiente em feltro ou iniciante. O curso aborda tudo o que você precisa saber para criar as bonecas com perfeição.
+            </p>
+            <p>
+              <CheckIcon /> Apostila de moldes em PDF
+            </p>
+            <p>
+              <CheckIcon /> Passo a passo em vídeo
             </p>
           </Grid>
         </Grid>
@@ -276,10 +304,12 @@ function DedoNaFerida() {
 function BotaoFlutuanteWhats() {
   const classes = useStyles();
   return (
-    <Link target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5544999114058&text=Oi!%20Gostaria%20de%20tirar%20minhas%20d%C3%BAvidas%20sobre%20a%20Cole%C3%A7%C3%A3o%20J%C3%B3ias%20Raras.">
-      <Fab className={classes.whatsapp} color="green" size="medium" aria-label="Dúvidas? Fale conosco.">
-        <WhatsApp />
-      </Fab>
+    <Link target="_blank" rel="noopener" href={linkWhats}>
+      <Tooltip title="Dúvidas? Fale conosco">
+        <Fab className={classes.whatsapp} size="medium" aria-label="Dúvidas? Fale conosco.">
+          <WhatsApp />
+        </Fab>
+      </Tooltip>
     </Link>
   );
 }
@@ -289,24 +319,9 @@ function Bonus() {
   return (
     <section>
       <Container maxWidth="md">
-        <Grid className={classes.grid} spacing={3}>
+        <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12}>
-            <h1>Bônus</h1>
-          </Grid>
-        </Grid>
-      </Container>
-    </section>
-  );
-}
-
-function Reforco() {
-  const classes = useStyles();
-  return (
-    <section>
-      <Container maxWidth="md">
-        <Grid className={classes.grid} spacing={3}>
-          <Grid item className={classes.centered} xs={12}>
-            <h1>O que você vai receber?</h1>
+            <h1>Bônus especial</h1>
           </Grid>
         </Grid>
       </Container>
@@ -317,11 +332,17 @@ function Reforco() {
 function Preco() {
   const classes = useStyles();
   return (
-    <section className={classes.sectionGreen}>
+    <section id="pricing" className={classes.sectionGreen}>
       <Container maxWidth="md">
-        <Grid className={classes.grid} spacing={3}>
-          <Grid item className={classes.centered} xs={12}>
+        <Grid container className={classes.grid} spacing={3}>
+          <Grid item className={classes.centered} md={6}>
+          </Grid>
+          <Grid item className={classes.centered} md={6}>
             <h1>Tudo isso por apenas</h1>
+            <h1></h1>
+            <CheckoutButton>
+              Sim! Quero criar estas lindas peças!
+            </CheckoutButton>
           </Grid>
         </Grid>
       </Container>
@@ -334,9 +355,15 @@ function Garantia() {
   return (
     <section>
       <Container maxWidth="md">
-        <Grid className={classes.grid} spacing={3}>
-          <Grid item className={classes.centered} xs={12}>
-            <h1>Teste grátis por 7 dias</h1>
+        <Grid container className={classes.grid} spacing={3}>
+          <Grid item className={classes.centered} md={6}>
+            <img src={require("assets/img/garantia.png")} alt="Garantia de 7 dias" />
+          </Grid>
+          <Grid item md={6}>
+            <h1>Você não tem nada a perder</h1>
+            <p>As Meninas Preciosas tem 7 dias de garantia incondicional</p>
+            <p>Você pode assistir todas as aulas e ter acesso ao bônus exclusivo. Se por qualquer motivo você não ficar satisfeita, basta entrar em contato com a minha equipe de suporte (contato@mariubialli.com) e solicitar o reembolso do valor investido.</p>
+            <p>Você receberá de volta cada centavo que pagou.</p>
           </Grid>
         </Grid>
       </Container>
@@ -347,11 +374,23 @@ function Garantia() {
 function SobreMim() {
   const classes = useStyles();
   return (
-    <section className={classes.sectionRed}>
+    <section className={classes.sectionSobreMim}>
       <Container maxWidth="md">
-        <Grid className={classes.grid} spacing={3}>
-          <Grid item className={classes.centered} xs={12}>
+        <Grid container className={classes.grid} spacing={3}>
+          <Grid item md={6}>
             <h1>Muito prazer, eu sou mari ubialli</h1>
+            <p>
+              Amo artesanato em feltro, coisas fofas e criativas!
+             </p>
+            <p>
+              Conheci o feltro quando estava grávida do meu filho em 2018, me apaixonei na mesma hora e comecei a produzir muitas fofuras.
+            </p>
+            <p>
+              Quero compartilhar meu aprendizado, e ajudar mais pessoas a conhecerem, se apaixonarem e viverem desse artesanato maravilhoso!
+            </p>
+          </Grid>
+          <Grid item className={classes.centered} md={6}>
+            <img className={classes.fotoPerfil} src={require("assets/img/perfil.jpg")} alt="Mari Ubialli" />
           </Grid>
         </Grid>
       </Container>
@@ -359,19 +398,35 @@ function SobreMim() {
   );
 }
 
+const faqs = [
+  { pergunta: "Quando vou receber o acesso? Quando começa o curso?", resposta: "O acesso a sua área de membros é enviado automaticamente após a confirmação de seu pagamento. Ou seja, começa pra você assim que você se inscreve. Se você realizar o pagamento por cartão de crédito, você receberá os dados de acesso em até 10 minutos. Caso o pagamento seja por boleto bancário, a confirmação bancária pode levar até 72 horas." }
+];
+
 function FAQs() {
   const classes = useStyles();
   return (
-    <section>
-      <section className={classes.sectionFaq}>
-        <Container maxWidth="md">
-          <Grid className={classes.grid} spacing={3}>
-            <Grid item className={classes.centered} xs={12}>
-              <h1>Perguntas frequentes</h1>
-            </Grid>
+    <section className={classes.sectionFaq}>
+      <Container maxWidth="md">
+        <Grid container className={classes.grid} spacing={3}>
+          <Grid item xs={12}>
+            <h1 className={classes.centered}>Dúvidas frequentes</h1>
+            {faqs.map((faq, index) => (
+              <Accordion key={"id" + index}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls={"panel" + index + "-content"}
+                  id={"panel" + index + "-header"}
+                >
+                  <Typography className={classes.heading} component="h2">{faq.pergunta}</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography className={classes.justify} color="textSecondary" >{faq.resposta}</Typography>
+                </AccordionDetails>
+              </Accordion>
+            ))}
           </Grid>
-        </Container>
-      </section>
+        </Grid>
+      </Container>
     </section>
   );
 }
@@ -380,27 +435,28 @@ function DuvidasWhats() {
   const classes = useStyles();
   return (
     <section>
-      <section className={classes.sectionWhats}>
-        <Container maxWidth="md">
-          <Grid className={classes.grid} spacing={3}>
-            <Grid item className={classes.centered} xs={12}>
-              <h1>Ainda tem dúvidas? Fale conosco no WhatsApp</h1>
-            </Grid>
+      <Container maxWidth="md">
+        <Grid container className={classes.grid} spacing={3}>
+          <Grid item className={classes.centered} xs={12}>
+            <h1>Ainda tem dúvidas? Fale conosco no WhatsApp</h1>
+            <ColorButton style={ColorButton.whatsapp} target="_blank" rel="noopener" href={linkWhats}>
+              <WhatsApp /><span>&nbsp;(44) 99911-4058</span>
+            </ColorButton>
           </Grid>
-        </Container>
-      </section>
+        </Grid>
+      </Container>
     </section>
   );
 }
 
 export default function JoiasRarasPerpetuo(props) {
+  const classes = useStyles();
   return (
-    <>
+    <main className={classes.root}>
       <VideoVendas />
       <DedoNaFerida />
       <Conteudo />
       <Bonus />
-      <Reforco />
       <Preco />
       <Garantia />
       <SobreMim />
@@ -409,6 +465,6 @@ export default function JoiasRarasPerpetuo(props) {
       <DuvidasWhats />
       <BotaoFlutuanteWhats />
       <Footer />
-    </>
+    </main>
   );
 }

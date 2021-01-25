@@ -92,7 +92,16 @@ export default function Form(props) {
       await subscribe(form);
       await authenticate(form);
 
-      router.push(props.redirectTo + "?redirect=true");
+      let redirectTo = props.redirectTo;
+      if (redirectTo.includes("?"))
+        redirectTo += "&";
+      else
+        redirectTo += "?";
+
+      redirectTo += "email=" + email + "&redirect=true"
+
+      router.push(redirectTo);
+
     } catch (error) {
       console.error(error);
       setBackdrop(false);
