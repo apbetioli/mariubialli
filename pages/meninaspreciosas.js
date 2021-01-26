@@ -98,6 +98,19 @@ const useStyles = makeStyles((theme) => ({
   heading: {
     color: "#FE6B8B",
     fontWeight: "bold"
+  },
+  preco: {
+    maxWidth: 400,
+    width: "100%",
+    marginBottom: 15,
+  },
+  fotoMeninas: {
+    maxWidth: "100%",
+    maxHeight: 400,
+  },
+  check: {
+    height: "1rem",
+    width: "1rem",
   }
 }));
 
@@ -111,7 +124,10 @@ const rocks = [
   { title: "Ametista", color: "#6BFEDE", image: require("assets/img/blenda.jpg"), description: "Ametista é a pedra da espiritualidade e do contentamento, confere estabilidade, força, paz interior. É uma grande pedra para meditação e para aumentar sua intuição e habilidades psíquicas com sua energia calmante e pacífica. A ametista fornece clareza e melhora a percepção e compreensão consciente." },
 ];
 
-const linkWhats = "https://api.whatsapp.com/send?phone=5544999114058&text=Oi!%20Gostaria%20de%20tirar%20minhas%20d%C3%BAvidas%20sobre%20a%20Cole%C3%A7%C3%A3o%20J%C3%B3ias%20Raras.";
+const phoneWhats = "44920024218";
+const phone = "(44) 92002 4218"
+const msgWhats = encodeURIComponent("Oi, gostaria de tirar minhas dúvidas sobre as meninas preciosas.");
+const linkWhats = `https://api.whatsapp.com/send?phone=55${phoneWhats}&text=${msgWhats}`;
 const checkoutURL = "";
 
 export function CTA(props) {
@@ -201,7 +217,7 @@ function DedoNaFerida() {
                         <CardMedia
                           component="img"
                           alt={rock.title}
-                          height="600"
+                          height="400"
                           image={rock.image}
                           title={rock.title}
                         />
@@ -277,22 +293,23 @@ function Conteudo() {
     <section className={classes.sectionConteudo}>
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
-          <Grid item md={6}>
-            <p>
-              Colocar foto de todas
-            </p>
+          <Grid item md={6} className={classes.centered}>
+            <img src={require("assets/img/meninas.jpg")} alt="" className={classes.fotoMeninas} />
           </Grid>
-          <Grid item md={6}>
+          <Grid item md={6} className={classes.justify}>
             <h1>O que você terá acesso?</h1>
             <p>
               Muito além de uma apostila de moldes, este é um curso completo, onde você irá aprender como confeccionar cada boneca com um passo a passo em video.
               Não importa se você é experiente em feltro ou iniciante. O curso aborda tudo o que você precisa saber para criar as bonecas com perfeição.
             </p>
             <p>
-              <CheckIcon /> Apostila de moldes em PDF
+              <CheckIcon className={classes.check} /><span> Apostila de moldes em PDF</span>
             </p>
             <p>
-              <CheckIcon /> Passo a passo em vídeo
+              <CheckIcon className={classes.check} /><span> Passo a passo em vídeo</span>
+            </p>
+            <p>
+              <CheckIcon className={classes.check} /><span> Acesso por 1 ano</span>
             </p>
           </Grid>
         </Grid>
@@ -335,13 +352,35 @@ function Preco() {
     <section id="pricing" className={classes.sectionGreen}>
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
-          <Grid item className={classes.centered} md={6}>
+          <Grid item className={classes.justify} md={6}>
+            <h1>Você vai receber tudo isso</h1>
+            <p>
+              <CheckIcon className={classes.check} /><span> Apostila de moldes em PDF</span>
+            </p>
+            <p>
+              <CheckIcon className={classes.check} /><span> Passo a passo em vídeo</span>
+            </p>
+            <p>
+              <CheckIcon className={classes.check} /><span> Acesso por 1 ano</span>
+            </p>
+            <p>
+              <CheckIcon className={classes.check} /><span> BÔNUS: Fotos em alta resolução</span>
+            </p>
+            <p>
+              <CheckIcon className={classes.check} /><span> BÔNUS: Bastidores desta apostila</span>
+            </p>
+            <p>
+              <CheckIcon className={classes.check} /><span> BÔNUS: Aula de precificação</span>
+            </p>
+            <p>
+              <CheckIcon className={classes.check} /><span> BÔNUS ESPECIAL: Guirlanda</span>
+            </p>
+            
           </Grid>
           <Grid item className={classes.centered} md={6}>
-            <h1>Tudo isso por apenas</h1>
-            <h1></h1>
+            <img src={require("assets/img/preco.png")} alt="" className={classes.preco} />
             <CheckoutButton>
-              Sim! Quero criar estas lindas peças!
+              Quero criar estas lindas bonecas!
             </CheckoutButton>
           </Grid>
         </Grid>
@@ -359,7 +398,7 @@ function Garantia() {
           <Grid item className={classes.centered} md={6}>
             <img src={require("assets/img/garantia.png")} alt="Garantia de 7 dias" />
           </Grid>
-          <Grid item md={6}>
+          <Grid item md={6} className={classes.justify}>
             <h1>Você não tem nada a perder</h1>
             <p>As Meninas Preciosas tem 7 dias de garantia incondicional</p>
             <p>Você pode assistir todas as aulas e ter acesso ao bônus exclusivo. Se por qualquer motivo você não ficar satisfeita, basta entrar em contato com a minha equipe de suporte (contato@mariubialli.com) e solicitar o reembolso do valor investido.</p>
@@ -377,7 +416,7 @@ function SobreMim() {
     <section className={classes.sectionSobreMim}>
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
-          <Grid item md={6}>
+          <Grid item md={6} className={classes.justify}>
             <h1>Muito prazer, eu sou mari ubialli</h1>
             <p>
               Amo artesanato em feltro, coisas fofas e criativas!
@@ -440,7 +479,7 @@ function DuvidasWhats() {
           <Grid item className={classes.centered} xs={12}>
             <h1>Ainda tem dúvidas? Fale conosco no WhatsApp</h1>
             <ColorButton style={ColorButton.whatsapp} target="_blank" rel="noopener" href={linkWhats}>
-              <WhatsApp /><span>&nbsp;(44) 99911-4058</span>
+              <WhatsApp /><span>&nbsp;{phone}</span>
             </ColorButton>
           </Grid>
         </Grid>
