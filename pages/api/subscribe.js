@@ -38,11 +38,11 @@ module.exports = async (req, res) => {
         name: lead.source.toUpperCase(),
         status: "active",
       })
-    };
+    };  
 
     if (lead.tag) {
       await mailchimp.lists.updateListMemberTags(listId, subscriberHash, {
-        body: { tags }
+        tags
       });
     }
 
