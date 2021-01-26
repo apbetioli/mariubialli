@@ -13,7 +13,7 @@ function populateUtmSource() {
     if (router.query.utm_source && !source) {
       window.localStorage.setItem("utm_source", router.query.utm_source);
     }
-  }, []);
+  });
 }
 
 export default function App({ Component, pageProps }) {

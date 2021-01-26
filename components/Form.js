@@ -7,7 +7,7 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import theme from "assets/js/theme";
 import useUser from "lib/useUser";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ColorButton from "./ColorButton";
 
 const useStyles = makeStyles((theme) => ({
