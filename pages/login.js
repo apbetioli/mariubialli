@@ -6,12 +6,12 @@ import Layout from "../components/Layout";
 
 export default function Login() {
   const router = useRouter();
-  const { redirect } = router.query;
+  const { redirect, tag } = router.query;
   return (
     <Layout>
       <Container className="fullHeight" maxWidth="sm">
         <h1>Entre com seu email</h1>
-        <Form redirectTo={redirect} />
+        <Form redirectTo={redirect} tag={tag}/>
       </Container>
     </Layout>
   );
