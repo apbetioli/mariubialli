@@ -8,6 +8,7 @@ import theme from "assets/js/theme";
 import useUser from "lib/useUser";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import subscribe from "../lib/subscribe";
 import ColorButton from "./ColorButton";
 
 const useStyles = makeStyles((theme) => ({
@@ -64,14 +65,6 @@ export default function Form(props) {
     });
 
     await mutateUser(user);
-  };
-
-  const subscribe = async (form) => {
-    await fetch("/api/subscribe", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
   };
 
   async function onSubmit(event) {

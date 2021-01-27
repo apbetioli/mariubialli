@@ -21,7 +21,7 @@ export default function Obrigado(props) {
       <Grid className={classes.grid} container spacing={0}>
         <Grid item md={3} xs={12}></Grid>
         <Grid className={classes.centered} item md={6} xs={12}>
-          <h1 className={classes.title}>Obrigado</h1>
+          <h1 className={classes.title}>Obrigada</h1>
           <h2 className={classes.subtitle}>{props.children}</h2>
           <p className={classes.subtitle}>
             Enquanto isso, siga-me nas redes sociais e acompanhe as novidades!
