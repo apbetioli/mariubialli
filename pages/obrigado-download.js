@@ -7,10 +7,12 @@ import useUser from "../lib/useUser";
 export default function ObrigadoDownload(props) {
   const { user } = useUser()
 
-  subscribe({
-    email: user.email,
-    tag: "DOWNLOAD"
-  })
+  if (user) {
+    subscribe({
+      email: user.email,
+      tag: "DOWNLOAD"
+    })
+  }
 
   return (
     <Layout {...props}>
