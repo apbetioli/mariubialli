@@ -16,7 +16,9 @@ export default function ObrigadoDownload(props) {
 
   return (
     <Layout {...props}>
-      <Obrigado>Seu download iniciará em instantes!</Obrigado>
+      <Obrigado subtitle="Seu download iniciará em instantes!">
+        <p>Caso o download não inicie automaticamente verifique se o seu navegador está bloqueando popups.</p>
+      </Obrigado>
     </Layout>
   )
 }

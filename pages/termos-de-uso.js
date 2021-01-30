@@ -35,5 +35,6 @@ export default function TermosDeUso(props) {
 
 export async function getStaticProps() {
     const content = await PrismicClient.getSingle("terms_of_use");
-    return { props: { content }, revalidate: 1 };
+    const title = "Termos de uso";
+    return { props: { content, title }, revalidate: 1 };
 }

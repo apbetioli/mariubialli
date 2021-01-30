@@ -1,10 +1,9 @@
-import { Card, CardContent, CardMedia, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Fab, Grid, Hidden, Link, SvgIcon, Tooltip } from "@material-ui/core";
+import { Card, CardContent, CardMedia, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Hidden, SvgIcon } from "@material-ui/core";
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from '@material-ui/core/Typography';
-import { WhatsApp } from "@material-ui/icons";
 import CheckIcon from '@material-ui/icons/Check';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Timeline from '@material-ui/lab/Timeline';
@@ -14,12 +13,14 @@ import TimelineDot from '@material-ui/lab/TimelineDot';
 import TimelineItem from '@material-ui/lab/TimelineItem';
 import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
 import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
+import Head from "next/head";
 import { default as React } from "react";
-import ColorButton from "../components/ColorButton";
-import Footer from "../components/Footer";
-import Form from "../components/Form";
-import ScrollTo from "../components/ScrollTo";
-import Wave from "../components/Wave";
+import BotaoWhats from "../../components/BotaoWhats";
+import ColorButton from "../../components/ColorButton";
+import Footer from "../../components/Footer";
+import Form from "../../components/Form";
+import ScrollTo from "../../components/ScrollTo";
+import Wave from "../../components/Wave";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,17 +56,6 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: "56.25%",
     position: "relative",
   },
-  whatsapp: {
-    bottom: theme.spacing(2),
-    backgroundColor: "#25d366",
-    color: "white",
-    position: "fixed",
-    right: theme.spacing(2),
-    zIndex: 10,
-    "&:hover": {
-      backgroundColor: "#075e54",
-    }
-  },
   card: {
     backgroundColor: "transparent",
     margin: '16px 16px',
@@ -100,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold"
   },
   preco: {
-    maxWidth: 400,
+    maxWidth: 600,
     width: "100%",
     marginBottom: 15,
   },
@@ -124,11 +114,7 @@ const rocks = [
   { title: "Ametista", color: "#6BFEDE", image: require("assets/img/blenda.jpg"), description: "Ametista é a pedra da espiritualidade e do contentamento, confere estabilidade, força, paz interior. É uma grande pedra para meditação e para aumentar sua intuição e habilidades psíquicas com sua energia calmante e pacífica. A ametista fornece clareza e melhora a percepção e compreensão consciente." },
 ];
 
-const phoneWhats = "44920024218";
-const phone = "(44) 92002 4218"
-const msgWhats = encodeURIComponent("Oi, gostaria de tirar minhas dúvidas sobre as meninas preciosas.");
-const linkWhats = `https://api.whatsapp.com/send?phone=55${phoneWhats}&text=${msgWhats}`;
-const checkoutURL = "";
+const checkoutURL = "https://pay.hotmart.com/B46628840G?off=opbx2gl5";
 
 export function CTA(props) {
   const classes = useStyles();
@@ -164,10 +150,10 @@ export function CheckoutButton(props) {
           <DialogContentText>
             Digite seu email para iniciar sua inscrição agora.
             <Typography variant="body2" color="textSecondary" component="p">
-              Na próxima página você poderá escolher a forma de pagamento à vista ou em até 12 parcelas.
+              Na próxima página você poderá escolher a forma de pagamento.
           </Typography>
           </DialogContentText>
-          <Form buttonText="Continuar inscrição &gt;" tag="PRECIOSAS-CHECKOUT" redirectTo={checkoutURL + "&email="} />
+          <Form buttonText="Continuar inscrição &gt;" tag="JOIASRARAS-CHECKOUT" redirectTo={checkoutURL + "&email="} />
         </DialogContent>
         <DialogActions>
         </DialogActions>
@@ -308,26 +294,10 @@ function Conteudo() {
             <p>
               <CheckIcon className={classes.check} /><span> Passo a passo em vídeo</span>
             </p>
-            <p>
-              <CheckIcon className={classes.check} /><span> Acesso por 1 ano</span>
-            </p>
           </Grid>
         </Grid>
       </Container>
     </section>
-  );
-}
-
-function BotaoFlutuanteWhats() {
-  const classes = useStyles();
-  return (
-    <Link target="_blank" rel="noopener" href={linkWhats}>
-      <Tooltip title="Dúvidas? Fale conosco">
-        <Fab className={classes.whatsapp} size="medium" aria-label="Dúvidas? Fale conosco.">
-          <WhatsApp />
-        </Fab>
-      </Tooltip>
-    </Link>
   );
 }
 
@@ -349,7 +319,7 @@ function Bonus() {
 function Preco() {
   const classes = useStyles();
   return (
-    <section id="pricing" className={classes.sectionGreen}>
+    <section className={classes.sectionGreen}>
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.justify} md={6}>
@@ -359,9 +329,6 @@ function Preco() {
             </p>
             <p>
               <CheckIcon className={classes.check} /><span> Passo a passo em vídeo</span>
-            </p>
-            <p>
-              <CheckIcon className={classes.check} /><span> Acesso por 1 ano</span>
             </p>
             <p>
               <CheckIcon className={classes.check} /><span> BÔNUS: Fotos em alta resolução</span>
@@ -375,10 +342,10 @@ function Preco() {
             <p>
               <CheckIcon className={classes.check} /><span> BÔNUS ESPECIAL: Guirlanda</span>
             </p>
-            
+
           </Grid>
           <Grid item className={classes.centered} md={6}>
-            <img src={require("assets/img/preco.png")} alt="" className={classes.preco} />
+            <img src={require("assets/img/pricediscount.png")} alt="" className={classes.preco} />
             <CheckoutButton>
               Quero criar estas lindas bonecas!
             </CheckoutButton>
@@ -401,7 +368,10 @@ function Garantia() {
           <Grid item md={6} className={classes.justify}>
             <h1>Você não tem nada a perder</h1>
             <p>As Meninas Preciosas tem 7 dias de garantia incondicional</p>
-            <p>Você pode assistir todas as aulas e ter acesso ao bônus exclusivo. Se por qualquer motivo você não ficar satisfeita, basta entrar em contato com a minha equipe de suporte (contato@mariubialli.com) e solicitar o reembolso do valor investido.</p>
+            <p>Você pode assistir todas as aulas e ter acesso ao bônus exclusivo.
+            Se por qualquer motivo você não ficar satisfeita,
+            basta entrar em contato comigo pelo email contato@mariubialli.com
+              e solicitar o reembolso do valor investido.</p>
             <p>Você receberá de volta cada centavo que pagou.</p>
           </Grid>
         </Grid>
@@ -478,9 +448,7 @@ function DuvidasWhats() {
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12}>
             <h1>Ainda tem dúvidas? Fale conosco no WhatsApp</h1>
-            <ColorButton style={ColorButton.whatsapp} target="_blank" rel="noopener" href={linkWhats}>
-              <WhatsApp /><span>&nbsp;{phone}</span>
-            </ColorButton>
+            <BotaoWhats float={false} />
           </Grid>
         </Grid>
       </Container>
@@ -488,21 +456,35 @@ function DuvidasWhats() {
   );
 }
 
-export default function JoiasRarasPerpetuo(props) {
+export default function JoiasRarasVendas() {
   const classes = useStyles();
   return (
     <main className={classes.root}>
+      <Head>
+        <title>Joias Raras - Curso de Bonecas em Feltro</title>
+        <meta
+          name="description"
+          content="São 7 lindas bonecas para você confeccionar, personalizar e vender."
+        />
+        <meta
+          name="keywords"
+          content="feltro, artesanato, costura, ponto caseado, ponto reto, ponto alinhavo, passo a passo, diy, moldes gratuitos, apostilas gratuitas, bonecas, boneca em feltro"
+        />
+        <meta name="robots" content="index,nofollow"></meta>
+      </Head>
+
       <VideoVendas />
       <DedoNaFerida />
       <Conteudo />
       <Bonus />
+      <div id="pricing" />
       <Preco />
       <Garantia />
       <SobreMim />
       <FAQs />
       <Preco />
       <DuvidasWhats />
-      <BotaoFlutuanteWhats />
+      <BotaoWhats />
       <Footer />
     </main>
   );

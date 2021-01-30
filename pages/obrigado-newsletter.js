@@ -6,9 +6,9 @@ export default function ObrigadoNewsletter(props) {
   return (
     <Layout {...props}>
       <Obrigado>
-        Sua inscrição foi realizada com sucesso. Agora é só aguardar que em
-        breve você receberá em seu email as apostilas gratuitas.
+        <p>Agora é só aguardar que assim que tiver novas apostilas gratuitas você receberá em seu email.</p>
+        <p>Para garantir que tudo ocorra certinho, você receberá em alguns minutos um email de confirmação. Se não receber, ele pode ter caído na pasta de spam.</p>
       </Obrigado>
-    </Layout>
+    </Layout >
   );
 }

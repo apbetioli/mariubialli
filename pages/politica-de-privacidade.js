@@ -35,5 +35,6 @@ export default function PoliticaDePrivacidade(props) {
 
 export async function getStaticProps() {
     const content = await PrismicClient.getSingle("privacy_policy");
-    return { props: { content }, revalidate: 1 };
+    const title = "Política de privacidade";
+    return { props: { content, title }, revalidate: 1 };
 }
