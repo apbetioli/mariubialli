@@ -108,10 +108,10 @@ const rocks = [
   { title: "Esmeralda", color: "#6BFEDE", image: require("assets/img/esmeralda.jpg"), description: "Esmeralda é um símbolo da verdade e do amor. Na Grécia e na Roma antigas, dizia-se que a esmeralda era a pedra preciosa da deusa Vênus, fornecedora de amor e esperança. Do outro lado do mundo, as esmeraldas eram reverenciadas pelos incas e consideradas pelos egípcios como uma fonte de vida eterna. As esmeraldas foram consideradas um presente de Thoth, o antigo deus da sabedoria. A esmeralda também é conhecida como uma pedra da intuição, associada à visão e à revelação de eventos e verdades futuras." },
   { title: "Rubi", color: "#FE6B8B", image: require("assets/img/rubi.jpg"), description: "Rubi é protetora e pode trazer felicidade e paixão à vida de quem a usa. Acredita-se que tenha o poder de alinhar e emprestar energia ao corpo. Acredita-se que também protege contra entidades negativas que absorvem energia positiva, promovendo vitalidade espiritual e bem-estar em geral." },
   { title: "Ágata", color: "#6BFEDE", image: require("assets/img/agata.jpg"), description: "Ágata representa força e coragem; ela tonifica e fortalece a mente e o corpo, ancorando e estabilizando emoções e energia física. Ágata ajuda na aceitação de si mesmo e a ver a verdade. Suas qualidades de cura e limpeza eliminam as energias negativas, acalmando e acalmando a mente, corpo e espírito." },
-  { title: "Angelita", color: "#FE6B8B", image: require("assets/img/cristal.jpg"), description: "Angelita é a pedra de grande consciência. Ajuda com uma comunicação clara, compassiva e verdadeira, permitindo que você fale a sua verdade. Angelita promove sentimentos de compaixão, compreensão e aceitação, permitindo que você encontre paz no assunto em questão. Também ajuda a facilitar o contato com o reino angélico, ao mesmo tempo que o ajuda a manter contato com a realidade cotidiana." },
+  { title: "Angelita", color: "#FE6B8B", image: require("assets/img/angelita.jpg"), description: "Angelita é a pedra de grande consciência. Ajuda com uma comunicação clara, compassiva e verdadeira, permitindo que você fale a sua verdade. Angelita promove sentimentos de compaixão, compreensão e aceitação, permitindo que você encontre paz no assunto em questão. Também ajuda a facilitar o contato com o reino angélico, ao mesmo tempo que o ajuda a manter contato com a realidade cotidiana." },
   { title: "Jade", color: "#6BFEDE", image: require("assets/img/jade.jpg"), description: "Jade é uma poderosa balanceadora emocional, nutrindo e trazendo paz e pureza para sua vida, removendo pensamentos e energia negativos. Ela irradia o divino, promovendo amor incondicional, serenidade, clareza de espírito, coragem e sabedoria. Jade é considerada a pedra da sorte, prosperidade e amizade. Ela pode aprimorar seus sonhos, permitindo que você desperte conhecimentos ocultos e se torne quem você realmente é." },
-  { title: "Rose", color: "#FE6B8B", image: require("assets/img/safira.jpg"), description: "Rose (Quartzo Rosa) promove amor incondicional, perdão, paz e compaixão. Ela cria harmonia nos relacionamentos e nos ensina sobre a verdadeira essência do amor. Purifica e abre o coração, permitindo-nos expressar nossas emoções. Reduz o estresse e a tensão, permitindo-nos expressar amor, sensibilidade e compaixão por nós mesmos e pelos outros. Traz uma cura interior profunda, aumentando o amor próprio, o valor próprio e a autoconfiança. Pode ser usada para atrair amor para sua vida e manter relacionamentos amorosos felizes." },
-  { title: "Ametista", color: "#6BFEDE", image: require("assets/img/blenda.jpg"), description: "Ametista é a pedra da espiritualidade e do contentamento, confere estabilidade, força, paz interior. É uma grande pedra para meditação e para aumentar sua intuição e habilidades psíquicas com sua energia calmante e pacífica. A ametista fornece clareza e melhora a percepção e compreensão consciente." },
+  { title: "Rose", color: "#FE6B8B", image: require("assets/img/rose.jpg"), description: "Rose (Quartzo Rosa) promove amor incondicional, perdão, paz e compaixão. Ela cria harmonia nos relacionamentos e nos ensina sobre a verdadeira essência do amor. Purifica e abre o coração, permitindo-nos expressar nossas emoções. Reduz o estresse e a tensão, permitindo-nos expressar amor, sensibilidade e compaixão por nós mesmos e pelos outros. Traz uma cura interior profunda, aumentando o amor próprio, o valor próprio e a autoconfiança. Pode ser usada para atrair amor para sua vida e manter relacionamentos amorosos felizes." },
+  { title: "Ametista", color: "#6BFEDE", image: require("assets/img/ametista.jpg"), description: "Ametista é a pedra da espiritualidade e do contentamento, confere estabilidade, força, paz interior. É uma grande pedra para meditação e para aumentar sua intuição e habilidades psíquicas com sua energia calmante e pacífica. A ametista fornece clareza e melhora a percepção e compreensão consciente." },
 ];
 
 const checkoutURL = "https://pay.hotmart.com/B46628840G?off=opbx2gl5";
@@ -203,7 +203,7 @@ function DedoNaFerida() {
                         <CardMedia
                           component="img"
                           alt={rock.title}
-                          height="400"
+                          height="600"
                           image={rock.image}
                           title={rock.title}
                         />
@@ -221,7 +221,7 @@ function DedoNaFerida() {
                   <CardMedia
                     component="img"
                     alt={rock.title}
-                    height="300"
+                    height="600"
                     image={rock.image}
                     title={rock.title}
                   />
