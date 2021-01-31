@@ -49,7 +49,7 @@ export default function JoiasRarasEspera() {
         <p>
           Faça parte da lista de espera e seja avisada com antecedência
               para <b>APROVEITAR</b> a oferta exclusiva de lançamento que
-              ficará disponíveis por <b>TEMPO LIMITADO</b>
+              ficará disponível por <b>TEMPO LIMITADO</b>
         </p>
         <Form buttonText="Quero fazer parte da lista" tag="JOIASRARAS-ESPERA" redirectTo="/joiasraras/obrigado" />
       </Container>
