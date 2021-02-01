@@ -14,32 +14,40 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Home(props) {
+function Newsletter(props) {
   const classes = useStyles();
   const { home } = props;
 
   return (
-    <Layout {...props}>
-      <div className="fullHeight">
-        <Grid className={classes.grid} container spacing={0}>
-          <Grid item md={3}></Grid>
-          <Grid className={classes.centered} item md={6}>
+    <Grid className={classes.grid} container spacing={0}>
+      <Grid item md={3}></Grid>
+      <Grid className={classes.centered} item md={6}>
 
-            <h1>{RichText.asText(home.data.title)}</h1>
-            <h4>
-              {RichText.asText(home.data.subtitle)}
-            </h4>
-            <Form
-              buttonText={RichText.asText(home.data.button)}
-              redirectTo="/obrigado-newsletter"
-              tag="NEWSLETTER"
-            />
-          </Grid>
-        </Grid>
-      </div>
-    </Layout>
+        <h1>{RichText.asText(home.data.title)}</h1>
+        <h4>
+          {RichText.asText(home.data.subtitle)}
+        </h4>
+        <Form
+          buttonText={RichText.asText(home.data.button)}
+          redirectTo="/obrigado-newsletter"
+          tag="NEWSLETTER"
+        />
+      </Grid>
+    </Grid>
   );
 }
+
+export default function Home(props) {
+
+  return (
+    <Layout {...props}>
+      <div className="fullHeight">
+        <Newsletter {...props} />
+      </div>
+    </Layout>
+  )
+}
+
 
 export async function getStaticProps() {
   const home = await PrismicClient.getSingle("home");

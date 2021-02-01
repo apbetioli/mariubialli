@@ -1,5 +1,4 @@
 import { Container, Grid, Link, makeStyles } from "@material-ui/core";
-import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import ColorButton from "../components/ColorButton";
 import Wave from "../components/Wave";
@@ -30,11 +29,8 @@ function populateUtmSource() {
     });
 }
 
-export default function Bio() {
-    populateUtmSource();
-
+function Links() {
     const classes = useStyles();
-
     return (
         <Container maxWidth="xl" className={classes.root}>
             <Wave />
@@ -76,5 +72,13 @@ export default function Bio() {
                 </Grid>
             </Grid>
         </Container>
+    )
+}
+
+export default function Bio() {
+    populateUtmSource();
+
+    return (
+        <Links />
     );
 }
