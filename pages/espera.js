@@ -1,12 +1,14 @@
+import { useRouter } from "next/router";
 import { useEffect } from "react";
 import JoiasRarasEspera from "./joiasraras/espera";
 
 function populateUtmSource() {
+    const router = useRouter();
     useEffect(() => {
-        const source = window.localStorage.getItem("utm_source");
-        if (!source) {
+        if (router.query.utm_source)
+            window.localStorage.setItem("utm_source", router.query.utm_source);
+        else
             window.localStorage.setItem("utm_source", "instagram");
-        }
     });
 }
 
