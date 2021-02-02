@@ -4,6 +4,7 @@ import PrismicClient from "lib/prismic";
 import { RichText } from "prismic-reactjs";
 import React from "react";
 import Layout from "../components/Layout";
+import Espera from "./espera";
 
 const useStyles = makeStyles((theme) => ({
   grid: {
@@ -42,7 +43,8 @@ export default function Home(props) {
   return (
     <Layout {...props}>
       <div className="fullHeight">
-        <Newsletter {...props} />
+        
+        <Espera {...props} />
       </div>
     </Layout>
   )
