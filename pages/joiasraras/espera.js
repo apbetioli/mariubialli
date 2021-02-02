@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function JoiasRarasEspera() {
+export default function JoiasRarasEspera(props) {
   const classes = useStyles();
   return (
     <main className={classes.centered}>
@@ -53,7 +53,9 @@ export default function JoiasRarasEspera() {
         </p>
         <Form buttonText="Quero fazer parte da lista" tag="JOIASRARAS-ESPERA" redirectTo="/joiasraras/obrigado" />
       </Container>
-      <Footer />
+      {!props.hideFooter &&
+        <Footer />
+      }
     </main>
   );
 }

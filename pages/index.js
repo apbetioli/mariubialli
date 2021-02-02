@@ -43,8 +43,8 @@ export default function Home(props) {
   return (
     <Layout {...props}>
       <div className="fullHeight">
-        
-        <Espera {...props} />
+
+        <Espera hideFooter={true} {...props} />
       </div>
     </Layout>
   )

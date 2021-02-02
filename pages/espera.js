@@ -12,10 +12,10 @@ function populateUtmSource() {
     });
 }
 
-export default function Espera() {
+export default function Espera(props) {
     populateUtmSource();
 
     return (
-        <JoiasRarasEspera />
+        <JoiasRarasEspera {...props} />
     );
 }
