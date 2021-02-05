@@ -48,7 +48,7 @@ export default function JoiasRarasEspera(props) {
         <img src={require("assets/img/banner2.jpg")} alt="" className={classes.fotoMeninas} />
         <p>
           Faça parte da lista de espera e seja avisada com antecedência
-              para <b>APROVEITAR</b> a promoção exclusiva de lançamento que
+              para <b>APROVEITAR</b> a promoção exclusiva de lançamento dia 08/02 que
               ficará disponível por <b>TEMPO LIMITADO</b>
         </p>
         <Form buttonText="Quero fazer parte da lista" tag="JOIASRARAS-ESPERA" redirectTo="/joiasraras/obrigado" />
