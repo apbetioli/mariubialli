@@ -123,7 +123,7 @@ const rocks = [
 
 const faqs = [
   { pergunta: "Quando vou receber o acesso? Quando começa o curso?", resposta: "O acesso a sua área de membros é enviado automaticamente após a confirmação de seu pagamento. Ou seja, começa pra você assim que você se inscreve. Se você realizar o pagamento por cartão de crédito, você receberá os dados de acesso em até 10 minutos. Caso o pagamento seja por boleto bancário, a confirmação bancária pode levar até 72 horas." },
-  { pergunta: "Por quanto tempo vou poder assistir as aulas?", resposta: "Pelo tempo que quiser. O curso é vitalício. Uma vez seu, é seu pra sempre."},
+  { pergunta: "Por quanto tempo vou poder assistir as aulas?", resposta: "Pelo tempo que quiser. O curso é vitalício. Uma vez seu, é seu pra sempre." },
   { pergunta: "Que tamanho ficam as bonecas depois de prontas?", resposta: "Ficam em média com 28cm podendo variar conforme o tipo de cabelo." },
   { pergunta: "Sou iniciante, este curso é para mim?", resposta: "Não importa se você é experiente em feltro ou iniciante. O curso aborda tudo o que você precisa saber para criar as bonecas com perfeição." },
   { pergunta: "Não tenho máquina de costura. Vou conseguir fazer?", resposta: "Sim. Vou te ensinar a confeccionar tudo à mão. A máquina de costura é opcional." },
@@ -186,7 +186,7 @@ function DedoNaFerida() {
           <Grid item className={classes.centered} xs={12}>
             <h1>Qual é a sua preferida?</h1>
             <p>
-              Você irá se conectar com elas, seja pelo estilo ou pela personalidade.
+              Seus nomes têm significado e são inspirados em pedras preciosas. Você irá se conectar com elas, seja pelo estilo ou pela personalidade.
             </p>
           </Grid>
           <Hidden xsDown>
@@ -266,13 +266,13 @@ function Promessa() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3} >
           <Grid item xs={12}>
-            <h1 className={classes.title}>São 7 joias raras para você confeccionar, personalizar e vender.</h1>
-            <p className={classes.subtitle}>Muito mais que bonecas, elas têm personalidade. Seus nomes têm significado e são inspirados em pedras preciosas. Estas lindas bonecas irão iluminar sua vida.</p>
+            <h1 className={classes.title}>São 7 joias raras para você confeccionar, personalizar e vender</h1>
+            <p className={classes.subtitle}>Aprenda comigo a fazer estas lindas bonecas e se destaque no mercado oferecendo um produto de alta qualidade e diferenciado</p>
           </Grid>
           <Grid item xs={12}>
             <img src={require("assets/img/banner.jpg")} alt="" className={classes.fotoMeninas} />
             <CTA>
-              Sim! Quero iluminar minha vida!
+              Quero me destacar no mercado
             </CTA>
           </Grid>
         </Grid>
