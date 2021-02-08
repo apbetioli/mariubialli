@@ -76,10 +76,15 @@ const useStyles = makeStyles((theme) => ({
   },
   wave: {
     backgroundColor: "#FE6B8B",
-    height: "50rem"
+    height: "55rem"
   },
   title: {
-    color: "white"
+    color: "white",
+    fontSize: "2em",
+  },
+  subtitle: {
+    color: "white",
+    fontSize: "1.3em",
   },
   fotoPerfil: {
     maxHeight: 300,
@@ -96,7 +101,9 @@ const useStyles = makeStyles((theme) => ({
   },
   fotoMeninas: {
     maxWidth: "100%",
-    maxHeight: 400,
+  },
+  fotoBonus: {
+    maxWidth: "100%",
   },
   check: {
     height: "1rem",
@@ -105,16 +112,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const rocks = [
-  { title: "Esmeralda", color: "#6BFEDE", image: require("assets/img/esmeralda.jpg"), description: "Esmeralda é um símbolo da verdade e do amor. Na Grécia e na Roma antigas, dizia-se que a esmeralda era a pedra preciosa da deusa Vênus, fornecedora de amor e esperança. Do outro lado do mundo, as esmeraldas eram reverenciadas pelos incas e consideradas pelos egípcios como uma fonte de vida eterna. As esmeraldas foram consideradas um presente de Thoth, o antigo deus da sabedoria. A esmeralda também é conhecida como uma pedra da intuição, associada à visão e à revelação de eventos e verdades futuras." },
-  { title: "Rubi", color: "#FE6B8B", image: require("assets/img/rubi.jpg"), description: "Rubi é protetora e pode trazer felicidade e paixão à vida de quem a usa. Acredita-se que tenha o poder de alinhar e emprestar energia ao corpo. Acredita-se que também protege contra entidades negativas que absorvem energia positiva, promovendo vitalidade espiritual e bem-estar em geral." },
-  { title: "Ágata", color: "#6BFEDE", image: require("assets/img/agata.jpg"), description: "Ágata representa força e coragem; ela tonifica e fortalece a mente e o corpo, ancorando e estabilizando emoções e energia física. Ágata ajuda na aceitação de si mesmo e a ver a verdade. Suas qualidades de cura e limpeza eliminam as energias negativas, acalmando e acalmando a mente, corpo e espírito." },
-  { title: "Angelita", color: "#FE6B8B", image: require("assets/img/angelita.jpg"), description: "Angelita é a pedra de grande consciência. Ajuda com uma comunicação clara, compassiva e verdadeira, permitindo que você fale a sua verdade. Angelita promove sentimentos de compaixão, compreensão e aceitação, permitindo que você encontre paz no assunto em questão. Também ajuda a facilitar o contato com o reino angélico, ao mesmo tempo que o ajuda a manter contato com a realidade cotidiana." },
-  { title: "Jade", color: "#6BFEDE", image: require("assets/img/jade.jpg"), description: "Jade é uma poderosa balanceadora emocional, nutrindo e trazendo paz e pureza para sua vida, removendo pensamentos e energia negativos. Ela irradia o divino, promovendo amor incondicional, serenidade, clareza de espírito, coragem e sabedoria. Jade é considerada a pedra da sorte, prosperidade e amizade. Ela pode aprimorar seus sonhos, permitindo que você desperte conhecimentos ocultos e se torne quem você realmente é." },
-  { title: "Rose", color: "#FE6B8B", image: require("assets/img/rose.jpg"), description: "Rose (Quartzo Rosa) promove amor incondicional, perdão, paz e compaixão. Ela cria harmonia nos relacionamentos e nos ensina sobre a verdadeira essência do amor. Purifica e abre o coração, permitindo-nos expressar nossas emoções. Reduz o estresse e a tensão, permitindo-nos expressar amor, sensibilidade e compaixão por nós mesmos e pelos outros. Traz uma cura interior profunda, aumentando o amor próprio, o valor próprio e a autoconfiança. Pode ser usada para atrair amor para sua vida e manter relacionamentos amorosos felizes." },
-  { title: "Ametista", color: "#6BFEDE", image: require("assets/img/ametista.jpg"), description: "Ametista é a pedra da espiritualidade e do contentamento, confere estabilidade, força, paz interior. É uma grande pedra para meditação e para aumentar sua intuição e habilidades psíquicas com sua energia calmante e pacífica. A ametista fornece clareza e melhora a percepção e compreensão consciente." },
+  { title: "Esmeralda", color: "#6BFEDE", image: require("assets/img/esmeralda.jpg"), description: "Esmeralda é um símbolo da verdade e do amor. Ela é cheia de esperança, atitude e muuuuuito sábia. Além disso, é sonhadora e intuitiva💚" },
+  { title: "Rubi", color: "#FE6B8B", image: require("assets/img/rubi.jpg"), description: "Rubi protege as pessoas que ama e tem uma energia infinita! Leva felicidade e paixão em seu coração, e adora ajudar o próximo🌼" },
+  { title: "Ágata", color: "#6BFEDE", image: require("assets/img/agata.jpg"), description: "Ágata é forte e corajosa, se aceita como é de verdade! Tem uma energia super positiva e as pessoas ao seu redor se contagiam com a sua felicidade😆" },
+  { title: "Angelita", color: "#FE6B8B", image: require("assets/img/angelita.jpg"), description: "Angelita é suuuuper especial, comunicativa e verdadeira. Não perde a esperança mesmo em momentos difícies, pois acredita que dias melhores virão. Ela é a alegria da casa, a alegria da vida todinha da mamãe e do papai, ela é uma verdadeira super heroína🌹" },
+  { title: "Jade", color: "#6BFEDE", image: require("assets/img/jade.jpg"), description: "Jade é uma menina super amiga, brincalhona e extrovertida. É considerada a pedra da sorte, prosperidade e amizade🤗" },
+  { title: "Rose", color: "#FE6B8B", image: require("assets/img/rose.jpg"), description: "Rose tem muito estilo, é decidida e promove o amor incondicional.\n\nCom amor podemos todas as coisas, tudo torna-se possível💖" },
+  { title: "Ametista", color: "#6BFEDE", image: require("assets/img/ametista.jpg"), description: "Ametista parece frágil né? Pois é aí que você se engana. Ela é delicada, porém forte e tem uma paz interior que te eleva a alma🧘‍♀️" },
 ];
 
-const checkoutURL = "https://pay.hotmart.com/B46628840G?off=opbx2gl5";
+const faqs = [
+  { pergunta: "Quando vou receber o acesso? Quando começa o curso?", resposta: "O acesso a sua área de membros é enviado automaticamente após a confirmação de seu pagamento. Ou seja, começa pra você assim que você se inscreve. Se você realizar o pagamento por cartão de crédito, você receberá os dados de acesso em até 10 minutos. Caso o pagamento seja por boleto bancário, a confirmação bancária pode levar até 72 horas." },
+  { pergunta: "Que tamanho ficam as bonecas depois de prontas?", resposta: "Ficam em média com 28cm podendo variar conforme o tipo de cabelo." },
+  { pergunta: "Sou iniciante, este curso é para mim?", resposta: "Não importa se você é experiente em feltro ou iniciante. O curso aborda tudo o que você precisa saber para criar as bonecas com perfeição." },
+  { pergunta: "Não tenho máquina de costura. Vou conseguir fazer?", resposta: "Sim. Vou te ensinar a confeccionar tudo à mão. A máquina de costura é opcional." },
+];
+
+const checkoutURL = "https://pay.hotmart.com/B46628840G?off=opbx2gl5&checkoutMode=10";
 
 export function CTA(props) {
   const classes = useStyles();
@@ -148,7 +162,6 @@ export function CheckoutButton(props) {
         <DialogTitle id="form-dialog-title">Inscreva-se</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Digite seu email para iniciar sua inscrição agora.
             <Typography variant="body2" color="textSecondary" component="p">
               Na próxima página você poderá escolher a forma de pagamento.
           </Typography>
@@ -169,9 +182,9 @@ function DedoNaFerida() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12}>
-            <h1>Conheça as meninas preciosas que você irá criar</h1>
+            <h1>Qual é a sua preferida?</h1>
             <p>
-              Esta coleção de bonecas foi inspirada nas pedras preciosas e seus significados. Conheça e conecte-se com cada uma.
+              Você irá se conectar com elas, seja pelo estilo ou pela personalidade.
             </p>
           </Grid>
           <Hidden xsDown>
@@ -216,7 +229,7 @@ function DedoNaFerida() {
           </Hidden>
           <Hidden smUp>
             {rocks.map((rock) => (
-              <Grid container item xs={12} sm={4} spacing={3} key={rock.title}>
+              <Grid container item xs={12} sm={4} spacing={0} key={rock.title}>
                 <Card raised={true} className={classes.card}>
                   <CardMedia
                     component="img"
@@ -243,7 +256,7 @@ function DedoNaFerida() {
   );
 }
 
-function VideoVendas() {
+function Promessa() {
   const classes = useStyles();
   return (
     <section>
@@ -252,17 +265,10 @@ function VideoVendas() {
         <Grid container className={classes.grid} spacing={3} >
           <Grid item xs={12}>
             <h1 className={classes.title}>São 7 joias raras para você confeccionar, personalizar e vender.</h1>
-            <p className={classes.title}>Conheça as meninas preciosas: Esta coleção de bonecas foi inspirada nas pedras preciosas e seus significados. Conheça e conecte-se com cada uma. Estas lindas bonecas irão iluminar sua vida.</p>
-
-            <div className={classes.videoWrapper}>
-              <iframe
-                className={classes.video}
-                src="https://www.youtube.com/embed/VnDLmAIthHw?rel=0"
-                frameBorder="0"
-                allowFullScreen
-              ></iframe>
-            </div>
-
+            <p className={classes.subtitle}>Muito mais que bonecas, elas têm personalidade. Seus nomes têm significado e são inspirados em pedras preciosas. Estas lindas bonecas irão iluminar sua vida.</p>
+          </Grid>
+          <Grid item xs={12}>
+            <img src={require("assets/img/banner.jpg")} alt="" className={classes.fotoMeninas} />
             <CTA>
               Sim! Quero iluminar minha vida!
             </CTA>
@@ -277,22 +283,41 @@ function Conteudo() {
   const classes = useStyles();
   return (
     <section className={classes.sectionConteudo}>
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <Grid container className={classes.grid} spacing={3}>
-          <Grid item md={6} className={classes.centered}>
-            <img src={require("assets/img/meninas.jpg")} alt="" className={classes.fotoMeninas} />
+          <Grid item xs={12} md={6} className={classes.centered}>
+            <img src={require("assets/img/conteudo5.jpg")} alt="" className={classes.fotoMeninas} />
           </Grid>
-          <Grid item md={6} className={classes.justify}>
-            <h1>O que você terá acesso?</h1>
+          <Grid item xs={12} md={6} className={classes.justify}>
+            <h1>Muito além de uma apostila</h1>
             <p>
-              Muito além de uma apostila de moldes, este é um curso completo, onde você irá aprender como confeccionar cada boneca com um passo a passo em video.
-              Não importa se você é experiente em feltro ou iniciante. O curso aborda tudo o que você precisa saber para criar as bonecas com perfeição.
+              Este é um curso completo, onde você irá aprender como confeccionar cada boneca com um passo a passo em video.
+              Não importa se você é experiente em feltro ou iniciante.
+              O curso aborda tudo o que você precisa saber para criar as bonecas com perfeição.
+              E você aprenderá técnicas diferenciadas que vão além do feltro para você usar em outros projetos.
+              E tudo isso você pode fazer sem máquina de costura.
+              Você vai ter acesso a:
             </p>
             <p>
-              <CheckIcon className={classes.check} /><span> Apostila de moldes em PDF</span>
+              <CheckIcon className={classes.check} /><span> Apostila de moldes</span>
             </p>
             <p>
               <CheckIcon className={classes.check} /><span> Passo a passo em vídeo</span>
+            </p>
+            <p>
+              <CheckIcon className={classes.check} /><span> 6 estilos de cabelos</span>
+            </p>
+            <p>
+              <CheckIcon className={classes.check} /><span> 3 tipos de vestidos</span>
+            </p>
+            <p>
+              <CheckIcon className={classes.check} /><span> Saia de tule sem costura</span>
+            </p>
+            <p>
+              <CheckIcon className={classes.check} /><span> 3 tipos de calçados</span>
+            </p>
+            <p>
+              <CheckIcon className={classes.check} /><span> 2 cachecóis usando só as mãos</span>
             </p>
           </Grid>
         </Grid>
@@ -308,7 +333,13 @@ function Bonus() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12}>
-            <h1>Bônus especial</h1>
+            <h1>E você ainda vai receber um bônus especial</h1>
+            <p>
+              Molde do corpo adaptado para você confeccionar porta maternidades como bastidores, guirlandas e flâmulas.
+            </p>
+            <p>
+              <img src={require("assets/img/bonusespecial.jpg")} alt="" className={classes.fotoBonus} />
+            </p>
           </Grid>
         </Grid>
       </Container>
@@ -322,32 +353,13 @@ function Preco() {
     <section className={classes.sectionGreen}>
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
-          <Grid item className={classes.justify} md={6}>
-            <h1>Você vai receber tudo isso</h1>
-            <p>
-              <CheckIcon className={classes.check} /><span> Apostila de moldes em PDF</span>
-            </p>
-            <p>
-              <CheckIcon className={classes.check} /><span> Passo a passo em vídeo</span>
-            </p>
-            <p>
-              <CheckIcon className={classes.check} /><span> BÔNUS: Fotos em alta resolução</span>
-            </p>
-            <p>
-              <CheckIcon className={classes.check} /><span> BÔNUS: Bastidores desta apostila</span>
-            </p>
-            <p>
-              <CheckIcon className={classes.check} /><span> BÔNUS: Aula de precificação</span>
-            </p>
-            <p>
-              <CheckIcon className={classes.check} /><span> BÔNUS ESPECIAL: Guirlanda</span>
-            </p>
-
+          <Grid item className={classes.centered} md={6}>
+            <img src={require("assets/img/tudoisso.png")} alt="" className={classes.preco} />
           </Grid>
           <Grid item className={classes.centered} md={6}>
-            <img src={require("assets/img/pricediscount.png")} alt="" className={classes.preco} />
+            <img src={require("assets/img/price.png")} alt="" className={classes.preco} />
             <CheckoutButton>
-              Quero criar estas lindas bonecas!
+              Quero aproveitar a promoção de lançamento!
             </CheckoutButton>
           </Grid>
         </Grid>
@@ -367,7 +379,7 @@ function Garantia() {
           </Grid>
           <Grid item md={6} className={classes.justify}>
             <h1>Você não tem nada a perder</h1>
-            <p>As Meninas Preciosas tem 7 dias de garantia incondicional</p>
+            <p>O curso Joias Raras tem 7 dias de garantia incondicional.</p>
             <p>Você pode assistir todas as aulas e ter acesso ao bônus exclusivo.
             Se por qualquer motivo você não ficar satisfeita,
             basta entrar em contato comigo pelo email contato@mariubialli.com
@@ -395,6 +407,9 @@ function SobreMim() {
               Conheci o feltro quando estava grávida do meu filho em 2018, me apaixonei na mesma hora e comecei a produzir muitas fofuras.
             </p>
             <p>
+              Essas bonecas não são apenas bonecas para mim. Elas são a prova de que podemos conseguir fazer algo quando queremos, que podemos superar nossos medos e inseguranças e transformá-los em algo lindo e precioso🥰
+            </p>
+            <p>
               Quero compartilhar meu aprendizado, e ajudar mais pessoas a conhecerem, se apaixonarem e viverem desse artesanato maravilhoso!
             </p>
           </Grid>
@@ -406,10 +421,6 @@ function SobreMim() {
     </section>
   );
 }
-
-const faqs = [
-  { pergunta: "Quando vou receber o acesso? Quando começa o curso?", resposta: "O acesso a sua área de membros é enviado automaticamente após a confirmação de seu pagamento. Ou seja, começa pra você assim que você se inscreve. Se você realizar o pagamento por cartão de crédito, você receberá os dados de acesso em até 10 minutos. Caso o pagamento seja por boleto bancário, a confirmação bancária pode levar até 72 horas." }
-];
 
 function FAQs() {
   const classes = useStyles();
@@ -473,7 +484,7 @@ export default function JoiasRarasVendas() {
         <meta name="robots" content="index,nofollow"></meta>
       </Head>
 
-      <VideoVendas />
+      <Promessa />
       <DedoNaFerida />
       <Conteudo />
       <Bonus />

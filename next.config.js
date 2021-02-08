@@ -8,4 +8,18 @@ module.exports = withPlugins([[withImages]], {
     config.resolve.modules.push(path.resolve("./"));
     return config;
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/joiasraras',
+        permanent: false,
+      },
+      {
+        source: '/espera',
+        destination: '/joiasraras',
+        permanent: false,
+      },
+    ]
+  },
 });

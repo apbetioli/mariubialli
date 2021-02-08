@@ -43,13 +43,11 @@ export default function Home(props) {
   return (
     <Layout {...props}>
       <div className="fullHeight">
-
         <Espera hideFooter={true} {...props} />
       </div>
     </Layout>
   )
 }
-
 
 export async function getStaticProps() {
   const home = await PrismicClient.getSingle("home");
