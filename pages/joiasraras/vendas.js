@@ -123,6 +123,7 @@ const rocks = [
 
 const faqs = [
   { pergunta: "Quando vou receber o acesso? Quando começa o curso?", resposta: "O acesso a sua área de membros é enviado automaticamente após a confirmação de seu pagamento. Ou seja, começa pra você assim que você se inscreve. Se você realizar o pagamento por cartão de crédito, você receberá os dados de acesso em até 10 minutos. Caso o pagamento seja por boleto bancário, a confirmação bancária pode levar até 72 horas." },
+  { pergunta: "Por quanto tempo vou poder assistir as aulas?", resposta: "Pelo tempo que quiser. O curso é vitalício. Uma vez seu, é seu pra sempre."},
   { pergunta: "Que tamanho ficam as bonecas depois de prontas?", resposta: "Ficam em média com 28cm podendo variar conforme o tipo de cabelo." },
   { pergunta: "Sou iniciante, este curso é para mim?", resposta: "Não importa se você é experiente em feltro ou iniciante. O curso aborda tudo o que você precisa saber para criar as bonecas com perfeição." },
   { pergunta: "Não tenho máquina de costura. Vou conseguir fazer?", resposta: "Sim. Vou te ensinar a confeccionar tudo à mão. A máquina de costura é opcional." },
@@ -163,6 +164,7 @@ export function CheckoutButton(props) {
         <DialogContent>
           <DialogContentText>
             <Typography variant="body2" color="textSecondary" component="p">
+              Digite o email que você vai utilizar para acessar o curso.
               Na próxima página você poderá escolher a forma de pagamento.
           </Typography>
           </DialogContentText>
@@ -319,6 +321,9 @@ function Conteudo() {
             <p>
               <CheckIcon className={classes.check} /><span> 2 cachecóis usando só as mãos</span>
             </p>
+            <CTA>
+              Quero aprender tudo isso!
+            </CTA>
           </Grid>
         </Grid>
       </Container>
@@ -385,6 +390,9 @@ function Garantia() {
             basta entrar em contato comigo pelo email contato@mariubialli.com
               e solicitar o reembolso do valor investido.</p>
             <p>Você receberá de volta cada centavo que pagou.</p>
+            <CheckoutButton>
+              Quero testar por 7 dias!
+            </CheckoutButton>
           </Grid>
         </Grid>
       </Container>
