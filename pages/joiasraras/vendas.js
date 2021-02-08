@@ -267,7 +267,7 @@ function Promessa() {
         <Grid container className={classes.grid} spacing={3} >
           <Grid item xs={12}>
             <h1 className={classes.title}>São 7 joias raras para você confeccionar, personalizar e vender</h1>
-            <p className={classes.subtitle}>Aprenda comigo a fazer estas lindas bonecas e se destaque no mercado oferecendo um produto de alta qualidade e diferenciado</p>
+            <p className={classes.subtitle}>Faça comigo estas lindas bonecas e se destaque no mercado oferecendo um produto de alta qualidade e diferenciado</p>
           </Grid>
           <Grid item xs={12}>
             <img src={require("assets/img/banner.jpg")} alt="" className={classes.fotoMeninas} />
@@ -390,9 +390,6 @@ function Garantia() {
             basta entrar em contato comigo pelo email contato@mariubialli.com
               e solicitar o reembolso do valor investido.</p>
             <p>Você receberá de volta cada centavo que pagou.</p>
-            <CheckoutButton>
-              Quero testar por 7 dias!
-            </CheckoutButton>
           </Grid>
         </Grid>
       </Container>
