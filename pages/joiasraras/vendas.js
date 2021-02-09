@@ -122,6 +122,7 @@ const rocks = [
 ];
 
 const faqs = [
+  { pergunta: "Quais são as formas de pagamento?", resposta: "Você pode pagar com cartão de crédito, cartão de débito virtual da caixa, boleto ou via PIX. A opção por boleto pode levar 72 horas para liberação após o pagamento."},
   { pergunta: "Quando vou receber o acesso? Quando começa o curso?", resposta: "O acesso a sua área de membros é enviado automaticamente após a confirmação de seu pagamento. Ou seja, começa pra você assim que você se inscreve. Se você realizar o pagamento por cartão de crédito, você receberá os dados de acesso em até 10 minutos. Caso o pagamento seja por boleto bancário, a confirmação bancária pode levar até 72 horas." },
   { pergunta: "Por quanto tempo vou poder assistir as aulas?", resposta: "Pelo tempo que quiser. O curso é vitalício. Uma vez seu, é seu pra sempre." },
   { pergunta: "Que tamanho ficam as bonecas depois de prontas?", resposta: "Ficam em média com 28cm podendo variar conforme o tipo de cabelo." },
@@ -165,8 +166,10 @@ export function CheckoutButton(props) {
           <DialogContentText>
             <Typography variant="body2" color="textSecondary" component="p">
               Digite o email que você vai utilizar para acessar o curso.
-              Na próxima página você poderá escolher a forma de pagamento.
-          </Typography>
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              Na próxima página você poderá escolher a forma de pagamento: <b>cartão, boleto ou pix</b>
+            </Typography>
           </DialogContentText>
           <Form buttonText="Continuar inscrição &gt;" tag="JOIASRARAS-CHECKOUT" redirectTo={checkoutURL + "&email="} />
         </DialogContent>
@@ -319,7 +322,7 @@ function Conteudo() {
               <CheckIcon className={classes.check} /><span> 3 tipos de calçados</span>
             </p>
             <p>
-              <CheckIcon className={classes.check} /><span> 2 cachecóis usando só as mãos</span>
+              <CheckIcon className={classes.check} /><span> 2 tipos de cachecóis usando só as mãos</span>
             </p>
             <CTA>
               Quero aprender tudo isso!
