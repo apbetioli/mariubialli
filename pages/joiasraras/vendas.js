@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from '@material-ui/core/Typography';
 import CheckIcon from '@material-ui/icons/Check';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Alert } from "@material-ui/lab";
 import Timeline from '@material-ui/lab/Timeline';
 import TimelineConnector from '@material-ui/lab/TimelineConnector';
 import TimelineContent from '@material-ui/lab/TimelineContent';
@@ -15,6 +16,7 @@ import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
 import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
 import Head from "next/head";
 import { default as React } from "react";
+import Countdown from "react-countdown";
 import BotaoWhats from "../../components/BotaoWhats";
 import ColorButton from "../../components/ColorButton";
 import Footer from "../../components/Footer";
@@ -32,8 +34,8 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   grid: {
-    paddingTop: 50,
-    paddingBottom: 50,
+    paddingTop: 30,
+    paddingBottom: 30,
   },
   centered: {
     textAlign: "center",
@@ -122,7 +124,7 @@ const rocks = [
 ];
 
 const faqs = [
-  { pergunta: "Quais são as formas de pagamento?", resposta: "Você pode pagar com cartão de crédito, cartão de débito virtual da caixa, boleto ou via PIX. A opção por boleto pode levar 72 horas para liberação após o pagamento."},
+  { pergunta: "Quais são as formas de pagamento?", resposta: "Você pode pagar com cartão de crédito, cartão de débito virtual da caixa, boleto ou via PIX. A opção por boleto pode levar 72 horas para liberação após o pagamento." },
   { pergunta: "Quando vou receber o acesso? Quando começa o curso?", resposta: "O acesso a sua área de membros é enviado automaticamente após a confirmação de seu pagamento. Ou seja, começa pra você assim que você se inscreve. Se você realizar o pagamento por cartão de crédito, você receberá os dados de acesso em até 10 minutos. Caso o pagamento seja por boleto bancário, a confirmação bancária pode levar até 72 horas." },
   { pergunta: "Por quanto tempo vou poder assistir as aulas?", resposta: "Pelo tempo que quiser. O curso é vitalício. Uma vez seu, é seu pra sempre." },
   { pergunta: "Que tamanho ficam as bonecas depois de prontas?", resposta: "Ficam em média com 28cm podendo variar conforme o tipo de cabelo." },
@@ -131,6 +133,8 @@ const faqs = [
 ];
 
 const checkoutURL = "https://pay.hotmart.com/B46628840G?off=opbx2gl5&checkoutMode=10";
+
+const fimDaPromocao = new Date("2021-02-13 00:00:00");
 
 export function CTA(props) {
   const classes = useStyles();
@@ -165,13 +169,10 @@ export function CheckoutButton(props) {
         <DialogContent>
           <DialogContentText>
             <Typography variant="body2" color="textSecondary" component="p">
-              Digite o email que você vai utilizar para acessar o curso.
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
               Na próxima página você poderá escolher a forma de pagamento: <b>cartão, boleto ou pix</b>
             </Typography>
           </DialogContentText>
-          <Form buttonText="Continuar inscrição &gt;" tag="JOIASRARAS-CHECKOUT" redirectTo={checkoutURL + "&email="} />
+          <Form buttonText="Continuar inscrição &gt;" tag="JOIASRARAS-CHECKOUT" redirectTo={checkoutURL} emailPlaceholder="Seu email de acesso" />
         </DialogContent>
         <DialogActions>
         </DialogActions>
@@ -267,7 +268,7 @@ function Promessa() {
     <section>
       <Wave className={classes.wave} />
       <Container maxWidth="md">
-        <Grid container className={classes.grid} spacing={3} >
+        <Grid container className={classes.grid} >
           <Grid item xs={12}>
             <h1 className={classes.title}>São 7 joias raras para você confeccionar, personalizar e vender</h1>
             <p className={classes.subtitle}>Faça comigo estas lindas bonecas e se destaque no mercado oferecendo um produto de alta qualidade e diferenciado</p>
@@ -293,7 +294,7 @@ function Conteudo() {
           <Grid item xs={12} md={6} className={classes.centered}>
             <img src={require("assets/img/conteudo5.jpg")} alt="" className={classes.fotoMeninas} />
           </Grid>
-          <Grid item xs={12} md={6} className={classes.justify}>
+          <Grid item xs={12} md={6}>
             <h1>Muito além de uma apostila</h1>
             <p>
               Este é um curso completo, onde você irá aprender como confeccionar cada boneca com um passo a passo em video.
@@ -323,6 +324,9 @@ function Conteudo() {
             </p>
             <p>
               <CheckIcon className={classes.check} /><span> 2 tipos de cachecóis usando só as mãos</span>
+            </p>
+            <p>
+              <CheckIcon className={classes.check} /><span> BÔNUS: Saiba como precificar suas bonecas. Aula + planilha.</span>
             </p>
             <CTA>
               Quero aprender tudo isso!
@@ -475,6 +479,18 @@ function DuvidasWhats() {
   );
 }
 
+const countdownRenderer = ({ days, hours, minutes, seconds, completed }) => {
+  if (completed) {
+    return <></>;
+  } else {
+    return (
+      <Alert severity="warning">
+        A promoção termina em: {days} dia {hours} horas {minutes} minutos {seconds} segundos
+      </Alert>
+    );
+  }
+};
+
 export default function JoiasRarasVendas() {
   const classes = useStyles();
   return (
@@ -491,6 +507,12 @@ export default function JoiasRarasVendas() {
         />
         <meta name="robots" content="index,nofollow"></meta>
       </Head>
+
+      <Countdown
+        daysInHours={true}
+        date={fimDaPromocao}
+        renderer={countdownRenderer}
+      />
 
       <Promessa />
       <DedoNaFerida />
