@@ -485,7 +485,7 @@ const countdownRenderer = ({ days, hours, minutes, seconds, completed }) => {
   } else {
     return (
       <Alert severity="warning">
-        A promoção termina em: {days} dia {hours} horas {minutes} minutos {seconds} segundos
+        A promoção termina em: {days} dias {hours} horas {minutes} minutos {seconds} segundos
       </Alert>
     );
   }
