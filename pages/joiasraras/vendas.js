@@ -130,9 +130,10 @@ const faqs = [
   { pergunta: "Que tamanho ficam as bonecas depois de prontas?", resposta: "Ficam em média com 28cm podendo variar conforme o tipo de cabelo." },
   { pergunta: "Sou iniciante, este curso é para mim?", resposta: "Não importa se você é experiente em feltro ou iniciante. O curso aborda tudo o que você precisa saber para criar as bonecas com perfeição." },
   { pergunta: "Não tenho máquina de costura. Vou conseguir fazer?", resposta: "Sim. Vou te ensinar a confeccionar tudo à mão. A máquina de costura é opcional." },
+  { pergunta: "O valor é único ou é mensalidade?", resposta: "Este valor é único. Você paga uma vez só e tem acesso a tudo isso sem prazo de validade." }
 ];
 
-const checkoutURL = "https://pay.hotmart.com/B46628840G?off=opbx2gl5&checkoutMode=10";
+const checkoutURL = "https://pay.hotmart.com/B46628840G?checkoutMode=10";
 
 const fimDaPromocao = new Date("2021-02-13 00:00:00");
 
@@ -271,7 +272,7 @@ function Promessa() {
         <Grid container className={classes.grid} >
           <Grid item xs={12}>
             <h1 className={classes.title}>São 7 joias raras para você confeccionar, personalizar e vender</h1>
-            <p className={classes.subtitle}>Faça comigo estas lindas bonecas e se destaque no mercado oferecendo um produto de alta qualidade e diferenciado</p>
+            <p className={classes.subtitle}>Adicione estas lindas bonecas ao seu portifólio e se destaque no mercado oferecendo um produto de alta qualidade e diferenciado.</p>
           </Grid>
           <Grid item xs={12}>
             <img src={require("assets/img/banner.jpg")} alt="" className={classes.fotoMeninas} />
@@ -326,7 +327,7 @@ function Conteudo() {
               <CheckIcon className={classes.check} /><span> 2 tipos de cachecóis usando só as mãos</span>
             </p>
             <p>
-              <CheckIcon className={classes.check} /><span> BÔNUS: Saiba como precificar suas bonecas. Aula + planilha.</span>
+              <CheckIcon className={classes.check} /><span> BÔNUS: Saiba como precificar suas bonecas. Aula + planilha</span>
             </p>
             <CTA>
               Quero aprender tudo isso!
@@ -371,7 +372,7 @@ function Preco() {
           <Grid item className={classes.centered} md={6}>
             <img src={require("assets/img/price.png")} alt="" className={classes.preco} />
             <CheckoutButton>
-              Quero aproveitar a promoção de lançamento!
+              Quero me destacar no mercado
             </CheckoutButton>
           </Grid>
         </Grid>
