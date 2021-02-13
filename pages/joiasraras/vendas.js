@@ -6,7 +6,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from '@material-ui/core/Typography';
 import CheckIcon from '@material-ui/icons/Check';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Alert } from "@material-ui/lab";
 import Timeline from '@material-ui/lab/Timeline';
 import TimelineConnector from '@material-ui/lab/TimelineConnector';
 import TimelineContent from '@material-ui/lab/TimelineContent';
@@ -16,7 +15,6 @@ import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
 import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
 import Head from "next/head";
 import { default as React } from "react";
-import Countdown from "react-countdown";
 import BotaoWhats from "../../components/BotaoWhats";
 import ColorButton from "../../components/ColorButton";
 import Footer from "../../components/Footer";
@@ -134,8 +132,6 @@ const faqs = [
 ];
 
 const checkoutURL = "https://pay.hotmart.com/B46628840G?checkoutMode=10";
-
-const fimDaPromocao = new Date("2021-02-13 00:00:00");
 
 export function CTA(props) {
   const classes = useStyles();
@@ -480,18 +476,6 @@ function DuvidasWhats() {
   );
 }
 
-const countdownRenderer = ({ days, hours, minutes, seconds, completed }) => {
-  if (completed) {
-    return <></>;
-  } else {
-    return (
-      <Alert severity="warning">
-        A promoção termina em: {days} dias {hours} horas {minutes} minutos {seconds} segundos
-      </Alert>
-    );
-  }
-};
-
 export default function JoiasRarasVendas() {
   const classes = useStyles();
   return (
@@ -508,12 +492,6 @@ export default function JoiasRarasVendas() {
         />
         <meta name="robots" content="index,nofollow"></meta>
       </Head>
-
-      <Countdown
-        daysInHours={true}
-        date={fimDaPromocao}
-        renderer={countdownRenderer}
-      />
 
       <Promessa />
       <DedoNaFerida />
