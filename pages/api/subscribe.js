@@ -12,16 +12,22 @@ module.exports = async (req, res) => {
       server: process.env.MAILCHIMP_SERVER,
     });
 
-    let subscriberHash = md5(lead.email.toLowerCase());
+    const subscriberHash = md5(lead.email.toLowerCase());
+
+    const member = {
+      email_address: lead.email,
+      status: "subscribed",
+      status_if_new: "subscribed",
+      merge_fields: {
+        FNAME: lead.name,
+        PHONE: lead.phone
+      }
+    };
 
     const response = await mailchimp.lists.setListMember(
       listId,
       subscriberHash,
-      {
-        email_address: lead.email,
-        status: "subscribed",
-        status_if_new: "subscribed",
-      }
+      member
     );
 
     lead.id = response.id;
@@ -38,7 +44,7 @@ module.exports = async (req, res) => {
         name: lead.source.toUpperCase(),
         status: "active",
       })
-    };  
+    };
 
     if (lead.tag) {
       await mailchimp.lists.updateListMemberTags(listId, subscriberHash, {

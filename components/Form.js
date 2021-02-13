@@ -49,13 +49,19 @@ export default function Form(props) {
   const classes = useStyles();
   const router = useRouter();
 
-  const [email, setEmail] = useState("");
   const [backdrop, setBackdrop] = useState(false);
   const { mutateUser } = useUser();
 
-  function handleEmailChange(event) {
-    setEmail(event.target.value);
-  }
+  const [values, setValues] = React.useState({
+    email: '',
+    name: '',
+    ddd: '',
+    phone: ''
+  });
+
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
 
   const authenticate = async (form) => {
     const user = await fetch("/api/login", {
@@ -72,8 +78,10 @@ export default function Form(props) {
     setBackdrop(!backdrop);
 
     const form = {
-      email,
-      tag: props.tag
+      email: values.email.toLowerCase(),
+      tag: props.tag,
+      name: values.name,
+      phone: values.ddd + "" + values.phone
     };
 
     const source = window.localStorage.getItem("utm_source");
@@ -91,7 +99,14 @@ export default function Form(props) {
       else
         redirectTo += "?";
 
-      redirectTo += "email=" + email + "&redirect=true"
+      redirectTo += "email=" + values.email.toLowerCase();
+      if (values.name)
+        redirectTo += "&name=" + values.name;
+      if (values.ddd)
+        redirectTo += "&phoneac=" + values.ddd;
+      if (values.phone)
+        redirectTo += "&phonenumber=" + values.phone;
+      redirectTo += "&redirect=true";
 
       router.push(redirectTo);
 
@@ -104,11 +119,30 @@ export default function Form(props) {
 
   return (
     <form onSubmit={onSubmit.bind(this)}>
+
+      {props.showName &&
+        <MyTextField
+          id="filled-full-width"
+          label="Nome"
+          type="text"
+          placeholder="Nome completo"
+          fullWidth
+          required
+          margin="normal"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="outlined"
+          value={values.name}
+          onChange={handleChange("name")}
+        />
+      }
+
       <MyTextField
         id="filled-full-width"
         label="Email"
         type="email"
-        placeholder="Digite o seu melhor email..."
+        placeholder={props.emailPlaceholder}
         fullWidth
         required
         margin="normal"
@@ -116,9 +150,42 @@ export default function Form(props) {
           shrink: true,
         }}
         variant="outlined"
-        value={email}
-        onChange={handleEmailChange.bind(this)}
+        value={values.email}
+        onChange={handleChange("email")}
       />
+
+      {props.showPhone &&
+        <div>
+          <MyTextField
+            id="filled-full-width"
+            label="DDD"
+            type="number"
+            placeholder="DDD"
+            fullWidth
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="outlined"
+            value={values.ddd}
+            onChange={handleChange("ddd")}
+          />
+          <MyTextField
+            id="filled-full-width"
+            label="Celular"
+            type="number"
+            placeholder="Digite o número do celular"
+            fullWidth
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="outlined"
+            value={values.phone}
+            onChange={handleChange("phone")}
+          />
+        </div>
+      }
 
       <ColorButton
         variant="contained"
@@ -138,4 +205,7 @@ Form.defaultProps = {
   buttonText: "Entrar",
   redirectTo: "/",
   tag: "LOGIN",
+  showName: false,
+  showPhone: false,
+  emailPlaceholder: "Digite o seu melhor email..."
 };
