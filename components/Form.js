@@ -90,8 +90,8 @@ export default function Form(props) {
     }
 
     try {
-      await subscribe(form);
-      await authenticate(form);
+      authenticate(form);
+      subscribe(form);
 
       let redirectTo = props.redirectTo;
       if (redirectTo.includes("?"))
