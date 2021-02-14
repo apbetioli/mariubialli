@@ -368,7 +368,7 @@ function Preco() {
           <Grid item className={classes.centered} md={6}>
             <img src={require("assets/img/price.png")} alt="" className={classes.preco} />
             <CheckoutButton>
-              Quero me destacar no mercado
+              Quero já minhas Joias Raras
             </CheckoutButton>
           </Grid>
         </Grid>
