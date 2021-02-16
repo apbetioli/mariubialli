@@ -265,18 +265,21 @@ function Promessa() {
     <section>
       <Wave className={classes.wave} />
       <Container maxWidth="md">
-        <Grid container className={classes.grid} >
-          <Grid item xs={12}>
-            <h1 className={classes.title}>São 7 joias raras para você confeccionar, personalizar e vender</h1>
-            <p className={classes.subtitle}>Adicione estas lindas bonecas ao seu portifólio e se destaque no mercado oferecendo um produto de alta qualidade e diferenciado.</p>
-          </Grid>
-          <Grid item xs={12}>
-            <img src={require("assets/img/banner.jpg")} alt="" className={classes.fotoMeninas} />
-            <CTA>
-              Quero me destacar no mercado
-            </CTA>
-          </Grid>
-        </Grid>
+        <h1 className={classes.title}>São 7 joias raras para você confeccionar, personalizar e vender</h1>
+        <p className={classes.subtitle}>Adicione estas lindas bonecas ao seu portifólio e se destaque no mercado oferecendo um produto de alta qualidade e diferenciado.</p>
+
+        <div className={classes.videoWrapper}>
+          <iframe
+            className={classes.video}
+            src="https://www.youtube.com/embed/0H8P4Co4XRs?rel=0"
+            frameBorder="0"
+            allowFullScreen
+          ></iframe>
+        </div>
+
+        <CTA>
+          Quero me destacar no mercado
+        </CTA>
       </Container>
     </section>
   );
