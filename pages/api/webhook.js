@@ -1,8 +1,8 @@
 
 module.exports = async (req, res) => {
   try {
-    console.log(req.query);
-    res.send(req.query);
+    console.log(req.body);
+    res.send(req.body);
 
   } catch (e) {
     console.error(e);
