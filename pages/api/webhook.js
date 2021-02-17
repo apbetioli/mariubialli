@@ -1,7 +1,7 @@
+
 module.exports = async (req, res) => {
   try {
-    const body = req.body;
-    res.send(body);
+    res.send(req.query);
 
   } catch (e) {
     console.error(e);
