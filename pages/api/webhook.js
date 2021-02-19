@@ -1,8 +1,27 @@
+import client from "../../lib/db";
 
 module.exports = async (req, res) => {
   try {
-    console.log(req.body);
-    res.send(req.body);
+    const db = await client.connect();
+
+    if (req.method == "POST") {
+
+      const data = req.body;
+      console.log(data);
+
+      const transactions = db.db("mariubialli").collection("transactions");
+      const query = { email: data.email };
+      const doc = { $set: data }
+      const options = { upsert: true };
+      const upserted = await transactions.updateOne(query, doc, options);
+      res.send(upserted);
+
+    } else {
+      const db = await client.connect();
+      const cursor = db.db("mariubialli").collection("transactions").find({});
+      const transactions = await cursor.toArray();
+      res.send(transactions)
+    }
 
   } catch (e) {
     console.error(e);
