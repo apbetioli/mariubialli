@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
       const data = req.body;
       console.log(data);
 
-      const transactions = db.db("mariubialli").collection("transactions");
+      const transactions = db.db(process.env.MONGO_DB).collection("transactions");
       const query = { email: data.email };
       const doc = { $set: data }
       const options = { upsert: true };
@@ -18,7 +18,7 @@ module.exports = async (req, res) => {
 
     } else {
       const db = await client.connect();
-      const cursor = db.db("mariubialli").collection("transactions").find({});
+      const cursor = db.db(process.env.MONGO_DB).collection("transactions").find({});
       const transactions = await cursor.toArray();
       res.send(transactions)
     }
