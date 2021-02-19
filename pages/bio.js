@@ -48,6 +48,14 @@ function Links() {
                 </Grid>
                 <Grid item xs={12}>
                     <ColorButton
+                        href="/joiasraras"
+                        className={classes.button}
+                    >
+                        Curso Bonecas Joias Raras
+                    </ColorButton>
+                </Grid>
+                <Grid item xs={12}>
+                    <ColorButton
                         href="/apostilas"
                         className={classes.button}
                     >
