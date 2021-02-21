@@ -3,13 +3,22 @@ import BotaoWhats from "../../components/BotaoWhats";
 import Layout from "../../components/Layout";
 import Obrigado from "../../components/Obrigado";
 
+function getTitle() {
+    const router = useRouter();
+    let title = "Obrigada";
+    if (router.query.c_name)
+        title += " " + router.query.c_name;
+    return title;
+}
+
 export default function JoiasRarasConfirmado(props) {
     return (
         <Layout {...props}>
             <Obrigado
                 social={false}
                 subtitle="Inscrição confirmada!"
-                text="" >
+                text=""
+                title={getTitle()} >
                 <p>Você receberá em até 10 minutos um email da <b>Hotmart</b> com o seu acesso ao curso.</p>
                 <p>Após este tempo se não receber, veja se ele pode ter caído na pasta de spam.</p>
                 <p>Nos vemos no curso!</p>

@@ -1,7 +1,16 @@
+import { useRouter } from "next/router";
 import React from "react";
 import BotaoWhats from "../../components/BotaoWhats";
 import Layout from "../../components/Layout";
 import Obrigado from "../../components/Obrigado";
+
+function getTitle() {
+    const router = useRouter();
+    let title = "Obrigada";
+    if (router.query.c_name)
+        title += " " + router.query.c_name;
+    return title;
+}
 
 export default function JoiasRarasAguardando(props) {
     return (
@@ -9,7 +18,8 @@ export default function JoiasRarasAguardando(props) {
             <Obrigado
                 social={false}
                 subtitle="Leia com atenção!"
-                text="" >
+                text=""
+                title={getTitle()} >
                 <p>Fico muito feliz que tenha se inscrito no curso das bonecas Joias Raras.</p>
                 <p>Para não perder sua vaga, faça o pagamento <b>ainda hoje</b> para que o curso seja liberado o mais rápido possível.</p>
                 <p>Você receberá o acesso ao curso automaticamente no email cadastrado assim que o pagamento for aprovado.</p>
