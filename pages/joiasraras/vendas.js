@@ -412,18 +412,10 @@ function SobreMim() {
         <Grid container className={classes.grid} spacing={3}>
           <Grid item md={6} className={classes.justify}>
             <h1>Muito prazer, eu sou mari ubialli</h1>
-            <p>
-              Amo artesanato em feltro, coisas fofas e criativas!
-             </p>
-            <p>
-              Conheci o feltro quando estava grávida do meu filho em 2018, me apaixonei na mesma hora e comecei a produzir muitas fofuras.
-            </p>
-            <p>
-              Essas bonecas não são apenas bonecas para mim. Elas são a prova de que podemos conseguir fazer algo quando queremos, que podemos superar nossos medos e inseguranças e transformá-los em algo lindo e precioso🥰
-            </p>
-            <p>
-              Quero compartilhar meu aprendizado, e ajudar mais pessoas a conhecerem, se apaixonarem e viverem desse artesanato maravilhoso!
-            </p>
+            <p>Amo artesanato em feltro, coisas fofas e criativas!</p>
+            <p>Conheci o feltro quando estava grávida do meu filho em 2018, me apaixonei na mesma hora e comecei a produzir muitas fofuras.</p>
+            <p>Essas bonecas não são apenas bonecas para mim. Elas são a prova de que podemos conseguir fazer algo quando queremos, que podemos superar nossos medos e inseguranças e transformá-los em algo lindo e precioso.</p>
+            <p>Quero compartilhar meu aprendizado, e ajudar mais pessoas a conhecerem, se apaixonarem e viverem desse artesanato maravilhoso!</p>
           </Grid>
           <Grid item className={classes.centered} md={6}>
             <img className={classes.fotoPerfil} src={require("assets/img/perfil.jpg")} alt="Mari Ubialli" />
