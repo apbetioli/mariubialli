@@ -1,4 +1,4 @@
-import { Fab, Link, makeStyles, Tooltip } from "@material-ui/core";
+import { Fab, Link, makeStyles, Tooltip, useScrollTrigger, Zoom } from "@material-ui/core";
 import { WhatsApp } from "@material-ui/icons";
 import ColorButton from "./ColorButton";
 
@@ -21,15 +21,22 @@ export default function BotaoWhats({ phone, message, buttonText, float }) {
     const linkWhats = `https://api.whatsapp.com/send?phone=55${phone}&text=${msgWhats}`;
     const classes = useStyles();
 
+    const trigger = useScrollTrigger({
+        disableHysteresis: true,
+        threshold: 300,
+    });
+
     if (float) {
         return (
-            <Link target="_blank" rel="noopener" href={linkWhats}>
-                <Tooltip title="Dúvidas? Fale conosco">
-                    <Fab className={classes.whatsapp} size="medium" aria-label="Dúvidas? Fale conosco.">
-                        <WhatsApp />
-                    </Fab>
-                </Tooltip>
-            </Link>
+            <Zoom in={trigger}>
+                <Link target="_blank" rel="noopener" href={linkWhats}>
+                    <Tooltip title="Dúvidas? Fale conosco">
+                        <Fab className={classes.whatsapp} size="medium" aria-label="Dúvidas? Fale conosco.">
+                            <WhatsApp />
+                        </Fab>
+                    </Tooltip>
+                </Link>
+            </Zoom>
         );
     }
 
