@@ -127,10 +127,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const recap = [
-  { title: "Apostila de moldes", image: require("assets/img/topic_apostila.png") },
-  { title: "+ de 40 aulas", image: require("assets/img/topic_apostila.png") },
-  { title: "Apostila bônus", image: require("assets/img/topic_bonus.png") },
-  { title: "Planilha de precificação", image: require("assets/img/topic_bonus.png") },
+  { title: "Apostila de moldes" },
+  { title: "+ de 40 aulas" },
+  { title: "Apostila bônus" },
+  { title: "Planilha de precificação" },
 ];
 
 const rocks = [
@@ -392,7 +392,7 @@ function Bonus() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/planilha.jpg")} alt="" className={classes.foto} />
+            <img src={require("assets/img/planilha.webp")} alt="" className={classes.foto} />
           </Grid>
           <Grid item className={classes.justify} xs={12} md={6}>
             <h1 className={classes.centered}><span className={classes.highlight}>Bônus:</span> Venda com lucro</h1>
