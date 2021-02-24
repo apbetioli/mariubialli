@@ -1,4 +1,4 @@
-import client from "../../lib/db";
+import client from "../../../lib/db";
 
 module.exports = async (req, res) => {
   try {
