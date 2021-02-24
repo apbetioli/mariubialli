@@ -610,9 +610,9 @@ function Testemunhos2() {
             <img src={require("assets/img/testemunho9.jpg")} alt="Testemunho" className={classes.foto} />
             <img src={require("assets/img/testemunho10.jpg")} alt="Testemunho" className={classes.foto} />
             <img src={require("assets/img/testemunho6.jpg")} alt="Testemunho" className={classes.foto} />
-            <CTA>
+            <CheckoutButton>
               Estou convencida, quero entrar para o curso
-          </CTA>
+            </CheckoutButton>
           </Grid>
         </Grid>
       </Container>
@@ -653,7 +653,6 @@ export default function JoiasRarasVendas() {
       <FAQs />
       <Preco />
       <DuvidasWhats />
-      <BotaoWhats />
       <Footer />
     </main>
   );
