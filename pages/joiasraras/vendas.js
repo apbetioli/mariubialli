@@ -590,7 +590,7 @@ function Testemunhos1() {
             <h1>O que os alunos estão <br /><span className={classes.highlight}>falando do curso?</span></h1>
             <img src={require("assets/img/testemunho1.jpg")} alt="Testemunho" className={classes.foto} />
             <img src={require("assets/img/testemunho2.jpg")} alt="Testemunho" className={classes.foto} />
-            <img src={require("assets/img/testemunho3.jpg")} alt="Testemunho" className={classes.foto} />
+            <img src={require("assets/img/testemunho6.jpg")} alt="Testemunho" className={classes.foto} />
             <img src={require("assets/img/testemunho5.jpg")} alt="Testemunho" className={classes.foto} />
           </Grid>
         </Grid>
@@ -609,7 +609,7 @@ function Testemunhos2() {
             <img src={require("assets/img/testemunho7.jpg")} alt="Testemunho" className={classes.foto} />
             <img src={require("assets/img/testemunho9.jpg")} alt="Testemunho" className={classes.foto} />
             <img src={require("assets/img/testemunho10.jpg")} alt="Testemunho" className={classes.foto} />
-            <img src={require("assets/img/testemunho6.jpg")} alt="Testemunho" className={classes.foto} />
+            <img src={require("assets/img/testemunho3.jpg")} alt="Testemunho" className={classes.foto} />
             <CheckoutButton>
               Estou convencida, quero entrar para o curso
             </CheckoutButton>
