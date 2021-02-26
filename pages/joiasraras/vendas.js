@@ -293,6 +293,7 @@ function Promessa() {
           <Grid item className={classes.centered} xs={12} lg={7} md={6}>
             <div className={classes.videoWrapper}>
               <iframe
+                loading="lazy"
                 className={classes.video}
                 src="https://www.youtube.com/embed/0H8P4Co4XRs?rel=0"
                 frameBorder="0"

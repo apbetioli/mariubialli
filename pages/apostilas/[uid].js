@@ -75,6 +75,7 @@ const Apostila = (props) => {
     return (
       <div className={classes.videoWrapper}>
         <iframe
+          loading="lazy"
           className={classes.video}
           src={embedUrl}
           frameBorder="0"
