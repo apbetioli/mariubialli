@@ -1,6 +1,7 @@
 import {
   Backdrop,
   CircularProgress,
+  Grid,
   TextField
 } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
@@ -8,6 +9,7 @@ import theme from "assets/js/theme";
 import useUser from "lib/useUser";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import NumberFormat from "react-number-format";
 import subscribe from "../lib/subscribe";
 import ColorButton from "./ColorButton";
 
@@ -77,11 +79,14 @@ export default function Form(props) {
     event.preventDefault();
     setBackdrop(!backdrop);
 
+    const ddd = values.ddd ? values.ddd.trim() : "";
+    const phone = values.phone ? values.phone.trim() : "";
+
     const form = {
       email: values.email.toLowerCase(),
       tag: props.tag,
       name: values.name,
-      phone: values.ddd + "" + values.phone
+      phone: ddd + phone
     };
 
     const source = window.localStorage.getItem("utm_source");
@@ -103,9 +108,9 @@ export default function Form(props) {
       if (values.name)
         redirectTo += "&name=" + values.name;
       if (values.ddd)
-        redirectTo += "&phoneac=" + values.ddd;
+        redirectTo += "&phoneac=" + ddd;
       if (values.phone)
-        redirectTo += "&phonenumber=" + values.phone;
+        redirectTo += "&phonenumber=" + phone;
       redirectTo += "&redirect=true";
 
       router.push(redirectTo);
@@ -119,24 +124,6 @@ export default function Form(props) {
 
   return (
     <form onSubmit={onSubmit.bind(this)}>
-
-      {props.showName &&
-        <MyTextField
-          id="filled-full-width"
-          label="Nome"
-          type="text"
-          placeholder="Nome completo"
-          fullWidth
-          required
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant="outlined"
-          value={values.name}
-          onChange={handleChange("name")}
-        />
-      }
 
       <MyTextField
         id="filled-full-width"
@@ -154,37 +141,58 @@ export default function Form(props) {
         onChange={handleChange("email")}
       />
 
+      {props.showName &&
+        <MyTextField
+          id="filled-full-width"
+          label="Nome"
+          type="text"
+          placeholder="Nome completo"
+          fullWidth
+          margin="normal"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="outlined"
+          value={values.name}
+          onChange={handleChange("name")}
+        />
+      }
+
       {props.showPhone &&
-        <div>
-          <MyTextField
-            id="filled-full-width"
-            label="DDD"
-            type="number"
-            placeholder="DDD"
-            fullWidth
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-            value={values.ddd}
-            onChange={handleChange("ddd")}
-          />
-          <MyTextField
-            id="filled-full-width"
-            label="Celular"
-            type="number"
-            placeholder="Digite o número do celular"
-            fullWidth
-            margin="normal"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-            value={values.phone}
-            onChange={handleChange("phone")}
-          />
-        </div>
+        <Grid container spacing={1}>
+          <Grid item xs={4}>
+            <NumberFormat
+              customInput={MyTextField}
+              format="##"
+              id="ddd"
+              label="DDD"
+              fullWidth
+              margin="normal"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="outlined"
+              value={values.ddd}
+              onChange={handleChange("ddd")}
+            />
+          </Grid>
+          <Grid item xs={8}>
+            <NumberFormat
+              customInput={MyTextField}
+              format="#########"
+              id="cellphone"
+              label="Celular"
+              fullWidth
+              margin="normal"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="outlined"
+              value={values.phone}
+              onChange={handleChange("phone")}
+            />
+          </Grid>
+        </Grid>
       }
 
       <ColorButton
