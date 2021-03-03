@@ -1,4 +1,4 @@
-import { Card, CardContent, CardMedia, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Hidden, SvgIcon } from "@material-ui/core";
+import { Card, CardContent, CardMedia, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Hidden, IconButton, SvgIcon } from "@material-ui/core";
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -20,6 +20,7 @@ import ColorButton from "../../components/ColorButton";
 import Footer from "../../components/Footer";
 import Form from "../../components/Form";
 import ScrollTo from "../../components/ScrollTo";
+import CloseIcon from '@material-ui/icons/Close';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -123,7 +124,13 @@ const useStyles = makeStyles((theme) => ({
   check: {
     height: "1rem",
     width: "1rem",
-  }
+  },
+  closeButton: {
+    position: 'absolute',
+    right: theme.spacing(1),
+    top: theme.spacing(1),
+    color: theme.palette.grey[500],
+  },
 }));
 
 const recap = [
@@ -184,14 +191,19 @@ function CheckoutButton(props) {
         {props.children}
       </ColorButton>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Inscreva-se</DialogTitle>
+        <DialogTitle id="form-dialog-title">
+          Inscreva-se
+          <IconButton aria-label="close" className={classes.closeButton} onClick={handleClose}>
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
         <DialogContent>
           <DialogContentText>
-            <Typography variant="body2" color="textSecondary" component="p">
-              Na próxima página você poderá escolher a forma de pagamento: <b>cartão, boleto ou pix</b>
+            <Typography variant="body2" color="textSecondary" component="span">
+              Na próxima página você poderá escolher a forma de pagamento: <b>cartão, boleto ou PIX</b>
             </Typography>
           </DialogContentText>
-          <Form buttonText="Continuar inscrição &gt;" tag="JOIASRARAS-CHECKOUT" redirectTo={checkoutURL} emailPlaceholder="Seu email de acesso" />
+          <Form buttonText="Continuar &gt;&gt;" tag="JOIASRARAS-CHECKOUT" redirectTo={checkoutURL} emailPlaceholder="Seu email de acesso" />
         </DialogContent>
         <DialogActions>
         </DialogActions>
@@ -481,7 +493,7 @@ function Preco() {
             <img src={require("assets/img/price_discount.png")} alt="" className={classes.preco} />
             <div className={classes.precoAviso}>* o preço pode subir a qualquer momento</div>
             <CheckoutButton>
-              Quero já minhas Joias Raras
+              Quero me inscrever agora
             </CheckoutButton>
           </Grid>
         </Grid>
