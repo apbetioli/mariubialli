@@ -79,14 +79,15 @@ export default function Form(props) {
     event.preventDefault();
     setBackdrop(!backdrop);
 
-    const ddd = values.ddd ? values.ddd.trim() : "";
     const phone = values.phone ? values.phone.trim() : "";
+    const ddd = phone.substring(0,2);
+    const phone_number = phone.substring(2);
 
     const form = {
       email: values.email.toLowerCase(),
       tag: props.tag,
       name: values.name,
-      phone: ddd + phone
+      phone
     };
 
     const source = window.localStorage.getItem("utm_source");
@@ -107,10 +108,10 @@ export default function Form(props) {
       redirectTo += "email=" + values.email.toLowerCase();
       if (values.name)
         redirectTo += "&name=" + values.name;
-      if (values.ddd)
+      if (ddd)
         redirectTo += "&phoneac=" + ddd;
-      if (values.phone)
-        redirectTo += "&phonenumber=" + phone;
+      if (phone_number)
+        redirectTo += "&phonenumber=" + phone_number;
       redirectTo += "&redirect=true";
 
       router.push(redirectTo);
@@ -159,40 +160,21 @@ export default function Form(props) {
       }
 
       {props.showPhone &&
-        <Grid container spacing={1}>
-          <Grid item xs={4}>
-            <NumberFormat
-              customInput={MyTextField}
-              format="##"
-              id="ddd"
-              label="DDD"
-              fullWidth
-              margin="normal"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              variant="outlined"
-              value={values.ddd}
-              onChange={handleChange("ddd")}
-            />
-          </Grid>
-          <Grid item xs={8}>
-            <NumberFormat
-              customInput={MyTextField}
-              format="#########"
-              id="cellphone"
-              label="Celular"
-              fullWidth
-              margin="normal"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              variant="outlined"
-              value={values.phone}
-              onChange={handleChange("phone")}
-            />
-          </Grid>
-        </Grid>
+        <NumberFormat
+          customInput={MyTextField}
+          format="###########"
+          id="phone"
+          label="Celular"
+          placeholder="DDD + Número (Opcional)"
+          fullWidth
+          margin="normal"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="outlined"
+          value={values.phone}
+          onChange={handleChange("phone")}
+        />
       }
 
       <ColorButton
