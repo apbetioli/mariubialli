@@ -194,7 +194,7 @@ function Promessa() {
       <Container maxWidth="md">
         <Grid container spacing={3}>
           <Grid item className={classes.centered} xs={12} lg={7} md={6}>
-            <img src={require("assets/img/jesus/felizpascoa.png")} alt="" className={classes.foto} />
+            <img src={require("assets/img/jesus/capa.jpg")} alt="" className={classes.foto} />
           </Grid>
 
           <Grid item className={classes.centered} xs={12} lg={5} md={6}>
@@ -203,10 +203,6 @@ function Promessa() {
             <CTA>
               Quero renascer em Jesus!
             </CTA>
-          </Grid>
-
-          <Grid item className={classes.centered} xs={12}>
-            <img src={require("assets/img/jesus/elevive.jpg")} alt="" className={classes.foto} />
           </Grid>
 
         </Grid>
@@ -239,16 +235,16 @@ function SobreCurso() {
               <CheckIcon className={classes.check} /><span> Guirlanda slim</span>
             </p>
             <p>
-              <CheckIcon className={classes.check} /><span> Molde adaptado para guirlanda com 24cm</span>
+              <CheckIcon className={classes.check} /><span> Molde de Jesus com 24cm adaptado para guirlanda</span>
             </p>
             <p>
               <CheckIcon className={classes.check} /><span> Técnica de pintura com stencil</span>
             </p>
             <p>
-              <CheckIcon className={classes.check} /><span> Manto especial</span>
+              <CheckIcon className={classes.check} /><span> Manto especial com caída</span>
             </p>
             <p>
-              <CheckIcon className={classes.check} /><span> Duas opções de escrita</span>
+              <CheckIcon className={classes.check} /><span> Duas opções de escrita prontas</span>
             </p>
             <p>
               <CheckIcon className={classes.check} /><span> Módulo exclusivo para iniciantes</span>
@@ -351,6 +347,45 @@ function DuvidasWhats() {
   );
 }
 
+function DedoNaFerida() {
+  const classes = useStyles();
+  return (
+    <section>
+      <Container maxWidth="md">
+        <Grid container className={classes.grid} spacing={3}>
+          <Grid item className={classes.centered} xs={12}>
+            <img src={require("assets/img/jesus/felizpascoa.jpg")} alt="" className={classes.foto} />
+          </Grid>
+
+          <Grid item xs={12}>
+            <h1 className={classes.centered}><span className={classes.highlight}>Para quem</span> é o curso?</h1>
+            <p>
+              Aproveite a temporada de páscoa, mas venda o restante do ano também. Você pode personalizar o texto da guirlanda como quiser: Feliz Páscoa, Ele vive! E o que mais sua imaginação mandar.
+            </p>
+            <p>
+              Aprenda com o passo a passo em vídeo para que não fique nenhuma dúvida. E se ficar dúvidas eu vou te responder.
+            </p>
+            <p>
+              Não importa se você é experiente em feltro ou iniciante e também não precisa de máquina de costura.
+            </p>
+            <p>
+              Você aprenderá técnicas diferenciadas que vão além do feltro para você usar em outros projetos.
+            </p>
+            <CTA>
+              Sim! Este curso é para mim!
+            </CTA>
+          </Grid>
+
+          <Grid item className={classes.centered} xs={12}>
+            <img src={require("assets/img/jesus/elevive.jpg")} alt="" className={classes.foto} />
+          </Grid>
+
+        </Grid>
+      </Container>
+    </section>
+  );
+}
+
 export default function JesusVendas() {
   const classes = useStyles();
   return (
@@ -369,6 +404,7 @@ export default function JesusVendas() {
       </Head>
 
       <Promessa />
+      <DedoNaFerida />
       <SobreCurso />
       <div id="pricing" />
       <Preco />
