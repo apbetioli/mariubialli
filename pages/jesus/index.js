@@ -245,6 +245,9 @@ function SobreCurso() {
               <CheckIcon className={classes.check} /><span> Técnica de pintura com stencil</span>
             </p>
             <p>
+              <CheckIcon className={classes.check} /><span> Manto especial</span>
+            </p>
+            <p>
               <CheckIcon className={classes.check} /><span> Duas opções de escrita</span>
             </p>
             <p>
