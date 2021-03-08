@@ -126,6 +126,13 @@ export default function Header(props) {
                   <ListItemText primary="Início" />
                 </ListItemLink>
 
+                <ListItemLink button href="/cursos">
+                  <ListItemIcon>
+                    <InboxIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Cursos" />
+                </ListItemLink>
+
                 <ListItemLink button href="/apostilas">
                   <ListItemIcon>
                     <InboxIcon />
@@ -181,6 +188,9 @@ export default function Header(props) {
             </Drawer>
 
             <nav className={classes.desktopButtons}>
+            <Button href="/cursos" className={classes.toolbarButton}>
+                Cursos
+              </Button>
               <Button href="/apostilas" className={classes.toolbarButton}>
                 Apostilas gratuitas
               </Button>
