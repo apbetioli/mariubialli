@@ -20,12 +20,12 @@ export default function JesusAguardando(props) {
                 subtitle="Leia com atenção!"
                 text=""
                 title={getTitle()} >
-                <p>Fico muito feliz que tenha se inscrito no Curso Jesus em Feltro.</p>
+                <p>Fico muito feliz que tenha se inscrito no Curso Renascer em Jesus.</p>
                 <p>Faça o pagamento <b>ainda hoje</b> e <b>envie o comprovante</b> para o WhatsApp abaixo para que o curso seja liberado o mais rápido possível.</p>
                 <p>Você receberá o acesso ao curso automaticamente no email cadastrado assim que o pagamento for aprovado.</p>
                 <p>A aprovação do pagamento pelo banco pode levar até 72 horas.</p>
                 <p>Qualquer dúvida entre em contato pelo WhatsApp clicando no botão abaixo, ou por email <a href="mailto:contato@mariubialli.com">contato@mariubialli.com</a></p>
-                <BotaoWhats float={false} message="Oi, fiz a compra por boleto do Curso Jesus em Feltro..." />
+                <BotaoWhats float={false} message="Oi, fiz a compra por boleto do Curso Renascer em Jesus..." />
             </Obrigado>
         </Layout >
     );

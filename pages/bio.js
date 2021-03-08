@@ -58,7 +58,7 @@ function Links() {
                         href="/jesus"
                         className={classes.button}
                     >
-                        Curso Jesus em Feltro
+                        Curso Renascer em Jesus
                     </ColorButton>
                 </Grid>
                 <Grid item xs={12}>

@@ -24,7 +24,7 @@ export default function JesusConfirmado(props) {
                 <p>Após este tempo se não receber, veja se ele pode ter caído na pasta de spam.</p>
                 <p>Nos vemos no curso!</p>
                 <p>Qualquer dúvida entre em contato pelo WhatsApp clicando no botão abaixo, ou por email <a href="mailto:contato@mariubialli.com">contato@mariubialli.com</a></p>
-                <BotaoWhats float={false} message="Oi, estou com dificuldades em acessar o Curso Jesus em Feltro e gostaria de tirar algumas dúvidas." />
+                <BotaoWhats float={false} message="Oi, estou com dificuldades em acessar o Curso Renascer em Jesus e gostaria de tirar algumas dúvidas." />
             </Obrigado>
         </Layout >
     );

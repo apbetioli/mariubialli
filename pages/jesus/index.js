@@ -341,7 +341,7 @@ function FAQs() {
 function DuvidasWhats() {
   const classes = useStyles();
   return (
-    <BotaoWhats float={true} message="Oi, gostaria de tirar minhas dúvidas sobre o Curso Jesus em Feltro" />
+    <BotaoWhats float={true} message="Oi, gostaria de tirar minhas dúvidas sobre o Curso Renascer em Jesus" />
   );
 }
 
@@ -350,14 +350,14 @@ export default function JesusVendas() {
   return (
     <main className={classes.root}>
       <Head>
-        <title>Curso Jesus em Feltro</title>
+        <title>Curso Renascer em Jesus</title>
         <meta
           name="description"
-          content="Aprenda passo a passo a fazer Jesus em Feltro e uma linda guirlanda."
+          content="Aprenda a confeccionar uma linda guirlanda slim com técnica de pintura com stencil e um Jesus com 30 cm que para em pé sozinho."
         />
         <meta
           name="keywords"
-          content="feltro, artesanato, costura, ponto caseado, ponto reto, ponto alinhavo, passo a passo, diy, moldes gratuitos, apostilas gratuitas, bonecas, boneca em feltro, jesus"
+          content="feltro, artesanato, costura, ponto caseado, ponto reto, ponto alinhavo, passo a passo, diy, moldes gratuitos, apostilas gratuitas, bonecas, boneca em feltro, jesus, páscoa"
         />
         <meta name="robots" content="index,nofollow"></meta>
       </Head>
