@@ -259,6 +259,9 @@ function SobreCurso() {
             <p>
               <CheckIcon className={classes.check} /><span> Suporte para tirar dúvidas</span>
             </p>
+            <p>
+              <CheckIcon className={classes.check} /><span> Acesso vitalício</span>
+            </p>
           </Grid>
           <Grid item xs={12} className={classes.centered}>
             <img src={require("assets/img/jesus/jesus2.jpg")} alt="" className={classes.foto} />
