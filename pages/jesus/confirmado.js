@@ -12,20 +12,19 @@ function getTitle() {
     return title;
 }
 
-export default function JoiasRarasAguardando(props) {
+export default function JesusConfirmado(props) {
     return (
         <Layout {...props}>
             <Obrigado
                 social={false}
-                subtitle="Leia com atenção!"
+                subtitle="Inscrição confirmada!"
                 text=""
                 title={getTitle()} >
-                <p>Fico muito feliz que tenha se inscrito no curso das bonecas Joias Raras.</p>
-                <p>Faça o pagamento <b>ainda hoje</b> e <b>envie o comprovante</b> para o WhatsApp abaixo ou para o email <a href="mailto:contato@mariubialli.com">contato@mariubialli.com</a> para que o curso seja liberado o mais rápido possível.</p>
-                <p>Você receberá o acesso ao curso automaticamente no email cadastrado assim que o pagamento for aprovado.</p>
-                <p>A aprovação do pagamento pelo banco pode levar até 72 horas.</p>
+                <p>Você receberá em até 10 minutos um email da <b>Hotmart</b> com o seu acesso ao curso.</p>
+                <p>Após este tempo se não receber, veja se ele pode ter caído na pasta de spam.</p>
+                <p>Nos vemos no curso!</p>
                 <p>Qualquer dúvida entre em contato pelo WhatsApp clicando no botão abaixo, ou por email <a href="mailto:contato@mariubialli.com">contato@mariubialli.com</a></p>
-                <BotaoWhats float={false} message="Oi, fiz a compra por boleto do Curso Bonecas Joias Raras..." />
+                <BotaoWhats float={false} message="Oi, estou com dificuldades em acessar o Curso Jesus em Feltro e gostaria de tirar algumas dúvidas." />
             </Obrigado>
         </Layout >
     );

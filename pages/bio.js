@@ -32,8 +32,7 @@ function populateUtmSource() {
 function Links() {
     const classes = useStyles();
     return (
-        <Container maxWidth="xl" className={classes.root}>
-            <Wave />
+        <>
             <Grid
                 container
                 spacing={3}
@@ -52,6 +51,14 @@ function Links() {
                         className={classes.button}
                     >
                         Curso Bonecas Joias Raras
+                    </ColorButton>
+                </Grid>
+                <Grid item xs={12}>
+                    <ColorButton
+                        href="/jesus"
+                        className={classes.button}
+                    >
+                        Curso Jesus em Feltro
                     </ColorButton>
                 </Grid>
                 <Grid item xs={12}>
@@ -79,14 +86,19 @@ function Links() {
                     </ColorButton>
                 </Grid>
             </Grid>
-        </Container>
+        </>
     )
 }
 
 export default function Bio() {
     populateUtmSource();
 
+    const classes = useStyles();
+
     return (
-        <Links />
+        <Container maxWidth="xl" className={classes.root}>
+            <Wave />
+            <Links />
+        </Container>
     );
 }
