@@ -7,6 +7,7 @@ module.exports = async (req, res) => {
     if (req.method == "POST") {
 
       const data = req.body;
+      data.date = new Date().toISOString();
       console.log(data);  
 
       const abandoned = db.db(process.env.MONGO_DB).collection("abandoned");
