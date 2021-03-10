@@ -175,7 +175,7 @@ function CheckoutButton(props) {
         <DialogContent>
           <DialogContentText>
             <Typography variant="body2" color="textSecondary" component="span">
-              Na próxima página você poderá escolher a forma de pagamento: <b>cartão ou pix</b>
+              Na próxima página você poderá escolher a forma de pagamento
             </Typography>
           </DialogContentText>
           <Form buttonText="Continuar &gt;&gt;" tag="JESUS-CHECKOUT" redirectTo={checkoutURL} emailPlaceholder="Seu email de acesso" showName={true} showPhone={true} />

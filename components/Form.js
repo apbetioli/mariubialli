@@ -165,7 +165,7 @@ export default function Form(props) {
           format="###########"
           id="phone"
           label="Celular"
-          placeholder="DDD + Número (Opcional)"
+          placeholder="DDD + Número"
           fullWidth
           margin="normal"
           InputLabelProps={{
