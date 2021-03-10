@@ -13,6 +13,8 @@ module.exports = async (req, res) => {
       const query = { email: data.email };
       const t = await transactions.findOne(query);
 
+      delete data._id;
+
       if(!t || t.status != "approved" || ["completed", "refunded", "chargeback", "dispute"].includes(data.status)) {
         const doc = { $set: data }
         const options = { upsert: true };
