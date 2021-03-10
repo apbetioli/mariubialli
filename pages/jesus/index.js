@@ -343,7 +343,7 @@ function FAQs() {
 function DuvidasWhats() {
   const classes = useStyles();
   return (
-    <BotaoWhats float={true} message="Oi, gostaria de tirar minhas dúvidas sobre o Curso Renascer em Jesus" />
+    <BotaoWhats float={true} message="Oi, gostaria de saber mais sobre o Curso Renascer em Jesus" />
   );
 }
 
