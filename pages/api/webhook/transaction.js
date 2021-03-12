@@ -26,7 +26,7 @@ module.exports = async (req, res) => {
 
     } else {
       const db = await client.connect();
-      const cursor = db.db(process.env.MONGO_DB).collection("transactions").find({});
+      const cursor = db.db(process.env.MONGO_DB).collection("transactions").find({}, {"sort": "purchase_date" });
       const transactions = await cursor.toArray();
       res.send(transactions)
     }
