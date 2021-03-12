@@ -19,7 +19,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Head from "next/head";
 import React from "react";
 import CloseIcon from '@material-ui/icons/Close';
-import ColorButton from "../components/ColorButton";
+import ColorButton from "../../components/ColorButton";
 
 const useStyles = makeStyles({
     button: {
