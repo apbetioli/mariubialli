@@ -164,8 +164,6 @@ export async function getServerSideProps(context) {
 
     const res = await fetch('https://mariubialli.com/api/webhook/transaction')
     const transactions = await res.json()
-    transactions.reverse()
-    console.log(transactions[0]);
 
     return {
         props: {
