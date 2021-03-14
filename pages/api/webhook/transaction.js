@@ -3,13 +3,13 @@ import client from "../../../lib/db";
 module.exports = async (req, res) => {
   try {
     const db = await client.connect();
+    const transactions = db.db(process.env.MONGO_DB).collection("transactions");
 
     if (req.method == "POST") {
 
       const data = req.body;
       console.log(data);
 
-      const transactions = db.db(process.env.MONGO_DB).collection("transactions");
       const query = { email: data.email, prod: data.prod };
       const t = await transactions.findOne(query);
 
@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
       }
 
     } else {
-      const cursor = db.db(process.env.MONGO_DB).collection("transactions").find({}, {"sort": {"purchase_date": -1} });
+      const cursor = transactions.find({}, {"sort": {"purchase_date": -1} });
       const transactions = await cursor.toArray();
       res.send(transactions)
     }

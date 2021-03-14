@@ -30,7 +30,7 @@ const useStyles = makeStyles({
     },
 });
 
-export default function Recupera(props) {
+export default function Abandonou(props) {
     const classes = useStyles()
 
     const [open, setOpen] = React.useState(false);
@@ -53,7 +53,7 @@ export default function Recupera(props) {
 
     const onSubmit = async (e) => {
 
-        const res = await fetch('/api/webhook/transaction', {
+        const res = await fetch('/api/webhook/abandoned', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -110,15 +110,13 @@ export default function Recupera(props) {
 
             </Dialog>
             <Container maxWidth="xl">
-                <h1>Recuperar</h1>
+                <h1>Abandonou</h1>
                 <TableContainer component={Paper}>
                     <Table className={classes.table} size="small" aria-label="a dense table">
                         <TableHead>
                             <TableRow>
                                 <TableCell>Data</TableCell>
                                 <TableCell>Produto</TableCell>
-                                <TableCell>Pagamento</TableCell>
-                                <TableCell>Status</TableCell>
                                 <TableCell>Obs</TableCell>
                                 <TableCell>Nome</TableCell>
                                 <TableCell>Email</TableCell>
@@ -160,14 +158,13 @@ export default function Recupera(props) {
 
 export async function getServerSideProps(context) {
 
-    const res = await fetch('https://mariubialli.com/api/webhook/transaction')
-    const transactions = await res.json()
-    transactions.reverse()
-    console.log(transactions[0]);
+    const res = await fetch('https://mariubialli.com/api/webhook/abandoned')
+    const abandoned = await res.json()
+    console.log(abandoned[0]);
 
     return {
         props: {
-            transactions
+            abandoned
         },
     }
 }
