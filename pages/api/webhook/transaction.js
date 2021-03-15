@@ -3,10 +3,9 @@ import client from "../../../lib/db";
 module.exports = async (req, res) => {
   try {
     const db = await client.connect();
-    const transactions = db.db(process.env.MONGO_DB).collection("transactions");
+    const transactions = await db.db(process.env.MONGO_DB).collection("transactions");
 
     if (req.method == "POST") {
-
       const data = req.body;
       console.log(data);
 
@@ -15,7 +14,7 @@ module.exports = async (req, res) => {
 
       delete data._id;
 
-      if(!t || t.status != "approved" || ["completed", "refunded", "chargeback", "dispute"].includes(data.status)) {
+      if (!t || t.status != "approved" || ["completed", "refunded", "chargeback", "dispute"].includes(data.status)) {
         const doc = { $set: data }
         const options = { upsert: true };
         const upserted = await transactions.updateOne(query, doc, options);
@@ -25,9 +24,9 @@ module.exports = async (req, res) => {
       }
 
     } else {
-      const cursor = transactions.find({}, {"sort": {"purchase_date": -1} });
-      const transactions = await cursor.toArray();
-      res.send(transactions)
+      const cursor = transactions.find({}, { "sort": { "purchase_date": -1 } });
+      const list = await cursor.toArray();
+      res.send(list)
     }
 
   } catch (e) {
@@ -35,5 +34,8 @@ module.exports = async (req, res) => {
     res
       .status(400)
       .send(e);
+
+  } finally {
+    await client.close();
   }
 };
