@@ -25,7 +25,5 @@ module.exports = async (req, res) => {
     res
       .status(400)
       .send(e);
-  } finally {
-    await client.close();
   }
 };
