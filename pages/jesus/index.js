@@ -135,7 +135,7 @@ const faqs = [
   { pergunta: "Quais são as formas de pagamento?", resposta: "Você pode pagar com cartão de crédito ou PIX" },
 ];
 
-const checkoutURL = "https://pay.hotmart.com/D49033705A?checkoutMode=10&hideBillet=1";
+const checkoutURL = "https://pay.hotmart.com/D49033705A?checkoutMode=10";
 
 function CTA(props) {
   const classes = useStyles();

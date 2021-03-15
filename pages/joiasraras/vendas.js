@@ -161,7 +161,7 @@ const faqs = [
   { pergunta: "Quais são as formas de pagamento?", resposta: "Você pode pagar com cartão de crédito, PIX ou boleto. A opção por boleto pode levar 72 horas para liberação após o pagamento." },
 ];
 
-const checkoutURL = "https://pay.hotmart.com/B46628840G?checkoutMode=10&hideBillet=1";
+const checkoutURL = "https://pay.hotmart.com/B46628840G?checkoutMode=10";
 
 function CTA(props) {
   const classes = useStyles();
