@@ -132,7 +132,7 @@ const faqs = [
   { pergunta: "Sou iniciante, vou conseguir fazer?", resposta: "Não importa se você é experiente em feltro ou iniciante. O curso inclui um módulo especialmente para quem é iniciante e aborda tudo o que você precisa saber para criar as bonecas com perfeição." },
   { pergunta: "Não tenho máquina de costura. É um problema?", resposta: "Não. Vou te ensinar a confeccionar tudo à mão. A máquina de costura é opcional." },
   { pergunta: "O valor é único ou é mensalidade?", resposta: "Este valor é único. Você paga uma vez só e tem acesso a tudo isso sem prazo de validade." },
-  { pergunta: "Quais são as formas de pagamento?", resposta: "Você pode pagar com cartão de crédito ou PIX" },
+  { pergunta: "Quais são as formas de pagamento?", resposta: "Você pode pagar com cartão de crédito, PIX ou boleto. A opção por boleto pode levar 72 horas para liberação após o pagamento." },
 ];
 
 const checkoutURL = "https://pay.hotmart.com/D49033705A?checkoutMode=10";
