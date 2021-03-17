@@ -602,10 +602,24 @@ function Testemunhos1() {
         <Grid container className={classes.grid} spacing={0}>
           <Grid item className={classes.centered} xs={12}>
             <h1>O que os alunos estão <br /><span className={classes.highlight}>falando do curso?</span></h1>
+          </Grid>
+          <Grid item className={classes.centered} xs={12} sm={4}>
+            <img src={require("assets/img/testemunho14.jpg")} alt="Testemunho" className={classes.foto} />
+          </Grid>
+          <Grid item className={classes.centered} xs={12} sm={4}>
             <img src={require("assets/img/testemunho1.jpg")} alt="Testemunho" className={classes.foto} />
+          </Grid>
+          <Grid item className={classes.centered} xs={12} sm={4}>
             <img src={require("assets/img/testemunho2.jpg")} alt="Testemunho" className={classes.foto} />
+          </Grid>
+          <Grid item className={classes.centered} xs={12} sm={4}>
             <img src={require("assets/img/testemunho6.jpg")} alt="Testemunho" className={classes.foto} />
+          </Grid>
+          <Grid item className={classes.centered} xs={12} sm={4}>
             <img src={require("assets/img/testemunho5.jpg")} alt="Testemunho" className={classes.foto} />
+          </Grid>
+          <Grid item className={classes.centered} xs={12} sm={4}>
+            <img src={require("assets/img/testemunho3.jpg")} alt="Testemunho" className={classes.foto} />
           </Grid>
         </Grid>
       </Container>
@@ -619,11 +633,22 @@ function Testemunhos2() {
     <section>
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={0}>
-          <Grid item className={classes.centered} xs={12}>
+          <Grid item className={classes.centered} xs={12} sm={4}>
             <img src={require("assets/img/testemunho7.jpg")} alt="Testemunho" className={classes.foto} />
+          </Grid>
+          <Grid item className={classes.centered} xs={12} sm={4}>
             <img src={require("assets/img/testemunho9.jpg")} alt="Testemunho" className={classes.foto} />
+          </Grid>
+          <Grid item className={classes.centered} xs={12} sm={4}>
             <img src={require("assets/img/testemunho10.jpg")} alt="Testemunho" className={classes.foto} />
-            <img src={require("assets/img/testemunho3.jpg")} alt="Testemunho" className={classes.foto} />
+          </Grid>
+          <Grid item className={classes.centered} xs={12} sm={6}>
+            <img src={require("assets/img/testemunho12.jpg")} alt="Testemunho" className={classes.foto} />
+          </Grid>
+          <Grid item className={classes.centered} xs={12} sm={6}>
+            <img src={require("assets/img/testemunho13.jpg")} alt="Testemunho" className={classes.foto} />
+          </Grid>
+          <Grid item className={classes.centered} xs={12}>
             <CheckoutButton>
               Estou convencida, quero entrar para o curso
             </CheckoutButton>
