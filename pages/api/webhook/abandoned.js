@@ -8,11 +8,26 @@ module.exports = async (req, res) => {
     if (req.method == "POST") {
 
       const data = req.body;
-      data.date = new Date().toISOString();
-      console.log(data);
+      if(!data.date)
+        data.date = new Date().toISOString();
 
-      const inserted = await abandoned.insertOne(data);
-      res.send(inserted);
+      const query = { _id: data._id };
+
+      delete data._id;
+
+      const doc = { $set: data }
+      const options = { upsert: true };
+      const upserted = await abandoned.updateOne(query, doc, options);
+
+      console.log(upserted);
+
+      res.send(upserted);
+
+    } else if (req.method == "DELETE") {
+
+      const query = { _id: req.body._id };
+
+      res.send(await abandoned.deleteOne(query));
 
     } else {
       const cursor = abandoned.find({}, { "sort": { "date": -1 } });

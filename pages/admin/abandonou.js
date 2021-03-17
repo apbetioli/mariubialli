@@ -3,7 +3,6 @@ import {
     Dialog,
     DialogActions,
     DialogContent,
-    DialogContentText,
     DialogTitle,
     IconButton,
     makeStyles,
@@ -16,9 +15,9 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Head from "next/head";
-import React from "react";
 import CloseIcon from '@material-ui/icons/Close';
+import Head from "next/head";
+import React, { useEffect } from "react";
 import ColorButton from "../../components/ColorButton";
 
 const useStyles = makeStyles({
@@ -33,18 +32,34 @@ const useStyles = makeStyles({
 export default function Abandonou(props) {
     const classes = useStyles()
 
+    const [abandoned, setAbandoned] = React.useState(props.abandoned);
     const [open, setOpen] = React.useState(false);
-    const [selected, setSelected] = React.useState({
-        obs: ''
-    });
+    const [selected, setSelected] = React.useState({});
+    let [obs, setObs] = React.useState('');
 
     const handleChange = (prop) => (event) => {
-        setSelected({...selected, [prop]: event.target.value});
+        setObs(event.target.value);
+        selected[prop] = event.target.value;
     };
 
     const handleClickOpen = (transaction) => {
         setSelected(transaction)
+        setObs(transaction.obs);
         setOpen(true);
+    };
+
+    const handleDelete = async (transaction) => {
+        const res = await fetch('/api/webhook/abandoned', {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(transaction)
+        })
+        console.log(res);
+
+        setAbandoned(await list());
     };
 
     const handleClose = () => {
@@ -52,6 +67,7 @@ export default function Abandonou(props) {
     };
 
     const onSubmit = async (e) => {
+        e.preventDefault();
 
         const res = await fetch('/api/webhook/abandoned', {
             method: 'POST',
@@ -65,7 +81,6 @@ export default function Abandonou(props) {
 
         setOpen(false);
     };
-
     return (
         <>
             <Head>
@@ -92,7 +107,7 @@ export default function Abandonou(props) {
                                 shrink: true,
                             }}
                             variant="outlined"
-                            value={selected.obs}
+                            value={obs}
                             onChange={handleChange("obs")}
                         />
                         <ColorButton
@@ -121,32 +136,33 @@ export default function Abandonou(props) {
                                 <TableCell>Nome</TableCell>
                                 <TableCell>Email</TableCell>
                                 <TableCell>Whats</TableCell>
-                                <TableCell>Boleto</TableCell>
                                 <TableCell>Checkout</TableCell>
+                                <TableCell>Delete</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {props.transactions.map((transaction) => {
+                            {abandoned.map((transaction) => {
 
-                                const text = `Oi ${transaction.first_name}. Sou Alexandre do time dos cursos da Mari Ubialli. Identificamos tentativa de compra do *${transaction.prod_name}*. Estou entrando em contato para te ajudar caso tenha alguma dúvida.`;
+                                const text = `Oi ${transaction.buyerVO.name}. Sou Alexandre do suporte da Mari Ubialli. Identificamos tentativa de compra do *${transaction.productName}*. Estou entrando em contato para te ajudar caso tenha alguma dúvida.`;
+                                const checkoutId = transaction.productName == "Curso Bonecas Joias Raras" ? "B46628840G" : "D49033705A";
+                                const checkoutUrl = `https://pay.hotmart.com/${checkoutId}?checkoutMode=10&email=${transaction.buyerVO.email}&name=${transaction.buyerVO.name}`;
 
-                                if (["expired", "waiting_payment", "canceled"].includes(transaction.status)) {
-                                    return (
-                                        <TableRow key={transaction._id}>
-                                            <TableCell>{new Date(transaction.purchase_date).toLocaleString()}</TableCell>
-                                            <TableCell>{transaction.prod_name}</TableCell>
-                                            <TableCell>{transaction.payment_type}</TableCell>
-                                            <TableCell>{transaction.status}</TableCell>
-                                            <TableCell><span onClick={() => handleClickOpen(transaction)}>{transaction.obs || '...'}</span></TableCell>
-                                            <TableCell>{transaction.name}</TableCell>
-                                            <TableCell>{transaction.email}</TableCell>
-                                            <TableCell><a href={`http://wa.me/55${transaction.phone_local_code}${transaction.phone_number}?text=${text}`} target="_blank">Whats</a></TableCell>
-                                            <TableCell>{transaction.billet_url && <a href={transaction.billet_url} target="_blank">Boleto</a>}</TableCell>
-                                            <TableCell><a href={`https://pay.hotmart.com/B46628840G?checkoutMode=10&email=${transaction.email}&name=${transaction.name}&doc=${transaction.doc}&phonenumber=${transaction.phone_number}&phoneac=${transaction.phone_local_code}`} target="_blank">Checkout</a></TableCell>
-
-                                        </TableRow>
-                                    )
-                                }
+                                return (
+                                    <TableRow key={transaction._id}>
+                                        <TableCell>{new Date(transaction.date).toLocaleString()}</TableCell>
+                                        <TableCell>{transaction.productName}</TableCell>
+                                        <TableCell><span onClick={() => handleClickOpen(transaction)}>{transaction.obs || '...'}</span></TableCell>
+                                        <TableCell>{transaction.buyerVO.name}</TableCell>
+                                        <TableCell>{transaction.buyerVO.email}</TableCell>
+                                        <TableCell>
+                                            {transaction.buyerVO.phone &&
+                                                <a href={`http://wa.me/55${transaction.buyerVO.phone}?text=${text}`} target="_blank">Whats</a>
+                                            }
+                                        </TableCell>
+                                        <TableCell><a href={checkoutUrl} target="_blank">Checkout</a></TableCell>
+                                        <TableCell><a href="#" onClick={(e) => { e.preventDefault(); handleDelete(transaction); } }>Delete</a></TableCell>
+                                    </TableRow>
+                                )
                             })}
                         </TableBody>
                     </Table>
@@ -156,11 +172,16 @@ export default function Abandonou(props) {
     );
 }
 
-export async function getServerSideProps(context) {
-
-    const res = await fetch('https://mariubialli.com/api/webhook/abandoned')
+async function list() {
+    const res = await fetch('http://localhost:3000/api/webhook/abandoned')
     const abandoned = await res.json()
     console.log(abandoned[0]);
+    return abandoned;
+}
+
+export async function getServerSideProps(context) {
+
+    const abandoned = await list();
 
     return {
         props: {

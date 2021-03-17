@@ -124,7 +124,7 @@ export default function Recupera(props) {
                                 <TableCell>Nome</TableCell>
                                 <TableCell>Email</TableCell>
                                 <TableCell>Celular</TableCell>
-                                <TableCell>Whats</TableCell>
+                                <TableCell>Celular checkout</TableCell>
                                 <TableCell>Checkout Boleto</TableCell>
                             </TableRow>
                         </TableHead>
@@ -145,8 +145,16 @@ export default function Recupera(props) {
                                             <TableCell><span onClick={() => handleClickOpen(transaction)}>{transaction.obs || '...'}</span></TableCell>
                                             <TableCell>{transaction.name}</TableCell>
                                             <TableCell>{transaction.email}</TableCell>
-                                            <TableCell>{transaction.phone_checkout_local_code + ' ' + transaction.phone_checkout_number}</TableCell>
-                                            <TableCell><a href={`http://wa.me/55${transaction.phone_checkout_local_code}${transaction.phone_checkout_number}?text=${text}`} target="_blank">Whats</a></TableCell>
+                                            <TableCell>
+                                                <a href={`http://wa.me/55${transaction.phone_local_code}${transaction.phone_number}?text=${text}`} target="_blank">
+                                                    {transaction.phone_local_code + '' + transaction.phone_number}
+                                                </a>
+                                            </TableCell>
+                                            <TableCell>
+                                                <a href={`http://wa.me/55${transaction.phone_checkout_local_code}${transaction.phone_checkout_number}?text=${text}`} target="_blank">
+                                                    {transaction.phone_checkout_local_code + '' + transaction.phone_checkout_number}
+                                                </a>
+                                            </TableCell>
                                             <TableCell><a href={checkoutUrl} target="_blank">Boleto</a></TableCell>
                                         </TableRow>
                                     )
@@ -164,6 +172,7 @@ export async function getServerSideProps(context) {
 
     const res = await fetch('https://mariubialli.com/api/webhook/transaction')
     const transactions = await res.json()
+    console.log(transactions[0]);
 
     return {
         props: {
