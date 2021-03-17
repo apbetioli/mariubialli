@@ -1,19 +1,20 @@
-import { Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, IconButton } from "@material-ui/core";
-import Accordion from '@material-ui/core/Accordion';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from '@material-ui/core/Typography';
-import CheckIcon from '@material-ui/icons/Check';
-import CloseIcon from '@material-ui/icons/Close';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Head from "next/head";
-import { default as React } from "react";
-import BotaoWhats from "../../components/BotaoWhats";
-import ColorButton from "../../components/ColorButton";
-import Footer from "../../components/Footer";
-import Form from "../../components/Form";
-import ScrollTo from "../../components/ScrollTo";
+import { Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, IconButton } from "@material-ui/core"
+import Accordion from '@material-ui/core/Accordion'
+import AccordionDetails from '@material-ui/core/AccordionDetails'
+import AccordionSummary from '@material-ui/core/AccordionSummary'
+import { makeStyles } from "@material-ui/core/styles"
+import Typography from '@material-ui/core/Typography'
+import CheckIcon from '@material-ui/icons/Check'
+import CloseIcon from '@material-ui/icons/Close'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import Head from "next/head"
+import { useRouter } from "next/router"
+import { default as React } from "react"
+import BotaoWhats from "../../components/BotaoWhats"
+import ColorButton from "../../components/ColorButton"
+import Footer from "../../components/Footer"
+import Form from "../../components/Form"
+import ScrollTo from "../../components/ScrollTo"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -122,7 +123,7 @@ const useStyles = makeStyles((theme) => ({
     top: theme.spacing(1),
     color: theme.palette.grey[500],
   },
-}));
+}))
 
 const faqs = [
   { pergunta: "Quando vou receber o acesso? Quando começa o curso?", resposta: "O acesso a sua área de membros é enviado automaticamente após a confirmação de seu pagamento. Ou seja, começa pra você assim que você se inscreve. Se você realizar o pagamento por cartão de crédito ou PIX, você receberá os dados de acesso em até 10 minutos. Caso o pagamento seja por boleto bancário, a confirmação bancária pode levar até 72 horas." },
@@ -133,32 +134,35 @@ const faqs = [
   { pergunta: "Não tenho máquina de costura. É um problema?", resposta: "Não. Vou te ensinar a confeccionar tudo à mão. A máquina de costura é opcional." },
   { pergunta: "O valor é único ou é mensalidade?", resposta: "Este valor é único. Você paga uma vez só e tem acesso a tudo isso sem prazo de validade." },
   { pergunta: "Quais são as formas de pagamento?", resposta: "Você pode pagar com cartão de crédito, PIX ou boleto. A opção por boleto pode levar 72 horas para liberação após o pagamento." },
-];
-
-const checkoutURL = "https://pay.hotmart.com/D49033705A?checkoutMode=10";
+]
 
 function CTA(props) {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <ScrollTo target="#pricing">
       <ColorButton className={classes.cta}>
         {props.children}
       </ColorButton>
     </ScrollTo>
-  );
+  )
 }
 
 function CheckoutButton(props) {
-  const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const classes = useStyles()
+  const [open, setOpen] = React.useState(false)
 
   const handleClickOpen = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   const handleClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
+
+  let checkoutURL = "https://pay.hotmart.com/D49033705A?checkoutMode=10"
+  const router = useRouter()
+  if (router.query.off)
+    checkoutURL += "&off=" + router.query.off
 
   return (
     <div>
@@ -178,17 +182,17 @@ function CheckoutButton(props) {
               Na próxima página você poderá escolher a forma de pagamento
             </Typography>
           </DialogContentText>
-          <Form buttonText="Continuar &gt;&gt;" tag="JESUS-CHECKOUT" redirectTo={checkoutURL} emailPlaceholder="Seu email de acesso" showName={true} showPhone={true} />
+          <Form buttonText="Continuar" tag="JESUS-CHECKOUT" redirectTo={checkoutURL} emailPlaceholder="Seu email de acesso" showName={true} showPhone={true} />
         </DialogContent>
         <DialogActions>
         </DialogActions>
       </Dialog>
     </div>
-  );
+  )
 }
 
 function Promessa() {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <section>
       <Container maxWidth="md">
@@ -208,11 +212,11 @@ function Promessa() {
         </Grid>
       </Container>
     </section>
-  );
+  )
 }
 
 function SobreCurso() {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <section className={classes.sectionConteudo}>
       <Container maxWidth="md">
@@ -265,11 +269,18 @@ function SobreCurso() {
         </Grid>
       </Container>
     </section>
-  );
+  )
 }
 
 function Preco() {
-  const classes = useStyles();
+
+  const classes = useStyles()
+
+  const router = useRouter()
+  let priceImg = require("assets/img/price27.png")
+  if (router.query.off == "nxgx5qja")
+    priceImg = require("assets/img/price_discount_17.jpg")
+
   return (
     <section className={classes.sectionGreen}>
       <Container maxWidth="md">
@@ -278,7 +289,7 @@ function Preco() {
             <img src={require("assets/img/tudoisso.png")} alt="" className={classes.preco} />
           </Grid>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/price27.png")} alt="" className={classes.preco} />
+            <img src={priceImg} alt="" className={classes.preco} />
             <div className={classes.precoAviso}>* o preço pode subir a qualquer momento</div>
             <CheckoutButton>
               Quero me inscrever agora!
@@ -287,11 +298,11 @@ function Preco() {
         </Grid>
       </Container>
     </section>
-  );
+  )
 }
 
 function SobreMim() {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <section className={classes.sectionSobreMim}>
       <Container maxWidth="md">
@@ -308,11 +319,11 @@ function SobreMim() {
         </Grid>
       </Container>
     </section>
-  );
+  )
 }
 
 function FAQs() {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <section className={classes.sectionFaq}>
       <Container maxWidth="md">
@@ -337,18 +348,18 @@ function FAQs() {
         </Grid>
       </Container>
     </section>
-  );
+  )
 }
 
 function DuvidasWhats() {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <BotaoWhats float={true} message="Oi, gostaria de saber mais sobre o Curso Renascer em Jesus" />
-  );
+  )
 }
 
 function DedoNaFerida() {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <section>
       <Container maxWidth="md">
@@ -383,11 +394,11 @@ function DedoNaFerida() {
         </Grid>
       </Container>
     </section>
-  );
+  )
 }
 
 export default function JesusVendas() {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <main className={classes.root}>
       <Head>
@@ -414,5 +425,5 @@ export default function JesusVendas() {
       <DuvidasWhats />
       <Footer />
     </main>
-  );
+  )
 }
