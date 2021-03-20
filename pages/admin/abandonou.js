@@ -17,8 +17,10 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import CloseIcon from '@material-ui/icons/Close';
 import Head from "next/head";
-import React, { useEffect } from "react";
+import React from "react";
 import ColorButton from "../../components/ColorButton";
+
+const API_URL = `${process.env.NEXT_PUBLIC_DOMAIN}/api/webhook/abandoned`
 
 const useStyles = makeStyles({
     button: {
@@ -49,7 +51,7 @@ export default function Abandonou(props) {
     };
 
     const handleDelete = async (transaction) => {
-        const res = await fetch('/api/webhook/abandoned', {
+        const res = await fetch(API_URL, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
@@ -69,7 +71,7 @@ export default function Abandonou(props) {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        const res = await fetch('/api/webhook/abandoned', {
+        const res = await fetch(API_URL, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -160,7 +162,7 @@ export default function Abandonou(props) {
                                             }
                                         </TableCell>
                                         <TableCell><a href={checkoutUrl} target="_blank">Checkout</a></TableCell>
-                                        <TableCell><a href="#" onClick={(e) => { e.preventDefault(); handleDelete(transaction); } }>Delete</a></TableCell>
+                                        <TableCell><a href="#" onClick={(e) => { e.preventDefault(); handleDelete(transaction); }}>Delete</a></TableCell>
                                     </TableRow>
                                 )
                             })}
@@ -173,7 +175,7 @@ export default function Abandonou(props) {
 }
 
 async function list() {
-    const res = await fetch('http://localhost:3000/api/webhook/abandoned')
+    const res = await fetch(API_URL)
     const abandoned = await res.json()
     console.log(abandoned[0]);
     return abandoned;

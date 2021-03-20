@@ -26,8 +26,9 @@ module.exports = async (req, res) => {
     } else if (req.method == "DELETE") {
 
       const query = { _id: req.body._id };
+      console.log(query)
 
-      res.send(await abandoned.deleteOne(query));
+      res.send(await abandoned.findOneAndDelete(query));
 
     } else {
       const cursor = abandoned.find({}, { "sort": { "date": -1 } });

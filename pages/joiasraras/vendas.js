@@ -201,7 +201,7 @@ function CheckoutButton(props) {
         <DialogContent>
           <DialogContentText>
             <Typography variant="body2" color="textSecondary" component="span">
-              Na próxima página você poderá escolher a forma de pagamento
+              Na próxima página você poderá escolher a forma de pagamento: <b>cartão, pix ou boleto</b>
             </Typography>
           </DialogContentText>
           <Form buttonText="Continuar &gt;&gt;" tag="JOIASRARAS-CHECKOUT" redirectTo={checkoutURL} emailPlaceholder="Seu email de acesso" />

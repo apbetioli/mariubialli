@@ -7,18 +7,20 @@ import {
     IconButton,
     makeStyles,
     TextField
-} from "@material-ui/core";
-import Paper from '@material-ui/core/Paper';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import CloseIcon from '@material-ui/icons/Close';
-import Head from "next/head";
-import React from "react";
-import ColorButton from "../../components/ColorButton";
+} from "@material-ui/core"
+import Paper from '@material-ui/core/Paper'
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableContainer from '@material-ui/core/TableContainer'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import CloseIcon from '@material-ui/icons/Close'
+import Head from "next/head"
+import React from "react"
+import ColorButton from "../../components/ColorButton"
+
+const API_URL = `${process.env.NEXT_PUBLIC_DOMAIN}/api/webhook/transaction`
 
 const useStyles = makeStyles({
     button: {
@@ -27,45 +29,60 @@ const useStyles = makeStyles({
     table: {
         minWidth: 650,
     },
-});
+})
+
+const post = async (transaction) => {
+    return await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(transaction)
+    })
+}
 
 export default function Recupera(props) {
     const classes = useStyles()
 
-    const [open, setOpen] = React.useState(false);
-    const [selected, setSelected] = React.useState({});
-    let [obs, setObs] = React.useState('');
+    const [transactions, setTransactions] = React.useState(props.transactions)
+    const [open, setOpen] = React.useState(false)
+    const [selected, setSelected] = React.useState({})
+    let [obs, setObs] = React.useState('')
 
     const handleChange = (prop) => (event) => {
-        setObs(event.target.value);
-        selected[prop] = event.target.value;
-    };
+        setObs(event.target.value)
+        selected[prop] = event.target.value
+    }
 
     const handleClickOpen = (transaction) => {
         setSelected(transaction)
-        setObs(transaction.obs);
-        setOpen(true);
-    };
+        setObs(transaction.obs)
+        setOpen(true)
+    }
 
     const handleClose = () => {
-        setOpen(false);
-    };
+        setOpen(false)
+    }
 
     const onSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
-        const res = await fetch('/api/webhook/transaction', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(selected)
-        })
-        console.log(res);
+        const res = await post(selected)
+        console.log(res)
 
-        setOpen(false);
-    };
+        setOpen(false)
+    }
+
+    const handleArchive = async (transaction) => {
+        transaction.archived = true
+        setSelected(transaction)
+
+        const res = await post(transaction)
+        console.log(res)
+
+        setTransactions(await list())
+    }
 
     return (
         <>
@@ -126,14 +143,18 @@ export default function Recupera(props) {
                                 <TableCell>Celular</TableCell>
                                 <TableCell>Celular checkout</TableCell>
                                 <TableCell>Checkout Boleto</TableCell>
+                                <TableCell>Arquivar</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {props.transactions.map((transaction) => {
 
-                                const text = `Oi ${transaction.first_name}. Sou Alexandre do suporte da Mari Ubialli. Identificamos interesse no *${transaction.prod_name}*. Estou entrando em contato para te ajudar caso tenha alguma dúvida.`;
-                                const checkoutId = transaction.prod_name == "Curso Bonecas Joias Raras" ? "B46628840G" : "D49033705A";
-                                const checkoutUrl = `https://pay.hotmart.com/${checkoutId}?checkoutMode=10&email=${transaction.email}&name=${transaction.name}&doc=${transaction.doc}&phonenumber=${transaction.phone_checkout_number}&phoneac=${transaction.phone_checkout_local_code}`;
+                                if (transaction.archived)
+                                    return <div key={transaction._id}></div>
+
+                                const text = `Oi ${transaction.first_name}. Sou Alexandre do suporte da Mari Ubialli. Identificamos interesse no *${transaction.prod_name}*. Estou entrando em contato para te ajudar caso tenha alguma dúvida.`
+                                const checkoutId = transaction.prod_name == "Curso Bonecas Joias Raras" ? "B46628840G" : "D49033705A"
+                                const checkoutUrl = `https://pay.hotmart.com/${checkoutId}?checkoutMode=10&email=${transaction.email}&name=${transaction.name}&doc=${transaction.doc}&phonenumber=${transaction.phone_checkout_number}&phoneac=${transaction.phone_checkout_local_code}`
 
                                 if (["expired", "waiting_payment", "canceled", "billet_printed"].includes(transaction.status)) {
                                     return (
@@ -156,6 +177,7 @@ export default function Recupera(props) {
                                                 </a>
                                             </TableCell>
                                             <TableCell><a href={checkoutUrl} target="_blank">Boleto</a></TableCell>
+                                            <TableCell><a href="#" onClick={(e) => { e.preventDefault(); handleArchive(transaction) }}>Arquivar</a></TableCell>
                                         </TableRow>
                                     )
                                 }
@@ -165,14 +187,18 @@ export default function Recupera(props) {
                 </TableContainer>
             </Container>
         </>
-    );
+    )
+}
+
+async function list() {
+    const res = await fetch(API_URL)
+    return await res.json()
 }
 
 export async function getServerSideProps(context) {
 
-    const res = await fetch('https://mariubialli.com/api/webhook/transaction')
-    const transactions = await res.json()
-    console.log(transactions[0]);
+    const transactions = await list()
+    console.log(transactions[0])
 
     return {
         props: {
