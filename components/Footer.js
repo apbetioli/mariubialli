@@ -36,7 +36,7 @@ export default function Footer(props) {
         </Hidden>
         <Hidden xsDown>
           <Grid item lg={12}>
-            &copy; 2020 Mari Ubialli - Todos os direitos reservados
+            &copy; 2020 Mariana Rodrigues Ubialli Betioli - Todos os direitos reservados
           </Grid>
         </Hidden>
       </Grid>
