@@ -28,7 +28,7 @@ export default function Footer(props) {
         </Grid>
         <Hidden smUp>
           <Grid item lg={12}>
-            &copy; 2020 Mari Ubialli
+            &copy; 2020 Mariana Rodrigues Ubialli Betioli
           </Grid>
           <Grid item lg={12}>
             Todos os direitos reservados
