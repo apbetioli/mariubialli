@@ -312,7 +312,7 @@ function Promessa() {
                 className={classes.video}
                 width="1920" 
                 height="1080" 
-                frameborder="0" 
+                frameBorder="0" 
                 allow="autoplay; fullscreen; picture-in-picture" 
                 allowFullScreen title="Aperte o Play"></iframe>
             </div>
