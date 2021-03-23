@@ -308,13 +308,13 @@ function Promessa() {
         <Grid container spacing={3}>
           <Grid item className={classes.centered} xs={12} lg={7} md={6}>
             <div className={classes.videoWrapper}>
-              <iframe
-                loading="lazy"
+              <iframe src="https://player.vimeo.com/video/527623450?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
                 className={classes.video}
-                src="https://www.youtube.com/embed/0H8P4Co4XRs?rel=0"
-                frameBorder="0"
-                allowFullScreen
-              ></iframe>
+                width="1920" 
+                height="1080" 
+                frameborder="0" 
+                allow="autoplay; fullscreen; picture-in-picture" 
+                allowfullscreen title="Aperte o Play"></iframe>
             </div>
           </Grid>
 
