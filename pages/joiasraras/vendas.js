@@ -497,7 +497,7 @@ function Preco() {
             <img src={require("assets/img/price_discount.png")} alt="" className={classes.preco} />
             <div className={classes.precoAviso}>* o preço pode subir a qualquer momento</div>
             <CheckoutButton>
-              Quero já minhas joias raras
+              Quero me inscrever agora
             </CheckoutButton>
           </Grid>
         </Grid>
