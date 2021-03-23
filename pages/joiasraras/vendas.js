@@ -314,7 +314,7 @@ function Promessa() {
                 height="1080" 
                 frameborder="0" 
                 allow="autoplay; fullscreen; picture-in-picture" 
-                allowfullscreen title="Aperte o Play"></iframe>
+                allowFullScreen title="Aperte o Play"></iframe>
             </div>
           </Grid>
 
