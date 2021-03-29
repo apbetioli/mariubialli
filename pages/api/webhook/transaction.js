@@ -15,6 +15,10 @@ module.exports = async (req, res) => {
       delete data._id;
 
       if (!t || t.status != "approved" || ["completed", "refunded", "chargeback", "dispute"].includes(data.status)) {
+
+        if (!data.archived)
+          data.archived = false;
+
         const doc = { $set: data }
         const options = { upsert: true };
         const upserted = await transactions.updateOne(query, doc, options);
