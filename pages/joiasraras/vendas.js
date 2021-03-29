@@ -155,7 +155,7 @@ const rocks = [
 
 const faqs = [
   { pergunta: "Quando vou receber o acesso? Quando começa o curso?", resposta: "O acesso a sua área de membros é enviado automaticamente após a confirmação de seu pagamento. Ou seja, começa pra você assim que você se inscreve. Se você realizar o pagamento por cartão de crédito ou PIX, você receberá os dados de acesso em até 10 minutos. Caso o pagamento seja por boleto bancário, a confirmação bancária pode levar até 72 horas." },
-  { pergunta: "O curso é em vídeo?", resposta: "Sim, são 5 horas de video aulas divididas em mais de 40 aulas. Tudo bem explicado passo a passo." },
+  { pergunta: "O curso é em vídeo?", resposta: "Sim, o curso é 100% online com 5 horas de video aulas divididas em mais de 40 aulas. Tudo bem explicado passo a passo." },
   { pergunta: "Por quanto tempo vou poder assistir as aulas?", resposta: "Pelo tempo que quiser. O curso é vitalício. Uma vez seu, é seu pra sempre." },
   { pergunta: "Que tamanho ficam as bonecas depois de prontas?", resposta: "Ficam em média com 28cm podendo variar conforme o tipo de cabelo." },
   { pergunta: "Sou iniciante, vou conseguir fazer?", resposta: "Não importa se você é experiente em feltro ou iniciante. O curso inclui um módulo especialmente para quem é iniciante e aborda tudo o que você precisa saber para criar as bonecas com perfeição." },

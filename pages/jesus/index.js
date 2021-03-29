@@ -1,4 +1,4 @@
-import { Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, IconButton } from "@material-ui/core"
+import { Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, IconButton, Paper } from "@material-ui/core"
 import Accordion from '@material-ui/core/Accordion'
 import AccordionDetails from '@material-ui/core/AccordionDetails'
 import AccordionSummary from '@material-ui/core/AccordionSummary'
@@ -127,7 +127,7 @@ const useStyles = makeStyles((theme) => ({
 
 const faqs = [
   { pergunta: "Quando vou receber o acesso? Quando começa o curso?", resposta: "O acesso a sua área de membros é enviado automaticamente após a confirmação de seu pagamento. Ou seja, começa pra você assim que você se inscreve. Se você realizar o pagamento por cartão de crédito ou PIX, você receberá os dados de acesso em até 10 minutos. Caso o pagamento seja por boleto bancário, a confirmação bancária pode levar até 72 horas." },
-  { pergunta: "O curso é em vídeo?", resposta: "Sim, o curso é todo em vídeo. Tudo bem explicado passo a passo." },
+  { pergunta: "O curso é em vídeo?", resposta: "Sim, o curso é 100% online e em vídeo. Tudo bem explicado passo a passo." },
   { pergunta: "Por quanto tempo vou poder assistir as aulas?", resposta: "Pelo tempo que quiser. O curso é vitalício. Uma vez seu, é seu pra sempre." },
   { pergunta: "Que tamanho fica depois de pronto?", resposta: "O Jesus que pára em pé fica com 30cm. A guirlanda tem 30 cm de diâmetro e o Jesus da guirlanda tem 24cm" },
   { pergunta: "Sou iniciante, vou conseguir fazer?", resposta: "Não importa se você é experiente em feltro ou iniciante. O curso inclui um módulo especialmente para quem é iniciante e aborda tudo o que você precisa saber para criar as bonecas com perfeição." },
@@ -224,28 +224,28 @@ function SobreCurso() {
           <Grid item xs={12} md={7} className={classes.centered}>
             <img src={require("assets/img/jesus/jesus1.jpg")} alt="" className={classes.foto} />
           </Grid>
-          <Grid item xs={12} md={5} className={classes.justify}>
+          <Grid item xs={12} md={5}>
             <h1 className={classes.centered}>Você <span className={classes.highlight}>vai receber</span></h1>
             <p>
-              <CheckIcon className={classes.check} /><span> Apostila de moldes pronta para imprimir em A4</span>
+              <CheckIcon className={classes.check} /><span> Apostila de moldes em tamanho real pronta para imprimir em A4</span>
             </p>
             <p>
               <CheckIcon className={classes.check} /><span> Passo a passo em vídeo</span>
             </p>
             <p>
-              <CheckIcon className={classes.check} /><span> Jesus que para em pé com 30cm</span>
+              <CheckIcon className={classes.check} /><span> Moldes de Jesus que para em pé com 30cm</span>
             </p>
             <p>
-              <CheckIcon className={classes.check} /><span> Guirlanda slim</span>
+              <CheckIcon className={classes.check} /><span> Moldes de Jesus com 24cm adaptado para guirlanda</span>
             </p>
             <p>
-              <CheckIcon className={classes.check} /><span> Molde de Jesus com 24cm adaptado para guirlanda</span>
+              <CheckIcon className={classes.check} /><span> Moldes para guirlanda slim</span>
             </p>
             <p>
-              <CheckIcon className={classes.check} /><span> Técnica de pintura com stencil</span>
+              <CheckIcon className={classes.check} /><span> Como fazer técnica de pintura com stencil</span>
             </p>
             <p>
-              <CheckIcon className={classes.check} /><span> Manto especial com caída</span>
+              <CheckIcon className={classes.check} /><span> Como fazer manto com caída</span>
             </p>
             <p>
               <CheckIcon className={classes.check} /><span> Duas opções de escrita prontas</span>
@@ -362,35 +362,41 @@ function DedoNaFerida() {
   const classes = useStyles()
   return (
     <section>
+
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
-          <Grid item className={classes.centered} xs={12}>
+          <Grid item className={classes.centered} xs={12} md={6}>
             <img src={require("assets/img/jesus/felizpascoa.jpg")} alt="" className={classes.foto} />
           </Grid>
-
+          <Grid item className={classes.centered} xs={12} md={6}>
+            <img src={require("assets/img/jesus/elevive.jpg")} alt="" className={classes.foto} />
+          </Grid>
           <Grid item xs={12}>
             <h1 className={classes.centered}><span className={classes.highlight}>Para quem</span> é o curso?</h1>
-            <p>
-              Aproveite a temporada de páscoa, mas venda o restante do ano também. Você pode personalizar o texto da guirlanda como quiser: Feliz Páscoa, Ele vive! E o que mais sua imaginação mandar.
-            </p>
-            <p>
-              Aprenda com o passo a passo em vídeo para que não fique nenhuma dúvida. E se ficar dúvidas eu vou te responder.
-            </p>
-            <p>
-              Não importa se você é experiente em feltro ou iniciante e também não precisa de máquina de costura.
-            </p>
-            <p>
-              Você aprenderá técnicas diferenciadas que vão além do feltro para você usar em outros projetos.
-            </p>
+          </Grid>
+          <Grid item md={4}>
+            <CheckIcon className={classes.check} /> Seja por hobby ou para venda, você terá tudo o que precisa para criar este lindo trabalho. Aproveite a temporada de páscoa, mas venda o restante do ano também. Jesus nunca sai de moda.
+            </Grid>
+          <Grid item md={4}>
+            <CheckIcon className={classes.check} /> Você pode personalizar o texto da guirlanda como quiser: Feliz Páscoa, Ele vive! E o que mais sua imaginação mandar.
+            </Grid>
+          <Grid item md={4}>
+            <CheckIcon className={classes.check} /> O passo a passo é 100% online e em vídeo para que não fique nenhuma dúvida. E se ficar dúvidas eu vou te responder.
+            </Grid>
+          <Grid item md={4}>
+            <CheckIcon className={classes.check} /> Não precisa de máquina de costura, ensino tudo à mão. Mas se tiver a máquina você também pode usar para acelerar o seu trabalho.
+            </Grid>
+          <Grid item md={4}>
+            <CheckIcon className={classes.check} /> Se você é iniciante, tem um módulo exclusivo para te ensinar as técnicas básicas para a confecção.
+            </Grid>
+          <Grid item md={4}>
+            <CheckIcon className={classes.check} /> Você aprenderá técnicas diferenciadas que vão além do feltro para você usar em outros projetos.
+            </Grid>
+          <Grid item xs={12}>
             <CTA>
               Sim! Este curso é para mim!
             </CTA>
           </Grid>
-
-          <Grid item className={classes.centered} xs={12}>
-            <img src={require("assets/img/jesus/elevive.jpg")} alt="" className={classes.foto} />
-          </Grid>
-
         </Grid>
       </Container>
     </section>
