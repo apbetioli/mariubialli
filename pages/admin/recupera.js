@@ -152,7 +152,7 @@ export default function Recupera(props) {
                                 if (transaction.archived)
                                     return <div key={transaction._id}></div>
 
-                                const text = `Oi ${transaction.first_name}. Sou Alexandre do suporte da Mari Ubialli. Identificamos interesse no *${transaction.prod_name}*. Estou entrando em contato para te ajudar caso tenha alguma dúvida.`
+                                const text = `Oi ${transaction.first_name}. Sou Alexandre do suporte da Mari Ubialli. Recebemos sua inscrição no *${transaction.prod_name}* via boleto. Estou entrando em contato para te lembrar que o boleto vence hoje. Qualquer dúvida estou à disposição.`
                                 const checkoutId = transaction.prod_name == "Curso Bonecas Joias Raras" ? "B46628840G" : "D49033705A"
                                 const checkoutUrl = `https://pay.hotmart.com/${checkoutId}?checkoutMode=10&email=${transaction.email}&name=${transaction.name}&doc=${transaction.doc}&phonenumber=${transaction.phone_checkout_number}&phoneac=${transaction.phone_checkout_local_code}`
 
