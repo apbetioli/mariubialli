@@ -137,10 +137,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const recap = [
+  { title: "5 horas de conteúdo divido em mais de 40 aulas" },
   { title: "Apostila de moldes" },
-  { title: "+ de 40 aulas" },
   { title: "Apostila bônus" },
   { title: "Planilha de precificação" },
+  { title: "Suporte direto comigo por WhatsApp"}
 ];
 
 const rocks = [
@@ -308,12 +309,12 @@ function Promessa() {
         <Grid container spacing={3}>
           <Grid item className={classes.centered} xs={12} lg={7} md={6}>
             <div className={classes.videoWrapper}>
-              <iframe src="https://player.vimeo.com/video/527623450?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+              <iframe src="https://player.vimeo.com/video/527623450?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
                 className={classes.video}
-                width="1920" 
-                height="1080" 
-                frameBorder="0" 
-                allow="autoplay; fullscreen; picture-in-picture" 
+                width="1920"
+                height="1080"
+                frameBorder="0"
+                allow="autoplay; fullscreen; picture-in-picture"
                 allowFullScreen title="Aperte o Play"></iframe>
             </div>
           </Grid>
@@ -456,7 +457,7 @@ function BonusEspecial() {
   );
 }
 
-function AcessoVitalicio() {
+function AcessoImediato() {
   const classes = useStyles();
   return (
     <section>
@@ -468,10 +469,9 @@ function AcessoVitalicio() {
             </Grid>
           </Hidden>
           <Grid item className={classes.justify} xs={12} md={6}>
-            <h1 className={classes.centered}>Entre hoje e tenha <span className={classes.highlight}>acesso vitalício</span></h1>
+            <h1 className={classes.centered}>Entre agora e tenha <span className={classes.highlight}>acesso imediato</span></h1>
             <p>
-              Entrando hoje para o Curso Joias Raras você vai ter acesso a mais de 40 aulas e todas as futuras atualizações.
-              São mais de 5 horas de conteúdo organizados para você fazer as bonecas junto comigo e ter acesso a:
+              Ao se inscrever por <b>cartão</b> ou <b>PIX</b> você recebe o acesso imediato a:
             </p>
             {recap.map((topic) => (
               <p key={topic.title}>
@@ -484,6 +484,25 @@ function AcessoVitalicio() {
     </section>
   );
 }
+
+function AcessoVitalicio() {
+  const classes = useStyles();
+  return (
+    <section>
+      <Container maxWidth="md">
+        <Grid container className={classes.grid} spacing={3}>
+          <Grid item className={classes.centered} xs={12}>
+            <h1 className={classes.centered}>O curso é seu <span className={classes.highlight}>para sempre</span></h1>
+            <p>
+              Você paga uma vez e tem acesso vitalício, para poder assistir as aulas no seu tempo e quantas vezes quiser, além de receber todas as futuras atualizações.
+            </p>
+          </Grid>
+        </Grid>
+      </Container>
+    </section>
+  );
+}
+
 function Preco() {
   const classes = useStyles();
   return (
@@ -607,6 +626,9 @@ function Testemunhos1() {
             <h1>O que os alunos estão <br /><span className={classes.highlight}>falando do curso?</span></h1>
           </Grid>
           <Grid item className={classes.centered} xs={12} sm={3}>
+            <img src={require("assets/img/testemunho16.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+          </Grid>
+          <Grid item className={classes.centered} xs={12} sm={3}>
             <img src={require("assets/img/testemunho15.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
           </Grid>
           <Grid item className={classes.centered} xs={12} sm={3}>
@@ -614,9 +636,6 @@ function Testemunhos1() {
           </Grid>
           <Grid item className={classes.centered} xs={12} sm={3}>
             <img src={require("assets/img/testemunho1.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-          </Grid>
-          <Grid item className={classes.centered} xs={12} sm={3}>
-            <img src={require("assets/img/testemunho2.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
           </Grid>
         </Grid>
       </Container>
@@ -640,7 +659,7 @@ function Testemunhos2() {
             <img src={require("assets/img/testemunho13.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
           </Grid>
           <Grid item className={classes.centered} xs={12} sm={4}>
-            <img src={require("assets/img/testemunho7.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+            <img src={require("assets/img/testemunho2.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
           </Grid>
           <Grid item className={classes.centered} xs={12} sm={4}>
             <img src={require("assets/img/testemunho9.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
@@ -681,9 +700,10 @@ export default function JoiasRarasVendas() {
       <Testemunhos1 />
       <Conteudo />
       <SobreCurso />
+      <AcessoVitalicio />
       <Bonus />
       <BonusEspecial />
-      <AcessoVitalicio />
+      <AcessoImediato />
       <div id="pricing" />
       <Preco />
       <Garantia />
