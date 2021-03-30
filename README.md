@@ -1,6 +1,6 @@
 # Mari Ubialli's site
 
-http://mariubialli.com.br
+http://mariubialli.com
 
 ## Features
 
