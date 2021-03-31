@@ -1,9 +1,11 @@
 import {
+    Checkbox,
     Container,
     Dialog,
     DialogActions,
     DialogContent,
     DialogTitle,
+    FormControlLabel,
     IconButton,
     makeStyles,
     TextField
@@ -45,10 +47,15 @@ const post = async (transaction) => {
 export default function Recupera(props) {
     const classes = useStyles()
 
+    const [showArchived, setShowArchived] = React.useState(false)
     const [transactions, setTransactions] = React.useState(props.transactions)
     const [open, setOpen] = React.useState(false)
     const [selected, setSelected] = React.useState({})
     let [obs, setObs] = React.useState('')
+
+    const handleChangeShowArchived = () => {
+        setShowArchived(!showArchived)
+    }
 
     const handleChange = (prop) => (event) => {
         setObs(event.target.value)
@@ -75,7 +82,7 @@ export default function Recupera(props) {
     }
 
     const handleArchive = async (transaction) => {
-        transaction.archived = true
+        transaction.archived = !transaction.archived
         setSelected(transaction)
 
         const res = await post(transaction)
@@ -129,6 +136,12 @@ export default function Recupera(props) {
             </Dialog>
             <Container maxWidth="xl">
                 <h1>Recuperar</h1>
+                <div>
+                    <FormControlLabel
+                        control={<Checkbox checked={showArchived} onChange={handleChangeShowArchived} name="checkedA" />}
+                        label="Mostrar arquivados"
+                    />
+                </div>
                 <TableContainer component={Paper}>
                     <Table className={classes.table} size="small" aria-label="a dense table">
                         <TableHead>
@@ -142,17 +155,19 @@ export default function Recupera(props) {
                                 <TableCell>Email</TableCell>
                                 <TableCell>Celular</TableCell>
                                 <TableCell>Celular checkout</TableCell>
-                                <TableCell>Checkout Boleto</TableCell>
+                                <TableCell>Checkout</TableCell>
                                 <TableCell>Arquivar</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {props.transactions.map((transaction) => {
 
-                                if (transaction.archived)
+                                if (transaction.archived && !showArchived)
                                     return <div key={transaction._id}></div>
+                                
+                                let paymentType= transaction.payment_type == "PIX" ? "PIX" : "boleto";
 
-                                const text = `Oi ${transaction.first_name}. Sou Alexandre do suporte da Mari Ubialli. Recebemos sua inscrição no *${transaction.prod_name}* via boleto. Estou entrando em contato para te lembrar que o boleto vence hoje. Qualquer dúvida estou à disposição.`
+                                const text = `Oi ${transaction.first_name}. Sou Alexandre do suporte da Mari Ubialli. Recebemos sua inscrição no *${transaction.prod_name}* via ${paymentType}. Estou entrando em contato para te lembrar que o boleto vence hoje. Qualquer dúvida estou à disposição.`
                                 const checkoutId = transaction.prod_name == "Curso Bonecas Joias Raras" ? "B46628840G" : "D49033705A"
                                 const checkoutUrl = `https://pay.hotmart.com/${checkoutId}?checkoutMode=10&email=${transaction.email}&name=${transaction.name}&doc=${transaction.doc}&phonenumber=${transaction.phone_checkout_number}&phoneac=${transaction.phone_checkout_local_code}`
 
@@ -176,8 +191,8 @@ export default function Recupera(props) {
                                                     {transaction.phone_checkout_local_code + '' + transaction.phone_checkout_number}
                                                 </a>
                                             </TableCell>
-                                            <TableCell><a href={checkoutUrl} target="_blank">Boleto</a></TableCell>
-                                            <TableCell><a href="#" onClick={(e) => { e.preventDefault(); handleArchive(transaction) }}>Arquivar</a></TableCell>
+                                            <TableCell><a href={checkoutUrl} target="_blank">Checkout</a></TableCell>
+                                            <TableCell><Checkbox checked={transaction.archived} onChange={(e) => { e.preventDefault(); handleArchive(transaction) }} /></TableCell>
                                         </TableRow>
                                     )
                                 }
