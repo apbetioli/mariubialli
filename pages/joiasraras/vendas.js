@@ -141,7 +141,7 @@ const recap = [
   { title: "Apostila de moldes" },
   { title: "Apostila bônus" },
   { title: "Planilha de precificação" },
-  { title: "Suporte direto comigo por WhatsApp"}
+  { title: "Suporte direto comigo por WhatsApp" }
 ];
 
 const rocks = [
@@ -155,14 +155,15 @@ const rocks = [
 ];
 
 const faqs = [
-  { pergunta: "Quando vou receber o acesso? Quando começa o curso?", resposta: "O acesso a sua área de membros é enviado automaticamente após a confirmação de seu pagamento. Ou seja, começa pra você assim que você se inscreve. Se você realizar o pagamento por cartão de crédito ou PIX, você receberá os dados de acesso em até 10 minutos. Caso o pagamento seja por boleto bancário, a confirmação bancária pode levar até 72 horas." },
+  { pergunta: "Quando começa o curso?", resposta: "Todas as aulas já estão gravadas e todos os materiais disponíveis para você assistir e fazer assim que se inscrever." },
   { pergunta: "O curso é em vídeo?", resposta: "Sim, o curso é 100% online com 5 horas de video aulas divididas em mais de 40 aulas. Tudo bem explicado passo a passo." },
   { pergunta: "Por quanto tempo vou poder assistir as aulas?", resposta: "Pelo tempo que quiser. O curso é vitalício. Uma vez seu, é seu pra sempre." },
   { pergunta: "Que tamanho ficam as bonecas depois de prontas?", resposta: "Ficam em média com 28cm podendo variar conforme o tipo de cabelo." },
   { pergunta: "Sou iniciante, vou conseguir fazer?", resposta: "Não importa se você é experiente em feltro ou iniciante. O curso inclui um módulo especialmente para quem é iniciante e aborda tudo o que você precisa saber para criar as bonecas com perfeição." },
   { pergunta: "Não tenho máquina de costura. É um problema?", resposta: "Não. Vou te ensinar a confeccionar tudo à mão. A máquina de costura é opcional." },
   { pergunta: "O valor é único ou é mensalidade?", resposta: "Este valor é único. Você paga uma vez só e tem acesso a tudo isso sem prazo de validade." },
-  { pergunta: "Quais são as formas de pagamento?", resposta: "Você pode pagar com cartão de crédito, PIX ou boleto. A opção por boleto pode levar 72 horas para liberação após o pagamento." },
+  { pergunta: "Quais são as formas de pagamento?", resposta: "Você pode pagar com cartão de crédito, PIX ou boleto." },
+  { pergunta: "Quando vou receber o acesso?", resposta: "O acesso a sua área de membros é enviado automaticamente após a confirmação de seu pagamento. Se você realizar o pagamento por cartão de crédito ou PIX, você receberá os dados de acesso em até 10 minutos. Caso o pagamento seja por boleto bancário a confirmação bancária pode levar até 72 horas." },
 ];
 
 const checkoutURL = "https://pay.hotmart.com/B46628840G?checkoutMode=10";
