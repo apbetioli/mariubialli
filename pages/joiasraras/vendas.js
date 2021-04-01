@@ -141,7 +141,9 @@ const recap = [
   { title: "Apostila de moldes" },
   { title: "Apostila bônus" },
   { title: "Planilha de precificação" },
-  { title: "Suporte direto comigo por WhatsApp" }
+  { title: "Lista de materiais" },
+  { title: "Suporte direto comigo por WhatsApp" },
+  { title: "Módulo exclusivo para iniciantes" }
 ];
 
 const rocks = [
