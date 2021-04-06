@@ -166,9 +166,9 @@ export default function Recupera(props) {
                                 if (transaction.archived && !showArchived)
                                     return <div key={transaction._id}></div>
                                 
-                                let paymentType= transaction.payment_type == "PIX" ? "PIX" : "boleto";
+                                let paymentType= transaction.payment_type == "PIX" ? "PIX mas não concluiu o pagamento. Teve alguma dificuldade? Posso ajudar?" : "boleto. Estou entrando em contato para te lembrar que o boleto vence hoje.";
 
-                                const text = `Oi ${transaction.first_name}. Sou Alexandre do suporte da Mari Ubialli. Recebemos sua inscrição no *${transaction.prod_name}* via ${paymentType}. Estou entrando em contato para te lembrar que o boleto vence hoje.`
+                                const text = `Oi ${transaction.first_name}. Sou Alexandre do suporte da Mari Ubialli. Recebemos sua inscrição no *${transaction.prod_name}* via ${paymentType}`
                                 const checkoutId = transaction.prod_name == "Curso Bonecas Joias Raras" ? "B46628840G" : "D49033705A"
                                 const checkoutUrl = `https://pay.hotmart.com/${checkoutId}?checkoutMode=10&email=${transaction.email}&name=${transaction.name}&doc=${transaction.doc}&phonenumber=${transaction.phone_checkout_number}&phoneac=${transaction.phone_checkout_local_code}`
                                 const feedback = `Bom dia ${transaction.first_name}. Entendo que você deve ter desistido da compra do *${transaction.prod_name}* e não tem problema, mas poderia compartilhar o motivo? A sua resposta é muito importante e irá ajudar a melhorarmos o suporte e a oferta dos nossos cursos. Obrigado desde já.`
