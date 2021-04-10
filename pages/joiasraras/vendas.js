@@ -583,7 +583,7 @@ function FAQs() {
           <Grid item xs={12}>
             <h1 className={classes.centered}>Dúvidas frequentes</h1>
             {faqs.map((faq, index) => (
-              <Accordion key={"id" + index}>
+              <Accordion key={"id" + index} defaultExpanded={true}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls={"panel" + index + "-content"}
