@@ -85,6 +85,24 @@ function Links() {
                         Visite meu site
                     </ColorButton>
                 </Grid>
+                <Grid item xs={12}>
+                    <ColorButton
+                        href="http://joiasraras.mariubialli.com"
+                        className={classes.button}
+                        style={ColorButton.whatsapp}
+                    >
+                        Acesso alunos bonecas Joias Raras
+                    </ColorButton>
+                </Grid>
+                <Grid item xs={12}>
+                    <ColorButton
+                        href="http://renasceremjesus.mariubialli.com"
+                        className={classes.button}
+                        style={ColorButton.whatsapp}
+                    >
+                        Acesso alunos Renascer em Jesus
+                    </ColorButton>
+                </Grid>
             </Grid>
         </>
     )
