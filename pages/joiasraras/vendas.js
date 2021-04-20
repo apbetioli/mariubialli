@@ -211,7 +211,7 @@ function CheckoutButton(props) {
               Na próxima página você poderá escolher a forma de pagamento: <b>cartão, pix ou boleto</b>
             </Typography>
           </DialogContentText>
-          <Form buttonText="Continuar &gt;&gt;" tag="JOIASRARAS-CHECKOUT" redirectTo={checkoutURL} emailPlaceholder="Seu email de acesso" />
+          <Form buttonText="Continuar" tag="JOIASRARAS-CHECKOUT" redirectTo={checkoutURL} emailPlaceholder="Seu email de acesso" />
         </DialogContent>
         <DialogActions>
         </DialogActions>
@@ -699,6 +699,11 @@ function Testemunhos3() {
           <Grid item className={classes.centered} xs={12} sm={3}>
             <img src={require("assets/img/testemunho23.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
           </Grid>
+          <Grid item className={classes.centered} xs={12}>
+            <CheckoutButton>
+              Estou convencida, quero entrar para o curso
+            </CheckoutButton>
+          </Grid>
         </Grid>
       </Container>
     </section>
@@ -728,14 +733,13 @@ export default function JoiasRarasVendas() {
       <Conteudo />
       <SobreCurso />
       <AcessoVitalicio />
-      <Testemunhos3 />
       <Bonus />
       <BonusEspecial />
       <AcessoImediato />
       <div id="pricing" />
       <Preco />
       <Garantia />
-      <Testemunhos2 />
+      <Testemunhos3 />
       <SobreMim />
       <FAQs />
       <Preco />
