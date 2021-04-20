@@ -138,11 +138,11 @@ const useStyles = makeStyles((theme) => ({
 
 const recap = [
   { title: "5 horas de conteúdo divido em mais de 40 aulas" },
-  { title: "Apostila digital de moldes em PDF" },
-  { title: "Apostila digital bônus em PDF" },
-  { title: "Planilha de precificação" },
+  { title: "Apostila digital de moldes das 7 bonecas " },
+  { title: "Bônus: Apostila digital de moldes adaptados para porta maternidade" },
+  { title: "Bônus: Planilha de precificação com aula explicativa" },
   { title: "Lista de materiais" },
-  { title: "Suporte na área do curso e por WhatsApp" },
+  { title: "Suporte na área do curso, email e WhatsApp" },
   { title: "Módulo exclusivo para iniciantes" }
 ];
 
