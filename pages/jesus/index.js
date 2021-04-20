@@ -279,7 +279,7 @@ function Preco() {
   const router = useRouter()
   let priceImg = require("assets/img/price27.png")
   if (router.query.off == "nxgx5qja")
-    priceImg = require("assets/img/price_discount_19.jpg")
+    priceImg = require("assets/img/price_discount_19.png")
 
   return (
     <section className={classes.sectionGreen}>
