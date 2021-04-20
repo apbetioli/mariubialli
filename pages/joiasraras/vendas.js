@@ -138,11 +138,11 @@ const useStyles = makeStyles((theme) => ({
 
 const recap = [
   { title: "5 horas de conteúdo divido em mais de 40 aulas" },
-  { title: "Apostila de moldes" },
-  { title: "Apostila bônus" },
+  { title: "Apostila digital de moldes em PDF" },
+  { title: "Apostila digital bônus em PDF" },
   { title: "Planilha de precificação" },
   { title: "Lista de materiais" },
-  { title: "Suporte direto comigo por WhatsApp" },
+  { title: "Suporte na área do curso e por WhatsApp" },
   { title: "Módulo exclusivo para iniciantes" }
 ];
 
@@ -638,7 +638,7 @@ function Testemunhos1() {
             <img src={require("assets/img/testemunho14.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
           </Grid>
           <Grid item className={classes.centered} xs={12} sm={3}>
-            <img src={require("assets/img/testemunho1.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+            <img src={require("assets/img/testemunho22.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
           </Grid>
         </Grid>
       </Container>
@@ -681,6 +681,30 @@ function Testemunhos2() {
   );
 }
 
+function Testemunhos3() {
+  const classes = useStyles();
+  return (
+    <section>
+      <Container maxWidth="md" className={classes.centered}>
+        <Grid container className={classes.grid} spacing={0}>
+          <Grid item className={classes.centered} xs={12} sm={3}>
+            <img src={require("assets/img/testemunho20.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+          </Grid>
+          <Grid item className={classes.centered} xs={12} sm={3}>
+            <img src={require("assets/img/testemunho21.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+          </Grid>
+          <Grid item className={classes.centered} xs={12} sm={3}>
+            <img src={require("assets/img/testemunho1.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+          </Grid>
+          <Grid item className={classes.centered} xs={12} sm={3}>
+            <img src={require("assets/img/testemunho23.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+          </Grid>
+        </Grid>
+      </Container>
+    </section>
+  );
+}
+
 export default function JoiasRarasVendas() {
   const classes = useStyles();
   return (
@@ -704,6 +728,7 @@ export default function JoiasRarasVendas() {
       <Conteudo />
       <SobreCurso />
       <AcessoVitalicio />
+      <Testemunhos3 />
       <Bonus />
       <BonusEspecial />
       <AcessoImediato />
