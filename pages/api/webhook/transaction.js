@@ -27,6 +27,16 @@ module.exports = async (req, res) => {
         res.send(t);
       }
 
+    } else if (req.method == "DELETE") {
+      
+      const data = req.body;
+      console.log(data);
+
+      const query = { email: data.email, prod: data.prod };
+      const t = await transactions.deleteOne(query);
+      
+      res.send(t);
+
     } else {
       const cursor = transactions.find({}, { "sort": { "purchase_date": -1 } });
       const list = await cursor.toArray();

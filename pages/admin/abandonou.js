@@ -31,6 +31,17 @@ const useStyles = makeStyles({
     },
 });
 
+const post = async (transaction, method = 'POST') => {
+    return await fetch(API_URL, {
+        method,
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(transaction)
+    })
+}
+
 export default function Abandonou(props) {
     const classes = useStyles()
 
@@ -40,9 +51,9 @@ export default function Abandonou(props) {
     let [obs, setObs] = React.useState('');
 
     const handleChange = (prop) => (event) => {
-        setObs(event.target.value);
-        selected[prop] = event.target.value;
-    };
+        setObs(event.target.value)
+        selected[prop] = event.target.value
+    }
 
     const handleClickOpen = (transaction) => {
         setSelected(transaction)
@@ -51,38 +62,29 @@ export default function Abandonou(props) {
     };
 
     const handleDelete = async (transaction) => {
-        const res = await fetch(API_URL, {
-            method: 'DELETE',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(transaction)
-        })
-        console.log(res);
+        if (window.confirm("Tem certeza que quer deletar?")) {
+            setSelected(transaction)
 
-        setAbandoned(await list());
-    };
+            const res = await post(transaction, 'DELETE')
+            console.log(res)
+
+            setAbandoned(await list())
+        }
+    }
 
     const handleClose = () => {
         setOpen(false);
     };
 
     const onSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
-        const res = await fetch(API_URL, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(selected)
-        })
-        console.log(res);
+        const res = await post(selected)
+        console.log(res)
 
-        setOpen(false);
-    };
+        setOpen(false)
+    }
+
     return (
         <>
             <Head>
@@ -143,7 +145,7 @@ export default function Abandonou(props) {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {abandoned.map((transaction) => {
+                            {props.abandoned.map((transaction) => {
 
                                 const text = `Oi ${transaction.buyerVO.name}. Sou Alexandre do suporte da Mari Ubialli. Identificamos tentativa de compra do *${transaction.productName}*. Estou entrando em contato para te ajudar caso tenha alguma dúvida.`;
                                 const checkoutId = transaction.productName == "Curso Bonecas Joias Raras" ? "B46628840G" : "D49033705A";

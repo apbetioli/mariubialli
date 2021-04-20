@@ -19,7 +19,7 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import CloseIcon from '@material-ui/icons/Close'
 import Head from "next/head"
-import React from "react"
+import React, { useEffect } from "react"
 import ColorButton from "../../components/ColorButton"
 
 const API_URL = `${process.env.NEXT_PUBLIC_DOMAIN}/api/webhook/transaction`
@@ -33,9 +33,9 @@ const useStyles = makeStyles({
     },
 })
 
-const post = async (transaction) => {
+const post = async (transaction, method = 'POST') => {
     return await fetch(API_URL, {
-        method: 'POST',
+        method,
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -89,6 +89,17 @@ export default function Recupera(props) {
         console.log(res)
 
         setTransactions(await list())
+    }
+
+    const handleDelete = async (transaction) => {
+        if (window.confirm("Tem certeza que quer deletar?")) {
+            setSelected(transaction)
+
+            const res = await post(transaction, 'DELETE')
+            console.log(res)
+
+            setTransactions(await list())
+        }
     }
 
     return (
@@ -158,15 +169,16 @@ export default function Recupera(props) {
                                 <TableCell>Checkout</TableCell>
                                 <TableCell>Feedback</TableCell>
                                 <TableCell>Arquivar</TableCell>
+                                <TableCell>Excluir</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {props.transactions.map((transaction) => {
 
                                 if (transaction.archived && !showArchived)
-                                    return <div key={transaction._id}></div>
-                                
-                                let paymentType= transaction.payment_type == "PIX" ? "PIX mas não concluiu o pagamento. Teve alguma dificuldade? Posso ajudar?" : "boleto. Estou entrando em contato para te lembrar que o boleto vence hoje.";
+                                    return <TableRow key={transaction._id}></TableRow>
+
+                                let paymentType = transaction.payment_type == "PIX" ? "PIX mas não concluiu o pagamento. Teve alguma dificuldade? Posso ajudar?" : "boleto. Estou entrando em contato para te lembrar que o boleto vence hoje. Qualquer dúvida estou à disposição.";
 
                                 const text = `Oi ${transaction.first_name}. Sou Alexandre do suporte da Mari Ubialli. Recebemos sua inscrição no *${transaction.prod_name}* via ${paymentType}`
                                 const checkoutId = transaction.prod_name == "Curso Bonecas Joias Raras" ? "B46628840G" : "D49033705A"
@@ -194,8 +206,9 @@ export default function Recupera(props) {
                                                 </a>
                                             </TableCell>
                                             <TableCell><a href={checkoutUrl} target="_blank">Checkout</a></TableCell>
-                                            <TableCell><a href={`http://wa.me/55${transaction.phone_local_code}${transaction.phone_number}?text=${feedback}`} target="_blank">Feedback</a></TableCell>
+                                            <TableCell><a href={`http://wa.me/55${transaction.phone_checkout_local_code}${transaction.phone_checkout_number}?text=${feedback}`} target="_blank">Feedback</a></TableCell>
                                             <TableCell><Checkbox checked={transaction.archived} onChange={(e) => { e.preventDefault(); handleArchive(transaction) }} /></TableCell>
+                                            <TableCell><a href="#" onClick={(e) => { e.preventDefault(); handleDelete(transaction) }}>Excluir</a></TableCell>
                                         </TableRow>
                                     )
                                 }
