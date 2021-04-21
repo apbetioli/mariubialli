@@ -45,5 +45,7 @@ export default function QuemSouEu(props) {
 
 export async function getStaticProps() {
   const about = await PrismicClient.getSingle("about");
-  return { props: { about }, revalidate: 1 };
+  const title = "Sobre";
+  const page = "/about";
+  return { props: { about, title, page }, revalidate: 1 };
 }

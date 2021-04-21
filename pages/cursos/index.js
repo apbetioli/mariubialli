@@ -15,8 +15,11 @@ import React from "react";
 import Layout from "../../components/Layout";
 
 const useStyles = makeStyles((theme) => ({
+  centered: {
+    textAlign: "center",
+  },
   card: {
-    marginTop: 20,
+    margin: "auto",
     maxWidth: 345,
   },
   media: {
@@ -47,10 +50,12 @@ function Curso({ asset }) {
 }
 
 export default function Cursos(props) {
+  const classes = useStyles();
+
   return (
     <Layout {...props}>
       <Container className="fullHeight">
-        <h1>Cursos</h1>
+        <h1 className={classes.centered}>Cursos</h1>
         <Grid container direction="row" justify="center" alignItems="center" spacing={2}>
           {props.assets.results.map((asset) => (
             <Grid key={asset.uid} item md={4}>
@@ -68,5 +73,7 @@ export async function getStaticProps() {
     Prismic.Predicates.at("document.type", "course"),
     { orderings: "[document.first_publication_date desc]" }
   );
-  return { props: { assets }, revalidate: 1 };
+  const title = "Cursos";
+  const page = "/cursos";
+  return { props: { assets, title, page }, revalidate: 1 };
 }

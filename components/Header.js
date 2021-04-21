@@ -24,6 +24,7 @@ import useUser from "lib/useUser";
 import { useRouter } from "next/router";
 import React from "react";
 import Wave from "./Wave";
+import SchoolIcon from '@material-ui/icons/School';
 
 const useStyles = makeStyles((theme) => ({
   desktopButtons: {
@@ -72,6 +73,12 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.main,
     height: "100%",
     marginRight: theme.spacing(3),
+  },
+  toolbarButtonActive: {
+    color: theme.palette.primary.light,
+    height: "100%",
+    marginRight: theme.spacing(3),
+    
   },
 }));
 
@@ -128,7 +135,7 @@ export default function Header(props) {
 
                 <ListItemLink button href="/cursos">
                   <ListItemIcon>
-                    <InboxIcon />
+                    <SchoolIcon />
                   </ListItemIcon>
                   <ListItemText primary="Cursos" />
                 </ListItemLink>
@@ -188,13 +195,13 @@ export default function Header(props) {
             </Drawer>
 
             <nav className={classes.desktopButtons}>
-            <Button href="/cursos" className={classes.toolbarButton}>
+              <Button href="/cursos" className={props.page == "/cursos" ? classes.toolbarButtonActive : classes.toolbarButton}>
                 Cursos
               </Button>
-              <Button href="/apostilas" className={classes.toolbarButton}>
+              <Button href="/apostilas" className={props.page == "/apostilas" ? classes.toolbarButtonActive : classes.toolbarButton}>
                 Apostilas gratuitas
               </Button>
-              <Button href="/about" className={classes.toolbarButton}>
+              <Button href="/about" className={props.page == "/about" ? classes.toolbarButtonActive : classes.toolbarButton}>
                 Sobre
               </Button>
             </nav>

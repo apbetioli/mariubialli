@@ -25,7 +25,7 @@ export default function Layout(props) {
 
   return (
     <>
-      <Header />
+      <Header {...props} />
 
       {props.children}
 
@@ -37,7 +37,7 @@ export default function Layout(props) {
         </ScrollTo>
       </Zoom>
 
-      <Footer />
+      <Footer  {...props} />
     </>
   );
 }

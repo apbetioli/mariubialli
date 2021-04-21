@@ -12,7 +12,7 @@ module.exports = withPlugins([[withImages]], {
     return [
       {
         source: '/',
-        destination: '/joiasraras',
+        destination: '/cursos',
         permanent: false,
       },
       {

@@ -15,14 +15,17 @@ import React from "react";
 import Layout from "../../components/Layout";
 
 const useStyles = makeStyles((theme) => ({
+  centered: {
+    textAlign: "center"
+  },
   card: {
-    marginTop: 20,
+    margin: "auto",
     maxWidth: 345,
   },
   content: {
     [theme.breakpoints.up("sm")]: {
       height: 150,
-    },    
+    },
   },
   media: {
     height: 194,
@@ -55,10 +58,12 @@ function Apostila({ asset }) {
 }
 
 export default function Apostilas(props) {
+  const classes = useStyles();
+
   return (
     <Layout {...props}>
       <Container className="fullHeight">
-        <h1>Apostilas Gratuitas</h1>
+        <h1 className={classes.centered}>Apostilas Gratuitas</h1>
         <Grid container direction="row" justify="center" alignItems="center" spacing={2}>
           {props.assets.results.map((asset) => (
             <Grid key={asset.uid} item md={4}>
@@ -76,5 +81,7 @@ export async function getStaticProps() {
     Prismic.Predicates.at("document.type", "asset"),
     { orderings: "[document.first_publication_date desc]" }
   );
-  return { props: { assets }, revalidate: 1 };
+  const title = "Apostilas gratuitas";
+  const page = "/apostilas";
+  return { props: { assets, title, page }, revalidate: 1 };
 }
