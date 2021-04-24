@@ -80,7 +80,7 @@ export default function Form(props) {
     setBackdrop(!backdrop);
 
     const phone = values.phone ? values.phone.trim() : "";
-    const ddd = phone.substring(0,2);
+    const ddd = phone.substring(0, 2);
     const phone_number = phone.substring(2);
 
     const form = {
@@ -113,6 +113,10 @@ export default function Form(props) {
       if (phone_number)
         redirectTo += "&phonenumber=" + phone_number;
       redirectTo += "&redirect=true";
+
+      if (router.query.hideBillet) {
+        redirectTo += "&hideBillet=1";
+      }
 
       router.push(redirectTo);
 
