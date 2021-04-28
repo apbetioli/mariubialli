@@ -55,14 +55,19 @@ const useStyles = makeStyles({
 })
 
 const post = async (transaction, method = 'POST') => {
-    return await fetch(API_URL, {
-        method,
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(transaction)
-    })
+    try {
+        return await fetch(API_URL, {
+            method,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(transaction)
+        })
+    } catch (e) {
+        alert(e)
+        throw e;
+    }
 }
 
 export default function Recupera(props) {
