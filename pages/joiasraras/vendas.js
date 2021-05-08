@@ -157,7 +157,7 @@ const rocks = [
 ];
 
 const faqs = [
-  { pergunta: "Quando começa o curso?", resposta: "O curso começa assim que você se inscrever. Todas as aulas já estão gravadas e todos os materiais estão disponíveis para download." },
+  { pergunta: "Quando começa o curso?", resposta: "O curso começa assim que você se inscrever. Todas as aulas já estão gravadas e todos os materiais estão disponíveis para baixar." },
   { pergunta: "Quando vou receber o curso?", resposta: "O acesso a sua área de membros é enviado automaticamente após a confirmação de seu pagamento. Se você realizar o pagamento por cartão de crédito ou PIX, você receberá os dados de acesso em até 10 minutos. Caso o pagamento seja por boleto bancário a confirmação bancária pode levar até 72 horas." },
   { pergunta: "Como vou receber o curso?", resposta: "O curso é enviado ao email cadastrado na compra. Certifique-se que o email está correto para não haver problemas na hora da entrega." },
   { pergunta: "Sou iniciante, vou conseguir fazer?", resposta: "Sim. O curso pensado especialmente para quem é iniciante e aborda tudo o que você precisa saber para criar as bonecas com perfeição. E possui um módulo exclusivo com as principais técnicas que você precisa conhecer." },
@@ -327,7 +327,7 @@ function Promessa() {
             <h1 className={classes.title} >São 7 joias raras para você <span className={classes.highlight}>confeccionar, personalizar e vender</span></h1>
             <p className={classes.subtitle}>Adicione estas lindas bonecas ao seu portifólio e se destaque no mercado oferecendo um produto de alta qualidade e diferenciado.</p>
             <CTA>
-              Quero me destacar no mercado
+              Quero já estas joias raras
             </CTA>
           </Grid>
 
