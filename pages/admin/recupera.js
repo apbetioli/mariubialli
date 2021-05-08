@@ -219,9 +219,9 @@ export default function Recupera(props) {
                                 if (transaction.archived && !showArchived)
                                     return <TableRow key={transaction._id}></TableRow>
 
-                                const payment_type = transaction.payment_type == "billet" ? "boleto" : transaction.payment_type
+                                const payment_type = transaction.payment_type == "billet" ? "boleto" : (transaction.payment_type == "credit_card" ? "cartão de crédito" : transaction.payment_type)
 
-                                const phase1PaymentTypeText = transaction.payment_type == "PIX" ? "/pixajuda" : "/boletohoje";
+                                const phase1PaymentTypeText = transaction.payment_type == "PIX" ? "/pixajuda" : (transaction.payment_type == "credit_card" ? "/cartaoajuda" : "/boletohoje");
                                 const phase1Text = `Oi ${transaction.first_name}. Recebemos sua inscrição no *${transaction.prod_name}* via ${payment_type}. ${phase1PaymentTypeText}`;
 
                                 const phase2Text = `Oi ${transaction.first_name}. ` + (transaction.payment_type == "PIX" ? "/pixexpirou" : "/boletoexpirou");

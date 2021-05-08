@@ -16,13 +16,13 @@ module.exports = async (req, res) => {
 
       const doc = { $set: data }
       const options = { upsert: true };
-      const upserted = await abandoned.updateMany(query, doc, options);
+      const upserted = await abandoned.updateOne(query, doc, options);
       console.log(upserted);
       res.send(upserted);
 
     } else if (req.method == "DELETE") {
 
-      const query = { "buyerVO.email": data.email };
+      const query = { "buyerVO.email": data.buyerVO.email };
       console.log(query)
 
       const deleted = await abandoned.deleteMany(query);
