@@ -170,12 +170,13 @@ const faqs = [
 ];
 
 const checkoutURL = "https://pay.hotmart.com/B46628840G?checkoutMode=10";
+const buttonStyle = ColorButton.whatsapp;
 
 function CTA(props) {
   const classes = useStyles();
   return (
     <ScrollTo target="#pricing">
-      <ColorButton className={classes.cta}>
+      <ColorButton className={classes.cta} style={buttonStyle}>
         {props.children}
       </ColorButton>
     </ScrollTo>
@@ -196,7 +197,7 @@ function CheckoutButton(props) {
 
   return (
     <div>
-      <ColorButton className={classes.cta} onClick={handleClickOpen}>
+      <ColorButton className={classes.cta} onClick={handleClickOpen} style={buttonStyle}>
         {props.children}
       </ColorButton>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
@@ -209,10 +210,11 @@ function CheckoutButton(props) {
         <DialogContent>
           <DialogContentText>
             <Typography variant="body2" color="textSecondary" component="span">
-              Informe o email que você usará para acessar o curso.
+              Na próxima página você poderá escolher a forma de pagamento
             </Typography>
           </DialogContentText>
-          <Form buttonText="Continuar" tag="JOIASRARAS-CHECKOUT" redirectTo={checkoutURL} emailPlaceholder="Seu email de acesso" />
+          <Form buttonText="Continuar" tag="JOIASRARAS-CHECKOUT" redirectTo={checkoutURL}
+            emailPlaceholder="Seu email de acesso" checkout={true} buttonStyle={buttonStyle} />
         </DialogContent>
         <DialogActions>
         </DialogActions>

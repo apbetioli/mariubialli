@@ -1,7 +1,7 @@
 import {
   Backdrop,
   CircularProgress,
-  Grid,
+
   TextField
 } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
@@ -105,17 +105,19 @@ export default function Form(props) {
       else
         redirectTo += "?";
 
-      redirectTo += "email=" + values.email.toLowerCase();
-      if (values.name)
-        redirectTo += "&name=" + values.name;
-      if (ddd)
-        redirectTo += "&phoneac=" + ddd;
-      if (phone_number)
-        redirectTo += "&phonenumber=" + phone_number;
-      redirectTo += "&redirect=true";
+      redirectTo += "redirect=true";
 
-      if (router.query.hideBillet) {
-        redirectTo += "&hideBillet=1";
+      if (props.checkout) {
+        redirectTo += "&email=" + values.email.toLowerCase();
+        if (values.name)
+          redirectTo += "&name=" + values.name;
+        if (ddd)
+          redirectTo += "&phoneac=" + ddd;
+        if (phone_number)
+          redirectTo += "&phonenumber=" + phone_number;
+        if (router.query.hideBillet) {
+          redirectTo += "&hideBillet=1";
+        }
       }
 
       router.push(redirectTo);
@@ -185,6 +187,7 @@ export default function Form(props) {
         variant="contained"
         type="submit"
         className={classes.button}
+        style={props.buttonStyle}
       >
         {props.buttonText}
       </ColorButton>
@@ -196,7 +199,9 @@ export default function Form(props) {
 }
 
 Form.defaultProps = {
+  buttonStyle: ColorButton.defaultStyle,
   buttonText: "Entrar",
+  checkout: false,
   redirectTo: "/",
   tag: "LOGIN",
   showName: false,
