@@ -43,7 +43,7 @@ const useStyles = makeStyles({
     phase3: {
         backgroundColor: "lightblue"
     },
-    converteu: {
+    phase4: {
         backgroundColor: "lightgreen"
     },
     normal: {
@@ -139,7 +139,6 @@ export default function Recupera(props) {
 
             setTransactions(await list())
         }
-        //post(transaction)
     }
 
     return (
@@ -204,9 +203,7 @@ export default function Recupera(props) {
                                 <TableCell>Email</TableCell>
                                 <TableCell>Celular checkout</TableCell>
                                 <TableCell>Fase</TableCell>
-                                <TableCell>Fase 1</TableCell>
-                                <TableCell>Fase 2 - Expirou</TableCell>
-                                <TableCell>Fase 3 - Feedback</TableCell>
+                                <TableCell>Mensagem</TableCell>
                                 <TableCell>Checkout</TableCell>
                                 <TableCell>Boleto</TableCell>
                                 <TableCell>Arquivar</TableCell>
@@ -219,26 +216,49 @@ export default function Recupera(props) {
                                 if (transaction.archived && !showArchived)
                                     return <TableRow key={transaction._id}></TableRow>
 
-                                const payment_type = transaction.payment_type == "billet" ? "boleto" : (transaction.payment_type == "credit_card" ? "cartão de crédito" : transaction.payment_type)
 
-                                const phase1PaymentTypeText = transaction.payment_type == "PIX" ? "/pixajuda" : (transaction.payment_type == "credit_card" ? "/cartaoajuda" : "/boletohoje");
-                                const phase1Text = `Oi ${transaction.first_name}. Recebemos sua inscrição no *${transaction.prod_name}* via ${payment_type}. ${phase1PaymentTypeText}`;
+                                const intro = `Oi ${transaction.first_name}. Eu sou Alexandre do suporte da Mari Ubialli. Agradecemos o interesse no *${transaction.prod_name}*.`;
+                                const dayOfWeek = new Date().getDay();
+                                const due = (dayOfWeek >= 6 || dayOfWeek == 1) ? "segunda-feira" : "amanhã"
 
-                                const phase2Text = `Oi ${transaction.first_name}. ` + (transaction.payment_type == "PIX" ? "/pixexpirou" : "/boletoexpirou");
+                                const phase4Text = `${intro} Lembrando que seu boleto vence ${due}. Qualquer dúvida estou à sua disposição.`;
+
+                                const phase1PaymentTypeText = transaction.payment_type == "PIX" ? `/pixajuda` : `/cartaoajuda`;
+                                const phase1Text = transaction.payment_type == "billet" ? `Bom dia ${transaction.first_name}. /boletohoje` : `${intro} ${phase1PaymentTypeText}`;
+
+                                const phase2Text = `Bom dia ${transaction.first_name}. ` + (transaction.payment_type == "PIX" ? "/pixexpirou" : "/boletoexpirou");
 
                                 const checkoutId = transaction.prod_name == "Curso Bonecas Joias Raras" ? "B46628840G" : "D49033705A"
                                 const checkoutUrl = `https://pay.hotmart.com/${checkoutId}?checkoutMode=10&email=${transaction.email}&name=${transaction.name}&doc=${transaction.doc}&phonenumber=${transaction.phone_checkout_number}&phoneac=${transaction.phone_checkout_local_code}`
 
-                                const feedback = `Oi ${transaction.first_name}. Entendo que você deve ter desistido da compra do *${transaction.prod_name}* e não tem problema, mas poderia compartilhar o motivo? A sua resposta é muito importante e irá ajudar a melhorarmos o suporte e a oferta dos nossos cursos. Obrigado desde já.`
+                                const phase3Text = `Oi ${transaction.first_name}. Entendo que você deve ter desistido da compra do *${transaction.prod_name}* e não tem problema, mas poderia compartilhar o motivo? A sua resposta é muito importante e irá ajudar a melhorarmos o suporte e a oferta dos nossos cursos. Obrigado desde já.`
 
                                 const whatsLink = `http://wa.me/55${transaction.phone_checkout_local_code}${transaction.phone_checkout_number}`;
 
                                 let rowStyle = classes.normal;
-                                switch (transaction.phase || 0) {
+                                switch (transaction.phase || -1) {
                                     case 1: rowStyle = classes.phase1; break;
                                     case 2: rowStyle = classes.phase2; break;
                                     case 3: rowStyle = classes.phase3; break;
+                                    case 4: rowStyle = classes.phase4; break;
                                 }
+
+                                let currentPhaseText = "";
+                                switch (transaction.phase || -1) {
+                                    case 1: currentPhaseText = phase1Text; break;
+                                    case 2: currentPhaseText = phase2Text; break;
+                                    case 3: currentPhaseText = phase3Text; break;
+                                    case 4: currentPhaseText = phase4Text; break;
+                                }
+
+                                let currentPhaseLabel = "";
+                                switch (transaction.phase || -1) {
+                                    case 1: currentPhaseLabel = transaction.payment_type == "PIX" ? "Aguardando PIX" : "Boleto vence hoje"; break;
+                                    case 2: currentPhaseLabel = "Expirou"; break;
+                                    case 3: currentPhaseLabel = "Feedback"; break;
+                                    case 4: currentPhaseLabel = "Boletou"; break;
+                                }
+
 
                                 if (["expired", "waiting_payment", "canceled", "billet_printed"].includes(transaction.status)) {
                                     return (
@@ -259,23 +279,18 @@ export default function Recupera(props) {
                                                     value={transaction.phase || 0}
                                                     onChange={(e) => handleChangePhase(e, e.target.value, transaction, index)}
                                                 >
-                                                    <MenuItem value={0}>0</MenuItem>
-                                                    <MenuItem value={1}>1</MenuItem>
-                                                    <MenuItem value={2}>2</MenuItem>
-                                                    <MenuItem value={3}>3</MenuItem>
+                                                    <MenuItem value={0}>Novo</MenuItem>
+                                                    <MenuItem value={4}>Boletou</MenuItem>
+                                                    <MenuItem value={1}>{transaction.payment_type == "PIX" ? "Aguardando PIX" : "Boleto vence hoje"}</MenuItem>
+                                                    <MenuItem value={2}>Expirou</MenuItem>
+                                                    <MenuItem value={3}>Feedback</MenuItem>
                                                 </Select>
                                             </TableCell>
                                             <TableCell>
-                                                <a href={whatsLink + `?text=${phase1Text}`} target="_blank">
-                                                    FASE 1
+                                                <a href={whatsLink + `?text=${currentPhaseText}`} target="_blank">
+                                                    WhatsApp
                                                 </a>
                                             </TableCell>
-                                            <TableCell>
-                                                <a href={whatsLink + `?text=${phase2Text}`} target="_blank">
-                                                    FASE 2 (Expirou)
-                                                </a>
-                                            </TableCell>
-                                            <TableCell><a href={whatsLink + `?text=${feedback}`} target="_blank">FASE 3 (Feedback)</a></TableCell>
                                             <TableCell><a href={checkoutUrl} target="_blank">Checkout</a></TableCell>
                                             <TableCell>{transaction.billet_url && <a href={transaction.billet_url} target="_blank">Boleto</a>}</TableCell>
                                             <TableCell><Checkbox checked={transaction.archived} onChange={(e) => { e.preventDefault(); handleArchive(transaction) }} /></TableCell>

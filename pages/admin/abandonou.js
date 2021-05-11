@@ -141,13 +141,12 @@ export default function Abandonou(props) {
                                 <TableCell>Email</TableCell>
                                 <TableCell>Whats</TableCell>
                                 <TableCell>Checkout</TableCell>
-                                <TableCell>Delete</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {props.abandoned.map((transaction) => {
 
-                                const text = `Oi ${transaction.buyerVO.name}. Identificamos tentativa de compra do *${transaction.productName}*. Estou entrando em contato para te ajudar caso tenha alguma dúvida.`;
+                                const text = `Oi ${transaction.buyerVO.name}. Eu sou Alexandre do suporte da Mari Ubialli. Identificamos tentativa de compra do *${transaction.productName}*. Estou entrando em contato para te ajudar caso tenha alguma dúvida.`;
                                 const checkoutId = transaction.productName == "Curso Bonecas Joias Raras" ? "B46628840G" : "D49033705A";
                                 const checkoutUrl = `https://pay.hotmart.com/${checkoutId}?checkoutMode=10&email=${transaction.buyerVO.email}&name=${transaction.buyerVO.name}`;
 
