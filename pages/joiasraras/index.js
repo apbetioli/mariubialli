@@ -19,6 +19,6 @@ export default class JoiasRaras extends React.Component {
     }
 
     render() {
-        return <JoiasRarasVendas />
+        return <JoiasRarasVendas variant={this.state.variant} />
     }
 }
