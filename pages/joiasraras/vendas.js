@@ -714,7 +714,6 @@ function Testemunhos3() {
 }
 
 export default function JoiasRarasVendas(props) {
-  console.log(props)
   const classes = useStyles();
   return (
     <main className={classes.root}>
