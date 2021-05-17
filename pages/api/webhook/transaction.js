@@ -4,10 +4,14 @@ module.exports = async (req, res) => {
   try {
     const db = await client.connect();
     const transactions = await db.db(process.env.MONGO_DB).collection("transactions");
+    const abandoned = await db.db(process.env.MONGO_DB).collection("abandoned");
+
 
     if (req.method == "POST") {
       const data = req.body;
       console.log(data);
+
+      abandoned.deleteMany({ "buyerVO.email": data.email });
 
       const query = { email: data.email, prod: data.prod };
       const t = await transactions.findOne(query);
@@ -28,13 +32,13 @@ module.exports = async (req, res) => {
       }
 
     } else if (req.method == "DELETE") {
-      
+
       const data = req.body;
       console.log(data);
 
       const query = { email: data.email, prod: data.prod };
       const t = await transactions.deleteOne(query);
-      
+
       res.send(t);
 
     } else {
