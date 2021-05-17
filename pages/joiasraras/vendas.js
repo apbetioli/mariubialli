@@ -66,6 +66,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 50,
   },
   sectionGreen: {
+    marginTop: 30,
+    marginBottom: 30,
     backgroundColor: "#6BFEDE",
   },
   sectionSobreMim: {
@@ -745,8 +747,8 @@ export default function JoiasRarasVendas(props) {
       <Testemunhos3 />
       <SobreMim />
       <FAQs />
-      <Preco />
       <DuvidasWhats />
+      <Preco />
       <Footer />
     </main>
   );

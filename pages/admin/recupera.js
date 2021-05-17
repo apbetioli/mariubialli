@@ -219,7 +219,7 @@ export default function Recupera(props) {
 
                                 const intro = `Oi ${transaction.first_name}. Eu sou Alexandre do suporte da Mari Ubialli. Agradecemos o interesse no *${transaction.prod_name}*.`;
                                 const dayOfWeek = new Date().getDay();
-                                const due = (dayOfWeek >= 6 || dayOfWeek == 1) ? "segunda-feira" : "amanhã"
+                                const due = (dayOfWeek >= 5 || dayOfWeek == 0) ? "segunda-feira" : "amanhã"
 
                                 const phase4Text = `${intro} Lembrando que seu boleto vence ${due}. Qualquer dúvida estou à sua disposição.`;
 
