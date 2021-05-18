@@ -296,7 +296,6 @@ function Conteudo() {
                   <CardMedia
                     component="img"
                     alt={rock.title}
-                    height="400"
                     image={rock.image}
                     title={rock.title}
                   />
