@@ -28,7 +28,7 @@ export default function Footer(props) {
         </Grid>
         <Hidden smUp>
           <Grid item lg={12}>
-            &copy; 2020 Mari Ubialli
+            &copy; 2021 Mari Ubialli - 33.939.585/0001-69
           </Grid>
           <Grid item lg={12}>
             Todos os direitos reservados
@@ -36,7 +36,7 @@ export default function Footer(props) {
         </Hidden>
         <Hidden xsDown>
           <Grid item lg={12}>
-            &copy; 2020 Mari Ubialli - Todos os direitos reservados
+            &copy; 2021 Mari Ubialli - 33.939.585/0001-69 - Todos os direitos reservados
           </Grid>
         </Hidden>
       </Grid>
