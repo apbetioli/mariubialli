@@ -1,12 +1,13 @@
-import { Card, CardContent, CardMedia, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Hidden, IconButton, SvgIcon } from "@material-ui/core";
+import { Card, CardContent, CardMedia, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Hidden, IconButton, Link, Paper, SvgIcon } from "@material-ui/core";
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from '@material-ui/core/Typography';
-import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import HttpsIcon from '@material-ui/icons/Https';
 import Timeline from '@material-ui/lab/Timeline';
 import TimelineConnector from '@material-ui/lab/TimelineConnector';
 import TimelineContent from '@material-ui/lab/TimelineContent';
@@ -58,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
   },
   card: {
-    backgroundColor: "transparent",
+    backgroundColor: "white",
     margin: '16px 16px',
   },
   sectionConteudo: {
@@ -66,6 +67,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 50,
   },
   sectionGreen: {
+    marginTop: 30,
+    marginBottom: 30,
     backgroundColor: "#6BFEDE",
   },
   sectionSobreMim: {
@@ -79,6 +82,11 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     paddingRight: 5,
   },
+  highlightText: {
+    color: "#FE6B8B",
+    fontStyle: "italic",
+    fontWeight: "bold",
+  },
   highlightGreen: {
     backgroundColor: "#6BFEDE",
     color: "gray",
@@ -90,11 +98,18 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#25d366",
     color: "white",
   },
+  heart: {
+    color: "#FE6B8B",
+    position: "relative",
+    top: 5,
+  },
   wave: {
     height: "55rem"
   },
   title: {
     fontSize: "2em",
+    fontStyle: "italic",
+    fontWeight: "bold",
   },
   subtitle: {
     color: "gray",
@@ -136,16 +151,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const recap = [
-  { title: "5 horas de conteúdo divido em mais de 40 aulas" },
-  { title: "Apostila digital de moldes das 7 bonecas " },
-  { title: "Bônus: Apostila digital de moldes adaptados para porta maternidade" },
-  { title: "Bônus: Planilha de precificação com aula explicativa" },
-  { title: "Lista de materiais" },
-  { title: "Suporte na área do curso, email e WhatsApp" },
-  { title: "Módulo exclusivo para iniciantes" }
-];
-
 const rocks = [
   { title: "Esmeralda", color: "#6BFEDE", image: require("assets/img/esmeralda.jpg"), description: "Esmeralda é um símbolo da verdade e do amor. Ela é cheia de esperança, atitude e muuuuuito sábia. Além disso, é sonhadora e intuitiva💚" },
   { title: "Rubi", color: "#FE6B8B", image: require("assets/img/rubi.jpg"), description: "Rubi protege as pessoas que ama e tem uma energia infinita! Leva felicidade e paixão em seu coração, e adora ajudar o próximo🌼" },
@@ -162,9 +167,10 @@ const faqs = [
   { pergunta: "Como vou receber o curso?", resposta: "O curso é enviado ao email cadastrado na compra. Certifique-se que o email está correto para não haver problemas na hora da entrega." },
   { pergunta: "Sou iniciante, vou conseguir fazer?", resposta: "Sim. O curso pensado especialmente para quem é iniciante e aborda tudo o que você precisa saber para criar as bonecas com perfeição. E possui um módulo exclusivo com as principais técnicas que você precisa conhecer." },
   { pergunta: "Não tenho máquina de costura. É um problema?", resposta: "Não. Vou te ensinar a confeccionar tudo à mão. A máquina de costura é opcional." },
-  { pergunta: "O curso é em vídeo?", resposta: "Sim, o curso é 100% online com 5 horas de video aulas divididas em mais de 40 aulas. Tudo bem explicado passo a passo para não ter dúvidas." },
+  { pergunta: "O curso é online?", resposta: "Sim, o curso é 100% online em video com 5 horas de video aulas divididas em mais de 40 aulas. Tudo bem explicado passo a passo para não ter dúvidas." },
   { pergunta: "Por quanto tempo vou poder assistir as aulas?", resposta: "Pelo tempo que quiser. O curso é vitalício. Uma vez seu, é seu pra sempre." },
   { pergunta: "Que tamanho ficam as bonecas depois de prontas?", resposta: "Ficam em média com 28cm podendo variar conforme o tipo de cabelo." },
+  { pergunta: "Os materiais estão inclusos?", resposta: "Não, os materiais para confecção devem ser adquiridos à parte." },
   { pergunta: "O valor é único ou é mensalidade?", resposta: "Este valor é único. Você paga uma vez só e tem acesso a tudo isso sem prazo de validade." },
   { pergunta: "Quais são as formas de pagamento?", resposta: "Você pode pagar com cartão de crédito, PIX ou boleto. E ainda pode parcelar no cartão (com juros)." },
 ];
@@ -208,14 +214,19 @@ function CheckoutButton(props) {
           </IconButton>
         </DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            <Typography variant="body2" color="textSecondary" component="span">
-              Na próxima página você poderá escolher a forma de pagamento
-            </Typography>
-          </DialogContentText>
           <Form buttonText="Continuar" tag="JOIASRARAS-CHECKOUT" redirectTo={checkoutURL}
-            emailPlaceholder="Seu email de acesso" checkout={true} buttonStyle={buttonStyle}
-            showName={true} showPhone={true} />
+            emailPlaceholder="Seu email de acesso" checkout={true} buttonStyle={buttonStyle} showName={true} showPhone={true} >
+            <p className={classes.justify}>
+              <Typography variant="body2" color="textSecondary" component="span">
+                Ao continuar você concorda com nossa <Link className={classes.link} href="/politica-de-privacidade" target="_blank" rel="noopener">política de privacidade</Link>.
+            </Typography>
+            </p>
+          </Form>
+          <p className={classes.justify}>
+            <Typography variant="body2" color="textSecondary" component="span">
+              <i className={classes.heart}><HttpsIcon /></i> Compra segura. Você será redirecionada para a Hotmart para concluir o pagamento.
+            </Typography>
+          </p>
         </DialogContent>
         <DialogActions>
         </DialogActions>
@@ -227,11 +238,11 @@ function CheckoutButton(props) {
 function Conteudo() {
   const classes = useStyles();
   return (
-    <section>
+    <section className={classes.sectionConteudo}>
       <Container maxWidth="md">
-        <Grid container className={classes.grid} spacing={3}>
+        <Grid container className={classes.grid}>
           <Grid item className={classes.centered} xs={12}>
-            <h1>Qual é a sua <span className={classes.highlight}>preferida?</span></h1>
+            <h1>Conheça as <span className={classes.highlight}>joias raras</span></h1>
             <p>
               Seus nomes têm significado e são inspirados em pedras preciosas.
             </p>
@@ -245,7 +256,6 @@ function Conteudo() {
                 {rocks.map((rock) => (
                   <TimelineItem key={rock.title}>
                     <TimelineOppositeContent>
-
                       <Typography gutterBottom variant="h5" component="h2">
                         <span className={classes.highlight}>{rock.title}</span>
                       </Typography>
@@ -313,27 +323,17 @@ function Promessa() {
   return (
     <section>
       <Container maxWidth="lg">
-        <Grid container spacing={3}>
-          <Grid item className={classes.centered} xs={12} lg={7} md={6}>
-            <div className={classes.videoWrapper}>
-              <iframe src="https://player.vimeo.com/video/527623450?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                className={classes.video}
-                width="1920"
-                height="1080"
-                frameBorder="0"
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowFullScreen title="Aperte o Play"></iframe>
-            </div>
+        <Grid container spacing={2}>
+          <Grid item className={classes.centered} xs={12} lg={7}>
+            <img src={require("assets/img/banner.jpg")} alt="" className={classes.foto} />
           </Grid>
-
-          <Grid item className={classes.centered} xs={12} lg={5} md={6}>
-            <h1 className={classes.title} >São 7 joias raras para você <span className={classes.highlight}>confeccionar, personalizar e vender</span></h1>
-            <p className={classes.subtitle}>Adicione estas lindas bonecas ao seu portifólio e se destaque no mercado oferecendo um produto de alta qualidade e diferenciado.</p>
+          <Grid item className={classes.centered} xs={12} lg={5}>
+            <h1 className={classes.title}>São 7 joias raras para você <span className={classes.highlight}>confeccionar, personalizar e vender</span></h1>
+            <p className={classes.subtitle}>Se você está em busca de um projeto <span className={classes.highlightText}>diferenciado</span>, seja para vender, dar de presente ou até como terapia nestes tempos difíceis, então estas Joias Raras são para você.</p>
             <CTA>
-              Quero já estas joias raras
+              Quero começar já minhas joias raras
             </CTA>
           </Grid>
-
         </Grid>
       </Container>
     </section>
@@ -343,120 +343,32 @@ function Promessa() {
 function DedoNaFerida() {
   const classes = useStyles();
   return (
-    <section>
+    <section className={classes.sectionConteudo}>
       <Container maxWidth="md">
-        <Grid container className={classes.grid} spacing={3}>
-          <Grid item xs={12} className={classes.centered}>
-            <img src={require("assets/img/banner.jpg")} alt="" className={classes.foto} />
-          </Grid>
+        <Grid container className={classes.grid}>
           <Grid item xs={12}>
-            <h1 className={classes.centered}><span className={classes.highlight}>Para quem</span> é o curso?</h1>
+            <h1 className={classes.centered}>Este curso é <span className={classes.highlight}>especialmente para você</span> que</h1>
             <p>
-              Muito além de uma apostila, este é um curso completo com passo a passo em vídeo para quem quer confeccionar estas lindas bonecas.
+              <i><FavoriteIcon className={classes.heart} /> </i>Ama feltro e está apaixonada por elas assim como eu
             </p>
             <p>
-              Não importa se você é experiente em feltro ou iniciante. O curso aborda tudo o que você precisa saber para criar as bonecas com perfeição.
+              <i><FavoriteIcon className={classes.heart} /> </i>Quer se diferenciar no mercado com técnicas que vão além do feltro
             </p>
             <p>
-              Você aprenderá técnicas diferenciadas que vão além do feltro para você usar em outros projetos.
-              E tudo isso você pode fazer sem máquina de costura.
+              <i><FavoriteIcon className={classes.heart} /> </i>Está em busca de uma atividade para reduzir o stress do dia-a-dia
+            </p>
+            <p>
+              <i><FavoriteIcon className={classes.heart} /> </i>É iniciante e quer um curso detalhado com um ótimo suporte para tirar dúvidas
+            </p>
+            <p>
+              <i><FavoriteIcon className={classes.heart} /> </i>Está buscando uma nova fonte de renda
+            </p>
+            <p>
+              <i><FavoriteIcon className={classes.heart} /> </i>Quer desenvolver novas habilidades e descobrir novas paixões
             </p>
             <CTA>
               Sim! Este curso é para mim!
             </CTA>
-          </Grid>
-        </Grid>
-      </Container>
-    </section>
-  );
-}
-
-function SobreCurso() {
-  const classes = useStyles();
-  return (
-    <section className={classes.sectionConteudo}>
-      <Container maxWidth="md">
-        <Grid container className={classes.grid} spacing={3}>
-          <Grid item xs={12} md={6} className={classes.centered}>
-            <img src={require("assets/img/topic_apostila.png")} alt="" className={classes.foto} />
-          </Grid>
-          <Grid item xs={12} md={6} className={classes.justify}>
-            <h1 className={classes.centered}>Você <span className={classes.highlight}>vai aprender</span></h1>
-            <p>
-              <CheckIcon className={classes.check} /><span> 6 estilos de cabelos</span>
-            </p>
-            <p>
-              <CheckIcon className={classes.check} /><span> 3 tipos de vestidos</span>
-            </p>
-            <p>
-              <CheckIcon className={classes.check} /><span> Saia de tule sem costura</span>
-            </p>
-            <p>
-              <CheckIcon className={classes.check} /><span> 3 tipos de calçados</span>
-            </p>
-            <p>
-              <CheckIcon className={classes.check} /><span> 2 tipos de cachecóis</span>
-            </p>
-            <p>
-              <CheckIcon className={classes.check} /><span> E muito mais!</span>
-            </p>
-            <CTA>
-              Quero aprender tudo isso!
-            </CTA>
-          </Grid>
-        </Grid>
-      </Container>
-    </section>
-  );
-}
-
-function Bonus() {
-  const classes = useStyles();
-  return (
-    <section>
-      <Container maxWidth="md">
-        <Grid container className={classes.grid} spacing={3}>
-          <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/planilha.webp")} alt="" className={classes.foto} />
-          </Grid>
-          <Grid item className={classes.justify} xs={12} md={6}>
-            <h1 className={classes.centered}><span className={classes.highlight}>Bônus:</span> Venda com lucro</h1>
-            <p>
-              Saiba como precificar da forma certa as suas bonecas para que você possa vendê-las e obter lucro de verdade.
-            </p>
-            <p>
-              Eu vou disponibilizar uma planilha para você com todos os materiais, calculado para cada boneca, pronta para você colocar seus valores e descobrir seu preço.
-            </p>
-            <p>
-              Além disso tem uma aula em vídeo que eu explico tudo sobre a planilha e mostro como usá-la.
-            </p>
-            <p>
-              Você nunca mais venderá uma peça sem calcular corretamente o seu preço e você poderá usar este modelo para os seus demais trabalhos.
-            </p>
-            <CTA>
-              Quero ter lucro nas vendas!
-            </CTA>
-          </Grid>
-        </Grid>
-      </Container>
-    </section>
-  );
-}
-
-function BonusEspecial() {
-  const classes = useStyles();
-  return (
-    <section>
-      <Container maxWidth="md">
-        <Grid container className={classes.grid} spacing={3}>
-          <Grid item className={classes.centered} xs={12}>
-            <h1>E você ainda vai receber um <span className={classes.highlight}>bônus SUUUPER especial</span></h1>
-            <p>
-              Molde das bonecas adaptado para você confeccionar porta maternidades como bastidores, guirlandas e flâmulas.
-            </p>
-            <p>
-              <img src={require("assets/img/bonusespecial.jpg")} alt="" className={classes.foto} />
-            </p>
           </Grid>
         </Grid>
       </Container>
@@ -470,38 +382,37 @@ function AcessoImediato() {
     <section>
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
-          <Hidden xsDown>
-            <Grid item className={classes.centered} xs={12} md={6}>
-              <img src={require("assets/img/topic_bonus.png")} alt="" className={classes.foto} />
-            </Grid>
-          </Hidden>
-          <Grid item className={classes.justify} xs={12} md={6}>
+          <Grid item className={classes.centered} xs={12} md={6}>
+            <img src={require("assets/img/topic_apostila.png")} alt="" className={classes.foto} />
+          </Grid>
+          <Grid item xs={12} md={6}>
             <h1 className={classes.centered}>Entre agora e tenha <span className={classes.highlight}>acesso imediato</span></h1>
             <p>
-              Ao se inscrever por <b>cartão</b> ou <b>PIX</b> você recebe o acesso imediato a:
+              Após a confirmação do pagamento você terá acesso imediato a:
             </p>
-            {recap.map((topic) => (
-              <p key={topic.title}>
-                <CheckIcon className={classes.check} /><span> {topic.title}</span>
-              </p>
-            ))}
-          </Grid>
-        </Grid>
-      </Container>
-    </section>
-  );
-}
-
-function AcessoVitalicio() {
-  const classes = useStyles();
-  return (
-    <section>
-      <Container maxWidth="md">
-        <Grid container className={classes.grid} spacing={3}>
-          <Grid item className={classes.centered} xs={12}>
-            <h1 className={classes.centered}>O curso é seu <span className={classes.highlight}>para sempre</span></h1>
             <p>
-              Você paga uma vez e tem acesso vitalício, para poder assistir as aulas no seu tempo e quantas vezes quiser, além de receber todas as futuras atualizações.
+              <FavoriteIcon className={classes.heart} /><span> 5 horas de conteúdo divido em mais de 40 aulas</span>
+            </p>
+            <p>
+              <FavoriteIcon className={classes.heart} /><span> Apostila digital de moldes das 7 bonecas</span>
+            </p>
+            <p>
+              <FavoriteIcon className={classes.heart} /><span> Lista de materiais</span>
+            </p>
+            <p>
+              <FavoriteIcon className={classes.heart} /><span> Suporte na área do curso, por email e WhatsApp</span>
+            </p>
+            <p>
+              <FavoriteIcon className={classes.heart} /><span> Módulo exclusivo para iniciantes</span>
+            </p>
+            <p>
+              <FavoriteIcon className={classes.heart} /><span> Acesso vitalício</span>
+            </p>
+            <p>
+              <FavoriteIcon className={classes.heart} /> <span className={classes.highlight}>Bônus:</span><span> Apostila digital de moldes adaptado para porta maternidade</span>
+            </p>
+            <p>
+              <FavoriteIcon className={classes.heart} /> <span className={classes.highlight}>Bônus:</span><span> Planilha de precificação com aula explicativa para que você obtenha lucro nas suas vendas.</span>
             </p>
           </Grid>
         </Grid>
@@ -542,13 +453,10 @@ function Garantia() {
             <img src={require("assets/img/garantia.png")} alt="Garantia de 7 dias" />
           </Grid>
           <Grid item xs={12} md={6} className={classes.justify}>
-            <h1 className={classes.centered}>Você não tem <span className={classes.highlight}>nada a perder</span></h1>
-            <p>O Curso Bonecas Joias Raras tem 7 dias de garantia incondicional.</p>
-            <p>Você pode assistir todas as aulas e ter acesso ao bônus exclusivo.
-            Se por qualquer motivo você não ficar satisfeita,
-            basta entrar em contato comigo pelo email contato@mariubialli.com
-              e solicitar o reembolso do valor investido.</p>
-            <p>Você receberá de volta cada centavo que pagou.</p>
+            <h1 className={classes.centered}>Você tem 7 dias de <span className={classes.highlight}>garantia incondicional</span></h1>
+            <p>Você pode assistir todas as aulas e ter acesso a todos os materiais.
+            Se por qualquer motivo você não ficar satisfeita, basta solicitar o reembolso
+              pelo email contato@mariubialli.com e você receberá 100% do valor investido de volta.</p>
           </Grid>
         </Grid>
       </Container>
@@ -587,7 +495,7 @@ function FAQs() {
           <Grid item xs={12}>
             <h1 className={classes.centered}>Dúvidas frequentes</h1>
             {faqs.map((faq, index) => (
-              <Accordion key={"id" + index} defaultExpanded={true}>
+              <Accordion key={"id" + index} defaultExpanded={false}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls={"panel" + index + "-content"}
@@ -628,56 +536,29 @@ function Testemunhos1() {
   return (
     <section>
       <Container maxWidth="md" className={classes.centered}>
-        <Grid container className={classes.grid} spacing={0}>
+        <Grid container className={classes.grid} spacing={1}>
           <Grid item className={classes.centered} xs={12}>
             <h1>O que os alunos estão <br /><span className={classes.highlight}>falando do curso?</span></h1>
           </Grid>
           <Grid item className={classes.centered} xs={12} sm={3}>
-            <img src={require("assets/img/testemunho16.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+            <Paper elevation={3}>
+              <img src={require("assets/img/testemunho16.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+            </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12} sm={3}>
-            <img src={require("assets/img/testemunho15.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+            <Paper elevation={3}>
+              <img src={require("assets/img/testemunho21.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+            </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12} sm={3}>
-            <img src={require("assets/img/testemunho14.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+            <Paper elevation={3}>
+              <img src={require("assets/img/testemunho22.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+            </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12} sm={3}>
-            <img src={require("assets/img/testemunho22.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-          </Grid>
-        </Grid>
-      </Container>
-    </section>
-  );
-}
-
-function Testemunhos2() {
-  const classes = useStyles();
-  return (
-    <section>
-      <Container maxWidth="md">
-        <Grid container className={classes.grid} spacing={0}>
-          <Grid item className={classes.centered} xs={12} sm={4}>
-            <img src={require("assets/img/testemunho12.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-          </Grid>
-          <Grid item className={classes.centered} xs={12} sm={4}>
-            <img src={require("assets/img/testemunho6.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-          </Grid>
-          <Grid item className={classes.centered} xs={12} sm={4}>
-            <img src={require("assets/img/testemunho13.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-          </Grid>
-          <Grid item className={classes.centered} xs={12} sm={4}>
-            <img src={require("assets/img/testemunho2.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-          </Grid>
-          <Grid item className={classes.centered} xs={12} sm={4}>
-            <img src={require("assets/img/testemunho9.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-          </Grid>
-          <Grid item className={classes.centered} xs={12} sm={4}>
-            <img src={require("assets/img/testemunho10.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <CheckoutButton>
-              Estou convencida, quero entrar para o curso
-            </CheckoutButton>
+            <Paper elevation={3}>
+              <img src={require("assets/img/testemunho31b.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+            </Paper>
           </Grid>
         </Grid>
       </Container>
@@ -688,25 +569,63 @@ function Testemunhos2() {
 function Testemunhos3() {
   const classes = useStyles();
   return (
-    <section>
-      <Container maxWidth="md" className={classes.centered}>
-        <Grid container className={classes.grid} spacing={0}>
-          <Grid item className={classes.centered} xs={12} sm={3}>
-            <img src={require("assets/img/testemunho20.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-          </Grid>
-          <Grid item className={classes.centered} xs={12} sm={3}>
-            <img src={require("assets/img/testemunho21.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-          </Grid>
-          <Grid item className={classes.centered} xs={12} sm={3}>
-            <img src={require("assets/img/testemunho1.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-          </Grid>
-          <Grid item className={classes.centered} xs={12} sm={3}>
-            <img src={require("assets/img/testemunho23.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+    <section className={classes.sectionConteudo}>
+      <Container maxWidth="sm" className={classes.centered}>
+        <Grid container className={classes.grid} spacing={1}>
+          <Grid item className={classes.centered} xs={12}>
+            <h1>Venha fazer parte deste grupo de alunas <span className={classes.highlight}>encantadas</span></h1>
           </Grid>
           <Grid item className={classes.centered} xs={12}>
+            <Paper elevation={3}>
+              <img src={require("assets/img/testemunho24.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+            </Paper>
+          </Grid>
+          <Grid item className={classes.centered} xs={12}>
+            <Paper elevation={3}>
+              <img src={require("assets/img/testemunho25.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+            </Paper>
+          </Grid>
+          <Grid item className={classes.centered} xs={12}>
+            <Paper elevation={3}>
+              <img src={require("assets/img/testemunho26.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+            </Paper>
+          </Grid>
+          <Grid item className={classes.centered} xs={12}>
+            <Paper elevation={3}>
+              <img src={require("assets/img/testemunho29.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+            </Paper>
+          </Grid>
+          <Grid item className={classes.centered} xs={12}>
+            <Paper elevation={3}>
+              <img src={require("assets/img/testemunho33.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+            </Paper>
+          </Grid>
+          <Grid item className={classes.centered} xs={12}>
+            <Paper elevation={3}>
+              <img src={require("assets/img/testemunho34.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+            </Paper>
+          </Grid>
+          <Grid item className={classes.centered} xs={12}>
+            <Paper elevation={3}>
+              <img src={require("assets/img/testemunho35.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+            </Paper>
+          </Grid>
+          <Grid item className={classes.centered} xs={12}>
+            <Paper elevation={3}>
+              <img src={require("assets/img/testemunho36.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+            </Paper>
+          </Grid>
+          <Grid item className={classes.centered} xs={12}>
+            <Paper elevation={3}>
+              <img src={require("assets/img/testemunho37.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+            </Paper>
+          </Grid>
+          <Grid item className={classes.centered} xs={12}>
+            <p>
             <CheckoutButton>
-              Estou convencida, quero entrar para o curso
+              Quero fazer parte deste grupo
             </CheckoutButton>
+            </p>
           </Grid>
         </Grid>
       </Container>
@@ -714,7 +633,7 @@ function Testemunhos3() {
   );
 }
 
-export default function JoiasRarasVendas() {
+export default function JoiasRarasVendasB(props) {
   const classes = useStyles();
   return (
     <main className={classes.root}>
@@ -735,10 +654,6 @@ export default function JoiasRarasVendas() {
       <DedoNaFerida />
       <Testemunhos1 />
       <Conteudo />
-      <SobreCurso />
-      <AcessoVitalicio />
-      <Bonus />
-      <BonusEspecial />
       <AcessoImediato />
       <div id="pricing" />
       <Preco />
@@ -746,8 +661,8 @@ export default function JoiasRarasVendas() {
       <Testemunhos3 />
       <SobreMim />
       <FAQs />
-      <Preco />
       <DuvidasWhats />
+      <Preco />
       <Footer />
     </main>
   );

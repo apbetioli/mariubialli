@@ -183,6 +183,8 @@ export default function Form(props) {
         />
       }
 
+      {props.children}
+
       <ColorButton
         variant="contained"
         type="submit"

@@ -1,5 +1,6 @@
 import React from "react";
 import JoiasRarasVendas from "./vendas";
+import JoiasRarasVendasB from "./vendasb";
 
 export default class JoiasRaras extends React.Component {
 
@@ -27,6 +28,9 @@ export default class JoiasRaras extends React.Component {
     }
 
     render() {
+        if(this.state.variant == 1)
+            return <JoiasRarasVendasB variant={this.state.variant} />
+
         return <JoiasRarasVendas variant={this.state.variant} />
     }
 }

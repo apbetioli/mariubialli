@@ -330,9 +330,9 @@ function Promessa() {
 
           <Grid item className={classes.centered} xs={12} lg={5} md={6}>
             <h1 className={classes.title}>São 7 joias raras para você <span className={classes.highlight}>confeccionar, personalizar e vender</span></h1>
-            <p className={classes.subtitle}>Se você estava em busca de um projeto diferenciado para confeccionar, seja para vender, dar de presente, para si mesma ou até como terapia nestes tempos difíceis, então estas joias raras são para você.</p>
+            <p className={classes.subtitle}>Se você está em busca de um projeto diferenciado para confeccionar, seja para vender, dar de presente, para si mesma ou até como terapia nestes tempos difíceis, então estas joias raras são para você.</p>
             <CTA>
-              Quero já minhas joias raras
+              Quero começar já minhas joias raras
             </CTA>
           </Grid>
 
