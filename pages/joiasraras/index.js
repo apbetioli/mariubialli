@@ -6,7 +6,6 @@ export default class JoiasRaras extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             variant: 0
         }
