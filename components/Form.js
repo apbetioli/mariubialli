@@ -1,9 +1,7 @@
 import {
   Backdrop,
   CircularProgress,
-
   Link,
-
   TextField,
   Typography
 } from "@material-ui/core";
@@ -14,6 +12,8 @@ import React, { useState } from "react";
 import NumberFormat from "react-number-format";
 import subscribe from "../lib/subscribe";
 import ColorButton from "./ColorButton";
+import { sha256 } from 'js-sha256';
+
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -76,11 +76,13 @@ export default function Form(props) {
     const phone = values.phone ? values.phone.trim() : "";
     const ddd = phone.substring(0, 2);
     const phone_number = phone.substring(2);
+    const email = values.email.trim().toLowerCase();
+    const name = values.name;
 
     const form = {
-      email: values.email.toLowerCase(),
+      email,
       tag: props.tag,
-      name: values.name,
+      name,
       phone
     };
 
@@ -101,15 +103,22 @@ export default function Form(props) {
       redirectTo += "redirect=true";
 
       if (props.checkout) {
-        redirectTo += "&email=" + values.email.toLowerCase();
+        redirectTo += "&email=" + email;
         if (values.name)
-          redirectTo += "&name=" + values.name + "&nome=" + values.name;
+          redirectTo += "&name=" + name + "&nome=" + name;
         if (ddd)
           redirectTo += "&phoneac=" + ddd;
         if (phone_number)
           redirectTo += "&phonenumber=" + phone_number + "&cel=" + ddd + phone_number;
         if (router.query.hideBillet)
           redirectTo += "&hideBillet=1";
+
+      } else {
+        redirectTo += "&em=" + sha256(email);
+        if (values.name)
+          redirectTo += "&fn=" + sha256(name);
+        if (ddd)
+          redirectTo += "&ph=" + sha256(phone);
       }
 
       router.push(redirectTo);
