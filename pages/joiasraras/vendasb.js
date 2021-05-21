@@ -330,7 +330,7 @@ function Promessa() {
             <h1 className={classes.title}>São 7 joias raras para você <span className={classes.highlight}>confeccionar, personalizar e vender</span></h1>
             <p className={classes.subtitle}>Se você está em busca de um projeto <span className={classes.highlightText}>diferenciado</span>, seja para vender, dar de presente ou até como terapia nestes tempos difíceis, então estas Joias Raras são para você.</p>
             <CTA>
-              Quero começar já minhas joias raras
+              Quero começar agora mesmo
             </CTA>
           </Grid>
         </Grid>
@@ -541,7 +541,7 @@ function Testemunhos1() {
           </Grid>
           <Grid item className={classes.centered} xs={12} sm={3}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho16.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/testemunho40.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12} sm={3}>
@@ -551,12 +551,12 @@ function Testemunhos1() {
           </Grid>
           <Grid item className={classes.centered} xs={12} sm={3}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho22.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/testemunho31b.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12} sm={3}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho31b.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/testemunho16.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
         </Grid>
@@ -621,8 +621,8 @@ function Testemunhos3() {
           </Grid>
           <Grid item className={classes.centered} xs={12}>
             <p>
-            <CheckoutButton>
-              Quero fazer parte deste grupo
+              <CheckoutButton>
+                Quero fazer parte deste grupo
             </CheckoutButton>
             </p>
           </Grid>
