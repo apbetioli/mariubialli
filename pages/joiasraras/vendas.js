@@ -16,6 +16,7 @@ import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
 import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
 import Head from "next/head";
 import { default as React } from "react";
+import useSWR from "swr";
 import BotaoWhats from "../../components/BotaoWhats";
 import ColorButton from "../../components/ColorButton";
 import Footer from "../../components/Footer";
@@ -716,6 +717,8 @@ function Testemunhos3() {
 }
 
 export default function JoiasRarasVendas(props) {
+  const { data, error } = useSWR('/api/fbevent', fetch)
+
   const classes = useStyles();
   return (
     <main className={classes.root}>
