@@ -5,18 +5,26 @@ import theme from "assets/js/theme";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
+import * as fbq from '../lib/fpixel'
 
-function populateUtmSource() {
-  const router = useRouter();
-  useEffect(() => {
-    if (router.query.utm_source) {
-      window.localStorage.setItem("utm_source", router.query.utm_source);
-    }
-  });
+const handleRouteChange = () => {
+  console.log('Route changed');
+  setTimeout(() => fbq.pageview(), 5000)
 }
 
 export default function App({ Component, pageProps }) {
-  populateUtmSource();
+  const router = useRouter();
+  useEffect(() => {
+
+    window.localStorage.setItem("utm_source", router.query.utm_source);
+    
+    fbq.pageview()
+
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
 
   const title = pageProps.title ? pageProps.title + " | " : "";
   return (
@@ -42,13 +50,15 @@ export default function App({ Component, pageProps }) {
 }
 
 export const getInitialProps = async ({ Component, router, ctx }) => {
-  let pageProps = {
-    env: process.env.NODE_ENV == "development"
+  let initialProps = {
   };
 
   if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps(ctx);
+    initialProps = await Component.getInitialProps(ctx);
   }
 
-  return { pageProps };
+  return {
+    env: process.env.NODE_ENV,
+    ...initialProps
+  };
 };

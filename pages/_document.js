@@ -2,6 +2,7 @@ import { ServerStyleSheets } from "@material-ui/core/styles";
 import Document, { Head, Html, Main, NextScript } from "next/document";
 import React from "react";
 import theme from "../assets/js/theme";
+import { FB_PIXEL_ID } from '../lib/fpixel'
 
 export default class MyDocument extends Document {
   render() {
@@ -9,16 +10,40 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           {/* Google Tag Manager */}
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          {process.env.NEXT_PUBLIC_GTM_ID &&
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
                 })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM_ID}');`,
-            }}
-          />
+              }}
+            />
+          }
           {/* End Google Tag Manager */}
+
+
+          {/* Facebook Pixel */}
+          {FB_PIXEL_ID &&
+            <script
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `
+                  !function(f,b,e,v,n,t,s)
+                  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                  n.queue=[];t=b.createElement(e);t.async=!0;
+                  t.src=v;s=b.getElementsByTagName(e)[0];
+                  s.parentNode.insertBefore(t,s)}(window, document,'script',
+                  'https://connect.facebook.net/en_US/fbevents.js');
+                  fbq('init', ${FB_PIXEL_ID});
+                `,
+              }}
+            />
+          }
+          {/* End Facebook Pixel  */}
 
           <link
             rel="stylesheet"
@@ -27,6 +52,7 @@ export default class MyDocument extends Document {
 
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
+
         </Head>
         <body>
           {/* Google Tag Manager (noscript) */}
@@ -36,6 +62,17 @@ export default class MyDocument extends Document {
             }}
           />
           {/* End Google Tag Manager (noscript) */}
+
+          {/* Facebook Pixel (noscript) */}
+          <noscript>
+            <img
+              height="1"
+              width="1"
+              style={{ display: 'none' }}
+              src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
+            />
+          </noscript>
+          {/* End Facebook Pixel (noscript) */}
 
           <Main />
           <NextScript />

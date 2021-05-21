@@ -35,7 +35,7 @@ getParams = (lead) => {
 
     params.append('email', lead.email);
 
-    if (lead.name) {
+    if (lead.name && lead.name !== "") {
         const name = lead.name.split(" ")
         params.append('first_name', name[0]);
         if (name.length > 0)
@@ -44,7 +44,7 @@ getParams = (lead) => {
             params.append('last_name', name.slice(1).join(" "));
     }
 
-    if (lead.phone)
+    if (lead.phone && lead.phone !== "")
         params.append('phone', lead.phone);
 
     return params;
@@ -52,15 +52,22 @@ getParams = (lead) => {
 
 subscribe = async (lead, tag) => {
 
+    if (!tag)
+        return;
+
     const params = getParams(lead)
     params.append('b_' + tag, '');
 
-    return await fetch('https://handler.klicksend.com.br/subscription/' + tag, { method: 'POST', body: params })
-        .then(res => {
-            if (!res.ok) throw res;
-            return res.url;
-        })
-        .catch(err => { throw err });
+    return await fetch('https://handler.klicksend.com.br/subscription/' + tag, {
+        method: 'POST',
+        body: params
+    }).then(res => {
+        if (!res.ok) throw res;
+        return res.url;
+    }).catch(err => {
+        console.error(err.message);
+        throw err
+    });
 }
 
 module.exports = async (req, res) => {
@@ -71,7 +78,7 @@ module.exports = async (req, res) => {
     try {
         let result = await subscribe(lead, translate[lead.tag])
 
-        if (lead.source) {
+        if (lead.source && lead.source !== "" && lead.source !== "undefined") {
             await subscribe(lead, translate[lead.source])
         }
 
@@ -82,7 +89,7 @@ module.exports = async (req, res) => {
         res
             .status(400)
             .send(
-                "Não foi possível completar o cadastro. Tente novamente em alguns minutos."
+                err
             );
     };
 };
