@@ -215,7 +215,7 @@ function CheckoutButton(props) {
         </DialogTitle>
         <DialogContent>
           <Form buttonText="Continuar" tag="JOIASRARAS-CHECKOUT" redirectTo={checkoutURL}
-            emailPlaceholder="Seu email de acesso" checkout={true} buttonStyle={buttonStyle} showName={true} showPhone={true} >
+            emailPlaceholder="Seu email de acesso ao curso" checkout={true} buttonStyle={buttonStyle} showName={true} showPhone={true} >
             <p className={classes.justify}>
               <Typography variant="body2" color="textSecondary" component="span">
                 Ao continuar você concorda com nossa <Link className={classes.link} href="/politica-de-privacidade" target="_blank" rel="noopener">política de privacidade</Link>.
