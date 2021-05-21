@@ -66,7 +66,6 @@ module.exports = async (req, res) => {
                 res.status(400).send(err);
             }
         );
-
     } catch (e) {
         console.error(e);
         res.status(400).send(e);
