@@ -632,7 +632,7 @@ function Testemunhos3() {
   );
 }
 
-export default function JoiasRarasVendasB(props) {
+export default function JoiasRarasVendas(props) {
   const classes = useStyles();
   return (
     <main className={classes.root}>
