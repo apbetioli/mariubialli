@@ -330,7 +330,7 @@ function Promessa() {
             <h1 className={classes.title}>São 7 joias raras para você <span className={classes.highlight}>confeccionar, personalizar e vender</span></h1>
             <p className={classes.subtitle}>Se você está em busca de um projeto <span className={classes.highlightText}>diferenciado</span>, seja para vender, dar de presente ou até como terapia nestes tempos difíceis, então estas Joias Raras são para você.</p>
             <CTA>
-              Quero começar agora mesmo
+              Quero me inscrever agora mesmo
             </CTA>
           </Grid>
         </Grid>
