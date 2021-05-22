@@ -19,12 +19,10 @@ import InfoIcon from "@material-ui/icons/Info";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import MenuIcon from "@material-ui/icons/Menu";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
+import SchoolIcon from '@material-ui/icons/School';
 import YouTubeIcon from "@material-ui/icons/YouTube";
-import useUser from "lib/useUser";
-import { useRouter } from "next/router";
 import React from "react";
 import Wave from "./Wave";
-import SchoolIcon from '@material-ui/icons/School';
 
 const useStyles = makeStyles((theme) => ({
   desktopButtons: {
@@ -78,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.light,
     height: "100%",
     marginRight: theme.spacing(3),
-    
+
   },
 }));
 
@@ -88,16 +86,7 @@ function ListItemLink(props) {
 
 export default function Header(props) {
   const classes = useStyles();
-  const { user, mutateUser } = useUser();
   const [drawerOpen, setDrawerOpen] = React.useState(false);
-  const router = useRouter();
-
-  const logout = async (event) => {
-    event.preventDefault();
-    await mutateUser(fetch("/api/logout"));
-    setDrawerOpen(false);
-    router.push("/");
-  };
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);

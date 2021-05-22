@@ -6,7 +6,6 @@ import {
 } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import theme from "assets/js/theme";
-import useUser from "lib/useUser";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import NumberFormat from "react-number-format";
@@ -52,7 +51,6 @@ export default function Form(props) {
   const router = useRouter();
 
   const [backdrop, setBackdrop] = useState(false);
-  const { mutateUser } = useUser();
 
   const [values, setValues] = React.useState({
     email: '',
@@ -63,16 +61,6 @@ export default function Form(props) {
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
-  };
-
-  const authenticate = async (form) => {
-    const user = await fetch("/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
-
-    await mutateUser(user);
   };
 
   async function onSubmit(event) {
@@ -96,7 +84,6 @@ export default function Form(props) {
     }
 
     try {
-      authenticate(form);
       subscribe(form);
 
       let redirectTo = props.redirectTo;

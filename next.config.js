@@ -14,12 +14,7 @@ module.exports = withPlugins([[withImages]], {
         source: '/',
         destination: '/cursos',
         permanent: false,
-      },
-      {
-        source: '/espera',
-        destination: '/joiasraras',
-        permanent: false,
-      },
+      }
     ]
   },
 });

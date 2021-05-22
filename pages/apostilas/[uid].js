@@ -7,7 +7,6 @@ import React from "react";
 import ImageGallery from "react-image-gallery";
 import ColorButton from "../../components/ColorButton";
 import Layout from "../../components/Layout";
-import useUser from "../../lib/useUser";
 
 const useStyles = makeStyles((theme) => ({
   downloadButton: {
@@ -43,23 +42,22 @@ function DownloadButton({ className, loggedIn, url, children }) {
       {children}
     </ColorButton>
   ) : (
-      <ColorButton
-        id="download"
-        className={className}
-        href={`/login?redirect=${router.asPath}&tag=DOWNLOAD`}
-      >
-        {children}
-      </ColorButton>
-    );
+    <ColorButton
+      id="download"
+      className={className}
+      href={`/login?redirect=${router.asPath}&tag=DOWNLOAD`}
+    >
+      {children}
+    </ColorButton>
+  );
 }
 
 const Apostila = (props) => {
   const classes = useStyles();
   const router = useRouter();
-  const { user } = useUser();
   const { apostila } = props;
 
-  if (user?.isLoggedIn && router.query.redirect && apostila.data.download) {
+  if (router.query.redirect && apostila.data.download) {
     window.open(apostila.data.download.url);
     router.push("/obrigado-download");
     return <div>Loading...</div>;
@@ -121,7 +119,7 @@ const Apostila = (props) => {
               {apostila.data.download.url && (
                 <DownloadButton
                   className={classes.downloadButton}
-                  loggedIn={user?.isLoggedIn}
+                  loggedIn={false}
                   url={apostila.data.download.url}
                 >
                   Download Gratuito

@@ -6,9 +6,7 @@ http://mariubialli.com
 
 - React app created with Next.js
 - Uses prismic as headless CMS
-- Collects emails into mailchimp
-- Uses next-iron-session for session handling in cookies
-
+- Collects emails (leads) into mailchimp
 
 ## Environment Variables
 
@@ -19,7 +17,6 @@ MAILCHIMP_LIST_ID
 MAILCHIMP_SERVER
 PRISMIC_API_TOKEN
 PRISMIC_ENDPOINT (https://example.prismic.io/api/v2)
-SECRET_COOKIE_PASSWORD (This is used by next-iron-session to create cookies)
 ```
 
 ## Prismic configuration
