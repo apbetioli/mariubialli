@@ -10,6 +10,7 @@ const ServerEvent = bizSdk.ServerEvent;
 const access_token = process.env.FB_CONVERSION_API_TOKEN;
 const pixel_id = process.env.FB_PIXEL_ID;
 const api = bizSdk.FacebookAdsApi.init(access_token);
+api.setDebug(true);
 
 module.exports = async (req, res) => {
     try {
