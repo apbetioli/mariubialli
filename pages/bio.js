@@ -47,7 +47,7 @@ function Links() {
                 </Grid>
                 <Grid item xs={12}>
                     <ColorButton
-                        href="https://www.mariubialli.com.br?utm_source=instagram&utm_medium=bio"
+                        href="https://www.lojamariubialli.com.br?utm_source=instagram&utm_medium=bio"
                         className={classes.button}
                     >
                         Loja Mari Ubialli
