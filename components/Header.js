@@ -21,6 +21,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import SchoolIcon from '@material-ui/icons/School';
 import YouTubeIcon from "@material-ui/icons/YouTube";
+import StoreIcon from '@material-ui/icons/Store';
 import React from "react";
 import Wave from "./Wave";
 
@@ -136,6 +137,13 @@ export default function Header(props) {
                   <ListItemText primary="Apostilas gratuitas" />
                 </ListItemLink>
 
+                <ListItemLink button href="https://lojamariubialli.com.br?utm_source=mariubialli.com&utm_medium=header">
+                  <ListItemIcon>
+                    <StoreIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Loja Mari Ubialli" />
+                </ListItemLink>
+
                 <ListItemLink button href="/about">
                   <ListItemIcon>
                     <InfoIcon />
@@ -189,6 +197,9 @@ export default function Header(props) {
               </Button>
               <Button href="/apostilas" className={props.page == "/apostilas" ? classes.toolbarButtonActive : classes.toolbarButton}>
                 Apostilas gratuitas
+              </Button>
+              <Button href="https://lojamariubialli.com.br?utm_source=mariubialli.com&utm_medium=header" className={classes.toolbarButton}>
+                Loja
               </Button>
               <Button href="/about" className={props.page == "/about" ? classes.toolbarButtonActive : classes.toolbarButton}>
                 Sobre
