@@ -430,8 +430,8 @@ function Preco() {
             <img src={require("assets/img/tudoisso.png")} alt="" className={classes.preco} />
           </Grid>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/price_discount.png")} alt="" className={classes.preco} />
-            <div className={classes.precoAviso}>* o preço pode subir a qualquer momento</div>
+            <img src={require("assets/img/price.png")} alt="" className={classes.preco} />
+            <div className={classes.precoAviso}></div>
             <CheckoutButton>
               Quero me inscrever agora
             </CheckoutButton>
