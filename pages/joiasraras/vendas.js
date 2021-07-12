@@ -172,10 +172,10 @@ const faqs = [
   { pergunta: "Que tamanho ficam as bonecas depois de prontas?", resposta: "Ficam em média com 28cm podendo variar conforme o tipo de cabelo." },
   { pergunta: "Os materiais estão inclusos?", resposta: "Não, os materiais para confecção devem ser adquiridos à parte." },
   { pergunta: "O valor é único ou é mensalidade?", resposta: "Este valor é único. Você paga uma vez só e tem acesso a tudo isso sem prazo de validade." },
-  { pergunta: "Quais são as formas de pagamento?", resposta: "Você pode pagar com cartão de crédito, PIX ou boleto. E ainda pode parcelar no cartão (com juros)." },
+  { pergunta: "Quais são as formas de pagamento?", resposta: "Você pode pagar com cartão de crédito em até 6x ou à vista com PIX." },
 ];
 
-const checkoutURL = "https://pay.hotmart.com/B46628840G?checkoutMode=10";
+const checkoutURL = "https://pay.hotmart.com/B46628840G?checkoutMode=10&hideBillet=1";
 const buttonStyle = ColorButton.whatsapp;
 
 function CTA(props) {
