@@ -223,7 +223,7 @@ function CheckoutButton(props) {
           </IconButton>
         </DialogTitle>
         <DialogContent>
-          <Form buttonText="Continuar" tag="aaumwbJ" redirectTo={checkoutURL}
+          <Form buttonText="Continuar" tag="JOIASRARAS-CHECKOUT" redirectTo={checkoutURL}
             emailPlaceholder="Seu email de acesso ao curso" checkout={true} buttonStyle={buttonStyle} showName={true} showPhone={true} >
           </Form>
           <p className={classes.justify}>

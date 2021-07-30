@@ -178,7 +178,7 @@ function CheckoutButton(props) {
           </IconButton>
         </DialogTitle>
         <DialogContent>
-          <Form buttonText="Continuar" tag="aaumwKA" redirectTo={checkoutURL}
+          <Form buttonText="Continuar" tag="JESUS-CHECKOUT" redirectTo={checkoutURL}
             emailPlaceholder="Seu email de acesso ao curso" checkout={true} showName={true} showPhone={true} >
           </Form>
           <p className={classes.justify}>
