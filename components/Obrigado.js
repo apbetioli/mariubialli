@@ -66,6 +66,6 @@ export default function Obrigado(props) {
 Obrigado.defaultProps = {
   title: "Obrigada",
   subtitle: "Incrição realizada com sucesso!",
-  text: "Enquanto isso, siga-me nas redes sociais e acompanhe as novidades!",
+  text: "Siga-me nas redes sociais e acompanhe as novidades!",
   social: true
 };

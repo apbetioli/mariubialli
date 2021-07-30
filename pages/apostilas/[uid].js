@@ -45,7 +45,7 @@ function DownloadButton({ className, loggedIn, url, children }) {
     <ColorButton
       id="download"
       className={className}
-      href={`/login?redirect=${router.asPath}&tag=DOWNLOAD`}
+      href={`/login?redirect=${router.asPath}&tag=8Mu4wW0`}
     >
       {children}
     </ColorButton>

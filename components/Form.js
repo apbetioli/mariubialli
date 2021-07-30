@@ -2,7 +2,10 @@ import {
   Backdrop,
   CircularProgress,
 
-  TextField
+  Link,
+
+  TextField,
+  Typography
 } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import theme from "assets/js/theme";
@@ -20,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
     zIndex: theme.zIndex.drawer + 1,
     color: "#fff",
   },
+  justify: {
+    textAlign: "justify",
+  }
 }));
 
 const MyTextField = withStyles({
@@ -173,6 +179,12 @@ export default function Form(props) {
       }
 
       {props.children}
+
+      <p className={classes.justify}>
+        <Typography variant="body2" color="textSecondary" component="span">
+          Ao continuar você concorda com nossa <Link className={classes.link} href="/politica-de-privacidade" target="_blank" rel="noopener">política de privacidade</Link>.
+        </Typography>
+      </p>
 
       <ColorButton
         variant="contained"

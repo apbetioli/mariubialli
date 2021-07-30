@@ -1,4 +1,4 @@
-import { Card, CardContent, CardMedia, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Hidden, IconButton, Link, Paper, SvgIcon } from "@material-ui/core";
+import { Card, CardContent, CardMedia, Container, Dialog, DialogActions, DialogContent, DialogTitle, Grid, Hidden, IconButton, Paper, SvgIcon } from "@material-ui/core";
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -16,6 +16,7 @@ import TimelineItem from '@material-ui/lab/TimelineItem';
 import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
 import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { default as React } from "react";
 import BotaoWhats from "../../components/BotaoWhats";
 import ColorButton from "../../components/ColorButton";
@@ -175,7 +176,6 @@ const faqs = [
   { pergunta: "Quais são as formas de pagamento?", resposta: "Você pode pagar com cartão de crédito em até 6x ou à vista com PIX." },
 ];
 
-const checkoutURL = "https://pay.hotmart.com/B46628840G?checkoutMode=10&hideBillet=1";
 const buttonStyle = ColorButton.whatsapp;
 
 function CTA(props) {
@@ -201,8 +201,17 @@ function CheckoutButton(props) {
     setOpen(false);
   };
 
+  let checkoutURL = "https://pay.hotmart.com/B46628840G?checkoutMode=10"
+  const router = useRouter()
+  if (router.query.off)
+    checkoutURL += "&off=" + router.query.off
+  if (router.query.hideBillet)
+    checkoutURL += "&hideBillet=" + router.query.hideBillet
+  else
+    checkoutURL += "&hideBillet=1"
+
   return (
-    <div>
+    <>
       <ColorButton className={classes.cta} onClick={handleClickOpen} style={buttonStyle}>
         {props.children}
       </ColorButton>
@@ -214,13 +223,8 @@ function CheckoutButton(props) {
           </IconButton>
         </DialogTitle>
         <DialogContent>
-          <Form buttonText="Continuar" tag="JOIASRARAS-CHECKOUT" redirectTo={checkoutURL}
+          <Form buttonText="Continuar" tag="aaumwbJ" redirectTo={checkoutURL}
             emailPlaceholder="Seu email de acesso ao curso" checkout={true} buttonStyle={buttonStyle} showName={true} showPhone={true} >
-            <p className={classes.justify}>
-              <Typography variant="body2" color="textSecondary" component="span">
-                Ao continuar você concorda com nossa <Link className={classes.link} href="/politica-de-privacidade" target="_blank" rel="noopener">política de privacidade</Link>.
-            </Typography>
-            </p>
           </Form>
           <p className={classes.justify}>
             <Typography variant="body2" color="textSecondary" component="span">
@@ -231,7 +235,7 @@ function CheckoutButton(props) {
         <DialogActions>
         </DialogActions>
       </Dialog>
-    </div>
+    </>
   );
 }
 
@@ -454,7 +458,7 @@ function Garantia() {
           <Grid item xs={12} md={6} className={classes.justify}>
             <h1 className={classes.centered}>Você tem 7 dias de <span className={classes.highlight}>garantia incondicional</span></h1>
             <p>Você pode assistir todas as aulas e ter acesso a todos os materiais.
-            Se por qualquer motivo você não ficar satisfeita, basta solicitar o reembolso
+              Se por qualquer motivo você não ficar satisfeita, basta solicitar o reembolso
               pelo email contato@mariubialli.com e você receberá 100% do valor investido de volta.</p>
           </Grid>
         </Grid>
@@ -623,7 +627,7 @@ function Testemunhos3() {
             <p>
               <CheckoutButton>
                 Quero fazer parte deste grupo
-            </CheckoutButton>
+              </CheckoutButton>
             </p>
           </Grid>
         </Grid>

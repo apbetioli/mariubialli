@@ -1,4 +1,4 @@
-import { Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, IconButton, Paper } from "@material-ui/core"
+import { Container, Dialog, DialogActions, DialogContent, DialogTitle, Grid, IconButton } from "@material-ui/core"
 import Accordion from '@material-ui/core/Accordion'
 import AccordionDetails from '@material-ui/core/AccordionDetails'
 import AccordionSummary from '@material-ui/core/AccordionSummary'
@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography'
 import CheckIcon from '@material-ui/icons/Check'
 import CloseIcon from '@material-ui/icons/Close'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import HttpsIcon from '@material-ui/icons/Https'
 import Head from "next/head"
 import { useRouter } from "next/router"
 import { default as React } from "react"
@@ -177,12 +178,14 @@ function CheckoutButton(props) {
           </IconButton>
         </DialogTitle>
         <DialogContent>
-          <DialogContentText>
+          <Form buttonText="Continuar" tag="aaumwKA" redirectTo={checkoutURL}
+            emailPlaceholder="Seu email de acesso ao curso" checkout={true} showName={true} showPhone={true} >
+          </Form>
+          <p className={classes.justify}>
             <Typography variant="body2" color="textSecondary" component="span">
-              Na próxima página você poderá escolher a forma de pagamento
+              <i className={classes.heart}><HttpsIcon /></i> Compra segura. Você será redirecionada para a Hotmart para concluir o pagamento.
             </Typography>
-          </DialogContentText>
-          <Form buttonText="Continuar" tag="JESUS-CHECKOUT" redirectTo={checkoutURL} emailPlaceholder="Seu email de acesso" showName={true} showPhone={true} />
+          </p>
         </DialogContent>
         <DialogActions>
         </DialogActions>
@@ -376,22 +379,22 @@ function DedoNaFerida() {
           </Grid>
           <Grid item md={4}>
             <CheckIcon className={classes.check} /> Seja por hobby ou para venda, você terá tudo o que precisa para criar este lindo trabalho. Aproveite a temporada de páscoa, mas venda o restante do ano também. Jesus nunca sai de moda.
-            </Grid>
+          </Grid>
           <Grid item md={4}>
             <CheckIcon className={classes.check} /> Você pode personalizar o texto da guirlanda como quiser: Feliz Páscoa, Ele vive! E o que mais sua imaginação mandar.
-            </Grid>
+          </Grid>
           <Grid item md={4}>
             <CheckIcon className={classes.check} /> O passo a passo é 100% online e em vídeo para que não fique nenhuma dúvida. E se ficar dúvidas eu vou te responder.
-            </Grid>
+          </Grid>
           <Grid item md={4}>
             <CheckIcon className={classes.check} /> Não precisa de máquina de costura, ensino tudo à mão. Mas se tiver a máquina você também pode usar para acelerar o seu trabalho.
-            </Grid>
+          </Grid>
           <Grid item md={4}>
             <CheckIcon className={classes.check} /> Se você é iniciante, tem um módulo exclusivo para te ensinar as técnicas básicas para a confecção.
-            </Grid>
+          </Grid>
           <Grid item md={4}>
             <CheckIcon className={classes.check} /> Você aprenderá técnicas diferenciadas que vão além do feltro para você usar em outros projetos.
-            </Grid>
+          </Grid>
           <Grid item xs={12}>
             <CTA>
               Sim! Este curso é para mim!

@@ -1,65 +1,45 @@
-const mailchimp = require("@mailchimp/mailchimp_marketing");
-const md5 = require("md5");
+const fetch = require('node-fetch');
+const { URLSearchParams } = require('url');
 
 module.exports = async (req, res) => {
-  try {
+
     const lead = req.body;
+    console.log(lead);
 
-    const listId = process.env.MAILCHIMP_LIST_ID;
+    const name = lead.name.split(" ")
 
-    mailchimp.setConfig({
-      apiKey: process.env.MAILCHIMP_API_KEY,
-      server: process.env.MAILCHIMP_SERVER,
-    });
+    const params = new URLSearchParams();
+    params.append('email', lead.email);
+    params.append('first_name', name[0]);
+    if (name.length > 0)
+        params.append('first_name', name[0]);
+    if (name.length > 1)
+        params.append('last_name', name.slice(1).join(" "));
+    if (lead.phone)
+        params.append('phone', lead.phone);
+    params.append('b_' + lead.tag, '');
 
-    const subscriberHash = md5(lead.email.toLowerCase());
+    try {
+        await fetch('https://handler.klicksend.com.br/subscription/' + lead.tag, { method: 'POST', body: params })
+            .then(res => {
+                if (res.ok) {
+                    return res;
+                } else {
+                    throw res;
+                }
+            })
+            .then(body => {
+                console.log(body.url)
+                res.send(body.url)
+            })
+            .catch(err => { throw err });
 
-    const member = {
-      email_address: lead.email,
-      status: "subscribed",
-      status_if_new: "subscribed",
-      merge_fields: {
-        FNAME: lead.name,
-        PHONE: lead.phone
-      }
+    } catch (err) {
+        console.error(err)
+        res
+            .status(400)
+            .send(
+                "Não foi possível completar o cadastro. Tente novamente em alguns minutos."
+            );
     };
-
-    const response = await mailchimp.lists.setListMember(
-      listId,
-      subscriberHash,
-      member
-    );
-
-    lead.id = response.id;
-
-    let tags = [
-      {
-        name: lead.tag,
-        status: "active",
-      },
-    ];
-
-    if (lead.source) {
-      tags.push({
-        name: lead.source.toUpperCase(),
-        status: "active",
-      })
-    };
-
-    if (lead.tag) {
-      await mailchimp.lists.updateListMemberTags(listId, subscriberHash, {
-        tags
-      });
-    }
-
-    res.send(JSON.stringify(lead));
-  } catch (e) {
-    console.error(e);
-
-    res
-      .status(400)
-      .send(
-        "Não foi possível completar o cadastro. Tente novamente em alguns minutos."
-      );
-  }
 };
