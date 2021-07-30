@@ -175,7 +175,16 @@ const faqs = [
   { pergunta: "Quais são as formas de pagamento?", resposta: "Você pode pagar com cartão de crédito em até 6x ou à vista com PIX." },
 ];
 
-const checkoutURL = "https://pay.hotmart.com/B46628840G?checkoutMode=10&hideBillet=1";
+let checkoutURL = "https://pay.hotmart.com/B46628840G?checkoutMode=10"
+const router = useRouter()
+if (router.query.off)
+  checkoutURL += "&off=" + router.query.off
+if (router.query.hideBillet)
+  checkoutURL += "&hideBillet=" + router.query.hideBillet
+else
+  checkoutURL += "&hideBillet=1"
+
+
 const buttonStyle = ColorButton.whatsapp;
 
 function CTA(props) {
