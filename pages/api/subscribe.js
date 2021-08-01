@@ -2,6 +2,7 @@ const fetch = require('node-fetch');
 const { URLSearchParams } = require('url');
 
 const translate = {
+    'JRPREMIUM-CHECKOUT': 'O7uOx9X',
     'JOIASRARAS-CHECKOUT': 'aaumwbJ',
     'JESUS-CHECKOUT': 'aaumwKA',
     'DOWNLOAD': '8Mu4wW0',
