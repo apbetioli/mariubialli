@@ -111,7 +111,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.3em",
   },
   fotoCard: {
-    maxHeight: 500,
+    maxHeight: 600,
   },
   fotoPerfil: {
     maxHeight: 300,
@@ -150,7 +150,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const rocks = [
-  { title: "Minis", color: "#6BFEDE", image: require("assets/img/premium1.jpg"), description: "7 bonecas joias raras mini. Elas são menores, com 20cm, e muito mais fofas não acha?💖" },
+  { title: "Minis", color: "#6BFEDE", image: require("assets/img/premium0.jpg"), description: "7 bonecas joias raras mini. Elas são menores, com 20cm, e muito mais fofas não acha?💖" },
   { title: "Ursinhas", color: "#FE6B8B", image: require("assets/img/premium2.jpg"), description: "E agora as bonecas tem companhia, essa ursinha suuuuper fofinha em 2 cores: rosa e verde🥰" },
   { title: "Mobile", color: "#6BFEDE", image: require("assets/img/premium3.jpg"), description: "Aprenda comigo a montar esse mobile maravilhoso tema joias raras🌼" },
   { title: "Guirlanda", color: "#FE6B8B", image: require("assets/img/premium4.jpg"), description: "Sem falar nessa guirlanda super especial. Você vai aprender a customizar o nome que quiser e algumas técnicas extras🌹" },
