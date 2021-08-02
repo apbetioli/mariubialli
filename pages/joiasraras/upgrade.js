@@ -282,7 +282,7 @@ function Promessa() {
             <p className={classes.subtitle}>Oferta <b>única</b> e exclusiva para alunas por <b>tempo limitado*</b></p>
             <div className={classes.precoAviso}>*Promoção válida até 05/08/21 23:59</div>
             <CTA>
-              Quero me inscrever agora mesmo
+              Quero ser premium
             </CTA>
           </Grid>
         </Grid>
@@ -364,7 +364,7 @@ function Preco() {
             <img src={require("assets/img/price_upgrade.png")} alt="" className={classes.preco} />
             <div className={classes.precoAviso}>Promoção válida até 05/08/21 23:59</div>
             <CheckoutButton>
-              Quero me inscrever agora
+              Quero ser premium
             </CheckoutButton>
           </Grid>
         </Grid>
@@ -449,7 +449,14 @@ function DuvidasWhats() {
   const classes = useStyles();
   return (
     <section>
-      <BotaoWhats float={true} message="Oi, gostaria de saber mais sobre o Curso Joias Raras Premium" />
+      <Container maxWidth="md">
+        <Grid container className={classes.grid} spacing={3}>
+          <Grid item className={classes.centered} xs={12}>
+            <h1>Tem dúvidas? Fale conosco no WhatsApp</h1>
+            <BotaoWhats float={false} message="Oi, gostaria de saber mais sobre o Curso Joias Raras Premium" />
+          </Grid>
+        </Grid>
+      </Container>
     </section>
   );
 }
