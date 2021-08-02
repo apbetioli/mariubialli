@@ -339,7 +339,7 @@ function Bonus() {
               <FavoriteIcon className={classes.heart} /><span> O novo <b>Curso Joias Raras Premium</b> vai custar pelo menos <b>R$ 97</b> mas você que já tem o curso vai pagar <b>somente a diferença</b> e ainda receber um <b>SUPER DESCONTO</b> </span>
             </p>
             <p>
-              <FavoriteIcon className={classes.heart} /><span> Na página de pagamento você poderá comprar o <b>Curso Renascer em Jesus</b> por apenas <b>R$ 1</b>. Isso mesmo, 1 real. Neste curso extra você aprenderá um lindo Jesus em feltro que para em pé e uma guirlanda slim arco-íris que usa técnica de pintura com stêncil. <br /><b>IM-PER-DÍ-VEL</b></span>
+              <FavoriteIcon className={classes.heart} /><span> Você poderá comprar junto o <b>Curso Renascer em Jesus</b> por apenas <b>R$ 1</b>. Isso mesmo, 1 real. Neste curso extra você aprenderá um lindo Jesus em feltro que para em pé e uma guirlanda slim arco-íris que usa técnica de pintura com stêncil. <br /><b>IM-PER-DÍ-VEL</b></span>
             </p>
           </Grid>
           <Grid item className={classes.centered} xs={12} md={6}>
