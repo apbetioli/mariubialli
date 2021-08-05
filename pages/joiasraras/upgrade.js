@@ -279,8 +279,7 @@ function Promessa() {
           </Grid>
           <Grid item className={classes.centered} xs={12}>
             <h1 className={classes.title}>Seja <span className={classes.highlight}>PREMIUM</span></h1>
-            <p className={classes.subtitle}>Oferta <b>única</b> e exclusiva para alunas por <b>tempo limitado*</b></p>
-            <div className={classes.precoAviso}>*Promoção válida até 05/08/21 23:59</div>
+            <p className={classes.subtitle}>Oferta única e exclusiva para alunas, válida somente até <b>quinta-feira 05/08/21 23:59</b></p>
             <CTA>
               Quero ser premium
             </CTA>
@@ -340,6 +339,9 @@ function Bonus() {
             </p>
             <p>
               <FavoriteIcon className={classes.heart} /><span> Você poderá comprar junto o <b>Curso Renascer em Jesus</b> por apenas <b>R$ 1</b>. Isso mesmo, 1 real. Neste curso extra você aprenderá um lindo Jesus em feltro que para em pé e uma guirlanda slim arco-íris que usa técnica de pintura com stêncil. <br /><b>IM-PER-DÍ-VEL</b></span>
+            </p>
+            <p>
+              <FavoriteIcon className={classes.heart} /><span> Você irá participar ao vivo comigo em um dia de imersão no curso, junto com outras alunas Premium, onde faremos uma boneca juntos, vou tirar dúvidas e trocaremos experiências. Vai ser épico. Só este bônus já vale o curso todo.</span>
             </p>
           </Grid>
           <Grid item className={classes.centered} xs={12} md={6}>
