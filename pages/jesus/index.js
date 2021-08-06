@@ -280,7 +280,7 @@ function Preco() {
   const classes = useStyles()
 
   const router = useRouter()
-  let priceImg = require("assets/img/price27.png")
+  let priceImg = require("assets/img/price39.png")
 
   return (
     <section className={classes.sectionGreen}>
