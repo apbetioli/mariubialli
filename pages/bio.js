@@ -47,18 +47,10 @@ function Links() {
                 </Grid>
                 <Grid item xs={12}>
                     <ColorButton
-                        href="https://www.lojamariubialli.com.br?utm_source=instagram&utm_medium=bio"
-                        className={classes.button}
-                    >
-                        Loja Mari Ubialli
-                    </ColorButton>
-                </Grid>
-                <Grid item xs={12}>
-                    <ColorButton
                         href="/joiasraras"
                         className={classes.button}
                     >
-                        Curso Bonecas Joias Raras
+                        Curso Joias Raras
                     </ColorButton>
                 </Grid>
                 <Grid item xs={12}>
@@ -79,7 +71,15 @@ function Links() {
                 </Grid>
                 <Grid item xs={12}>
                     <ColorButton
-                        href="https://www.youtube.com/channel/UC8YxukVEnCQLNmbExz-ViAA?sub_confirmation=1"
+                        href="https://www.lojamariubialli.com.br?utm_source=instagram&utm_medium=bio"
+                        className={classes.button}
+                    >
+                        Loja Mari Ubialli
+                    </ColorButton>
+                </Grid>
+                <Grid item xs={12}>
+                    <ColorButton
+                        href="https://www.youtube.com/mariubialli?sub_confirmation=1"
                         className={classes.button}
                     >
                         Inscreva-se no YouTube
@@ -99,7 +99,7 @@ function Links() {
                         className={classes.button}
                         style={ColorButton.whatsapp}
                     >
-                        Acesso alunos bonecas Joias Raras
+                        Acesso alunos Joias Raras
                     </ColorButton>
                 </Grid>
                 <Grid item xs={12}>

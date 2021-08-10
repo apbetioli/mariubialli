@@ -49,7 +49,7 @@ export default function Obrigado(props) {
             <ColorButton
               className={classes.button}
               style={ColorButton.youtube}
-              href="https://www.youtube.com/channel/UC8YxukVEnCQLNmbExz-ViAA?sub_confirmation=1"
+              href="https://www.youtube.com/mariubialli?sub_confirmation=1"
               target="_blank"
               rel="noopener"
             >

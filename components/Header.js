@@ -167,7 +167,7 @@ export default function Header(props) {
 
                 <ListItemLink
                   button
-                  href="https://www.youtube.com/channel/UC8YxukVEnCQLNmbExz-ViAA"
+                  href="https://www.youtube.com/mariubialli"
                   target="_blank"
                   rel="noopener"
                 >
@@ -225,7 +225,7 @@ export default function Header(props) {
               </Tooltip>
               <Tooltip title="Inscreva-se no meu canal">
                 <Button
-                  href="https://www.youtube.com/channel/UC8YxukVEnCQLNmbExz-ViAA"
+                  href="https://www.youtube.com/mariubialli"
                   target="_blank"
                   rel="noopener"
                   className={classes.toolbarButton}
