@@ -12,9 +12,24 @@ module.exports = withPlugins([[withImages]], {
     return [
       {
         source: '/',
-        destination: '/cursos',
+        destination: '/ls1/inscrever/org',
         permanent: false,
-      }
+      },
+      {
+        source: '/ls1',
+        destination: '/ls1/inscrever/org',
+        permanent: false,
+      },
+      {
+        source: '/ls1/inscrever',
+        destination: '/ls1/inscrever/org',
+        permanent: false,
+      },
+      {
+        source: '/obrigado',
+        destination: '/ls1/obrigado',
+        permanent: false,
+      },
     ]
   },
 });

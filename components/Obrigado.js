@@ -26,14 +26,14 @@ export default function Obrigado(props) {
         <Grid className={classes.centered} item xs={12}>
           {props.children}
         </Grid>
-        <Grid className={classes.centered} item xs={12}>
-          <p>
-            {props.text}
-          </p>
-        </Grid>
       </Grid>
       {props.social &&
         <Grid container spacing={3} className={classes.buttons}>
+          <Grid className={classes.centered} item xs={12}>
+            <p>
+              {props.text}
+            </p>
+          </Grid>
           <Grid className={classes.centered} item md={6} xs={12}>
             <ColorButton
               className={classes.button}
@@ -42,8 +42,8 @@ export default function Obrigado(props) {
               rel="noopener"
             >
               <InstagramIcon />
-            &nbsp; Siga-me no instagram
-          </ColorButton>
+              &nbsp; Siga-me no instagram
+            </ColorButton>
           </Grid>
           <Grid className={classes.centered} item md={6} xs={12}>
             <ColorButton
@@ -54,8 +54,8 @@ export default function Obrigado(props) {
               rel="noopener"
             >
               <YouTubeIcon />
-            &nbsp; Inscreva-se no YouTube
-          </ColorButton>
+              &nbsp; Inscreva-se no YouTube
+            </ColorButton>
           </Grid>
         </Grid>
       }
