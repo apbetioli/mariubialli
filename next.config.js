@@ -12,17 +12,12 @@ module.exports = withPlugins([[withImages]], {
     return [
       {
         source: '/',
-        destination: '/ls1/inscrever/org',
+        destination: '/ls1/inscrever',
         permanent: false,
       },
       {
         source: '/ls1',
-        destination: '/ls1/inscrever/org',
-        permanent: false,
-      },
-      {
-        source: '/ls1/inscrever',
-        destination: '/ls1/inscrever/org',
+        destination: '/ls1/inscrever',
         permanent: false,
       },
       {
