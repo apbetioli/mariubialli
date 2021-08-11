@@ -180,11 +180,13 @@ export default function Form(props) {
 
       {props.children}
 
-      <p className={classes.justify}>
-        <Typography variant="body2" color="textSecondary" component="span">
-          Ao continuar você concorda com nossa <Link className={classes.link} href="/politica-de-privacidade" target="_blank" rel="noopener">política de privacidade</Link>.
-        </Typography>
-      </p>
+      {props.showTerms &&
+        <p className={classes.justify}>
+          <Typography variant="body2" color="textSecondary" component="span">
+            Ao continuar você concorda com nossa <Link className={classes.link} href="/politica-de-privacidade" target="_blank" rel="noopener">política de privacidade</Link>.
+          </Typography>
+        </p>
+      }
 
       <ColorButton
         variant="contained"
@@ -209,5 +211,6 @@ Form.defaultProps = {
   tag: "LOGIN",
   showName: false,
   showPhone: false,
+  showTerms: true,
   emailPlaceholder: "Digite o seu melhor email..."
 };

@@ -2,6 +2,7 @@ const fetch = require('node-fetch');
 const { URLSearchParams } = require('url');
 
 const translate = {
+    'LS1': 'QXuLwaE',
     'JRPREMIUM-CHECKOUT': 'O7uOx9X',
     'JOIASRARAS-CHECKOUT': 'aaumwbJ',
     'JESUS-CHECKOUT': 'aaumwKA',
@@ -10,7 +11,9 @@ const translate = {
     'instagram': 'plue2j6',
     'faceads': 'd3uPmlL',
     'facebook': 'kRuOyBd',
-    'googleads': 'aaumwRj'
+    'googleads': 'aaumwRj',
+    'telegram': 'GLu6woq',
+    'email': 'QXuLw19'
 }
 
 getParams = (lead) => {
