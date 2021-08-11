@@ -140,7 +140,7 @@ function Promessa(props) {
                         <p className={classes.subtitle}>02/09 às 20h</p>
                         <p className={classes.subtitle}>100% online e gratuito</p>
                         <p>{props.origin}</p>
-                        <Form buttonText="QUERO SABER MAIS" tag="LS1" redirectTo={"/obrigado"}
+                        <Form buttonText="QUERO SABER MAIS" tag="LS1" redirectTo={"/ls1/obrigado"}
                             emailPlaceholder="Digite seu melhor email" buttonStyle={buttonStyle} showTerms={false}>
                         </Form>
                     </Grid>
@@ -211,7 +211,9 @@ function SobreMim() {
     );
 }
 
-export default function DesafioEuVetorizoInscrever(props) {
+export default function LS1Inscrever(props) {
+    console.log(props.origin)
+    
     const classes = useStyles();
     return (
         <main className={classes.root}>
@@ -235,27 +237,11 @@ export default function DesafioEuVetorizoInscrever(props) {
             <SobreMim />
             <CTA />
             <Footer />
+
         </main>
     );
 }
 
-export async function getStaticProps(context) {
-    const origin = context.params.origin
-    return { props: { origin }, revalidate: 1 };
-}
-
-export async function getStaticPaths() {
-    const paths = [
-        { params: { origin: 'instagram' } },
-        { params: { origin: 'faceads' } },
-        { params: { origin: 'googleads' } },
-        { params: { origin: 'telegram' } },
-        { params: { origin: 'email' } }
-    ];
-
-    return {
-        paths,
-        fallback: true,
-    };
-}
-
+LS1Inscrever.defaultProps = {
+    origin: 'org',
+};

@@ -1,12 +1,12 @@
+import { Container, makeStyles, Typography, withStyles } from "@material-ui/core";
+import Box from '@material-ui/core/Box';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import { WhatsApp } from "@material-ui/icons";
+import DraftsIcon from '@material-ui/icons/Drafts';
 import React from "react";
 import ColorButton from "../../components/ColorButton";
-import Obrigado from "../../components/Obrigado";
-import LinearProgress from '@material-ui/core/LinearProgress';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import Box from '@material-ui/core/Box';
-import { Container, Grid, makeStyles, Typography, withStyles } from "@material-ui/core";
 import Footer from "../../components/Footer";
-import { WhatsApp } from "@material-ui/icons";
+import Obrigado from "../../components/Obrigado";
 
 const BorderLinearProgress = withStyles((theme) => ({
   root: {
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function InscreverObrigado(props) {
+export default function LS1Obrigado(props) {
   const classes = useStyles();
 
   const [progress, setProgress] = React.useState(0);
@@ -73,7 +73,7 @@ export default function InscreverObrigado(props) {
           target="_blank"
           style={ColorButton.whatsapp}
         >
-           <WhatsApp/>&nbsp; Entrar para o grupo
+          <WhatsApp />&nbsp; Entrar para o grupo
         </ColorButton>
 
         <h4>2) Acesse seu email e responda a pesquisa que te enviamos!</h4>
