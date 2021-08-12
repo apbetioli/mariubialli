@@ -1,8 +1,7 @@
-import { Container, makeStyles, Typography, withStyles } from "@material-ui/core";
+import { Container, Typography, withStyles } from "@material-ui/core";
 import Box from '@material-ui/core/Box';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { WhatsApp } from "@material-ui/icons";
-import DraftsIcon from '@material-ui/icons/Drafts';
 import React from "react";
 import ColorButton from "../../components/ColorButton";
 import Footer from "../../components/Footer";
@@ -38,19 +37,12 @@ function LinearProgressWithLabel(props) {
   );
 }
 
-const useStyles = makeStyles((theme) => ({
-  centered: {
-    textAlign: 'center'
-  }
-}));
-
-export default function LS1Obrigado(props) {
-  const classes = useStyles();
+export default function LS1Obrigado() {
 
   const [progress, setProgress] = React.useState(0);
 
   React.useEffect(() => {
-    const timer = setInterval(() => { setProgress(90); }, 500);
+    const timer = setInterval(() => { setProgress(80); }, 500);
     return () => { clearInterval(timer); };
   }, []);
 
@@ -64,23 +56,21 @@ export default function LS1Obrigado(props) {
       <Obrigado title="Quase lá..." subtitle="Faltam apenas 2 passos para finalizar sua inscrição!"
         social={false}>
         <LinearProgressWithLabel value={progress} />
-
         <h4>1) Clique no botão abaixo e entre para o grupo do WhatsApp para receber todas as informações de acesso.</h4>
         <ColorButton
           variant="contained"
           type="button"
-          href="https://wa.me/5544920024218"
+          href="/whats"
           target="_blank"
           style={ColorButton.whatsapp}
         >
           <WhatsApp />&nbsp; Entrar para o grupo
         </ColorButton>
 
+        <p>&nbsp;</p>
+
         <h4>2) Acesse seu email e responda a pesquisa que te enviamos!</h4>
-
-        <p><DraftsIcon /></p>
-
-        <p>#ArtesãSuprema</p>
+        <p>O nosso objetivo é fazer com que você aproveite ao máximo esse evento! Queremos ouvir de você quais são suas principais dificuldades e necessidades para garantir que esse evento vai superar suas expectativas.</p>
       </Obrigado>
 
       <Footer />
