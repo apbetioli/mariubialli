@@ -13,11 +13,11 @@ export async function getStaticProps(context) {
 
 export async function getStaticPaths() {
     const paths = [
-        { params: { origin: 'instagram' } },
-        { params: { origin: 'faceads' } },
-        { params: { origin: 'googleads' } },
-        { params: { origin: 'telegram' } },
-        { params: { origin: 'email' } }
+        { params: { origin: 'ig' } },
+        { params: { origin: 'fb' } },
+        { params: { origin: 'gg' } },
+        { params: { origin: 'tg' } },
+        { params: { origin: 'em' } }
     ];
 
     return {
