@@ -29,6 +29,11 @@ module.exports = withPlugins([[withImages]], {
         source: '/whats',
         destination: 'https://chat.whatsapp.com/HHbk1HCh8dJ1Y68764nVqI',
         permanent: false,
+      },
+      {
+        source: '/telegram',
+        destination: 'https://t.me/joinchat/RrAThTnLHvVmMWIx',
+        permanent: false,
       }
     ]
   },
