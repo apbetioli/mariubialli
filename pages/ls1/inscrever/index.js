@@ -228,7 +228,7 @@ export default function LS1Inscrever(props) {
     return (
         <main className={classes.root}>
             <Head>
-                <title>Desafio Eu Vetorizo - Mari Ubialli</title>
+                <title>Artesã Suprema - Mari Ubialli</title>
                 <meta
                     name="description"
                     content="Vem aprender como gerar renda criando seus próprios moldes em feltro."
