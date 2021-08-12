@@ -157,7 +157,7 @@ function Programacao() {
             <Container maxWidth="md">
                 <Grid container className={classes.grid} spacing={3}>
                     <Grid item className={classes.centered} xs={12} md={6}>
-                        <img src={require("assets/img/ls1/webinar.png")} alt="" className={classes.fotoPerfil} />
+                        <img src={require("assets/img/ls1/webinar.webp")} alt="" className={classes.fotoPerfil} />
                     </Grid>
                     <Grid item xs={12} md={6}>
                         <h1>Programação do evento</h1>
@@ -200,7 +200,7 @@ function SobreMim() {
             <Container maxWidth="md">
                 <Grid container className={classes.grid} spacing={3}>
                     <Grid item className={classes.centered} md={6}>
-                        <img className={classes.fotoPerfil} src={require("assets/img/perfil.jpg")} alt="Mari Ubialli" />
+                        <img className={classes.fotoPerfil} src={require("assets/img/perfil.webp")} alt="Mari Ubialli" />
                     </Grid>
                     <Grid item md={6} className={classes.justify}>
                         <h1 className={classes.centered}>Prazer, mari ubialli</h1>

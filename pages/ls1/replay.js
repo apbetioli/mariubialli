@@ -478,7 +478,7 @@ function Garantia() {
             <Container maxWidth="md">
                 <Grid container className={classes.grid} spacing={3}>
                     <Grid item className={classes.centered} xs={12}>
-                        <img src={require("assets/img/ls1/garantia30.png")} alt="Garantia de 30 dias" />
+                        <img src={require("assets/img/ls1/garantia30.webp")} alt="Garantia de 30 dias" />
                     </Grid>
                     <Grid item xs={12} className={classes.justify}>
                         <h1 className={classes.centered}>Garantia de 30 + 90 + 200%</h1>
@@ -506,7 +506,7 @@ function SobreMim() {
             <Container maxWidth="md">
                 <Grid container className={classes.grid} spacing={3}>
                     <Grid item className={classes.centered} md={6}>
-                        <img className={classes.fotoPerfil} src={require("assets/img/perfil.jpg")} alt="Mari Ubialli" />
+                        <img className={classes.fotoPerfil} src={require("assets/img/perfil.webp")} alt="Mari Ubialli" />
                     </Grid>
                     <Grid item md={6} className={classes.justify}>
                         <h1 className={classes.centered}>prazer, mari ubialli</h1>
