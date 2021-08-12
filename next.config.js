@@ -25,6 +25,11 @@ module.exports = withPlugins([[withImages]], {
         destination: '/ls1/obrigado',
         permanent: false,
       },
+      {
+        source: '/whats',
+        destination: 'https://chat.whatsapp.com/HHbk1HCh8dJ1Y68764nVqI',
+        permanent: false,
+      }
     ]
   },
 });
