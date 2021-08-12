@@ -459,7 +459,7 @@ function Preco() {
                         <img src={require("assets/img/tudoisso.png")} alt="" className={classes.preco} />
                     </Grid>
                     <Grid item className={classes.centered} xs={12} md={6}>
-                        <img src={require("assets/img/ls1/price.jpg")} alt="" className={classes.preco} />
+                        <img src={require("assets/img/ls1/price.webp")} alt="" className={classes.preco} />
                         <div className={classes.precoAviso}></div>
                         <CheckoutButton>
                             Quero me inscrever agora mesmo
