@@ -39,7 +39,7 @@ export default function LS1Confirmado(props) {
                 <p>Nos vemos no curso!</p>
                 <p></p>
                 <p>Qualquer dúvida entre em contato pelo WhatsApp clicando no botão abaixo, ou por email <a href="mailto:contato@mariubialli.com">contato@mariubialli.com</a></p>
-                <BotaoWhats float={false} message="Oi, fiz a compra do Curso Artesã Suprema..." />
+                <BotaoWhats float={false} message="Oi, fiz a compra do Curso Artesã Criativa..." />
             </Obrigado>
         </Layout >
     );

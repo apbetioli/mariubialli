@@ -671,7 +671,7 @@ export default function LS1Replay(props) {
     return (
         <main className={classes.root}>
             <Head>
-                <title>Artesã Suprema - Mari Ubialli</title>
+                <title>Artesã Criativa - Mari Ubialli</title>
                 <meta
                     name="description"
                     content="Vem aprender como gerar renda criando seus próprios moldes em feltro."
