@@ -140,7 +140,7 @@ function Promessa(props) {
                         <p className={classes.subtitle}>Venha participar desta aula ao vivo onde vou revelar as 3 estratégias que você pode usar para gerar renda criando seus próprios moldes de feltro.</p>
                         <p className={classes.subtitle}>02/09 às 20h</p>
                         <p className={classes.subtitle}>100% Online e Gratuito</p>
-                        <Form buttonText="QUERO SABER MAIS" tag="AS_LS_#1" redirectTo={`/obrigado/${props.origin}`}
+                        <Form buttonText="QUERO SABER MAIS" tag="AS_LS_#1" redirectTo={`/ls1/obrigado/${props.origin}`}
                             emailPlaceholder="Digite seu melhor email" buttonStyle={buttonStyle} showTerms={false}>
                         </Form>
                     </Grid>
@@ -230,10 +230,6 @@ export default function LS1Inscrever(props) {
                 <meta
                     name="description"
                     content="Vem aprender como gerar renda criando seus próprios moldes em feltro."
-                />
-                <meta
-                    name="keywords"
-                    content="feltro, artesanato, costura, ponto caseado, ponto reto, ponto alinhavo, passo a passo, diy, moldes gratuitos, apostilas gratuitas, bonecas, boneca em feltro, criar moldes, criar apostilas"
                 />
                 <meta name="robots" content="noindex,nofollow"></meta>
             </Head>

@@ -666,21 +666,17 @@ function Testemunhos3() {
     );
 }
 
-export default function JoiasRarasVendas(props) {
+export default function LS1Replay(props) {
     const classes = useStyles();
     return (
         <main className={classes.root}>
             <Head>
-                <title>Joias Raras - Curso de Bonecas em Feltro</title>
+                <title>Artesã Suprema - Mari Ubialli</title>
                 <meta
                     name="description"
-                    content="São 7 lindas bonecas para você confeccionar, personalizar e vender."
+                    content="Vem aprender como gerar renda criando seus próprios moldes em feltro."
                 />
-                <meta
-                    name="keywords"
-                    content="feltro, artesanato, costura, ponto caseado, ponto reto, ponto alinhavo, passo a passo, diy, moldes gratuitos, apostilas gratuitas, bonecas, boneca em feltro"
-                />
-                <meta name="robots" content="index,nofollow"></meta>
+                <meta name="robots" content="noindex,nofollow"></meta>
             </Head>
 
             <Promessa />

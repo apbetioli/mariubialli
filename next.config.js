@@ -27,7 +27,7 @@ module.exports = withPlugins([[withImages]], {
       },
       {
         source: '/obrigado/:origin*',
-        destination: '/ls1/obrigado?origin=:origin*',
+        destination: '/ls1/obrigado/:origin*',
         permanent: false,
       },
       {

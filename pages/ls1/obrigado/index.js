@@ -2,10 +2,11 @@ import { Container, Typography, withStyles } from "@material-ui/core";
 import Box from '@material-ui/core/Box';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { WhatsApp } from "@material-ui/icons";
+import Head from "next/head";
 import React from "react";
-import ColorButton from "../../components/ColorButton";
-import Footer from "../../components/Footer";
-import Obrigado from "../../components/Obrigado";
+import ColorButton from "../../../components/ColorButton";
+import Footer from "../../../components/Footer";
+import Obrigado from "../../../components/Obrigado";
 
 const BorderLinearProgress = withStyles((theme) => ({
   root: {
@@ -48,10 +49,14 @@ export default function LS1Obrigado() {
 
   return (
     <>
-      <section>
-        <Container maxWidth="md">
-        </Container>
-      </section>
+      <Head>
+        <title>Artesã Suprema - Mari Ubialli</title>
+        <meta
+          name="description"
+          content="Vem aprender como gerar renda criando seus próprios moldes em feltro."
+        />
+        <meta name="robots" content="noindex,nofollow"></meta>
+      </Head>
 
       <Obrigado title="Quase lá..." subtitle="Faltam apenas 2 passos para finalizar sua inscrição!"
         social={false}>
