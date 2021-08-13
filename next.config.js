@@ -21,8 +21,18 @@ module.exports = withPlugins([[withImages]], {
         permanent: false,
       },
       {
+        source: '/inscrever/:origin*',
+        destination: '/ls1/inscrever/:origin*',
+        permanent: false,
+      },
+      {
         source: '/obrigado',
         destination: '/ls1/obrigado',
+        permanent: false,
+      },
+      {
+        source: '/replay',
+        destination: '/ls1/replay',
         permanent: false,
       },
       {
