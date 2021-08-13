@@ -161,7 +161,6 @@ function Programacao() {
                     </Grid>
                     <Grid item xs={12} md={6}>
                         <h1>Programação do evento</h1>
-                        <p>Se inscreva e anote na agenda para não perder as 3 estratégias que vão te tornar uma artesã suprema:</p>
                         <p><i><EventAvailableIcon className={classes.heart} /> </i>02/09 - Quinta-feira às 20h</p>
                         <p><i><LocationOn className={classes.heart} /> </i>100% Online</p>
                         <p><i><MoneyOff className={classes.heart} /> </i>100% Gratuito</p>
