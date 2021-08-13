@@ -140,7 +140,7 @@ function Promessa(props) {
                         <p className={classes.subtitle}>Venha participar desta aula ao vivo onde vou revelar as 3 estratégias que você pode usar para gerar renda criando seus próprios moldes de feltro.</p>
                         <p className={classes.subtitle}>02/09 às 20h</p>
                         <p className={classes.subtitle}>100% Online e Gratuito</p>
-                        <Form buttonText="QUERO SABER MAIS" tag="AS_LS_#1" redirectTo={"/ls1/obrigado"}
+                        <Form buttonText="QUERO SABER MAIS" tag="AS_LS_#1" redirectTo={`/obrigado/${props.origin}`}
                             emailPlaceholder="Digite seu melhor email" buttonStyle={buttonStyle} showTerms={false}>
                         </Form>
                     </Grid>
@@ -214,8 +214,7 @@ function SobreMim() {
 
 function populateUtmSource(origin) {
     useEffect(() => {
-        console.log(origin)
-        if (origin && origin !== 'og') {
+        if (origin && origin !== '') {
             window.localStorage.setItem("utm_source", "AS_LS_#1_" + origin.toUpperCase());
         }
     });
@@ -252,5 +251,5 @@ export default function LS1Inscrever(props) {
 }
 
 LS1Inscrever.defaultProps = {
-    origin: 'og',
+    origin: '',
 };
