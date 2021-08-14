@@ -145,10 +145,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const who = [
-    "Trabalha com feltro e quer se diferenciar",
-    "Está buscando uma nova fonte de renda",
     "Quer parar de competir por preço",
+    "Está buscando uma nova fonte de renda",
+    "Recusa encomendas por falta de moldes",
+    "Trabalha com feltro e quer se diferenciar, colocar sua identidade nas peças",
     "Está decepcionada com o instagram que não entrega mais suas publicações",
+    "Impulsiona posts e não vê resultado",
     "Vende apostilas somente no lançamento e depois nada",
     "Quer aprender as técnicas para vender todos os dias"
 ]
@@ -172,11 +174,17 @@ const deliverables = [
     {
         title: "Criação da Apostila",
         image: require("assets/img/ls1/apostila.webp"),
-        description: "Vamos transformar seus moldes em uma apostila. Ao final deste módulo você vai sair com uma apostila prontinha para venda."
+        description: "Vamos transformar seus moldes em uma apostila. Ao final deste módulo você vai sair com uma apostila em formato PDF prontinha para venda."
+    },
+    {
+        title: "Criação de curso",
+        image: require("assets/img/ls1/curso.webp"),
+        description: "Vou te contar o por que e como criar seu curso. Vamos explorar tudo o que deu certo e o que não deu certo nos meus cursos para que você comece do jeito certo. Equipamentos, preparação, dicas de edição e muito mais.",
+        price: "R$ 197"
     },
     {
         title: "Como vender?",
-        image: require("assets/img/ls1/vender.webp"),
+        image: require("assets/img/ls1/vender2.webp"),
         description: "Você vai aprender a divulgar e fazer o lançamento da sua apostila de uma forma muito eficiente, utilizando as mesmas ferramentas que eu utilizo nos meus lançamentos."
     }
 ];
@@ -185,7 +193,7 @@ const bonus = [
     {
         title: "Live semanal",
         image: require("assets/img/ls1/live.webp"),
-        description: "Uma aula ao vivo comigo e outras alunas toda semana para tirar dúvidas",
+        description: "Uma aula ao vivo comigo e as colegas de classe toda semana para tirar dúvidas e fazer análises.",
         price: "Não tem preço"
     },
     {
@@ -195,15 +203,9 @@ const bonus = [
         price: "R$ 1997"
     },
     {
-        title: "Criação de curso",
-        image: require("assets/img/ls1/curso.webp"),
-        description: "Vou te contar o por que e como criar seu curso. Vamos explorar tudo o que deu certo e o que não deu certo nos meus cursos para que você comece do jeito certo.",
-        price: "R$ 197"
-    },
-    {
         title: "Templates de apostila",
         image: require("assets/img/ls1/template.webp"),
-        description: "Vou te dar dois templates de apostila que você poderá usar como base para montar a sua. Vai ficar muito mais fácil e ainda vai economizar tempo.",
+        description: "Vou te dar dois templates de apostila que você poderá usar como base para montar as suas. Vai ficar muito mais fácil e ainda vai economizar tempo.",
         price: "R$ 97"
     },
     {
@@ -416,17 +418,21 @@ function Objecoes() {
         <section>
             <Container maxWidth="md">
                 <Grid container className={classes.grid} spacing={3}>
-                    <Grid item className={classes.centered} xs={12} md={6}>
-                        <img src={require("assets/img/topic_apostila.png")} alt="" className={classes.foto} />
-                    </Grid>
                     <Grid item xs={12} md={6}>
-                        <h1 className={classes.centered}>E além disso você <span className={classes.highlight}>não precisa</span></h1>
+                        <h1 className={classes.centered}>Seu sonho é viver de artesanato?</h1>
                         <p>
-                            <FavoriteIcon className={classes.heart} /><span> Ter muitos seguidores no instagram</span>
+                            Então você precisa parar de perder tempo!
                         </p>
                         <p>
-                            <FavoriteIcon className={classes.heart} /><span> Ser muito conhecida</span>
+                            Para vender você não precisa ter muitos seguidores no instagram, nem precisa ser muito conhecida.
                         </p>
+                        <p>
+                            Basta ter um caminho. Um método. E você está no lugar certo!
+                        </p>
+                        <p>
+                            Meu objetivo é permitir que artesãs que já trabalham com artesanato em feltro consigam criar suas próprias peças exclusivas, ou adaptar projetos colocando o seu toque pessoal, não ter que recusar encomendas que os moldes não são encontrados facilmente, ou quiçá, criar sua apostila ou curso para ensinar e viver disso.
+                        </p>
+                        <p>Por isso eu criei este curso, quer saber mais?</p>
                     </Grid>
                 </Grid>
             </Container>
@@ -457,11 +463,6 @@ function Bonus() {
                                 />
                                 <CardContent>
                                     <h3><span className={classes.highlight}>BÔNUS:</span> {item.title}</h3>
-                                    {item.price &&
-                                        <h4>
-                                            <strike>{item.price}</strike>
-                                        </h4>
-                                    }
                                     <Typography variant="body2" color="textSecondary" component="p" className={classes.justify} >
                                         {item.description}
                                     </Typography>
@@ -724,6 +725,7 @@ export default function LS1Replay(props) {
 
             <Promessa />
             <DedoNaFerida />
+            <Objecoes />
             <Entregaveis />
             <Bonus />
             <div id="pricing" />
