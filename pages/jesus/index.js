@@ -201,7 +201,7 @@ function Promessa() {
       <Container maxWidth="md">
         <Grid container spacing={3}>
           <Grid item className={classes.centered} xs={12} lg={7} md={6}>
-            <img src={require("assets/img/jesus/capa.jpg")} alt="" className={classes.foto} />
+            <img src={require("assets/img/jesus/capa.webp")} alt="" className={classes.foto} />
           </Grid>
 
           <Grid item className={classes.centered} xs={12} lg={5} md={6}>

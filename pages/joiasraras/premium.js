@@ -345,7 +345,7 @@ function Bonus() {
             </p>
           </Grid>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/jesus/curso.jpg")} alt="" className={classes.fotoPerfil} />
+            <img src={require("assets/img/jesus/curso.webp")} alt="" className={classes.fotoPerfil} />
           </Grid>
         </Grid>
       </Container>

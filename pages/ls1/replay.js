@@ -1,4 +1,4 @@
-import { Card, CardContent, CardMedia, Container, Dialog, DialogActions, DialogContent, DialogTitle, Grid, Hidden, IconButton, Paper, SvgIcon } from "@material-ui/core";
+import { Card, CardContent, CardMedia, Container, Dialog, DialogActions, DialogContent, DialogTitle, Grid, IconButton, Paper } from "@material-ui/core";
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -8,13 +8,6 @@ import CloseIcon from '@material-ui/icons/Close';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import HttpsIcon from '@material-ui/icons/Https';
-import Timeline from '@material-ui/lab/Timeline';
-import TimelineConnector from '@material-ui/lab/TimelineConnector';
-import TimelineContent from '@material-ui/lab/TimelineContent';
-import TimelineDot from '@material-ui/lab/TimelineDot';
-import TimelineItem from '@material-ui/lab/TimelineItem';
-import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
-import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { default as React } from "react";
@@ -22,7 +15,6 @@ import BotaoWhats from "../../components/BotaoWhats";
 import ColorButton from "../../components/ColorButton";
 import Footer from "../../components/Footer";
 import Form from "../../components/Form";
-import ScrollTo from "../../components/ScrollTo";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -61,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     },
     card: {
         backgroundColor: "white",
-        margin: '16px 16px',
+        margin: '16px 16px'
     },
     sectionConteudo: {
         backgroundColor: "#ffe8ed",
@@ -152,28 +144,125 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const rocks = [
-    { title: "Esmeralda", color: "#6BFEDE", image: require("assets/img/esmeralda.jpg"), description: "Esmeralda é um símbolo da verdade e do amor. Ela é cheia de esperança, atitude e muuuuuito sábia. Além disso, é sonhadora e intuitiva💚" },
-    { title: "Rubi", color: "#FE6B8B", image: require("assets/img/rubi.jpg"), description: "Rubi protege as pessoas que ama e tem uma energia infinita! Leva felicidade e paixão em seu coração, e adora ajudar o próximo🌼" },
-    { title: "Ágata", color: "#6BFEDE", image: require("assets/img/agata.jpg"), description: "Ágata é forte e corajosa, se aceita como é de verdade! Tem uma energia super positiva e as pessoas ao seu redor se contagiam com a sua felicidade😆" },
-    { title: "Angelita", color: "#FE6B8B", image: require("assets/img/angelita.jpg"), description: "Angelita é suuuuper especial, comunicativa e verdadeira. Não perde a esperança mesmo em momentos difícies, pois acredita que dias melhores virão. Ela é a alegria da casa, a alegria da vida todinha da mamãe e do papai, ela é uma verdadeira super heroína🌹" },
-    { title: "Jade", color: "#6BFEDE", image: require("assets/img/jade.jpg"), description: "Jade é uma menina super amiga, brincalhona e extrovertida. É considerada a pedra da sorte, prosperidade e amizade🤗" },
-    { title: "Rose", color: "#FE6B8B", image: require("assets/img/rose.jpg"), description: "Rose, também conhecida como Rose Quartz, tem muito estilo, é decidida e promove o amor incondicional.\n\nCom amor podemos todas as coisas, tudo torna-se possível💖" },
-    { title: "Ametista", color: "#6BFEDE", image: require("assets/img/ametista.jpg"), description: "Ametista parece frágil né? Pois é aí que você se engana. Ela é delicada, porém forte e tem uma paz interior que te eleva a alma🧘‍♀️" },
+const who = [
+    "Trabalha com feltro e quer se diferenciar",
+    "Está buscando uma nova fonte de renda",
+    "Quer parar de competir por preço",
+    "Está decepcionada com o instagram que não entrega mais suas publicações",
+    "Vende apostilas somente no lançamento e depois nada",
+    "Quer aprender as técnicas para vender todos os dias"
+]
+
+const deliverables = [
+    {
+        title: "Processo Criativo",
+        image: require("assets/img/ls1/the-creative-process.webp"),
+        description: "Como desenvolver a percepção criativa para conseguir tirar o projeto da cabeça e colocar no papel. Mesmo que você não saiba desenhar ou não tenha nenhum projeto em mente, vou te guiar através de exemplos que vão te destravar."
+    },
+    {
+        title: "Vetorização",
+        image: require("assets/img/ls1/vetorizacao.webp"),
+        description: "Você vai aprender a vetorizar seu projeto, isto é, desenhar no computador para poder imprimir e posteriormente montar sua apostila de moldes. De forma simples e passo a passo bem detalhado para mesmo que você que não domina o computador ou tecnologia consiga entender e realizar este processo. E tudo isso usando um programa totalmente gratuito."
+    },
+    {
+        title: "Testes",
+        image: require("assets/img/ls1/testes.webp"),
+        description: "Neste módulo vamos falar sobre a etapa de testes das peças, e dicas valiosas que podem fazer você economizar muito tempo neste processo."
+    },
+    {
+        title: "Criação da Apostila",
+        image: require("assets/img/ls1/apostila.webp"),
+        description: "Vamos transformar seus moldes em uma apostila. Ao final deste módulo você vai sair com uma apostila prontinha para venda."
+    },
+    {
+        title: "Como vender?",
+        image: require("assets/img/ls1/vender.webp"),
+        description: "Você vai aprender a divulgar e fazer o lançamento da sua apostila de uma forma muito eficiente, utilizando as mesmas ferramentas que eu utilizo nos meus lançamentos."
+    }
+];
+
+const bonus = [
+    {
+        title: "Live semanal",
+        image: require("assets/img/ls1/live.webp"),
+        description: "Uma aula ao vivo comigo e outras alunas toda semana para tirar dúvidas",
+        price: "Não tem preço"
+    },
+    {
+        title: "Como anunciar nas redes sociais",
+        image: require("assets/img/ls1/faceads.webp"),
+        description: "100% voltado para artesãs. Aprenda o que funciona (e o que não funciona) na criação de anúncios para vender todos os dias. Tudo o que eu vou ensinar aqui foi testado na prática na venda dos meus cursos.",
+        price: "R$ 1997"
+    },
+    {
+        title: "Criação de curso",
+        image: require("assets/img/ls1/curso.webp"),
+        description: "Vou te contar o por que e como criar seu curso. Vamos explorar tudo o que deu certo e o que não deu certo nos meus cursos para que você comece do jeito certo.",
+        price: "R$ 197"
+    },
+    {
+        title: "Templates de apostila",
+        image: require("assets/img/ls1/template.webp"),
+        description: "Vou te dar dois templates de apostila que você poderá usar como base para montar a sua. Vai ficar muito mais fácil e ainda vai economizar tempo.",
+        price: "R$ 97"
+    },
+    {
+        title: "Curso Joias Raras",
+        image: require("assets/img/banner.jpg"),
+        description: "Você vai ver por dentro como eu faço meus cursos e apostilas e aprender técnicas de criação de bonecas associado a outros materiais e projetos únicos. Quem é iniciante no feltro poderá aprender tudo o que precisa para fazer o curso.",
+        price: "R$ 97"
+    },
+    {
+        title: "Curso Renascer em Jesus",
+        image: require("assets/img/jesus/close.webp"),
+        description: "Você vai aprender técnicas de pintura aplicadas ao feltro que pode ser um diferencial nos seus projetos.",
+        price: "R$ 39"
+    },
+    {
+        title: "Comunidade no facebook",
+        image: require("assets/img/ls1/comunidade.webp"),
+        description: "A comunidade será o lugar para tirar dúvidas sobre o curso e interagir com as outras alunas, compartilhar aprendizados e resultados. Você nunca estará sozinha."
+    },
+    {
+        title: "Canal no telegram",
+        image: require("assets/img/ls1/telegram.webp"),
+        description: "Uma via direta entre eu e você para você receber notificações das aulas e plantões de dúvidas para não ficar de fora."
+    },
 ];
 
 const faqs = [
-    { pergunta: "Quando começa o curso?", resposta: "O curso começa assim que você se inscrever. Todas as aulas já estão gravadas e todos os materiais estão disponíveis para baixar." },
-    { pergunta: "Quando vou receber o curso?", resposta: "O acesso a sua área de membros é enviado automaticamente após a confirmação de seu pagamento. Se você realizar o pagamento por cartão de crédito ou PIX, você receberá os dados de acesso em até 10 minutos. Caso o pagamento seja por boleto bancário a confirmação bancária pode levar até 72 horas." },
-    { pergunta: "Como vou receber o curso?", resposta: "O curso é enviado ao email cadastrado na compra. Certifique-se que o email está correto para não haver problemas na hora da entrega." },
-    { pergunta: "Sou iniciante, vou conseguir fazer?", resposta: "Sim. O curso pensado especialmente para quem é iniciante e aborda tudo o que você precisa saber para criar as bonecas com perfeição. E possui um módulo exclusivo com as principais técnicas que você precisa conhecer." },
-    { pergunta: "Não tenho máquina de costura. É um problema?", resposta: "Não. Vou te ensinar a confeccionar tudo à mão. A máquina de costura é opcional." },
-    { pergunta: "O curso é online?", resposta: "Sim, o curso é 100% online em video com 5 horas de video aulas divididas em mais de 40 aulas. Tudo bem explicado passo a passo para não ter dúvidas." },
-    { pergunta: "Por quanto tempo vou poder assistir as aulas?", resposta: "Pelo tempo que quiser. O curso é vitalício. Uma vez seu, é seu pra sempre." },
-    { pergunta: "Que tamanho ficam as bonecas depois de prontas?", resposta: "Ficam em média com 28cm podendo variar conforme o tipo de cabelo." },
-    { pergunta: "Os materiais estão inclusos?", resposta: "Não, os materiais para confecção devem ser adquiridos à parte." },
-    { pergunta: "O valor é único ou é mensalidade?", resposta: "Este valor é único. Você paga uma vez só e tem acesso a tudo isso sem prazo de validade." },
-    { pergunta: "Quais são as formas de pagamento?", resposta: "Você pode pagar com cartão de crédito em até 6x ou à vista com PIX." },
+    {
+        pergunta: "Quando começa o curso?",
+        resposta: "A primeira aula de boas vindas será dia 09/07/2021. Os módulos com as respectivas aulas gravadas serão disponibilizados semanalmente na plataforma."
+    },
+    {
+        pergunta: "Quando vou receber o curso?",
+        resposta: "O acesso a sua área de membros é enviado automaticamente após a confirmação de seu pagamento. Se você realizar o pagamento por cartão de crédito ou PIX, você receberá os dados de acesso em até 10 minutos. Caso o pagamento seja por boleto bancário a confirmação bancária pode levar até 72 horas."
+    },
+    {
+        pergunta: "Como vou receber o curso?",
+        resposta: "O curso é disponibilizado na plataforma da Hotmart e o acesso é enviado ao email cadastrado na compra. Certifique-se que o email está correto para não haver problemas na hora da entrega."
+    },
+    {
+        pergunta: "Sou iniciante, vou conseguir fazer?",
+        resposta: "Sim! Se você já sabe confeccionar em feltro, você poderá iniciar o curso diretamente. Caso nunca tenha tido contato, nós disponibilizamos como bônus o meu Curso Bonecas Joias Raras onde você poderá aprender a confeccionar as peças passo a passo."
+    },
+    {
+        pergunta: "Não tenho computador, vou conseguir fazer?",
+        resposta: "Não, um computador será necessário para fazer a vetorização dos moldes."
+    },
+    {
+        pergunta: "O curso é online?",
+        resposta: "Sim, o curso é 100% online em video e ficará gravado para assistir quando quiser."
+    },
+    {
+        pergunta: "Por quanto tempo vou poder assistir as aulas?",
+        resposta: "O acesso ao curso tem a duração de 1 ano. Podendo ser renovado após esse prazo."
+    },
+    {
+        pergunta: "Quais são as formas de pagamento?",
+        resposta: "Você pode pagar com cartão de crédito em até 12x, usar 2 cartões de crédito ou à vista com PIX e boleto."
+    },
 ];
 
 const buttonStyle = ColorButton.whatsapp;
@@ -181,11 +270,9 @@ const buttonStyle = ColorButton.whatsapp;
 function CTA(props) {
     const classes = useStyles();
     return (
-        <ScrollTo target="#pricing">
-            <ColorButton className={classes.cta} style={buttonStyle}>
-                {props.children}
-            </ColorButton>
-        </ScrollTo>
+        <CheckoutButton>
+            {props.children}
+        </CheckoutButton>
     );
 }
 
@@ -201,7 +288,7 @@ function CheckoutButton(props) {
         setOpen(false);
     };
 
-    let checkoutURL = "https://pay.hotmart.com/B46628840G?checkoutMode=10"
+    let checkoutURL = "https://pay.hotmart.com/S58196346N?checkoutMode=10"
     const router = useRouter()
     if (router.query.off)
         checkoutURL += "&off=" + router.query.off
@@ -243,72 +330,31 @@ function Entregaveis() {
     const classes = useStyles();
     return (
         <section>
-            <Container maxWidth="md">
+            <Container maxWidth="lg">
                 <Grid container className={classes.grid}>
                     <Grid item className={classes.centered} xs={12}>
-                        <h1>Tudo o que você vai aprender</h1>
+                        <h1>Tudo o que você <span className={classes.highlight}>vai aprender</span></h1>
                     </Grid>
-                    <Hidden xsDown>
-                        <Grid item className={classes.centered} xs={12}>
-                            <Timeline align="alternate">
-                                {rocks.map((rock) => (
-                                    <TimelineItem key={rock.title}>
-                                        <TimelineOppositeContent>
-                                            <Typography gutterBottom variant="h5" component="h2">
-                                                <span className={classes.highlight}>{rock.title}</span>
-                                            </Typography>
-                                            <Typography color="textSecondary" component="p">
-                                                {rock.description}
-                                            </Typography>
-                                        </TimelineOppositeContent>
-                                        <TimelineSeparator>
-                                            <TimelineDot style={{ backgroundColor: rock.color }}>
-                                                <SvgIcon>
-                                                    <svg viewBox="0 0 24 20">
-                                                        <path fill="currentColor" d="M16,9H19L14,16M10,9H14L12,17M5,9H8L10,16M15,4H17L19,7H16M11,4H13L14,7H10M7,4H9L8,7H5M6,2L2,8L12,22L22,8L18,2H6Z" />
-                                                    </svg>
-                                                </SvgIcon>
-                                            </TimelineDot>
-                                            <TimelineConnector />
-                                        </TimelineSeparator>
-                                        <TimelineContent>
-                                            <Card className={classes.root}>
-                                                <CardMedia
-                                                    component="img"
-                                                    alt={rock.title}
-                                                    height="600"
-                                                    image={rock.image}
-                                                    title={rock.title}
-                                                />
-                                            </Card>
-                                        </TimelineContent>
-                                    </TimelineItem>
-                                ))}
-                            </Timeline>
+
+                    {deliverables.map((item) => (
+                        <Grid container item xs={12} sm={6} md={4} spacing={0} key={item.title}>
+                            <Card raised={true} className={classes.card}>
+                                <CardMedia
+                                    component="img"
+                                    alt={item.title}
+                                    height="200"
+                                    image={item.image}
+                                    title={item.title}
+                                />
+                                <CardContent>
+                                    <h3>{item.title}</h3>
+                                    <Typography variant="body2" color="textSecondary" component="p" className={classes.justify} >
+                                        {item.description}
+                                    </Typography>
+                                </CardContent>
+                            </Card>
                         </Grid>
-                    </Hidden>
-                    <Hidden smUp>
-                        {rocks.map((rock) => (
-                            <Grid container item xs={12} sm={4} spacing={0} key={rock.title}>
-                                <Card raised={true} className={classes.card}>
-                                    <CardMedia
-                                        component="img"
-                                        alt={rock.title}
-                                        image={rock.image}
-                                        title={rock.title}
-                                    />
-                                    <CardContent>
-                                        <Typography gutterBottom variant="h5" component="h2" className={classes.centered}   >
-                                            <span className={classes.highlight}>{rock.title}</span>
-                                        </Typography>
-                                        <Typography color="textSecondary" component="p" className={classes.justify} >
-                                            {rock.description}
-                                        </Typography>
-                                    </CardContent>
-                                </Card>
-                            </Grid>
-                        ))}
-                    </Hidden>
+                    ))}
                 </Grid>
             </Container>
         </section>
@@ -324,7 +370,7 @@ function Promessa() {
                     <Grid item className={classes.centered} xs={12}>
                     </Grid>
                     <Grid item className={classes.centered} xs={12}>
-                        <h1 className={classes.title}>A estratégia para gerar renda criando seus próprios moldes de feltro</h1>
+                        <h1 className={classes.title}>Gere renda criando seus próprios moldes de feltro</h1>
                         <div className={classes.videoWrapper}>
                             <iframe
                                 loading="lazy"
@@ -335,7 +381,7 @@ function Promessa() {
                             ></iframe>
                         </div>
                         <CTA>
-                            Quero me inscrever agora mesmo
+                            Quero gerar renda criando meus próprios moldes
                         </CTA>
                     </Grid>
                 </Grid>
@@ -352,24 +398,11 @@ function DedoNaFerida() {
                 <Grid container className={classes.grid}>
                     <Grid item xs={12}>
                         <h1 className={classes.centered}>Este treinamento é <span className={classes.highlight}>especialmente para você</span> que</h1>
-                        <p>
-                            <i><FavoriteIcon className={classes.heart} /> </i>Está buscando uma nova fonte de renda
-                        </p>
-                        <p>
-                            <i><FavoriteIcon className={classes.heart} /> </i>Quer se diferenciar no mercado e parar de competir por preço
-                        </p>
-                        <p>
-                            <i><FavoriteIcon className={classes.heart} /> </i>Sofre com apostilas copiadas e pirateadas
-                        </p>
-                        <p>
-                            <i><FavoriteIcon className={classes.heart} /> </i>Vende apostilas somente no lançamento e depois nada
-                        </p>
-                        <p>
-                            <i><FavoriteIcon className={classes.heart} /> </i>Quer aprender as técnicas para vender todos os dias
-                        </p>
-                        <CTA>
-                            Quero vender todos os dias
-                        </CTA>
+                        {who.map((item) => (
+                            <p>
+                                <i><FavoriteIcon className={classes.heart} /> </i>{item}
+                            </p>
+                        ))}
                     </Grid>
                 </Grid>
             </Container>
@@ -377,7 +410,7 @@ function DedoNaFerida() {
     );
 }
 
-function AcessoImediato() {
+function Objecoes() {
     const classes = useStyles();
     return (
         <section>
@@ -387,33 +420,12 @@ function AcessoImediato() {
                         <img src={require("assets/img/topic_apostila.png")} alt="" className={classes.foto} />
                     </Grid>
                     <Grid item xs={12} md={6}>
-                        <h1 className={classes.centered}>Entre agora e tenha <span className={classes.highlight}>acesso imediato</span></h1>
+                        <h1 className={classes.centered}>E além disso você <span className={classes.highlight}>não precisa</span></h1>
                         <p>
-                            Após a confirmação do pagamento você terá acesso imediato a:
+                            <FavoriteIcon className={classes.heart} /><span> Ter muitos seguidores no instagram</span>
                         </p>
                         <p>
-                            <FavoriteIcon className={classes.heart} /><span> 5 horas de conteúdo divido em mais de 40 aulas</span>
-                        </p>
-                        <p>
-                            <FavoriteIcon className={classes.heart} /><span> Apostila digital de moldes das 7 bonecas</span>
-                        </p>
-                        <p>
-                            <FavoriteIcon className={classes.heart} /><span> Lista de materiais</span>
-                        </p>
-                        <p>
-                            <FavoriteIcon className={classes.heart} /><span> Suporte na área do curso, por email e WhatsApp</span>
-                        </p>
-                        <p>
-                            <FavoriteIcon className={classes.heart} /><span> Módulo exclusivo para iniciantes</span>
-                        </p>
-                        <p>
-                            <FavoriteIcon className={classes.heart} /><span> Acesso vitalício</span>
-                        </p>
-                        <p>
-                            <FavoriteIcon className={classes.heart} /> <span className={classes.highlight}>Bônus:</span><span> Apostila digital de moldes adaptado para porta maternidade</span>
-                        </p>
-                        <p>
-                            <FavoriteIcon className={classes.heart} /> <span className={classes.highlight}>Bônus:</span><span> Planilha de precificação com aula explicativa para que você obtenha lucro nas suas vendas.</span>
+                            <FavoriteIcon className={classes.heart} /><span> Ser muito conhecida</span>
                         </p>
                     </Grid>
                 </Grid>
@@ -424,25 +436,40 @@ function AcessoImediato() {
 
 function Bonus() {
     const classes = useStyles();
+
     return (
         <section>
-            <Container maxWidth="md">
-                <Grid container className={classes.grid} spacing={3}>
-                    <Grid item xs={12} md={6}>
-                        <h1 className={classes.centered}>E não podem faltar os <span className={classes.highlight}>Bônus</span></h1>
-                        <p>
-                            <FavoriteIcon className={classes.heart} /><span> O novo <b>Curso Joias Raras Premium</b> vai custar pelo menos <b>R$ 97</b> mas você que já tem o curso vai pagar <b>somente a diferença</b> e ainda receber um <b>SUPER DESCONTO</b> </span>
-                        </p>
-                        <p>
-                            <FavoriteIcon className={classes.heart} /><span> Você poderá comprar junto o <b>Curso Renascer em Jesus</b> por apenas <b>R$ 1</b>. Isso mesmo, 1 real. Neste curso extra você aprenderá um lindo Jesus em feltro que para em pé e uma guirlanda slim arco-íris que usa técnica de pintura com stêncil. <br /><b>IM-PER-DÍ-VEL</b></span>
-                        </p>
-                        <p>
-                            <FavoriteIcon className={classes.heart} /><span> Você irá participar ao vivo comigo em um dia de imersão no curso, junto com outras alunas Premium, onde faremos uma boneca juntos, vou tirar dúvidas e trocaremos experiências. Vai ser épico. Só este bônus já vale o curso todo.</span>
-                        </p>
+            <Container maxWidth="lg">
+                <Grid container className={classes.grid}>
+                    <Grid item className={classes.centered} xs={12}>
+                        <h1>E não podem faltar os <span className={classes.highlight}>Bônus</span></h1>
                     </Grid>
-                    <Grid item className={classes.centered} xs={12} md={6}>
-                        <img src={require("assets/img/jesus/curso.jpg")} alt="" className={classes.fotoPerfil} />
-                    </Grid>
+
+                    {bonus.map((item) => (
+                        <Grid container item xs={12} sm={6} md={4} spacing={0} key={item.title}>
+                            <Card raised={true} className={classes.card}>
+                                <CardMedia
+                                    component="img"
+                                    alt={item.title}
+                                    height="200"
+                                    image={item.image}
+                                    title={item.title}
+                                />
+                                <CardContent>
+                                    <h3><span className={classes.highlight}>BÔNUS:</span> {item.title}</h3>
+                                    {item.price &&
+                                        <h4>
+                                            <strike>{item.price}</strike>
+                                        </h4>
+                                    }
+                                    <Typography variant="body2" color="textSecondary" component="p" className={classes.justify} >
+                                        {item.description}
+                                    </Typography>
+
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                    ))}
                 </Grid>
             </Container>
         </section>
@@ -486,7 +513,7 @@ function Garantia() {
                             Se por qualquer motivo você não ficar satisfeita, basta solicitar o reembolso
                             pelo email contato@mariubialli.com e você receberá 100% do valor investido de volta.</p>
                         <p>Mas eu acredito tanto no meu método que vou colocar todo o risco nas minhas costas.
-                            Se em 90 dias assistindo a todas as aulas e fazendo todas as atividades você não chegar a um resultado,
+                            Se em 90 dias assistindo a todas as aulas e fazendo todas as atividades você não chegar ao resultado desejado,
                             eu vou te dar uma consultoria individual para entender melhor sua dificuldade e criaremos um plano de ação.
                             Se em 90 dias, seguindo o seu plano de ação, mesmo assim não tiver resultado,
                             eu vou te devolver 100% do seu dinheiro e mais 100% do meu bolso, ou seja,
@@ -571,26 +598,42 @@ function Testemunhos1() {
             <Container maxWidth="md" className={classes.centered}>
                 <Grid container className={classes.grid} spacing={1}>
                     <Grid item className={classes.centered} xs={12}>
-                        <h1>O que os alunos estão <br /><span className={classes.highlight}>falando do curso?</span></h1>
+                        <h1>O que as alunas estão falando da Mari?</h1>
                     </Grid>
-                    <Grid item className={classes.centered} xs={12} sm={3}>
+
+                    <Grid item className={classes.centered} xs={12} sm={12}>
                         <Paper elevation={3}>
-                            <img src={require("assets/img/testemunho40.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+                            <img src={require("assets/img/testemunho36.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
                         </Paper>
                     </Grid>
-                    <Grid item className={classes.centered} xs={12} sm={3}>
+                    <Grid item className={classes.centered} xs={12} sm={4}>
                         <Paper elevation={3}>
-                            <img src={require("assets/img/testemunho21.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+                            <img src={require("assets/img/testemunho41.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
                         </Paper>
                     </Grid>
-                    <Grid item className={classes.centered} xs={12} sm={3}>
+                    <Grid item className={classes.centered} xs={12} sm={4}>
                         <Paper elevation={3}>
-                            <img src={require("assets/img/testemunho31b.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+                            <img src={require("assets/img/testemunho42.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
                         </Paper>
                     </Grid>
-                    <Grid item className={classes.centered} xs={12} sm={3}>
+                    <Grid item className={classes.centered} xs={12} sm={4}>
                         <Paper elevation={3}>
-                            <img src={require("assets/img/testemunho16.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+                            <img src={require("assets/img/testemunho44.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+                        </Paper>
+                    </Grid>
+                    <Grid item className={classes.centered} xs={12} sm={6}>
+                        <Paper elevation={3}>
+                            <img src={require("assets/img/testemunho26.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+                        </Paper>
+                    </Grid>
+                    <Grid item className={classes.centered} xs={12} sm={6}>
+                        <Paper elevation={3}>
+                            <img src={require("assets/img/testemunho24.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+                        </Paper>
+                    </Grid>
+                    <Grid item className={classes.centered} xs={12} sm={12}>
+                        <Paper elevation={3}>
+                            <img src={require("assets/img/testemunho35.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
                         </Paper>
                     </Grid>
                 </Grid>
@@ -681,14 +724,13 @@ export default function LS1Replay(props) {
 
             <Promessa />
             <DedoNaFerida />
-            <Testemunhos1 />
             <Entregaveis />
             <Bonus />
-            <AcessoImediato />
             <div id="pricing" />
             <Preco />
             <Garantia />
             <SobreMim />
+            <Testemunhos1 />
             <FAQs />
             <DuvidasWhats />
             <Preco />
