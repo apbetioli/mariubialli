@@ -44,6 +44,11 @@ module.exports = withPlugins([[withImages]], {
         source: '/telegram',
         destination: 'https://t.me/joinchat/RrAThTnLHvVmMWIx',
         permanent: false,
+      },
+      {
+        source: '/aula',
+        destination: 'https://youtu.be/09wc_jPE_jA',
+        permanent: false,
       }
     ]
   },
