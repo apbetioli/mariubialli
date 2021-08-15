@@ -200,7 +200,7 @@ const bonus = [
         title: "Como anunciar nas redes sociais",
         image: require("assets/img/ls1/faceads.webp"),
         description: "100% voltado para artesãs. Aprenda o que funciona (e o que não funciona) na criação de anúncios para vender todos os dias. Tudo o que eu vou ensinar aqui foi testado na prática na venda dos meus cursos.",
-        price: "R$ 1997"
+        price: "R$ 997"
     },
     {
         title: "Templates de apostila",
@@ -290,14 +290,14 @@ function CheckoutButton(props) {
         setOpen(false);
     };
 
-    let checkoutURL = "https://pay.hotmart.com/S58196346N?checkoutMode=10"
+    let checkoutURL = "https://sun.eduzz.com/969161?skip=1"
     const router = useRouter()
-    if (router.query.off)
-        checkoutURL += "&off=" + router.query.off
-    if (router.query.hideBillet)
-        checkoutURL += "&hideBillet=" + router.query.hideBillet
-    else
-        checkoutURL += "&hideBillet=1"
+    if (router.query.utm_source)
+        checkoutURL += "&utm_source=" + router.query.utm_source
+    if (router.query.utm_medium)
+        checkoutURL += "&utm_medium=" + router.query.utm_medium
+    if (router.query.utm_campaign)
+        checkoutURL += "&utm_campaign=" + router.query.utm_campaign
 
     return (
         <>

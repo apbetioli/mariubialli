@@ -36,6 +36,16 @@ module.exports = withPlugins([[withImages]], {
         permanent: false,
       },
       {
+        source: '/confirmado',
+        destination: '/ls1/confirmado',
+        permanent: false,
+      },
+      {
+        source: '/aguardando',
+        destination: '/ls1/aguardando',
+        permanent: false,
+      },
+      {
         source: '/whats',
         destination: 'https://chat.whatsapp.com/HHbk1HCh8dJ1Y68764nVqI',
         permanent: false,
@@ -49,6 +59,11 @@ module.exports = withPlugins([[withImages]], {
         source: '/aula',
         destination: 'https://youtu.be/09wc_jPE_jA',
         permanent: false,
+      },
+      {
+        source: '/checkout',
+        destination: 'https://sun.eduzz.com/969161',
+        permanent: false
       }
     ]
   },

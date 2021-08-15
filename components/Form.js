@@ -103,14 +103,13 @@ export default function Form(props) {
       if (props.checkout) {
         redirectTo += "&email=" + values.email.toLowerCase();
         if (values.name)
-          redirectTo += "&name=" + values.name;
+          redirectTo += "&name=" + values.name + "&nome=" + values.name;
         if (ddd)
           redirectTo += "&phoneac=" + ddd;
         if (phone_number)
-          redirectTo += "&phonenumber=" + phone_number;
-        if (router.query.hideBillet) {
+          redirectTo += "&phonenumber=" + phone_number + "&cel=" + ddd + phone_number;
+        if (router.query.hideBillet)
           redirectTo += "&hideBillet=1";
-        }
       }
 
       router.push(redirectTo);
