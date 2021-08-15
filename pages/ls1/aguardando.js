@@ -2,6 +2,8 @@ import { useRouter } from "next/router";
 import React from "react";
 import BotaoWhats from "../../components/BotaoWhats";
 import Obrigado from "../../components/Obrigado";
+
+function getTitle() {
     const router = useRouter();
     let title = "Obrigada";
     if (router.query.c_name)

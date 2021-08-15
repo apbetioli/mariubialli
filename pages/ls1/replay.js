@@ -372,7 +372,9 @@ function Promessa() {
                     <Grid item className={classes.centered} xs={12}>
                     </Grid>
                     <Grid item className={classes.centered} xs={12}>
-                        <h1 className={classes.title}>Gere renda criando seus próprios moldes de feltro</h1>
+                        <h1 className={classes.title}>Descubra as estratégias para <span className={classes.highlight}>gerar renda criando seus próprios moldes de feltro</span></h1>
+                        <p className={classes.subtitle}>Assista ao video e veja a oportunidade que te espera!</p>
+
                         <div className={classes.videoWrapper}>
                             <iframe
                                 loading="lazy"
