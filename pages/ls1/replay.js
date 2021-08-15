@@ -420,21 +420,20 @@ function Objecoes() {
         <section>
             <Container maxWidth="md">
                 <Grid container className={classes.grid} spacing={3}>
-                    <Grid item xs={12} md={6}>
-                        <h1 className={classes.centered}>Seu sonho é viver de artesanato?</h1>
+                    <Grid item xs={12}>
+                        <h1 className={classes.centered}>Seu sonho é viver de artesanato em feltro?</h1>
+                        <p className={classes.centered}>
+                            <b>Então você precisa parar de perder tempo!</b>
+                        </p>
                         <p>
-                            Então você precisa parar de perder tempo!
+                            Meu objetivo é permitir que artesãs que já trabalham com artesanato em feltro consigam criar suas próprias peças exclusivas, ou adaptar projetos colocando o seu toque pessoal, sem ter que recusar encomendas por não achar moldes, ou quiçá, vender sua apostila ou curso.
                         </p>
                         <p>
                             Para vender você não precisa ter muitos seguidores no instagram, nem precisa ser muito conhecida.
                         </p>
                         <p>
-                            Basta ter um caminho. Um método. E você está no lugar certo!
+                            Você só precisa trilhar o caminho certo, com um método prático que te leve direto ao ponto. Por isso eu criei este treinamento, quer saber mais?
                         </p>
-                        <p>
-                            Meu objetivo é permitir que artesãs que já trabalham com artesanato em feltro consigam criar suas próprias peças exclusivas, ou adaptar projetos colocando o seu toque pessoal, não ter que recusar encomendas que os moldes não são encontrados facilmente, ou quiçá, criar sua apostila ou curso para ensinar e viver disso.
-                        </p>
-                        <p>Por isso eu criei este curso, quer saber mais?</p>
                     </Grid>
                 </Grid>
             </Container>
