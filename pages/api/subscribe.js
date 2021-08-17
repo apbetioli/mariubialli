@@ -63,7 +63,7 @@ module.exports = async (req, res) => {
         let result = await subscribe(lead, translate[lead.tag])
 
         if (lead.source) {
-            subscribe(lead, translate[lead.source])
+            await subscribe(lead, translate[lead.source])
         }
 
         res.send(result)
