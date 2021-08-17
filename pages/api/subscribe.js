@@ -14,11 +14,11 @@ const translate = {
     'telegram': 'GLu6woq',
     'email': 'QXuLw19',
     'AS_LS_#1': 'QXuLwaE',
-    'AS_LS_#1_FB' : 'zwuYzRl',
-    'AS_LS_#1_GG' : 'qLu32x3',
-    'AS_LS_#1_TG' : 'plueb24',
-    'AS_LS_#1_EM' : 'd3uP4mR',
-    'AS_LS_#1_CHECKOUT' : 'kRuOwy3'
+    'AS_LS_#1_FB': 'zwuYzRl',
+    'AS_LS_#1_GG': 'qLu32x3',
+    'AS_LS_#1_TG': 'plueb24',
+    'AS_LS_#1_EM': 'd3uP4mR',
+    'AS_LS_#1_CHECKOUT': 'kRuOwy3'
 }
 
 getParams = (lead) => {
@@ -60,17 +60,13 @@ module.exports = async (req, res) => {
     console.log(lead);
 
     try {
-        await subscribe(lead, translate[lead.tag])
-            .then(result => {
+        let result = await subscribe(lead, translate[lead.tag])
 
-                if (lead.source)
-                    subscribe(lead, translate[lead.source])
+        if (lead.source) {
+            subscribe(lead, translate[lead.source])
+        }
 
-                return result
-            })
-            .then(result => {
-                res.send(result)
-            })
+        res.send(result)
 
     } catch (err) {
         console.error(err)
