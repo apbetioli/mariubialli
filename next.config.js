@@ -47,7 +47,7 @@ module.exports = withPlugins([[withImages]], {
       },
       {
         source: '/whats',
-        destination: 'https://chat.whatsapp.com/DhGQfEgswk1H2G38jrcybg',
+        destination: 'https://chat.whatsapp.com/FrpF2gtQmRt1YSAiY7EwaP',
         permanent: false,
       },
       {
