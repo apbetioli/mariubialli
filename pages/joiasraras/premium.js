@@ -196,7 +196,7 @@ function CheckoutButton(props) {
     setOpen(false);
   };
 
-  let checkoutURL = "https://payment.hotmart.com/B46628840G?off=tqtloelb&checkoutMode=10"
+  let checkoutURL = "https://pay.hotmart.com/B46628840G?off=trdhkf3d&checkoutMode=10"
   const router = useRouter()
   if (router.query.hideBillet)
     checkoutURL += "&hideBillet=" + router.query.hideBillet
@@ -279,7 +279,7 @@ function Promessa() {
           </Grid>
           <Grid item className={classes.centered} xs={12}>
             <h1 className={classes.title}>Seja <span className={classes.highlight}>PREMIUM</span></h1>
-            <p className={classes.subtitle}>Oferta única e exclusiva para alunas, válida somente até <b>quinta-feira 05/08/21 23:59</b></p>
+            <p className={classes.subtitle}>Oferta de atualização exclusiva para alunas</p>
             <CTA>
               Quero ser premium
             </CTA>
@@ -363,7 +363,7 @@ function Preco() {
             <img src={require("assets/img/tudoisso.png")} alt="" className={classes.preco} />
           </Grid>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/price_upgrade.png")} alt="" className={classes.preco} />
+            <img src={require("assets/img/price49.png")} alt="" className={classes.preco} />
             <div className={classes.precoAviso}>Promoção válida até 05/08/21 23:59</div>
             <CheckoutButton>
               Quero ser premium
@@ -583,7 +583,6 @@ export default function JoiasRarasUpgradePremium(props) {
       </Head>
       <Promessa />
       <Conteudo />
-      <Bonus />
       <div id="pricing" />
       <Preco />
       <DuvidasWhats />
