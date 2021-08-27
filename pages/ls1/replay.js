@@ -167,9 +167,9 @@ const deliverables = [
         description: "Você vai aprender a vetorizar seu projeto, isto é, desenhar no computador para poder imprimir e posteriormente montar sua apostila de moldes. De forma simples e passo a passo bem detalhado para mesmo que você que não domina o computador ou tecnologia consiga entender e realizar este processo. E tudo isso usando um programa totalmente gratuito."
     },
     {
-        title: "Testes",
+        title: "Ciclo evolutivo",
         image: require("assets/img/ls1/testes.webp"),
-        description: "Neste módulo vamos falar sobre a etapa de testes das peças, e dicas valiosas que podem fazer você economizar muito tempo neste processo."
+        description: "Neste módulo vamos falar sobre o ciclo evolutivo de criação e testes das peças, e dicas valiosas que podem fazer você economizar muito tempo neste processo."
     },
     {
         title: "Criação da Apostila",
@@ -235,7 +235,7 @@ const bonus = [
 const faqs = [
     {
         pergunta: "Quando começa o curso?",
-        resposta: "A primeira aula de boas vindas será dia 09/07/2021. Os módulos com as respectivas aulas gravadas serão disponibilizados semanalmente na plataforma."
+        resposta: "A primeira aula de boas vindas será dia 09/09/2021. Os módulos com as respectivas aulas gravadas serão disponibilizados semanalmente na plataforma."
     },
     {
         pergunta: "Quando vou receber o curso?",
@@ -243,7 +243,7 @@ const faqs = [
     },
     {
         pergunta: "Como vou receber o curso?",
-        resposta: "O curso é disponibilizado na plataforma da Hotmart e o acesso é enviado ao email cadastrado na compra. Certifique-se que o email está correto para não haver problemas na hora da entrega."
+        resposta: "O curso é disponibilizado na plataforma Nutror da Eduzz e o acesso é enviado ao email cadastrado na compra. Certifique-se que o email está correto para não haver problemas na hora da entrega."
     },
     {
         pergunta: "Sou iniciante, vou conseguir fazer?",
@@ -251,15 +251,11 @@ const faqs = [
     },
     {
         pergunta: "Não tenho computador, vou conseguir fazer?",
-        resposta: "Não, um computador será necessário para fazer a vetorização dos moldes."
-    },
-    {
-        pergunta: "O curso é online?",
-        resposta: "Sim, o curso é 100% online em video e ficará gravado para assistir quando quiser."
+        resposta: "Um computador será necessário para fazer a vetorização dos moldes."
     },
     {
         pergunta: "Por quanto tempo vou poder assistir as aulas?",
-        resposta: "O acesso ao curso tem a duração de 1 ano. Podendo ser renovado após esse prazo."
+        resposta: "O acesso à plataforma do curso, lives e comunidade tem a duração de 1 ano. Podendo ser renovado após esse prazo."
     },
     {
         pergunta: "Quais são as formas de pagamento?",
