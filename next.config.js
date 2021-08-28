@@ -61,6 +61,11 @@ module.exports = withPlugins([[withImages]], {
         permanent: false,
       },
       {
+        source: '/mm',
+        destination: 'https://youtu.be/09wc_jPE_jA',
+        permanent: false,
+      },
+      {
         source: '/checkout',
         destination: 'https://sun.eduzz.com/969161',
         permanent: false

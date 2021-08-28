@@ -177,41 +177,47 @@ const deliverables = [
         description: "Vamos transformar seus moldes em uma apostila. Ao final deste módulo você vai sair com uma apostila em formato PDF prontinha para venda."
     },
     {
-        title: "Criação de curso",
-        image: require("assets/img/ls1/curso.webp"),
-        description: "Vou te contar o por que e como criar seu curso. Vamos explorar tudo o que deu certo e o que não deu certo nos meus cursos para que você comece do jeito certo. Equipamentos, preparação, dicas de edição e muito mais.",
-        price: "R$ 197"
-    },
-    {
-        title: "Como vender?",
+        title: "Como vender",
         image: require("assets/img/ls1/vender2.webp"),
         description: "Você vai aprender a divulgar e fazer o lançamento da sua apostila de uma forma muito eficiente, utilizando as mesmas ferramentas que eu utilizo nos meus lançamentos."
-    }
+    },
+    {
+        title: "Como anunciar nas redes sociais",
+        image: require("assets/img/ls1/faceads.webp"),
+        description: "Aprenda o que funciona (e o que não funciona) na criação de anúncios pagos para vender todos os dias. Tudo o que eu vou ensinar aqui foi testado na prática na venda dos meus cursos e apostilas. 100% voltado para artesãs.",
+        price: "R$ 997"
+    },
 ];
 
 const bonus = [
     {
         title: "Live semanal",
         image: require("assets/img/ls1/live.webp"),
-        description: "Uma aula ao vivo comigo e as colegas de classe toda semana para tirar dúvidas e fazer análises.",
+        description: "Uma aula ao vivo comigo e convidados toda semana para tirar dúvidas",
         price: "Não tem preço"
     },
     {
-        title: "Como anunciar nas redes sociais",
-        image: require("assets/img/ls1/faceads.webp"),
-        description: "100% voltado para artesãs. Aprenda o que funciona (e o que não funciona) na criação de anúncios para vender todos os dias. Tudo o que eu vou ensinar aqui foi testado na prática na venda dos meus cursos.",
-        price: "R$ 997"
+        title: "Criação de cursos",
+        image: require("assets/img/ls1/curso.webp"),
+        description: "Vou te contar como e por que criar seu curso. Vamos explorar tudo o que deu certo e o que não deu certo nos meus cursos para que você comece do jeito certo. Equipamentos, preparação, dicas de edição e muito mais.",
+        price: "R$ 197"
+    },
+    {
+        title: "Curso Joias Raras",
+        image: require("assets/img/banner.jpg"),
+        description: "Aprenda técnicas de criação de bonecas associado a outros materiais e projetos únicos. Quem é iniciante no feltro poderá aprender tudo o que precisa para fazer o curso.",
+        price: "R$ 97"
+    },
+    {
+        title: "Kit de Recortes à Laser Joias Raras",
+        image: require("assets/img/kit.jpg"),
+        description: "Você vai receber na sua casa um kit de uma boneca Joias Raras prontinho para você começar a vender já desde o início.",
+        price: "R$ 34,90"
     },
     {
         title: "Templates de apostila",
         image: require("assets/img/ls1/template.webp"),
         description: "Vou te dar dois templates de apostila que você poderá usar como base para montar as suas. Vai ficar muito mais fácil e ainda vai economizar tempo.",
-        price: "R$ 97"
-    },
-    {
-        title: "Curso Joias Raras",
-        image: require("assets/img/banner.jpg"),
-        description: "Você vai ver por dentro como eu faço meus cursos e apostilas e aprender técnicas de criação de bonecas associado a outros materiais e projetos únicos. Quem é iniciante no feltro poderá aprender tudo o que precisa para fazer o curso.",
         price: "R$ 97"
     },
     {
@@ -230,12 +236,14 @@ const bonus = [
         image: require("assets/img/ls1/telegram.webp"),
         description: "Uma via direta entre eu e você para você receber notificações das aulas e plantões de dúvidas para não ficar de fora."
     },
+
+
 ];
 
 const faqs = [
     {
         pergunta: "Quando começa o curso?",
-        resposta: "A primeira aula de boas vindas será dia 09/09/2021. Os módulos com as respectivas aulas gravadas serão disponibilizados semanalmente na plataforma."
+        resposta: "A primeira aula de boas vindas será dia 09/09/2021"
     },
     {
         pergunta: "Quando vou receber o curso?",
@@ -368,7 +376,7 @@ function Promessa() {
                     <Grid item className={classes.centered} xs={12}>
                     </Grid>
                     <Grid item className={classes.centered} xs={12}>
-                        <h1 className={classes.title}>Descubra as estratégias para <span className={classes.highlight}>gerar renda criando seus próprios moldes de feltro</span></h1>
+                        <h1 className={classes.title}>Desafio Artesã Criativa</h1>
                         <p className={classes.subtitle}>Assista ao video e veja a oportunidade que te espera!</p>
 
                         <div className={classes.videoWrapper}>
@@ -397,7 +405,7 @@ function DedoNaFerida() {
             <Container maxWidth="md">
                 <Grid container className={classes.grid}>
                     <Grid item xs={12}>
-                        <h1 className={classes.centered}>Este treinamento é <span className={classes.highlight}>especialmente para você</span> que</h1>
+                        <h1 className={classes.centered}>Este desafio é <span className={classes.highlight}>especialmente para você</span> que</h1>
                         {who.map((item) => (
                             <p>
                                 <i><FavoriteIcon className={classes.heart} /> </i>{item}
@@ -428,7 +436,7 @@ function Objecoes() {
                             Para vender você não precisa ter muitos seguidores no instagram, nem precisa ser muito conhecida.
                         </p>
                         <p>
-                            Você só precisa trilhar o caminho certo, com um método prático que te leve direto ao ponto. Por isso eu criei este treinamento, quer saber mais?
+                            Você só precisa trilhar o caminho certo, com um método prático que te leve direto ao ponto. Por isso eu criei este desafio, quer saber mais?
                         </p>
                     </Grid>
                 </Grid>
