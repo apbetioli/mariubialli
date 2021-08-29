@@ -32,10 +32,10 @@ export default function LS1Confirmado(props) {
             subtitle="Inscrição confirmada!"
             text=""
             title={getTitle()} >
-            <p>Fico muito feliz que tenha se inscrito no <b>Curso Artesã Criativa</b>.</p>
-            <p>Você receberá em até 10 minutos um email com o seu acesso ao curso.</p>
+            <p>Fico muito feliz que tenha se inscrito no <b>Desafio Artesã Criativa</b>.</p>
+            <p>Você receberá em até 10 minutos um email com o seu acesso.</p>
             <p>Após este tempo se não receber, veja se ele pode ter caído na pasta de spam.</p>
-            <p>Nos vemos no curso!</p>
+            <p>Nos vemos lá!</p>
             <p></p>
             <p>Qualquer dúvida entre em contato pelo WhatsApp clicando no botão abaixo, ou por email <a href="mailto:contato@mariubialli.com">contato@mariubialli.com</a></p>
             <BotaoWhats float={false} message="Oi, fiz a compra do Curso Artesã Criativa..." />
