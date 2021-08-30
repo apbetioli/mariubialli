@@ -51,5 +51,5 @@ BotaoWhats.defaultProps = {
     float: true,
     phone: "44920024218",
     buttonText: "(44) 92002-4218",
-    message: "Oi, gostaria de saber mais sobre o Curso Bonecas Joias Raras"
+    message: "Oi, gostaria de saber mais sobre o Curso Joias Raras"
 }

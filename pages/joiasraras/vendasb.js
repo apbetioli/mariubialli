@@ -1,4 +1,4 @@
-import { Card, CardContent, CardMedia, Container, Dialog, DialogActions, DialogContent, DialogTitle, Grid, Hidden, IconButton, Paper, SvgIcon } from "@material-ui/core";
+import { Card, CardContent, CardMedia, Container, Dialog, DialogActions, DialogContent, DialogTitle, Grid, IconButton, Paper } from "@material-ui/core";
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -8,13 +8,6 @@ import CloseIcon from '@material-ui/icons/Close';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import HttpsIcon from '@material-ui/icons/Https';
-import Timeline from '@material-ui/lab/Timeline';
-import TimelineConnector from '@material-ui/lab/TimelineConnector';
-import TimelineContent from '@material-ui/lab/TimelineContent';
-import TimelineDot from '@material-ui/lab/TimelineDot';
-import TimelineItem from '@material-ui/lab/TimelineItem';
-import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
-import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { default as React } from "react";
@@ -62,6 +55,8 @@ const useStyles = makeStyles((theme) => ({
   card: {
     backgroundColor: "white",
     margin: '16px 16px',
+  },
+  cardMedia: {
   },
   sectionConteudo: {
     backgroundColor: "#ffe8ed",
@@ -154,12 +149,20 @@ const useStyles = makeStyles((theme) => ({
 
 const rocks = [
   { title: "Esmeralda", color: "#6BFEDE", image: require("assets/img/esmeralda.jpg"), description: "Esmeralda é um símbolo da verdade e do amor. Ela é cheia de esperança, atitude e muuuuuito sábia. Além disso, é sonhadora e intuitiva💚" },
-  { title: "Rubi", color: "#FE6B8B", image: require("assets/img/rubi.jpg"), description: "Rubi protege as pessoas que ama e tem uma energia infinita! Leva felicidade e paixão em seu coração, e adora ajudar o próximo🌼" },
-  { title: "Ágata", color: "#6BFEDE", image: require("assets/img/agata.jpg"), description: "Ágata é forte e corajosa, se aceita como é de verdade! Tem uma energia super positiva e as pessoas ao seu redor se contagiam com a sua felicidade😆" },
-  { title: "Angelita", color: "#FE6B8B", image: require("assets/img/angelita.jpg"), description: "Angelita é suuuuper especial, comunicativa e verdadeira. Não perde a esperança mesmo em momentos difícies, pois acredita que dias melhores virão. Ela é a alegria da casa, a alegria da vida todinha da mamãe e do papai, ela é uma verdadeira super heroína🌹" },
-  { title: "Jade", color: "#6BFEDE", image: require("assets/img/jade.jpg"), description: "Jade é uma menina super amiga, brincalhona e extrovertida. É considerada a pedra da sorte, prosperidade e amizade🤗" },
   { title: "Rose", color: "#FE6B8B", image: require("assets/img/rose.jpg"), description: "Rose, também conhecida como Rose Quartz, tem muito estilo, é decidida e promove o amor incondicional.\n\nCom amor podemos todas as coisas, tudo torna-se possível💖" },
+  { title: "Jade", color: "#6BFEDE", image: require("assets/img/jade.jpg"), description: "Jade é uma menina super amiga, brincalhona e extrovertida. É considerada a pedra da sorte, prosperidade e amizade🤗" },
+  { title: "Ágata", color: "#6BFEDE", image: require("assets/img/agata.jpg"), description: "Ágata é forte e corajosa, se aceita como é de verdade! Tem uma energia super positiva e as pessoas ao seu redor se contagiam com a sua felicidade😆" },
   { title: "Ametista", color: "#6BFEDE", image: require("assets/img/ametista.jpg"), description: "Ametista parece frágil né? Pois é aí que você se engana. Ela é delicada, porém forte e tem uma paz interior que te eleva a alma🧘‍♀️" },
+  { title: "Angelita", color: "#FE6B8B", image: require("assets/img/angelita.jpg"), description: "Angelita é suuuuper especial, comunicativa e verdadeira. Não perde a esperança mesmo em momentos difícies, pois acredita que dias melhores virão. Ela é a alegria da casa, a alegria da vida todinha da mamãe e do papai, ela é uma verdadeira super heroína🌹" },
+  { title: "Rubi", color: "#FE6B8B", image: require("assets/img/rubi.jpg"), description: "Rubi protege as pessoas que ama e tem uma energia infinita! Leva felicidade e paixão em seu coração, e adora ajudar o próximo🌼" },
+];
+
+const premium = [
+  { title: "Minis", color: "#6BFEDE", image: require("assets/img/premium0.jpg"), description: "7 bonecas joias raras mini. Elas são menores, com 20cm, e muito mais fofas não acha?💖" },
+  { title: "Ursinhas", color: "#FE6B8B", image: require("assets/img/premium2.jpg"), description: "E agora as bonecas tem companhia, essa ursinha suuuuper fofinha em 2 cores: rosa e verde🥰" },
+  { title: "Mobile", color: "#6BFEDE", image: require("assets/img/premium3.jpg"), description: "Aprenda comigo a montar esse mobile maravilhoso tema joias raras🌼" },
+  { title: "Guirlanda", color: "#FE6B8B", image: require("assets/img/premium4.jpg"), description: "Sem falar nessa guirlanda super especial. Você vai aprender a customizar o nome que quiser e algumas técnicas extras🌹" },
+  { title: "Pergolado", color: "#6BFEDE", image: require("assets/img/premium5.jpg"), description: "E a cereja do bolo: o Pergolado. Essa peça é única e nunca vi nada parecido. A inspiração veio de um sonho e vou mostrar em detalhes como fazer. Além disso as bonecas também são diferentes, pois elas podem sentar no balanço🍒" },
 ];
 
 const faqs = [
@@ -168,12 +171,12 @@ const faqs = [
   { pergunta: "Como vou receber o curso?", resposta: "O curso é enviado ao email cadastrado na compra. Certifique-se que o email está correto para não haver problemas na hora da entrega." },
   { pergunta: "Sou iniciante, vou conseguir fazer?", resposta: "Sim. O curso pensado especialmente para quem é iniciante e aborda tudo o que você precisa saber para criar as bonecas com perfeição. E possui um módulo exclusivo com as principais técnicas que você precisa conhecer." },
   { pergunta: "Não tenho máquina de costura. É um problema?", resposta: "Não. Vou te ensinar a confeccionar tudo à mão. A máquina de costura é opcional." },
-  { pergunta: "O curso é online?", resposta: "Sim, o curso é 100% online em video com 5 horas de video aulas divididas em mais de 40 aulas. Tudo bem explicado passo a passo para não ter dúvidas." },
+  { pergunta: "O curso é online?", resposta: "Sim, o curso é 100% online em video com mais de 50 aulas. Tudo bem explicado passo a passo para não ter dúvidas." },
   { pergunta: "Por quanto tempo vou poder assistir as aulas?", resposta: "Pelo tempo que quiser. O curso é vitalício. Uma vez seu, é seu pra sempre." },
-  { pergunta: "Que tamanho ficam as bonecas depois de prontas?", resposta: "Ficam em média com 28cm podendo variar conforme o tipo de cabelo." },
-  { pergunta: "Os materiais estão inclusos?", resposta: "Não, os materiais para confecção devem ser adquiridos à parte." },
+  { pergunta: "Que tamanho ficam as bonecas depois de prontas?", resposta: "As que ficam em pé têm em média 28cm e as mini com 20cm. Podendo variar conforme o tipo de cabelo." },
+  { pergunta: "Os materiais estão inclusos?", resposta: "Não, os materiais para confecção devem ser adquiridos à parte no local de sua preferência. E também temos uma loja virtual com tudo o que você precisa para não ter que perder tempo procurando!" },
   { pergunta: "O valor é único ou é mensalidade?", resposta: "Este valor é único. Você paga uma vez só e tem acesso a tudo isso sem prazo de validade." },
-  { pergunta: "Quais são as formas de pagamento?", resposta: "Você pode pagar com cartão de crédito em até 6x ou à vista com PIX." },
+  { pergunta: "Quais são as formas de pagamento?", resposta: "Você pode pagar com cartão de crédito em até 12x ou à vista com PIX." },
 ];
 
 const buttonStyle = ColorButton.whatsapp;
@@ -205,6 +208,8 @@ function CheckoutButton(props) {
   const router = useRouter()
   if (router.query.off)
     checkoutURL += "&off=" + router.query.off
+  else
+    checkoutURL += "&off=fe6ncbw6"
   if (router.query.hideBillet)
     checkoutURL += "&hideBillet=" + router.query.hideBillet
   else
@@ -254,67 +259,28 @@ function Conteudo() {
               Você irá se conectar com elas, seja pelo estilo ou pela personalidade.
             </p>
           </Grid>
-          <Hidden xsDown>
-            <Grid item className={classes.centered} xs={12}>
-              <Timeline align="alternate">
-                {rocks.map((rock) => (
-                  <TimelineItem key={rock.title}>
-                    <TimelineOppositeContent>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        <span className={classes.highlight}>{rock.title}</span>
-                      </Typography>
-                      <Typography color="textSecondary" component="p">
-                        {rock.description}
-                      </Typography>
-                    </TimelineOppositeContent>
-                    <TimelineSeparator>
-                      <TimelineDot style={{ backgroundColor: rock.color }}>
-                        <SvgIcon>
-                          <svg viewBox="0 0 24 20">
-                            <path fill="currentColor" d="M16,9H19L14,16M10,9H14L12,17M5,9H8L10,16M15,4H17L19,7H16M11,4H13L14,7H10M7,4H9L8,7H5M6,2L2,8L12,22L22,8L18,2H6Z" />
-                          </svg>
-                        </SvgIcon>
-                      </TimelineDot>
-                      <TimelineConnector />
-                    </TimelineSeparator>
-                    <TimelineContent>
-                      <Card className={classes.root}>
-                        <CardMedia
-                          component="img"
-                          alt={rock.title}
-                          height="600"
-                          image={rock.image}
-                          title={rock.title}
-                        />
-                      </Card>
-                    </TimelineContent>
-                  </TimelineItem>
-                ))}
-              </Timeline>
+
+          {rocks.map((rock) => (
+            <Grid container item xs={12} sm={6} md={4} spacing={0} key={rock.title}>
+              <Card raised={true} className={classes.card}>
+                <CardMedia
+                  component="img"
+                  alt={rock.title}
+                  image={rock.image}
+                  title={rock.title}
+                  className={classes.cardMedia}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2" className={classes.centered}   >
+                    <span className={classes.highlight}>{rock.title}</span>
+                  </Typography>
+                  <Typography color="textSecondary" component="p" className={classes.justify} >
+                    {rock.description}
+                  </Typography>
+                </CardContent>
+              </Card>
             </Grid>
-          </Hidden>
-          <Hidden smUp>
-            {rocks.map((rock) => (
-              <Grid container item xs={12} sm={4} spacing={0} key={rock.title}>
-                <Card raised={true} className={classes.card}>
-                  <CardMedia
-                    component="img"
-                    alt={rock.title}
-                    image={rock.image}
-                    title={rock.title}
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2" className={classes.centered}   >
-                      <span className={classes.highlight}>{rock.title}</span>
-                    </Typography>
-                    <Typography color="textSecondary" component="p" className={classes.justify} >
-                      {rock.description}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Hidden>
+          ))}
         </Grid>
       </Container>
     </section>
@@ -325,12 +291,12 @@ function Promessa() {
   const classes = useStyles();
   return (
     <section>
-      <Container maxWidth="lg">
+      <Container maxWidth="md">
         <Grid container spacing={2}>
-          <Grid item className={classes.centered} xs={12} lg={7}>
+          <Grid item className={classes.centered} xs={12}>
             <img src={require("assets/img/banner.jpg")} alt="" className={classes.foto} />
           </Grid>
-          <Grid item className={classes.centered} xs={12} lg={5}>
+          <Grid item className={classes.centered} xs={12}>
             <h1 className={classes.title}>São 7 joias raras para você <span className={classes.highlight}>confeccionar, personalizar e vender</span></h1>
             <p className={classes.subtitle}>Se você está em busca de um projeto <span className={classes.highlightText}>diferenciado</span>, seja para vender, dar de presente ou até como terapia nestes tempos difíceis, então estas Joias Raras são para você.</p>
             <CTA>
@@ -379,10 +345,49 @@ function DedoNaFerida() {
   );
 }
 
-function AcessoImediato() {
+function ConteudoPremium() {
   const classes = useStyles();
   return (
     <section>
+      <Container maxWidth="sm">
+        <Grid container className={classes.grid}>
+          <Grid item className={classes.centered} xs={12}>
+            <h1>E ainda tem <span className={classes.highlight}>muito mais!</span></h1>
+            <p>Você receberá vários projetos exclusivos para compor com as bonecas.</p>
+          </Grid>
+
+          {premium.map((rock) => (
+            <Grid container item xs={12} spacing={0} key={rock.title}>
+              <Card raised={true} className={classes.card}>
+                <CardMedia
+                  component="img"
+                  alt={rock.title}
+                  image={rock.image}
+                  title={rock.title}
+                  className={classes.fotoCard}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2" className={classes.centered}   >
+                    <span className={classes.highlight}>{rock.title}</span>
+                  </Typography>
+                  <Typography color="textSecondary" component="p" className={classes.justify} >
+                    {rock.description}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+
+        </Grid>
+      </Container>
+    </section>
+  );
+}
+
+function AcessoImediato() {
+  const classes = useStyles();
+  return (
+    <section className={classes.sectionConteudo}>
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12} md={6}>
@@ -394,25 +399,25 @@ function AcessoImediato() {
               Após a confirmação do pagamento você terá acesso imediato a:
             </p>
             <p>
-              <FavoriteIcon className={classes.heart} /><span> 5 horas de conteúdo divido em mais de 40 aulas</span>
+              <FavoriteIcon className={classes.heart} /><span> Mais de 5 horas de conteúdo divido em mais de 50 aulas</span>
             </p>
             <p>
-              <FavoriteIcon className={classes.heart} /><span> Apostila digital de moldes das 7 bonecas</span>
+              <FavoriteIcon className={classes.heart} /><span> Apostila digital de moldes das 7 bonecas, 7 bonecas mini, ursinha, mobile, guirlanda e pergolado</span>
             </p>
             <p>
-              <FavoriteIcon className={classes.heart} /><span> Lista de materiais</span>
+              <FavoriteIcon className={classes.heart} /><span> Lista de materiais completa e para cada boneca ou projeto</span>
             </p>
             <p>
               <FavoriteIcon className={classes.heart} /><span> Suporte na área do curso, por email e WhatsApp</span>
+            </p>
+            <p>
+              <FavoriteIcon className={classes.heart} /><span> Canal e grupo no telegram</span>
             </p>
             <p>
               <FavoriteIcon className={classes.heart} /><span> Módulo exclusivo para iniciantes</span>
             </p>
             <p>
               <FavoriteIcon className={classes.heart} /><span> Acesso vitalício</span>
-            </p>
-            <p>
-              <FavoriteIcon className={classes.heart} /> <span className={classes.highlight}>Bônus:</span><span> Apostila digital de moldes adaptado para porta maternidade</span>
             </p>
             <p>
               <FavoriteIcon className={classes.heart} /> <span className={classes.highlight}>Bônus:</span><span> Planilha de precificação com aula explicativa para que você obtenha lucro nas suas vendas.</span>
@@ -434,7 +439,7 @@ function Preco() {
             <img src={require("assets/img/tudoisso.png")} alt="" className={classes.preco} />
           </Grid>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/price.png")} alt="" className={classes.preco} />
+            <img src={require("assets/img/price_new.png")} alt="" className={classes.preco} />
             <div className={classes.precoAviso}></div>
             <CheckoutButton>
               Quero me inscrever agora
@@ -657,6 +662,7 @@ export default function JoiasRarasVendas(props) {
       <DedoNaFerida />
       <Testemunhos1 />
       <Conteudo />
+      <ConteudoPremium />
       <AcessoImediato />
       <div id="pricing" />
       <Preco />
