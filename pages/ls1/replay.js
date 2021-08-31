@@ -294,7 +294,7 @@ function CheckoutButton(props) {
         setOpen(false);
     };
 
-    let checkoutURL = "https://sun.eduzz.com/969161?skip=1"
+    let checkoutURL = "https://sun.eduzz.com/969161"
     const router = useRouter()
     if (router.query.utm_source)
         checkoutURL += "&utm_source=" + router.query.utm_source
@@ -316,12 +316,12 @@ function CheckoutButton(props) {
                     </IconButton>
                 </DialogTitle>
                 <DialogContent>
-                    <Form buttonText="Continuar" tag="JOIASRARAS-CHECKOUT" redirectTo={checkoutURL}
+                    <Form buttonText="Continuar" tag="AS_LS_#1_CHECKOUT" redirectTo={checkoutURL}
                         emailPlaceholder="Seu email de acesso ao curso" checkout={true} buttonStyle={buttonStyle} showName={true} showPhone={true} >
                     </Form>
                     <p className={classes.justify}>
                         <Typography variant="body2" color="textSecondary" component="span">
-                            <i className={classes.heart}><HttpsIcon /></i> Compra segura. Você será redirecionada para a Hotmart para concluir o pagamento.
+                            <i className={classes.heart}><HttpsIcon /></i> Compra segura. Você será redirecionada para a Eduzz para concluir o pagamento.
                         </Typography>
                     </p>
                 </DialogContent>
