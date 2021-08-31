@@ -181,12 +181,6 @@ const deliverables = [
         image: require("assets/img/ls1/vender2.webp"),
         description: "Você vai aprender a divulgar e fazer o lançamento da sua apostila de uma forma muito eficiente, utilizando as mesmas ferramentas que eu utilizo nos meus lançamentos."
     },
-    {
-        title: "Como anunciar nas redes sociais",
-        image: require("assets/img/ls1/faceads.webp"),
-        description: "Aprenda o que funciona (e o que não funciona) na criação de anúncios pagos para vender todos os dias. Tudo o que eu vou ensinar aqui foi testado na prática na venda dos meus cursos e apostilas. 100% voltado para artesãs.",
-        price: "R$ 997"
-    },
 ];
 
 const bonus = [
@@ -203,6 +197,12 @@ const bonus = [
         price: "R$ 197"
     },
     {
+        title: "Como anunciar nas redes sociais",
+        image: require("assets/img/ls1/faceads.webp"),
+        description: "Aprenda o que funciona (e o que não funciona) na criação de anúncios pagos para vender todos os dias. Tudo o que eu vou ensinar aqui foi testado na prática na venda dos meus cursos e apostilas. 100% voltado para artesãs.",
+        price: "R$ 997"
+    },
+    {
         title: "Curso Joias Raras",
         image: require("assets/img/banner.jpg"),
         description: "Aprenda técnicas de criação de bonecas associado a outros materiais e projetos únicos. Quem é iniciante no feltro poderá aprender tudo o que precisa para fazer o curso.",
@@ -215,16 +215,16 @@ const bonus = [
         price: "R$ 34,90"
     },
     {
-        title: "Templates de apostila",
-        image: require("assets/img/ls1/template.webp"),
-        description: "Vou te dar dois templates de apostila que você poderá usar como base para montar as suas. Vai ficar muito mais fácil e ainda vai economizar tempo.",
-        price: "R$ 97"
-    },
-    {
         title: "Curso Renascer em Jesus",
         image: require("assets/img/jesus/close.webp"),
         description: "Você vai aprender técnicas de pintura aplicadas ao feltro que pode ser um diferencial nos seus projetos.",
         price: "R$ 39"
+    },
+    {
+        title: "Templates de apostila",
+        image: require("assets/img/ls1/template.webp"),
+        description: "Vou te dar dois templates de apostila que você poderá usar como base para montar as suas. Vai ficar muito mais fácil e ainda vai economizar tempo. É copiar, colar e alterar fotos e textos, a estrutura está pronta.",
+        price: "R$ 97"
     },
     {
         title: "Comunidade no facebook",
@@ -235,9 +235,7 @@ const bonus = [
         title: "Canal no telegram",
         image: require("assets/img/ls1/telegram.webp"),
         description: "Uma via direta entre eu e você para você receber notificações das aulas e plantões de dúvidas para não ficar de fora."
-    },
-
-
+    }
 ];
 
 const faqs = [
@@ -377,7 +375,7 @@ function Promessa() {
                     </Grid>
                     <Grid item className={classes.centered} xs={12}>
                         <h1 className={classes.title}>Desafio Artesã Criativa</h1>
-                        <p className={classes.subtitle}>Assista ao video e veja a oportunidade que te espera!</p>
+                        <p className={classes.subtitle}>Gere renda criando seus próprios moldes de feltro!</p>
 
                         <div className={classes.videoWrapper}>
                             <iframe
