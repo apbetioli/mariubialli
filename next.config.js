@@ -69,7 +69,12 @@ module.exports = withPlugins([[withImages]], {
         source: '/checkout',
         destination: 'https://sun.eduzz.com/969161',
         permanent: false
-      }
+      },
+      {
+        source: '/desafio',
+        destination: '/ls1/replay',
+        permanent: false,
+      },
     ]
   },
 });
