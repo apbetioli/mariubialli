@@ -241,7 +241,7 @@ const bonus = [
 const faqs = [
     {
         pergunta: "Quando começa o curso?",
-        resposta: "A primeira aula de boas vindas será dia 09/09/2021"
+        resposta: "A aula inaugural será dia 11/09/2021"
     },
     {
         pergunta: "Quando vou receber o curso?",
