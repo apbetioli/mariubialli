@@ -404,8 +404,8 @@ function DedoNaFerida() {
                 <Grid container className={classes.grid}>
                     <Grid item xs={12}>
                         <h1 className={classes.centered}>Este desafio é <span className={classes.highlight}>especialmente para você</span> que</h1>
-                        {who.map((item) => (
-                            <p>
+                        {who.map((item, index) => (
+                            <p key={"id" + index}>
                                 <i><FavoriteIcon className={classes.heart} /> </i>{item}
                             </p>
                         ))}
