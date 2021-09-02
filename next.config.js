@@ -12,17 +12,17 @@ module.exports = withPlugins([[withImages]], {
     return [
       {
         source: '/',
-        destination: '/ls1/inscrever',
+        destination: '/ls1/replay',
         permanent: false,
       },
       {
         source: '/ls1',
-        destination: '/ls1/inscrever',
+        destination: '/ls1/replay',
         permanent: false,
       },
       {
         source: '/inscrever/:origin*',
-        destination: '/ls1/inscrever/:origin*',
+        destination: '/ls1/replay',
         permanent: false,
       },
       {
@@ -57,12 +57,12 @@ module.exports = withPlugins([[withImages]], {
       },
       {
         source: '/aula',
-        destination: 'https://youtu.be/09wc_jPE_jA',
+        destination: '/ls1/replay',
         permanent: false,
       },
       {
         source: '/mm',
-        destination: 'https://youtu.be/09wc_jPE_jA',
+        destination: '/ls1/replay',
         permanent: false,
       },
       {
