@@ -512,7 +512,7 @@ function Garantia() {
                         <img src={require("assets/img/ls1/garantia30.webp")} alt="Garantia de 30 dias" />
                     </Grid>
                     <Grid item xs={12} className={classes.justify}>
-                        <h1 className={classes.centered}>Garantia de 30 + 90 + 200%</h1>
+                        <h1 className={classes.centered}>Garantia 30 + 90 + R$500</h1>
                         <p>Você pode assistir todas as aulas e ter acesso a todos os materiais por 30 dias corridos.
                             Se por qualquer motivo você não ficar satisfeita, basta solicitar o reembolso
                             pelo email contato@mariubialli.com e você receberá 100% do valor investido de volta.</p>
@@ -520,7 +520,7 @@ function Garantia() {
                             Se em 90 dias assistindo a todas as aulas e fazendo todas as atividades você não chegar ao resultado desejado,
                             eu vou te dar uma consultoria individual para entender melhor sua dificuldade e criaremos um plano de ação.
                             Se em 90 dias, seguindo o seu plano de ação, mesmo assim não tiver resultado,
-                            eu vou te devolver 100% do seu dinheiro e mais 100% do meu bolso, ou seja,
+                            eu vou te devolver todo o seu dinheiro e mais R$500 do meu bolso, ou seja,
                             o dobro do valor investido pelo seu tempo e dedicação neste método.</p>
                         <CheckoutButton>Quero me inscrever sem riscos</CheckoutButton>
                     </Grid>
