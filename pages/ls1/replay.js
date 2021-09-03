@@ -587,7 +587,7 @@ function DuvidasWhats() {
                 <Grid container className={classes.grid} spacing={3}>
                     <Grid item className={classes.centered} xs={12}>
                         <h1>Ainda tem dúvidas? Fale conosco no WhatsApp</h1>
-                        <BotaoWhats float={false} />
+                        <BotaoWhats message="Oi, gostaria de saber mais sobre o Desafio Artesã Criativa" float={false} />
                     </Grid>
                 </Grid>
             </Container>
