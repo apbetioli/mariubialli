@@ -374,14 +374,13 @@ function Promessa() {
                     <Grid item className={classes.centered} xs={12}>
                     </Grid>
                     <Grid item className={classes.centered} xs={12}>
-                        <h1 className={classes.title}>Desafio Artesã Criativa</h1>
-                        <p className={classes.subtitle}>Gere renda criando seus próprios moldes de feltro!</p>
-
+                        <h1 className={classes.title}><span className={classes.highlight}>Desafio</span> Artesã Criativa</h1>
+                        <p>Gere renda criando seus próprios moldes de feltro</p>
                         <div className={classes.videoWrapper}>
                             <iframe
                                 loading="lazy"
                                 className={classes.video}
-                                src={"https://www.youtube.com/embed/09wc_jPE_jA?rel=0"}
+                                src={"https://www.youtube.com/embed/qD67ke31KX0?rel=0"}
                                 frameBorder="0"
                                 allowFullScreen
                             ></iframe>
@@ -423,18 +422,43 @@ function Objecoes() {
             <Container maxWidth="md">
                 <Grid container className={classes.grid} spacing={3}>
                     <Grid item xs={12}>
-                        <h1 className={classes.centered}>Seu sonho é viver de artesanato em feltro?</h1>
-                        <p className={classes.centered}>
+                        <h1 className={classes.centered}>Seu sonho é <span className={classes.highlight}>viver de artesanato em feltro</span>?</h1>
+                        <h3 className={classes.centered}>
                             <b>Então você precisa parar de perder tempo!</b>
+                        </h3>
+                        <p>
+                            Meu objetivo é levar você artesã que já trabalha com artesanato em feltro a criar seus moldes para se diferenciar no mercado.
                         </p>
                         <p>
-                            Meu objetivo é permitir que artesãs que já trabalham com artesanato em feltro consigam criar suas próprias peças exclusivas, ou adaptar projetos colocando o seu toque pessoal, sem ter que recusar encomendas por não achar moldes, ou quiçá, vender sua apostila ou curso.
+                            Crie suas próprias peças exclusivas, adapte projetos colocando o seu toque pessoal e venda a sua apostila ou curso.
                         </p>
                         <p>
-                            Para vender você não precisa ter muitos seguidores no instagram, nem precisa ser muito conhecida.
+                            Com uma metodologia testada e validada você vai chegar lá muito mais rápido e gastando muito menos tempo e dinheiro.
+                        </p>
+                    </Grid>
+                </Grid>
+            </Container>
+        </section>
+    );
+}
+
+
+function Metodo() {
+    const classes = useStyles();
+    return (
+        <section className={classes.sectionConteudo}>
+            <Container maxWidth="md">
+                <Grid container className={classes.grid} spacing={3}>
+                    <Grid item xs={12}>
+                        <h1 className={classes.centered}>Venda <span className={classes.highlight}>todos os dias</span></h1>
+                        <p>
+                            Se você faz apostilas e vende só no lançamento, você está deixando muita grana na mesa.
                         </p>
                         <p>
-                            Você só precisa trilhar o caminho certo, com um método prático que te leve direto ao ponto. Por isso eu criei este desafio, quer saber mais?
+                            Aprenda de vez como vender todos os dias e entregue sua apostila ou curso de forma automática.
+                        </p>
+                        <p>
+                            E pare de se preocupar com número de seguidores ou distribuição orgânica das redes sociais. Aprenda a criar anúncios para aumentar seus resultados.
                         </p>
                     </Grid>
                 </Grid>
@@ -729,6 +753,7 @@ export default function LS1Replay(props) {
             <Promessa />
             <DedoNaFerida />
             <Objecoes />
+            <Metodo />
             <Entregaveis />
             <Bonus />
             <div id="pricing" />
