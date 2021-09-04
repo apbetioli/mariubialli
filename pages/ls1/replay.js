@@ -418,7 +418,7 @@ function DedoNaFerida() {
 function Objecoes() {
     const classes = useStyles();
     return (
-        <section>
+        <section className={classes.sectionConteudo}>
             <Container maxWidth="md">
                 <Grid container className={classes.grid} spacing={3}>
                     <Grid item xs={12}>
@@ -442,7 +442,6 @@ function Objecoes() {
     );
 }
 
-
 function Metodo() {
     const classes = useStyles();
     return (
@@ -452,13 +451,16 @@ function Metodo() {
                     <Grid item xs={12}>
                         <h1 className={classes.centered}>Venda <span className={classes.highlight}>todos os dias</span></h1>
                         <p>
-                            Se você faz apostilas e vende só no lançamento, você está deixando muita grana na mesa.
+                            O <b>Método DAC (Divulgação Ativa e Conexão)</b> foi o método que eu concebi para ter vendas todos os dias.
                         </p>
                         <p>
-                            Aprenda de vez como vender todos os dias e entregue sua apostila ou curso de forma automática.
+                            Você precisa divulgar ativamente todos os dias para novas pessoas além de divulgar para sua audiência.
                         </p>
                         <p>
-                            E pare de se preocupar com número de seguidores ou distribuição orgânica das redes sociais. Aprenda a criar anúncios para aumentar seus resultados.
+                            Crie conexão emocional com a sua cliente, mostrando não o seu produto mas o benefício que ele vai gerar.
+                        </p>
+                        <p>
+                            Esta estratégia vai te trazer o reconhecimento que você busca!
                         </p>
                     </Grid>
                 </Grid>
@@ -631,6 +633,21 @@ function Testemunhos1() {
 
                     <Grid item className={classes.centered} xs={12} sm={12}>
                         <Paper elevation={3}>
+                        <div className={classes.videoWrapper}>
+                            <iframe
+                                loading="lazy"
+                                className={classes.video}
+                                src={"https://player.vimeo.com/video/596289574?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;h=2ad8803798"}
+                                frameBorder="0"
+                                allow="autoplay; fullscreen; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
+                        </Paper>
+                    </Grid>
+
+                    <Grid item className={classes.centered} xs={12} sm={12}>
+                        <Paper elevation={3}>
                             <img src={require("assets/img/testemunho36.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
                         </Paper>
                     </Grid>
@@ -751,12 +768,12 @@ export default function LS1Replay(props) {
             </Head>
 
             <Promessa />
-            <DedoNaFerida />
             <Objecoes />
-            <Metodo />
             <Entregaveis />
+            <Metodo />
             <Bonus />
             <div id="pricing" />
+            <DedoNaFerida />
             <Preco />
             <Garantia />
             <SobreMim />
