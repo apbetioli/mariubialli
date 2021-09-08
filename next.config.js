@@ -16,6 +16,11 @@ module.exports = withPlugins([[withImages]], {
         permanent: false,
       },
       {
+        source: '/ls1/:sub*',
+        destination: '/ac/espera',
+        permanent: false,
+      },
+      {
         source: '/inscrever/:origin*',
         destination: '/ac/espera',
         permanent: false,
