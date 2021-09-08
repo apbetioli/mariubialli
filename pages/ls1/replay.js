@@ -546,8 +546,7 @@ function Garantia() {
                             Se em 90 dias assistindo a todas as aulas e fazendo todas as atividades você não chegar ao resultado desejado,
                             eu vou te dar uma consultoria individual para entender melhor sua dificuldade e criaremos um plano de ação.
                             Se em 90 dias, seguindo o seu plano de ação, mesmo assim não tiver resultado,
-                            eu vou te devolver todo o seu dinheiro e mais R$500 do meu bolso, ou seja,
-                            o dobro do valor investido pelo seu tempo e dedicação neste método.</p>
+                            eu vou te devolver todo o seu dinheiro e mais R$500 do meu bolso pelo seu tempo e dedicação neste curso.</p>
                         <CheckoutButton>Quero me inscrever sem riscos</CheckoutButton>
                     </Grid>
                 </Grid>
@@ -634,16 +633,16 @@ function Testemunhos1() {
 
                     <Grid item className={classes.centered} xs={12} sm={12}>
                         <Paper elevation={3}>
-                        <div className={classes.videoWrapper}>
-                            <iframe
-                                loading="lazy"
-                                className={classes.video}
-                                src={"https://player.vimeo.com/video/596289574?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;h=2ad8803798"}
-                                frameBorder="0"
-                                allow="autoplay; fullscreen; picture-in-picture"
-                                allowFullScreen
-                            ></iframe>
-                        </div>
+                            <div className={classes.videoWrapper}>
+                                <iframe
+                                    loading="lazy"
+                                    className={classes.video}
+                                    src={"https://player.vimeo.com/video/596289574?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;h=2ad8803798"}
+                                    frameBorder="0"
+                                    allow="autoplay; fullscreen; picture-in-picture"
+                                    allowFullScreen
+                                ></iframe>
+                            </div>
                         </Paper>
                     </Grid>
 

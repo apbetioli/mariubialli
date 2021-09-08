@@ -12,27 +12,22 @@ module.exports = withPlugins([[withImages]], {
     return [
       {
         source: '/',
-        destination: '/ls1/replay',
-        permanent: false,
-      },
-      {
-        source: '/ls1',
-        destination: '/ls1/replay',
+        destination: '/ac/espera',
         permanent: false,
       },
       {
         source: '/inscrever/:origin*',
-        destination: '/ls1/replay',
+        destination: '/ac/espera',
         permanent: false,
       },
       {
         source: '/obrigado/:origin*',
-        destination: '/ls1/obrigado/:origin*',
+        destination: '/ac/espera',
         permanent: false,
       },
       {
         source: '/replay',
-        destination: '/ls1/replay',
+        destination: '/ac/espera',
         permanent: false,
       },
       {
@@ -52,17 +47,17 @@ module.exports = withPlugins([[withImages]], {
       },
       {
         source: '/telegram',
-        destination: 'https://t.me/joinchat/RrAThTnLHvVmMWIx',
+        destination: 'https://t.me/mariubialli',
         permanent: false,
       },
       {
         source: '/aula',
-        destination: '/ls1/replay',
+        destination: '/ac/espera',
         permanent: false,
       },
       {
         source: '/mm',
-        destination: '/ls1/replay',
+        destination: '/ac/espera',
         permanent: false,
       },
       {
@@ -72,7 +67,7 @@ module.exports = withPlugins([[withImages]], {
       },
       {
         source: '/desafio',
-        destination: '/ls1/replay',
+        destination: '/ac/espera',
         permanent: false,
       },
     ]

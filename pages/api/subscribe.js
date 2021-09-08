@@ -18,7 +18,8 @@ const translate = {
     'AS_LS_#1_GG': 'qLu32x3',
     'AS_LS_#1_TG': 'plueb24',
     'AS_LS_#1_EM': 'd3uP4mR',
-    'AS_LS_#1_CHECKOUT': 'kRuOwy3'
+    'AS_LS_#1_CHECKOUT': 'kRuOwy3',
+    'AC_ESPERA_TURMA2': 'eYu3aaa'
 }
 
 getParams = (lead) => {
