@@ -78,7 +78,7 @@ function Links() {
                         className={classes.button}
                         style={ColorButton.whatsapp}
                     >
-                        Curso Joias Raras
+                        Curso Joias Raras Premium
                     </ColorButton>
                 </Grid>
                 <Grid item xs={12}>
