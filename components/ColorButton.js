@@ -50,6 +50,14 @@ ColorButton.pink = {
     '--box-shadow-hover': 'rgba(255, 105, 135, .6)',
 };
 
+ColorButton.orange = {
+    '--color': 'white',
+    '--background-start': '#FE956B',
+    '--background-end': '#FE956B',
+    '--box-shadow': 'rgba(255, 105, 135, .3)',
+    '--box-shadow-hover': 'rgba(255, 105, 135, .6)',
+};
+
 ColorButton.primary = {
     '--color': 'white',
     '--background-start': '#fe6b8b',

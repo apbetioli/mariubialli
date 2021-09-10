@@ -47,8 +47,36 @@ function Links() {
                 </Grid>
                 <Grid item xs={12}>
                     <ColorButton
+                        href="https://t.me/mariubialli"
+                        className={classes.button}
+                        style={ColorButton.blue}
+                    >
+                        Conteúdo no Telegram
+                    </ColorButton>
+                </Grid>
+                <Grid item xs={12}>
+                    <ColorButton
+                        href="https://www.youtube.com/mariubialli?sub_confirmation=1"
+                        className={classes.button}
+                        style={ColorButton.youtube}
+                    >
+                        Inscreva-se no YouTube
+                    </ColorButton>
+                </Grid>
+                <Grid item xs={12}>
+                    <ColorButton
+                        href="https://artesacriativa.com.br?utm_source=insta&utm_medium=bio"
+                        className={classes.button}
+                        style={ColorButton.whatsapp}
+                    >
+                        Desafio Artesã Criativa
+                    </ColorButton>
+                </Grid>
+                <Grid item xs={12}>
+                    <ColorButton
                         href="/joiasraras"
                         className={classes.button}
+                        style={ColorButton.whatsapp}
                     >
                         Curso Joias Raras
                     </ColorButton>
@@ -57,6 +85,7 @@ function Links() {
                     <ColorButton
                         href="/jesus"
                         className={classes.button}
+                        style={ColorButton.whatsapp}
                     >
                         Curso Renascer em Jesus
                     </ColorButton>
@@ -65,24 +94,9 @@ function Links() {
                     <ColorButton
                         href="/apostilas"
                         className={classes.button}
+                        style={ColorButton.whatsapp}
                     >
                         Apostilas e moldes gratuitos
-                    </ColorButton>
-                </Grid>
-                <Grid item xs={12}>
-                    <ColorButton
-                        href="https://www.lojamariubialli.com.br?utm_source=instagram&utm_medium=bio"
-                        className={classes.button}
-                    >
-                        Loja Mari Ubialli
-                    </ColorButton>
-                </Grid>
-                <Grid item xs={12}>
-                    <ColorButton
-                        href="https://www.youtube.com/mariubialli?sub_confirmation=1"
-                        className={classes.button}
-                    >
-                        Inscreva-se no YouTube
                     </ColorButton>
                 </Grid>
                 <Grid item xs={12}>
@@ -90,25 +104,43 @@ function Links() {
                         href="/"
                         className={classes.button}
                     >
-                        Visite meu site
+                        mariubialli.com
                     </ColorButton>
                 </Grid>
                 <Grid item xs={12}>
                     <ColorButton
+                        href="https://www.lojamariubialli.com.br?utm_source=instagram&utm_medium=bio"
+                        className={classes.button}
+                    >
+                        lojamariubialli.com.br
+                    </ColorButton>
+                </Grid>
+
+                <Grid item xs={12}>
+                    <ColorButton
                         href="http://joiasraras.mariubialli.com"
                         className={classes.button}
-                        style={ColorButton.whatsapp}
+                        style={ColorButton.primary}
                     >
                         Acesso alunos Joias Raras
                     </ColorButton>
                 </Grid>
                 <Grid item xs={12}>
                     <ColorButton
-                        href="http://renasceremjesus.mariubialli.com"
+                        href="http://joiasraras.mariubialli.com"
                         className={classes.button}
-                        style={ColorButton.whatsapp}
+                        style={ColorButton.primary}
                     >
-                        Acesso alunos Renascer em Jesus
+                        Acesso alunos Joias Raras
+                    </ColorButton>
+                </Grid>
+                <Grid item xs={12}>
+                    <ColorButton
+                        href="https://app.nutror.com/v3/curso/f3f0008b898e291a6c03be63ea883c57b9f5a794"
+                        className={classes.button}
+                        style={ColorButton.primary}
+                    >
+                        Acesso alunos Desafio Artesa Criativa
                     </ColorButton>
                 </Grid>
             </Grid>
