@@ -230,14 +230,14 @@ function CheckoutButton(props) {
   );
 }
 
-function Conteudo() {
+function Entregaveis() {
   const classes = useStyles();
   return (
-    <section className={classes.sectionConteudo}>
+    <section>
       <Container maxWidth="sm">
         <Grid container className={classes.grid}>
           <Grid item className={classes.centered} xs={12}>
-            <h1>O que vou receber?</h1>
+            <h1>O que você vai receber?</h1>
           </Grid>
 
           {rocks.map((rock) => (
@@ -290,69 +290,6 @@ function Promessa() {
   );
 }
 
-function DedoNaFerida() {
-  const classes = useStyles();
-  return (
-    <section className={classes.sectionConteudo}>
-      <Container maxWidth="md">
-        <Grid container className={classes.grid}>
-          <Grid item xs={12}>
-            <h1 className={classes.centered}>Este curso é <span className={classes.highlight}>especialmente para você</span> que</h1>
-            <p>
-              <i><FavoriteIcon className={classes.heart} /> </i>Ama feltro e está apaixonada por elas assim como eu
-            </p>
-            <p>
-              <i><FavoriteIcon className={classes.heart} /> </i>Quer se diferenciar no mercado com técnicas que vão além do feltro
-            </p>
-            <p>
-              <i><FavoriteIcon className={classes.heart} /> </i>Está em busca de uma atividade para reduzir o stress do dia-a-dia
-            </p>
-            <p>
-              <i><FavoriteIcon className={classes.heart} /> </i>É iniciante e quer um curso detalhado com um ótimo suporte para tirar dúvidas
-            </p>
-            <p>
-              <i><FavoriteIcon className={classes.heart} /> </i>Está buscando uma nova fonte de renda
-            </p>
-            <p>
-              <i><FavoriteIcon className={classes.heart} /> </i>Quer desenvolver novas habilidades e descobrir novas paixões
-            </p>
-            <CTA>
-              Sim! Este curso é para mim!
-            </CTA>
-          </Grid>
-        </Grid>
-      </Container>
-    </section>
-  );
-}
-
-function Bonus() {
-  const classes = useStyles();
-  return (
-    <section>
-      <Container maxWidth="md">
-        <Grid container className={classes.grid} spacing={3}>
-          <Grid item xs={12} md={6}>
-            <h1 className={classes.centered}>E não podem faltar os <span className={classes.highlight}>Bônus</span></h1>
-            <p>
-              <FavoriteIcon className={classes.heart} /><span> O novo <b>Curso Joias Raras Premium</b> vai custar pelo menos <b>R$ 97</b> mas você que já tem o curso vai pagar <b>somente a diferença</b> e ainda receber um <b>SUPER DESCONTO</b> </span>
-            </p>
-            <p>
-              <FavoriteIcon className={classes.heart} /><span> Você poderá comprar junto o <b>Curso Renascer em Jesus</b> por apenas <b>R$ 1</b>. Isso mesmo, 1 real. Neste curso extra você aprenderá um lindo Jesus em feltro que para em pé e uma guirlanda slim arco-íris que usa técnica de pintura com stêncil. <br /><b>IM-PER-DÍ-VEL</b></span>
-            </p>
-            <p>
-              <FavoriteIcon className={classes.heart} /><span> Você irá participar ao vivo comigo em um dia de imersão no curso, junto com outras alunas Premium, onde faremos uma boneca juntos, vou tirar dúvidas e trocaremos experiências. Vai ser épico. Só este bônus já vale o curso todo.</span>
-            </p>
-          </Grid>
-          <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/jesus/curso.webp")} alt="" className={classes.fotoPerfil} />
-          </Grid>
-        </Grid>
-      </Container>
-    </section>
-  );
-}
-
 function Preco() {
   const classes = useStyles();
   return (
@@ -364,82 +301,9 @@ function Preco() {
           </Grid>
           <Grid item className={classes.centered} xs={12} md={6}>
             <img src={require("assets/img/price49.png")} alt="" className={classes.preco} />
-            <div className={classes.precoAviso}>Promoção válida até 05/08/21 23:59</div>
             <CheckoutButton>
               Quero ser premium
             </CheckoutButton>
-          </Grid>
-        </Grid>
-      </Container>
-    </section>
-  );
-}
-
-function Garantia() {
-  const classes = useStyles();
-  return (
-    <section>
-      <Container maxWidth="md">
-        <Grid container className={classes.grid} spacing={3}>
-          <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/garantia.png")} alt="Garantia de 7 dias" />
-          </Grid>
-          <Grid item xs={12} md={6} className={classes.justify}>
-            <h1 className={classes.centered}>Você tem 7 dias de <span className={classes.highlight}>garantia incondicional</span></h1>
-            <p>Você pode assistir todas as aulas e ter acesso a todos os materiais.
-              Se por qualquer motivo você não ficar satisfeita, basta solicitar o reembolso
-              pelo email contato@mariubialli.com e você receberá 100% do valor investido de volta.</p>
-          </Grid>
-        </Grid>
-      </Container>
-    </section>
-  );
-}
-
-function SobreMim() {
-  const classes = useStyles();
-  return (
-    <section className={classes.sectionSobreMim}>
-      <Container maxWidth="md">
-        <Grid container className={classes.grid} spacing={3}>
-          <Grid item className={classes.centered} md={6}>
-            <img className={classes.fotoPerfil} src={require("assets/img/perfil.webp")} alt="Mari Ubialli" />
-          </Grid>
-          <Grid item md={6} className={classes.justify}>
-            <h1 className={classes.centered}>Muito prazer, eu sou mari ubialli</h1>
-            <p>Amo artesanato em feltro, coisas fofas e criativas!</p>
-            <p>Conheci o feltro quando estava grávida do meu filho em 2018, me apaixonei na mesma hora e comecei a produzir muitas fofuras.</p>
-            <p>Essas bonecas não são apenas bonecas para mim. Elas são a prova de que podemos conseguir fazer algo quando queremos, que podemos superar nossos medos e inseguranças e transformá-los em algo lindo e precioso.</p>
-            <p>Quero compartilhar meu aprendizado, e ajudar mais pessoas a conhecerem, se apaixonarem e viverem desse artesanato maravilhoso!</p>
-          </Grid>
-        </Grid>
-      </Container>
-    </section>
-  );
-}
-
-function FAQs() {
-  const classes = useStyles();
-  return (
-    <section className={classes.sectionFaq}>
-      <Container maxWidth="md">
-        <Grid container className={classes.grid} spacing={3}>
-          <Grid item xs={12}>
-            <h1 className={classes.centered}>Dúvidas frequentes</h1>
-            {faqs.map((faq, index) => (
-              <Accordion key={"id" + index} defaultExpanded={false}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls={"panel" + index + "-content"}
-                  id={"panel" + index + "-header"}
-                >
-                  <Typography className={classes.heading} component="h2">{faq.pergunta}</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography className={classes.justify} color="textSecondary" >{faq.resposta}</Typography>
-                </AccordionDetails>
-              </Accordion>
-            ))}
           </Grid>
         </Grid>
       </Container>
@@ -456,108 +320,6 @@ function DuvidasWhats() {
           <Grid item className={classes.centered} xs={12}>
             <h1>Tem dúvidas? Fale conosco no WhatsApp</h1>
             <BotaoWhats float={false} message="Oi, gostaria de saber mais sobre o Curso Joias Raras Premium" />
-          </Grid>
-        </Grid>
-      </Container>
-    </section>
-  );
-}
-
-function Testemunhos1() {
-  const classes = useStyles();
-  return (
-    <section>
-      <Container maxWidth="md" className={classes.centered}>
-        <Grid container className={classes.grid} spacing={1}>
-          <Grid item className={classes.centered} xs={12}>
-            <h1>O que os alunos estão <br /><span className={classes.highlight}>falando do curso?</span></h1>
-          </Grid>
-          <Grid item className={classes.centered} xs={12} sm={3}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/testemunho40.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12} sm={3}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/testemunho21.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12} sm={3}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/testemunho31b.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12} sm={3}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/testemunho16.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-        </Grid>
-      </Container>
-    </section>
-  );
-}
-
-function Testemunhos3() {
-  const classes = useStyles();
-  return (
-    <section className={classes.sectionConteudo}>
-      <Container maxWidth="sm" className={classes.centered}>
-        <Grid container className={classes.grid} spacing={1}>
-          <Grid item className={classes.centered} xs={12}>
-            <h1>Venha fazer parte deste grupo de alunas <span className={classes.highlight}>encantadas</span></h1>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/testemunho24.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/testemunho25.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/testemunho26.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/testemunho29.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/testemunho33.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/testemunho34.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/testemunho35.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/testemunho36.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/testemunho37.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <p>
-              <CheckoutButton>
-                Quero fazer parte deste grupo
-              </CheckoutButton>
-            </p>
           </Grid>
         </Grid>
       </Container>
@@ -582,7 +344,7 @@ export default function JoiasRarasUpgradePremium(props) {
         <meta name="robots" content="noindex,nofollow"></meta>
       </Head>
       <Promessa />
-      <Conteudo />
+      <Entregaveis />
       <div id="pricing" />
       <Preco />
       <DuvidasWhats />
