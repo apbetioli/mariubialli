@@ -103,14 +103,13 @@ export default function Form(props) {
       if (props.checkout) {
         redirectTo += "&email=" + values.email.toLowerCase();
         if (values.name)
-          redirectTo += "&name=" + values.name;
+          redirectTo += "&name=" + values.name + "&nome=" + values.name;
         if (ddd)
           redirectTo += "&phoneac=" + ddd;
         if (phone_number)
-          redirectTo += "&phonenumber=" + phone_number;
-        if (router.query.hideBillet) {
+          redirectTo += "&phonenumber=" + phone_number + "&cel=" + ddd + phone_number;
+        if (router.query.hideBillet)
           redirectTo += "&hideBillet=1";
-        }
       }
 
       router.push(redirectTo);
@@ -180,11 +179,13 @@ export default function Form(props) {
 
       {props.children}
 
-      <p className={classes.justify}>
-        <Typography variant="body2" color="textSecondary" component="span">
-          Ao continuar você concorda com nossa <Link className={classes.link} href="/politica-de-privacidade" target="_blank" rel="noopener">política de privacidade</Link>.
-        </Typography>
-      </p>
+      {props.showTerms &&
+        <p className={classes.justify}>
+          <Typography variant="body2" color="textSecondary" component="span">
+            Ao continuar você concorda com nossa <Link className={classes.link} href="/politica-de-privacidade" target="_blank" rel="noopener">política de privacidade</Link>.
+          </Typography>
+        </p>
+      }
 
       <ColorButton
         variant="contained"
@@ -209,5 +210,6 @@ Form.defaultProps = {
   tag: "LOGIN",
   showName: false,
   showPhone: false,
+  showTerms: true,
   emailPlaceholder: "Digite o seu melhor email..."
 };

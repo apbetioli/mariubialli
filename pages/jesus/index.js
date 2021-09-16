@@ -201,7 +201,7 @@ function Promessa() {
       <Container maxWidth="md">
         <Grid container spacing={3}>
           <Grid item className={classes.centered} xs={12} lg={7} md={6}>
-            <img src={require("assets/img/jesus/capa.jpg")} alt="" className={classes.foto} />
+            <img src={require("assets/img/jesus/capa.webp")} alt="" className={classes.foto} />
           </Grid>
 
           <Grid item className={classes.centered} xs={12} lg={5} md={6}>
@@ -309,7 +309,7 @@ function SobreMim() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} md={6}>
-            <img className={classes.fotoPerfil} src={require("assets/img/perfil.jpg")} alt="Mari Ubialli" />
+            <img className={classes.fotoPerfil} src={require("assets/img/perfil.webp")} alt="Mari Ubialli" />
           </Grid>
           <Grid item md={6} className={classes.justify}>
             <h1 className={classes.centered}>Muito prazer, eu sou mari ubialli</h1>

@@ -9,8 +9,7 @@ import React, { useEffect } from "react";
 function populateUtmSource() {
   const router = useRouter();
   useEffect(() => {
-    const source = window.localStorage.getItem("utm_source");
-    if (router.query.utm_source && !source) {
+    if (router.query.utm_source) {
       window.localStorage.setItem("utm_source", router.query.utm_source);
     }
   });

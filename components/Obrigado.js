@@ -1,4 +1,5 @@
 import { Container, Grid, makeStyles } from "@material-ui/core";
+import { Telegram } from "@material-ui/icons";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import React from "react";
@@ -26,36 +27,26 @@ export default function Obrigado(props) {
         <Grid className={classes.centered} item xs={12}>
           {props.children}
         </Grid>
-        <Grid className={classes.centered} item xs={12}>
-          <p>
-            {props.text}
-          </p>
-        </Grid>
       </Grid>
       {props.social &&
         <Grid container spacing={3} className={classes.buttons}>
-          <Grid className={classes.centered} item md={6} xs={12}>
-            <ColorButton
-              className={classes.button}
-              href="http://www.instagram.com/mariubialli"
-              target="_blank"
-              rel="noopener"
-            >
-              <InstagramIcon />
-            &nbsp; Siga-me no instagram
-          </ColorButton>
+          <Grid className={classes.centered} item xs={12}>
+            <p>
+              {props.text}
+            </p>
+
           </Grid>
-          <Grid className={classes.centered} item md={6} xs={12}>
+          <Grid className={classes.centered} item xs={12}>
             <ColorButton
               className={classes.button}
-              style={ColorButton.youtube}
-              href="https://www.youtube.com/mariubialli?sub_confirmation=1"
+              style={ColorButton.blue}
+              href="http://t.me/mariubialli"
               target="_blank"
               rel="noopener"
             >
-              <YouTubeIcon />
-            &nbsp; Inscreva-se no YouTube
-          </ColorButton>
+              <Telegram />
+              &nbsp; Entre para o canal no Telegram
+            </ColorButton>
           </Grid>
         </Grid>
       }
@@ -66,6 +57,6 @@ export default function Obrigado(props) {
 Obrigado.defaultProps = {
   title: "Obrigada",
   subtitle: "Incrição realizada com sucesso!",
-  text: "Siga-me nas redes sociais e acompanhe as novidades!",
+  text: "Entre para o meu canal de conteúdo do telegram e receba avisos em primeira mão!",
   social: true
 };

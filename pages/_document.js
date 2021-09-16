@@ -8,9 +8,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          {/* PWA primary color */}
-          <meta name="theme-color" content={theme.palette.primary.main} />
-
           {/* Google Tag Manager */}
           <script
             dangerouslySetInnerHTML={{
@@ -27,11 +24,11 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
+
+          {/* PWA primary color */}
+          <meta name="theme-color" content={theme.palette.primary.main} />
         </Head>
         <body>
-          <Main />
-          <NextScript />
-
           {/* Google Tag Manager (noscript) */}
           <noscript
             dangerouslySetInnerHTML={{
@@ -39,6 +36,9 @@ export default class MyDocument extends Document {
             }}
           />
           {/* End Google Tag Manager (noscript) */}
+
+          <Main />
+          <NextScript />
         </body>
       </Html>
     );
