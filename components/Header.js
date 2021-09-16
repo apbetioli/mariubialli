@@ -24,6 +24,7 @@ import YouTubeIcon from "@material-ui/icons/YouTube";
 import StoreIcon from '@material-ui/icons/Store';
 import React from "react";
 import Wave from "./Wave";
+import { Telegram } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   desktopButtons: {
@@ -155,6 +156,18 @@ export default function Header(props) {
 
                 <ListItemLink
                   button
+                  href="http://t.me/mariubialli"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <ListItemIcon>
+                    <Telegram />
+                  </ListItemIcon>
+                  <ListItemText primary="Telegram" />
+                </ListItemLink>
+
+                <ListItemLink
+                  button
                   href="http://www.instagram.com/mariubialli"
                   target="_blank"
                   rel="noopener"
@@ -213,6 +226,16 @@ export default function Header(props) {
 
           <div className={classes.rightButtons}>
             <nav className={classes.desktopButtons}>
+              <Tooltip title="Entre para o canal no telegram">
+                <Button
+                  href="http://t.me/mariubialli"
+                  target="_blank"
+                  rel="noopener"
+                  className={classes.toolbarButton}
+                >
+                  <Telegram />
+                </Button>
+              </Tooltip>
               <Tooltip title="Siga-me no instagram">
                 <Button
                   href="http://www.instagram.com/mariubialli"
