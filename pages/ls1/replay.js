@@ -204,13 +204,13 @@ const bonus = [
     },
     {
         title: "Curso Joias Raras",
-        image: require("assets/img/banner.jpg"),
+        image: require("assets/img/jr/bonecas.webp"),
         description: "Aprenda técnicas de criação de bonecas associado a outros materiais e projetos únicos. Quem é iniciante no feltro poderá aprender tudo o que precisa para fazer o curso.",
         price: "R$ 97"
     },
     {
         title: "Kit de Recortes à Laser Joias Raras",
-        image: require("assets/img/kit.jpg"),
+        image: require("assets/img/ls1/kit.webp"),
         description: "Você vai receber na sua casa um kit de uma boneca Joias Raras prontinho para você começar a vender já desde o início.",
         price: "R$ 34,90"
     },
@@ -513,7 +513,7 @@ function Preco() {
             <Container maxWidth="md">
                 <Grid container className={classes.grid} spacing={3}>
                     <Grid item className={classes.centered} xs={12} md={6}>
-                        <img src={require("assets/img/tudoisso.png")} alt="" className={classes.preco} />
+                        <img src={require("assets/img/tudoisso.webp")} alt="" className={classes.preco} />
                     </Grid>
                     <Grid item className={classes.centered} xs={12} md={6}>
                         <img src={require("assets/img/ls1/price.webp")} alt="" className={classes.preco} />
@@ -648,37 +648,37 @@ function Testemunhos1() {
 
                     <Grid item className={classes.centered} xs={12} sm={12}>
                         <Paper elevation={3}>
-                            <img src={require("assets/img/testemunho36.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+                            <img src={require("assets/img/jr/testemunho36.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
                         </Paper>
                     </Grid>
                     <Grid item className={classes.centered} xs={12} sm={4}>
                         <Paper elevation={3}>
-                            <img src={require("assets/img/testemunho41.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+                            <img src={require("assets/img/jr/testemunho41.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
                         </Paper>
                     </Grid>
                     <Grid item className={classes.centered} xs={12} sm={4}>
                         <Paper elevation={3}>
-                            <img src={require("assets/img/testemunho42.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+                            <img src={require("assets/img/jr/testemunho42.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
                         </Paper>
                     </Grid>
                     <Grid item className={classes.centered} xs={12} sm={4}>
                         <Paper elevation={3}>
-                            <img src={require("assets/img/testemunho44.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+                            <img src={require("assets/img/jr/testemunho44.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
                         </Paper>
                     </Grid>
                     <Grid item className={classes.centered} xs={12} sm={6}>
                         <Paper elevation={3}>
-                            <img src={require("assets/img/testemunho26.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+                            <img src={require("assets/img/jr/testemunho26.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
                         </Paper>
                     </Grid>
                     <Grid item className={classes.centered} xs={12} sm={6}>
                         <Paper elevation={3}>
-                            <img src={require("assets/img/testemunho24.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+                            <img src={require("assets/img/jr/testemunho24.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
                         </Paper>
                     </Grid>
                     <Grid item className={classes.centered} xs={12} sm={12}>
                         <Paper elevation={3}>
-                            <img src={require("assets/img/testemunho35.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+                            <img src={require("assets/img/jr/testemunho35.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
                         </Paper>
                     </Grid>
                 </Grid>
@@ -698,47 +698,47 @@ function Testemunhos3() {
                     </Grid>
                     <Grid item className={classes.centered} xs={12}>
                         <Paper elevation={3}>
-                            <img src={require("assets/img/testemunho24.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+                            <img src={require("assets/img/jr/testemunho24.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
                         </Paper>
                     </Grid>
                     <Grid item className={classes.centered} xs={12}>
                         <Paper elevation={3}>
-                            <img src={require("assets/img/testemunho25.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+                            <img src={require("assets/img/jr/testemunho25.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
                         </Paper>
                     </Grid>
                     <Grid item className={classes.centered} xs={12}>
                         <Paper elevation={3}>
-                            <img src={require("assets/img/testemunho26.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+                            <img src={require("assets/img/jr/testemunho26.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
                         </Paper>
                     </Grid>
                     <Grid item className={classes.centered} xs={12}>
                         <Paper elevation={3}>
-                            <img src={require("assets/img/testemunho29.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+                            <img src={require("assets/img/jr/testemunho29.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
                         </Paper>
                     </Grid>
                     <Grid item className={classes.centered} xs={12}>
                         <Paper elevation={3}>
-                            <img src={require("assets/img/testemunho33.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+                            <img src={require("assets/img/jr/testemunho33.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
                         </Paper>
                     </Grid>
                     <Grid item className={classes.centered} xs={12}>
                         <Paper elevation={3}>
-                            <img src={require("assets/img/testemunho34.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+                            <img src={require("assets/img/jr/testemunho34.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
                         </Paper>
                     </Grid>
                     <Grid item className={classes.centered} xs={12}>
                         <Paper elevation={3}>
-                            <img src={require("assets/img/testemunho35.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+                            <img src={require("assets/img/jr/testemunho35.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
                         </Paper>
                     </Grid>
                     <Grid item className={classes.centered} xs={12}>
                         <Paper elevation={3}>
-                            <img src={require("assets/img/testemunho36.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+                            <img src={require("assets/img/jr/testemunho36.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
                         </Paper>
                     </Grid>
                     <Grid item className={classes.centered} xs={12}>
                         <Paper elevation={3}>
-                            <img src={require("assets/img/testemunho37.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+                            <img src={require("assets/img/jr/testemunho37.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
                         </Paper>
                     </Grid>
                     <Grid item className={classes.centered} xs={12}>

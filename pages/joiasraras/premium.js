@@ -1,12 +1,7 @@
-import { Card, CardContent, CardMedia, Container, Dialog, DialogActions, DialogContent, DialogTitle, Grid, IconButton, Paper } from "@material-ui/core";
-import Accordion from '@material-ui/core/Accordion';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
+import { Card, CardContent, CardMedia, Container, Dialog, DialogActions, DialogContent, DialogTitle, Grid, IconButton } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import HttpsIcon from '@material-ui/icons/Https';
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -150,11 +145,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const rocks = [
-  { title: "Minis", color: "#6BFEDE", image: require("assets/img/premium0.jpg"), description: "7 bonecas joias raras mini. Elas são menores, com 20cm, e muito mais fofas não acha?💖" },
-  { title: "Ursinhas", color: "#FE6B8B", image: require("assets/img/premium2.jpg"), description: "E agora as bonecas tem companhia, essa ursinha suuuuper fofinha em 2 cores: rosa e verde🥰" },
-  { title: "Mobile", color: "#6BFEDE", image: require("assets/img/premium3.jpg"), description: "Aprenda comigo a montar esse mobile maravilhoso tema joias raras🌼" },
-  { title: "Guirlanda", color: "#FE6B8B", image: require("assets/img/premium4.jpg"), description: "Sem falar nessa guirlanda super especial. Você vai aprender a customizar o nome que quiser e algumas técnicas extras🌹" },
-  { title: "Pergolado", color: "#6BFEDE", image: require("assets/img/premium5.jpg"), description: "E a cereja do bolo: o Pergolado. Essa peça é única e nunca vi nada parecido. A inspiração veio de um sonho e vou mostrar em detalhes como fazer. Além disso as bonecas também são diferentes, pois elas podem sentar no balanço🍒" },
+  { title: "Minis", color: "#6BFEDE", image: require("assets/img/jr/premium0.webp"), description: "7 bonecas joias raras mini. Elas são menores, com 20cm, e muito mais fofas não acha?💖" },
+  { title: "Ursinhas", color: "#FE6B8B", image: require("assets/img/jr/premium2.webp"), description: "E agora as bonecas tem companhia, essa ursinha suuuuper fofinha em 2 cores: rosa e verde🥰" },
+  { title: "Mobile", color: "#6BFEDE", image: require("assets/img/jr/premium3.webp"), description: "Aprenda comigo a montar esse mobile maravilhoso tema joias raras🌼" },
+  { title: "Guirlanda", color: "#FE6B8B", image: require("assets/img/jr/premium4.webp"), description: "Sem falar nessa guirlanda super especial. Você vai aprender a customizar o nome que quiser e algumas técnicas extras🌹" },
+  { title: "Pergolado", color: "#6BFEDE", image: require("assets/img/jr/premium5.webp"), description: "E a cereja do bolo: o Pergolado. Essa peça é única e nunca vi nada parecido. A inspiração veio de um sonho e vou mostrar em detalhes como fazer. Além disso as bonecas também são diferentes, pois elas podem sentar no balanço🍒" },
 ];
 
 const faqs = [
@@ -275,7 +270,7 @@ function Promessa() {
       <Container maxWidth="md">
         <Grid container spacing={2}>
           <Grid item className={classes.centered} xs={12}>
-            <img src={require("assets/img/banner_premium.jpg")} alt="" className={classes.foto} />
+            <img src={require("assets/img/jr/banner_premium.webp")} alt="" className={classes.foto} />
           </Grid>
           <Grid item className={classes.centered} xs={12}>
             <h1 className={classes.title}>Seja <span className={classes.highlight}>PREMIUM</span></h1>
@@ -297,10 +292,10 @@ function Preco() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/tudoisso.png")} alt="" className={classes.preco} />
+            <img src={require("assets/img/tudoisso.webp")} alt="" className={classes.preco} />
           </Grid>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/price49.png")} alt="" className={classes.preco} />
+            <img src={require("assets/img/jr/price49.webp")} alt="" className={classes.preco} />
             <CheckoutButton>
               Quero ser premium
             </CheckoutButton>

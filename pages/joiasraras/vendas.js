@@ -1,9 +1,10 @@
-import { Card, CardContent, CardMedia, Container, Dialog, DialogActions, DialogContent, DialogTitle, Grid, IconButton, Paper } from "@material-ui/core";
+import { Card, CardContent, CardMedia, Container, Dialog, DialogActions, DialogContent, DialogTitle, Grid, Hidden, IconButton, Paper } from "@material-ui/core";
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from '@material-ui/core/Typography';
+import { CheckBox } from "@material-ui/icons";
 import CloseIcon from '@material-ui/icons/Close';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -58,12 +59,15 @@ const useStyles = makeStyles((theme) => ({
   },
   cardMedia: {
   },
+  section: {
+    marginTop: 50,
+  },
   sectionConteudo: {
     backgroundColor: "#ffe8ed",
     marginTop: 50,
   },
   sectionGreen: {
-    marginTop: 30,
+    marginTop: 50,
     marginBottom: 30,
     backgroundColor: "#6BFEDE",
   },
@@ -148,30 +152,30 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const rocks = [
-  { title: "Esmeralda", color: "#6BFEDE", image: require("assets/img/esmeralda.jpg"), description: "Esmeralda é um símbolo da verdade e do amor. Ela é cheia de esperança, atitude e muuuuuito sábia. Além disso, é sonhadora e intuitiva💚" },
-  { title: "Rose", color: "#FE6B8B", image: require("assets/img/rose.jpg"), description: "Rose, também conhecida como Rose Quartz, tem muito estilo, é decidida e promove o amor incondicional.\n\nCom amor podemos todas as coisas, tudo torna-se possível💖" },
-  { title: "Jade", color: "#6BFEDE", image: require("assets/img/jade.jpg"), description: "Jade é uma menina super amiga, brincalhona e extrovertida. É considerada a pedra da sorte, prosperidade e amizade🤗" },
-  { title: "Ágata", color: "#6BFEDE", image: require("assets/img/agata.jpg"), description: "Ágata é forte e corajosa, se aceita como é de verdade! Tem uma energia super positiva e as pessoas ao seu redor se contagiam com a sua felicidade😆" },
-  { title: "Ametista", color: "#6BFEDE", image: require("assets/img/ametista.jpg"), description: "Ametista parece frágil né? Pois é aí que você se engana. Ela é delicada, porém forte e tem uma paz interior que te eleva a alma🧘‍♀️" },
-  { title: "Angelita", color: "#FE6B8B", image: require("assets/img/angelita.jpg"), description: "Angelita é suuuuper especial, comunicativa e verdadeira. Não perde a esperança mesmo em momentos difícies, pois acredita que dias melhores virão. Ela é a alegria da casa, a alegria da vida todinha da mamãe e do papai, ela é uma verdadeira super heroína🌹" },
-  { title: "Rubi", color: "#FE6B8B", image: require("assets/img/rubi.jpg"), description: "Rubi protege as pessoas que ama e tem uma energia infinita! Leva felicidade e paixão em seu coração, e adora ajudar o próximo🌼" },
+  { title: "Esmeralda", color: "#6BFEDE", image: require("assets/img/jr/esmeralda.webp"), description: "Esmeralda é um símbolo da verdade e do amor. Ela é cheia de esperança, atitude e muuuuuito sábia. Além disso, é sonhadora e intuitiva💚" },
+  { title: "Rose", color: "#FE6B8B", image: require("assets/img/jr/rose.webp"), description: "Rose, também conhecida como Rose Quartz, tem muito estilo, é decidida e promove o amor incondicional.\n\nCom amor podemos todas as coisas, tudo torna-se possível💖" },
+  { title: "Jade", color: "#6BFEDE", image: require("assets/img/jr/jade.webp"), description: "Jade é uma menina super amiga, brincalhona e extrovertida. É considerada a pedra da sorte, prosperidade e amizade🤗" },
+  { title: "Ágata", color: "#6BFEDE", image: require("assets/img/jr/agata.webp"), description: "Ágata é forte e corajosa, se aceita como é de verdade! Tem uma energia super positiva e as pessoas ao seu redor se contagiam com a sua felicidade😆" },
+  { title: "Ametista", color: "#6BFEDE", image: require("assets/img/jr/ametista.webp"), description: "Ametista parece frágil né? Pois é aí que você se engana. Ela é delicada, porém forte e tem uma paz interior que te eleva a alma🧘‍♀️" },
+  { title: "Angelita", color: "#FE6B8B", image: require("assets/img/jr/angelita.webp"), description: "Angelita é suuuuper especial, comunicativa e verdadeira. Não perde a esperança mesmo em momentos difícies, pois acredita que dias melhores virão. Ela é a alegria da casa, a alegria da vida todinha da mamãe e do papai, ela é uma verdadeira super heroína🌹" },
+  { title: "Rubi", color: "#FE6B8B", image: require("assets/img/jr/rubi.webp"), description: "Rubi protege as pessoas que ama e tem uma energia infinita! Leva felicidade e paixão em seu coração, e adora ajudar o próximo🌼" },
 ];
 
 const premium = [
-  { title: "Minis", color: "#6BFEDE", image: require("assets/img/premium0.jpg"), description: "7 bonecas joias raras mini. Elas são menores, com 20cm, e muito mais fofas não acha?💖" },
-  { title: "Ursinhas", color: "#FE6B8B", image: require("assets/img/premium2.jpg"), description: "E agora as bonecas tem companhia, essa ursinha suuuuper fofinha em 2 cores: rosa e verde🥰" },
-  { title: "Mobile", color: "#6BFEDE", image: require("assets/img/premium3.jpg"), description: "Aprenda comigo a montar esse mobile maravilhoso tema joias raras🌼" },
-  { title: "Guirlanda", color: "#FE6B8B", image: require("assets/img/premium4.jpg"), description: "Sem falar nessa guirlanda super especial. Você vai aprender a customizar o nome que quiser e algumas técnicas extras🌹" },
-  { title: "Pergolado", color: "#6BFEDE", image: require("assets/img/premium5.jpg"), description: "E a cereja do bolo: o Pergolado. Essa peça é única e nunca vi nada parecido. A inspiração veio de um sonho e vou mostrar em detalhes como fazer. Além disso as bonecas também são diferentes, pois elas podem sentar no balanço🍒" },
+  { title: "Minis", color: "#6BFEDE", image: require("assets/img/jr/premium0.webp"), description: "7 bonecas joias raras mini. Elas são menores, com 20cm, e muito mais fofas não acha?💖" },
+  { title: "Ursinhas", color: "#FE6B8B", image: require("assets/img/jr/premium2.webp"), description: "E agora as bonecas tem companhia, essa ursinha suuuuper fofinha em 2 cores: rosa e verde🥰" },
+  { title: "Mobile", color: "#6BFEDE", image: require("assets/img/jr/premium3.webp"), description: "Aprenda comigo a montar esse mobile maravilhoso tema joias raras🌼" },
+  { title: "Guirlanda", color: "#FE6B8B", image: require("assets/img/jr/premium4.webp"), description: "Sem falar nessa guirlanda super especial. Você vai aprender a customizar o nome que quiser e algumas técnicas extras🌹" },
+  { title: "Pergolado", color: "#6BFEDE", image: require("assets/img/jr/premium5.webp"), description: "E a cereja do bolo: o Pergolado. Essa peça é única e nunca vi nada parecido. A inspiração veio de um sonho e vou mostrar em detalhes como fazer. Além disso as bonecas também são diferentes, pois elas podem sentar no balanço🍒" },
 ];
 
 const faqs = [
-  { pergunta: "Quando começa o curso?", resposta: "O curso começa assim que você se inscrever. Todas as aulas já estão gravadas e todos os materiais estão disponíveis para baixar." },
+  { pergunta: "Quando começa o curso?", resposta: "O curso começa assim que você se inscrever. Todas as aulas já estão gravadas e todas as apostilas de moldes estão disponíveis para baixar." },
   { pergunta: "Quando vou receber o curso?", resposta: "O acesso a sua área de membros é enviado automaticamente após a confirmação de seu pagamento. Se você realizar o pagamento por cartão de crédito ou PIX, você receberá os dados de acesso em até 10 minutos. Caso o pagamento seja por boleto bancário a confirmação bancária pode levar até 72 horas." },
   { pergunta: "Como vou receber o curso?", resposta: "O curso é enviado ao email cadastrado na compra. Certifique-se que o email está correto para não haver problemas na hora da entrega." },
   { pergunta: "Sou iniciante, vou conseguir fazer?", resposta: "Sim. O curso pensado especialmente para quem é iniciante e aborda tudo o que você precisa saber para criar as bonecas com perfeição. E possui um módulo exclusivo com as principais técnicas que você precisa conhecer." },
   { pergunta: "Não tenho máquina de costura. É um problema?", resposta: "Não. Vou te ensinar a confeccionar tudo à mão. A máquina de costura é opcional." },
-  { pergunta: "O curso é online?", resposta: "Sim, o curso é 100% online em video com mais de 50 aulas. Tudo bem explicado passo a passo para não ter dúvidas." },
+  { pergunta: "O curso é online?", resposta: "Sim, o curso é 100% online em vídeo com mais de 50 aulas. Tudo bem explicado passo a passo para não ter dúvidas." },
   { pergunta: "Por quanto tempo vou poder assistir as aulas?", resposta: "Pelo tempo que quiser. O curso é vitalício. Uma vez seu, é seu pra sempre." },
   { pergunta: "Que tamanho ficam as bonecas depois de prontas?", resposta: "As que ficam em pé têm em média 28cm e as mini com 20cm. Podendo variar conforme o tipo de cabelo." },
   { pergunta: "Os materiais estão inclusos?", resposta: "Não, os materiais para confecção devem ser adquiridos à parte no local de sua preferência. E também temos uma loja virtual com tudo o que você precisa para não ter que perder tempo procurando!" },
@@ -179,7 +183,7 @@ const faqs = [
   { pergunta: "Quais são as formas de pagamento?", resposta: "Você pode pagar com cartão de crédito em até 12x ou à vista com PIX." },
 ];
 
-const buttonStyle = ColorButton.whatsapp;
+const buttonStyle = ColorButton.primary;
 
 function CTA(props) {
   const classes = useStyles();
@@ -206,18 +210,16 @@ function CheckoutButton(props) {
 
   let checkoutURL = "https://pay.hotmart.com/B46628840G?checkoutMode=10"
   const router = useRouter()
+
   if (router.query.off)
     checkoutURL += "&off=" + router.query.off
-  else
-    checkoutURL += "&off=fe6ncbw6"
+
   if (router.query.hideBillet)
     checkoutURL += "&hideBillet=" + router.query.hideBillet
-  else
-    checkoutURL += "&hideBillet=1"
 
   return (
     <>
-      <ColorButton className={classes.cta} onClick={handleClickOpen} style={buttonStyle}>
+      <ColorButton className={classes.cta} onClick={handleClickOpen} style={ColorButton.whatsapp}>
         {props.children}
       </ColorButton>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
@@ -244,24 +246,24 @@ function CheckoutButton(props) {
   );
 }
 
-function Conteudo() {
+function Entregaveis() {
   const classes = useStyles();
   return (
-    <section className={classes.sectionConteudo}>
+    <section>
       <Container maxWidth="md">
         <Grid container className={classes.grid}>
           <Grid item className={classes.centered} xs={12}>
-            <h1>Conheça as <span className={classes.highlight}>joias raras</span></h1>
+            <h2>Elas têm <span className={classes.highlight}>personalidade</span></h2>
             <p>
               Seus nomes têm significado e são inspirados em pedras preciosas.
             </p>
             <p>
-              Você irá se conectar com elas, seja pelo estilo ou pela personalidade.
+              Me diz, qual é sua preferida?
             </p>
           </Grid>
 
           {rocks.map((rock) => (
-            <Grid container item xs={12} sm={6} md={4} spacing={0} key={rock.title}>
+            <Grid container item xs={12} sm={6} md={6} spacing={0} key={rock.title}>
               <Card raised={true} className={classes.card}>
                 <CardMedia
                   component="img"
@@ -290,22 +292,33 @@ function Conteudo() {
 function Promessa() {
   const classes = useStyles();
   return (
-    <section>
-      <Container maxWidth="md">
-        <Grid container spacing={2}>
-          <Grid item className={classes.centered} xs={12}>
-            <img src={require("assets/img/banner.jpg")} alt="" className={classes.foto} />
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <h1 className={classes.title}>São 7 joias raras para você <span className={classes.highlight}>confeccionar, personalizar e vender</span></h1>
-            <p className={classes.subtitle}>Se você está em busca de um projeto <span className={classes.highlightText}>diferenciado</span>, seja para vender, dar de presente ou até como terapia nestes tempos difíceis, então estas Joias Raras são para você.</p>
-            <CTA>
-              Quero me inscrever agora mesmo
-            </CTA>
+    <>
+      <section>
+        <Grid className={classes.centered}>
+          <Grid item>
+            <Hidden smUp>
+              <img src={require("assets/img/jr/banner_mobile.webp")} alt="" className={classes.foto} />
+            </Hidden>
+            <Hidden xsDown>
+              <img src={require("assets/img/jr/banner.webp")} alt="" className={classes.foto} />
+            </Hidden>
           </Grid>
         </Grid>
-      </Container>
-    </section>
+      </section>
+      <section className={classes.section}>
+        <Container maxWidth="md">
+          <Grid className={classes.centered}>
+            <Grid item>
+              <h2>São <span className={classes.highlightText}>7 joias raras</span> para você confeccionar, personalizar e vender</h2>
+            </Grid>
+
+            <Grid item>
+              <p className={classes.subtitle}>Um curso <span className={classes.highlightText}>diferenciado</span> com lindas bonecas para vender, dar de presente ou passar o tempo fazendo o que você ama!</p>
+            </Grid>
+          </Grid>
+        </Container>
+      </section>
+    </>
   );
 }
 
@@ -313,34 +326,49 @@ function DedoNaFerida() {
   const classes = useStyles();
   return (
     <section className={classes.sectionConteudo}>
-      <Container maxWidth="md">
-        <Grid container className={classes.grid}>
-          <Grid item xs={12}>
-            <h1 className={classes.centered}>Este curso é <span className={classes.highlight}>especialmente para você</span> que</h1>
-            <p>
-              <i><FavoriteIcon className={classes.heart} /> </i>Ama feltro e está apaixonada por elas assim como eu
-            </p>
-            <p>
-              <i><FavoriteIcon className={classes.heart} /> </i>Quer se diferenciar no mercado com técnicas que vão além do feltro
-            </p>
-            <p>
-              <i><FavoriteIcon className={classes.heart} /> </i>Está em busca de uma atividade para reduzir o stress do dia-a-dia
-            </p>
-            <p>
-              <i><FavoriteIcon className={classes.heart} /> </i>É iniciante e quer um curso detalhado com um ótimo suporte para tirar dúvidas
-            </p>
-            <p>
-              <i><FavoriteIcon className={classes.heart} /> </i>Está buscando uma nova fonte de renda
-            </p>
-            <p>
-              <i><FavoriteIcon className={classes.heart} /> </i>Quer desenvolver novas habilidades e descobrir novas paixões
-            </p>
-            <CTA>
-              Sim! Este curso é para mim!
-            </CTA>
+      <div className={classes.grid}>
+        <Container maxWidth="md">
+          <Grid>
+            <Grid item className={classes.centered}>
+              <h2 className={classes.centered}>Este curso é <span className={classes.highlight}>especialmente para você</span> que ...</h2>
+            </Grid>
           </Grid>
-        </Grid>
-      </Container>
+        </Container>
+        <Container maxWidth="sm">
+          <Grid>
+            <Grid item>
+              <p>
+                <i><FavoriteIcon className={classes.heart} /> </i>quer iniciar na arte do feltro
+              </p>
+              <p>
+                <i><FavoriteIcon className={classes.heart} /> </i>quer um curso detalhado com um ótimo suporte para tirar dúvidas
+              </p>
+              <p>
+                <i><FavoriteIcon className={classes.heart} /> </i>quer se diferenciar no mercado com técnicas que vão além do feltro
+              </p>
+              <p>
+                <i><FavoriteIcon className={classes.heart} /> </i>quer uma nova fonte de renda
+              </p>
+              <p>
+                <i><FavoriteIcon className={classes.heart} /> </i>quer desenvolver novas habilidades e descobrir novas paixões
+              </p>
+              <p>
+                <i><FavoriteIcon className={classes.heart} /> </i>quer uma atividade para reduzir o stress do dia-a-dia
+              </p>
+
+            </Grid>
+          </Grid>
+        </Container>
+        <Container maxWidth="md">
+          <Grid >
+            <Grid item className={classes.centered}>
+              <CTA>
+                Sim, este curso é para mim!
+              </CTA>
+            </Grid>
+          </Grid>
+        </Container>
+      </div>
     </section>
   );
 }
@@ -352,7 +380,7 @@ function ConteudoPremium() {
       <Container maxWidth="sm">
         <Grid container className={classes.grid}>
           <Grid item className={classes.centered} xs={12}>
-            <h1>E ainda tem <span className={classes.highlight}>muito mais!</span></h1>
+            <h2>E ainda tem <span className={classes.highlight}>muito mais!</span></h2>
             <p>Você receberá vários projetos exclusivos para compor com as bonecas.</p>
           </Grid>
 
@@ -384,17 +412,71 @@ function ConteudoPremium() {
   );
 }
 
-function AcessoImediato() {
+function Bonus() {
   const classes = useStyles();
   return (
     <section className={classes.sectionConteudo}>
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/topic_apostila.png")} alt="" className={classes.foto} />
+            <img src={require("assets/img/jr/planilha.webp")} alt="" className={classes.foto} />
           </Grid>
           <Grid item xs={12} md={6}>
-            <h1 className={classes.centered}>Entre agora e tenha <span className={classes.highlight}>acesso imediato</span></h1>
+            <h2 className={classes.centered}><span className={classes.highlight}>Bônus:</span> Planilha de precificação</h2>
+            <p>
+              Você terá acesso a uma aula de precificação e poderá baixar uma planilha para calcular o custo certinho da sua boneca. Já com dados de material usado preenchidos para cada boneca. Vai facilitar muito o seu trabalho e você poderá calcular de forma correta e ter lucro nas suas vendas!
+            </p>
+          </Grid>
+        </Grid>
+      </Container>
+    </section>
+  );
+}
+
+function Conteudo() {
+  const classes = useStyles();
+  return (
+    <section className={classes.sectionConteudo}>
+      <Container maxWidth="sm">
+        <Grid container className={classes.grid}>
+          <Grid item >
+            <h2 className={classes.centered}>O que você <span className={classes.highlight}>vai aprender?</span></h2>
+            <p>
+              <CheckBox className={classes.heart} /><span> Riscar e cortar os moldes</span>
+            </p>
+            <p>
+              <CheckBox className={classes.heart} /><span> Ponto caseado, ponto atrás, enchimento</span>
+            </p>
+            <p>
+              <CheckBox className={classes.heart} /><span> Como fazer as bonecas pararem em pé</span>
+            </p>
+            <p>
+              <CheckBox className={classes.heart} /><span> Passo a passo detalhado de cada boneca em vídeo nos mínimos detalhes</span>
+            </p>
+            <p>
+              <CheckBox className={classes.heart} /><span> E não precisa de máquina, é tudo feito à mão. Pronta pra começar?</span>
+            </p>
+            <CTA>
+              Estou pronta para começar
+            </CTA>
+          </Grid>
+        </Grid>
+      </Container>
+    </section>
+  );
+}
+
+function AcessoImediato() {
+  const classes = useStyles();
+  return (
+    <section>
+      <Container maxWidth="md">
+        <Grid container className={classes.grid} spacing={3}>
+          <Grid item className={classes.centered} xs={12} md={6}>
+            <img src={require("assets/img/jr/topic_apostila.webp")} alt="" className={classes.foto} />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <h2 className={classes.centered}>Entre agora e tenha <span className={classes.highlight}>acesso imediato</span></h2>
             <p>
               Após a confirmação do pagamento você terá acesso imediato a:
             </p>
@@ -402,16 +484,19 @@ function AcessoImediato() {
               <FavoriteIcon className={classes.heart} /><span> Mais de 5 horas de conteúdo divido em mais de 50 aulas</span>
             </p>
             <p>
-              <FavoriteIcon className={classes.heart} /><span> Apostila digital de moldes das 7 bonecas, 7 bonecas mini, ursinha, mobile, guirlanda e pergolado</span>
+              <FavoriteIcon className={classes.heart} /><span> Apostila digital de moldes das 7 bonecas</span>
             </p>
             <p>
-              <FavoriteIcon className={classes.heart} /><span> Lista de materiais completa e para cada boneca ou projeto</span>
+              <FavoriteIcon className={classes.heart} /><span> Apostila digital de moldes das 7 bonecas mini, ursinha, mobile, guirlanda e pergolado</span>
             </p>
             <p>
-              <FavoriteIcon className={classes.heart} /><span> Suporte na área do curso, por email e WhatsApp</span>
+              <FavoriteIcon className={classes.heart} /><span> Lista de materiais completa e para cada boneca e projeto</span>
             </p>
             <p>
-              <FavoriteIcon className={classes.heart} /><span> Canal e grupo no telegram</span>
+              <FavoriteIcon className={classes.heart} /><span> Suporte por email e WhatsApp</span>
+            </p>
+            <p>
+              <FavoriteIcon className={classes.heart} /><span> Grupo no telegram</span>
             </p>
             <p>
               <FavoriteIcon className={classes.heart} /><span> Módulo exclusivo para iniciantes</span>
@@ -420,7 +505,7 @@ function AcessoImediato() {
               <FavoriteIcon className={classes.heart} /><span> Acesso vitalício</span>
             </p>
             <p>
-              <FavoriteIcon className={classes.heart} /> <span className={classes.highlight}>Bônus:</span><span> Planilha de precificação com aula explicativa para que você obtenha lucro nas suas vendas.</span>
+              <FavoriteIcon className={classes.heart} /><span> Bônus: Planilha de precificação com aula explicativa para que você obtenha lucro nas suas vendas.</span>
             </p>
           </Grid>
         </Grid>
@@ -433,13 +518,14 @@ function Preco() {
   const classes = useStyles();
   return (
     <section className={classes.sectionGreen}>
+      <div id="pricing" />
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/tudoisso.png")} alt="" className={classes.preco} />
+            <img src={require("assets/img/tudoisso.webp")} alt="" className={classes.preco} />
           </Grid>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/price_new.png")} alt="" className={classes.preco} />
+            <img src={require("assets/img/jr/price.webp")} alt="" className={classes.preco} />
             <div className={classes.precoAviso}></div>
             <CheckoutButton>
               Quero me inscrever agora
@@ -461,10 +547,39 @@ function Garantia() {
             <img src={require("assets/img/garantia.png")} alt="Garantia de 7 dias" />
           </Grid>
           <Grid item xs={12} md={6} className={classes.justify}>
-            <h1 className={classes.centered}>Você tem 7 dias de <span className={classes.highlight}>garantia incondicional</span></h1>
-            <p>Você pode assistir todas as aulas e ter acesso a todos os materiais.
-              Se por qualquer motivo você não ficar satisfeita, basta solicitar o reembolso
-              pelo email contato@mariubialli.com e você receberá 100% do valor investido de volta.</p>
+            <h2 className={classes.centered}>Você tem 7 dias de <span className={classes.highlight}>garantia incondicional</span></h2>
+            <p>Você terá acesso imediato a todas as aulas e a todas as apostilas de moldes.
+              Se por qualquer motivo você não ficar satisfeita, basta enviar um email e você receberá 100% do valor investido de volta. Simples assim.</p>
+            <CheckoutButton>
+              Quero me inscrever sem riscos
+            </CheckoutButton>
+          </Grid>
+        </Grid>
+      </Container>
+    </section>
+  );
+}
+
+function Depoimento() {
+  const classes = useStyles();
+  return (
+    <section className={classes.sectionConteudo}>
+      <Container maxWidth="md">
+        <Grid container className={classes.grid} spacing={3}>
+          <Grid item xs={12} md={6} className={classes.justify}>
+            <h2 className={classes.centered}>Ela começou como hobby e não para de vender</h2>
+            <p>Uma história de superação. Veja os melhores momentos desta conversa com a Silvana Zadra, só 3 minutinhos:</p>
+          </Grid>
+          <Grid item className={classes.centered} xs={12} md={6}>
+            <div className={classes.videoWrapper}>
+              <iframe
+                loading="lazy"
+                className={classes.video}
+                src={"https://www.youtube.com/embed/ccuA_fBH4U8?rel=0"}
+                frameBorder="0"
+                allowFullScreen
+              ></iframe>
+            </div>
           </Grid>
         </Grid>
       </Container>
@@ -482,7 +597,8 @@ function SobreMim() {
             <img className={classes.fotoPerfil} src={require("assets/img/perfil.webp")} alt="Mari Ubialli" />
           </Grid>
           <Grid item md={6} className={classes.justify}>
-            <h1 className={classes.centered}>Muito prazer, eu sou mari ubialli</h1>
+            <h2 className={classes.centered}>Com quem você vai aprender?</h2>
+            <p>Muito prazer, eu sou Mari Ubialli</p>
             <p>Amo artesanato em feltro, coisas fofas e criativas!</p>
             <p>Conheci o feltro quando estava grávida do meu filho em 2018, me apaixonei na mesma hora e comecei a produzir muitas fofuras.</p>
             <p>Essas bonecas não são apenas bonecas para mim. Elas são a prova de que podemos conseguir fazer algo quando queremos, que podemos superar nossos medos e inseguranças e transformá-los em algo lindo e precioso.</p>
@@ -501,7 +617,7 @@ function FAQs() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item xs={12}>
-            <h1 className={classes.centered}>Dúvidas frequentes</h1>
+            <h2 className={classes.centered}>Dúvidas frequentes</h2>
             {faqs.map((faq, index) => (
               <Accordion key={"id" + index} defaultExpanded={false}>
                 <AccordionSummary
@@ -530,7 +646,7 @@ function DuvidasWhats() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12}>
-            <h1>Ainda tem dúvidas? Fale conosco no WhatsApp</h1>
+            <h2>Ainda tem dúvidas? Fale conosco no WhatsApp</h2>
             <BotaoWhats float={false} />
           </Grid>
         </Grid>
@@ -546,26 +662,26 @@ function Testemunhos1() {
       <Container maxWidth="md" className={classes.centered}>
         <Grid container className={classes.grid} spacing={1}>
           <Grid item className={classes.centered} xs={12}>
-            <h1>O que os alunos estão <br /><span className={classes.highlight}>falando do curso?</span></h1>
+            <h2>O que os alunos estão <br /><span className={classes.highlight}>falando do curso?</span></h2>
           </Grid>
           <Grid item className={classes.centered} xs={12} sm={3}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho40.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho40.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12} sm={3}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho21.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho21.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12} sm={3}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho31b.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho31b.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12} sm={3}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho16.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho16.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
         </Grid>
@@ -577,55 +693,50 @@ function Testemunhos1() {
 function Testemunhos3() {
   const classes = useStyles();
   return (
-    <section className={classes.sectionConteudo}>
+    <section>
       <Container maxWidth="sm" className={classes.centered}>
         <Grid container className={classes.grid} spacing={1}>
           <Grid item className={classes.centered} xs={12}>
-            <h1>Venha fazer parte deste grupo de alunas <span className={classes.highlight}>encantadas</span></h1>
+            <h2>Venha fazer parte deste grupo de <span className={classes.highlight}>mais de 1300 artesãs encantadas</span></h2>
           </Grid>
           <Grid item className={classes.centered} xs={12}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho24.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho25.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho25.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho26.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho26.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho29.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho29.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho33.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho33.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho34.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho34.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho35.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho35.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho36.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho36.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/testemunho37.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho37.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12}>
@@ -660,13 +771,14 @@ export default function JoiasRarasVendas(props) {
 
       <Promessa />
       <DedoNaFerida />
-      <Testemunhos1 />
+      <Entregaveis />
       <Conteudo />
       <ConteudoPremium />
+      <Bonus />
       <AcessoImediato />
-      <div id="pricing" />
       <Preco />
       <Garantia />
+      <Depoimento />
       <Testemunhos3 />
       <SobreMim />
       <FAQs />

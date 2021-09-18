@@ -225,7 +225,7 @@ function SobreCurso() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item xs={12} md={7} className={classes.centered}>
-            <img src={require("assets/img/jesus/jesus1.jpg")} alt="" className={classes.foto} />
+            <img src={require("assets/img/jesus/jesus1.webp")} alt="" className={classes.foto} />
           </Grid>
           <Grid item xs={12} md={5}>
             <h1 className={classes.centered}>Você <span className={classes.highlight}>vai receber</span></h1>
@@ -267,7 +267,7 @@ function SobreCurso() {
             </p>
           </Grid>
           <Grid item xs={12} className={classes.centered}>
-            <img src={require("assets/img/jesus/jesus2.jpg")} alt="" className={classes.foto} />
+            <img src={require("assets/img/jesus/jesus2.webp")} alt="" className={classes.foto} />
           </Grid>
         </Grid>
       </Container>
@@ -280,14 +280,14 @@ function Preco() {
   const classes = useStyles()
 
   const router = useRouter()
-  let priceImg = require("assets/img/price39.png")
+  let priceImg = require("assets/img/jesus/price.webp")
 
   return (
     <section className={classes.sectionGreen}>
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/tudoisso.png")} alt="" className={classes.preco} />
+            <img src={require("assets/img/tudoisso.webp")} alt="" className={classes.preco} />
           </Grid>
           <Grid item className={classes.centered} xs={12} md={6}>
             <img src={priceImg} alt="" className={classes.preco} />
@@ -367,10 +367,10 @@ function DedoNaFerida() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/jesus/felizpascoa.jpg")} alt="" className={classes.foto} />
+            <img src={require("assets/img/jesus/felizpascoa.webp")} alt="" className={classes.foto} />
           </Grid>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/jesus/elevive.jpg")} alt="" className={classes.foto} />
+            <img src={require("assets/img/jesus/elevive.webp")} alt="" className={classes.foto} />
           </Grid>
           <Grid item xs={12}>
             <h1 className={classes.centered}><span className={classes.highlight}>Para quem</span> é o curso?</h1>

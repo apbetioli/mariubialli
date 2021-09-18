@@ -153,13 +153,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const rocks = [
-  { title: "Esmeralda", color: "#6BFEDE", image: require("assets/img/esmeralda.jpg"), description: "Esmeralda é um símbolo da verdade e do amor. Ela é cheia de esperança, atitude e muuuuuito sábia. Além disso, é sonhadora e intuitiva💚" },
-  { title: "Rubi", color: "#FE6B8B", image: require("assets/img/rubi.jpg"), description: "Rubi protege as pessoas que ama e tem uma energia infinita! Leva felicidade e paixão em seu coração, e adora ajudar o próximo🌼" },
-  { title: "Ágata", color: "#6BFEDE", image: require("assets/img/agata.jpg"), description: "Ágata é forte e corajosa, se aceita como é de verdade! Tem uma energia super positiva e as pessoas ao seu redor se contagiam com a sua felicidade😆" },
-  { title: "Angelita", color: "#FE6B8B", image: require("assets/img/angelita.jpg"), description: "Angelita é suuuuper especial, comunicativa e verdadeira. Não perde a esperança mesmo em momentos difícies, pois acredita que dias melhores virão. Ela é a alegria da casa, a alegria da vida todinha da mamãe e do papai, ela é uma verdadeira super heroína🌹" },
-  { title: "Jade", color: "#6BFEDE", image: require("assets/img/jade.jpg"), description: "Jade é uma menina super amiga, brincalhona e extrovertida. É considerada a pedra da sorte, prosperidade e amizade🤗" },
-  { title: "Rose", color: "#FE6B8B", image: require("assets/img/rose.jpg"), description: "Rose, também conhecida como Rose Quartz, tem muito estilo, é decidida e promove o amor incondicional.\n\nCom amor podemos todas as coisas, tudo torna-se possível💖" },
-  { title: "Ametista", color: "#6BFEDE", image: require("assets/img/ametista.jpg"), description: "Ametista parece frágil né? Pois é aí que você se engana. Ela é delicada, porém forte e tem uma paz interior que te eleva a alma🧘‍♀️" },
+  { title: "Esmeralda", color: "#6BFEDE", image: require("assets/img/jr/esmeralda.webp"), description: "Esmeralda é um símbolo da verdade e do amor. Ela é cheia de esperança, atitude e muuuuuito sábia. Além disso, é sonhadora e intuitiva💚" },
+  { title: "Rose", color: "#FE6B8B", image: require("assets/img/jr/rose.webp"), description: "Rose, também conhecida como Rose Quartz, tem muito estilo, é decidida e promove o amor incondicional.\n\nCom amor podemos todas as coisas, tudo torna-se possível💖" },
+  { title: "Jade", color: "#6BFEDE", image: require("assets/img/jr/jade.webp"), description: "Jade é uma menina super amiga, brincalhona e extrovertida. É considerada a pedra da sorte, prosperidade e amizade🤗" },
+  { title: "Ágata", color: "#6BFEDE", image: require("assets/img/jr/agata.webp"), description: "Ágata é forte e corajosa, se aceita como é de verdade! Tem uma energia super positiva e as pessoas ao seu redor se contagiam com a sua felicidade😆" },
+  { title: "Ametista", color: "#6BFEDE", image: require("assets/img/jr/ametista.webp"), description: "Ametista parece frágil né? Pois é aí que você se engana. Ela é delicada, porém forte e tem uma paz interior que te eleva a alma🧘‍♀️" },
+  { title: "Angelita", color: "#FE6B8B", image: require("assets/img/jr/angelita.webp"), description: "Angelita é suuuuper especial, comunicativa e verdadeira. Não perde a esperança mesmo em momentos difícies, pois acredita que dias melhores virão. Ela é a alegria da casa, a alegria da vida todinha da mamãe e do papai, ela é uma verdadeira super heroína🌹" },
+  { title: "Rubi", color: "#FE6B8B", image: require("assets/img/jr/rubi.webp"), description: "Rubi protege as pessoas que ama e tem uma energia infinita! Leva felicidade e paixão em seu coração, e adora ajudar o próximo🌼" },
 ];
 
 const faqs = [
@@ -326,7 +326,7 @@ function Promessa() {
       <Container maxWidth="lg">
         <Grid container spacing={2}>
           <Grid item className={classes.centered} xs={12} lg={7}>
-            <img src={require("assets/img/banner.jpg")} alt="" className={classes.foto} />
+            <img src={require("assets/img/jr/bonecas.webp")} alt="" className={classes.foto} />
           </Grid>
           <Grid item className={classes.centered} xs={12} lg={5}>
             <h1 className={classes.title}>São 7 joias raras para você <span className={classes.highlight}>confeccionar, personalizar e vender</span></h1>
@@ -384,7 +384,7 @@ function AcessoImediato() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/topic_apostila.png")} alt="" className={classes.foto} />
+            <img src={require("assets/img/jr/topic_apostila.webp")} alt="" className={classes.foto} />
           </Grid>
           <Grid item xs={12} md={6}>
             <h1 className={classes.centered}>Entre agora e tenha <span className={classes.highlight}>acesso imediato</span></h1>
@@ -429,10 +429,10 @@ function Preco() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/tudoisso.png")} alt="" className={classes.preco} />
+            <img src={require("assets/img/tudoisso.webp")} alt="" className={classes.preco} />
           </Grid>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/price.png")} alt="" className={classes.preco} />
+            <img src={require("assets/img/jr/price_downsell.webp")} alt="" className={classes.preco} />
             <div className={classes.precoAviso}></div>
             <CheckoutButton>
               Quero me inscrever agora
@@ -472,7 +472,7 @@ function SobreMim() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} md={6}>
-            <img className={classes.fotoPerfil} src={require("assets/img/perfil.jpg")} alt="Mari Ubialli" />
+            <img className={classes.fotoPerfil} src={require("assets/img/perfil.webp")} alt="Mari Ubialli" />
           </Grid>
           <Grid item md={6} className={classes.justify}>
             <h1 className={classes.centered}>Muito prazer, eu sou mari ubialli</h1>
@@ -543,22 +543,22 @@ function Testemunhos1() {
           </Grid>
           <Grid item className={classes.centered} xs={12} sm={3}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho40.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho40.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12} sm={3}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho21.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho21.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12} sm={3}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho31b.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho31b.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12} sm={3}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho16.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho16.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
         </Grid>
@@ -578,47 +578,47 @@ function Testemunhos3() {
           </Grid>
           <Grid item className={classes.centered} xs={12}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho24.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho24.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho25.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho25.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho26.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho26.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho29.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho29.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho33.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho33.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho34.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho34.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho35.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho35.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho36.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho36.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12}>
             <Paper elevation={3}>
-              <img src={require("assets/img/testemunho37.jpg")} alt="Testemunho" className={classes.fotoTestemunho} />
+              <img src={require("assets/img/jr/testemunho37.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
             </Paper>
           </Grid>
           <Grid item className={classes.centered} xs={12}>
