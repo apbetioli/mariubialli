@@ -12,7 +12,7 @@ export default function ScrollTo(props) {
       setTimeout(() => {
         anchor.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
 
-      }, 100);
+      }, 1000);
     }
   };
 
