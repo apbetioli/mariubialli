@@ -18,6 +18,27 @@ import Footer from "../../components/Footer";
 import Form from "../../components/Form";
 import ScrollTo from "../../components/ScrollTo";
 
+import banner from 'assets/img/jr/banner.webp'
+import esmeralda from 'assets/img/jr/esmeralda.webp'
+import ametista from 'assets/img/jr/ametista.webp'
+import angelita from 'assets/img/jr/angelita.webp'
+import agata from 'assets/img/jr/agata.webp'
+import jade from 'assets/img/jr/jade.webp'
+import rubi from 'assets/img/jr/rubi.webp'
+import rose from 'assets/img/jr/rose.webp'
+
+import minis from 'assets/img/jr/premium0.webp'
+import ursinhas from 'assets/img/jr/premium2.webp'
+import mobile from 'assets/img/jr/premium3.webp'
+import guirlanda from 'assets/img/jr/premium4.webp'
+import pergolado from 'assets/img/jr/premium5.webp'
+
+import planilha from 'assets/img/jr/planilha.webp'
+import apostila from 'assets/img/jr/topic_apostila.webp'
+import tudoIsso from 'assets/img/tudoisso.webp'
+import price from 'assets/img/jr/price.webp'
+import perfil from 'assets/img/perfil.webp'
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -152,21 +173,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const rocks = [
-  { title: "Esmeralda", color: "#6BFEDE", image: require("assets/img/jr/esmeralda.webp"), description: "Esmeralda é um símbolo da verdade e do amor. Ela é cheia de esperança, atitude e muuuuuito sábia. Além disso, é sonhadora e intuitiva💚" },
-  { title: "Rose", color: "#FE6B8B", image: require("assets/img/jr/rose.webp"), description: "Rose, também conhecida como Rose Quartz, tem muito estilo, é decidida e promove o amor incondicional.\n\nCom amor podemos todas as coisas, tudo torna-se possível💖" },
-  { title: "Jade", color: "#6BFEDE", image: require("assets/img/jr/jade.webp"), description: "Jade é uma menina super amiga, brincalhona e extrovertida. É considerada a pedra da sorte, prosperidade e amizade🤗" },
-  { title: "Ágata", color: "#6BFEDE", image: require("assets/img/jr/agata.webp"), description: "Ágata é forte e corajosa, se aceita como é de verdade! Tem uma energia super positiva e as pessoas ao seu redor se contagiam com a sua felicidade😆" },
-  { title: "Ametista", color: "#6BFEDE", image: require("assets/img/jr/ametista.webp"), description: "Ametista parece frágil né? Pois é aí que você se engana. Ela é delicada, porém forte e tem uma paz interior que te eleva a alma🧘‍♀️" },
-  { title: "Angelita", color: "#FE6B8B", image: require("assets/img/jr/angelita.webp"), description: "Angelita é suuuuper especial, comunicativa e verdadeira. Não perde a esperança mesmo em momentos difícies, pois acredita que dias melhores virão. Ela é a alegria da casa, a alegria da vida todinha da mamãe e do papai, ela é uma verdadeira super heroína🌹" },
-  { title: "Rubi", color: "#FE6B8B", image: require("assets/img/jr/rubi.webp"), description: "Rubi protege as pessoas que ama e tem uma energia infinita! Leva felicidade e paixão em seu coração, e adora ajudar o próximo🌼" },
+  { title: "Esmeralda", color: "#6BFEDE", image: esmeralda, description: "Esmeralda é um símbolo da verdade e do amor. Ela é cheia de esperança, atitude e muuuuuito sábia. Além disso, é sonhadora e intuitiva💚" },
+  { title: "Rose", color: "#FE6B8B", image: rose, description: "Rose, também conhecida como Rose Quartz, tem muito estilo, é decidida e promove o amor incondicional.\n\nCom amor podemos todas as coisas, tudo torna-se possível💖" },
+  { title: "Jade", color: "#6BFEDE", image: jade, description: "Jade é uma menina super amiga, brincalhona e extrovertida. É considerada a pedra da sorte, prosperidade e amizade🤗" },
+  { title: "Ágata", color: "#6BFEDE", image: agata, description: "Ágata é forte e corajosa, se aceita como é de verdade! Tem uma energia super positiva e as pessoas ao seu redor se contagiam com a sua felicidade😆" },
+  { title: "Ametista", color: "#6BFEDE", image: ametista, description: "Ametista parece frágil né? Pois é aí que você se engana. Ela é delicada, porém forte e tem uma paz interior que te eleva a alma🧘‍♀️" },
+  { title: "Angelita", color: "#FE6B8B", image: angelita, description: "Angelita é suuuuper especial, comunicativa e verdadeira. Não perde a esperança mesmo em momentos difícies, pois acredita que dias melhores virão. Ela é a alegria da casa, a alegria da vida todinha da mamãe e do papai, ela é uma verdadeira super heroína🌹" },
+  { title: "Rubi", color: "#FE6B8B", image: rubi, description: "Rubi protege as pessoas que ama e tem uma energia infinita! Leva felicidade e paixão em seu coração, e adora ajudar o próximo🌼" },
 ];
 
 const premium = [
-  { title: "Minis", color: "#6BFEDE", image: require("assets/img/jr/premium0.webp"), description: "7 bonecas joias raras mini. Elas são menores, com 20cm, e muito mais fofas não acha?💖" },
-  { title: "Ursinhas", color: "#FE6B8B", image: require("assets/img/jr/premium2.webp"), description: "E agora as bonecas tem companhia, essa ursinha suuuuper fofinha vai ajudar a compor nossos novos projetos🥰" },
-  { title: "Mobile", color: "#6BFEDE", image: require("assets/img/jr/premium3.webp"), description: "Aprenda comigo a montar esse mobile de berço maravilhoso para decorar e entreter a bebê🌼" },
-  { title: "Guirlanda", color: "#FE6B8B", image: require("assets/img/jr/premium4.webp"), description: "Sem falar nessa guirlanda super especial. Você vai aprender a customizar o nome que quiser e algumas técnicas extras. Imagina ela de porta maternidade🌹" },
-  { title: "Pergolado", color: "#6BFEDE", image: require("assets/img/jr/premium5.webp"), description: "E a cereja do bolo: o Pergolado. Essa peça é única e nunca vi nada parecido. A inspiração veio de um sonho e vou mostrar em detalhes como fazer. Além disso as bonecas também são diferentes, pois elas dobram as pernas e podem sentar no balanço🍒" },
+  { title: "Minis", color: "#6BFEDE", image: minis, description: "7 bonecas joias raras mini. Elas são menores, com 20cm, e muito mais fofas não acha?💖" },
+  { title: "Ursinhas", color: "#FE6B8B", image: ursinhas, description: "E agora as bonecas tem companhia, essa ursinha suuuuper fofinha vai ajudar a compor nossos novos projetos🥰" },
+  { title: "Mobile", color: "#6BFEDE", image: mobile, description: "Aprenda comigo a montar esse mobile de berço maravilhoso para decorar e entreter a bebê🌼" },
+  { title: "Guirlanda", color: "#FE6B8B", image: guirlanda, description: "Sem falar nessa guirlanda super especial. Você vai aprender a customizar o nome que quiser e algumas técnicas extras. Imagina ela de porta maternidade🌹" },
+  { title: "Pergolado", color: "#6BFEDE", image: pergolado, description: "E a cereja do bolo: o Pergolado. Essa peça é única e nunca vi nada parecido. A inspiração veio de um sonho e vou mostrar em detalhes como fazer. Além disso as bonecas também são diferentes, pois elas dobram as pernas e podem sentar no balanço🍒" },
 ];
 
 const faqs = [
@@ -296,12 +317,7 @@ function Promessa() {
       <section>
         <Grid className={classes.centered}>
           <Grid item>
-            <Hidden smUp>
-              <img src={require("assets/img/jr/banner_mobile.webp")} alt="" className={classes.foto} />
-            </Hidden>
-            <Hidden xsDown>
-              <img src={require("assets/img/jr/banner.webp")} alt="" className={classes.foto} />
-            </Hidden>
+            <img src={banner} alt="" className={classes.foto} />
           </Grid>
         </Grid>
       </section>
@@ -419,7 +435,7 @@ function Bonus() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/jr/planilha.webp")} alt="" className={classes.foto} />
+            <img src={planilha} alt="" className={classes.foto} />
           </Grid>
           <Grid item xs={12} md={6}>
             <h2 className={classes.centered}><span className={classes.highlight}>Bônus:</span> Planilha de precificação</h2>
@@ -473,7 +489,7 @@ function AcessoImediato() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/jr/topic_apostila.webp")} alt="" className={classes.foto} />
+            <img src={apostila} alt="" className={classes.foto} />
           </Grid>
           <Grid item xs={12} md={6}>
             <h2 className={classes.centered}>Entre agora e tenha <span className={classes.highlight}>acesso imediato</span></h2>
@@ -522,10 +538,10 @@ function Preco() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/tudoisso.webp")} alt="" className={classes.preco} />
+            <img src={tudoIsso} alt="" className={classes.preco} />
           </Grid>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/jr/price.webp")} alt="" className={classes.preco} />
+            <img src={price} alt="" className={classes.preco} />
             <div className={classes.precoAviso}></div>
             <CheckoutButton>
               Quero me inscrever agora
@@ -594,7 +610,7 @@ function SobreMim() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} md={6}>
-            <img className={classes.fotoPerfil} src={require("assets/img/perfil.webp")} alt="Mari Ubialli" />
+            <img className={classes.fotoPerfil} src={perfil} alt="Mari Ubialli" />
           </Grid>
           <Grid item md={6} className={classes.justify}>
             <h2 className={classes.centered}>Com quem você vai aprender?</h2>
