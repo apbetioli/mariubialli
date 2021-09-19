@@ -18,6 +18,8 @@ import Footer from "../../components/Footer";
 import Form from "../../components/Form";
 import ScrollTo from "../../components/ScrollTo";
 
+import Image from 'next/image'
+
 import banner from 'assets/img/jr/banner.webp'
 import esmeralda from 'assets/img/jr/esmeralda.webp'
 import ametista from 'assets/img/jr/ametista.webp'
@@ -38,6 +40,7 @@ import apostila from 'assets/img/jr/topic_apostila.webp'
 import tudoIsso from 'assets/img/tudoisso.webp'
 import price from 'assets/img/jr/price.webp'
 import perfil from 'assets/img/perfil.webp'
+import garantia from 'assets/img/garantia.png'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -286,12 +289,13 @@ function Entregaveis() {
           {rocks.map((rock) => (
             <Grid container item xs={12} sm={6} md={6} spacing={0} key={rock.title}>
               <Card raised={true} className={classes.card}>
-                <CardMedia
-                  component="img"
+                <Image
                   alt={rock.title}
-                  image={rock.image}
-                  title={rock.title}
+                  src={rock.image}
                   className={classes.cardMedia}
+                  layout="responsive"
+                  width={424}
+                  height={640}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2" className={classes.centered}   >
@@ -315,14 +319,10 @@ function Promessa() {
   return (
     <>
       <section>
-        <Grid className={classes.centered}>
-          <Grid item>
-            <img src={banner} alt="" className={classes.foto} />
-          </Grid>
-        </Grid>
-      </section>
-      <section className={classes.section}>
         <Container maxWidth="md">
+          <Grid item>
+            <Image src={banner} layout="responsive" width={800} height={394} alt="" className={classes.foto} />
+          </Grid>
           <Grid className={classes.centered}>
             <Grid item>
               <h2>São <span className={classes.highlightText}>7 joias raras</span> para você confeccionar, personalizar e vender</h2>
@@ -435,7 +435,7 @@ function Bonus() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={planilha} alt="" className={classes.foto} />
+            <Image src={planilha} layout="responsive" width={300} height={211} alt="" className={classes.foto} />
           </Grid>
           <Grid item xs={12} md={6}>
             <h2 className={classes.centered}><span className={classes.highlight}>Bônus:</span> Planilha de precificação</h2>
@@ -489,7 +489,7 @@ function AcessoImediato() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={apostila} alt="" className={classes.foto} />
+            <Image src={apostila} layout="responsive" width={283} height={400} alt="" className={classes.foto} />
           </Grid>
           <Grid item xs={12} md={6}>
             <h2 className={classes.centered}>Entre agora e tenha <span className={classes.highlight}>acesso imediato</span></h2>
@@ -538,10 +538,10 @@ function Preco() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={tudoIsso} alt="" className={classes.preco} />
+            <Image src={tudoIsso} layout="responsive" width={500} height={200} alt="" className={classes.preco} />
           </Grid>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={price} alt="" className={classes.preco} />
+            <Image src={price} layout="responsive" width={400} height={160} alt="" className={classes.preco} />
             <div className={classes.precoAviso}></div>
             <CheckoutButton>
               Quero me inscrever agora
@@ -560,7 +560,7 @@ function Garantia() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/garantia.png")} alt="Garantia de 7 dias" />
+            <Image src={garantia} layout="responsive" width={298} height={251} alt="Garantia de 7 dias" />
           </Grid>
           <Grid item xs={12} md={6} className={classes.justify}>
             <h2 className={classes.centered}>Você tem 7 dias de <span className={classes.highlight}>garantia incondicional</span></h2>
@@ -610,7 +610,7 @@ function SobreMim() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} md={6}>
-            <img className={classes.fotoPerfil} src={perfil} alt="Mari Ubialli" />
+            <Image className={classes.fotoPerfil} src={perfil} layout="responsive" width={512} height={512} alt="Mari Ubialli" />
           </Grid>
           <Grid item md={6} className={classes.justify}>
             <h2 className={classes.centered}>Com quem você vai aprender?</h2>
@@ -664,41 +664,6 @@ function DuvidasWhats() {
           <Grid item className={classes.centered} xs={12}>
             <h2>Ainda tem dúvidas? Fale conosco no WhatsApp</h2>
             <BotaoWhats float={false} />
-          </Grid>
-        </Grid>
-      </Container>
-    </section>
-  );
-}
-
-function Testemunhos1() {
-  const classes = useStyles();
-  return (
-    <section>
-      <Container maxWidth="md" className={classes.centered}>
-        <Grid container className={classes.grid} spacing={1}>
-          <Grid item className={classes.centered} xs={12}>
-            <h2>O que os alunos estão <br /><span className={classes.highlight}>falando do curso?</span></h2>
-          </Grid>
-          <Grid item className={classes.centered} xs={12} sm={3}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho40.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12} sm={3}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho21.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12} sm={3}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho31b.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12} sm={3}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho16.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
           </Grid>
         </Grid>
       </Container>
@@ -789,13 +754,13 @@ export default function JoiasRarasVendas(props) {
       <DedoNaFerida />
       <Entregaveis />
       <Conteudo />
-      <ConteudoPremium />
+      
       <Bonus />
       <AcessoImediato />
       <Preco />
       <Garantia />
       <Depoimento />
-      <Testemunhos3 />
+      
       <SobreMim />
       <FAQs />
       <DuvidasWhats />
