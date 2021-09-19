@@ -9,6 +9,10 @@ export default function ScrollTo(props) {
 
     if (anchor) {
       anchor.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+      setTimeout(() => {
+        anchor.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+
+      }, 100);
     }
   };
 
