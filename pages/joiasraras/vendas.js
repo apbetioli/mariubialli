@@ -42,6 +42,15 @@ import price from 'assets/img/jr/price.webp'
 import perfil from 'assets/img/perfil.webp'
 import garantia from 'assets/img/garantia.png'
 
+import t25 from 'assets/img/jr/testemunho25.webp'
+import t26 from 'assets/img/jr/testemunho26.webp'
+import t29 from 'assets/img/jr/testemunho29.webp'
+import t33 from 'assets/img/jr/testemunho33.webp'
+import t34 from 'assets/img/jr/testemunho34.webp'
+import t35 from 'assets/img/jr/testemunho35.webp'
+import t36 from 'assets/img/jr/testemunho36.webp'
+import t37 from 'assets/img/jr/testemunho37.webp'
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -175,7 +184,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const rocks = [
+const dolls = [
   { title: "Esmeralda", color: "#6BFEDE", image: esmeralda, description: "Esmeralda é um símbolo da verdade e do amor. Ela é cheia de esperança, atitude e muuuuuito sábia. Além disso, é sonhadora e intuitiva💚" },
   { title: "Rose", color: "#FE6B8B", image: rose, description: "Rose, também conhecida como Rose Quartz, tem muito estilo, é decidida e promove o amor incondicional.\n\nCom amor podemos todas as coisas, tudo torna-se possível💖" },
   { title: "Jade", color: "#6BFEDE", image: jade, description: "Jade é uma menina super amiga, brincalhona e extrovertida. É considerada a pedra da sorte, prosperidade e amizade🤗" },
@@ -186,12 +195,23 @@ const rocks = [
 ];
 
 const premium = [
-  { title: "Minis", color: "#6BFEDE", image: minis, description: "7 bonecas joias raras mini. Elas são menores, com 20cm, e muito mais fofas não acha?💖" },
-  { title: "Ursinhas", color: "#FE6B8B", image: ursinhas, description: "E agora as bonecas tem companhia, essa ursinha suuuuper fofinha vai ajudar a compor nossos novos projetos🥰" },
-  { title: "Mobile", color: "#6BFEDE", image: mobile, description: "Aprenda comigo a montar esse mobile de berço maravilhoso para decorar e entreter a bebê🌼" },
-  { title: "Guirlanda", color: "#FE6B8B", image: guirlanda, description: "Sem falar nessa guirlanda super especial. Você vai aprender a customizar o nome que quiser e algumas técnicas extras. Imagina ela de porta maternidade🌹" },
-  { title: "Pergolado", color: "#6BFEDE", image: pergolado, description: "E a cereja do bolo: o Pergolado. Essa peça é única e nunca vi nada parecido. A inspiração veio de um sonho e vou mostrar em detalhes como fazer. Além disso as bonecas também são diferentes, pois elas dobram as pernas e podem sentar no balanço🍒" },
+  { title: "Minis", color: "#6BFEDE", image: minis, width: 546, height: 640, description: "7 bonecas joias raras mini. Elas são menores, com 20cm, e muito mais fofas não acha?💖" },
+  { title: "Ursinhas", color: "#FE6B8B", image: ursinhas, width: 400, height: 400, description: "E agora as bonecas tem companhia, essa ursinha suuuuper fofinha vai ajudar a compor nossos novos projetos🥰" },
+  { title: "Mobile", color: "#6BFEDE", image: mobile, width: 400, height: 499, description: "Aprenda comigo a montar esse mobile de berço maravilhoso para decorar e entreter a bebê🌼" },
+  { title: "Guirlanda", color: "#FE6B8B", image: guirlanda, width: 400, height: 400, description: "Sem falar nessa guirlanda super especial. Você vai aprender a customizar o nome que quiser e algumas técnicas extras. Imagina ela de porta maternidade🌹" },
+  { title: "Pergolado", color: "#6BFEDE", image: pergolado, width: 400, height: 474, description: "E a cereja do bolo: o Pergolado. Essa peça é única e nunca vi nada parecido. A inspiração veio de um sonho e vou mostrar em detalhes como fazer. Além disso as bonecas também são diferentes, pois elas dobram as pernas e podem sentar no balanço🍒" },
 ];
+
+const testemunhos = [
+  {url: t25, width: 318, height: 58},
+  {url: t26, width: 318, height: 88},
+  {url: t29, width: 635, height: 200},
+  {url: t33, width: 468, height: 86},
+  {url: t34, width: 542, height: 76},
+  {url: t35, width: 458, height: 107},
+  {url: t36, width: 458, height: 92},
+  {url: t37, width: 532, height: 55}
+]
 
 const faqs = [
   { pergunta: "Quando começa o curso?", resposta: "O curso começa assim que você se inscrever. Todas as aulas já estão gravadas e todas as apostilas de moldes estão disponíveis para baixar." },
@@ -270,7 +290,7 @@ function CheckoutButton(props) {
   );
 }
 
-function Entregaveis() {
+function Bonecas() {
   const classes = useStyles();
   return (
     <section>
@@ -286,12 +306,12 @@ function Entregaveis() {
             </p>
           </Grid>
 
-          {rocks.map((rock) => (
-            <Grid container item xs={12} sm={6} md={6} spacing={0} key={rock.title}>
+          {dolls.map((doll) => (
+            <Grid container item xs={12} sm={6} md={6} spacing={0} key={doll.title}>
               <Card raised={true} className={classes.card}>
                 <Image
-                  alt={rock.title}
-                  src={rock.image}
+                  alt={doll.title}
+                  src={doll.image}
                   className={classes.cardMedia}
                   layout="responsive"
                   width={424}
@@ -299,10 +319,10 @@ function Entregaveis() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2" className={classes.centered}   >
-                    <span className={classes.highlight}>{rock.title}</span>
+                    <span className={classes.highlight}>{doll.title}</span>
                   </Typography>
                   <Typography color="textSecondary" component="p" className={classes.justify} >
-                    {rock.description}
+                    {doll.description}
                   </Typography>
                 </CardContent>
               </Card>
@@ -400,22 +420,24 @@ function ConteudoPremium() {
             <p>Você receberá vários projetos exclusivos para compor com as bonecas.</p>
           </Grid>
 
-          {premium.map((rock) => (
-            <Grid container item xs={12} spacing={0} key={rock.title}>
+          {premium.map((deliverable) => (
+            <Grid container item xs={12} spacing={0} key={deliverable.title}>
               <Card raised={true} className={classes.card}>
-                <CardMedia
-                  component="img"
-                  alt={rock.title}
-                  image={rock.image}
-                  title={rock.title}
+                <Image
+                  alt={deliverable.title}
+                  src={deliverable.image}
+                  title={deliverable.title}
                   className={classes.fotoCard}
+                  layout="responsive"
+                  width={deliverable.width}
+                  height={deliverable.height}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2" className={classes.centered}   >
-                    <span className={classes.highlight}>{rock.title}</span>
+                    <span className={classes.highlight}>{deliverable.title}</span>
                   </Typography>
                   <Typography color="textSecondary" component="p" className={classes.justify} >
-                    {rock.description}
+                    {deliverable.description}
                   </Typography>
                 </CardContent>
               </Card>
@@ -680,46 +702,13 @@ function Testemunhos3() {
           <Grid item className={classes.centered} xs={12}>
             <h2>Venha fazer parte deste grupo de <span className={classes.highlight}>mais de 1300 artesãs encantadas</span></h2>
           </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho25.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho26.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho29.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho33.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho34.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho35.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho36.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho37.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
+          {testemunhos.map((t, index) => (
+            <Grid item className={classes.centered} xs={12} key={"t" + index}>
+              <Paper elevation={3}>
+                <Image src={t.url} layout="responsive" width={t.width} height={t.height} alt="Testemunho" className={classes.fotoTestemunho} />
+              </Paper>
+            </Grid>
+          ))}
           <Grid item className={classes.centered} xs={12}>
             <p>
               <CheckoutButton>
@@ -752,15 +741,15 @@ export default function JoiasRarasVendas(props) {
 
       <Promessa />
       <DedoNaFerida />
-      <Entregaveis />
+      <Bonecas />
       <Conteudo />
-      
+      <ConteudoPremium />
       <Bonus />
       <AcessoImediato />
       <Preco />
       <Garantia />
       <Depoimento />
-      
+      <Testemunhos3 />
       <SobreMim />
       <FAQs />
       <DuvidasWhats />
