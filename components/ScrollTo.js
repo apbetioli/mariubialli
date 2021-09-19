@@ -4,15 +4,11 @@ import React from "react";
 export default function ScrollTo(props) {
   const { children } = props;
 
-  const handleClick = (event) => {
-    const anchor = (event.target.ownerDocument || document).querySelector(props.target);
+  const handleClick = () => {
+    const anchor = document.querySelector(props.target);
 
     if (anchor) {
       anchor.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-      setTimeout(() => {
-        anchor.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-
-      }, 1000);
     }
   };
 
