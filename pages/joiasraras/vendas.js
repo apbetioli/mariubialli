@@ -275,7 +275,7 @@ function CheckoutButton(props) {
         </DialogTitle>
         <DialogContent>
           <Form buttonText="Continuar" tag="JOIASRARAS-CHECKOUT" redirectTo={checkoutURL}
-            emailPlaceholder="Seu email de acesso ao curso" checkout={true} buttonStyle={buttonStyle} showName={true} showPhone={true} >
+            emailPlaceholder="Seu email de acesso ao curso" checkout={true} buttonStyle={ColorButton.whatsapp} showName={true} showPhone={true} >
           </Form>
           <p className={classes.justify}>
             <Typography variant="body2" color="textSecondary" component="span">
