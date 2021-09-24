@@ -261,7 +261,7 @@ function CheckoutButton({ children, variant }) {
   if (router.query.hideBillet)
     checkoutURL += "&hideBillet=" + router.query.hideBillet
 
-  if (variant)
+  if (variant != undefined)
     checkoutURL += "&src=" + variant
 
   return (
@@ -534,6 +534,9 @@ function AcessoImediato() {
               <FavoriteIcon className={classes.heart} /><span> Lista de materiais completa e para cada boneca e projeto</span>
             </p>
             <p>
+              <FavoriteIcon className={classes.heart} /><span> Planilha de precificação com aula explicativa para que você obtenha lucro nas suas vendas.</span>
+            </p>
+            <p>
               <FavoriteIcon className={classes.heart} /><span> Suporte por email e WhatsApp</span>
             </p>
             <p>
@@ -544,9 +547,6 @@ function AcessoImediato() {
             </p>
             <p>
               <FavoriteIcon className={classes.heart} /><span> Acesso vitalício</span>
-            </p>
-            <p>
-              <FavoriteIcon className={classes.heart} /><span> Bônus: Planilha de precificação com aula explicativa para que você obtenha lucro nas suas vendas.</span>
             </p>
           </Grid>
         </Grid>
