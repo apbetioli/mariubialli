@@ -18,6 +18,39 @@ import Footer from "../../components/Footer";
 import Form from "../../components/Form";
 import ScrollTo from "../../components/ScrollTo";
 
+import Image from 'next/image'
+
+import banner from 'assets/img/jr/banner.webp'
+import esmeralda from 'assets/img/jr/esmeralda.webp'
+import ametista from 'assets/img/jr/ametista.webp'
+import angelita from 'assets/img/jr/angelita.webp'
+import agata from 'assets/img/jr/agata.webp'
+import jade from 'assets/img/jr/jade.webp'
+import rubi from 'assets/img/jr/rubi.webp'
+import rose from 'assets/img/jr/rose.webp'
+
+import minis from 'assets/img/jr/premium0.webp'
+import ursinhas from 'assets/img/jr/premium2.webp'
+import mobile from 'assets/img/jr/premium3.webp'
+import guirlanda from 'assets/img/jr/premium4.webp'
+import pergolado from 'assets/img/jr/premium5.webp'
+
+import planilha from 'assets/img/jr/planilha.webp'
+import apostila from 'assets/img/jr/topic_apostila.webp'
+import tudoIsso from 'assets/img/tudoisso.webp'
+import price from 'assets/img/jr/price.webp'
+import perfil from 'assets/img/perfil.webp'
+import garantia from 'assets/img/garantia.png'
+
+import t25 from 'assets/img/jr/testemunho25.webp'
+import t26 from 'assets/img/jr/testemunho26.webp'
+import t29 from 'assets/img/jr/testemunho29.webp'
+import t33 from 'assets/img/jr/testemunho33.webp'
+import t34 from 'assets/img/jr/testemunho34.webp'
+import t35 from 'assets/img/jr/testemunho35.webp'
+import t36 from 'assets/img/jr/testemunho36.webp'
+import t37 from 'assets/img/jr/testemunho37.webp'
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -151,23 +184,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const rocks = [
-  { title: "Esmeralda", color: "#6BFEDE", image: require("assets/img/jr/esmeralda.webp"), description: "Esmeralda é um símbolo da verdade e do amor. Ela é cheia de esperança, atitude e muuuuuito sábia. Além disso, é sonhadora e intuitiva💚" },
-  { title: "Rose", color: "#FE6B8B", image: require("assets/img/jr/rose.webp"), description: "Rose, também conhecida como Rose Quartz, tem muito estilo, é decidida e promove o amor incondicional.\n\nCom amor podemos todas as coisas, tudo torna-se possível💖" },
-  { title: "Jade", color: "#6BFEDE", image: require("assets/img/jr/jade.webp"), description: "Jade é uma menina super amiga, brincalhona e extrovertida. É considerada a pedra da sorte, prosperidade e amizade🤗" },
-  { title: "Ágata", color: "#6BFEDE", image: require("assets/img/jr/agata.webp"), description: "Ágata é forte e corajosa, se aceita como é de verdade! Tem uma energia super positiva e as pessoas ao seu redor se contagiam com a sua felicidade😆" },
-  { title: "Ametista", color: "#6BFEDE", image: require("assets/img/jr/ametista.webp"), description: "Ametista parece frágil né? Pois é aí que você se engana. Ela é delicada, porém forte e tem uma paz interior que te eleva a alma🧘‍♀️" },
-  { title: "Angelita", color: "#FE6B8B", image: require("assets/img/jr/angelita.webp"), description: "Angelita é suuuuper especial, comunicativa e verdadeira. Não perde a esperança mesmo em momentos difícies, pois acredita que dias melhores virão. Ela é a alegria da casa, a alegria da vida todinha da mamãe e do papai, ela é uma verdadeira super heroína🌹" },
-  { title: "Rubi", color: "#FE6B8B", image: require("assets/img/jr/rubi.webp"), description: "Rubi protege as pessoas que ama e tem uma energia infinita! Leva felicidade e paixão em seu coração, e adora ajudar o próximo🌼" },
+const dolls = [
+  { title: "Esmeralda", color: "#6BFEDE", image: esmeralda, description: "Esmeralda é um símbolo da verdade e do amor. Ela é cheia de esperança, atitude e muuuuuito sábia. Além disso, é sonhadora e intuitiva💚" },
+  { title: "Rose", color: "#FE6B8B", image: rose, description: "Rose, também conhecida como Rose Quartz, tem muito estilo, é decidida e promove o amor incondicional.\n\nCom amor podemos todas as coisas, tudo torna-se possível💖" },
+  { title: "Jade", color: "#6BFEDE", image: jade, description: "Jade é uma menina super amiga, brincalhona e extrovertida. É considerada a pedra da sorte, prosperidade e amizade🤗" },
+  { title: "Ágata", color: "#6BFEDE", image: agata, description: "Ágata é forte e corajosa, se aceita como é de verdade! Tem uma energia super positiva e as pessoas ao seu redor se contagiam com a sua felicidade😆" },
+  { title: "Ametista", color: "#6BFEDE", image: ametista, description: "Ametista parece frágil né? Pois é aí que você se engana. Ela é delicada, porém forte e tem uma paz interior que te eleva a alma🧘‍♀️" },
+  { title: "Angelita", color: "#FE6B8B", image: angelita, description: "Angelita é suuuuper especial, comunicativa e verdadeira. Não perde a esperança mesmo em momentos difícies, pois acredita que dias melhores virão. Ela é a alegria da casa, a alegria da vida todinha da mamãe e do papai, ela é uma verdadeira super heroína🌹" },
+  { title: "Rubi", color: "#FE6B8B", image: rubi, description: "Rubi protege as pessoas que ama e tem uma energia infinita! Leva felicidade e paixão em seu coração, e adora ajudar o próximo🌼" },
 ];
 
 const premium = [
-  { title: "Minis", color: "#6BFEDE", image: require("assets/img/jr/premium0.webp"), description: "7 bonecas joias raras mini. Elas são menores, com 20cm, e muito mais fofas não acha?💖" },
-  { title: "Ursinhas", color: "#FE6B8B", image: require("assets/img/jr/premium2.webp"), description: "E agora as bonecas tem companhia, essa ursinha suuuuper fofinha vai ajudar a compor nossos novos projetos🥰" },
-  { title: "Mobile", color: "#6BFEDE", image: require("assets/img/jr/premium3.webp"), description: "Aprenda comigo a montar esse mobile de berço maravilhoso para decorar e entreter a bebê🌼" },
-  { title: "Guirlanda", color: "#FE6B8B", image: require("assets/img/jr/premium4.webp"), description: "Sem falar nessa guirlanda super especial. Você vai aprender a customizar o nome que quiser e algumas técnicas extras. Imagina ela de porta maternidade🌹" },
-  { title: "Pergolado", color: "#6BFEDE", image: require("assets/img/jr/premium5.webp"), description: "E a cereja do bolo: o Pergolado. Essa peça é única e nunca vi nada parecido. A inspiração veio de um sonho e vou mostrar em detalhes como fazer. Além disso as bonecas também são diferentes, pois elas dobram as pernas e podem sentar no balanço🍒" },
+  { title: "Minis", color: "#6BFEDE", image: minis, width: 546, height: 640, description: "7 bonecas joias raras mini. Elas são menores, com 20cm, e muito mais fofas não acha?💖" },
+  { title: "Ursinhas", color: "#FE6B8B", image: ursinhas, width: 400, height: 400, description: "E agora as bonecas tem companhia, essa ursinha suuuuper fofinha vai ajudar a compor nossos novos projetos🥰" },
+  { title: "Mobile", color: "#6BFEDE", image: mobile, width: 400, height: 499, description: "Aprenda comigo a montar esse mobile de berço maravilhoso para decorar e entreter a bebê🌼" },
+  { title: "Guirlanda", color: "#FE6B8B", image: guirlanda, width: 400, height: 400, description: "Sem falar nessa guirlanda super especial. Você vai aprender a customizar o nome que quiser e algumas técnicas extras. Imagina ela de porta maternidade🌹" },
+  { title: "Pergolado", color: "#6BFEDE", image: pergolado, width: 400, height: 474, description: "E a cereja do bolo: o Pergolado. Essa peça é única e nunca vi nada parecido. A inspiração veio de um sonho e vou mostrar em detalhes como fazer. Além disso as bonecas também são diferentes, pois elas dobram as pernas e podem sentar no balanço🍒" },
 ];
+
+const testemunhos = [
+  { url: t25, width: 318, height: 58 },
+  { url: t26, width: 318, height: 88 },
+  { url: t29, width: 635, height: 200 },
+  { url: t33, width: 468, height: 86 },
+  { url: t34, width: 542, height: 76 },
+  { url: t35, width: 458, height: 107 },
+  { url: t36, width: 458, height: 92 },
+  { url: t37, width: 532, height: 55 }
+]
 
 const faqs = [
   { pergunta: "Quando começa o curso?", resposta: "O curso começa assim que você se inscrever. Todas as aulas já estão gravadas e todas as apostilas de moldes estão disponíveis para baixar." },
@@ -196,7 +240,7 @@ function CTA(props) {
   );
 }
 
-function CheckoutButton(props) {
+function CheckoutButton({ children, variant }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -217,10 +261,13 @@ function CheckoutButton(props) {
   if (router.query.hideBillet)
     checkoutURL += "&hideBillet=" + router.query.hideBillet
 
+  if (variant)
+    checkoutURL += "&src=" + variant
+
   return (
     <>
       <ColorButton className={classes.cta} onClick={handleClickOpen} style={ColorButton.whatsapp}>
-        {props.children}
+        {children}
       </ColorButton>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">
@@ -231,7 +278,7 @@ function CheckoutButton(props) {
         </DialogTitle>
         <DialogContent>
           <Form buttonText="Continuar" tag="JOIASRARAS-CHECKOUT" redirectTo={checkoutURL}
-            emailPlaceholder="Seu email de acesso ao curso" checkout={true} buttonStyle={buttonStyle} showName={true} showPhone={true} >
+            emailPlaceholder="Seu email de acesso ao curso" checkout={true} buttonStyle={ColorButton.whatsapp} showName={true} showPhone={true} >
           </Form>
           <p className={classes.justify}>
             <Typography variant="body2" color="textSecondary" component="span">
@@ -246,7 +293,7 @@ function CheckoutButton(props) {
   );
 }
 
-function Entregaveis() {
+function Bonecas() {
   const classes = useStyles();
   return (
     <section>
@@ -262,22 +309,23 @@ function Entregaveis() {
             </p>
           </Grid>
 
-          {rocks.map((rock) => (
-            <Grid container item xs={12} sm={6} md={6} spacing={0} key={rock.title}>
+          {dolls.map((doll) => (
+            <Grid container item xs={12} sm={6} md={6} spacing={0} key={doll.title}>
               <Card raised={true} className={classes.card}>
-                <CardMedia
-                  component="img"
-                  alt={rock.title}
-                  image={rock.image}
-                  title={rock.title}
+                <Image
+                  alt={doll.title}
+                  src={doll.image}
                   className={classes.cardMedia}
+                  layout="responsive"
+                  width={424}
+                  height={640}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2" className={classes.centered}   >
-                    <span className={classes.highlight}>{rock.title}</span>
+                    <span className={classes.highlight}>{doll.title}</span>
                   </Typography>
                   <Typography color="textSecondary" component="p" className={classes.justify} >
-                    {rock.description}
+                    {doll.description}
                   </Typography>
                 </CardContent>
               </Card>
@@ -294,19 +342,10 @@ function Promessa() {
   return (
     <>
       <section>
-        <Grid className={classes.centered}>
-          <Grid item>
-            <Hidden smUp>
-              <img src={require("assets/img/jr/banner_mobile.webp")} alt="" className={classes.foto} />
-            </Hidden>
-            <Hidden xsDown>
-              <img src={require("assets/img/jr/banner.webp")} alt="" className={classes.foto} />
-            </Hidden>
-          </Grid>
-        </Grid>
-      </section>
-      <section className={classes.section}>
         <Container maxWidth="md">
+          <Grid item>
+            <Image src={banner} layout="responsive" width={800} height={394} alt="" className={classes.foto} />
+          </Grid>
           <Grid className={classes.centered}>
             <Grid item>
               <h2>São <span className={classes.highlightText}>7 joias raras</span> para você confeccionar, personalizar e vender</h2>
@@ -384,22 +423,24 @@ function ConteudoPremium() {
             <p>Você receberá vários projetos exclusivos para compor com as bonecas.</p>
           </Grid>
 
-          {premium.map((rock) => (
-            <Grid container item xs={12} spacing={0} key={rock.title}>
+          {premium.map((deliverable) => (
+            <Grid container item xs={12} spacing={0} key={deliverable.title}>
               <Card raised={true} className={classes.card}>
-                <CardMedia
-                  component="img"
-                  alt={rock.title}
-                  image={rock.image}
-                  title={rock.title}
+                <Image
+                  alt={deliverable.title}
+                  src={deliverable.image}
+                  title={deliverable.title}
                   className={classes.fotoCard}
+                  layout="responsive"
+                  width={deliverable.width}
+                  height={deliverable.height}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2" className={classes.centered}   >
-                    <span className={classes.highlight}>{rock.title}</span>
+                    <span className={classes.highlight}>{deliverable.title}</span>
                   </Typography>
                   <Typography color="textSecondary" component="p" className={classes.justify} >
-                    {rock.description}
+                    {deliverable.description}
                   </Typography>
                 </CardContent>
               </Card>
@@ -419,7 +460,7 @@ function Bonus() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/jr/planilha.webp")} alt="" className={classes.foto} />
+            <Image src={planilha} layout="responsive" width={300} height={211} alt="" className={classes.foto} />
           </Grid>
           <Grid item xs={12} md={6}>
             <h2 className={classes.centered}><span className={classes.highlight}>Bônus:</span> Planilha de precificação</h2>
@@ -473,7 +514,7 @@ function AcessoImediato() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/jr/topic_apostila.webp")} alt="" className={classes.foto} />
+            <Image src={apostila} layout="responsive" width={283} height={400} alt="" className={classes.foto} />
           </Grid>
           <Grid item xs={12} md={6}>
             <h2 className={classes.centered}>Entre agora e tenha <span className={classes.highlight}>acesso imediato</span></h2>
@@ -514,7 +555,7 @@ function AcessoImediato() {
   );
 }
 
-function Preco() {
+function Preco({ variant }) {
   const classes = useStyles();
   return (
     <section className={classes.sectionGreen}>
@@ -522,12 +563,12 @@ function Preco() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/tudoisso.webp")} alt="" className={classes.preco} />
+            <Image src={tudoIsso} layout="responsive" width={500} height={200} alt="" className={classes.preco} />
           </Grid>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/jr/price.webp")} alt="" className={classes.preco} />
+            <Image src={price} layout="responsive" width={400} height={160} alt="" className={classes.preco} />
             <div className={classes.precoAviso}></div>
-            <CheckoutButton>
+            <CheckoutButton variant={variant}>
               Quero me inscrever agora
             </CheckoutButton>
           </Grid>
@@ -544,7 +585,7 @@ function Garantia() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} xs={12} md={6}>
-            <img src={require("assets/img/garantia.png")} alt="Garantia de 7 dias" />
+            <Image src={garantia} layout="responsive" width={298} height={251} alt="Garantia de 7 dias" />
           </Grid>
           <Grid item xs={12} md={6} className={classes.justify}>
             <h2 className={classes.centered}>Você tem 7 dias de <span className={classes.highlight}>garantia incondicional</span></h2>
@@ -594,7 +635,7 @@ function SobreMim() {
       <Container maxWidth="md">
         <Grid container className={classes.grid} spacing={3}>
           <Grid item className={classes.centered} md={6}>
-            <img className={classes.fotoPerfil} src={require("assets/img/perfil.webp")} alt="Mari Ubialli" />
+            <Image className={classes.fotoPerfil} src={perfil} layout="responsive" width={512} height={512} alt="Mari Ubialli" />
           </Grid>
           <Grid item md={6} className={classes.justify}>
             <h2 className={classes.centered}>Com quem você vai aprender?</h2>
@@ -655,41 +696,6 @@ function DuvidasWhats() {
   );
 }
 
-function Testemunhos1() {
-  const classes = useStyles();
-  return (
-    <section>
-      <Container maxWidth="md" className={classes.centered}>
-        <Grid container className={classes.grid} spacing={1}>
-          <Grid item className={classes.centered} xs={12}>
-            <h2>O que os alunos estão <br /><span className={classes.highlight}>falando do curso?</span></h2>
-          </Grid>
-          <Grid item className={classes.centered} xs={12} sm={3}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho40.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12} sm={3}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho21.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12} sm={3}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho31b.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12} sm={3}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho16.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-        </Grid>
-      </Container>
-    </section>
-  );
-}
-
 function Testemunhos3() {
   const classes = useStyles();
   return (
@@ -699,46 +705,13 @@ function Testemunhos3() {
           <Grid item className={classes.centered} xs={12}>
             <h2>Venha fazer parte deste grupo de <span className={classes.highlight}>mais de 1300 artesãs encantadas</span></h2>
           </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho25.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho26.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho29.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho33.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho34.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho35.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho36.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
-          <Grid item className={classes.centered} xs={12}>
-            <Paper elevation={3}>
-              <img src={require("assets/img/jr/testemunho37.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-            </Paper>
-          </Grid>
+          {testemunhos.map((t, index) => (
+            <Grid item className={classes.centered} xs={12} key={"t" + index}>
+              <Paper elevation={3}>
+                <Image src={t.url} layout="responsive" width={t.width} height={t.height} alt="Testemunho" className={classes.fotoTestemunho} />
+              </Paper>
+            </Grid>
+          ))}
           <Grid item className={classes.centered} xs={12}>
             <p>
               <CheckoutButton>
@@ -752,7 +725,7 @@ function Testemunhos3() {
   );
 }
 
-export default function JoiasRarasVendas(props) {
+export default function JoiasRarasVendas({ variant }) {
   const classes = useStyles();
   return (
     <main className={classes.root}>
@@ -771,19 +744,19 @@ export default function JoiasRarasVendas(props) {
 
       <Promessa />
       <DedoNaFerida />
-      <Entregaveis />
+      <Bonecas />
       <Conteudo />
       <ConteudoPremium />
       <Bonus />
       <AcessoImediato />
-      <Preco />
+      <Preco variant={variant} />
       <Garantia />
       <Depoimento />
       <Testemunhos3 />
       <SobreMim />
       <FAQs />
       <DuvidasWhats />
-      <Preco />
+      <Preco variant={variant} />
       <Footer />
     </main>
   );

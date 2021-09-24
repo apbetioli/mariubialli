@@ -203,14 +203,14 @@ const premium = [
 ];
 
 const testemunhos = [
-  {url: t25, width: 318, height: 58},
-  {url: t26, width: 318, height: 88},
-  {url: t29, width: 635, height: 200},
-  {url: t33, width: 468, height: 86},
-  {url: t34, width: 542, height: 76},
-  {url: t35, width: 458, height: 107},
-  {url: t36, width: 458, height: 92},
-  {url: t37, width: 532, height: 55}
+  { url: t25, width: 318, height: 58 },
+  { url: t26, width: 318, height: 88 },
+  { url: t29, width: 635, height: 200 },
+  { url: t33, width: 468, height: 86 },
+  { url: t34, width: 542, height: 76 },
+  { url: t35, width: 458, height: 107 },
+  { url: t36, width: 458, height: 92 },
+  { url: t37, width: 532, height: 55 }
 ]
 
 const faqs = [
@@ -240,7 +240,7 @@ function CTA(props) {
   );
 }
 
-function CheckoutButton(props) {
+function CheckoutButton({ children, variant }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -261,10 +261,13 @@ function CheckoutButton(props) {
   if (router.query.hideBillet)
     checkoutURL += "&hideBillet=" + router.query.hideBillet
 
+  if (variant)
+    checkoutURL += "&src=" + variant
+
   return (
     <>
       <ColorButton className={classes.cta} onClick={handleClickOpen} style={ColorButton.whatsapp}>
-        {props.children}
+        {children}
       </ColorButton>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">
@@ -552,7 +555,7 @@ function AcessoImediato() {
   );
 }
 
-function Preco() {
+function Preco({ variant }) {
   const classes = useStyles();
   return (
     <section className={classes.sectionGreen}>
@@ -565,7 +568,7 @@ function Preco() {
           <Grid item className={classes.centered} xs={12} md={6}>
             <Image src={price} layout="responsive" width={400} height={160} alt="" className={classes.preco} />
             <div className={classes.precoAviso}></div>
-            <CheckoutButton>
+            <CheckoutButton variant={variant}>
               Quero me inscrever agora
             </CheckoutButton>
           </Grid>
@@ -722,7 +725,7 @@ function Testemunhos3() {
   );
 }
 
-export default function JoiasRarasVendas(props) {
+export default function JoiasRarasVendas({ variant }) {
   const classes = useStyles();
   return (
     <main className={classes.root}>
@@ -746,14 +749,14 @@ export default function JoiasRarasVendas(props) {
       <ConteudoPremium />
       <Bonus />
       <AcessoImediato />
-      <Preco />
+      <Preco variant={variant} />
       <Garantia />
       <Depoimento />
       <Testemunhos3 />
       <SobreMim />
       <FAQs />
       <DuvidasWhats />
-      <Preco />
+      <Preco variant={variant} />
       <Footer />
     </main>
   );

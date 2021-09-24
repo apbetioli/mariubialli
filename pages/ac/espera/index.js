@@ -1,10 +1,7 @@
 import { Container, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { LocationOn } from "@material-ui/icons";
-import EventAvailableIcon from '@material-ui/icons/EventAvailable';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import Head from "next/head";
-import { default as React, useEffect } from "react";
+import { default as React } from "react";
 import ColorButton from "../../../components/ColorButton";
 import Footer from "../../../components/Footer";
 import Form from "../../../components/Form";
