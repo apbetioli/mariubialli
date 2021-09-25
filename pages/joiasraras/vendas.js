@@ -525,7 +525,7 @@ function AcessoImediato() {
               <FavoriteIcon className={classes.heart} /><span> Mais de 5 horas de conteúdo divido em mais de 50 aulas</span>
             </p>
             <p>
-              <FavoriteIcon className={classes.heart} /><span> Apostila digital de moldes das 7 bonecas</span>
+              <FavoriteIcon className={classes.heart} /><span> Apostila digital de moldes das 7 bonecas que param em pé</span>
             </p>
             <p>
               <FavoriteIcon className={classes.heart} /><span> Apostila digital de moldes das 7 bonecas mini, ursinha, mobile, guirlanda e pergolado</span>
