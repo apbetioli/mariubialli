@@ -457,8 +457,8 @@ function BonusProjetos() {
                   height={deliverable.height}
                 />
                 <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2" className={classes.centered}   >
-                    <span className={classes.highlight}>{deliverable.title}</span>
+                  <Typography gutterBottom variant="h5" component="h3" className={classes.centered}   >
+                    Bônus: <span className={classes.highlight}>{deliverable.title}</span>
                   </Typography>
                   <Typography color="textSecondary" component="p" className={classes.justify} >
                     {deliverable.description}
