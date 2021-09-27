@@ -13,6 +13,14 @@ function getTitle() {
 }
 
 export default function JoiasRarasAguardando(props) {
+
+    React.useEffect(() => {
+        if (window.dataLayer) {
+            window.dataLayer.push({ event: "optimize.jr.purchase.waiting" });
+            console.log("optimize.jr.purchase.waiting");
+        }
+    }, []);
+
     return (
         <Layout {...props}>
             <Obrigado

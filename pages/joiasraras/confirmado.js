@@ -27,6 +27,13 @@ const useStyles = makeStyles((theme) => ({
 export default function JoiasRarasConfirmado(props) {
     const classes = useStyles();
 
+    React.useEffect(() => {
+        if (window.dataLayer) {
+            window.dataLayer.push({ event: "optimize.jr.purchase.confirmed" });
+            console.log("optimize.jr.purchase.confirmed");
+        }
+    }, []);
+
     return (
         <Layout {...props}>
             <Obrigado
