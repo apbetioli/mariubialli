@@ -1,4 +1,4 @@
-import { Card, CardContent, CardMedia, Container, Dialog, DialogActions, DialogContent, DialogTitle, Grid, Hidden, IconButton, Paper } from "@material-ui/core";
+import { Card, CardContent, Container, Dialog, DialogActions, DialogContent, DialogTitle, Grid, IconButton, Paper } from "@material-ui/core";
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -9,7 +9,35 @@ import CloseIcon from '@material-ui/icons/Close';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import HttpsIcon from '@material-ui/icons/Https';
+import garantia from 'assets/img/garantia.png';
+import agata from 'assets/img/jr/agata.webp';
+import ametista from 'assets/img/jr/ametista.webp';
+import angelita from 'assets/img/jr/angelita.webp';
+import banner from 'assets/img/jr/banner.webp';
+import esmeralda from 'assets/img/jr/esmeralda.webp';
+import jade from 'assets/img/jr/jade.webp';
+import planilha from 'assets/img/jr/planilha.webp';
+import minis from 'assets/img/jr/premium0.webp';
+import ursinhas from 'assets/img/jr/premium2.webp';
+import mobile from 'assets/img/jr/premium3.webp';
+import guirlanda from 'assets/img/jr/premium4.webp';
+import pergolado from 'assets/img/jr/premium5.webp';
+import price from 'assets/img/jr/price.webp';
+import rose from 'assets/img/jr/rose.webp';
+import rubi from 'assets/img/jr/rubi.webp';
+import t25 from 'assets/img/jr/testemunho25.webp';
+import t26 from 'assets/img/jr/testemunho26.webp';
+import t29 from 'assets/img/jr/testemunho29.webp';
+import t33 from 'assets/img/jr/testemunho33.webp';
+import t34 from 'assets/img/jr/testemunho34.webp';
+import t35 from 'assets/img/jr/testemunho35.webp';
+import t36 from 'assets/img/jr/testemunho36.webp';
+import t37 from 'assets/img/jr/testemunho37.webp';
+import apostila from 'assets/img/jr/topic_apostila.webp';
+import perfil from 'assets/img/perfil.webp';
+import tudoIsso from 'assets/img/tudoisso.webp';
 import Head from "next/head";
+import Image from 'next/image';
 import { useRouter } from "next/router";
 import { default as React } from "react";
 import BotaoWhats from "../../components/BotaoWhats";
@@ -18,38 +46,10 @@ import Footer from "../../components/Footer";
 import Form from "../../components/Form";
 import ScrollTo from "../../components/ScrollTo";
 
-import Image from 'next/image'
 
-import banner from 'assets/img/jr/banner.webp'
-import esmeralda from 'assets/img/jr/esmeralda.webp'
-import ametista from 'assets/img/jr/ametista.webp'
-import angelita from 'assets/img/jr/angelita.webp'
-import agata from 'assets/img/jr/agata.webp'
-import jade from 'assets/img/jr/jade.webp'
-import rubi from 'assets/img/jr/rubi.webp'
-import rose from 'assets/img/jr/rose.webp'
 
-import minis from 'assets/img/jr/premium0.webp'
-import ursinhas from 'assets/img/jr/premium2.webp'
-import mobile from 'assets/img/jr/premium3.webp'
-import guirlanda from 'assets/img/jr/premium4.webp'
-import pergolado from 'assets/img/jr/premium5.webp'
 
-import planilha from 'assets/img/jr/planilha.webp'
-import apostila from 'assets/img/jr/topic_apostila.webp'
-import tudoIsso from 'assets/img/tudoisso.webp'
-import price from 'assets/img/jr/price.webp'
-import perfil from 'assets/img/perfil.webp'
-import garantia from 'assets/img/garantia.png'
 
-import t25 from 'assets/img/jr/testemunho25.webp'
-import t26 from 'assets/img/jr/testemunho26.webp'
-import t29 from 'assets/img/jr/testemunho29.webp'
-import t33 from 'assets/img/jr/testemunho33.webp'
-import t34 from 'assets/img/jr/testemunho34.webp'
-import t35 from 'assets/img/jr/testemunho35.webp'
-import t36 from 'assets/img/jr/testemunho36.webp'
-import t37 from 'assets/img/jr/testemunho37.webp'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -194,8 +194,7 @@ const dolls = [
   { title: "Rubi", color: "#FE6B8B", image: rubi, description: "Rubi protege as pessoas que ama e tem uma energia infinita! Leva felicidade e paixão em seu coração, e adora ajudar o próximo🌼" },
 ];
 
-const premium = [
-  { title: "Minis", color: "#6BFEDE", image: minis, width: 546, height: 640, description: "7 bonecas joias raras mini. Elas são menores, com 20cm, e muito mais fofas não acha?💖" },
+const projetos = [
   { title: "Ursinhas", color: "#FE6B8B", image: ursinhas, width: 400, height: 400, description: "E agora as bonecas tem companhia, essa ursinha suuuuper fofinha vai ajudar a compor nossos novos projetos🥰" },
   { title: "Mobile", color: "#6BFEDE", image: mobile, width: 400, height: 499, description: "Aprenda comigo a montar esse mobile de berço maravilhoso para decorar e entreter a bebê🌼" },
   { title: "Guirlanda", color: "#FE6B8B", image: guirlanda, width: 400, height: 400, description: "Sem falar nessa guirlanda super especial. Você vai aprender a customizar o nome que quiser e algumas técnicas extras. Imagina ela de porta maternidade🌹" },
@@ -419,12 +418,34 @@ function ConteudoPremium() {
       <Container maxWidth="sm">
         <Grid container className={classes.grid}>
           <Grid item className={classes.centered} xs={12}>
-            <h2>E ainda tem <span className={classes.highlight}>muito mais!</span></h2>
-            <p>Você receberá vários projetos exclusivos para compor com as bonecas.</p>
+            <h2>E ainda <span className={classes.highlight}>tem mais!</span></h2>
+
+            <p>Além da opção das 7 bonecas que param em pé, você também terá uma versão menor delas com 20cm e com o pézinho adaptado para compor vários outros projetos!</p>
+            <p>São muito fofas não acha?💖</p>
+
+            <Paper elevation={5}>
+              <Image src={minis} layout="responsive" width={546} height={640} alt="" className={classes.foto} />
+            </Paper>
+          </Grid>
+        </Grid>
+      </Container>
+    </section>
+  );
+}
+
+function BonusProjetos() {
+  const classes = useStyles();
+  return (
+    <section>
+      <Container maxWidth="md">
+        <Grid container className={classes.grid}>
+          <Grid item className={classes.centered} xs={12}>
+            <h2>E não podem faltar <span className={classes.highlight}>VÁRIOS BÔNUS!</span></h2>
+            <p>Você receberá de brinde vários projetos exclusivos para compor com as bonecas.</p>
           </Grid>
 
-          {premium.map((deliverable) => (
-            <Grid container item xs={12} spacing={0} key={deliverable.title}>
+          {projetos.map((deliverable) => (
+            <Grid container item xs={12} md={6} spacing={0} key={deliverable.title}>
               <Card raised={true} className={classes.card}>
                 <Image
                   alt={deliverable.title}
@@ -453,6 +474,7 @@ function ConteudoPremium() {
   );
 }
 
+
 function Bonus() {
   const classes = useStyles();
   return (
@@ -463,7 +485,7 @@ function Bonus() {
             <Image src={planilha} layout="responsive" width={300} height={211} alt="" className={classes.foto} />
           </Grid>
           <Grid item xs={12} md={6}>
-            <h2 className={classes.centered}><span className={classes.highlight}>Bônus:</span> Planilha de precificação</h2>
+            <h2 className={classes.centered}><span className={classes.highlight}>Bônus Extra:</span> Planilha de precificação</h2>
             <p>
               Você terá acesso a uma aula de precificação e poderá baixar uma planilha para calcular o custo certinho da sua boneca. Já com dados de material usado preenchidos para cada boneca. Vai facilitar muito o seu trabalho e você poderá calcular de forma correta e ter lucro nas suas vendas!
             </p>
@@ -745,8 +767,9 @@ export default function JoiasRarasVendas({ variant }) {
       <Promessa />
       <DedoNaFerida />
       <Bonecas />
-      <Conteudo />
       <ConteudoPremium />
+      <Conteudo />
+      <BonusProjetos />
       <Bonus />
       <AcessoImediato />
       <Preco variant={variant} />
