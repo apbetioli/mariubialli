@@ -263,6 +263,21 @@ function CheckoutButton({ children, variant }) {
   if (variant != undefined)
     checkoutURL += "&src=" + variant
 
+  if (router.query.utm_source)
+    checkoutURL += "&utm_source=" + router.query.utm_source
+
+  if (router.query.utm_medium)
+    checkoutURL += "&utm_medium=" + router.query.utm_medium
+
+  if (router.query.utm_campaign)
+    checkoutURL += "&utm_campaign=" + router.query.utm_campaign
+
+  if (router.query.utm_content)
+    checkoutURL += "&utm_content=" + router.query.utm_content
+
+  if (router.query.utm_term)
+    checkoutURL += "&utm_term=" + router.query.utm_term
+
   return (
     <>
       <ColorButton className={classes.cta} onClick={handleClickOpen} style={ColorButton.whatsapp}>
