@@ -19,7 +19,14 @@ const translate = {
     'AS_LS_#1_TG': 'plueb24',
     'AS_LS_#1_EM': 'd3uP4mR',
     'AS_LS_#1_CHECKOUT': 'kRuOwy3',
-    'AC_ESPERA_TURMA2': 'eYu3aaa'
+    'AC_ESPERA_TURMA2': 'eYu3aaa',
+    'AC_LI_#1': 'd3uPonL',
+    'AC_LI_#1_OG': 'kRuOAEd',
+    'AC_LI_#1_FB': 'aaum2jj',
+    'AC_LI_#1_GG': 'MouQkK1',
+    'AC_LI_#1_TG': '5du204B',
+    'AC_LI_#1_EM': 'eYu3JeM',
+    'AC_LI_#1_CHECKOUT': 'xJuGBKa',
 }
 
 getParams = (lead) => {

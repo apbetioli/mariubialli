@@ -12,7 +12,7 @@ module.exports = withPlugins([[withImages]], {
     return [
       {
         source: '/',
-        destination: '/cursos',
+        destination: '/li/inscrever',
         permanent: false,
       }
     ]
