@@ -116,7 +116,7 @@ function CTA(props) {
             <Container maxWidth="md">
                 <Grid container spacing={2}>
                     <Grid item className={classes.centered} xs={12}>
-                        <Form buttonText="QUERO PARTICIPAR" tag={`AC_LI_#1_${props.origin.toUpperCase()}`} redirectTo={`/li/obrigado/${props.origin}`}
+                        <Form buttonText="QUERO PARTICIPAR" tag={`AC_LI_#1_${props.origin.toUpperCase()}`} redirectTo={`/obrigado/${props.origin}`}
                             emailPlaceholder="Digite seu melhor email" buttonStyle={buttonStyle} showTerms={false}>
                         </Form>
                     </Grid>
@@ -137,7 +137,7 @@ function Promessa(props) {
                         <p className={classes.subtitle}>Se você acha que criar moldes é só para vender apostilas, então esta aula ao vivo vai abrir sua mente para novas oportunidades. Venha participar!</p>
                         <p><i><EventAvailableIcon className={classes.heart} /> </i>02/09 - Quinta-feira às 20h</p>
                         <p><i><LocationOn className={classes.heart} /> </i>100% Online e Gratuito</p>
-                        <Form buttonText="QUERO PARTICIPAR" tag={`AC_LI_#1_${props.origin.toUpperCase()}`} redirectTo={`/li/obrigado/${props.origin}`}
+                        <Form buttonText="QUERO PARTICIPAR" tag={`AC_LI_#1_${props.origin.toUpperCase()}`} redirectTo={`/obrigado/${props.origin}`}
                             emailPlaceholder="Digite seu melhor email" buttonStyle={buttonStyle} showTerms={false}>
                         </Form>
                     </Grid>
@@ -196,7 +196,7 @@ export default function LIInscrever(props) {
                 <title>Artesã Criativa - Mari Ubialli</title>
                 <meta
                     name="description"
-                    content="Vem aprender como gerar renda criando seus próprios moldes em feltro."
+                    content="Vem aprender como gerar renda criando peças exclusivas e seus próprios moldes em feltro."
                 />
                 <meta name="robots" content="noindex,nofollow"></meta>
             </Head>

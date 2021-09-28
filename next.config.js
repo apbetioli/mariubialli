@@ -8,41 +8,19 @@ module.exports = withPlugins([[withImages]], {
     config.resolve.modules.push(path.resolve("./"));
     return config;
   },
+  async rewrites() {
+    return [
+      {
+        source: '/:sub*',
+        destination: '/li/:sub*',
+      },
+    ]
+  },
   async redirects() {
     return [
       {
         source: '/',
         destination: '/ac/espera',
-        permanent: false,
-      },
-      {
-        source: '/ls1/:sub*',
-        destination: '/ac/espera',
-        permanent: false,
-      },
-      {
-        source: '/inscrever/:origin*',
-        destination: '/ac/espera',
-        permanent: false,
-      },
-      {
-        source: '/obrigado/:origin*',
-        destination: '/ac/espera',
-        permanent: false,
-      },
-      {
-        source: '/replay',
-        destination: '/ac/espera',
-        permanent: false,
-      },
-      {
-        source: '/confirmado',
-        destination: '/ls1/confirmado',
-        permanent: false,
-      },
-      {
-        source: '/aguardando',
-        destination: '/ls1/aguardando',
         permanent: false,
       },
       {
@@ -56,24 +34,9 @@ module.exports = withPlugins([[withImages]], {
         permanent: false,
       },
       {
-        source: '/aula',
-        destination: '/ac/espera',
-        permanent: false,
-      },
-      {
-        source: '/mm',
-        destination: '/ac/espera',
-        permanent: false,
-      },
-      {
         source: '/checkout',
         destination: 'https://sun.eduzz.com/969161',
         permanent: false
-      },
-      {
-        source: '/desafio',
-        destination: '/ac/espera',
-        permanent: false,
       },
     ]
   },
