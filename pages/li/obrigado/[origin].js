@@ -1,5 +1,4 @@
 import LIObrigado from ".";
-import LS1Obrigado from ".";
 
 export default function LIObrigadoEspecifico(props) {
     return (
