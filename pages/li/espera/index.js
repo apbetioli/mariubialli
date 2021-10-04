@@ -5,6 +5,7 @@ import { default as React } from "react";
 import ColorButton from "../../../components/ColorButton";
 import Footer from "../../../components/Footer";
 import Form from "../../../components/Form";
+import Banner from "../banner";
 import SobreMim from "../sobre";
 
 const useStyles = makeStyles((theme) => ({
@@ -124,17 +125,6 @@ function Promessa(props) {
                 </Grid>
             </Container>
         </section >
-    );
-}
-
-function Banner() {
-    const classes = useStyles();
-    return (
-        <div className={classes.sectionSobreMim}>
-            <div className={classes.centered}>
-                <img className={classes.foto} src={require("assets/img/li/banner-mac.webp")} alt="Maratona Artesã Criativa" />
-            </div>
-        </div>
     );
 }
 

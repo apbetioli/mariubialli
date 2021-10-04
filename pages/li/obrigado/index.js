@@ -8,6 +8,7 @@ import React from "react";
 import Countdown from "react-countdown";
 import ColorButton from "../../../components/ColorButton";
 import Footer from "../../../components/Footer";
+import Banner from "../banner";
 import Programacao from "../programacao";
 
 const BorderLinearProgress = withStyles((theme) => ({
@@ -140,17 +141,6 @@ function LinearProgressWithLabel(props) {
         )}%`}</Typography>
       </Box>
     </Box>
-  );
-}
-
-function Banner() {
-  const classes = useStyles();
-  return (
-    <div className={classes.sectionSobreMim}>
-      <div className={classes.centered}>
-        <img className={classes.foto} src={require("assets/img/li/banner-mac.webp")} alt="Maratona Artesã Criativa" />
-      </div>
-    </div>
   );
 }
 
