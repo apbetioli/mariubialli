@@ -20,7 +20,7 @@ module.exports = withPlugins([[withImages]], {
     return [
       {
         source: '/',
-        destination: '/li/inscrever',
+        destination: '/inscrever',
         permanent: false,
       },
       {
