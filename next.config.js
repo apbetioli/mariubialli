@@ -18,6 +18,18 @@ module.exports = withPlugins([[withImages]], {
   },
   async redirects() {
     return [
+      /*
+      {
+        source: '/aula-03',
+        destination: '/aula-01',
+        permanent: false,
+      },
+      {
+        source: '/aula-02',
+        destination: '/aula-01',
+        permanent: false,
+      },
+      */
       {
         source: '/',
         destination: '/inscrever',

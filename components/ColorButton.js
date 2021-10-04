@@ -66,6 +66,14 @@ ColorButton.primary = {
     '--box-shadow-hover': 'rgba(255, 105, 135, .6)',
 };
 
+ColorButton.facebook = {
+    '--color': 'white',
+    '--background-start': '#3360ff',
+    '--background-end': '#5c79ff',
+    '--box-shadow': 'rgba(92,121,255, .3)',
+    '--box-shadow-hover': 'rgba(51,96,255, .6)',
+}
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,

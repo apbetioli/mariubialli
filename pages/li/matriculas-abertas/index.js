@@ -209,9 +209,9 @@ const bonus = [
         price: "R$ 197"
     },
     {
-        title: "Como anunciar nas redes sociais",
+        title: "Marketing na prática",
         image: require("assets/img/ls1/faceads.webp"),
-        description: "Você vai aprender a anunciar seus produtos nas redes sociais. Tudo o que eu vou ensinar aqui foi testado na prática na venda dos meus cursos e apostilas.",
+        description: "Você vai aprender como divulgar seus produtos de forma automática. Tudo o que eu vou ensinar aqui foi testado na prática na venda dos meus cursos e apostilas.",
         price: "R$ 997"
     },
     {

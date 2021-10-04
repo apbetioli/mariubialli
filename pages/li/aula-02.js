@@ -1,10 +1,10 @@
-import { Container, Grid } from "@material-ui/core";
+import { Container, Grid, Link } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Head from "next/head";
 import Image from 'next/image';
 import { default as React } from "react";
-import aula01 from "../../assets/img/li/aula-01-a.webp";
-import aula02 from "../../assets/img/li/aula-02-b.webp";
+import aula01 from "../../assets/img/li/aula-01.webp";
+import aula02 from "../../assets/img/li/aula-02-a.webp";
 import aula03 from "../../assets/img/li/aula-03-b.webp";
 import ColorButton from "../../components/ColorButton";
 import Footer from "../../components/Footer";
@@ -148,7 +148,9 @@ function Promessa() {
                         </div>
                     </Grid>
                     <Grid item className={classes.centered} xs={12} sm={4}>
-                        <Image src={aula01} layout="responsive" width={640} height={360} alt="" className={classes.thumb} />
+                        <Link href="/aula-01">
+                            <Image src={aula01} layout="responsive" width={640} height={360} alt="" className={classes.thumb} />
+                        </Link>
                     </Grid>
                     <Grid item className={classes.centered} xs={12} sm={4}>
                         <Image src={aula02} layout="responsive" width={640} height={360} alt="" className={classes.thumb} />
@@ -169,7 +171,7 @@ function Conteudo() {
             <Container maxWidth="sm">
                 <Grid container className={classes.grid}>
                     <Grid item className={classes.centered} xs={12}>
-                        <ColorButton style={ColorButton.facebook} href="https://bit.ly/mac-comunidade-aula-01" target="_blank">
+                        <ColorButton style={ColorButton.facebook} href="https://bit.ly/mac-comunidade-aula-02" target="_blank">
                             Entrar para a comunidade da maratona no facebook
                         </ColorButton>
                     </Grid>
