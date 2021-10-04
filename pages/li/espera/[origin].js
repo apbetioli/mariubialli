@@ -1,8 +1,8 @@
-import LS1Inscrever from ".";
+import LIEspera from ".";
 
 export default function LS1InscreverEspecifico(props) {
     return (
-        <LS1Inscrever {...props} />
+        <LIEspera {...props} />
     );
 }
 

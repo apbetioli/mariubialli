@@ -22,10 +22,10 @@ export default function App({ Component, pageProps }) {
   return (
     <React.Fragment>
       <Head>
-        <title>{title + "Mari Ubialli - Artesanato Criativo"}</title>
+        <title>{title + "Artesã Criativa - Mari Ubialli"}</title>
         <meta
           name="description"
-          content="Aprenda comigo tudo sobre artesanato em feltro e criação de apostilas de moldes. Baixe apostilas de moldes gratuitas prontas para confecção."
+          content="Vem aprender como ir do zero a 5k criando peças exclusivas e seus próprios moldes em feltro."
         />
         <meta
           name="keywords"
@@ -42,7 +42,9 @@ export default function App({ Component, pageProps }) {
 }
 
 export const getInitialProps = async ({ Component, router, ctx }) => {
-  let pageProps = {};
+  let pageProps = {
+    env: process.env.NODE_ENV == "development"
+  };
 
   if (Component.getInitialProps) {
     pageProps = await Component.getInitialProps(ctx);

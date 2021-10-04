@@ -1,10 +1,4 @@
-import { Container, Grid } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import Head from "next/head";
-import { default as React } from "react";
-import ColorButton from "../../../components/ColorButton";
-import Footer from "../../../components/Footer";
-import Form from "../../../components/Form";
+import { Container, Grid, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -40,6 +34,11 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#ffe8ed",
         marginTop: 50,
     },
+    sectionGreen: {
+        marginTop: 50,
+        marginBottom: 30,
+        backgroundColor: "#6BFEDE",
+    },
     sectionSobreMim: {
         backgroundColor: "#FE6B8B",
         color: "#FFF",
@@ -63,9 +62,8 @@ const useStyles = makeStyles((theme) => ({
         top: 5,
     },
     title: {
-        fontSize: "2em",
-        fontStyle: "italic",
-        fontWeight: "bold",
+        marginTop: 40,
+        marginBottom: 40
     },
     subtitle: {
         color: "gray",
@@ -105,67 +103,23 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const buttonStyle = ColorButton.whatsapp;
 
-function Promessa(props) {
-    const classes = useStyles();
-    return (
-        <section>
-            <Container maxWidth="md">
-                <Grid container spacing={2}>
-                    <Grid item className={classes.centered} xs={12}>
-                        <h1 className={classes.title}>Inscrições encerradas!</h1>
-                        <p className={classes.subtitle}>Se você quer <b>gerar renda criando seus próprios moldes de feltro</b>, inscreva-se abaixo para ser avisada da abertura de uma nova turma.</p>
-                        <p className={classes.subtitle}></p>
-                        <Form buttonText="QUERO SER AVISADA!" tag="AC_ESPERA_TURMA2" redirectTo={`/ac/obrigado`}
-                            emailPlaceholder="Digite seu melhor email" buttonStyle={buttonStyle} showTerms={false}>
-                        </Form>
-                    </Grid>
-                </Grid>
-            </Container>
-        </section >
-    );
-}
-
-function SobreMim() {
+export default function SobreMim() {
     const classes = useStyles();
     return (
         <section className={classes.sectionSobreMim}>
-            <Container maxWidth="md">
+            <Container maxWidth="sm">
                 <Grid container className={classes.grid} spacing={3}>
                     <Grid item className={classes.centered} md={6}>
                         <img className={classes.fotoPerfil} src={require("assets/img/perfil.webp")} alt="Mari Ubialli" />
                     </Grid>
                     <Grid item md={6} className={classes.justify}>
-                        <h1 className={classes.centered}>Com quem você <span className={classes.highlight}>vai aprender?</span></h1>
+                        <h3 className={classes.centered}>Com quem você vai aprender?</h3>
                         <p>Prazer, sou Mari Ubialli. Sou apaixonada por artesanato em feltro e por ensinar.</p>
-                        <p>Com mais de 1300 alunas em cursos, meu objetivo é ensinar artesãs as estratégias para gerar renda criando seus próprios moldes, permitindo que vivam do que amam fazer.</p>
+                        <p>Com mais de 1500 alunas em cursos, meu objetivo é ensinar artesãs como ir do zero a 5k por mês criando peças exclusivas e seus próprios moldes em feltro, permitindo que vivam do que amam fazer.</p>
                     </Grid>
                 </Grid>
             </Container>
         </section>
-    );
-}
-
-export default function AcEspera(props) {
-
-    const classes = useStyles();
-    return (
-        <main className={classes.root}>
-            <Head>
-                <title>Artesã Criativa - Mari Ubialli</title>
-                <meta
-                    name="description"
-                    content="Vem aprender como gerar renda criando seus próprios moldes em feltro."
-                />
-                <meta name="robots" content="noindex,nofollow"></meta>
-            </Head>
-
-            <div id="form" />
-            <Promessa {...props} />
-            <SobreMim />
-            <Footer />
-
-        </main>
     );
 }

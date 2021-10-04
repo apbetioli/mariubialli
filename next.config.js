@@ -20,7 +20,7 @@ module.exports = withPlugins([[withImages]], {
     return [
       {
         source: '/',
-        destination: '/ac/espera',
+        destination: '/li/inscrever',
         permanent: false,
       },
       {
@@ -41,6 +41,11 @@ module.exports = withPlugins([[withImages]], {
       {
         source: '/checkout',
         destination: 'https://sun.eduzz.com/969161',
+        permanent: false
+      },
+      {
+        source: '/comunidade',
+        destination: 'http://www.facebook.com/groups/maratonaartesacriativa/',
         permanent: false
       },
     ]

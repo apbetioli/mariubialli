@@ -7,6 +7,8 @@ import { default as React } from "react";
 import ColorButton from "../../../components/ColorButton";
 import Footer from "../../../components/Footer";
 import Form from "../../../components/Form";
+import Programacao from "../programacao";
+import SobreMim from "../sobre";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -69,9 +71,8 @@ const useStyles = makeStyles((theme) => ({
         top: 5,
     },
     title: {
-        fontSize: "2em",
-        fontStyle: "italic",
-        fontWeight: "bold",
+        marginTop: 40,
+        marginBottom: 40
     },
     subtitle: {
         color: "gray",
@@ -136,7 +137,7 @@ function Promessa(props) {
             <Container maxWidth="sm">
                 <Grid container>
                     <Grid item className={classes.centered} xs={12}>
-                        <h3>Descubra como ir <span className={classes.highlight}>do zero a 5k</span> por mês criando peças exclusivas e moldes em feltro</h3>
+                        <h3 className={classes.title}>Descubra como ir <span className={classes.highlight}>do zero a 5k</span> por mês criando peças exclusivas e moldes em feltro</h3>
                     </Grid>
                     <Grid item className={classes.centered} xs={12} md={6}>
                         <i><EventAvailableIcon className={classes.heart} /> </i>De 18/10 a 22/10
@@ -148,30 +149,6 @@ function Promessa(props) {
             </Container>
             <CTA {...props} />
         </div>
-    );
-}
-
-function Programacao() {
-    const classes = useStyles();
-    return (
-        <section className={classes.sectionConteudo}>
-            <Container maxWidth="sm">
-                <Grid container className={classes.grid}>
-                    <Grid item xs={12}>
-                        <h3 className={classes.centered}>Confira o cronograma</h3>
-                        <p>
-                            <EventAvailableIcon className={classes.heart} /><span> <b>18/10 - Aula 01</b> - Como começar a criar e não depender mais de moldes existentes</span>
-                        </p>
-                        <p>
-                            <EventAvailableIcon className={classes.heart} /><span> <b>20/10 - Aula 02</b> - Como vender todos os dias as suas criações</span>
-                        </p>
-                        <p>
-                            <EventAvailableIcon className={classes.heart} /><span> <b>22/10 - Aula 03</b> - Conteúdo surpresa</span>
-                        </p>
-                    </Grid>
-                </Grid>
-            </Container>
-        </section>
     );
 }
 
@@ -199,26 +176,6 @@ function Conteudo() {
     );
 }
 
-function SobreMim() {
-    const classes = useStyles();
-    return (
-        <section className={classes.sectionSobreMim}>
-            <Container maxWidth="sm">
-                <Grid container className={classes.grid} spacing={3}>
-                    <Grid item className={classes.centered} md={6}>
-                        <img className={classes.fotoPerfil} src={require("assets/img/perfil.webp")} alt="Mari Ubialli" />
-                    </Grid>
-                    <Grid item md={6} className={classes.justify}>
-                        <h3 className={classes.centered}>Com quem você vai aprender?</h3>
-                        <p>Prazer, sou Mari Ubialli. Sou apaixonada por artesanato em feltro e por ensinar.</p>
-                        <p>Com mais de 1500 alunas em cursos, meu objetivo é ensinar artesãs como ir do zero a 5k por mês criando peças exclusivas e seus próprios moldes em feltro, permitindo que vivam do que amam fazer.</p>
-                    </Grid>
-                </Grid>
-            </Container>
-        </section>
-    );
-}
-
 function Banner() {
     const classes = useStyles();
     return (
@@ -235,19 +192,18 @@ export default function LIInscrever(props) {
     return (
         <main className={classes.root}>
             <Head>
-                <title>Artesã Criativa - Mari Ubialli</title>
-                <meta
-                    name="description"
-                    content="Vem aprender como ir do zero a 5k criando peças exclusivas e seus próprios moldes em feltro."
-                />
                 <meta name="robots" content="noindex,nofollow"></meta>
             </Head>
 
             <div id="form" />
-            <Banner />
 
+            <Banner />
             <Promessa {...props} />
-            <Programacao />
+
+            <section className={classes.sectionConteudo}>
+                <Programacao />
+            </section>
+
             <Conteudo />
             <SobreMim />
             <section className={classes.sectionCta}>

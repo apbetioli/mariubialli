@@ -8,6 +8,7 @@ import React from "react";
 import Countdown from "react-countdown";
 import ColorButton from "../../../components/ColorButton";
 import Footer from "../../../components/Footer";
+import Programacao from "../programacao";
 
 const BorderLinearProgress = withStyles((theme) => ({
   root: {
@@ -218,30 +219,6 @@ function Contador() {
               date={new Date("2021-10-18 08:00:00")}
               renderer={countdownRenderer}
             />
-          </Grid>
-        </Grid>
-      </Container>
-    </section>
-  );
-}
-
-function Programacao() {
-  const classes = useStyles();
-  return (
-    <section>
-      <Container maxWidth="sm">
-        <Grid container className={classes.grid}>
-          <Grid item xs={12}>
-            <h3 className={classes.centered}>Anote na sua agenda</h3>
-            <p>
-              <EventAvailableIcon className={classes.heart} /><span> <b>18/10 - Aula 01</b> - Como começar a criar e não depender mais de moldes existentes</span>
-            </p>
-            <p>
-              <EventAvailableIcon className={classes.heart} /><span> <b>20/10 - Aula 02</b> - Como vender todos os dias as suas criações</span>
-            </p>
-            <p>
-              <EventAvailableIcon className={classes.heart} /><span> <b>22/10 - Aula 03</b> - Conteúdo surpresa</span>
-            </p>
           </Grid>
         </Grid>
       </Container>
