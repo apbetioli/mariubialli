@@ -8,13 +8,19 @@ import CloseIcon from '@material-ui/icons/Close';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import HttpsIcon from '@material-ui/icons/Https';
+import image from "assets/img/li/banner-dac.webp";
+import price from 'assets/img/li/price.webp';
+import tudoIsso from 'assets/img/tudoisso.webp';
 import Head from "next/head";
+import Image from 'next/image';
 import { useRouter } from "next/router";
-import { default as React, useEffect } from "react";
+import { default as React } from "react";
 import BotaoWhats from "../../../components/BotaoWhats";
 import ColorButton from "../../../components/ColorButton";
 import Footer from "../../../components/Footer";
 import Form from "../../../components/Form";
+import ScrollTo from "../../../components/ScrollTo";
+import Banner from "../banner";
 import SobreMim from "../sobre";
 
 const useStyles = makeStyles((theme) => ({
@@ -170,17 +176,22 @@ const deliverables = [
     {
         title: "Ciclo evolutivo",
         image: require("assets/img/ls1/testes.webp"),
-        description: "Neste módulo vamos falar sobre o ciclo evolutivo de criação e testes das peças, e dicas valiosas que podem fazer você economizar muito tempo neste processo."
+        description: "Vamos explorar o ciclo evolutivo de criação e testes das peças com dicas valiosas que podem fazer você economizar muito tempo neste processo."
     },
     {
-        title: "Criação da Apostila",
+        title: "Criação da apostila",
         image: require("assets/img/ls1/apostila.webp"),
-        description: "Vamos transformar seus moldes em uma apostila. Ao final deste módulo você vai sair com uma apostila em formato PDF prontinha para venda."
+        description: "Vamos transformar seus moldes em uma apostila. Ao final você vai sair com uma apostila em formato PDF prontinha para venda."
+    },
+    {
+        title: "Criação de um curso",
+        image: require("assets/img/ls1/curso.webp"),
+        description: "Vou te contar como e por que criar seu curso. Vamos explorar tudo o que deu certo e o que não deu certo nos meus cursos para que você comece do jeito certo. Equipamentos, preparação, dicas de edição e muito mais.",
     },
     {
         title: "Como vender",
         image: require("assets/img/ls1/vender2.webp"),
-        description: "Você vai aprender a divulgar e fazer o lançamento da sua apostila de uma forma muito eficiente, utilizando as mesmas ferramentas que eu utilizo nos meus lançamentos."
+        description: "Você vai aprender a divulgar da forma certa, como apresentar seus produtos e como antecipar e lançar sua apostila. Tudo isso usando o meu método DAC - Divulgação Ativa e Conexão - para vender todos os dias"
     },
 ];
 
@@ -188,19 +199,19 @@ const bonus = [
     {
         title: "Mentoria semanal",
         image: require("assets/img/ls1/live.webp"),
-        description: "Uma mentoria em grupo ao vivo comigo toda semana para tirar dúvidas",
+        description: "Uma mentoria em grupo ao vivo comigo toda semana para tirar dúvidas e discutir estratégias",
         price: "R$ 5000"
     },
     {
-        title: "Criação de cursos",
-        image: require("assets/img/ls1/curso.webp"),
-        description: "Vou te contar como e por que criar seu curso. Vamos explorar tudo o que deu certo e o que não deu certo nos meus cursos para que você comece do jeito certo. Equipamentos, preparação, dicas de edição e muito mais.",
+        title: "Grupo no WhatsApp comigo",
+        image: require("assets/img/ls1/whatsapp.webp"),
+        description: "Um grupo fechado comigo e com as outras alunas para tirar dúvidas diretamente comigo, receber notificações e compartilhar resultados. Você nunca estará sozinha.",
         price: "R$ 197"
     },
     {
         title: "Como anunciar nas redes sociais",
         image: require("assets/img/ls1/faceads.webp"),
-        description: "Aprenda o que funciona (e o que não funciona) na criação de anúncios pagos para vender todos os dias. Tudo o que eu vou ensinar aqui foi testado na prática na venda dos meus cursos e apostilas. 100% voltado para artesãs.",
+        description: "Você vai aprender a anunciar seus produtos nas redes sociais. Tudo o que eu vou ensinar aqui foi testado na prática na venda dos meus cursos e apostilas.",
         price: "R$ 997"
     },
     {
@@ -211,9 +222,9 @@ const bonus = [
     },
     {
         title: "Kit de Recortes à Laser Joias Raras",
-        image: require("assets/img/ls1/kit.webp"),
-        description: "Você vai receber na sua casa um kit de uma boneca Joias Raras prontinho para você começar a vender já desde o início.",
-        price: "R$ 34,90"
+        image: require("assets/img/li/kit.webp"),
+        description: "Você vai receber na sua casa um kit de recortes em feltro das 7 bonecas Joias Raras prontinho para você confeccionar e começar a vender já desde o início.",
+        price: "R$ 209,90"
     },
     {
         title: "Curso Renascer em Jesus",
@@ -224,25 +235,32 @@ const bonus = [
     {
         title: "Templates de apostila",
         image: require("assets/img/ls1/template.webp"),
-        description: "Vou te dar dois templates de apostila que você poderá usar como base para montar as suas. Vai ficar muito mais fácil e ainda vai economizar tempo. É copiar, colar e alterar fotos e textos, a estrutura está pronta.",
+        description: "Vou te dar dois templates de apostila que você poderá usar como base para montar as suas apostilas. Vai ficar muito mais fácil e ainda vai economizar tempo. É copiar, colar e alterar fotos e textos, a estrutura está pronta.",
         price: "R$ 97"
     },
     {
         title: "Comunidade no facebook",
         image: require("assets/img/ls1/comunidade.webp"),
         description: "A comunidade será o lugar para tirar dúvidas sobre o curso e interagir com as outras alunas, compartilhar aprendizados e resultados. Você nunca estará sozinha."
-    },
-    {
-        title: "Canal no telegram",
-        image: require("assets/img/ls1/telegram.webp"),
-        description: "Uma via direta entre eu e você para você receber notificações das aulas e mentorias para não ficar de fora."
     }
 ];
 
 const faqs = [
     {
+        pergunta: "Não sei desenhar, vou conseguir fazer?",
+        resposta: "Sim! Você conseguirá criar de uma maneira simples e prática mesmo sem saber desenhar."
+    },
+    {
+        pergunta: "Sou iniciante, vou conseguir fazer?",
+        resposta: "Se você já sabe confeccionar em feltro, você poderá iniciar o curso diretamente. Caso nunca tenha tido contato, nós disponibilizamos como bônus o meu Curso Bonecas Joias Raras onde você poderá aprender a confeccionar as peças passo a passo e terá o contato necessário com feltro para poder começar a criar seus moldes e peças exclusivas."
+    },
+    {
+        pergunta: "Não tenho computador, vou conseguir fazer?",
+        resposta: "Não, um computador com mouse é necessário para fazer a vetorização dos moldes."
+    },
+    {
         pergunta: "Quando começa o curso?",
-        resposta: "A aula inaugural será dia 11/09/2021"
+        resposta: "A aula inaugural será dia 04/11/2021"
     },
     {
         pergunta: "Quando vou receber o curso?",
@@ -253,16 +271,8 @@ const faqs = [
         resposta: "O curso é disponibilizado na plataforma Nutror da Eduzz e o acesso é enviado ao email cadastrado na compra. Certifique-se que o email está correto para não haver problemas na hora da entrega."
     },
     {
-        pergunta: "Sou iniciante, vou conseguir fazer?",
-        resposta: "Sim! Se você já sabe confeccionar em feltro, você poderá iniciar o curso diretamente. Caso nunca tenha tido contato, nós disponibilizamos como bônus o meu Curso Bonecas Joias Raras onde você poderá aprender a confeccionar as peças passo a passo."
-    },
-    {
-        pergunta: "Não tenho computador, vou conseguir fazer?",
-        resposta: "Um computador será necessário para fazer a vetorização dos moldes."
-    },
-    {
         pergunta: "Por quanto tempo vou poder assistir as aulas?",
-        resposta: "O acesso à plataforma do curso, lives e comunidade tem a duração de 1 ano. Podendo ser renovado após esse prazo."
+        resposta: "O acesso à plataforma do curso, bônus e comunidade tem a duração de 1 ano. Podendo ser renovado após esse prazo."
     },
     {
         pergunta: "Quais são as formas de pagamento?",
@@ -273,10 +283,13 @@ const faqs = [
 const buttonStyle = ColorButton.whatsapp;
 
 function CTA(props) {
+    const classes = useStyles();
     return (
-        <CheckoutButton>
-            {props.children}
-        </CheckoutButton>
+        <ScrollTo target="#pricing">
+            <ColorButton className={classes.cta} style={buttonStyle}>
+                {props.children}
+            </ColorButton>
+        </ScrollTo>
     );
 }
 
@@ -334,19 +347,18 @@ function Entregaveis() {
     const classes = useStyles();
     return (
         <section>
-            <Container maxWidth="lg">
+            <Container maxWidth="md">
                 <Grid container className={classes.grid}>
                     <Grid item className={classes.centered} xs={12}>
                         <h1>Tudo o que você <span className={classes.highlight}>vai aprender</span></h1>
                     </Grid>
 
                     {deliverables.map((item) => (
-                        <Grid container item xs={12} sm={6} md={4} spacing={0} key={item.title}>
+                        <Grid container item xs={12} md={6} spacing={0} key={item.title}>
                             <Card raised={true} className={classes.card}>
                                 <CardMedia
                                     component="img"
                                     alt={item.title}
-                                    height="200"
                                     image={item.image}
                                     title={item.title}
                                 />
@@ -372,7 +384,7 @@ function Promessa() {
             <Container maxWidth="md">
                 <Grid container spacing={2}>
                     <Grid item className={classes.centered} xs={12}>
-                        <h3><span className={classes.highlight}>do zero a 5k</span> por mês criando peças exclusivas e moldes em feltro</h3>
+                        <h3>Saia do zero e fature até 5k criando peças exclusivas e moldes em feltro</h3>
                         <div className={classes.videoWrapper}>
                             <iframe
                                 loading="lazy"
@@ -383,7 +395,7 @@ function Promessa() {
                             ></iframe>
                         </div>
                         <CTA>
-                            Quero criar meus moldes
+                            Quero me inscrever no desafio
                         </CTA>
                     </Grid>
                 </Grid>
@@ -396,7 +408,7 @@ function DedoNaFerida() {
     const classes = useStyles();
     return (
         <section className={classes.sectionConteudo}>
-            <Container maxWidth="md">
+            <Container maxWidth="sm">
                 <Grid container className={classes.grid}>
                     <Grid item xs={12}>
                         <h1 className={classes.centered}>Este desafio é <span className={classes.highlight}>especialmente para você</span> que</h1>
@@ -412,17 +424,14 @@ function DedoNaFerida() {
     );
 }
 
-function Objecoes() {
+function Desejo() {
     const classes = useStyles();
     return (
         <section className={classes.sectionConteudo}>
-            <Container maxWidth="md">
+            <Container maxWidth="sm">
                 <Grid container className={classes.grid} spacing={3}>
                     <Grid item xs={12}>
-                        <h1 className={classes.centered}>Seu sonho é <span className={classes.highlight}>viver de artesanato em feltro</span>?</h1>
-                        <h3 className={classes.centered}>
-                            <b>Então você precisa parar de perder tempo!</b>
-                        </h3>
+                        <h3 className={classes.centered}>Seu sonho é <span className={classes.highlight}>viver de feltro?</span></h3>
                         <p>
                             Meu objetivo é levar você artesã que já trabalha com artesanato em feltro a criar seus moldes para se diferenciar no mercado.
                         </p>
@@ -443,9 +452,9 @@ function Metodo() {
     const classes = useStyles();
     return (
         <section className={classes.sectionConteudo}>
-            <Container maxWidth="md">
+            <Container maxWidth="sm">
                 <Grid container className={classes.grid} spacing={3}>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} className={classes.justify}>
                         <h1 className={classes.centered}>Venda <span className={classes.highlight}>todos os dias</span></h1>
                         <p>
                             O <b>Método DAC (Divulgação Ativa e Conexão)</b> foi o método que eu concebi para ter vendas todos os dias.
@@ -471,14 +480,14 @@ function Bonus() {
 
     return (
         <section>
-            <Container maxWidth="lg">
+            <Container maxWidth="md">
                 <Grid container className={classes.grid}>
                     <Grid item className={classes.centered} xs={12}>
                         <h1>E não podem faltar os <span className={classes.highlight}>Bônus</span></h1>
                     </Grid>
 
                     {bonus.map((item) => (
-                        <Grid container item xs={12} sm={6} md={4} spacing={0} key={item.title}>
+                        <Grid container item xs={12} md={6} spacing={0} key={item.title}>
                             <Card raised={true} className={classes.card}>
                                 <CardMedia
                                     component="img"
@@ -510,13 +519,13 @@ function Preco() {
             <Container maxWidth="md">
                 <Grid container className={classes.grid} spacing={3}>
                     <Grid item className={classes.centered} xs={12} md={6}>
-                        <img src={require("assets/img/tudoisso.webp")} alt="" className={classes.preco} />
+                        <Image src={tudoIsso} layout="responsive" width={500} height={200} alt="" className={classes.preco} />
                     </Grid>
                     <Grid item className={classes.centered} xs={12} md={6}>
-                        <img src={require("assets/img/ls1/price.webp")} alt="" className={classes.preco} />
+                        <Image src={price} layout="responsive" width={400} height={160} alt="" className={classes.preco} />
                         <div className={classes.precoAviso}></div>
                         <CheckoutButton>
-                            Quero me inscrever agora mesmo
+                            Quero me inscrever no desafio
                         </CheckoutButton>
                     </Grid>
                 </Grid>
@@ -529,7 +538,7 @@ function Garantia() {
     const classes = useStyles();
     return (
         <section>
-            <Container maxWidth="md">
+            <Container maxWidth="sm">
                 <Grid container className={classes.grid} spacing={3}>
                     <Grid item className={classes.centered} xs={12}>
                         <img src={require("assets/img/ls1/garantia30.webp")} alt="Garantia de 30 dias" />
@@ -574,6 +583,9 @@ function FAQs() {
                                 </AccordionDetails>
                             </Accordion>
                         ))}
+                        <CheckoutButton>
+                            Quero me inscrever no desafio
+                        </CheckoutButton>
                     </Grid>
                 </Grid>
             </Container>
@@ -602,7 +614,7 @@ function Testemunhos1() {
     const classes = useStyles();
     return (
         <section>
-            <Container maxWidth="md" className={classes.centered}>
+            <Container maxWidth="sm" className={classes.centered}>
                 <Grid container className={classes.grid} spacing={1}>
                     <Grid item className={classes.centered} xs={12}>
                         <h1>O que as alunas estão falando da Mari?</h1>
@@ -672,13 +684,12 @@ export default function LIMatriculasAbertas(props) {
                 <meta name="robots" content="noindex,nofollow"></meta>
             </Head>
 
+            <Banner image={image} alt="Desafio Artesã Criativa" />
             <Promessa />
-            <Objecoes />
+            <Desejo />
             <Entregaveis />
-            <Metodo />
             <Bonus />
             <div id="pricing" />
-            <DedoNaFerida />
             <Preco />
             <Garantia />
             <SobreMim />
@@ -690,3 +701,7 @@ export default function LIMatriculasAbertas(props) {
         </main>
     );
 }
+
+LIMatriculasAbertas.defaultProps = {
+    origin: 'og',
+};

@@ -1,8 +1,8 @@
-import LIEspera from ".";
+import LIMatriculasAbertas from ".";
 
-export default function LS1InscreverEspecifico(props) {
+export default function LIMatriculasAbertasEspecifico(props) {
     return (
-        <LIEspera {...props} />
+        <LIMatriculasAbertas {...props} />
     );
 }
 
@@ -13,7 +13,7 @@ export async function getStaticProps(context) {
 
 export async function getStaticPaths() {
     const paths = [
-        { params: { origin: 'ig' } },
+        { params: { origin: 'og' } },
         { params: { origin: 'fb' } },
         { params: { origin: 'gg' } },
         { params: { origin: 'tg' } },

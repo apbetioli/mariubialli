@@ -2,13 +2,12 @@ import { Container, Grid, makeStyles, Typography, withStyles } from "@material-u
 import Box from '@material-ui/core/Box';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { WhatsApp } from "@material-ui/icons";
-import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 import Head from "next/head";
 import React from "react";
-import Countdown from "react-countdown";
 import ColorButton from "../../../components/ColorButton";
 import Footer from "../../../components/Footer";
 import Banner from "../banner";
+import Contador from "../contador";
 import Programacao from "../programacao";
 
 const BorderLinearProgress = withStyles((theme) => ({
@@ -185,37 +184,6 @@ function DoisPassos() {
   )
 }
 
-const countdownRenderer = ({ days, hours, minutes, seconds, completed }) => {
-  if (completed) {
-    return <p></p>;
-  } else {
-    return (
-      <>
-        <h3>O evento começa em</h3>
-        <p>{days} dias {hours} horas {minutes} minutos {seconds} segundos</p>
-      </>
-    );
-  }
-};
-
-function Contador() {
-  const classes = useStyles();
-  return (
-    <section className={classes.sectionSobreMim}>
-      <Container maxWidth="sm">
-        <Grid container className={classes.grid}>
-          <Grid item xs={12} className={classes.centered}>
-            <Countdown
-              date={new Date("2021-10-18 08:00:00")}
-              renderer={countdownRenderer}
-            />
-          </Grid>
-        </Grid>
-      </Container>
-    </section>
-  );
-}
-
 export default function LIObrigado() {
 
   return (
@@ -231,7 +199,7 @@ export default function LIObrigado() {
 
       <Banner />
       <DoisPassos />
-      <Contador />
+      <Contador date={new Date("2021-10-18 08:00:00")} title="A Maratona começa em" />
       <Programacao />
 
       <Footer />

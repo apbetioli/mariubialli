@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core";
+import image from "assets/img/li/banner-mac.webp"
 
 const useStyles = makeStyles((theme) => ({
     centered: {
@@ -15,13 +16,18 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Banner() {
+export default function Banner({image, alt}) {
     const classes = useStyles();
     return (
         <div className={classes.sectionSobreMim}>
             <div className={classes.centered}>
-                <img className={classes.foto} src={require("assets/img/li/banner-mac.webp")} alt="Maratona Artesã Criativa" />
+                <img className={classes.foto} src={image} alt={alt} />
             </div>
         </div>
     );
+}
+
+Banner.defaultProps = {
+    image: image,
+    alt: "Maratona Artesã Criativa"
 }
