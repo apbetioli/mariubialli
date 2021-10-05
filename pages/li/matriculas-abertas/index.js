@@ -379,7 +379,7 @@ function Promessa() {
             <Container maxWidth="md">
                 <Grid container spacing={2}>
                     <Grid item className={classes.centered} xs={12}>
-                        <h3 className={classes.title}>Vá <span className={classes.highlight}>do zero a 5k</span> de faturamento criando peças exclusivas e moldes em feltro</h3>
+                        <h3>Vá <span className={classes.highlight}>do zero a 5k</span> de faturamento criando peças exclusivas e moldes em feltro</h3>
                         <div className={classes.videoWrapper}>
                             <iframe
                                 loading="lazy"
@@ -578,6 +578,8 @@ function FAQs() {
                                 </AccordionDetails>
                             </Accordion>
                         ))}
+                    </Grid>
+                    <Grid item xs={12}>
                         <CheckoutButton>
                             Quero me inscrever no desafio
                         </CheckoutButton>

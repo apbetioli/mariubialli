@@ -138,7 +138,7 @@ function Promessa(props) {
             <Container maxWidth="sm">
                 <Grid container>
                     <Grid item className={classes.centered} xs={12}>
-                        <h3 className={classes.title}>Vá <span className={classes.highlight}>do zero a 5k</span> de faturamento criando peças exclusivas e moldes em feltro</h3>
+                        <h3>Vá <span className={classes.highlight}>do zero a 5k</span> de faturamento criando peças exclusivas e moldes em feltro</h3>
                     </Grid>
                     <Grid item className={classes.centered} xs={12} md={6}>
                         <i><EventAvailableIcon className={classes.heart} /> </i>De 18/10 a 22/10
