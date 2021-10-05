@@ -191,7 +191,7 @@ const deliverables = [
     {
         title: "Como vender",
         image: require("assets/img/ls1/vender2.webp"),
-        description: "Você vai aprender a divulgar da forma certa, como apresentar seus produtos e como antecipar e lançar sua apostila. Tudo isso usando o meu método DAC - Divulgação Ativa e Conexão - para vender todos os dias"
+        description: "Você vai aprender como apresentar seus produtos, lançar sua apostila e trabalhar a divulgação para vender todos os dias."
     },
 ];
 
@@ -199,13 +199,13 @@ const bonus = [
     {
         title: "Mentoria semanal",
         image: require("assets/img/ls1/live.webp"),
-        description: "Uma mentoria em grupo ao vivo comigo toda semana para tirar dúvidas e discutir estratégias",
+        description: "Mentorias online em grupo toda semana por 12 meses comigo. As mentorias ficam gravadas e são disponibilizadas na área de membros para assistir quantas vezes quiser.",
         price: "R$ 5000"
     },
     {
-        title: "Grupo no WhatsApp comigo",
+        title: "Grupo no WhatsApp",
         image: require("assets/img/ls1/whatsapp.webp"),
-        description: "Um grupo fechado comigo e com as outras alunas para tirar dúvidas diretamente comigo, receber notificações e compartilhar resultados. Você nunca estará sozinha.",
+        description: "Um grupo no Whats comigo e com as outras alunas para tirar dúvidas, receber notificações e compartilhar resultados. Você nunca estará sozinha.",
         price: "R$ 197"
     },
     {
@@ -237,11 +237,6 @@ const bonus = [
         image: require("assets/img/ls1/template.webp"),
         description: "Vou te dar dois templates de apostila que você poderá usar como base para montar as suas apostilas. Vai ficar muito mais fácil e ainda vai economizar tempo. É copiar, colar e alterar fotos e textos, a estrutura está pronta.",
         price: "R$ 97"
-    },
-    {
-        title: "Comunidade no facebook",
-        image: require("assets/img/ls1/comunidade.webp"),
-        description: "A comunidade será o lugar para tirar dúvidas sobre o curso e interagir com as outras alunas, compartilhar aprendizados e resultados. Você nunca estará sozinha."
     }
 ];
 
@@ -384,7 +379,7 @@ function Promessa() {
             <Container maxWidth="md">
                 <Grid container spacing={2}>
                     <Grid item className={classes.centered} xs={12}>
-                        <h3>Saia do zero e fature até 5k criando peças exclusivas e moldes em feltro</h3>
+                        <h3 className={classes.title}>Vá <span className={classes.highlight}>do zero a 5k</span> de faturamento criando peças exclusivas e moldes em feltro</h3>
                         <div className={classes.videoWrapper}>
                             <iframe
                                 loading="lazy"
