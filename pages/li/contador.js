@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const countdownRenderer = ({ days, hours, minutes, seconds, completed }, classes) => {
+const countdownRenderer = ({ days, hours, minutes, seconds, completed, end }, classes) => {
     if (completed) {
         return <p>{end}</p>;
     } else {
