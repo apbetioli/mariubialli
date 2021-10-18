@@ -141,7 +141,7 @@ function Promessa() {
                             <iframe
                                 loading="lazy"
                                 className={classes.video}
-                                src={"https://www.youtube.com/embed/3KXsdpul16c?rel=0"}
+                                src={"https://www.youtube.com/embed/3KXsdpul16c?rel=0&modestbranding=1&showinfo=0"}
                                 frameBorder="0"
                                 allowFullScreen
                             ></iframe>
@@ -173,6 +173,12 @@ function Conteudo() {
                     <Grid item className={classes.centered} xs={12}>
                         <ColorButton style={ColorButton.facebook} href="https://bit.ly/mac-comunidade-aula-01" target="_blank">
                             Entrar para a comunidade da maratona no facebook
+                        </ColorButton>
+                    </Grid>
+                    <Grid item className={classes.centered} xs={12}>
+                        <p>Se você ainda não está no grupo do whatsapp, entre clicando no botão para receber notificações das aulas</p>
+                        <ColorButton style={ColorButton.whatsapp} href="https://bit.ly/mac-comunidade-aula-01" target="_blank">
+                            Entrar para a grupo da maratona no WhatsApp
                         </ColorButton>
                     </Grid>
                 </Grid>
