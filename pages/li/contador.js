@@ -47,7 +47,7 @@ export default function Contador({ title, date }) {
 }
 
 Contador.defaultProps = {
-    date: new Date("2021-10-18 08:00:00"),
+    date: new Date("2021-10-25 08:00:00"),
     title: "A maratona começa em",
     end: "O tempo acabou!"
 }
