@@ -147,16 +147,11 @@ function Promessa() {
                             ></iframe>
                         </div>
                     </Grid>
-                    <Hidden xsDown>
-                        <Grid item className={classes.centered} xs={12} sm={4}>
-                            <Image src={aula01} layout="responsive" width={640} height={360} alt="" className={classes.thumb} />
-                        </Grid>
-                    </Hidden>
-                    <Grid item className={classes.centered} xs={12} sm={4}>
-                        <Image src={aula02} layout="responsive" width={640} height={360} alt="" className={classes.thumb} />
-                    </Grid>
-                    <Grid item className={classes.centered} xs={12} sm={4}>
-                        <Image src={aula03} layout="responsive" width={640} height={360} alt="" className={classes.thumb} />
+                    <Grid item className={classes.centered} xs={12} >
+                        <ColorButton style={ColorButton.facebook} href="https://bit.ly/mac-comunidade-aula-01" target="_blank">
+                            Entrar para a comunidade da maratona no facebook
+                        </ColorButton>
+                        <br />
                     </Grid>
                 </Grid>
             </Container>
@@ -168,12 +163,18 @@ function Conteudo() {
     const classes = useStyles();
     return (
         <section>
-            <Container maxWidth="sm">
-                <Grid container className={classes.grid}>
-                    <Grid item className={classes.centered} xs={12}>
-                        <ColorButton style={ColorButton.facebook} href="https://bit.ly/mac-comunidade-aula-01" target="_blank">
-                            Entrar para a comunidade da maratona no facebook
-                        </ColorButton>
+            <Container maxWidth="md">
+                <Grid container spacing={2} className={classes.grid}>
+                    <Hidden xsDown>
+                        <Grid item className={classes.centered} xs={12} sm={4}>
+                            <Image src={aula01} layout="responsive" width={640} height={360} alt="" className={classes.thumb} />
+                        </Grid>
+                    </Hidden>
+                    <Grid item className={classes.centered} xs={12} sm={4}>
+                        <Image src={aula02} layout="responsive" width={640} height={360} alt="" className={classes.thumb} />
+                    </Grid>
+                    <Grid item className={classes.centered} xs={12} sm={4}>
+                        <Image src={aula03} layout="responsive" width={640} height={360} alt="" className={classes.thumb} />
                     </Grid>
                     <Grid item className={classes.centered} xs={12}>
                         <p>Se você ainda não está no grupo do whatsapp, entre clicando no botão para receber notificações das aulas</p>
