@@ -1,4 +1,4 @@
-import { Container, Grid } from "@material-ui/core";
+import { Container, Grid, Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Head from "next/head";
 import Image from 'next/image';
@@ -147,9 +147,11 @@ function Promessa() {
                             ></iframe>
                         </div>
                     </Grid>
-                    <Grid item className={classes.centered} xs={12} sm={4}>
-                        <Image src={aula01} layout="responsive" width={640} height={360} alt="" className={classes.thumb} />
-                    </Grid>
+                    <Hidden xsDown>
+                        <Grid item className={classes.centered} xs={12} sm={4}>
+                            <Image src={aula01} layout="responsive" width={640} height={360} alt="" className={classes.thumb} />
+                        </Grid>
+                    </Hidden>
                     <Grid item className={classes.centered} xs={12} sm={4}>
                         <Image src={aula02} layout="responsive" width={640} height={360} alt="" className={classes.thumb} />
                     </Grid>
