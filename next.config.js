@@ -11,6 +11,10 @@ module.exports = withPlugins([[withImages]], {
   async rewrites() {
     return [
       {
+        source: '/obrigado/:sub*',
+        destination: '/aula-01',
+      },
+      {
         source: '/:sub*',
         destination: '/li/:sub*',
       },
@@ -18,7 +22,11 @@ module.exports = withPlugins([[withImages]], {
   },
   async redirects() {
     return [
-      /*
+      {
+        source: '/matriculas-abertas',
+        destination: '/aula-01',
+        permanent: false,
+      },
       {
         source: '/aula-03',
         destination: '/aula-01',
@@ -29,7 +37,6 @@ module.exports = withPlugins([[withImages]], {
         destination: '/aula-01',
         permanent: false,
       },
-      */
       {
         source: '/',
         destination: '/inscrever',

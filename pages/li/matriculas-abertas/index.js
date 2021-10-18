@@ -193,6 +193,12 @@ const deliverables = [
         image: require("assets/img/ls1/vender2.webp"),
         description: "Você vai aprender como apresentar seus produtos, lançar sua apostila e trabalhar a divulgação para vender todos os dias."
     },
+    {
+        title: "Marketing na prática",
+        image: require("assets/img/ls1/faceads.webp"),
+        description: "Você vai aprender como divulgar seus produtos de forma automática. Tudo o que eu vou ensinar aqui foi testado na prática na venda dos meus cursos e apostilas.",
+        price: "R$ 997"
+    },
 ];
 
 const bonus = [
@@ -209,12 +215,6 @@ const bonus = [
         price: "R$ 197"
     },
     {
-        title: "Marketing na prática",
-        image: require("assets/img/ls1/faceads.webp"),
-        description: "Você vai aprender como divulgar seus produtos de forma automática. Tudo o que eu vou ensinar aqui foi testado na prática na venda dos meus cursos e apostilas.",
-        price: "R$ 997"
-    },
-    {
         title: "Curso Joias Raras Premium",
         image: require("assets/img/jr/bonecas.webp"),
         description: "Aprenda técnicas de criação de bonecas associado a outros materiais e projetos únicos. Quem é iniciante no feltro poderá aprender tudo o que precisa para fazer o curso.",
@@ -223,8 +223,8 @@ const bonus = [
     {
         title: "Kit de Recortes à Laser Joias Raras",
         image: require("assets/img/li/kit.webp"),
-        description: "Você vai receber na sua casa um kit de recortes em feltro das 7 bonecas Joias Raras prontinho para você confeccionar e começar a vender já desde o início.",
-        price: "R$ 209,90"
+        description: "Você vai receber na sua casa um kit de recortes em feltro de uma boneca Joias Raras prontinho para você confeccionar e começar a vender já desde o início.",
+        price: "R$ 34,90"
     },
     {
         title: "Curso Renascer em Jesus",
@@ -237,6 +237,11 @@ const bonus = [
         image: require("assets/img/ls1/template.webp"),
         description: "Vou te dar dois templates de apostila que você poderá usar como base para montar as suas apostilas. Vai ficar muito mais fácil e ainda vai economizar tempo. É copiar, colar e alterar fotos e textos, a estrutura está pronta.",
         price: "R$ 97"
+    },
+    {
+        title: "10% de desconto em materiais",
+        image: require("assets/img/ls1/template.webp"),
+        description: "Você vai receber 10% de desconto na lojamariubialli.com.br para comprar feltro, recortes a laser e outros materiais, durante o prazo de vigência do curso.",
     }
 ];
 
@@ -379,7 +384,7 @@ function Promessa() {
             <Container maxWidth="md">
                 <Grid container spacing={2}>
                     <Grid item className={classes.centered} xs={12}>
-                        <h3>Vá <span className={classes.highlight}>do zero a 5k</span> de faturamento criando peças exclusivas e moldes em feltro</h3>
+                        <h3>Saia do zero e fature de 1 a 5k criando peças exclusivas e moldes em feltro</h3>
                         <div className={classes.videoWrapper}>
                             <iframe
                                 loading="lazy"
