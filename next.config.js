@@ -33,11 +33,6 @@ module.exports = withPlugins([[withImages]], {
         permanent: false,
       },
       {
-        source: '/aula-02',
-        destination: '/aula-01',
-        permanent: false,
-      },
-      {
         source: '/',
         destination: '/inscrever',
         permanent: false,

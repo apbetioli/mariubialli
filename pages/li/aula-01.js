@@ -1,10 +1,10 @@
-import { Container, Grid, Hidden } from "@material-ui/core";
+import { Container, Grid, Hidden, Link } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Head from "next/head";
 import Image from 'next/image';
 import { default as React } from "react";
 import aula01 from "../../assets/img/li/aula-01-a.webp";
-import aula02 from "../../assets/img/li/aula-02-b.webp";
+import aula02 from "../../assets/img/li/aula-02.webp";
 import aula03 from "../../assets/img/li/aula-03-b.webp";
 import ColorButton from "../../components/ColorButton";
 import Footer from "../../components/Footer";
@@ -171,7 +171,9 @@ function Conteudo() {
                         </Grid>
                     </Hidden>
                     <Grid item className={classes.centered} xs={12} sm={4}>
-                        <Image src={aula02} layout="responsive" width={640} height={360} alt="" className={classes.thumb} />
+                        <Link href="/aula-02">
+                            <Image src={aula02} layout="responsive" width={640} height={360} alt="" className={classes.thumb} />
+                        </Link>
                     </Grid>
                     <Grid item className={classes.centered} xs={12} sm={4}>
                         <Image src={aula03} layout="responsive" width={640} height={360} alt="" className={classes.thumb} />
