@@ -1,4 +1,4 @@
-import { Container, Grid, Link } from "@material-ui/core";
+import { Container, Grid, Hidden, Link } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Head from "next/head";
 import Image from 'next/image';
@@ -141,24 +141,20 @@ function Promessa() {
                             <iframe
                                 loading="lazy"
                                 className={classes.video}
-                                src={"https://www.youtube.com/embed/qD67ke31KX0?rel=0"}
+                                src={"https://www.youtube.com/embed/zwFF30Cuxjs?rel=0&modestbranding=1&showinfo=0"}
                                 frameBorder="0"
                                 allowFullScreen
                             ></iframe>
                         </div>
+                        <ColorButton style={ColorButton.whatsapp} href="https://bit.ly/mac-vip-aula-03" target="_blank">
+                            Entrar para o grupo VIP do WhatsApp
+                        </ColorButton>
                     </Grid>
-                    <Grid item className={classes.centered} xs={12} sm={4}>
-                        <Link href="/aula-01">
-                            <Image src={aula01} layout="responsive" width={640} height={360} alt="" className={classes.thumb} />
-                        </Link>
-                    </Grid>
-                    <Grid item className={classes.centered} xs={12} sm={4}>
-                        <Link href="/aula-02">
-                            <Image src={aula02} layout="responsive" width={640} height={360} alt="" className={classes.thumb} />
-                        </Link>
-                    </Grid>
-                    <Grid item className={classes.centered} xs={12} sm={4}>
-                        <Image src={aula03} layout="responsive" width={640} height={360} alt="" className={classes.thumb} />
+                    <Grid item className={classes.centered} xs={12} >
+                        <ColorButton style={ColorButton.facebook} href="https://bit.ly/mac-comunidade-aula-03" target="_blank">
+                            Entrar para a comunidade da maratona no facebook
+                        </ColorButton>
+                        <br />
                     </Grid>
                 </Grid>
             </Container>
@@ -170,16 +166,28 @@ function Conteudo() {
     const classes = useStyles();
     return (
         <section>
-            <Container maxWidth="sm">
-                <Grid container className={classes.grid}>
-                    <Grid item className={classes.centered} xs={12}>
-                        <ColorButton style={ColorButton.facebook} href="https://bit.ly/mac-comunidade-aula-03" target="_blank">
-                            Entrar para a comunidade da maratona no facebook
-                        </ColorButton>
+            <Container maxWidth="md">
+                <Grid container spacing={2} className={classes.grid}>
+                    <Grid item className={classes.centered} xs={12} sm={4}>
+                        <Link href="/aula-01">
+                            <Image src={aula01} layout="responsive" width={640} height={360} alt="" className={classes.thumb} />
+                        </Link>
                     </Grid>
+
+                    <Grid item className={classes.centered} xs={12} sm={4}>
+                        <Link href="/aula-02">
+                            <Image src={aula02} layout="responsive" width={640} height={360} alt="" className={classes.thumb} />
+                        </Link>
+                    </Grid>
+
+                    <Hidden xsDown>
+                        <Grid item className={classes.centered} xs={12} sm={4}>
+                            <Image src={aula03} layout="responsive" width={640} height={360} alt="" className={classes.thumb} />
+                        </Grid>
+                    </Hidden>
                 </Grid>
             </Container>
-        </section>
+        </section >
     );
 }
 
