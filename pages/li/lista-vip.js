@@ -627,7 +627,7 @@ function Texto() {
                         <p>Então aproveita esse final de semana para maratonar as aulas e se preparar para se inscrever no curso completo na SEGUNDA-FEIRA.</p>
                         <p>Para acessar a gravação das aulas é só clicar no botão abaixo:</p>
                         <br />
-                        <ColorButton className={classes.cta} style={buttonStyle} href="https://bit.ly/mac-site-aulas" target="_blank">
+                        <ColorButton className={classes.cta} style={ColorButton.primary} href="https://bit.ly/mac-site-aulas" target="_blank">
                             CLIQUE AQUI PARA ASSISTIR ÀS AULAS
                         </ColorButton>
                         <br />
