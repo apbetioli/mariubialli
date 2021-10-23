@@ -15,13 +15,13 @@ import Head from "next/head";
 import Image from 'next/image';
 import { useRouter } from "next/router";
 import { default as React } from "react";
-import BotaoWhats from "../../../components/BotaoWhats";
-import ColorButton from "../../../components/ColorButton";
-import Footer from "../../../components/Footer";
-import Form from "../../../components/Form";
-import ScrollTo from "../../../components/ScrollTo";
-import Banner from "../banner";
-import SobreMim from "../sobre";
+import BotaoWhats from "../../components/BotaoWhats";
+import ColorButton from "../../components/ColorButton";
+import Footer from "../../components/Footer";
+import Form from "../../components/Form";
+import ScrollTo from "../../components/ScrollTo";
+import Banner from "./banner";
+import SobreMim from "./sobre";
 
 const useStyles = makeStyles((theme) => ({
     root: {
