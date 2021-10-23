@@ -400,7 +400,7 @@ function BonusVIP() {
                 <Grid container className={classes.grid}>
                     <Grid item className={classes.centered} xs={12}>
                         <h2>Presentes <span className={classes.highlight}>VIP</span></h2>
-                        <p>Se você for uma das 50 primeiras a se matricular para o Desafio, você receberá na sua casa:</p>
+                        <p>Se você for uma das <b>50 primeiras</b> a se matricular para o Desafio, você receberá na sua casa:</p>
                     </Grid>
 
                     {bonusVIP.map((item) => (
