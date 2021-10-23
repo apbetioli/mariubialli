@@ -11,9 +11,7 @@ import { default as React } from "react";
 import ColorButton from "../../components/ColorButton";
 import Footer from "../../components/Footer";
 import Banner from "./banner";
-import kitjr from "assets/img/li/kit.webp";
-import caderno from "assets/img/li/caderno.webp";
-import presentes from "assets/img/li/presentes.webp";
+import SobreMim from "./sobre";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -54,12 +52,9 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "white",
         margin: '16px 16px'
     },
-    section: {
-        marginTop: 30,
-    },
     sectionConteudo: {
         backgroundColor: "#ffe8ed",
-        paddingTop: 30,
+        marginTop: 50,
     },
     sectionGreen: {
         marginTop: 30,
@@ -243,13 +238,13 @@ const bonus = [
 const bonusVIP = [
     {
         title: "Kit de Materiais Joias Raras",
-        image: kitjr,
+        image: require("assets/img/li/kit.webp"),
         description: "Você vai receber na sua casa um kit de recortes em feltro e outros materiais para confecção de uma boneca Joias Raras, prontinho para você aproveitar ao máximo o curso.",
         price: "R$ 34,90"
     },
     {
         title: "Caderno de desenho personalizado",
-        image: caderno,
+        image: require("assets/img/li/caderno.webp"),
         description: "Você vai receber na sua casa um caderno de desenho e um lápis personalizado com seu nome. Tudo o que você precisa para começar a criar!",
     },
 
@@ -295,7 +290,7 @@ const buttonStyle = ColorButton.whatsapp;
 function CTA(props) {
     const classes = useStyles();
     return (
-        <ColorButton className={classes.cta} style={buttonStyle} href="https://bit.ly/mac-vip-site" target="_blank">
+        <ColorButton className={classes.cta} style={buttonStyle} href="https://bit.ly/mac-vip-aula-03" target="_blank">
             {props.children}
         </ColorButton>
     );
@@ -339,20 +334,19 @@ function Entregaveis() {
 function Promessa() {
     const classes = useStyles();
     return (
-        <section className={classes.sectionConteudo}>
-            <Container maxWidth="sm">
+        <section>
+            <Container maxWidth="md">
                 <Grid container spacing={2}>
                     <Grid item className={classes.centered} xs={12}>
-                        <h3>Nesta segunda-feira, dia 25 às 9h da manhã, abrem as matrículas para o <span className={classes.highlight}>desafio artesã criativa</span></h3>
-                        <p>Entre para o Grupo VIP e receba o link de matrícula <b>1 HORA ANTES DE TODO MUNDO</b> (ou seja, na segunda-feira <b>25/10 às 8 horas</b>)</p>
+                        <h3>Chegou o dia que você terá a chance de se tornar uma <span className={classes.highlight}>Artesã Criativa</span> e começar a faturar de 1k a 5k com suas peças exclusivas e moldes de feltro</h3>
+                    </Grid>
+                    <Grid item className={classes.centered} xs={12}>
+                        <p>Entre para o Grupo VIP e receba o link de matrícula 1 hora <b>ANTES DE TODO MUNDO</b>, ou seja, na segunda-feira <b>25/10 às 8 horas</b></p>
                     </Grid>
                     <Grid item className={classes.centered} xs={12}>
                         <CTA>
                             Quero entrar para o grupo VIP
                         </CTA>
-                    </Grid>
-                    <Grid item className={classes.centered} xs={12}>
-                        <p>Está chegando o grande dia de você se tornar uma Artesã Criativa e começar a faturar de 1k a 5k com suas peças exclusivas e moldes de feltro</p>
                     </Grid>
                 </Grid>
             </Container>
@@ -545,103 +539,6 @@ function Testemunhos1() {
     );
 }
 
-function Texto() {
-    const classes = useStyles();
-    return (
-        <section className={classes.section}>
-            <Container maxWidth="sm">
-                <Grid container spacing={2}>
-                    <Grid item>
-                        <h3>Tudo o que você precisa saber pra ser uma das primeiras inscritas e receber os presentes exclusivos!</h3>
-                        <Typography variant="body2" color="textSecondary" component="span">
-                            (Leia a mensagem até o final)
-                        </Typography>
-                        <br /><br />
-                        <p>Eu não gosto de ser a portadora de más notícias mas vou ser direta ao ponto: estou aqui para lhe dar uma boa e uma má notícia.</p>
-                        <p>Mas antes, preciso dizer que eu estou muito feliz com tudo o que rolou na Maratona Artesã Criativa: participações, elogios e muitas pessoas dizendo que os conteúdos realmente fizeram a diferença em suas vidas profissionais.</p>
-                        <p><b>Tivemos mais de 2200 inscritos na Maratona Artesã Criativa.</b></p>
-                        <p>Foram poucas horas de maratona mas com muita intensidade de conteúdo. Foi realmente muito legal!</p>
-                        <p>Agora, vamos lá.</p>
-
-                        <h4>PRIMEIRO, A BOA NOTÍCIA…</h4>
-
-                        <p>Talvez você saiba, talvez não, mas na segunda-feira eu vou abrir as inscrições para o Desafio Artesã Criativa, um treinamento 100% online que faz com que você consiga sair do 0 e começar a faturar de 1k a 5k por mês criando peças exclusivas e moldes em feltro.</p>
-
-                        <p>Quem se inscrever no Desafio Artesã Criativa, além do treinamento completo, vai levar também vários presentes:</p>
-                        <p>🎁 Mentoria em grupo toda semana.</p>
-                        <p>🎁 Dois templates de apostilas para você usar como base na hora de montar a sua.</p>
-                        <p>🎁 Curso Renascer em Jesus.</p>
-                        <p>🎁 Curso Joias Raras Premium.</p>
-                        <p>🎁 Mini curso de edição e dicas de fotografia.</p>
-                        <p>🎁 10% de desconto na Loja Mari Ubialli durante o período do treinamento.</p>
-                        <p>🎁 Gravação da Maratona Artesã Criativa</p>
-                        <p>Você vai ter acesso ao conteúdo completo por 1 ano inteirinho.</p>
-                        <p>E tem mais: para as 50 primeiras inscritas, vamos dar dois presentes surpresa*:</p>
-                        <Typography variant="body2" color="textSecondary" component="span">
-                            * Enviamos somente para endereços no Brasil
-                        </Typography>
-
-                        <p>Você vai receber de presente aí na sua casa, o kit com os materiais para confeccionar uma das bonecas Joias Raras.</p>
-                        <p>Você também vai ganhar um caderno pra você desenhar, ele será personalizado com o seu nome e mais um lápis.</p>
-                        <p><img src={presentes} className={classes.foto} /></p>
-
-                        <p><b>Atenção! Apenas as 50 primeiras inscritas vão ganhar esses presentes surpresa.*</b></p>
-
-                        <p>As inscrições vão abrir às 9 horas na segunda - feira dia 25 de outubro.</p>
-
-                        <h4>AGORA, A MÁ NOTÍCIA…</h4>
-
-                        <p>Assim como você, mais de 2200 pessoas participaram da Maratona Artesã Criativa e temos certeza que muitas delas estão interessadas no curso, só que as <b>VAGAS SÃO LIMITADAS</b>.</p>
-
-                        <br />
-                        <p><i>Mas como assim vagas limitadas se o curso é online?</i></p>
-                        <br />
-
-                        <p>Essa é uma coisa que a gente pensou muito antes de decidir. Nosso objetivo é fazer o curso de uma forma diferente. E uma das formas de fazer isso é respondendo todas as perguntas dos alunos e dando suporte de maneira individual.</p>
-                        <p>Então, se o número de vagas for muito grande, não conseguiremos atender todo mundo da forma como achamos que vocês merecem. Por isso, limitamos o número de vagas.</p>
-                        <p>E com a quantidade de mensagens que estamos recebendo com perguntas sobre o curso, pode ser que as inscrições não durem muito tempo e a gente precise encerrar logo nos primeiros dias.</p>
-
-                        <br />
-                        <p><i>E como vou poder me inscrever?</i></p>
-                        <br />
-
-                        <p>Segunda-feira dia 25 de outubro às 9 horas, você vai receber um email com o link da página de inscrição do Desafio Artesã Criativa.</p>
-                        <p>Nessa página, você vai encontrar um vídeo onde eu explico TUDO sobre o curso, como vai ser, quais são os módulos, como vai funcionar, o preço, formas de pagamento, garantia, TUDO.</p>
-                        <p>As primeiras vagas com os presentes surpresas normalmente esgotam em alguns minutos, por isso nós fizemos um grupo prioritário (vip).</p>
-
-                        <br />
-                        <p><i>Como assim?</i></p>
-                        <br />
-
-                        <p>As inscrições para o público geral começam às 9 horas. Porém, quem estiver no grupo prioritário (vip) vai receber o link para inscrição às 8 horas, ou seja, 1 hora antes de todo mundo.</p>
-                        <p>Isso significa que se você estiver no grupo vip, suas chances de conseguir uma vaga entre os primeiros e ganhar os presentes surpresa serão muito maiores.</p>
-                        <p>E se você quer aprender como sair do 0 e começar a faturar de mil a 5 mil por mês criando peças exclusivas e moldes em feltro, eu recomendo que você seja um dos primeiros a se inscrever.</p>
-                        <p>Para participar do grupo vip (SEM CUSTO e SEM COMPROMISSO) e ter a chance de estar entre os primeiros, é só clicar no botão abaixo:</p>
-                        <br />
-                        <CTA>
-                            CLIQUE AQUI PARA PARTICIPAR DO GRUPO VIP
-                        </CTA>
-                        <br />
-                        <br />
-                        <p>Se você quer REVER TODAS AS AULAS da Maratona Artesã Criativa, as gravações ficarão disponíveis até domingo, às 23h59.</p>
-                        <p>Então aproveita esse final de semana para maratonar as aulas e se preparar para se inscrever no curso completo na SEGUNDA-FEIRA.</p>
-                        <p>Para acessar a gravação das aulas é só clicar no botão abaixo:</p>
-                        <br />
-                        <ColorButton className={classes.cta} style={buttonStyle} href="https://bit.ly/mac-site-aulas" target="_blank">
-                            CLIQUE AQUI PARA ASSISTIR ÀS AULAS
-                        </ColorButton>
-                        <br />
-                        <br />
-                        <p>Caso tenha alguma dúvida sobre o Desafio Artesã Criativa, você pode postá-la na comunidade do Facebook. Vamos te responder o mais rápido possível.</p>
-                        <br />
-                        <p>Bjos, Mari Ubialli.</p>
-                    </Grid>
-                </Grid>
-            </Container>
-        </section>
-    )
-}
-
 export default function LIMatriculasAbertas(props) {
     const classes = useStyles();
     return (
@@ -652,8 +549,13 @@ export default function LIMatriculasAbertas(props) {
 
             <Banner image={image} alt="Desafio Artesã Criativa" />
             <Promessa />
-            <Texto />
-
+            <BonusVIP />
+            <Entregaveis />
+            <Bonus />
+            <Garantia />
+            <SobreMim />
+            <Testemunhos1 />
+            <FAQs />
             <Footer />
         </main>
     );
