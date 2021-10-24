@@ -31,7 +31,7 @@ export default function LS1Confirmado(props) {
             text=""
             title={getTitle()} >
             <p>Parabéns pela sua inscrição no <b>Desafio Artesã Criativa</b>.</p>
-            <p>Tenho certeza que este é só o primeiro passo para o seu sucesso como artesã.</p>
+            <p>Tenho certeza que este é só o primeiro passo para o seu sucesso como Artesã Criativa.</p>
             <p>Você receberá em até 10 minutos um email com o seu acesso.</p>
             <p>Após este tempo se não receber, veja se ele pode ter caído na pasta de spam.</p>
             <p>Nos vemos lá!</p>

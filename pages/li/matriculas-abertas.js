@@ -9,6 +9,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import HttpsIcon from '@material-ui/icons/Https';
 import image from "assets/img/li/banner-dac.webp";
+import caderno from "assets/img/li/caderno.webp";
+import kitjr from "assets/img/li/kit.webp";
 import price from 'assets/img/li/price.webp';
 import tudoIsso from 'assets/img/tudoisso.webp';
 import Head from "next/head";
@@ -19,7 +21,6 @@ import BotaoWhats from "../../components/BotaoWhats";
 import ColorButton from "../../components/ColorButton";
 import Footer from "../../components/Footer";
 import Form from "../../components/Form";
-import ScrollTo from "../../components/ScrollTo";
 import Banner from "./banner";
 import SobreMim from "./sobre";
 
@@ -165,7 +166,7 @@ const who = [
 const deliverables = [
     {
         title: "Processo Criativo",
-        image: require("assets/img/ls1/the-creative-process.webp"),
+        image: require("assets/img/li/desenho.webp"),
         description: "Como desenvolver a percepção criativa para conseguir tirar o projeto da cabeça e colocar no papel. Mesmo que você não saiba desenhar ou não tenha nenhum projeto em mente, vou te guiar através de exemplos que vão te destravar."
     },
     {
@@ -190,14 +191,26 @@ const deliverables = [
     },
     {
         title: "Como vender",
-        image: require("assets/img/ls1/vender2.webp"),
+        image: require("assets/img/ls1/vender.webp"),
         description: "Você vai aprender como apresentar seus produtos, lançar sua apostila e trabalhar a divulgação para vender todos os dias."
     },
     {
         title: "Marketing na prática",
         image: require("assets/img/ls1/faceads.webp"),
-        description: "Você vai aprender como divulgar seus produtos de forma automática. Tudo o que eu vou ensinar aqui foi testado na prática na venda dos meus cursos e apostilas.",
+        description: "Você vai aprender como automatizar as suas vendas utilizando marketing digital e escalar os seus resultados. Tudo o que eu vou ensinar aqui foi testado na prática na venda dos meus cursos e apostilas.",
         price: "R$ 997"
+    },
+    {
+        title: "Comunidade no Facebook",
+        image: require("assets/img/ls1/comunidade.webp"),
+        description: "A comunidade será o lugar para postar seus resultados, consultar e tirar dúvidas. Interagir e fazer parcerias.",
+        price: "R$ 197"
+    },
+    {
+        title: "Grupo no WhatsApp",
+        image: require("assets/img/ls1/whatsapp.webp"),
+        description: "Um grupo aberto no WhatsApp comigo e com as outras alunas do desafio para tirar dúvidas e receber avisos. Você nunca estará sozinha.",
+        price: "R$ 197"
     },
 ];
 
@@ -205,32 +218,8 @@ const bonus = [
     {
         title: "Mentoria semanal",
         image: require("assets/img/ls1/live.webp"),
-        description: "Mentorias online em grupo toda semana por 12 meses comigo. As mentorias ficam gravadas e são disponibilizadas na área de membros para assistir quantas vezes quiser.",
+        description: "Mentoria online em grupo toda semana por 1 ano inteiro. As mentorias ficam gravadas e são disponibilizadas na área de membros para assistir quantas vezes quiser.",
         price: "R$ 5000"
-    },
-    {
-        title: "Grupo no WhatsApp",
-        image: require("assets/img/ls1/whatsapp.webp"),
-        description: "Um grupo no Whats comigo e com as outras alunas para tirar dúvidas, receber notificações e compartilhar resultados. Você nunca estará sozinha.",
-        price: "R$ 197"
-    },
-    {
-        title: "Curso Joias Raras Premium",
-        image: require("assets/img/jr/bonecas.webp"),
-        description: "Aprenda técnicas de criação de bonecas associado a outros materiais e projetos únicos. Quem é iniciante no feltro poderá aprender tudo o que precisa para fazer o curso.",
-        price: "R$ 97"
-    },
-    {
-        title: "Kit de Recortes à Laser Joias Raras",
-        image: require("assets/img/li/kit.webp"),
-        description: "Você vai receber na sua casa um kit de recortes em feltro de uma boneca Joias Raras prontinho para você confeccionar e começar a vender já desde o início.",
-        price: "R$ 34,90"
-    },
-    {
-        title: "Curso Renascer em Jesus",
-        image: require("assets/img/jesus/close.webp"),
-        description: "Você vai aprender técnicas de pintura aplicadas ao feltro que pode ser um diferencial nos seus projetos.",
-        price: "R$ 39"
     },
     {
         title: "Templates de apostila",
@@ -239,59 +228,80 @@ const bonus = [
         price: "R$ 97"
     },
     {
+        title: "Curso Renascer em Jesus",
+        image: require("assets/img/jesus/close.webp"),
+        description: "Você vai aprender técnicas de pintura aplicadas ao feltro que pode ser um diferencial nos seus projetos.",
+        price: "R$ 47"
+    },
+    {
+        title: "Curso Joias Raras Premium",
+        image: require("assets/img/jr/bonecas.webp"),
+        description: "Aprenda técnicas de criação de bonecas associado a outros materiais e projetos únicos. Quem é iniciante no feltro poderá aprender tudo o que precisa para aproveitar o desafio.",
+        price: "R$ 97"
+    },
+    {
         title: "10% de desconto em materiais",
-        image: require("assets/img/ls1/template.webp"),
+        image: require("assets/img/li/desconto.webp"),
         description: "Você vai receber 10% de desconto na lojamariubialli.com.br para comprar feltro, recortes a laser e outros materiais, durante o prazo de vigência do curso.",
+    },
+    {
+        title: "Gravação da Maratona Artesã Criativa",
+        image: require("assets/img/li/maratona.webp"),
+        description: "Você poderá assistir quantas vezes quiser as aulas da maratona artesã criativa",
     }
+];
+
+const bonusVIP = [
+    {
+        title: "Kit de Materiais Joias Raras",
+        image: kitjr,
+        description: "Você vai receber na sua casa um kit de recortes em feltro e outros materiais para confecção de uma boneca Joias Raras, prontinho para você aproveitar ao máximo o curso.",
+        price: "R$ 34,90"
+    },
+    {
+        title: "Caderno de desenho personalizado",
+        image: caderno,
+        description: "Você vai receber na sua casa um caderno de desenho e um lápis personalizado com seu nome. Tudo o que você precisa para começar a criar!",
+    },
+
 ];
 
 const faqs = [
     {
         pergunta: "Não sei desenhar, vou conseguir fazer?",
-        resposta: "Sim! Você conseguirá criar de uma maneira simples e prática mesmo sem saber desenhar."
+        resposta: "Sim! O meu método vai te desbloquear e você conseguirá criar de uma maneira simples e prática mesmo sem saber desenhar."
     },
     {
-        pergunta: "Sou iniciante, vou conseguir fazer?",
-        resposta: "Se você já sabe confeccionar em feltro, você poderá iniciar o curso diretamente. Caso nunca tenha tido contato, nós disponibilizamos como bônus o meu Curso Bonecas Joias Raras onde você poderá aprender a confeccionar as peças passo a passo e terá o contato necessário com feltro para poder começar a criar seus moldes e peças exclusivas."
+        pergunta: "Sou iniciante no feltro, vou conseguir fazer?",
+        resposta: "Se você já sabe confeccionar em feltro, você poderá iniciar o treinamento diretamente. Caso nunca tenha tido contato, nós disponibilizamos como bônus o meu Curso Joias Raras Premium e o Curso Renascer em Jesus onde você poderá aprender a confeccionar várias peças passo a passo e terá o contato necessário diferentes técnicas para poder começar a criar seus moldes e peças exclusivas."
     },
     {
         pergunta: "Não tenho computador, vou conseguir fazer?",
         resposta: "Não, um computador com mouse é necessário para fazer a vetorização dos moldes."
     },
     {
-        pergunta: "Quando começa o curso?",
-        resposta: "A aula inaugural será dia 04/11/2021"
+        pergunta: "Quando começa o desafio?",
+        resposta: "Os 4 primeiros módulos já estão disponíveis para serem assistidos e os demais serão entregues semanalmente. Os desafios serão abertos durante o programa em datas ainda indefinidas."
     },
     {
-        pergunta: "Quando vou receber o curso?",
+        pergunta: "Quando vou receber o acesso?",
         resposta: "O acesso a sua área de membros é enviado automaticamente após a confirmação de seu pagamento. Se você realizar o pagamento por cartão de crédito ou PIX, você receberá os dados de acesso em até 10 minutos. Caso o pagamento seja por boleto bancário a confirmação bancária pode levar até 72 horas."
     },
     {
-        pergunta: "Como vou receber o curso?",
-        resposta: "O curso é disponibilizado na plataforma Nutror da Eduzz e o acesso é enviado ao email cadastrado na compra. Certifique-se que o email está correto para não haver problemas na hora da entrega."
+        pergunta: "Como vou receber o acesso?",
+        resposta: "O acesso às aulas é disponibilizado na plataforma Nutror da Eduzz e o acesso é enviado ao email cadastrado na compra. Certifique-se que o email está correto para não haver problemas na hora da entrega."
     },
     {
         pergunta: "Por quanto tempo vou poder assistir as aulas?",
-        resposta: "O acesso à plataforma do curso, bônus e comunidade tem a duração de 1 ano. Podendo ser renovado após esse prazo."
+        resposta: "O acesso às aulas, bônus e comunidade tem a duração de 1 ano. Podendo ser renovado após esse prazo."
     },
     {
         pergunta: "Quais são as formas de pagamento?",
-        resposta: "Você pode pagar com cartão de crédito em até 12x, usar 2 cartões de crédito ou à vista com PIX e boleto."
+        resposta: "À vista por PIX e boleto ou você pode pagar com cartão de crédito em até 12x e ainda usar 2 cartões de crédito para dividir o limite."
     },
 ];
 
 const buttonStyle = ColorButton.whatsapp;
-
-function CTA(props) {
-    const classes = useStyles();
-    return (
-        <ScrollTo target="#pricing">
-            <ColorButton className={classes.cta} style={buttonStyle}>
-                {props.children}
-            </ColorButton>
-        </ScrollTo>
-    );
-}
 
 function CheckoutButton(props) {
     const classes = useStyles();
@@ -321,14 +331,14 @@ function CheckoutButton(props) {
             </ColorButton>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">
-                    Inscreva-se
+                    Matricule-se
                     <IconButton aria-label="close" className={classes.closeButton} onClick={handleClose}>
                         <CloseIcon />
                     </IconButton>
                 </DialogTitle>
                 <DialogContent>
                     <Form buttonText="Continuar" tag="AC_LI_#1_CHECKOUT" redirectTo={checkoutURL}
-                        emailPlaceholder="Seu email de acesso ao curso" checkout={true} buttonStyle={buttonStyle} showName={true} showPhone={true} >
+                        emailPlaceholder="Seu email de acesso" checkout={true} buttonStyle={buttonStyle} showName={true} showPhone={true} >
                     </Form>
                     <p className={classes.justify}>
                         <Typography variant="body2" color="textSecondary" component="span">
@@ -350,7 +360,7 @@ function Entregaveis() {
             <Container maxWidth="md">
                 <Grid container className={classes.grid}>
                     <Grid item className={classes.centered} xs={12}>
-                        <h1>Tudo o que você <span className={classes.highlight}>vai aprender</span></h1>
+                        <h2>O treinamento por dentro</h2>
                     </Grid>
 
                     {deliverables.map((item) => (
@@ -359,6 +369,7 @@ function Entregaveis() {
                                 <CardMedia
                                     component="img"
                                     alt={item.title}
+                                    height="200"
                                     image={item.image}
                                     title={item.title}
                                 />
@@ -384,19 +395,19 @@ function Promessa() {
             <Container maxWidth="md">
                 <Grid container spacing={2}>
                     <Grid item className={classes.centered} xs={12}>
-                        <h3>Saia do zero e fature de 1 a 5k criando peças exclusivas e moldes em feltro</h3>
+                        <h3>Chegou o grande dia de você se tornar uma Artesã Criativa e começar a faturar <span className={classes.highlight}>de 1k a 5k com suas peças exclusivas e moldes de feltro</span></h3>
                         <div className={classes.videoWrapper}>
                             <iframe
                                 loading="lazy"
                                 className={classes.video}
-                                src={"https://www.youtube.com/embed/qD67ke31KX0?rel=0"}
+                                src={"https://www.youtube.com/embed/Xy0sV7QmdwY?rel=0&modestbranding=1&showinfo=0"}
                                 frameBorder="0"
                                 allowFullScreen
                             ></iframe>
                         </div>
-                        <CTA>
-                            Quero me inscrever no desafio
-                        </CTA>
+                        <CheckoutButton>
+                            Quero me matricular agora e ganhar presentes exclusivos
+                        </CheckoutButton>
                     </Grid>
                 </Grid>
             </Container>
@@ -483,7 +494,7 @@ function Bonus() {
             <Container maxWidth="md">
                 <Grid container className={classes.grid}>
                     <Grid item className={classes.centered} xs={12}>
-                        <h1>E não podem faltar os <span className={classes.highlight}>Bônus</span></h1>
+                        <h1>E não podem faltar os <span className={classes.highlight}>Presentes</span></h1>
                     </Grid>
 
                     {bonus.map((item) => (
@@ -497,7 +508,7 @@ function Bonus() {
                                     title={item.title}
                                 />
                                 <CardContent>
-                                    <h3><span className={classes.highlight}>BÔNUS:</span> {item.title}</h3>
+                                    <h3>{item.title}</h3>
                                     <Typography variant="body2" color="textSecondary" component="p" className={classes.justify} >
                                         {item.description}
                                     </Typography>
@@ -506,6 +517,54 @@ function Bonus() {
                             </Card>
                         </Grid>
                     ))}
+                </Grid>
+            </Container>
+        </section>
+    );
+}
+
+function BonusVIP() {
+    const classes = useStyles();
+
+    return (
+        <section className={classes.sectionConteudo}>
+            <Container maxWidth="md">
+                <Grid container className={classes.grid}>
+                    <Grid item className={classes.centered} xs={12}>
+                        <h2>Presentes <span className={classes.highlight}>exclusivos</span></h2>
+                        <p>Se você for uma das <b>50 primeiras</b> a se matricular, você receberá na sua casa:</p>
+                    </Grid>
+
+                    {bonusVIP.map((item) => (
+                        <Grid container item xs={12} md={6} spacing={0} key={item.title}>
+                            <Card raised={true} className={classes.card}>
+                                <CardMedia
+                                    component="img"
+                                    alt={item.title}
+                                    height="300"
+                                    image={item.image}
+                                    title={item.title}
+                                />
+                                <CardContent>
+                                    <h3>{item.title}</h3>
+                                    <Typography variant="body2" color="textSecondary" component="p" className={classes.justify} >
+                                        {item.description}
+                                    </Typography>
+
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                    ))}
+
+                    <Grid item className={classes.centered} xs={12}>
+                        <p>*Válido somente para endereços no Brasil</p>
+                    </Grid>
+
+                    <Grid item className={classes.centered} xs={12}>
+                        <CheckoutButton>
+                            Quero ganhar esses presentes exclusivos
+                        </CheckoutButton>
+                    </Grid>
                 </Grid>
             </Container>
         </section>
@@ -525,7 +584,7 @@ function Preco() {
                         <Image src={price} layout="responsive" width={400} height={160} alt="" className={classes.preco} />
                         <div className={classes.precoAviso}></div>
                         <CheckoutButton>
-                            Quero me inscrever no desafio
+                            Quero me matricular agora
                         </CheckoutButton>
                     </Grid>
                 </Grid>
@@ -538,22 +597,23 @@ function Garantia() {
     const classes = useStyles();
     return (
         <section>
-            <Container maxWidth="sm">
+            <Container maxWidth="md">
                 <Grid container className={classes.grid} spacing={3}>
-                    <Grid item className={classes.centered} xs={12}>
+                    <Grid item className={classes.centered} xs={12} md={6}>
                         <img src={require("assets/img/ls1/garantia30.webp")} alt="Garantia de 30 dias" />
                     </Grid>
+                    <Grid item xs={12} md={6} className={classes.justify}>
+                        <h1 className={classes.centered}>Seu risco é zero</h1>
+                        <p>Ao fazer seu investimento hoje, você tem 30 dias para pedir seu dinheiro de volta, caso entenda que esse investimento na sua educação não valeu a pena.</p>
+                        <p>Eu quero tornar a sua decisão simples para você. Você terá tempo mais que suficiente para avaliar o seu investimento.</p>
+                        <p>Você terá acesso completo a todas as aulas, bônus e mentorias. Se por qualquer motivo você não ficar satisfeita, basta solicitar o reembolso e você receberá 100% do valor investido de volta.</p>
+                    </Grid>
                     <Grid item xs={12} className={classes.justify}>
-                        <h1 className={classes.centered}>Garantia 30 + 90 + R$500</h1>
-                        <p>Você pode assistir todas as aulas e ter acesso a todos os materiais por 30 dias corridos.
-                            Se por qualquer motivo você não ficar satisfeita, basta solicitar o reembolso
-                            pelo email contato@mariubialli.com e você receberá 100% do valor investido de volta.</p>
-                        <p>Mas eu acredito tanto no meu método que vou colocar todo o risco nas minhas costas.
-                            Se em 90 dias assistindo a todas as aulas e fazendo todas as atividades você não chegar ao resultado desejado,
-                            eu vou te dar uma consultoria individual para entender melhor sua dificuldade e criaremos um plano de ação.
-                            Se em 90 dias, seguindo o seu plano de ação, mesmo assim não tiver resultado,
-                            eu vou te devolver todo o seu dinheiro e mais R$500 do meu bolso pelo seu tempo e dedicação neste curso.</p>
-                        <CheckoutButton>Quero me inscrever sem riscos</CheckoutButton>
+                        <h1 className={classes.centered}>Dinheiro de volta em 90 dias + R$500</h1>
+                        <p>Eu tenho certeza que com o meu método você terá resultado.</p>
+                        <p>Caso você não consiga criar seus próprios moldes em 90 dias eu te devolvo todo valor investido e ainda te dou mais R$ 500 pelo seu tempo e energia investidos neste treinamento.</p>
+                        <p>Basta que você assista todas as aulas e coloque em prática os desafios que serão propostos. Se mesmo assim não tiver resultado eu vou marcar uma consultoria individual com você.</p>
+                        <CheckoutButton>Quero me matricular sem riscos</CheckoutButton>
                     </Grid>
                 </Grid>
             </Container>
@@ -584,11 +644,6 @@ function FAQs() {
                             </Accordion>
                         ))}
                     </Grid>
-                    <Grid item xs={12}>
-                        <CheckoutButton>
-                            Quero me inscrever no desafio
-                        </CheckoutButton>
-                    </Grid>
                 </Grid>
             </Container>
         </section>
@@ -616,65 +671,45 @@ function Testemunhos1() {
     const classes = useStyles();
     return (
         <section>
-            <Container maxWidth="sm" className={classes.centered}>
+            <Container maxWidth="md" className={classes.centered}>
                 <Grid container className={classes.grid} spacing={1}>
                     <Grid item className={classes.centered} xs={12}>
-                        <h1>O que as alunas estão falando da Mari?</h1>
+                        <h3>Resultados surpreendentes de <span className={classes.highlight}>pessoas como você</span></h3>
                     </Grid>
-
-                    <Grid item className={classes.centered} xs={12} sm={12}>
+                    <Grid item className={classes.centered} xs={12} md={6}>
                         <Paper elevation={3}>
                             <div className={classes.videoWrapper}>
                                 <iframe
                                     loading="lazy"
                                     className={classes.video}
-                                    src={"https://player.vimeo.com/video/596289574?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;h=2ad8803798"}
+                                    src={"https://www.youtube.com/embed/eZW6Gm95Ogg?rel=0&modestbranding=1&showinfo=0"}
                                     frameBorder="0"
-                                    allow="autoplay; fullscreen; picture-in-picture"
                                     allowFullScreen
                                 ></iframe>
                             </div>
                         </Paper>
                     </Grid>
-
-                    <Grid item className={classes.centered} xs={12} sm={12}>
+                    <Grid item className={classes.centered} xs={12} md={6}>
                         <Paper elevation={3}>
-                            <img src={require("assets/img/jr/testemunho36.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-                        </Paper>
-                    </Grid>
-                    <Grid item className={classes.centered} xs={12} sm={4}>
-                        <Paper elevation={3}>
-                            <img src={require("assets/img/jr/testemunho41.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-                        </Paper>
-                    </Grid>
-                    <Grid item className={classes.centered} xs={12} sm={4}>
-                        <Paper elevation={3}>
-                            <img src={require("assets/img/jr/testemunho42.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-                        </Paper>
-                    </Grid>
-                    <Grid item className={classes.centered} xs={12} sm={4}>
-                        <Paper elevation={3}>
-                            <img src={require("assets/img/jr/testemunho44.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-                        </Paper>
-                    </Grid>
-                    <Grid item className={classes.centered} xs={12} sm={6}>
-                        <Paper elevation={3}>
-                            <img src={require("assets/img/jr/testemunho26.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-                        </Paper>
-                    </Grid>
-                    <Grid item className={classes.centered} xs={12} sm={6}>
-                        <Paper elevation={3}>
-                            <img src={require("assets/img/jr/testemunho24.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
+                            <div className={classes.videoWrapper}>
+                                <iframe
+                                    loading="lazy"
+                                    className={classes.video}
+                                    src={"https://www.youtube.com/embed/Gn_y3QY8sWU?rel=0&modestbranding=1&showinfo=0"}
+                                    frameBorder="0"
+                                    allowFullScreen
+                                ></iframe>
+                            </div>
                         </Paper>
                     </Grid>
                     <Grid item className={classes.centered} xs={12} sm={12}>
-                        <Paper elevation={3}>
-                            <img src={require("assets/img/jr/testemunho35.webp")} alt="Testemunho" className={classes.fotoTestemunho} />
-                        </Paper>
+                        <CheckoutButton>
+                            Quero me matricular agora
+                        </CheckoutButton>
                     </Grid>
                 </Grid>
             </Container>
-        </section>
+        </section >
     );
 }
 
@@ -688,7 +723,7 @@ export default function LIMatriculasAbertas(props) {
 
             <Banner image={image} alt="Desafio Artesã Criativa" />
             <Promessa />
-            <Desejo />
+            <BonusVIP />
             <Entregaveis />
             <Bonus />
             <div id="pricing" />
