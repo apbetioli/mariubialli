@@ -406,7 +406,7 @@ function Promessa() {
                             ></iframe>
                         </div>
                         <CheckoutButton>
-                            Quero me matricular agora e ganhar presentes exclusivos
+                            Quero me matricular agora
                         </CheckoutButton>
                     </Grid>
                 </Grid>
@@ -723,7 +723,6 @@ export default function LIMatriculasAbertas(props) {
 
             <Banner image={image} alt="Desafio Artesã Criativa" />
             <Promessa />
-            <BonusVIP />
             <Entregaveis />
             <Bonus />
             <div id="pricing" />
