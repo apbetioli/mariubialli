@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
     },
     sectionSobreMim: {
-        backgroundColor: "#FE6B8B",
+        backgroundColor: "#000",
         color: "#FFF",
     },
     number: {
@@ -17,27 +17,37 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const countdownRenderer = ({ days, hours, minutes, seconds, completed, end }, classes) => {
+const countdownRenderer = ({ days, hours, minutes, seconds, completed }, classes, props) => {
     if (completed) {
-        return <p>{end}</p>;
+        return <h3>{props.gameover}</h3>;
     } else {
         return (
-            <p><span className={classes.number}>{days}</span> dias <span className={classes.number}>{hours}</span> horas <span className={classes.number}>{minutes}</span> minutos <span className={classes.number}>{seconds}</span> segundos</p>
+            <>
+                {props.prefix &&
+                    <h3>{props.prefix}</h3>
+                }
+                <p>
+                    {days > 0 && <><span className={classes.number}>{days}</span> dia{days == 1 ? "" : "s"} </>}
+                    {hours > 0 && <><span className={classes.number}>{hours}</span> hora{hours == 1 ? "" : "s"} </>}
+                    {minutes > 0 && <><span className={classes.number}>{minutes}</span> minuto{minutes == 1 ? "" : "s"} </>}
+                    <span className={classes.number}>{seconds}</span> segundos {" "}
+                </p>
+            </>
         );
     }
 };
 
-export default function Contador({ title, date }) {
+export default function Contador(props) {
     const classes = useStyles();
+
     return (
         <section className={classes.sectionSobreMim}>
-            <Container maxWidth="sm">
+            <Container maxWidth="md">
                 <Grid container>
                     <Grid item xs={12} className={classes.centered}>
-                        <h3>{title}</h3>
                         <Countdown
-                            date={date}
-                            renderer={(props) => countdownRenderer(props, classes)}
+                            date={props.date}
+                            renderer={(x) => countdownRenderer(x, classes, props)}
                         />
                     </Grid>
                 </Grid>
@@ -48,6 +58,6 @@ export default function Contador({ title, date }) {
 
 Contador.defaultProps = {
     date: new Date("2021-10-29 23:59:59"),
-    title: "A maratona começa em",
-    end: "O tempo acabou!"
+    prefix: "Faltam ",
+    gameover: "O tempo acabou!"
 }

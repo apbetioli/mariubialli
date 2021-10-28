@@ -7,6 +7,7 @@ import Footer from "../../../components/Footer";
 import Form from "../../../components/Form";
 import Banner from "../banner";
 import SobreMim from "../sobre";
+import image from "assets/img/li/banner-dac.webp";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -115,10 +116,10 @@ function Promessa(props) {
             <Container maxWidth="sm">
                 <Grid container>
                     <Grid item className={classes.centered} xs={12}>
-                        <h3 className={classes.title}>Inscrições encerradas!</h3>
-                        <p className={classes.subtitle}>Se você quer descobrir como ir <span className={classes.highlight}>do zero a 5k</span> por mês criando peças exclusivas e moldes em feltro, inscreva-se abaixo para ser avisada da abertura de uma nova turma.</p>
+                        <h3 className={classes.title}>Matrículas encerradas!</h3>
+                        <p className={classes.subtitle}>Inscreva-se abaixo para ser avisada da abertura de uma nova turma.</p>
                         <p className={classes.subtitle}></p>
-                        <Form buttonText="QUERO SER AVISADA!" tag="AC_ESPERA_TURMA2" redirectTo={`/espera/obrigado`}
+                        <Form buttonText="QUERO SER AVISADA!" tag="AC_ESPERA_TURMA3" redirectTo={`/espera/obrigado`}
                             emailPlaceholder="Digite seu melhor email" buttonStyle={buttonStyle} showTerms={false}>
                         </Form>
                     </Grid>
@@ -138,7 +139,7 @@ export default function LIEspera(props) {
             </Head>
 
             <div id="form" />
-            <Banner />
+            <Banner image={image} alt="Desafio Artesã Criativa"/>
             <Promessa {...props} />
             <SobreMim />
             <Footer />

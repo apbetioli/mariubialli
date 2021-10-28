@@ -16,12 +16,13 @@ import tudoIsso from 'assets/img/tudoisso.webp';
 import Head from "next/head";
 import Image from 'next/image';
 import { useRouter } from "next/router";
-import { default as React } from "react";
+import { default as React, useEffect } from "react";
 import BotaoWhats from "../../components/BotaoWhats";
 import ColorButton from "../../components/ColorButton";
 import Footer from "../../components/Footer";
 import Form from "../../components/Form";
 import Banner from "./banner";
+import Contador from "./contador";
 import SobreMim from "./sobre";
 
 const useStyles = makeStyles((theme) => ({
@@ -713,29 +714,42 @@ function Testemunhos1() {
     );
 }
 
+const fechaCarrinho = new Date("2021-10-29 23:59:59");
+
 export default function LIMatriculasAbertas(props) {
     const classes = useStyles();
-    return (
-        <main className={classes.root}>
-            <Head>
-                <meta name="robots" content="noindex,nofollow"></meta>
-            </Head>
+    const router = useRouter();
 
-            <Banner image={image} alt="Desafio Artesã Criativa" />
-            <Promessa />
-            <Entregaveis />
-            <Bonus />
-            <div id="pricing" />
-            <Preco />
-            <Garantia />
-            <SobreMim />
-            <Testemunhos1 />
-            <FAQs />
-            <DuvidasWhats />
-            <Preco />
-            <Footer />
-        </main>
-    );
+    if (new Date() > fechaCarrinho) {
+        useEffect(() => {
+            router.push("/espera");
+        })
+        return <></>;
+    } else {
+
+        return (
+            <main className={classes.root}>
+                <Head>
+                    <meta name="robots" content="noindex,nofollow"></meta>
+                </Head>
+
+                <Banner image={image} alt="Desafio Artesã Criativa" />
+                <Contador date={fechaCarrinho} prefix="As matrículas fecham em " />
+                <Promessa />
+                <Entregaveis />
+                <Bonus />
+                <div id="pricing" />
+                <Preco />
+                <Garantia />
+                <SobreMim />
+                <Testemunhos1 />
+                <FAQs />
+                <DuvidasWhats />
+                <Preco />
+                <Footer />
+            </main>
+        );
+    }
 }
 
 LIMatriculasAbertas.defaultProps = {

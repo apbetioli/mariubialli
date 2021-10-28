@@ -37,8 +37,8 @@ export default function SobreMim() {
                         <img className={classes.fotoPerfil} src={require("assets/img/perfil.webp")} alt="Mari Ubialli" />
                     </Grid>
                     <Grid item md={6} className={classes.justify}>
-                        <h3 className={classes.centered}>Com quem você vai aprender?</h3>
-                        <p>Prazer, sou Mari Ubialli. Sou apaixonada por artesanato em feltro e por ensinar.</p>
+                        <h3 className={classes.centered}>Mari Ubialli</h3>
+                        <p>Sou apaixonada por artesanato em feltro e por ensinar.</p>
                         <p>Com mais de 1500 alunas em cursos pagos de feltro, meu objetivo é ensinar artesãs como ir do zero a 5k por mês criando peças exclusivas e seus próprios moldes em feltro, permitindo que vivam do que amam fazer.</p>
                     </Grid>
                 </Grid>

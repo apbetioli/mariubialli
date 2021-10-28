@@ -199,7 +199,7 @@ export default function LIObrigado() {
 
       <Banner />
       <DoisPassos />
-      <Contador date={new Date("2021-10-18 08:00:00")} title="A Maratona começa em" />
+      <Contador date={new Date("2021-10-18 08:00:00")} prefix="A Maratona começa em" />
       <Programacao />
 
       <Footer />
