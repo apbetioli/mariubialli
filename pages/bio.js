@@ -127,11 +127,11 @@ function Links() {
                 </Grid>
                 <Grid item xs={12}>
                     <ColorButton
-                        href="http://joiasraras.mariubialli.com"
+                        href="http://renasceremjesus.mariubialli.com"
                         className={classes.button}
                         style={ColorButton.primary}
                     >
-                        Acesso alunos Joias Raras
+                        Acesso alunos Renascer em Jesus
                     </ColorButton>
                 </Grid>
                 <Grid item xs={12}>
