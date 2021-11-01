@@ -147,7 +147,7 @@ export default function Form(props) {
           type="text"
           placeholder="Nome completo"
           fullWidth
-          required
+          required={props.requireName}
           margin="normal"
           InputLabelProps={{
             shrink: true,
@@ -163,11 +163,11 @@ export default function Form(props) {
           customInput={MyTextField}
           format="###########"
           id="phone"
-          label="Celular / WhatsApp"
+          label="WhatsApp"
           placeholder="DDD + Número"
           fullWidth
           margin="normal"
-          required
+          required={props.requirePhone}
           InputLabelProps={{
             shrink: true,
           }}
@@ -211,5 +211,7 @@ Form.defaultProps = {
   showName: false,
   showPhone: false,
   showTerms: true,
+  requireName: true,
+  requirePhone: true,
   emailPlaceholder: "Digite o seu melhor email..."
 };

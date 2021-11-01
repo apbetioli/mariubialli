@@ -116,11 +116,14 @@ function Promessa(props) {
             <Container maxWidth="sm">
                 <Grid container>
                     <Grid item className={classes.centered} xs={12}>
-                        <h3 className={classes.title}>Matrículas encerradas!</h3>
-                        <p className={classes.subtitle}>Inscreva-se abaixo para ser avisada da abertura de uma nova turma.</p>
-                        <p className={classes.subtitle}></p>
+                        <h3>As Matrículas estão encerradas no momento!</h3>
+                        <p>Mas você pode cadastrar seu e-mail e entrar na nossa lista de espera para receber informações em primeira mão sobre as próximas oportunidades:</p>
+                        <p></p>
                         <Form buttonText="QUERO SER AVISADA!" tag="AC_ESPERA_TURMA3" redirectTo={`/espera/obrigado`}
-                            emailPlaceholder="Digite seu melhor email" buttonStyle={buttonStyle} showTerms={false}>
+                            emailPlaceholder="Digite seu melhor email" buttonStyle={buttonStyle} 
+                            showTerms={true}
+                            showPhone={true} 
+                            requirePhone={false}>
                         </Form>
                     </Grid>
                 </Grid>
@@ -139,7 +142,7 @@ export default function LIEspera(props) {
             </Head>
 
             <div id="form" />
-            <Banner image={image} alt="Desafio Artesã Criativa"/>
+            <Banner image={image} alt="Desafio Artesã Criativa" />
             <Promessa {...props} />
             <SobreMim />
             <Footer />
