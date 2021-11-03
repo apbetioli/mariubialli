@@ -19,7 +19,8 @@ const translate = {
     'AS_LS_#1_TG': 'plueb24',
     'AS_LS_#1_EM': 'd3uP4mR',
     'AS_LS_#1_CHECKOUT': 'kRuOwy3',
-    'AC_ESPERA_TURMA2': 'eYu3aaa'
+    'AC_ESPERA_TURMA2': 'eYu3aaa',
+    'CONFIRMED': 'aaumQpa'
 }
 
 getParams = (lead) => {
