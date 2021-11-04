@@ -720,36 +720,38 @@ export default function LIMatriculasAbertas(props) {
     const classes = useStyles();
     const router = useRouter();
 
+    /*
     if (new Date() > fechaCarrinho) {
         useEffect(() => {
             router.push("/espera");
         })
         return <></>;
-    } else {
-
-        return (
-            <main className={classes.root}>
-                <Head>
-                    <meta name="robots" content="noindex,nofollow"></meta>
-                </Head>
-
-                <Banner image={image} alt="Desafio Artesã Criativa" />
-                <Contador date={fechaCarrinho} prefix="As matrículas fecham em " />
-                <Promessa />
-                <Entregaveis />
-                <Bonus />
-                <div id="pricing" />
-                <Preco />
-                <Garantia />
-                <SobreMim />
-                <Testemunhos1 />
-                <FAQs />
-                <DuvidasWhats />
-                <Preco />
-                <Footer />
-            </main>
-        );
     }
+    */
+
+    return (
+        <main className={classes.root}>
+            <Head>
+                <meta name="robots" content="noindex,nofollow"></meta>
+            </Head>
+
+            <Banner image={image} alt="Desafio Artesã Criativa" />
+            <Contador date={fechaCarrinho} prefix="As matrículas fecham em " />
+            <Promessa />
+            <Entregaveis />
+            <Bonus />
+            <div id="pricing" />
+            <Preco />
+            <Garantia />
+            <SobreMim />
+            <Testemunhos1 />
+            <FAQs />
+            <DuvidasWhats />
+            <Preco />
+            <Footer />
+        </main>
+    );
+
 }
 
 LIMatriculasAbertas.defaultProps = {

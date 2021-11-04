@@ -10,43 +10,16 @@ module.exports = withPlugins([[withImages]], {
   },
   async rewrites() {
     return [
-      {
-        source: '/obrigado/:sub*',
-        destination: '/espera',
-      },
+      /*
       {
         source: '/:sub*',
         destination: '/li/:sub*',
       },
+      */
     ]
   },
   async redirects() {
     return [
-      {
-        source: '/matriculas-abertas',
-        destination: '/espera',
-        permanent: false,
-      },
-      {
-        source: '/aula-01',
-        destination: '/espera',
-        permanent: false,
-      },
-      {
-        source: '/aula-02',
-        destination: '/espera',
-        permanent: false,
-      },
-      {
-        source: '/aula-03',
-        destination: '/espera',
-        permanent: false,
-      },
-      {
-        source: '/lista-vip',
-        destination: '/espera',
-        permanent: false,
-      },
       {
         source: '/',
         destination: '/espera',

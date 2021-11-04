@@ -136,7 +136,7 @@ function Promessa() {
             <Container maxWidth="md">
                 <Grid container spacing={2}>
                     <Grid item className={classes.centered} xs={12}>
-                        <h3>Saia do zero e fature de 1 a 5k criando peças exclusivas e moldes em feltro</h3>
+                        <h3>Saia do zero e fature até 5k criando peças exclusivas e moldes em feltro</h3>
                         <div className={classes.videoWrapper}>
                             <iframe
                                 loading="lazy"

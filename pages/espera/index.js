@@ -2,11 +2,11 @@ import { Container, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Head from "next/head";
 import { default as React } from "react";
-import ColorButton from "../../../components/ColorButton";
-import Footer from "../../../components/Footer";
-import Form from "../../../components/Form";
-import Banner from "../banner";
-import SobreMim from "../sobre";
+import ColorButton from "../../components/ColorButton";
+import Footer from "../../components/Footer";
+import Form from "../../components/Form";
+import Banner from "../li/banner";
+import SobreMim from "../li/sobre";
 import image from "assets/img/li/banner-dac.webp";
 
 const useStyles = makeStyles((theme) => ({
