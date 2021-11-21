@@ -8,8 +8,13 @@ module.exports = withPlugins([[withImages]], {
     config.resolve.modules.push(path.resolve("./"));
     return config;
   },
-  async rewrites() {
+  async redirects() {
     return [
+      {
+        source: '/joiasraras/:sub*',
+        destination: 'https://joiasraraspremium.com.br/:sub*',
+        permanent: false
+      }
     ]
   },
 });
