@@ -10,11 +10,6 @@ module.exports = withPlugins([[withImages]], {
   },
   async redirects() {
     return [
-      {
-        source: '/',
-        destination: '/cursos',
-        permanent: false,
-      }
     ]
   },
 });
