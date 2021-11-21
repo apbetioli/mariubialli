@@ -5,9 +5,7 @@ import { default as React } from "react";
 import ColorButton from "../../components/ColorButton";
 import Footer from "../../components/Footer";
 import Form from "../../components/Form";
-import Banner from "../li/banner";
-import SobreMim from "../li/sobre";
-import image from "assets/img/li/banner-dac.webp";
+import image from "assets/img/jr/banner_top.webp";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -44,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
         marginTop: 50,
     },
     sectionSobreMim: {
-        backgroundColor: "#FE6B8B",
+        backgroundColor: "#49BBC6",
         color: "#FFF",
     },
     highlight: {
@@ -119,10 +117,10 @@ function Promessa(props) {
                         <h3>As Matrículas estão encerradas no momento!</h3>
                         <p>Mas você pode cadastrar seu e-mail e entrar na nossa lista de espera para receber informações em primeira mão sobre as próximas oportunidades:</p>
                         <p></p>
-                        <Form buttonText="QUERO SER AVISADA!" tag="AC_ESPERA_TURMA3" redirectTo={`/espera/obrigado`}
-                            emailPlaceholder="Digite seu melhor email" buttonStyle={buttonStyle} 
+                        <Form buttonText="QUERO SER AVISADA!" tag="JRP_ESPERA" redirectTo={`/espera/obrigado`}
+                            emailPlaceholder="Digite seu melhor email" buttonStyle={buttonStyle}
                             showTerms={true}
-                            showPhone={true} 
+                            showPhone={true}
                             requirePhone={false}>
                         </Form>
                     </Grid>
@@ -132,7 +130,41 @@ function Promessa(props) {
     );
 }
 
-export default function LIEspera(props) {
+
+function SobreMim() {
+    const classes = useStyles();
+    return (
+        <section className={classes.sectionSobreMim}>
+            <Container maxWidth="sm">
+                <Grid container className={classes.grid} spacing={3}>
+                    <Grid item md={12} className={classes.justify}>
+                        <h3>Com quem você vai aprender?</h3>
+                        <p>Essas bonecas não são apenas bonecas para mim. Elas são a prova de que podemos conseguir fazer algo quando queremos, que podemos superar nossos medos e inseguranças e transformá-los em algo lindo e precioso.</p>
+                        <p>Muito prazer, eu sou Mari Ubialli</p>
+                        <p>Amo artesanato em feltro e ensinar!</p>
+                        <p>Quero compartilhar meu aprendizado, e ajudar mais pessoas a conhecerem, se apaixonarem e viverem desse artesanato maravilhoso!</p>
+                    </Grid>
+                    <Grid item className={classes.centered} md={12}>
+                        <img className={classes.fotoPerfil} src={require("assets/img/perfil2.webp")} alt="Mari Ubialli" />
+                    </Grid>
+                </Grid>
+            </Container>
+        </section>
+    );
+}
+
+function Banner({ image, alt }) {
+    const classes = useStyles();
+    return (
+        <div className={classes.sectionSobreMim}>
+            <div className={classes.centered}>
+                <img className={classes.foto} src={image} alt={alt} />
+            </div>
+        </div>
+    );
+}
+
+export default function JREspera(props) {
 
     const classes = useStyles();
     return (
@@ -142,7 +174,7 @@ export default function LIEspera(props) {
             </Head>
 
             <div id="form" />
-            <Banner image={image} alt="Desafio Artesã Criativa" />
+            <Banner image={image} alt="Joias Raras Premium" />
             <Promessa {...props} />
             <SobreMim />
             <Footer />

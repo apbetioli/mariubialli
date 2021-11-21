@@ -22,10 +22,10 @@ export default function App({ Component, pageProps }) {
   return (
     <React.Fragment>
       <Head>
-        <title>{title + "Artesã Criativa - Mari Ubialli"}</title>
+        <title>{title + "Joias Raras Premium - Mari Ubialli"}</title>
         <meta
           name="description"
-          content="Vem aprender como ir do zero a 5k criando peças exclusivas e seus próprios moldes em feltro."
+          content="Aprenda feltro do zero com o curso mais completo de bonecas de feltro do Brasil."
         />
         <meta
           name="keywords"
