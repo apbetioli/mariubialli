@@ -29,7 +29,8 @@ const translate = {
     'AC_LI_#1_EM': 'eYu3JeM',
     'AC_LI_#1_CHECKOUT': 'xJuGBKa',
     'AC_ESPERA_TURMA3': 'jru0O2p',
-    'CONFIRMED': 'aaumQpa'
+    'CONFIRMED': 'aaumQpa',
+    'JRP_ESPERA': 'qLu3RG7'
 }
 
 getParams = (lead) => {

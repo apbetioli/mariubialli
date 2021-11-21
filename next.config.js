@@ -11,10 +11,18 @@ module.exports = withPlugins([[withImages]], {
   async redirects() {
     return [
       {
-        source: '/joiasraras/:sub*',
-        destination: 'https://joiasraraspremium.com.br/:sub*',
-        permanent: false
-      }
+        source: '/:sub*',
+        destination: '/joiasraras/:sub*',
+      },
+    ]
+  },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/joiasraras/espera',
+        permanent: false,
+      },
     ]
   },
 });

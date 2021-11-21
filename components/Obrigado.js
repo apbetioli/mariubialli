@@ -56,7 +56,7 @@ export default function Obrigado(props) {
 
 Obrigado.defaultProps = {
   title: "Obrigada",
-  subtitle: "Incrição realizada com sucesso!",
+  subtitle: "Inscrição realizada com sucesso!",
   text: "Entre para o meu canal de conteúdo do telegram e receba avisos em primeira mão!",
   social: true
 };
