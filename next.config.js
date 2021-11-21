@@ -10,16 +10,6 @@ module.exports = withPlugins([[withImages]], {
   },
   async rewrites() {
     return [
-      /*
-      {
-        source: '/:sub*',
-        destination: '/li/:sub*',
-      },
-      */
-    ]
-  },
-  async redirects() {
-    return [
     ]
   },
 });
