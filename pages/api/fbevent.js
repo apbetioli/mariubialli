@@ -2,58 +2,63 @@
 const bizSdk = require('facebook-nodejs-business-sdk');
 const Content = bizSdk.Content;
 const CustomData = bizSdk.CustomData;
-const DeliveryCategory = bizSdk.DeliveryCategory;
 const EventRequest = bizSdk.EventRequest;
 const UserData = bizSdk.UserData;
 const ServerEvent = bizSdk.ServerEvent;
 
 const access_token = process.env.FB_CONVERSION_API_TOKEN;
-const pixel_id = process.env.FB_PIXEL_ID;
+const pixel_id = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID;
 const api = bizSdk.FacebookAdsApi.init(access_token);
-api.setDebug(true);
+//api.setDebug(true);
 
 module.exports = async (req, res) => {
     try {
+        if (process.env.NODE_ENV == "development" && !process.env.FB_TEST_EVENT_CODE) {
+            res.send("OK");
+            return;
+        }
+
         console.log(req.body);
 
-        let current_timestamp = Math.floor(new Date() / 1000);
-
         const userData = (new UserData())
-            //.setEmails([req.body.email])
-            //.setPhones([req.body.phone])
-            // It is recommended to send Client IP and User Agent for Conversions API Events.
             .setClientIpAddress(req.connection.remoteAddress)
-            .setClientUserAgent(req.headers['user-agent'])
-            //.setFbp('fb.1.1558571054389.1098115397')
-            //.setFbc('fb.1.1554763741205.AbCdEfGhIjKlMnOpQrStUvWxYz1234567890')
-            ;
-        /*
-                const content = (new Content())
-                    .setId('product123')
-                    .setQuantity(1)
-                    .setDeliveryCategory(DeliveryCategory.HOME_DELIVERY);
-        
-                const customData = (new CustomData())
-                    .setContents([content])
-                    .setCurrency('brl')
-                    .setValue(123.45);
-        */
+            .setClientUserAgent(req.headers['user-agent']);
+
+
+        if (req.body.fbp)
+            userData.setFbp(req.body.fbp)
+
+        if (req.body.fbclid)
+            userData.setFbc(req.body.fbclid)
+
+        if (req.body.options.em)
+            userData.setEmails([req.body.options.em])
+
+        if (req.body.options.ph)
+            userData.setPhones([req.body.options.ph])
+
+        if (req.body.options.fn)
+            userData.setName(req.body.options.fn)
+
         const serverEvent = (new ServerEvent())
-            .setEventName('PageView')
-            .setEventTime(current_timestamp)
+            .setEventId(req.body.event_id)
+            .setEventName(req.body.event_name)
+            .setEventTime(req.body.event_time)
             .setUserData(userData)
-            //            .setCustomData(customData)
-            .setEventSourceUrl('https://mariubialli.com/joiasraras')
             .setActionSource('website');
+
+        if (req.body.url)
+            serverEvent.setEventSourceUrl(req.body.url)
 
         const eventsData = [serverEvent];
         const eventRequest = (new EventRequest(access_token, pixel_id))
-            .setEvents(eventsData)
-            .setTestEventCode(process.env.FB_TEST_EVENT_CODE);
+            .setEvents(eventsData);
 
-        eventRequest.execute().then(
+        if (process.env.FB_TEST_EVENT_CODE)
+            eventRequest.setTestEventCode(process.env.FB_TEST_EVENT_CODE);
+
+        await eventRequest.execute().then(
             response => {
-                console.log('Response: ', response);
                 res.send(response);
             },
             err => {
@@ -61,6 +66,7 @@ module.exports = async (req, res) => {
                 res.status(400).send(err);
             }
         );
+
     } catch (e) {
         console.error(e);
         res.status(400).send(e);
