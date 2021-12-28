@@ -165,11 +165,9 @@ const buttonStyle = ColorButton.blue;
 function CTA(props) {
     const classes = useStyles();
     return (
-        <ScrollTo target="#pricing">
-            <ColorButton className={classes.cta} style={buttonStyle}>
-                {props.children}
-            </ColorButton>
-        </ScrollTo>
+        <ColorButton className={classes.cta} style={buttonStyle} href="https://bit.ly/3Fz5WZk">
+            {props.children}
+        </ColorButton>
     );
 }
 
