@@ -8,7 +8,7 @@ module.exports = withPlugins([[withImages]], {
     config.resolve.modules.push(path.resolve("./"));
     return config;
   },
-  async redirects() {
+  async rewrites() {
     return [
       {
         source: '/:sub*',
