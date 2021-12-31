@@ -28,6 +28,13 @@ const translate = {
     'AC_LI_#1_EM': 'eYu3JeM',
     'AC_LI_#1_CHECKOUT': 'xJuGBKa',
     'AC_ESPERA_TURMA3': 'jru0O2p',
+    'CONFIRMED': 'aaumQpa',
+    'JRP_ESPERA': 'qLu3RG7',
+    'Facebook_Stories': 'lEuepvR',
+    'Facebook_Feed': 'LnuKBr1',
+    'Facebook_Right_Column': 'GLu60Je',
+    'Instagram_Stories': '2juLxBL',
+    'Instagram_Feed': 'VKuxME5',
 }
 
 getParams = (lead) => {
@@ -78,9 +85,10 @@ module.exports = async (req, res) => {
     try {
         let result = await subscribe(lead, translate[lead.tag])
 
-        if (lead.source && lead.source !== "" && lead.source !== "undefined") {
+        if (translate[lead.source])
             await subscribe(lead, translate[lead.source])
-        }
+        else if (lead.source.includes("Facebook") || lead.source.includes("Instagram"))
+            await subscribe(lead, translate['faceads'])
 
         res.send(result)
 

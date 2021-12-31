@@ -14,10 +14,13 @@ const handleRouteChange = () => {
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-  useEffect(() => {
-
+  
+  if (router.query.utm_source) {
+    window.localStorage.removeItem("utm_source");
     window.localStorage.setItem("utm_source", router.query.utm_source);
-    
+  }
+
+  useEffect(() => {
     fbq.pageview()
 
     router.events.on('routeChangeComplete', handleRouteChange)
