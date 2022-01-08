@@ -164,7 +164,7 @@ export default function LIObrigado(props) {
 
 LIObrigado.defaultProps = {
   origin: 'og',
-  whats: "/whats",
+  whats: "https://bit.ly/mbf-pag-obrigado-whats",
   name: "Minissérie Bonequeira de Feltro",
   rome: "Gere renda extra vendendo suas bonecas de feltro",
   startDate: "2022-01-24 08:00:00"
