@@ -8,7 +8,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import HttpsIcon from '@material-ui/icons/Https';
-import image from "assets/img/li/banner-dac.webp";
+import image from "assets/img/li/banner-mbf.webp";
 import caderno from "assets/img/li/caderno.webp";
 import kitjr from "assets/img/li/kit.webp";
 import price from 'assets/img/li/price.webp';
@@ -17,10 +17,10 @@ import Head from "next/head";
 import Image from 'next/image';
 import { useRouter } from "next/router";
 import { default as React, useEffect } from "react";
-import BotaoWhats from "../../components/BotaoWhats";
-import ColorButton from "../../components/ColorButton";
-import Footer from "../../components/Footer";
-import Form from "../../components/Form";
+import BotaoWhats from "../components/BotaoWhats";
+import ColorButton from "../components/ColorButton";
+import Footer from "../components/Footer";
+import Form from "../components/Form";
 import Banner from "../components/Banner";
 import Contador from "../components/Contador";
 import SobreMim from "../components/Sobre";
@@ -172,44 +172,44 @@ const deliverables = [
     },
     {
         title: "Vetorização",
-        image: require("assets/img/ls1/vetorizacao.webp"),
+        image: require("assets/img/li/vetorizacao.webp"),
         description: "Você vai aprender a vetorizar seu projeto, isto é, desenhar no computador para poder imprimir e posteriormente montar sua apostila de moldes. De forma simples e passo a passo bem detalhado para mesmo que você que não domina o computador ou tecnologia consiga entender e realizar este processo. E tudo isso usando um programa totalmente gratuito."
     },
     {
         title: "Ciclo evolutivo",
-        image: require("assets/img/ls1/testes.webp"),
+        image: require("assets/img/li/testes.webp"),
         description: "Vamos explorar o ciclo evolutivo de criação e testes das peças com dicas valiosas que podem fazer você economizar muito tempo neste processo."
     },
     {
         title: "Criação da apostila",
-        image: require("assets/img/ls1/apostila.webp"),
+        image: require("assets/img/li/apostila.webp"),
         description: "Vamos transformar seus moldes em uma apostila. Ao final você vai sair com uma apostila em formato PDF prontinha para venda."
     },
     {
         title: "Criação de um curso",
-        image: require("assets/img/ls1/curso.webp"),
+        image: require("assets/img/li/curso.webp"),
         description: "Vou te contar como e por que criar seu curso. Vamos explorar tudo o que deu certo e o que não deu certo nos meus cursos para que você comece do jeito certo. Equipamentos, preparação, dicas de edição e muito mais.",
     },
     {
         title: "Como vender",
-        image: require("assets/img/ls1/vender.webp"),
+        image: require("assets/img/li/vender.webp"),
         description: "Você vai aprender como apresentar seus produtos, lançar sua apostila e trabalhar a divulgação para vender todos os dias."
     },
     {
         title: "Marketing na prática",
-        image: require("assets/img/ls1/faceads.webp"),
+        image: require("assets/img/li/faceads.webp"),
         description: "Você vai aprender como automatizar as suas vendas utilizando marketing digital e escalar os seus resultados. Tudo o que eu vou ensinar aqui foi testado na prática na venda dos meus cursos e apostilas.",
         price: "R$ 997"
     },
     {
         title: "Comunidade no Facebook",
-        image: require("assets/img/ls1/comunidade.webp"),
+        image: require("assets/img/li/comunidade.webp"),
         description: "A comunidade será o lugar para postar seus resultados, consultar e tirar dúvidas. Interagir e fazer parcerias.",
         price: "R$ 197"
     },
     {
         title: "Grupo no WhatsApp",
-        image: require("assets/img/ls1/whatsapp.webp"),
+        image: require("assets/img/li/whatsapp.webp"),
         description: "Um grupo aberto no WhatsApp comigo e com as outras alunas do desafio para tirar dúvidas e receber avisos. Você nunca estará sozinha.",
         price: "R$ 197"
     },
@@ -218,25 +218,25 @@ const deliverables = [
 const bonus = [
     {
         title: "Mentoria semanal",
-        image: require("assets/img/ls1/live.webp"),
+        image: require("assets/img/li/live.webp"),
         description: "Mentoria online em grupo toda semana por 1 ano inteiro. As mentorias ficam gravadas e são disponibilizadas na área de membros para assistir quantas vezes quiser.",
         price: "R$ 5000"
     },
     {
         title: "Templates de apostila",
-        image: require("assets/img/ls1/template.webp"),
+        image: require("assets/img/li/template.webp"),
         description: "Vou te dar dois templates de apostila que você poderá usar como base para montar as suas apostilas. Vai ficar muito mais fácil e ainda vai economizar tempo. É copiar, colar e alterar fotos e textos, a estrutura está pronta.",
         price: "R$ 97"
     },
     {
         title: "Curso Renascer em Jesus",
-        image: require("assets/img/jesus/close.webp"),
+        image: require("assets/img/li/jesus.webp"),
         description: "Você vai aprender técnicas de pintura aplicadas ao feltro que pode ser um diferencial nos seus projetos.",
         price: "R$ 47"
     },
     {
         title: "Curso Joias Raras Premium",
-        image: require("assets/img/jr/bonecas.webp"),
+        image: require("assets/img/li/bonecas.webp"),
         description: "Aprenda técnicas de criação de bonecas associado a outros materiais e projetos únicos. Quem é iniciante no feltro poderá aprender tudo o que precisa para aproveitar o desafio.",
         price: "R$ 97"
     },
@@ -316,7 +316,7 @@ function CheckoutButton(props) {
         setOpen(false);
     };
 
-    let checkoutURL = "https://sun.eduzz.com/969161"
+    let checkoutURL = "https://sun.eduzz.com/1152685"
     const router = useRouter()
     if (router.query.utm_source)
         checkoutURL += "&utm_source=" + router.query.utm_source
@@ -324,6 +324,10 @@ function CheckoutButton(props) {
         checkoutURL += "&utm_medium=" + router.query.utm_medium
     if (router.query.utm_campaign)
         checkoutURL += "&utm_campaign=" + router.query.utm_campaign
+    if (router.query.utm_content)
+        checkoutURL += "&utm_content=" + router.query.utm_content
+    if (router.query.utm_term)
+        checkoutURL += "&utm_term=" + router.query.utm_term
 
     return (
         <>
@@ -601,7 +605,7 @@ function Garantia() {
             <Container maxWidth="md">
                 <Grid container className={classes.grid} spacing={3}>
                     <Grid item className={classes.centered} xs={12} md={6}>
-                        <img src={require("assets/img/ls1/garantia30.webp")} alt="Garantia de 30 dias" />
+                        <img src={require("assets/img/garantia30.webp")} alt="Garantia de 30 dias" />
                     </Grid>
                     <Grid item xs={12} md={6} className={classes.justify}>
                         <h1 className={classes.centered}>Seu risco é zero</h1>

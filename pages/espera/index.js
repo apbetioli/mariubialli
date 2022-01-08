@@ -7,7 +7,7 @@ import Footer from "../../components/Footer";
 import Form from "../../components/Form";
 import Banner from "../../components/Banner";
 import SobreMim from "../../components/Sobre";
-import image from "assets/img/li/banner-dac.webp";
+import image from "assets/img/li/banner-mbf.webp";
 
 const useStyles = makeStyles((theme) => ({
     root: {

@@ -1,8 +1,8 @@
 import { makeStyles } from "@material-ui/core";
 import { useRouter } from "next/router";
 import React from "react";
-import BotaoWhats from "../../components/BotaoWhats";
-import Obrigado from "../../components/Obrigado";
+import BotaoWhats from "../components/BotaoWhats";
+import Obrigado from "../components/Obrigado";
 
 function getTitle() {
     const router = useRouter();
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function LS1Confirmado(props) {
+export default function LIConfirmado(props) {
     const classes = useStyles();
 
     return (

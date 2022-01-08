@@ -3,12 +3,12 @@ import Box from '@material-ui/core/Box';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { WhatsApp } from "@material-ui/icons";
 import Head from "next/head";
-import React, { useEffect } from "react";
 import Banner from "../../components/Banner";
 import ColorButton from "../../components/ColorButton";
 import Footer from "../../components/Footer";
 import Contador from "../../components/Contador";
 import Programacao from "../../components/Programacao";
+import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import * as fbq from '../../lib/fpixel';
 

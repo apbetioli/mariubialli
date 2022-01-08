@@ -11,7 +11,7 @@ function getTitle() {
     return title;
 }
 
-export default function LS1Aguardando(props) {
+export default function LIAguardando(props) {
     return (
         <Obrigado
             social={false}
