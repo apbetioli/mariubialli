@@ -3,11 +3,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import Head from "next/head";
 import Image from 'next/image';
 import { default as React } from "react";
-import aula01 from "../../assets/img/li/aula-01.webp";
-import aula02 from "../../assets/img/li/aula-02.webp";
-import aula03 from "../../assets/img/li/aula-03-a.webp";
-import ColorButton from "../../components/ColorButton";
-import Footer from "../../components/Footer";
+import aula01 from "../assets/img/li/aula-01.webp";
+import aula02 from "../assets/img/li/aula-02.webp";
+import aula03 from "../assets/img/li/aula-03-a.webp";
+import ColorButton from "../components/ColorButton";
+import Footer from "../components/Footer";
 import Banner from "../components/Banner";
 
 const useStyles = makeStyles((theme) => ({
@@ -129,14 +129,14 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Promessa() {
+function Promessa(props) {
     const classes = useStyles();
     return (
         <section>
             <Container maxWidth="md">
                 <Grid container spacing={2}>
                     <Grid item className={classes.centered} xs={12}>
-                        <h3>Saia do zero e fature até 5k criando peças exclusivas e moldes em feltro</h3>
+                        <h3>Gere renda extra vendendo suas bonecas de feltro</h3>
                         <div className={classes.videoWrapper}>
                             <iframe
                                 loading="lazy"
@@ -146,12 +146,12 @@ function Promessa() {
                                 allowFullScreen
                             ></iframe>
                         </div>
-                        <ColorButton style={ColorButton.whatsapp} href="https://bit.ly/mac-vip-aula-03" target="_blank">
+                        <ColorButton style={ColorButton.whatsapp} href="/vip" target="_blank">
                             Entrar para o grupo VIP do WhatsApp
                         </ColorButton>
                     </Grid>
                     <Grid item className={classes.centered} xs={12} >
-                        <ColorButton style={ColorButton.facebook} href="https://bit.ly/mac-comunidade-aula-03" target="_blank">
+                        <ColorButton style={ColorButton.facebook} href="/comunidade" target="_blank">
                             Entrar para a comunidade da minissérie no facebook
                         </ColorButton>
                         <br />
@@ -212,4 +212,5 @@ export default function LIInscrever(props) {
 
 LIInscrever.defaultProps = {
     origin: 'og',
+    rome: 'Gere renda extra vendendo suas bonecas de feltro'
 };
