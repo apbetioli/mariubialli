@@ -35,6 +35,13 @@ const translate = {
     'Facebook_Right_Column': 'GLu60Je',
     'Instagram_Stories': '2juLxBL',
     'Instagram_Feed': 'VKuxME5',
+    'BF_LI_JAN22': '7auRE6L',
+    'BF_LI_JAN22_OG': 'wou01p3',
+    'BF_LI_JAN22_FB': 'X1unMy4',
+    'BF_LI_JAN22_GG': '08uyYJr',
+    'BF_LI_JAN22_TG': 'mvulxbx',
+    'BF_LI_JAN22_EM': '95urPA9',
+    'BF_LI_JAN22_CHECKOUT': 'WBupXPV',
 }
 
 getParams = (lead) => {
@@ -87,8 +94,6 @@ module.exports = async (req, res) => {
 
         if (translate[lead.source])
             await subscribe(lead, translate[lead.source])
-        else if (lead.source.includes("Facebook") || lead.source.includes("Instagram"))
-            await subscribe(lead, translate['faceads'])
 
         res.send(result)
 

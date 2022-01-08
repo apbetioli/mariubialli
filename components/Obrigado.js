@@ -33,7 +33,7 @@ function triggerCompleteRegistration() {
 }
 
 export default function Obrigado(props) {
-  triggerCompleteRegistration(props);
+  triggerCompleteRegistration();
 
   const classes = useStyles();
 

@@ -33,14 +33,14 @@ export default function App({ Component, pageProps }) {
   return (
     <React.Fragment>
       <Head>
-        <title>{title + "Artesã Criativa - Mari Ubialli"}</title>
+        <title>{title + "Mari Ubialli"}</title>
         <meta
           name="description"
-          content="Vem aprender como ir do zero a 5k criando peças exclusivas e seus próprios moldes em feltro."
+          content="Gere renda extra vendendo suas bonecas de feltro"
         />
         <meta
           name="keywords"
-          content="feltro, artesanato, costura, ponto caseado, ponto reto, ponto alinhavo, passo a passo, diy, moldes gratuitos, apostilas gratuitas"
+          content="feltro, artesanato, costura, ponto caseado, ponto reto, ponto alinhavo, passo a passo, diy, moldes gratuitos, apostilas gratuitas, boneca de feltro, bonecas de feltro, renda extra"
         />
         <meta name="robots" content="index,follow"></meta>
       </Head>

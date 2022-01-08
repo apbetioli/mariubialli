@@ -9,20 +9,13 @@ module.exports = withPlugins([[withImages]], {
     return config;
   },
   async rewrites() {
-    return [
-      /*
-      {
-        source: '/:sub*',
-        destination: '/li/:sub*',
-      },
-      */
-    ]
+    return []
   },
   async redirects() {
     return [
       {
         source: '/',
-        destination: '/espera',
+        destination: '/inscrever',
         permanent: false,
       },
       {
@@ -42,12 +35,12 @@ module.exports = withPlugins([[withImages]], {
       },
       {
         source: '/checkout',
-        destination: 'https://sun.eduzz.com/969161',
+        destination: 'https://sun.eduzz.com/1152685',
         permanent: false
       },
       {
         source: '/comunidade',
-        destination: 'http://www.facebook.com/groups/maratonaartesacriativa/',
+        destination: 'http://www.facebook.com/groups/minisseriebonequeiradefeltro/',
         permanent: false
       },
     ]
