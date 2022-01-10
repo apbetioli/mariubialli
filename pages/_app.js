@@ -9,7 +9,7 @@ import * as fbq from '../lib/fpixel'
 
 const handleRouteChange = () => {
   console.log('Route changed');
-  setTimeout(() => fbq.pageview(), 5000)
+  setTimeout(() => fbq.pageview(), 1000)
 }
 
 export default function App({ Component, pageProps }) {
