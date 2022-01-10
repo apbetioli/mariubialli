@@ -3,15 +3,12 @@ import Box from '@material-ui/core/Box';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { WhatsApp } from "@material-ui/icons";
 import Head from "next/head";
+import React from "react";
 import Banner from "../../components/Banner";
 import ColorButton from "../../components/ColorButton";
-import Footer from "../../components/Footer";
 import Contador from "../../components/Contador";
+import Footer from "../../components/Footer";
 import Programacao from "../../components/Programacao";
-import React, { useEffect } from "react";
-import { useRouter } from "next/router";
-import * as fbq from '../../lib/fpixel';
-
 
 const BorderLinearProgress = withStyles((theme) => ({
   root: {
@@ -64,23 +61,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function triggerCompleteRegistration() {
-  let router = useRouter();
-
-  useEffect(() => {
-    if (!router.query.em)
-      return;
-
-    let params = {
-      em: router.query.em
-    };
-
-    if (router.query.ph) params.ph = router.query.ph
-    if (router.query.fn) params.fn = router.query.fn
-
-    fbq.track("CompleteRegistration", params)
-  })
-}
 
 function LinearProgressWithLabel(props) {
   return (
@@ -139,8 +119,6 @@ function DoisPassos(props) {
 }
 
 export default function LIObrigado(props) {
-  triggerCompleteRegistration();
-
   return (
     <>
       <Head>
