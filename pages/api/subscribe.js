@@ -42,6 +42,10 @@ const translate = {
     'BF_LI_JAN22_TG': 'mvulxbx',
     'BF_LI_JAN22_EM': '95urPA9',
     'BF_LI_JAN22_CHECKOUT': 'WBupXPV',
+    'tvfa': 'eYu3xVP',
+    'search': '8Mu4zRX',
+    'discovery': 'xJuG0PR',
+    'display': '4puzGoz'
 }
 
 getParams = (lead) => {
