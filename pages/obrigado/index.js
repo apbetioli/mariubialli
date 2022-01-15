@@ -1,4 +1,4 @@
-import { Container, Grid, makeStyles, Typography, withStyles } from "@material-ui/core";
+import { Container, Grid, makeStyles, Paper, Typography, withStyles } from "@material-ui/core";
 import Box from '@material-ui/core/Box';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { WhatsApp } from "@material-ui/icons";
@@ -20,8 +20,8 @@ const BorderLinearProgress = withStyles((theme) => ({
   },
   bar: {
     borderRadius: 5,
-    backgroundColor: '#1a90ff',
-  },
+    backgroundColor: '#fe6b8b',
+  }
 }))(LinearProgress);
 
 
@@ -59,6 +59,10 @@ const useStyles = makeStyles((theme) => ({
   foto: {
     maxWidth: "100%",
   },
+  paper: {
+    padding: 10,
+    margin: 10
+  }
 }));
 
 
@@ -96,21 +100,28 @@ function DoisPassos(props) {
             <h2>Faltam apenas 2 passos para finalizar sua inscrição!</h2>
 
             <LinearProgressWithLabel value={progress} />
-            <h4>1) Clique no botão abaixo e entre para o grupo do WhatsApp para receber todas as informações de acesso.</h4>
-            <ColorButton
-              variant="contained"
-              type="button"
-              href={props.whats}
-              target="_blank"
-              style={ColorButton.whatsapp}
-            >
-              <WhatsApp />&nbsp; Entrar para o grupo
-            </ColorButton>
 
-            <p>&nbsp;</p>
+            <Paper className={classes.paper}>
+              <h4>1) Entre para o grupo do WhatsApp da Minissérie</h4>
+              <p>Clique no botão abaixo para entrar para o grupo do WhatsApp e receber todos os avisos da Minissérie</p>
+              <ColorButton
+                variant="contained"
+                type="button"
+                href={props.whats}
+                target="_blank"
+                style={ColorButton.whatsapp}
+              >
+                <WhatsApp />&nbsp; Entrar para o grupo
+              </ColorButton>
 
-            <h4>2) Acesse seu email e responda a pesquisa que te enviamos!</h4>
-            <p>O nosso objetivo é fazer com que você aproveite ao máximo esse evento! Queremos ouvir de você quais são suas principais dificuldades e necessidades para garantir que esse evento vai superar suas expectativas.</p>
+              <p>&nbsp;</p>
+            </Paper>
+
+            <Paper className={classes.paper}>
+              <h4>2) Acesse seu email e responda a pesquisa que te enviamos!</h4>
+              <p>O nosso objetivo é fazer com que você aproveite ao máximo esse evento! Queremos ouvir de você quais são suas principais dificuldades e necessidades para garantir que esse evento vai superar suas expectativas.</p>
+              <p>PS.: Caso não encontre o e-mail, procure na sua caixa de lixo eletrônico, spam ou aguarde alguns minutos e verifique novamente.</p>
+            </Paper>
           </Grid>
         </Grid>
       </Container>
@@ -132,7 +143,9 @@ export default function LIObrigado(props) {
 
       <Banner />
       <DoisPassos {...props} />
-      <Contador date={new Date(props.startDate)} prefix="Começa em" />
+
+      <Contador date={new Date(props.startDate)} prefix="A minissérie começa em" />
+
       <Programacao />
 
       <Footer />

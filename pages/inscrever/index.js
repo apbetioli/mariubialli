@@ -10,6 +10,7 @@ import Form from "../../components/Form";
 import Banner from "../../components/Banner";
 import Programacao from "../../components/Programacao";
 import SobreMim from "../../components/Sobre";
+import Contador from "../../components/Contador";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -39,7 +40,6 @@ const useStyles = makeStyles((theme) => ({
     },
     sectionCta: {
         marginBottom: 30,
-        marginTop: 50,
     },
     sectionConteudo: {
         backgroundColor: "#ffe8ed",
@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const buttonStyle = ColorButton.whatsapp;
+const buttonStyle = ColorButton.primary;
 
 function CTA(props) {
     const classes = useStyles();
@@ -78,8 +78,7 @@ function CTA(props) {
         <Container maxWidth="sm">
             <Grid container>
                 <Grid item className={classes.centered} xs={12}>
-                    <p><b>Inscreva-se agora gratuitamente:</b></p>
-                    <Form buttonText="QUERO ME INSCREVER" buttonStyle={ColorButton.blue} tag={`${props.tagPrefix}_${props.origin.toUpperCase()}`} redirectTo={`/obrigado/${props.origin}`}
+                    <Form buttonText="QUERO PARTICIPAR" buttonStyle={ColorButton.blue} tag={`${props.tagPrefix}_${props.origin.toUpperCase()}`} redirectTo={`/obrigado/${props.origin}`}
                         emailPlaceholder="Digite seu melhor email" buttonStyle={buttonStyle} showTerms={false}>
                     </Form>
                 </Grid>
@@ -91,23 +90,26 @@ function CTA(props) {
 function Promessa(props) {
     const classes = useStyles();
     return (
-        <div>
+        <section className={classes.gradientBackground}>
             <Container maxWidth="sm">
                 <Grid container>
                     <Grid item className={classes.centered} xs={12}>
                         <h3>{props.rome}</h3>
                         <p>{props.description}</p>
                     </Grid>
-                    <Grid item className={classes.centered} xs={12} md={6}>
-                        <i><EventAvailableIcon className={classes.heart} /> </i>{props.dates}
+                    <Grid item className={classes.centered} xs={12}>
+                        <i><LocationOn className={classes.heart} /> </i>
+                        <b>Evento online e gratuito</b>
                     </Grid>
-                    <Grid item className={classes.centered} xs={12} md={6}>
-                        <i><LocationOn className={classes.heart} /> </i>100% Online e Gratuito
+                    <Grid item className={classes.centered} xs={12}>
+                        <i><EventAvailableIcon className={classes.heart} /> </i>
+                        <b>{props.dates}</b>
                     </Grid>
                 </Grid>
             </Container>
+            <p></p>
             <CTA {...props} />
-        </div>
+        </section>
     );
 }
 
@@ -158,9 +160,20 @@ export default function LIInscrever(props) {
 
             <Conteudo />
             <SobreMim />
+
+            <Contador date={new Date(props.startDate)} prefix="A minissérie começa em" />
+
             <section className={classes.sectionCta}>
-                <CTA {...props} />
+                <Container maxWidth="sm">
+                    <Grid container className={classes.grid}>
+                        <Grid item xs={12}>
+                            <p>Participe da Minissérie Bonequeira de Feltro e aprenda o caminho para você criar e vender bonecas de feltro e gerar renda extra, mesmo se você nunca trabalhou com feltro.</p>
+                            <CTA {...props} />
+                        </Grid>
+                    </Grid>
+                </Container>
             </section>
+
             <Footer />
 
         </main>
@@ -171,7 +184,8 @@ LIInscrever.defaultProps = {
     origin: 'og',
     name: "Minissérie Bonequeira de Feltro",
     rome: "Gere renda extra vendendo suas bonecas de feltro",
-    description: "3 super aulas que vão te mostrar o caminho para conquistar sua renda extra vendendo suas bonecas de feltro. Inscreva-se e reserve já o seu lugar.",
-    dates: "De 24/01 a 28/01",
+    description: "Uma semana de aulas que vão te mostrar o caminho para conquistar sua renda extra vendendo suas bonecas de feltro.",
+    dates: "Dos dias 31/01 a 04/02",
+    startDate: "2022-01-31 08:00:00",
     tagPrefix: "BF_LI_JAN22"
 };

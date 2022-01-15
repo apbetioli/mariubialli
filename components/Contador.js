@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
     },
     sectionSobreMim: {
-        backgroundColor: "#000",
+        backgroundColor: "#151515",
         color: "#FFF",
     },
     number: {

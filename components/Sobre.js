@@ -33,13 +33,13 @@ export default function SobreMim() {
         <section className={classes.sectionSobreMim}>
             <Container maxWidth="sm">
                 <Grid container className={classes.grid} spacing={3}>
-                    <Grid item className={classes.centered} md={6}>
-                        <img className={classes.fotoPerfil} src={require("assets/img/perfil.webp")} alt="Mari Ubialli" />
-                    </Grid>
                     <Grid item md={6} className={classes.justify}>
                         <h3 className={classes.centered}>Mari Ubialli</h3>
                         <p>Sou apaixonada por artesanato em feltro e por ensinar.</p>
                         <p>Com mais de 1500 alunas, meu objetivo é ensinar artesãs a gerar renda vendendo suas bonecas de feltro e permitir que vivam do que amam fazer.</p>
+                    </Grid>
+                    <Grid item className={classes.centered} md={6}>
+                        <img className={classes.fotoPerfil} src={require("assets/img/li/mari.png")} alt="Mari Ubialli" />
                     </Grid>
                 </Grid>
             </Container>
