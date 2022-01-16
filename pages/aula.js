@@ -135,6 +135,7 @@ function Video(props) {
     const enable01 = new Date(props.date01) <= new Date()
     const enable02 = new Date(props.date02) <= new Date()
     const enable03 = new Date(props.date03) <= new Date()
+    const enable04 = new Date(props.date04) <= new Date()
     return (
         <section>
             <Container maxWidth="sm">
@@ -142,26 +143,33 @@ function Video(props) {
                     <Grid item className={classes.centered}>
                         <h3>{props.rome}</h3>
                     </Grid>
-                    <Grid item className={classes.centered} xs={4}>
+                    <Grid item className={classes.centered} xs={3}>
                         <ColorButton
                             style={props.num == '01' ? ColorButton.active : ColorButton.primary}
                             href="/aula-01">
-                            AULA 1 {enable01 ? 'ASSISTIR' : '- 31/01'}
+                            AULA 1 {enable01 ? 'ASSISTIR' : '31/01'}
                         </ColorButton>
                     </Grid>
-                    <Grid item className={classes.centered} xs={4}>
+                    <Grid item className={classes.centered} xs={3}>
                         <ColorButton
                             style={props.num == '02' ? ColorButton.active : ColorButton.primary}
                             href="/aula-02">
-                            AULA 2 {enable02 ? 'ASSISTIR' : '- 02/02'}
+                            AULA 2 {enable02 ? 'ASSISTIR' : '02/02'}
                         </ColorButton>
                     </Grid>
-                    <Grid item className={classes.centered} xs={4} >
+                    <Grid item className={classes.centered} xs={3} >
                         <ColorButton
                             style={props.num == '03' ? ColorButton.active : ColorButton.primary}
                             href="/aula-03">
-                            AULA 3 {enable02 ? 'ASSISTIR' : '- 04/02'}
+                            AULA 3 {enable03 ? 'ASSISTIR' : '04/02'}
                         </ColorButton>
+                    </Grid>
+                    <Grid item className={classes.centered} xs={3} >
+                        <ColorButton
+                            style={props.num == '04' ? ColorButton.active : ColorButton.primary}
+                            href="/aula-04">
+                            AULA 4 {enable04 ? 'ASSISTIR' : '06/02'}
+                        </ColorButton>  
                     </Grid>
                     <Grid item className={classes.centered} xs={12}>
                         <div className={classes.videoWrapper}>
@@ -220,5 +228,6 @@ LIAula.defaultProps = {
     date01: '2022-01-31 08:00:00',
     date02: '2022-02-02 08:00:00',
     date03: '2022-02-04 08:00:00',
+    date03: '2022-02-06 20:00:00',
     videoID: '3KXsdpul16c'
 };

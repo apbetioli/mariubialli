@@ -94,6 +94,8 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 'bold',
         height: 72,
         padding: '0 20px',
+        width: "100%",
+
         textAlign: 'center',
         '&:hover': {
             boxShadow: '-4px 4px 0 0 var(--box-shadow-hover)',
