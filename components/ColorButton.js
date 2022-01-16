@@ -66,6 +66,14 @@ ColorButton.primary = {
     '--box-shadow-hover': 'rgba(255, 105, 135, .6)',
 };
 
+ColorButton.active = {
+    '--color': '#fe6b8b',
+    '--background-start': 'white',
+    '--background-end': 'white',
+    '--box-shadow': 'white',
+    '--box-shadow-hover': 'white',
+};
+
 ColorButton.facebook = {
     '--color': 'white',
     '--background-start': '#3360ff',
@@ -81,19 +89,21 @@ const useStyles = makeStyles((theme) => ({
     button: {
         background: 'linear-gradient(45deg, var(--background-start) 30%, var(--background-end) 90%)',
         borderRadius: 5,
-        border: 0,
-        boxShadow: '-8px 8px 0 0 var(--box-shadow)',
+        border: 1,
         color: 'var(--color)',
         fontWeight: 'bold',
         height: 72,
-        padding: '0 30px',
+        padding: '0 20px',
         textAlign: 'center',
         '&:hover': {
-            boxShadow: '-8px 8px 0 0 var(--box-shadow-hover)',
+            boxShadow: '-4px 4px 0 0 var(--box-shadow-hover)',
         },
         [theme.breakpoints.down("xs")]: {
             boxShadow: "none",
             width: "100%"
+        },
+        '&:disabled': {
+            color: 'var(--box-shadow)'
         },
     },
 }));

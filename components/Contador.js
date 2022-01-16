@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
         color: "#FFF",
     },
     number: {
-        fontSize: "1em",
+        fontSize: "1.5em",
         fontWeight: "bold"
     }
 }));
@@ -57,7 +57,7 @@ export default function Contador(props) {
 }
 
 Contador.defaultProps = {
-    date: new Date("2021-10-29 23:59:59"),
+    date: new Date("2022-01-31 08:00:00"),
     prefix: "Faltam ",
     gameover: "O tempo acabou!"
 }

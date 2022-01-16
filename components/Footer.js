@@ -9,9 +9,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     height: theme.footer.height,
     textAlign: "center"
-  },
-  footerLinks: {
-    fontWeight: "bold",
   }
 }));
 
@@ -28,15 +25,12 @@ export default function Footer(props) {
         </Grid>
         <Hidden smUp>
           <Grid item lg={12}>
-            &copy; 2021 Mari Ubialli - 33.939.585/0001-69
-          </Grid>
-          <Grid item lg={12}>
-            Todos os direitos reservados
+            Copyright &copy; 2021 Mari Ubialli - 33.939.585/0001-69
           </Grid>
         </Hidden>
         <Hidden xsDown>
           <Grid item lg={12}>
-            &copy; 2021 Mari Ubialli - 33.939.585/0001-69 - Todos os direitos reservados
+            &copy; 2022 Mari Ubialli - 33.939.585/0001-69 - Todos os direitos reservados
           </Grid>
         </Hidden>
       </Grid>
