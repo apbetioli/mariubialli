@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import defaultImage from "assets/img/li/banner-mbf.png"
+import defaultImage from "assets/img/li/banner-mbf.webp"
 
 const useStyles = makeStyles((theme) => ({
     centered: {
@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     },
     sectionPrimary: {
         backgroundColor: "#151515",
-        //backgroundImage: "linear-gradient(135deg, rgba(254, 107, 139, 0.8), #151515)",
+        backgroundImage: "linear-gradient(135deg, rgba(254, 107, 139, 0.8), #151515)",
         color: "#FFF",
     },
     photo: {
