@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     },
     sectionPrimary: {
         backgroundColor: "#151515",
-        backgroundImage: "linear-gradient(135deg, rgba(254, 107, 139, 0.8), #151515)",
+        //backgroundImage: "linear-gradient(135deg, rgba(254, 107, 139, 0.8), #151515)",
         color: "#FFF",
     },
     photo: {

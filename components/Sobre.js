@@ -39,7 +39,7 @@ export default function SobreMim() {
                         <p>Com mais de 1500 alunas, meu objetivo é ensinar artesãs a gerar renda vendendo suas bonecas de feltro e permitir que vivam do que amam fazer.</p>
                     </Grid>
                     <Grid item className={classes.centered} md={6}>
-                        <img className={classes.fotoPerfil} src={require("assets/img/li/mari.png")} alt="Mari Ubialli" />
+                        <img className={classes.fotoPerfil} src={require("assets/img/li/mari.webp")} alt="Mari Ubialli" />
                     </Grid>
                 </Grid>
             </Container>
