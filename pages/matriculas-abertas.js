@@ -8,7 +8,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import HttpsIcon from '@material-ui/icons/Https';
-import image from "assets/img/li/banner-mbf.webp";
+import image from "assets/img/li/banner-mbf.png";
 import caderno from "assets/img/li/caderno.webp";
 import kitjr from "assets/img/li/kit.webp";
 import price from 'assets/img/li/price.webp';

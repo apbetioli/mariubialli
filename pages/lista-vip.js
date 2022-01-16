@@ -5,7 +5,7 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import image from "assets/img/li/banner-mbf.webp";
+import image from "assets/img/li/banner-mbf.png";
 import Head from "next/head";
 import { default as React } from "react";
 import ColorButton from "../components/ColorButton";
