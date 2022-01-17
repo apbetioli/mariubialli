@@ -25,7 +25,7 @@ module.exports = withPlugins([[withImages]], {
       },
       {
         source: '/vip',
-        destination: 'https://joinzap.app/mac-vip',
+        destination: 'https://leadzap.me/14818/bfvip',
         permanent: false,
       },
       {
