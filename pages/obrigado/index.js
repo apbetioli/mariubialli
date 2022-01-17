@@ -8,7 +8,6 @@ import Banner from "../../components/Banner";
 import ColorButton from "../../components/ColorButton";
 import Contador from "../../components/Contador";
 import Footer from "../../components/Footer";
-import Programacao from "../../components/Programacao";
 
 const BorderLinearProgress = withStyles((theme) => ({
   root: {
@@ -61,8 +60,22 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: 10,
-    margin: 10
-  }
+    marginBottom: 20
+  },
+  video: {
+    left: 0,
+    height: "100%",
+    position: "absolute",
+    top: 0,
+    width: "100%",
+  },
+  videoWrapper: {
+    height: 0,
+    marginTop: 25,
+    marginBottom: 25,
+    paddingBottom: "56.25%",
+    position: "relative",
+  },
 }));
 
 
@@ -97,12 +110,26 @@ function DoisPassos(props) {
         <Grid container>
           <Grid item className={classes.centered} xs={12}>
 
-            <h2>Faltam apenas 2 passos para finalizar sua inscrição!</h2>
+            <h2>Assista esse vídeo para saber como concorrer a <u>R$500</u> em materiais</h2>
 
-            <LinearProgressWithLabel value={progress} />
+            <div className={classes.videoWrapper}>
+              <iframe
+                loading="lazy"
+                className={classes.video}
+                src={"https://www.youtube.com/embed/uUIw3DQoOOQ?rel=0&modestbranding=1&showinfo=0"}
+                frameBorder="0"
+                allowFullScreen
+              ></iframe>
+            </div>
+
+            <h3>Próximos passos...</h3>
+
+          </Grid>
+
+          <Grid item className={classes.justify} xs={12}>
 
             <Paper className={classes.paper}>
-              <h4>1) Entre para o grupo do WhatsApp da Minissérie</h4>
+              <h4>1) Entre para o grupo do WhatsApp exclusivo da Minissérie</h4>
               <p>Clique no botão abaixo para entrar para o grupo do WhatsApp e receber todos os avisos da Minissérie</p>
               <ColorButton
                 variant="contained"
@@ -113,19 +140,19 @@ function DoisPassos(props) {
               >
                 <WhatsApp />&nbsp; Entrar para o grupo
               </ColorButton>
-
-              <p>&nbsp;</p>
             </Paper>
 
             <Paper className={classes.paper}>
               <h4>2) Acesse seu email e responda a pesquisa que te enviamos!</h4>
-              <p>O nosso objetivo é fazer com que você aproveite ao máximo esse evento! Queremos ouvir de você quais são suas principais dificuldades e necessidades para garantir que esse evento vai superar suas expectativas.</p>
-              <p>PS.: Caso não encontre o e-mail, procure na sua caixa de lixo eletrônico, spam ou aguarde alguns minutos e verifique novamente.</p>
+              <p>O nosso objetivo é fazer com que você aproveite ao máximo esse evento!</p>
+              <p>Queremos ouvir de você quais são suas principais dificuldades e necessidades para garantir que esse evento vai superar suas expectativas.</p>
+              <p>Ao responder a pesquisa você vai receber em seu email o ebook: 15 ideias de projetos para fazer com bonecas e vender muito.</p>
+              <p><i>PS.: Caso não encontre o e-mail, procure na sua caixa de lixo eletrônico, spam ou aguarde alguns minutos e verifique novamente.</i></p>
             </Paper>
           </Grid>
         </Grid>
       </Container>
-    </section>
+    </section >
   )
 }
 
@@ -145,8 +172,6 @@ export default function LIObrigado(props) {
       <DoisPassos {...props} />
 
       <Contador date={new Date(props.startDate)} prefix="A minissérie começa em" />
-
-      <Programacao />
 
       <Footer />
     </>

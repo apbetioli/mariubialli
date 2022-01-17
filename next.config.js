@@ -20,7 +20,7 @@ module.exports = withPlugins([[withImages]], {
       },
       {
         source: '/whats',
-        destination: 'https://joinzap.app/mac',
+        destination: 'https://chat.whatsapp.com/HkI5wpXVNprCXNMnWJcAln',
         permanent: false,
       },
       {

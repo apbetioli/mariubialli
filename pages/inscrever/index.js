@@ -4,13 +4,12 @@ import { CheckBox, LocationOn } from "@material-ui/icons";
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 import Head from "next/head";
 import { default as React } from "react";
+import Banner from "../../components/Banner";
 import ColorButton from "../../components/ColorButton";
+import Contador from "../../components/Contador";
 import Footer from "../../components/Footer";
 import Form from "../../components/Form";
-import Banner from "../../components/Banner";
-import Programacao from "../../components/Programacao";
 import SobreMim from "../../components/Sobre";
-import Contador from "../../components/Contador";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -154,10 +153,6 @@ export default function LIInscrever(props) {
             <Banner alt={props.name} />
             <Promessa {...props} />
 
-            <section className={classes.sectionConteudo}>
-                <Programacao />
-            </section>
-
             <Conteudo />
             <SobreMim />
 
@@ -165,13 +160,9 @@ export default function LIInscrever(props) {
 
             <section className={classes.sectionCta}>
                 <Container maxWidth="sm">
-                    <Grid container className={classes.grid}>
-                        <Grid item xs={12}>
-                            <p>Participe da Minissérie Bonequeira de Feltro e aprenda o caminho para você criar e vender bonecas de feltro e gerar renda extra, mesmo se você nunca trabalhou com feltro.</p>
-                            <CTA {...props} />
-                        </Grid>
-                    </Grid>
+                    <p>Participe da Minissérie Bonequeira de Feltro e aprenda o caminho para você criar e vender bonecas de feltro e gerar renda extra, mesmo se você nunca trabalhou com feltro.</p>
                 </Container>
+                <CTA {...props} />
             </section>
 
             <Footer />
