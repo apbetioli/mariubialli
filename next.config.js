@@ -20,7 +20,7 @@ module.exports = withPlugins([[withImages]], {
       },
       {
         source: '/whats',
-        destination: 'https://chat.whatsapp.com/HkI5wpXVNprCXNMnWJcAln',
+        destination: 'https://leadzap.me/14818/bflijan22',
         permanent: false,
       },
       {
