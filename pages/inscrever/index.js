@@ -175,7 +175,7 @@ LIInscrever.defaultProps = {
     origin: 'og',
     name: "Minissérie Bonequeira de Feltro",
     rome: "Gere renda vendendo suas bonecas de feltro",
-    description: "Uma semana de aulas que vão te mostrar o melhor caminho para você vender suas bonecas de feltro.",
+    description: "Uma semana de aulas que vão te mostrar o melhor caminho para você vender suas bonecas de feltro e gerar renda do seu artesanato.",
     dates: "Dos dias 31/01 a 06/02",
     startDate: "2022-01-31 08:00:00",
     tagPrefix: "BF_LI_JAN22"
