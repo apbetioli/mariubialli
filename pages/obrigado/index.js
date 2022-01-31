@@ -171,8 +171,6 @@ export default function LIObrigado(props) {
       <Banner />
       <DoisPassos {...props} />
 
-      <Contador date={new Date(props.startDate)} prefix="A minissérie começa em" />
-
       <Footer />
     </>
   )

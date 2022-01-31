@@ -156,8 +156,6 @@ export default function LIInscrever(props) {
             <Conteudo />
             <SobreMim />
 
-            <Contador date={new Date(props.startDate)} prefix="A minissérie começa em" />
-
             <section className={classes.sectionCta}>
                 <Container maxWidth="sm">
                     <p>Participe da Minissérie Bonequeira de Feltro e aprenda o caminho para você criar e vender bonecas de feltro e gerar renda extra, mesmo se você nunca trabalhou com feltro.</p>
@@ -177,6 +175,6 @@ LIInscrever.defaultProps = {
     rome: "Gere renda vendendo suas bonecas de feltro",
     description: "Uma semana de aulas que vão te mostrar o melhor caminho para você vender suas bonecas de feltro e gerar renda do seu artesanato.",
     dates: "Dos dias 31/01 a 06/02",
-    startDate: "2022-01-31 08:00:00",
+    startDate: "2022-01-06 23:59:00",
     tagPrefix: "BF_LI_JAN22"
 };
