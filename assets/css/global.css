@@ -35,3 +35,7 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.makeStyles-button-32 {
+  padding: 0 10px !important;
+}

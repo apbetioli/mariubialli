@@ -19,6 +19,26 @@ module.exports = withPlugins([[withImages]], {
         permanent: false,
       },
       {
+        source: '/aula-02',
+        destination: '/aula-01',
+        permanent: false,
+      },
+      {
+        source: '/aula-03',
+        destination: '/aula-01',
+        permanent: false,
+      },
+      {
+        source: '/aula-04',
+        destination: '/aula-01',
+        permanent: false,
+      },
+      {
+        source: '/matriculas-abertas',
+        destination: '/aula-01',
+        permanent: false,
+      },
+      {
         source: '/whats',
         destination: 'https://leadzap.me/14818/bflijan22',
         permanent: false,

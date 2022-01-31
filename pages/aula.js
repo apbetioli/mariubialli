@@ -147,29 +147,32 @@ function Video(props) {
                         <ColorButton
                             style={props.num == '01' ? ColorButton.active : ColorButton.primary}
                             href="/aula-01">
-                            AULA 1 {enable01 ? 'ASSISTIR' : '31/01'}
+                            AULA 1<br />{enable01 ? 'ASSISTIR' : '31/01'}
                         </ColorButton>
                     </Grid>
                     <Grid item className={classes.centered} xs={3}>
                         <ColorButton
                             style={props.num == '02' ? ColorButton.active : ColorButton.primary}
-                            href="/aula-02">
-                            AULA 2 {enable02 ? 'ASSISTIR' : '02/02'}
+                            href="/aula-02"
+                            disabled={!enable02}>
+                            AULA 2<br />{enable02 ? 'ASSISTIR' : '02/02'}
                         </ColorButton>
                     </Grid>
                     <Grid item className={classes.centered} xs={3} >
                         <ColorButton
                             style={props.num == '03' ? ColorButton.active : ColorButton.primary}
-                            href="/aula-03">
-                            AULA 3 {enable03 ? 'ASSISTIR' : '04/02'}
+                            href="/aula-03"
+                            disabled={!enable03}>
+                            AULA 3<br />{enable03 ? 'ASSISTIR' : '04/02'}
                         </ColorButton>
                     </Grid>
                     <Grid item className={classes.centered} xs={3} >
                         <ColorButton
                             style={props.num == '04' ? ColorButton.active : ColorButton.primary}
-                            href="/aula-04">
-                            AULA 4 {enable04 ? 'ASSISTIR' : '06/02'}
-                        </ColorButton>  
+                            href="/aula-04"
+                            disabled={!enable04}>
+                            LIVE<br />{enable04 ? 'ASSISTIR' : '06/02 19h'}
+                        </ColorButton>
                     </Grid>
                     <Grid item className={classes.centered} xs={12}>
                         <div className={classes.videoWrapper}>
@@ -228,6 +231,6 @@ LIAula.defaultProps = {
     date01: '2022-01-31 08:00:00',
     date02: '2022-02-02 08:00:00',
     date03: '2022-02-04 08:00:00',
-    date03: '2022-02-06 20:00:00',
-    videoID: '3KXsdpul16c'
+    date03: '2022-02-06 19:00:00',
+    videoID: '5GJHGYvTOq8'
 };

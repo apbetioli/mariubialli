@@ -31,13 +31,13 @@ export default function Programacao() {
                     <Grid item xs={12}>
                         <h3 className={classes.centered}>Anote na sua agenda</h3>
                         <Paper className={classes.paper}>
-                            <EventAvailableIcon className={classes.heart} /><b> 31/01 - Aula 1- Segunda</b>
-                            <h4>Como lucrar com bonecas de feltro</h4>
-                            <p>Nesta aula vamos falar sobre como ter lucro nas suas vendas e como medir isso.</p>
+                            <EventAvailableIcon className={classes.heart} /><b> 31/01 - Aula 1 - Segunda</b>
+                            <h4>O primeiro passo para lucrar com bonecas de feltro</h4>
+                            <p>Nesta aula vamos falar sobre como colocar o preço certo para ter lucro nas suas vendas.</p>
                         </Paper>
                         <Paper className={classes.paper}>
                             <EventAvailableIcon className={classes.heart} /><b> 02/02 - Aula 2 - Quarta</b>
-                            <h4>Os 4 pilares da venda de bonecas</h4>
+                            <h4>Como fazer a divulgação e venda das suas bonecas</h4>
                             <p>A base, sem isso você não vai ter sucesso em ter vendas lucrativas e recorrentes.</p>
                         </Paper>
                         <Paper className={classes.paper}>
