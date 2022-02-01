@@ -45,7 +45,9 @@ const translate = {
     'tvfa': 'eYu3xVP',
     'search': '8Mu4zRX',
     'discovery': 'xJuG0PR',
-    'display': '4puzGoz'
+    'display': '4puzGoz',
+    'Instagram_Reels': 'bMuyKPe',
+    'Instagram_Explore': 'rGu2qBv',
 }
 
 getParams = (lead) => {
