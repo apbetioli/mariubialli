@@ -14,6 +14,7 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
     const paths = [
         { params: { origin: 'og' } },
+        { params: { origin: 'fb' } },
         { params: { origin: 'gg' } },
         { params: { origin: 'tg' } },
         { params: { origin: 'em' } }

@@ -33,8 +33,12 @@ const translate = {
     'Facebook_Stories': 'lEuepvR',
     'Facebook_Feed': 'LnuKBr1',
     'Facebook_Right_Column': 'GLu60Je',
+    'Facebook_Desktop_Feed':'Pwuo5bk',
+    'Facebook_Instant_Articles':'y7u0OM9',
     'Instagram_Stories': '2juLxBL',
     'Instagram_Feed': 'VKuxME5',
+    'Instagram_Reels': 'bMuyKPe',
+    'Instagram_Explore': 'rGu2qBv',
     'BF_LI_JAN22': '7auRE6L',
     'BF_LI_JAN22_OG': 'wou01p3',
     'BF_LI_JAN22_FB': 'X1unMy4',
@@ -42,12 +46,12 @@ const translate = {
     'BF_LI_JAN22_TG': 'mvulxbx',
     'BF_LI_JAN22_EM': '95urPA9',
     'BF_LI_JAN22_CHECKOUT': 'WBupXPV',
-    'tvfa': 'eYu3xVP',
+    'Tvfa': 'eYu3xVP',
     'search': '8Mu4zRX',
     'discovery': 'xJuG0PR',
     'display': '4puzGoz',
-    'Instagram_Reels': 'bMuyKPe',
-    'Instagram_Explore': 'rGu2qBv',
+    'Pesquisa': '8Mu4zRX',
+    'pesquisa': '8Mu4zRX',
 }
 
 getParams = (lead) => {
