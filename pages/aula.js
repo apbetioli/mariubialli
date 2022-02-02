@@ -229,8 +229,8 @@ LIAula.defaultProps = {
     rome: 'Gere renda extra vendendo suas bonecas de feltro',
     num: '01',
     date01: '2022-01-31 08:00:00',
-    date02: '2022-02-02 08:00:00',
-    date03: '2022-02-04 08:00:00',
-    date03: '2022-02-06 19:00:00',
+    date02: '2022-02-02 07:30:00',
+    date03: '2022-02-04 07:30:00',
+    date03: '2022-02-05 07:30:00',
     videoID: '5GJHGYvTOq8'
 };

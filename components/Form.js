@@ -127,7 +127,7 @@ export default function Form(props) {
     } catch (error) {
       console.error(error);
       setBackdrop(false);
-      alert("Ops! Algo de errado não está certo. Tente novamente mais tarde.");
+      alert("Ops! Não foi possível completar seu cadastro. Tente novamente.");
     }
   }
 

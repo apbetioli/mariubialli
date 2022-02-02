@@ -33,8 +33,8 @@ const translate = {
     'Facebook_Stories': 'lEuepvR',
     'Facebook_Feed': 'LnuKBr1',
     'Facebook_Right_Column': 'GLu60Je',
-    'Facebook_Desktop_Feed':'Pwuo5bk',
-    'Facebook_Instant_Articles':'y7u0OM9',
+    'Facebook_Desktop_Feed': 'Pwuo5bk',
+    'Facebook_Instant_Articles': 'y7u0OM9',
     'Instagram_Stories': '2juLxBL',
     'Instagram_Feed': 'VKuxME5',
     'Instagram_Reels': 'bMuyKPe',
@@ -102,8 +102,11 @@ module.exports = async (req, res) => {
     try {
         let result = await subscribe(lead, translate[lead.tag])
 
-        if (translate[lead.source])
-            await subscribe(lead, translate[lead.source])
+        if (lead.source && lead.source !== "" && translate[lead.source])
+            subscribe(lead, translate[lead.source])
+
+        if (!result.includes('obrigado'))
+            console.error(result)
 
         res.send(result)
 
