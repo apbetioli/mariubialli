@@ -154,7 +154,7 @@ function Video(props) {
                         <ColorButton
                             style={props.num == '02' ? ColorButton.active : ColorButton.primary}
                             href="/aula-02"
-                            disabled={!enable02}>
+                            >
                             AULA 2<br />{enable02 ? 'ASSISTIR' : '02/02'}
                         </ColorButton>
                     </Grid>
