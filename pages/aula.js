@@ -153,24 +153,21 @@ function Video(props) {
                     <Grid item className={classes.centered} xs={3}>
                         <ColorButton
                             style={props.num == '02' ? ColorButton.active : ColorButton.primary}
-                            href="/aula-02"
-                            >
+                            href="/aula-02">
                             AULA 2<br />{enable02 ? 'ASSISTIR' : '02/02'}
                         </ColorButton>
                     </Grid>
                     <Grid item className={classes.centered} xs={3} >
                         <ColorButton
                             style={props.num == '03' ? ColorButton.active : ColorButton.primary}
-                            href="/aula-03"
-                            disabled={!enable03}>
-                            AULA 3<br />{enable03 ? 'ASSISTIR' : '04/02'}
+                            href="/aula-03">
+                            AULA 3<br /> ASSISTIR
                         </ColorButton>
                     </Grid>
                     <Grid item className={classes.centered} xs={3} >
                         <ColorButton
                             style={props.num == '04' ? ColorButton.active : ColorButton.primary}
-                            href="/aula-04"
-                            disabled={!enable04}>
+                            href="/aula-04">
                             LIVE<br />{enable04 ? 'ASSISTIR' : '06/02 19h'}
                         </ColorButton>
                     </Grid>
@@ -186,10 +183,12 @@ function Video(props) {
                         </div>
                     </Grid>
                     <Grid item className={classes.centered} xs={12} >
+                        {props.children}
+                    </Grid>
+                    <Grid item className={classes.centered} xs={12} >
                         <ColorButton style={ColorButton.primary} href="/comunidade" target="_blank">
                             Entrar na comunidade exclusiva no facebook
                         </ColorButton>
-
                     </Grid>
                     <Grid item className={classes.centered} xs={12}>
                         <Paper className={classes.paper} >
@@ -229,8 +228,8 @@ LIAula.defaultProps = {
     rome: 'Gere renda extra vendendo suas bonecas de feltro',
     num: '01',
     date01: '2022-01-31 08:00:00',
-    date02: '2022-02-02 07:30:00',
-    date03: '2022-02-04 07:30:00',
-    date03: '2022-02-05 07:30:00',
+    date02: '2022-02-02 07:00:00',
+    date03: '2022-02-04 07:00:00',
+    date03: '2022-02-06 18:00:00',
     videoID: '5GJHGYvTOq8'
 };
