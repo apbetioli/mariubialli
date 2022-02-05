@@ -14,6 +14,7 @@ import Banner from "../components/Banner";
 import kitjr from "assets/img/li/kit.webp";
 import caderno from "assets/img/li/caderno.webp";
 import presentes from "assets/img/li/presentes.webp";
+import SobreMim from "../components/Sobre";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -290,7 +291,7 @@ const faqs = [
     },
 ];
 
-const buttonStyle = ColorButton.whatsapp;
+const buttonStyle = ColorButton.blue;
 
 function CTA(props) {
     const classes = useStyles();
@@ -343,8 +344,8 @@ function Promessa() {
             <Container maxWidth="sm">
                 <Grid container spacing={2}>
                     <Grid item className={classes.centered} xs={12}>
-                        <h3>Nesta segunda-feira, dia 25 às 9h da manhã, abrem as matrículas para o <span className={classes.highlight}>Clube Mari Ubialli</span></h3>
-                        <p>Entre para o Grupo VIP e receba o link de matrícula <b>1 HORA ANTES DE TODO MUNDO</b> (ou seja, na segunda-feira <b>25/10 às 8 horas</b>)</p>
+                        <h3>Nesta segunda-feira, dia 07/02 às 8h da manhã, abrem as matrículas para o <span className={classes.highlight}>Clube Mari Ubialli</span></h3>
+                        <p>Entre para o Grupo VIP e receba o link de matrícula <b>1 HORA ANTES DE TODO MUNDO</b> (ou seja, na segunda-feira <b>07/02 às 7 horas</b>)</p>
                     </Grid>
                     <Grid item className={classes.centered} xs={12}>
                         <CTA>
@@ -559,35 +560,35 @@ function Texto() {
                         <br /><br />
                         <p>Eu não gosto de ser a portadora de más notícias mas vou ser direta ao ponto: estou aqui para lhe dar uma boa e uma má notícia.</p>
                         <p>Mas antes, preciso dizer que eu estou muito feliz com tudo o que rolou na Minissérie Bonequeira de Feltro: participações, elogios e muitas pessoas dizendo que os conteúdos realmente fizeram a diferença em suas vidas profissionais.</p>
-                        <p><b>Tivemos mais de 2000 inscritos na Minissérie Bonequeira de Feltro.</b></p>
+                        <p><b>Tivemos mais de 2000 inscritas na Minissérie Bonequeira de Feltro e mais de 600 participando ativamente na comunidade.</b></p>
                         <p>Foram poucas horas de minissérie mas com muita intensidade de conteúdo. Foi realmente muito legal!</p>
                         <p>Agora, vamos lá.</p>
 
                         <h4>PRIMEIRO, A BOA NOTÍCIA…</h4>
 
-                        <p>Talvez você saiba, talvez não, mas na segunda-feira eu vou abrir as inscrições para o Clube Mari Ubialli, um treinamento 100% online que faz com que você consiga sair do 0 e começar a faturar de 1k a 5k por mês criando peças exclusivas e moldes em feltro.</p>
+                        <p>Talvez você saiba, talvez não, mas na segunda-feira eu vou abrir as inscrições para o Clube Mari Ubialli, um treinamento 100% online que faz com que você consiga renda extra vendendo suas bonecas de feltro.</p>
 
-                        <p>Quem se inscrever no Clube Mari Ubialli, além do treinamento completo, vai levar também vários presentes:</p>
-                        <p>🎁 Mentoria em grupo toda semana.</p>
-                        <p>🎁 Dois templates de apostilas para você usar como base na hora de montar a sua.</p>
-                        <p>🎁 Curso Renascer em Jesus.</p>
-                        <p>🎁 Curso Joias Raras Premium.</p>
-                        <p>🎁 Mini curso de edição e dicas de fotografia.</p>
-                        <p>🎁 10% de desconto na Loja Mari Ubialli durante o período do treinamento.</p>
-                        <p>🎁 Gravação da Minissérie Bonequeira de Feltro</p>
+                        <p>Quem se inscrever no Clube Mari Ubialli, além de todos os cursos, vai levar também vários bônus:</p>
+                        <p>🎁 Curso Desafio Artesã Criativa - um curso voltado especialmente para quem quer mais liberdade para criar e não depender mais de outros moldes.</p>
+                        <p>🎁 20% de desconto em toda compra de materiais na Loja Mari Ubialli pelo período de 1 ano. Você vai economizar muito com materiais e vai poder lucrar mais nas suas bonecas.</p>
+                        <p>🎁 Curso bonecas de feltro na máquina de costura. Se você tem máquina, você pode aproveitar ela para acelerar a confecção das suas bonecas.</p>
+                        <p>🎁 Planejamento do que fazer nos seus primeiros 30 dias dentro do curso. Nada de entrar no curso e ficar perdida.</p>
                         <p>Você vai ter acesso ao conteúdo completo por 1 ano inteirinho.</p>
-                        <p>E tem mais: para as 50 primeiras inscritas, vamos dar dois presentes surpresa*:</p>
+                        <br/>
+                        <p>E tem mais: para quem se inscrever no primeiro dia, segunda-feira 07/02, vai ganhar mais presentes:</p>
+
+
+                        <p>🎁 <b>Mentoria semanal em grupo - Para quem se inscrever até as 23:59</b> - A mentoria, de tudo que falamos é o presente que as alunas gostam mais.</p>
+                        <p>🎁 <b>Kit de Materiais para fazer 12 bonecas* - Para quem se inscrever até as 10:00 da manhã</b> - além da mentoria semanal em grupo. Vendendo uma boneca desta por mês paga todo seu investimento no clube.</p>
                         <Typography variant="body2" color="textSecondary" component="span">
                             * Enviamos somente para endereços no Brasil
                         </Typography>
+                        <p>🎁 <b>Consultoria individual de Instagram - Somente para as 10 primeiras inscritas</b> - alem dos outros presentes acima, pra gente deixar o seu instagram pronto para venda. Essas vagas costumam acabar em poucos minutos.</p>
 
-                        <p>Você vai receber de presente aí na sua casa, o kit com os materiais para confeccionar uma das bonecas Joias Raras.</p>
-                        <p>Você também vai ganhar um caderno pra você desenhar, ele será personalizado com o seu nome e mais um lápis.</p>
-                        <p><img src={presentes} className={classes.foto} /></p>
 
-                        <p><b>Atenção! Apenas as 50 primeiras inscritas vão ganhar esses presentes surpresa.*</b></p>
+                        <p><b>Atenção! Atente-se para o prazo de cada presente para não perder.</b></p>
 
-                        <p>As inscrições vão abrir às 9 horas na segunda - feira dia 25 de outubro.</p>
+                        <p>As inscrições vão abrir às 8 horas na segunda-feira dia 07 de fevereiro.</p>
 
                         <h4>AGORA, A MÁ NOTÍCIA…</h4>
 
@@ -597,7 +598,7 @@ function Texto() {
                         <p><i>Mas como assim vagas limitadas se o curso é online?</i></p>
                         <br />
 
-                        <p>Essa é uma coisa que a gente pensou muito antes de decidir. Nosso objetivo é fazer o curso de uma forma diferente. E uma das formas de fazer isso é respondendo todas as perguntas dos alunos e dando suporte de maneira individual.</p>
+                        <p>Essa é uma coisa que a gente pensou muito antes de decidir. Nosso objetivo é fazer o clube de uma forma diferente. E uma das formas de fazer isso é respondendo todas as perguntas dos alunos e dando suporte de maneira individual.</p>
                         <p>Então, se o número de vagas for muito grande, não conseguiremos atender todo mundo da forma como achamos que vocês merecem. Por isso, limitamos o número de vagas.</p>
                         <p>E com a quantidade de mensagens que estamos recebendo com perguntas sobre o curso, pode ser que as inscrições não durem muito tempo e a gente precise encerrar logo nos primeiros dias.</p>
 
@@ -605,18 +606,18 @@ function Texto() {
                         <p><i>E como vou poder me inscrever?</i></p>
                         <br />
 
-                        <p>Segunda-feira dia 25 de outubro às 9 horas, você vai receber um email com o link da página de inscrição do Clube Mari Ubialli.</p>
-                        <p>Nessa página, você vai encontrar um vídeo onde eu explico TUDO sobre o curso, como vai ser, quais são os módulos, como vai funcionar, o preço, formas de pagamento, garantia, TUDO.</p>
-                        <p>As primeiras vagas com os presentes surpresas normalmente esgotam em alguns minutos, por isso nós fizemos um grupo prioritário (vip).</p>
+                        <p>Segunda-feira dia 07 de fevereiro às 8 horas, você vai receber um email com o link da página de inscrição do Clube Mari Ubialli.</p>
+                        <p>Nessa página, você vai encontrar um vídeo onde eu explico TUDO sobre o clube, como vai ser, quais são os módulos, como vai funcionar, o preço, formas de pagamento, garantia, TUDO.</p>
+                        <p>As primeiras vagas com os presentes surpresas normalmente esgotam em alguns minutos, por isso nós fizemos um grupo VIP.</p>
 
                         <br />
                         <p><i>Como assim?</i></p>
                         <br />
 
-                        <p>As inscrições para o público geral começam às 9 horas. Porém, quem estiver no grupo prioritário (vip) vai receber o link para inscrição às 8 horas, ou seja, 1 hora antes de todo mundo.</p>
-                        <p>Isso significa que se você estiver no grupo vip, suas chances de conseguir uma vaga entre os primeiros e ganhar os presentes surpresa serão muito maiores.</p>
-                        <p>E se você quer aprender como sair do 0 e começar a faturar de mil a 5 mil por mês criando peças exclusivas e moldes em feltro, eu recomendo que você seja um dos primeiros a se inscrever.</p>
-                        <p>Para participar do grupo vip (SEM CUSTO e SEM COMPROMISSO) e ter a chance de estar entre os primeiros, é só clicar no botão abaixo:</p>
+                        <p>As inscrições para o público geral começam às 8 horas. Porém, quem estiver no grupo VIP vai receber o link para inscrição às 7 horas, ou seja, 1 hora antes de todo mundo.</p>
+                        <p>Isso significa que se você estiver no grupo VIP, suas chances de conseguir uma vaga entre as primeiras e ganhar os presentes extra serão muito maiores.</p>
+                        <p>E se você quer aprender a fazer renda extra com bonecas de feltro, eu recomendo que você seja uma dos primeiras a se inscrever.</p>
+                        <p>Para participar do grupo VIP (SEM CUSTO e SEM COMPROMISSO) e ter a chance de estar entre os primeiros, é só clicar no botão abaixo:</p>
                         <br />
                         <CTA>
                             CLIQUE AQUI PARA PARTICIPAR DO GRUPO VIP
@@ -624,7 +625,7 @@ function Texto() {
                         <br />
                         <br />
                         <p>Se você quer REVER TODAS AS AULAS da Minissérie Bonequeira de Feltro, as gravações ficarão disponíveis até domingo, às 23h59.</p>
-                        <p>Então aproveita esse final de semana para maratonar as aulas e se preparar para se inscrever no curso completo na SEGUNDA-FEIRA.</p>
+                        <p>Então aproveita esse final de semana para maratonar as aulas e se preparar para se inscrever no Clube Mari Ubialli na SEGUNDA-FEIRA.</p>
                         <p>Para acessar a gravação das aulas é só clicar no botão abaixo:</p>
                         <br />
                         <ColorButton className={classes.cta} style={ColorButton.primary} href="/aula-01" target="_blank">
@@ -632,9 +633,9 @@ function Texto() {
                         </ColorButton>
                         <br />
                         <br />
-                        <p>Caso tenha alguma dúvida sobre o Clube Mari Ubialli, você pode postá-la na comunidade do Facebook. Vamos te responder o mais rápido possível.</p>
+                        <p>Caso tenha alguma dúvida sobre o Clube Mari Ubialli, você pode postá-la na comunidade do Facebook da minissérie. Vamos te responder o mais rápido possível.</p>
                         <br />
-                        <p>Bjos, Mari Ubialli.</p>
+                        <p>Bjos, Mari Ubialli 👩🏼‍🦰</p>
                     </Grid>
                 </Grid>
             </Container>
@@ -653,6 +654,7 @@ export default function LIMatriculasAbertas(props) {
             <Banner image={image} alt="Clube Mari Ubialli" />
             <Promessa />
             <Texto />
+            <SobreMim />
 
             <Footer />
         </main>
