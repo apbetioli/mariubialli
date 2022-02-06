@@ -164,13 +164,6 @@ function Video(props) {
                             AULA 3<br /> ASSISTIR
                         </ColorButton>
                     </Grid>
-                    <Grid item className={classes.centered} xs={3} >
-                        <ColorButton
-                            style={props.num == '04' ? ColorButton.active : ColorButton.primary}
-                            href="/aula-04">
-                            LIVE<br />{enable04 ? 'ASSISTIR' : '06/02 19h'}
-                        </ColorButton>
-                    </Grid>
                     <Grid item className={classes.centered} xs={12}>
                         <div className={classes.videoWrapper}>
                             <iframe
@@ -231,6 +224,6 @@ LIAula.defaultProps = {
     date01: '2022-01-31 08:00:00',
     date02: '2022-02-02 07:00:00',
     date03: '2022-02-04 07:00:00',
-    date03: '2022-02-06 18:00:00',
+    date04: '2022-02-06 18:00:00',
     videoID: '5GJHGYvTOq8'
 };
