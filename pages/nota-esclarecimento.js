@@ -590,6 +590,9 @@ function Texto() {
 
                         <p>As inscrições vão abrir às 8 horas na segunda-feira dia 07 de fevereiro.</p>
 
+                        <p>O investimento no curso é de 12 parcelas de R$59,70 no cartão ou R$597 à vista no cartão, boleto ou PIX. E também pode usar 2 cartões para dividir o limite.</p>
+                        <p>E você tem garantia de 30 dias para conferir tudo o que tem no curso no seu tempo. Se não gostar eu devolvo 100% do valor investido.</p>
+
                         <h4>AGORA, A MÁ NOTÍCIA…</h4>
 
                         <p>Assim como você, mais de 2000 pessoas participaram da Minissérie Bonequeira de Feltro e temos certeza que muitas delas estão interessadas no curso, só que as <b>VAGAS SÃO LIMITADAS</b>.</p>
@@ -618,7 +621,7 @@ function Texto() {
                         <p>Isso significa que se você estiver no grupo VIP, suas chances de conseguir uma vaga entre as primeiras e ganhar os presentes extra serão muito maiores.</p>
                         <p>E se você quer aprender a fazer renda extra com bonecas de feltro, eu recomendo que você seja uma dos primeiras a se inscrever.</p>
                         <p>Para participar do grupo VIP (SEM CUSTO e SEM COMPROMISSO) e ter a chance de estar entre os primeiros, é só clicar no botão abaixo:</p>
-                        <br />
+
                         <CTA>
                             CLIQUE AQUI PARA PARTICIPAR DO GRUPO VIP
                         </CTA>
