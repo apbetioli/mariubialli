@@ -143,21 +143,21 @@ function Video(props) {
                     <Grid item className={classes.centered}>
                         <h3>{props.rome}</h3>
                     </Grid>
-                    <Grid item className={classes.centered} xs={3}>
+                    <Grid item className={classes.centered} xs={4}>
                         <ColorButton
                             style={props.num == '01' ? ColorButton.active : ColorButton.primary}
                             href="/aula-01">
                             AULA 1<br />{enable01 ? 'ASSISTIR' : '31/01'}
                         </ColorButton>
                     </Grid>
-                    <Grid item className={classes.centered} xs={3}>
+                    <Grid item className={classes.centered} xs={4}>
                         <ColorButton
                             style={props.num == '02' ? ColorButton.active : ColorButton.primary}
                             href="/aula-02">
                             AULA 2<br />{enable02 ? 'ASSISTIR' : '02/02'}
                         </ColorButton>
                     </Grid>
-                    <Grid item className={classes.centered} xs={3} >
+                    <Grid item className={classes.centered} xs={4} >
                         <ColorButton
                             style={props.num == '03' ? ColorButton.active : ColorButton.primary}
                             href="/aula-03">
