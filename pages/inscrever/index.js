@@ -150,7 +150,9 @@ export default function LIInscrever(props) {
 
             <div id="form" />
 
+            <Contador date="2022-02-07 00:00:00" prefix="As aulas saem do ar em" />
             <Banner alt={props.name} />
+
             <Promessa {...props} />
 
             <Conteudo />

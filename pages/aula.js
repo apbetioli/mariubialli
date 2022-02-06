@@ -3,9 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Head from "next/head";
 import { default as React } from "react";
 import Banner from "../components/Banner";
+import Contador from "../components/Contador";
 import ColorButton from "../components/ColorButton";
 import Footer from "../components/Footer";
-import { WhatsApp } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -214,6 +214,7 @@ export default function LIAula(props) {
 
             <div id="form" />
 
+            <Contador date="2022-02-07 00:00:00" prefix="As aulas saem do ar em" />
             <Banner />
 
             <Video {...props} />
