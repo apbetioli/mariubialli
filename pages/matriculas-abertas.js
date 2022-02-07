@@ -249,11 +249,6 @@ const bonusVIP = [
         image: require("assets/img/li/live.webp"),
         description: "Para matrículas até 23:59 - você irá ganhar a mentoria que é um acelerador de resultados. A mentoria é o presente preferido das alunas.",
         price: "R$ 5000"
-    },
-    {
-        title: "Kit de materiais",
-        image: kitjr,
-        description: "Para matrículas até 10h da manhã - Você vai receber um kit de materiais na sua casa para fazer 12 bonecas. Uma boneca dessa vendida por mês já paga a sua parcela do curso. Válido somente para endereços no Brasil.",
     }
 ];
 
@@ -760,7 +755,7 @@ export default function LIMatriculasAbertas(props) {
                 <BonusVIP />
             }
             <div id="pricing" />
-            <Preco />
+            <Preco /> 
             <Garantia />
             <SobreMim />
             <Testemunhos1 />
