@@ -293,7 +293,7 @@ function CheckoutButton(props) {
         setOpen(false);
     };
 
-    let checkoutURL = "/checkout"
+    let checkoutURL = "/checkout?1=1"
     const router = useRouter()
     if (router.query.utm_source)
         checkoutURL += "&utm_source=" + router.query.utm_source
