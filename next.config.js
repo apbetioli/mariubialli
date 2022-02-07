@@ -15,17 +15,27 @@ module.exports = withPlugins([[withImages]], {
     return [
       {
         source: '/',
-        destination: '/inscrever',
+        destination: '/matriculas-abertas',
         permanent: false,
       },
       {
         source: '/aula-04',
-        destination: '/aula-03',
+        destination: '/matriculas-abertas',
         permanent: false,
       },
       {
-        source: '/matriculas-abertas',
-        destination: '/aula-01',
+        source: '/aula-03',
+        destination: '/matriculas-abertas',
+        permanent: false,
+      },
+      {
+        source: '/aula-02',
+        destination: '/matriculas-abertas',
+        permanent: false,
+      },
+      {
+        source: '/aula-01',
+        destination: '/matriculas-abertas',
         permanent: false,
       },
       {
