@@ -389,6 +389,7 @@ function Promessa() {
                         <CheckoutButton>
                             Quero me matricular agora
                         </CheckoutButton>
+                        <p>* Vagas limitadas. As matrículas podem fechar a qualquer momento.</p>
                     </Grid>
                 </Grid>
             </Container>
