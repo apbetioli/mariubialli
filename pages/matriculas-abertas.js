@@ -381,7 +381,7 @@ function Promessa() {
                             <iframe
                                 loading="lazy"
                                 className={classes.video}
-                                src={"https://www.youtube.com/embed/XUyHqTkf7nQ?rel=0&modestbranding=1&showinfo=0"}
+                                src={"https://www.youtube.com/embed/Z_JxbOXcA8k?rel=0&modestbranding=1&showinfo=0"}
                                 frameBorder="0"
                                 allowFullScreen
                             ></iframe>
@@ -742,18 +742,12 @@ export default function LIMatriculasAbertas(props) {
                 <meta name="robots" content="noindex,nofollow"></meta>
             </Head>
 
-            {showCountdown &&
-                <Contador date={countdownDeadline} prefix={countdownMessage} />
-            }
-
             <Banner alt="Clube Mari Ubialli" />
 
             <Promessa />
             <Entregaveis />
             <Bonus />
-            {showCountdown &&
-                <BonusVIP />
-            }
+
             <div id="pricing" />
             <Preco /> 
             <Garantia />
