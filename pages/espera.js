@@ -8,8 +8,6 @@ import CloseIcon from '@material-ui/icons/Close';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import HttpsIcon from '@material-ui/icons/Https';
-import caderno from "assets/img/li/caderno.webp";
-import kitjr from "assets/img/li/kit.webp";
 import price from 'assets/img/li/price.webp';
 import tudoIsso from 'assets/img/tudoisso.webp';
 import Head from "next/head";
@@ -376,20 +374,11 @@ function Promessa() {
             <Container maxWidth="sm">
                 <Grid container spacing={2}>
                     <Grid item className={classes.centered} xs={12}>
-                        <h3>Chegou o grande dia de você ter renda extra vendendo suas bonecas de feltro</h3>
-                        <div className={classes.videoWrapper}>
-                            <iframe
-                                loading="lazy"
-                                className={classes.video}
-                                src={"https://www.youtube.com/embed/Z_JxbOXcA8k?rel=0&modestbranding=1&showinfo=0"}
-                                frameBorder="0"
-                                allowFullScreen
-                            ></iframe>
-                        </div>
-                        <CheckoutButton>
-                            Quero me matricular agora
-                        </CheckoutButton>
-                        <p>* Vagas limitadas. As matrículas podem fechar a qualquer momento.</p>
+                        <h3>As matrículas estão encerradas no momento!</h3>
+                        <p>Inscreva-se na lista de espera para ser avisada da próxima abertura de turma</p>
+                        <Form buttonText="QUERO SER AVISADA" buttonStyle={ColorButton.blue} tag="ESPERA_TURMA_3" redirectTo="/espera-obrigado"
+                            emailPlaceholder="Digite seu melhor email" buttonStyle={buttonStyle} showTerms={false}>
+                        </Form>
                     </Grid>
                 </Grid>
             </Container>
@@ -699,11 +688,6 @@ function Testemunhos1() {
                             </div>
                         </Paper>
                     </Grid>
-                    <Grid item className={classes.centered} xs={12} sm={12}>
-                        <CheckoutButton>
-                            Quero me matricular agora
-                        </CheckoutButton>
-                    </Grid>
                 </Grid>
             </Container>
         </section >
@@ -745,20 +729,13 @@ export default function LIMatriculasAbertas(props) {
 
             <Banner alt="Clube Mari Ubialli" />
 
-            <Contador date="2022-02-11 00:00:00" prefix="As matrículas encerram em" />
-
             <Promessa />
             <Entregaveis />
             <Bonus />
 
             <div id="pricing" />
-            <Preco /> 
-            <Garantia />
             <SobreMim />
             <Testemunhos1 />
-            <FAQs />
-            <DuvidasWhats />
-            <Preco />
             <Footer />
         </main>
     );
