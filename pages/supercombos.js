@@ -703,7 +703,8 @@ export default function LIMatriculasAbertas(props) {
                                 <p>✅ <span className={classes.highlight}>PRÉ-VENDA:</span> CURSO BONECAS ARTICULADAS</p>
                                 <p>✅ BÔNUS: CURSO INICIANTES EM FELTRO</p>
                                 <h2>TUDO O QUE VOCÊ VAI receber</h2>
-                                <p><b><span className={classes.highlight}>PRÉ-VENDA:</span> CURSO BONECAS ARTICULADAS:</b> O curso mais completo de bonecas que conquistou muitos corações. Você vai aprender a fazer as 7 Joias Raras: Esmeralda, Rubi, Ametista, Angelita, Ágata, Rose e Jade. E em 2 tamanhos diferentes. Além de poder fazer combinações entre elas e ter milhares de opções.</p>
+                                <p><b><span className={classes.highlight}>PRÉ-VENDA:</span> CURSO BONECAS ARTICULADAS:</b> Este curso ainda em desenvolvimento será adicionado ao Clube em Breve. Com ele o céu será o limite. Você terá muitas opções de roupas, como por exemplo o guarda-roupa profissões. Além de ser um projeto pensado para facilitar e reduzir o seu tempo confeccionando as bonecas.</p>
+                                <p><b><span className={classes.highlight}>ATENÇÃO:</span> Este curso ainda não está gravado e está em produção. Aproveite o valor promocional de pré-venda.</b></p>
                                 <p><b>BÔNUS: CURSO INICIANTES EM FELTRO:</b> Para você que está iniciando agora no feltro, este curso aborda as técnicas base fundamentais para você começar a fazer lindas peças em feltro. Vai aprender os principais pontos, tudo sobre moldes e feltro. </p>
                                 <p>ACESSO POR 1 ANO - contado a partir da data de entrega do curso</p>
                                 <h3>De <s>R$247</s> por <span className={classes.highlight}>R$147</span> à vista</h3>
