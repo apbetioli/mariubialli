@@ -52,6 +52,12 @@ const translate = {
     'display': '4puzGoz',
     'Pesquisa': '8Mu4zRX',
     'pesquisa': '8Mu4zRX',
+    'DS_COMBO1_CHECKOUT': 'BEuv9e1',
+    'DS_COMBO2_CHECKOUT': 'xJuGkPW',
+    'DS_COMBO3_CHECKOUT': '4puzdo5',
+    'DS_COMBO4_CHECKOUT': '8Mu41R5',
+    'DS_COMBO5_CHECKOUT': 'zwuYE9o',
+    'DS_COMBO6_CHECKOUT': 'jru0nxy',
 }
 
 getParams = (lead) => {
@@ -76,8 +82,10 @@ getParams = (lead) => {
 
 subscribe = async (lead, tag) => {
 
-    if (!tag)
+    if (!tag) {
+        console.log('No tag informed. Skip lead.')
         return;
+    }
 
     const params = getParams(lead)
     params.append('b_' + tag, '');
