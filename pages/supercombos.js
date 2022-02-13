@@ -16,6 +16,7 @@ import { useRouter } from "next/router";
 import { default as React } from "react";
 import BotaoWhats from "../components/BotaoWhats";
 import ColorButton from "../components/ColorButton";
+import Contador from "../components/Contador";
 import Footer from "../components/Footer";
 import Form from "../components/Form";
 import SobreMim from "../components/Sobre";
@@ -658,6 +659,8 @@ export default function LIMatriculasAbertas(props) {
                     <h1>Combos exclusivos por tempo limitado</h1>
                 </div>
             </div>
+
+            <Contador date="2022-02-14 00:00:00" prefix="As inscrições fecham em" />
 
             <Promessa />
 
