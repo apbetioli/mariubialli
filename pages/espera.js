@@ -376,7 +376,7 @@ function Promessa() {
                     <Grid item className={classes.centered} xs={12}>
                         <h3>As matrículas estão encerradas no momento!</h3>
                         <p>Inscreva-se na lista de espera para ser avisada da próxima abertura de turma</p>
-                        <Form buttonText="QUERO SER AVISADA" buttonStyle={ColorButton.blue} tag="ESPERA_TURMA_3" redirectTo="/espera-obrigado"
+                        <Form buttonText="QUERO SER AVISADA" buttonStyle={ColorButton.blue} tag="CMU_ESPERA" redirectTo="/espera-obrigado"
                             emailPlaceholder="Digite seu melhor email" buttonStyle={buttonStyle} showTerms={false}>
                         </Form>
                     </Grid>

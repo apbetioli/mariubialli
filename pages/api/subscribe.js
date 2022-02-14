@@ -58,6 +58,7 @@ const translate = {
     'DS_COMBO4_CHECKOUT': '8Mu41R5',
     'DS_COMBO5_CHECKOUT': 'zwuYE9o',
     'DS_COMBO6_CHECKOUT': 'jru0nxy',
+    'CMU_ESPERA': 'kRuOXE8'
 }
 
 getParams = (lead) => {
