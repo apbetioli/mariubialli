@@ -121,8 +121,8 @@ export default function Form(props) {
           redirectTo += "&ph=" + sha256(phone);
       }
 
-      //router.push(redirectTo);
-      window.location.href = redirectTo;
+      router.push(redirectTo);
+      //window.location.href = redirectTo;
 
     } catch (error) {
       console.error(error);

@@ -5,20 +5,7 @@ import * as fbq from '../../lib/fpixel';
 
 function triggerCompleteRegistration() {
     let router = useRouter();
-
-    useEffect(() => {
-        if (!router.query.em)
-            return;
-
-        let params = {
-            em: router.query.em
-        };
-
-        if (router.query.ph) params.ph = router.query.ph
-        if (router.query.fn) params.fn = router.query.fn
-
-        fbq.track("CompleteRegistration", params)
-    })
+    useEffect(() => fbq.completeRegistration(router.query))
 }
 
 export default function LIObrigadoEspecifico(props) {

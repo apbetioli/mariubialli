@@ -14,27 +14,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function triggerCompleteRegistration() {
-  let router = useRouter();
-
-  useEffect(() => {
-    if (!router.query.em)
-      return;
-
-    let params = {
-      em: router.query.em
-    };
-
-    if (router.query.ph) params.ph = router.query.ph
-    if (router.query.fn) params.fn = router.query.fn
-
-    fbq.track("CompleteRegistration", params)
-  })
-}
-
 export default function Obrigado(props) {
-  triggerCompleteRegistration();
-
   const classes = useStyles();
 
   return (

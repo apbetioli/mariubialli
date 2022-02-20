@@ -61,7 +61,7 @@ const translate = {
     'CMU_ESPERA': 'kRuOXE8'
 }
 
-getParams = (lead) => {
+const getParams = (lead) => {
     const params = new URLSearchParams();
 
     params.append('email', lead.email);
@@ -81,7 +81,7 @@ getParams = (lead) => {
     return params;
 }
 
-subscribe = async (lead, tag) => {
+const subscribe = async (lead, tag) => {
 
     if (!tag) {
         console.log('No tag informed. Skip lead.')

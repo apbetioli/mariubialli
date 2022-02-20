@@ -14,6 +14,7 @@ const api = bizSdk.FacebookAdsApi.init(access_token);
 module.exports = async (req, res) => {
     try {
         if (process.env.NODE_ENV == "development" && !process.env.FB_TEST_EVENT_CODE) {
+            console.log('fbevent dev mode')
             res.send("OK");
             return;
         }

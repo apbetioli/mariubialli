@@ -45,4 +45,7 @@ module.exports = withPlugins([[withImages]], {
       },
     ]
   },
+  images: {
+    disableStaticImages: true
+  }
 });

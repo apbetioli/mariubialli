@@ -15,17 +15,17 @@ const handleRouteChange = () => {
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   
-  if (router.query.utm_source) {
-    window.localStorage.removeItem("utm_source");
-    window.localStorage.setItem("utm_source", router.query.utm_source);
-  }
-
   useEffect(() => {
+    if (router.query.utm_source) {
+      window.localStorage.removeItem("utm_source");
+      window.localStorage.setItem("utm_source", router.query.utm_source);
+    }
+
     fbq.pageview()
 
-    router.events.on('routeChangeComplete', handleRouteChange)
+    router.events.on('routeChangeComplete', fbq.pageview)
     return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
+      router.events.off('routeChangeComplete', fbq.pageview)
     }
   }, [router.events])
 
