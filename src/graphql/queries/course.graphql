@@ -1,0 +1,12 @@
+query Courses {
+  courses {
+    title
+    slug
+    description
+    image {
+      url(transformation: { image: { resize: { width: 400 } } })
+    }
+    price
+    checkoutURL
+  }
+}

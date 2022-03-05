@@ -1,35 +1,31 @@
 {
-  "name": "mariubialli-frontend",
+  "name": "mariubialli",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@mailchimp/mailchimp_marketing": "^3.0.28",
-    "@material-ui/core": "4.12.1",
-    "@material-ui/icons": "4.11.2",
-    "@material-ui/lab": "^4.0.0-alpha.57",
-    "classnames": "2.2.6",
-    "facebook-nodejs-business-sdk": "^10.0.1",
-    "js-sha256": "^0.9.0",
-    "md5": "^2.3.0",
-    "next": "v12.1.1-canary.1",
-    "next-compose-plugins": "2.2.1",
-    "next-images": "1.8.4",
-    "node-fetch": "^2.6.1",
-    "path": "^0.12.7",
-    "prismic-javascript": "^3.0.2",
-    "prismic-reactjs": "^1.3.3",
-    "prop-types": "15.7.2",
+    "@apollo/client": "^3.5.10",
+    "@emotion/cache": "^11.7.1",
+    "@emotion/react": "^11.8.1",
+    "@emotion/server": "^11.4.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.4.4",
+    "@mui/material": "^5.4.4",
+    "graphql": "^16.3.0",
+    "next": "12.1.0",
     "react": "17.0.2",
-    "react-countdown": "^2.3.2",
-    "react-dom": "17.0.2",
-    "react-image-gallery": "1.2.7",
-    "react-number-format": "^4.4.4",
-    "swr": "^0.3.6",
-    "webpack": "^5.1.3"
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.21",
+    "@types/react": "^17.0.39",
+    "eslint": "8.10.0",
+    "eslint-config-next": "12.1.0",
+    "typescript": "^4.6.2"
   }
 }
