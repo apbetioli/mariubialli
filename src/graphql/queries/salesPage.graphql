@@ -1,0 +1,55 @@
+query SalesPage {
+  salesPage(where: { id: "cl0hf0pwa1qoh0alx0hxoa3lx" }) {
+    hero {
+      title
+      subtitle
+      cta
+      scrollTo
+      backgroundColor {
+        hex
+      }
+      color {
+        hex
+      }
+      backgroundImage {
+        url
+        width
+        height
+      }
+      image {
+        url
+        width
+        height
+      }
+    }
+    sections {
+      title
+      content {
+        html
+      }
+      image {
+        url
+        height
+        width
+      }
+      backgroundColor {
+        hex
+      }
+      color {
+        hex
+      }
+      type
+      textRight
+    }
+  }
+  courses {
+    title
+    slug
+    description
+    image {
+      url(transformation: { image: { resize: { width: 400 } } })
+      height
+      width
+    }
+  }
+}

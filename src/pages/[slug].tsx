@@ -1,7 +1,9 @@
 import { Container } from "@mui/material";
 import { GetStaticPaths, GetStaticProps } from "next";
-import PAGE_QUERY from "../graphql/queries/page.graphql";
-import client from "../lib/apollo-client";
+import Footer from "../components/Footer";
+import pageQuery from "../graphql/queries/page.graphql";
+import pagesQuery from "../graphql/queries/pages.graphql";
+import client from "../lib/graphqlClient";
 
 export default function GraphCMSPage({ page }) {
   return (
@@ -9,30 +11,36 @@ export default function GraphCMSPage({ page }) {
       <Container>
         <div dangerouslySetInnerHTML={{ __html: page.content.html }} />
       </Container>
+      {page.showFooter && <Footer />}
     </>
   );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const { data } = await client.query({
+    query: pagesQuery,
+  });
+
+  const paths = data.pages.map((page) => {
+    return { params: { slug: page.slug } };
+  });
+
   return {
-    paths: [
-      { params: { slug: "politica-de-privacidade" } },
-      { params: { slug: "termos-de-uso" } },
-    ],
-    fallback: true,
+    paths,
+    fallback: "blocking",
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { data } = await client.query({
-    query: PAGE_QUERY,
+    query: pageQuery,
     variables: { slug: params.slug },
   });
 
   return {
     props: {
       page: data.page,
-      revalidate: 60*60, //1h
+      revalidate: 60 * 60, //1h
     },
     notFound: !data.page,
   };

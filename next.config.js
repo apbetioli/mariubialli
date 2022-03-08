@@ -12,6 +12,9 @@ const nextConfig = {
   webpackDevMiddleware: (config) => {
     return config;
   },
+  images: {
+    domains: ['media.graphcms.com']
+  }
 }
 
 module.exports = nextConfig

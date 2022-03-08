@@ -1,0 +1,6 @@
+query Link {
+  links(where: {visible: true}, orderBy: position_ASC) {
+    title
+    url
+  }
+}
