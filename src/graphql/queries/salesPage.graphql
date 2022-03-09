@@ -13,43 +13,40 @@ query SalesPage {
       }
       backgroundImage {
         url
-        width
-        height
       }
       image {
         url
-        width
         height
+        width
       }
     }
     sections {
-      title
-      content {
-        html
-      }
-      image {
-        url
-        height
-        width
-      }
+      id
       backgroundColor {
         hex
       }
       color {
         hex
       }
-      type
-      textRight
+      columns {
+        content {
+          html
+        }
+        image {
+          url
+          height
+          width
+        }
+        cta
+        size
+      }
     }
-  }
-  courses {
-    title
-    slug
-    description
-    image {
-      url(transformation: { image: { resize: { width: 400 } } })
-      height
-      width
+    whatsApp {
+      phone
+      tooltip
+      message
     }
+    checkoutTag
+    checkoutUrl
   }
 }

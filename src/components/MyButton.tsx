@@ -8,7 +8,11 @@ export default function MyButton(props) {
       variant="contained"
       {...props}
       sx={{
+        mt: 2,
+        mb: 2,
         p: 2,
+        backgroundColor: (theme) => theme.palette.primary.dark,
+        color: (theme) => theme.palette.primary.contrastText,
         ...props.sx,
       }}
     >

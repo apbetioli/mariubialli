@@ -17,6 +17,9 @@ const theme = createTheme({
       main: red.A400,
     },
   },
+  typography: {
+    fontSize: 18,
+  },
   components: {
     MuiButton: {
       styleOverrides: {

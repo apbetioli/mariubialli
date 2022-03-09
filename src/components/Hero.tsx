@@ -14,11 +14,12 @@ export default function Hero({
   backgroundImage = null,
 }) {
   return (
-    <section id={id}>
+    <div id={id}>
       {backgroundImage && (
         <Box
           sx={{
             display: { xs: "none", sm: "block" },
+            opacity: 0.1,
           }}
         >
           <Image
@@ -27,7 +28,6 @@ export default function Hero({
             layout="fill"
             objectFit="cover"
             objectPosition="center"
-            className="hero-background"
           />
         </Box>
       )}
@@ -43,7 +43,7 @@ export default function Hero({
           mb: 10,
         }}
       >
-        {backgroundImage && (
+        {image && (
           <Grid
             item
             xs={12}
@@ -75,7 +75,7 @@ export default function Hero({
             sx={{
               fontSize: {
                 xs: "1em",
-                sm: "2em",
+                sm: "1.5em",
               },
             }}
           >
@@ -85,7 +85,7 @@ export default function Hero({
             sx={{
               fontSize: {
                 xs: "1em",
-                sm: "2em",
+                sm: "1em",
               },
             }}
           >
@@ -93,14 +93,7 @@ export default function Hero({
           </Box>
 
           <ScrollTo target={scrollTo}>
-            <MyButton
-              sx={{
-                backgroundColor: (theme) => theme.palette.primary.dark,
-                mt: 2,
-              }}
-            >
-              {cta}
-            </MyButton>
+            <MyButton>{cta}</MyButton>
           </ScrollTo>
         </Grid>
 
@@ -109,7 +102,7 @@ export default function Hero({
           xs={12}
           lg={6}
           sx={{
-            display: {xs: "none", lg:"flex"},
+            display: { xs: "none", lg: "flex" },
             alignItems: "center",
             justifyContent: "center",
             flexDirection: "column",
@@ -120,7 +113,6 @@ export default function Hero({
             width={image.width}
             height={image.height}
             alt={title}
-            className="hero-image"
           />
         </Grid>
 
@@ -129,9 +121,11 @@ export default function Hero({
           xs={12}
           sx={{ display: { sm: "block", xs: "none" }, textAlign: "center" }}
         >
-          <KeyboardDoubleArrowDownIcon sx={{ fontSize: "5em" }} />
+          <KeyboardDoubleArrowDownIcon
+            sx={{ fontSize: "5em", position: "absolute", bottom: 5 }}
+          />
         </Grid>
       </Grid>
-    </section>
+    </div>
   );
 }

@@ -14,32 +14,16 @@ export default function Bio({ links }) {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          m: 1,
         }}
       >
-        <Box sx={{ m: 1 }}>
-          <Avatar sx={{ width: 100, height: 100 }}>
-            <Image
-              src={logo}
-              alt="Logo"
-              width={100}
-              height={100}
-              layout="fixed"
-            />
-          </Avatar>
-        </Box>
+        <Avatar sx={{ width: 100, height: 100, m: 1 }}>
+          <Image src={logo} alt="Logo" width={100} height={100} />
+        </Avatar>
 
-        {links.map((link, i) => {
+        {links.map((link) => {
           return (
-            <MyButton
-              key={"link" + i}
-              href={link.url}
-              target="_blank"
-              sx={{
-                backgroundColor: (theme) => theme.palette.primary.main,
-                color: (theme) => theme.palette.secondary.contrastText,
-                m: 2,
-              }}
-            >
+            <MyButton key={link.title} href={link.url}>
               {link.title}
             </MyButton>
           );

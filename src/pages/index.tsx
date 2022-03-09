@@ -1,54 +1,37 @@
 import { GetStaticProps } from "next";
+import React from "react";
 import Courses from "../components/Courses";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
-import MyButton from "../components/MyButton";
 import Section from "../components/Section";
 import WhatsAppButton from "../components/WhatsAppButton";
 import salesPageQuery from "../graphql/queries/salesPage.graphql";
 import client from "../lib/graphqlClient";
 
-const CTA = () => {
-  return (
-    <MyButton
-      sx={{
-        backgroundColor: (theme) => theme.palette.primary.dark,
-        mt: 2,
-      }}
-    >
-      Quero fazer minha inscrição agora
-    </MyButton>
-  );
-};
-
-export default function Home({ hero, courses, sections, priceSection }) {
+export default function Home({
+  hero,
+  sections,
+  whatsApp,
+  checkoutTag,
+  checkoutUrl,
+}) {
   return (
     <>
       <Hero {...hero} />
 
-      <Courses courses={courses} />
-
-      {sections.map((section, i) => {
+      {sections.map((section, index) => {
         return (
           <Section
-            id={section.type === "price" ? "price" : null}
-            key={"section" + i}
+            id={section.name + index}
+            key={index}
             {...section}
-          >
-            {section.type === "price" && <CTA />}
-          </Section>
+            checkoutTag={checkoutTag}
+            checkoutUrl={checkoutUrl}
+          />
         );
       })}
 
-      <WhatsAppButton
-        phone="5544920024218"
-        message="Oi, gostaria de saber mais sobre os Cursos Mari Ubialli"
-        tooltip="Dúvidas? Fale conosco"
-      />
-
-      <Section {...priceSection}>
-        <CTA />
-      </Section>
+      {whatsApp && <WhatsAppButton {...whatsApp} />}
 
       <Footer />
     </>
@@ -58,19 +41,8 @@ export default function Home({ hero, courses, sections, priceSection }) {
 export const getStaticProps: GetStaticProps = async () => {
   const { data } = await client.query({ query: salesPageQuery });
 
-  console.log(JSON.stringify(data));
-
-  const priceSection = data.salesPage.sections.filter(
-    (section) => section.type === "price"
-  )[0];
-
   return {
-    props: {
-      hero: data.salesPage.hero,
-      sections: data.salesPage.sections,
-      courses: data.courses,
-      priceSection,
-    },
-    revalidate: 1,
+    props: data.salesPage,
+    revalidate: 60 * 60, //1h
   };
 };
