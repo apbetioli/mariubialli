@@ -8,7 +8,13 @@ export default async function handler(req, res) {
   console.log("revalidate triggered");
 
   try {
-    await res.unstable_revalidate("/");
+    console.time('revalidate')
+
+    res
+      .unstable_revalidate("/")
+      .then(() => console.timeEnd("revalidate"))
+      .catch((e) => console.log(e));
+
     return res.json({ revalidated: true });
   } catch (err) {
     // If there was an error, Next.js will continue
