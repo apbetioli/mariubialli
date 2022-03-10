@@ -5,17 +5,21 @@ export default async function handler(req, res) {
     return res.status(401).json({ message: "Invalid token" });
   }
  */
+  if (req.body.operation !== "publish") {
+    console.log("revalidate ignored");
+    return res.json({ status: req.body.operation + " ignored" });
+  }
+
   console.log("revalidate triggered");
 
   try {
-    console.time('revalidate')
+    console.time("revalidate");
 
-    res
-      .unstable_revalidate("/")
-      .then(() => console.timeEnd("revalidate"))
-      .catch((e) => console.log(e));
+    await res.unstable_revalidate("/");
 
-    return res.json({ revalidated: true });
+    console.timeEnd("revalidate");
+
+    return res.json({ status: "revalidated /" });
   } catch (err) {
     // If there was an error, Next.js will continue
     // to show the last successfully generated page
