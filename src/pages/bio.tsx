@@ -1,12 +1,11 @@
-import { Avatar, Box, Button } from "@mui/material";
+import { Avatar, Box } from "@mui/material";
 import { GetStaticProps } from "next";
 import Image from "next/image";
 import MyButton from "../components/MyButton";
-import linksQuery from "../graphql/queries/links.graphql";
+import bioQuery from "../graphql/queries/bio.graphql";
 import client from "../lib/graphqlClient";
-import logo from "../../public/lego.webp";
 
-export default function Bio({ links }) {
+export default function Bio({ avatar, links }) {
   return (
     <>
       <Box
@@ -18,7 +17,7 @@ export default function Bio({ links }) {
         }}
       >
         <Avatar sx={{ width: 100, height: 100, m: 1 }}>
-          <Image src={logo} alt="Logo" width={100} height={100} />
+          <Image src={avatar.url} alt="Avatar" width={100} height={100} />
         </Avatar>
 
         {links.map((link) => {
@@ -34,11 +33,12 @@ export default function Bio({ links }) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await client.query({ query: linksQuery });
+  const { data } = await client.query({
+    query: bioQuery,
+    variables: { slug: "mariubialli" },
+  });
 
   return {
-    props: {
-      links: data.links,
-    },
+    props: data.bio,
   };
 };

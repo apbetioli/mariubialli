@@ -9,9 +9,9 @@ export default function Hero({
   title,
   subtitle,
   cta,
-  scrollTo = "#price",
-  image = null,
-  backgroundImage = null,
+  scrollTo,
+  image,
+  backgroundImage,
 }) {
   return (
     <div id={id}>
