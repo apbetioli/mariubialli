@@ -7,7 +7,7 @@ const client = new ApolloClient({
   defaultOptions: {
     watchQuery: {
       /* As we are only doing ssg lets not worry about caching now */
-      fetchPolicy: "network-only",
+      fetchPolicy: "no-cache",
     },
   },
 });

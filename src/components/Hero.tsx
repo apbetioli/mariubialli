@@ -40,7 +40,6 @@ export default function Hero({
             xs: "100%",
             sm: "100vh",
           },
-          mb: 10,
         }}
       >
         {image && (
