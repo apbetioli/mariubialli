@@ -1,0 +1,7 @@
+query Apostila($slug: String!) {
+  apostila(where: { slug: $slug }) {
+    download {
+      url
+    }
+  }
+}

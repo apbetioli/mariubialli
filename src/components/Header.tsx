@@ -12,6 +12,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import * as React from "react";
+import Image from "next/image";
 
 const pages = ["Cursos", "Apostilas gratuitas", "Loja"];
 const links = ["/", "/apostilas", "https://lojamariubialli.com.br"];
@@ -76,7 +77,7 @@ const Header = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
           >
-            MARI UBIALLI
+            <Image src={"/logo.webp"} width={80} height={80} alt="Logo" />
           </Typography>
 
           <Typography
@@ -85,7 +86,7 @@ const Header = () => {
             component="div"
             sx={{ mr: 3, display: { xs: "none", md: "flex" } }}
           >
-            MARI UBIALLI
+            <Image src={"/logo.webp"} width={80} height={80} alt="Logo" />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page, i) => (

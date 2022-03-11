@@ -73,21 +73,14 @@ export default function Hero({
           <Box
             sx={{
               fontSize: {
-                xs: "1em",
-                sm: "1.5em",
+                xs: "0.7em",
+                sm: "1em",
               },
             }}
           >
             <h1>{title}</h1>
           </Box>
-          <Box
-            sx={{
-              fontSize: {
-                xs: "1em",
-                sm: "1em",
-              },
-            }}
-          >
+          <Box>
             <p>{subtitle}</p>
           </Box>
 

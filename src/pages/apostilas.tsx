@@ -1,11 +1,11 @@
 import {
-    Button,
-    Card,
-    CardActions,
-    CardContent,
-    CardMedia,
-    Container,
-    Grid
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Container,
+  Grid,
 } from "@mui/material";
 import { GetStaticProps } from "next";
 import Footer from "../components/Footer";
@@ -48,7 +48,8 @@ export default function Apostilas({ apostilas }) {
                     <Button
                       variant="text"
                       size="small"
-                      href={apostila.download.url}
+                      href={`/api/download?slug=${apostila.slug}`}
+                      target="_blank"
                     >
                       Download
                     </Button>

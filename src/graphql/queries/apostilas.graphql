@@ -1,14 +1,12 @@
 query Apostilas {
   apostilas {
+    slug
     title
     subtitle
     description {
       html
     }
     videoUrl
-    download {
-      url
-    }
     cover {
       url
     }
