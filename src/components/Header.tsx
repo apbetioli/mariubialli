@@ -1,3 +1,5 @@
+import { useSession, signIn, signOut } from "next-auth/react";
+
 import MenuIcon from "@mui/icons-material/Menu";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -16,6 +18,7 @@ const links = ["/", "/apostilas", "https://lojamariubialli.com.br"];
 
 const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const { data: session } = useSession();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -93,6 +96,23 @@ const Header = () => {
               </Link>
             ))}
           </Box>
+
+          {session && (
+            <Button
+              sx={{ my: 2, color: "white", display: "block" }}
+              onClick={() => signOut()}
+            >
+              Sair
+            </Button>
+          )}
+          {!session && (
+            <Button
+              sx={{ my: 2, color: "white", display: "block" }}
+              onClick={() => signIn()}
+            >
+              Entrar
+            </Button>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

@@ -1,22 +1,42 @@
-# Mari Ubialli's website 
+# [mariubialli.com](https://mariubialli.com)
 
-[mariubialli.com](https://mariubialli.com)
+## Public pages
 
-## This project uses:
+```
+/                           (Sales page)
+/apostilas                  (Free download upon login)
+/bio                        (Links for Instagram bio)
+/politica-de-privacidade
+/termos-de-uso
+```
+
+## Enpoints
+
+```
+/api/revalidate (Next.js webhook for ISR)
+/api/subscribe  (Integration with email marketing services)
+```
+
+## This project uses
 
 - Next.js
 - Typescript
 - GraphQL (Apollo client)
 - GraphCMS
 - Material UI
+- NextAuth
 
 ## Configuration
 
-Configure this environment values:
+Configure these environment variables in your .env.local file :
 
-GRAPHQL_CONTENT_ENDPOINT
+```
+GRAPHQL_CONTENT_ENDPOINT=
+NEXTAUTH_URL=
+NEXTAUTH_SECRET=
+```
 
-Add the file .graphqlconfig to the root of the project to run GraphQL queries in VSCode:
+Optional: Add the file .graphqlconfig to the root of the project to run GraphQL queries in VSCode:
 
 ```
 {
