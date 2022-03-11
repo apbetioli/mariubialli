@@ -1,0 +1,16 @@
+query Apostilas {
+  apostilas {
+    title
+    subtitle
+    description {
+      html
+    }
+    videoUrl
+    download {
+      url
+    }
+    cover {
+      url
+    }
+  }
+}

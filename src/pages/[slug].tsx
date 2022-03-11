@@ -1,6 +1,7 @@
 import { Container } from "@mui/material";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 import pageQuery from "../graphql/queries/page.graphql";
 import pagesQuery from "../graphql/queries/pages.graphql";
 import client from "../lib/graphqlClient";
@@ -8,6 +9,7 @@ import client from "../lib/graphqlClient";
 export default function GraphCMSPage({ page }) {
   return (
     <>
+      {page.showHeader && <Header />}
       <Container>
         <div dangerouslySetInnerHTML={{ __html: page.content.html }} />
       </Container>

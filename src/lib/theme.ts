@@ -27,12 +27,13 @@ const theme = createTheme({
           marginTop: 16,
           marginBottom: 16,
           padding: 16,
+          
+        },
+        contained: {
           backgroundColor: "#006DB3",
           color: "#FFF",
           fontWeight: "bold",
           width: "100%",
-        },
-        contained: {
           boxShadow: "none",
           "&:active": {
             boxShadow: "none",
