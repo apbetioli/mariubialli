@@ -23,8 +23,8 @@ export default NextAuth({
   theme: {
     colorScheme: "light", // "auto" | "dark" | "light"
     brandColor: "#fe6b8b", // Hex color code
-    logo: "https://dev.mariubialli.com/logo.webp" // Absolute URL to image
-  }
+    logo: "https://dev.mariubialli.com/logo.webp", // Absolute URL to image
+  },
 });
 
 async function customSendVerificationRequest(params: {
@@ -47,7 +47,6 @@ async function customSendVerificationRequest(params: {
   });
 }
 
-// Email HTML body
 function html({ url, host, email }: Record<"url" | "host" | "email", string>) {
   // Insert invisible space into domains and email address to prevent both the
   // email address and the domain from being turned into a hyperlink by email
@@ -90,7 +89,7 @@ function html({ url, host, email }: Record<"url" | "host" | "email", string>) {
       </tr>
       <tr>
         <td align="center" style="padding: 0px 0px 10px 0px; font-size: 16px; line-height: 22px; font-family: Helvetica, Arial, sans-serif; color: ${textColor};">
-          Se você não requisitou esse email, você pode ignorá-lo.
+          Se você não requisitou esse email, você pode ignorá-lo com segurança.
         </td>
       </tr>
     </table>

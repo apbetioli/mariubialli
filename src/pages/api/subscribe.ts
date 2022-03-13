@@ -1,3 +1,5 @@
+import { NextApiRequest, NextApiResponse } from "next";
+
 const translate = {
   CLUBE_PERPETUO_CHECKOUT: "8Mu4yOJ",
   CONFIRMED: "aaumQpa",
@@ -59,7 +61,10 @@ const subscribe = async (lead: Lead, tag: string) => {
     });
 };
 
-export default async function handler(req, res) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const lead = req.body;
   console.log(lead);
 
