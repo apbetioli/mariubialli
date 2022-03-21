@@ -33,8 +33,6 @@ export default function Form(props) {
     setBackdrop(!backdrop);
 
     const phone = values.phone ? values.phone.trim() : "";
-    const ddd = phone.substring(0, 2);
-    const phone_number = phone.substring(2);
     const email = values.email.trim().toLowerCase();
     const name = values.name;
 
@@ -54,23 +52,24 @@ export default function Form(props) {
       await subscribe(form);
 
       let redirectTo = props.redirectTo;
-      if (redirectTo.includes("?")) redirectTo += "&";
-      else redirectTo += "?";
-
-      redirectTo += "redirect=true";
+      redirectTo += redirectTo.includes("?") ? "&" : "?";
 
       if (props.checkout) {
-        redirectTo += "&email=" + encodeURIComponent(email);
+        redirectTo += "email=" + encodeURIComponent(email);
         if (values.name) redirectTo += "&name=" + name + "&nome=" + name;
-        if (ddd) redirectTo += "&phoneac=" + ddd;
-        if (phone_number)
-          redirectTo +=
-            "&phonenumber=" + phone_number + "&cel=" + ddd + phone_number;
-        if (router.query.hideBillet) redirectTo += "&hideBillet=1";
+
+        if (values.phone) {
+          const ddd = phone.substring(0, 2);
+          const phone_number = phone.substring(2);
+          if (ddd) redirectTo += "&phoneac=" + ddd;
+          if (phone_number)
+            redirectTo +=
+              "&phonenumber=" + phone_number + "&cel=" + ddd + phone_number;
+        }
       } else {
-        redirectTo += "&em=" + sha256(email);
+        redirectTo += "em=" + sha256(email);
         if (values.name) redirectTo += "&fn=" + sha256(name);
-        if (ddd) redirectTo += "&ph=" + sha256(phone);
+        if (values.phone) redirectTo += "&ph=" + sha256(phone);
       }
 
       router.push(redirectTo);
@@ -138,7 +137,11 @@ export default function Form(props) {
 
       {props.showTerms && (
         <p>
-          <Typography variant="body2" color="textSecondary" component="span">
+          <Typography
+            color="textSecondary"
+            component="span"
+            sx={{ fontSize: "1rem" }}
+          >
             Ao continuar você concorda com nossa{" "}
             <Link
               href="/politica-de-privacidade"

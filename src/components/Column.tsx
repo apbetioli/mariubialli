@@ -2,14 +2,7 @@ import { Box, Grid } from "@mui/material";
 import Image from "next/image";
 import CheckoutDialog from "./CheckoutDialog";
 
-export default function Column({
-  content,
-  image,
-  cta,
-  size,
-  checkoutTag,
-  checkoutUrl
-}) {
+export default function Column({ content, image, cta, size }) {
   return (
     <Grid
       item
@@ -31,18 +24,18 @@ export default function Column({
         >
           <Image
             src={image.url}
-            alt="Section image"
+            alt=""
             height={image.height}
             width={image.width}
             layout="responsive"
           />
         </Box>
       )}
-      {cta && (
+      {cta && cta.checkout && (
         <CheckoutDialog
-          cta={cta}
-          checkoutTag={checkoutTag}
-          checkoutUrl={checkoutUrl}
+          cta={cta.button}
+          checkoutTag={cta.tag}
+          checkoutUrl={cta.url}
         />
       )}
     </Grid>

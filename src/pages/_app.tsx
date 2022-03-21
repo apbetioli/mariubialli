@@ -2,14 +2,14 @@ import { ApolloProvider } from "@apollo/client";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
+import { SessionProvider } from "next-auth/react";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import * as React from "react";
-import client from "../lib/graphqlClient";
-import createEmotionCache from "../lib/createEmotionCache";
-import theme from "../lib/theme";
 import "../../assets/css/global.css";
-import { SessionProvider } from "next-auth/react";
+import createEmotionCache from "../lib/createEmotionCache";
+import client from "../lib/graphqlClient";
+import theme from "../lib/theme";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache: EmotionCache = createEmotionCache();

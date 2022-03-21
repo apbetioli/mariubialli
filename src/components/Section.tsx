@@ -7,8 +7,6 @@ export default function Section({
   backgroundColor,
   columns = [],
   sx = {},
-  checkoutTag,
-  checkoutUrl,
 }) {
   return (
     <Box
@@ -23,14 +21,7 @@ export default function Section({
       <Container>
         <Grid container spacing={3}>
           {columns.map((column, index) => {
-            return (
-              <Column
-                key={index}
-                {...column}
-                checkoutTag={checkoutTag}
-                checkoutUrl={checkoutUrl}
-              />
-            );
+            return <Column key={index} {...column} />;
           })}
         </Grid>
       </Container>

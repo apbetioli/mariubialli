@@ -6,14 +6,16 @@ import pageQuery from "../graphql/queries/page.graphql";
 import pagesQuery from "../graphql/queries/pages.graphql";
 import client from "../lib/graphqlClient";
 
-export default function GraphCMSPage({ page }) {
+export default function GraphCMSPage({ content, showHeader, showFooter }) {
   return (
     <>
-      {page.showHeader && <Header />}
-      <Container>
-        <div dangerouslySetInnerHTML={{ __html: page.content.html }} />
-      </Container>
-      {page.showFooter && <Footer />}
+      {showHeader && <Header />}
+      <main>
+        <Container>
+          <div dangerouslySetInnerHTML={{ __html: content.html }} />
+        </Container>
+      </main>
+      {showFooter && <Footer />}
     </>
   );
 }
@@ -41,7 +43,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
-      page: data.page,
+      ...data.page,
       revalidate: 60 * 60, //1h
     },
     notFound: !data.page,

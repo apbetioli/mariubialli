@@ -40,5 +40,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: data.bio,
+    revalidate: 60 * 60, //1h
   };
 };

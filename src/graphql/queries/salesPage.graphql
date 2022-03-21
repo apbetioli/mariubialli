@@ -1,5 +1,5 @@
-query SalesPage {
-  salesPage(where: { id: "cl0hf0pwa1qoh0alx0hxoa3lx" }) {
+query SalesPage($id: ID) {
+  salesPage(where: { id: $id }) {
     hero {
       title
       subtitle
@@ -37,7 +37,12 @@ query SalesPage {
           height
           width
         }
-        cta
+        cta {
+          button
+          tag
+          url
+          checkout
+        }
         size
       }
     }
@@ -46,7 +51,5 @@ query SalesPage {
       tooltip
       message
     }
-    checkoutTag
-    checkoutUrl
   }
 }
