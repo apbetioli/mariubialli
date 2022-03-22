@@ -1,13 +1,13 @@
 query Page($slug: String!) {
   page(where: { slug: $slug }) {
+    seo {
+      title
+      description
+    }
     content {
       html
     }
     showHeader
     showFooter
-    seo {
-      title
-      description
-    }
   }
 }

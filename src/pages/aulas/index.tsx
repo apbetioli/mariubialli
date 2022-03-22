@@ -143,8 +143,6 @@ export const getStaticProps: GetStaticProps = async () => {
     variables: { id: "cl0gud3ep06ho0bkec85o2hcd" },
   });
 
-  console.log(data);
-
   return {
     props: {
       seo: {
