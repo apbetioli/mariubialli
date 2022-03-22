@@ -59,49 +59,18 @@ function html({ url, host, email }: Record<"url" | "host" | "email", string>) {
   const escapedEmail = `${email.replace(/\./g, "&#8203;.")}`;
   const escapedHost = `${host.replace(/\./g, "&#8203;.")}`;
 
-  // Some simple styling options
-  const backgroundColor = "#f9f9f9";
-  const textColor = "#444444";
-  const mainBackgroundColor = "#ffffff";
-  const buttonBackgroundColor = "#346df1";
-  const buttonBorderColor = "#346df1";
-  const buttonTextColor = "#ffffff";
-
   return `
-  <body style="background: ${backgroundColor};">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td align="center" style="padding: 10px 0px 20px 0px; font-size: 22px; font-family: Helvetica, Arial, sans-serif; color: ${textColor};">
-          <strong>${escapedHost}</strong>
-        </td>
-      </tr>
-    </table>
-    <table width="100%" border="0" cellspacing="20" cellpadding="0" style="background: ${mainBackgroundColor}; max-width: 600px; margin: auto; border-radius: 10px;">
-      <tr>
-        <td align="center" style="padding: 10px 0px 0px 0px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; color: ${textColor};">
-          Fazer login como <strong>${escapedEmail}</strong>
-        </td>
-      </tr>
-      <tr>
-        <td align="center" style="padding: 20px 0;">
-          <table border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td align="center" style="border-radius: 5px;" bgcolor="${buttonBackgroundColor}"><a href="${url}" target="_blank" style="font-size: 18px; font-family: Helvetica, Arial, sans-serif; color: ${buttonTextColor}; text-decoration: none; border-radius: 5px; padding: 10px 20px; border: 1px solid ${buttonBorderColor}; display: inline-block; font-weight: bold;">Clique aqui para fazer login</a></td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-      <tr>
-        <td align="center" style="padding: 0px 0px 10px 0px; font-size: 16px; line-height: 22px; font-family: Helvetica, Arial, sans-serif; color: ${textColor};">
-          Se você não requisitou esse email, você pode ignorá-lo com segurança.
-        </td>
-      </tr>
-    </table>
-  </body>
+  <div style="font-family: Arial, Verdana, sans-serif;">
+    <div style="max-width: 500px; margin: auto; background-color: #f9f9f9; padding: 20px;">
+      <p>Confirme seu email <strong>${escapedEmail}</strong> clicando no botão abaixo. Assim você poderá baixar apostilas e conteúdos exclusivos no site <strong>${escapedHost}</strong> e receberá novidades e avisos por email.</p>
+      <a href="${url}" target="_blank" style="background-color: #fe6b8b; color: white; padding: 10px; border-radius: 5px; text-decoration: none; text-transform: uppercase; font-weight: bold; display: block; margin: 30px auto; width:80%; text-align: center;">Clique aqui para confirmar seu email</a>
+      <p>Caso você não tenha cadastrado seu email no site <strong>${escapedHost}</strong>, favor desconsiderar esta mensagem.</p>
+    </div>
+  </div>
   `;
 }
 
 // Email Text body (fallback for email clients that don't render HTML, e.g. feature phones)
 function text({ url, host }: Record<"url" | "host", string>) {
-  return `Fazer login no site ${host}\n${url}\n\n`;
+  return `Ação necessária: Confirme seu email`;
 }

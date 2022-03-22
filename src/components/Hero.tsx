@@ -34,8 +34,7 @@ export default function Hero({
       <Grid
         container
         sx={{
-          backgroundColor: (theme) => theme.palette.primary.main,
-          color: (theme) => theme.palette.primary.contrastText,
+          backgroundColor: (theme) => theme.palette.secondary.light,
           height: {
             xs: "100%",
             sm: "100vh",
