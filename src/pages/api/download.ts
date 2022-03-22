@@ -9,27 +9,33 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (!req.query.slug) return res.status(404).end();
+  if (!req.query.slug) {
+    return res.status(404).end();
+  }
 
   const session: Session = await getSession({ req });
 
-  if (session) {
-    const { data } = await client.query({
-      query: apostilaQuery,
-      variables: { slug: req.query.slug },
-    });
-
-    if (!data.apostila) return res.status(404).end();
-
-    await subscribe({
-      email: session.user.email,
-      tag: "DOWNLOAD",
-      source: req.query.slug,
-    });
-
-    return res.redirect(`${data.apostila.download.url}`);
-  } else {
+  if (!session) {
     const callbackUrl = encodeURI(`https://${req.headers.host}/apostilas`);
     return res.redirect(`/api/auth/signin?callbackUrl=${callbackUrl}`);
   }
+
+  const { data } = await client.query({
+    query: apostilaQuery,
+    variables: { slug: req.query.slug },
+  });
+
+  if (!data.apostila) {
+    return res.status(404).end();
+  }
+
+  subscribe({
+    email: session.user.email,
+    tag: "DOWNLOAD",
+    source: req.query.slug,
+  }).catch((e) => {
+    console.error(e);
+  });
+
+  return res.redirect(`${data.apostila.download.url}`);
 }

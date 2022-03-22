@@ -10,16 +10,17 @@ export default async function handler(
     return res.status(401).json({ message: "Invalid token" });
   }
  */
-  console.log("revalidate triggered");
-
   try {
-    await res.unstable_revalidate("/");
+    const path = req.query.path?.toString() ?? "/";
+    await res.unstable_revalidate(path);
 
-    return res.json({ revalidate: true });
+    console.log("revalidate", path);
+
+    return res.json({ revalidate: path });
   } catch (err) {
     console.error(err);
     // If there was an error, Next.js will continue
     // to show the last successfully generated page
-    return res.status(500).json({ revalidate: err });
+    return res.status(500).json({ error: err.message });
   }
 }

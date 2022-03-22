@@ -32,14 +32,16 @@ const getParams = (lead: Lead) => {
 
   params.append("email", lead.email);
 
-  if (lead.name && lead.name !== "") {
-    const name = lead.name.split(" ");
+  if (lead.name) {
+    const name = lead.name?.trim().split(" ");
     params.append("first_name", name[0]);
     if (name.length > 0) params.append("first_name", name[0]);
     if (name.length > 1) params.append("last_name", name.slice(1).join(" "));
   }
 
-  if (lead.phone && lead.phone !== "") params.append("phone", lead.phone);
+  if (lead.phone) {
+    params.append("phone", lead.phone?.trim());
+  }
 
   return params;
 };
@@ -53,15 +55,10 @@ const subscribe = async (lead: Lead, tag: string) => {
   return await fetch("https://handler.klicksend.com.br/subscription/" + tag, {
     method: "POST",
     body: params,
-  })
-    .then((res) => {
-      if (!res.ok) throw res;
-      return res.url;
-    })
-    .catch((err) => {
-      console.error(err.message);
-      throw err;
-    });
+  }).then((res) => {
+    if (!res.ok) throw res;
+    return res.url;
+  });
 };
 
 export default async function handler(
@@ -72,20 +69,13 @@ export default async function handler(
   console.log(lead);
 
   try {
-    let result = await subscribe(lead, translate[lead.tag]);
-
-    if (lead.source) {
-      if (translate[lead.source]) await subscribe(lead, translate[lead.source]);
-      else if (
-        lead.source.includes("Facebook") ||
-        lead.source.includes("Instagram")
-      )
-        await subscribe(lead, translate["faceads"]);
-    }
-
+    const result = await Promise.all([
+      subscribe(lead, translate[lead.tag]),
+      subscribe(lead, translate[lead.source]),
+    ]);
     res.send(result);
   } catch (err) {
     console.error(err);
-    res.status(400).send(err);
+    res.status(500).send(err);
   }
 }

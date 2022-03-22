@@ -13,8 +13,8 @@ export default function Section({
       component="section"
       id={id}
       sx={{
-        backgroundColor: backgroundColor ? backgroundColor.hex : "#FFF",
-        color: color ? color.hex : "#000",
+        backgroundColor: backgroundColor.hex,
+        color: color.hex,
         ...sx,
       }}
     >
@@ -28,3 +28,8 @@ export default function Section({
     </Box>
   );
 }
+
+Section.defaultProps = {
+  backgroundColor: { hex: "#FFF" },
+  color: { hex: "#000" },
+};
