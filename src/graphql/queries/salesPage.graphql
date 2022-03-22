@@ -1,5 +1,9 @@
 query SalesPage($id: ID) {
   salesPage(where: { id: $id }) {
+    seo {
+      title
+      description
+    }
     hero {
       title
       subtitle

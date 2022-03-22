@@ -5,5 +5,9 @@ query Page($slug: String!) {
     }
     showHeader
     showFooter
+    seo {
+      title
+      description
+    }
   }
 }
