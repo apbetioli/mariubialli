@@ -1,8 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 const translate = {
+  AULAS: "zwup52j",
   CLUBE_PERPETUO_CHECKOUT: "8Mu4yOJ",
   CONFIRMED: "aaumQpa",
+  DOWNLOAD: "8Mu4wW0",
   youtube: "8Mu4wn",
   instagram: "plue2j6",
   faceads: "d3uPmlL",
@@ -22,6 +24,7 @@ interface Lead {
   name: string;
   phone: string;
   source: string;
+  tag: string;
 }
 
 const getParams = (lead: Lead) => {
