@@ -14,7 +14,22 @@ const nextConfig = {
   },
   images: {
     domains: ['media.graphcms.com']
+  },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/aulas',
+        permanent: false
+      },
+      {
+        source: '/clube',
+        destination: '/',
+        permanent: false
+      }
+    ]
   }
+
 }
 
 module.exports = nextConfig

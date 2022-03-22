@@ -13,15 +13,18 @@ import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import * as React from "react";
 import Image from "next/image";
+import logo from "../../public/logo.webp";
+import { AccountCircle, AccountCircleOutlined } from "@mui/icons-material";
+import { Tooltip } from "@mui/material";
 
-const pages = ["Cursos", "Apostilas gratuitas", "Loja"];
-const links = ["/", "/apostilas", "https://lojamariubialli.com.br"];
+const pages = ["Aulas gratuitas", "Apostilas gratuitas", "Cursos", "Loja"];
+const links = ["/", "/apostilas", "/clube", "https://lojamariubialli.com.br"];
 
-const Header = () => {
+export default function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const { data: session } = useSession();
 
-  const handleOpenNavMenu = (event) => {
+  const handleOpenNavMenu = (event: React.MouseEvent) => {
     setAnchorElNav(event.currentTarget);
   };
 
@@ -30,93 +33,100 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
+    <header>
+      <AppBar position="static">
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: "block", md: "none" },
+                }}
+              >
+                {pages.map((page, i) => (
+                  <MenuItem key={page}>
+                    <Link href={links[i]} passHref>
+                      <Typography textAlign="center">{page}</Typography>
+                    </Link>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
             >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
+              <Image src={logo} width={80} height={80} alt="Logo" />
+            </Typography>
+
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ mr: 3, display: { xs: "none", md: "flex" } }}
             >
+              <Image src={logo} width={80} height={80} alt="Logo" />
+            </Typography>
+            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page, i) => (
-                <MenuItem key={page}>
-                  <Link href={links[i]} passHref>
+                <Link href={links[i]} passHref key={page}>
+                  <Button sx={{ my: 2, color: "white", display: "block" }}>
                     <Typography textAlign="center">{page}</Typography>
-                  </Link>
-                </MenuItem>
+                  </Button>
+                </Link>
               ))}
-            </Menu>
-          </Box>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
-          >
-            <Image src={"/logo.webp"} width={80} height={80} alt="Logo" />
-          </Typography>
+            </Box>
 
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ mr: 3, display: { xs: "none", md: "flex" } }}
-          >
-            <Image src={"/logo.webp"} width={80} height={80} alt="Logo" />
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page, i) => (
-              <Link href={links[i]} passHref key={page}>
-                <Button sx={{ my: 2, color: "white", display: "block" }}>
-                  <Typography textAlign="center">{page}</Typography>
-                </Button>
-              </Link>
-            ))}
-          </Box>
-
-          {session && (
-            <Button
-              sx={{ my: 2, color: "white", display: "block" }}
-              onClick={() => signOut()}
-            >
-              Sair
-            </Button>
-          )}
-          {!session && (
-            <Button
-              sx={{ my: 2, color: "white", display: "block" }}
-              onClick={() => signIn()}
-            >
-              Entrar
-            </Button>
-          )}
-        </Toolbar>
-      </Container>
-    </AppBar>
+            {session && (
+              <Button
+                sx={{ my: 2, color: "white", display: "block" }}
+                onClick={() => signOut()}
+                aria-label="Sair"
+              >
+                <Tooltip title="Sair">
+                  <AccountCircleOutlined />
+                </Tooltip>
+              </Button>
+            )}
+            {!session && (
+              <IconButton
+                sx={{ my: 2, color: "white", display: "block" }}
+                onClick={() => signIn()}
+                aria-label="Entrar"
+              >
+                <Tooltip title="Entrar">
+                  <AccountCircle />
+                </Tooltip>
+              </IconButton>
+            )}
+          </Toolbar>
+        </Container>
+      </AppBar>
+    </header>
   );
-};
-export default Header;
+}

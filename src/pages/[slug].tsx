@@ -2,13 +2,15 @@ import { Container } from "@mui/material";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import SEO from "../components/SEO";
 import pageQuery from "../graphql/queries/page.graphql";
 import pagesQuery from "../graphql/queries/pages.graphql";
 import client from "../lib/graphqlClient";
 
-export default function GraphCMSPage({ content, showHeader, showFooter }) {
+export default function GraphCMSPage({ seo, content, showHeader, showFooter }) {
   return (
     <>
+      {seo && <SEO {...seo} />}
       {showHeader && <Header />}
       <main>
         <Container>

@@ -1,0 +1,21 @@
+query About($id: ID) {
+  section(where: {id: $id}) {
+    backgroundColor {
+      hex
+    }
+    color {
+      hex
+    }
+    columns {
+      content {
+        html
+      }
+      image {
+        url
+        height
+        width
+      }
+      size
+    }
+  }
+}
