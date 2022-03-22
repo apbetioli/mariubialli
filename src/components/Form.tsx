@@ -35,18 +35,15 @@ export default function Form(props) {
     const phone = values.phone ? values.phone.trim() : "";
     const email = values.email.trim().toLowerCase();
     const name = values.name;
+    const source = window.localStorage.getItem("utm_source");
 
     const form = {
       email,
       tag: props.tag,
       name,
       phone,
+      source,
     };
-
-    const source = window.localStorage.getItem("utm_source");
-    if (source) {
-      form["source"] = source;
-    }
 
     try {
       await subscribe(form);
@@ -73,6 +70,7 @@ export default function Form(props) {
       }
 
       router.push(redirectTo);
+
     } catch (error) {
       console.error(error);
       setBackdrop(false);
