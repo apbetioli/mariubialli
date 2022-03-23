@@ -5,20 +5,22 @@ import {
   CardContent,
   CardMedia,
   Container,
-  Grid,
+  Grid
 } from "@mui/material";
 import { GetStaticProps } from "next";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import SEO from "../components/SEO";
 import apostilasQuery from "../graphql/queries/apostilas.graphql";
 import client from "../lib/graphqlClient";
 
-export default function Apostilas({ apostilas }) {
+export default function Apostilas({ seo, title, apostilas }) {
   return (
     <>
+      {seo && <SEO {...seo} />}
       <Header />
       <Container>
-        <h2>Apostilas gratuitas</h2>
+        <h2>{title}</h2>
         <Grid container spacing={3}>
           {apostilas.map((apostila, index) => {
             return (
@@ -68,7 +70,7 @@ export default function Apostilas({ apostilas }) {
 export const getStaticProps: GetStaticProps = async () => {
   const { data } = await client.query({ query: apostilasQuery });
   return {
-    props: data,
+    props: data.apostilasPages[0],
     revalidate: 60 * 60,
   };
 };

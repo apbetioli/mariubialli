@@ -4,7 +4,7 @@ The main purpose of this website is to capture leads from marketing campaigns an
 
 It also has a section for downloading documents for free that requires login and captures leads as well.
 
-Behind the scenes, the idea was to store data in GraphCMS and the pages construct themselves from the data it receives.
+Behind the scenes, the idea was to store data in GraphCMS and build the pages dynamically based on the data it receives.
 
 ## This project uses
 
@@ -20,6 +20,7 @@ Behind the scenes, the idea was to store data in GraphCMS and the pages construc
 ```
 /                           (Redirects to /aulas)
 /aulas                      (Lead capture page)
+/clube                      (Sales page - in construction)
 /apostilas                  (Free downloads with auth)
 /bio                        (Links for Instagram bio)
 /politica-de-privacidade

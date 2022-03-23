@@ -1,14 +1,21 @@
-query Apostilas {
-  apostilas {
-    slug
-    title
-    subtitle
-    description {
-      html
+query ApostilasPages {
+  apostilasPages {
+    seo {
+      title
+      description
     }
-    videoUrl
-    cover {
-      url
+    title
+    apostilas {
+      slug
+      title
+      subtitle
+      videoUrl
+      download {
+        url
+      }
+      cover {
+        url
+      }
     }
   }
 }
