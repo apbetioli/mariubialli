@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/next-script-for-ga */
+/* eslint-disable @next/next/no-img-element */
 import createEmotionServer from "@emotion/server/create-instance";
 import Document, { Head, Html, Main, NextScript } from "next/document";
 import * as React from "react";
@@ -74,6 +76,7 @@ export default class MyDocument extends Document {
               width="1"
               style={{ display: "none" }}
               src={`https://www.facebook.com/tr?id=${process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID}&ev=PageView&noscript=1`}
+              alt=""
             />
           </noscript>
           {/* End Facebook Pixel (noscript) */}

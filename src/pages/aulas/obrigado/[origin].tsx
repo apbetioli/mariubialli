@@ -78,7 +78,7 @@ export default function AulasObrigado() {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const origins = ["fb", "gg", "og", "tg", "em"];
+  const origins = ["gg", "og", "tg", "em"];
 
   const paths = origins.map((origin) => {
     return { params: { origin: origin } };
