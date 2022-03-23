@@ -1,21 +1,10 @@
 # [mariubialli.com](https://mariubialli.com)
 
-## Public pages
+The main purpose of this website is to capture leads from marketing campaigns and sell a product.
 
-```
-/                           (Sales page)
-/apostilas                  (Free download upon login)
-/bio                        (Links for Instagram bio)
-/politica-de-privacidade
-/termos-de-uso
-```
+It also has a section for downloading documents for free that requires login and captures leads as well.
 
-## Enpoints
-
-```
-/api/revalidate (Next.js webhook for ISR)
-/api/subscribe  (Integration with email marketing services)
-```
+Behind the scenes, the idea was to store data in GraphCMS and the pages construct themselves from the data it receives.
 
 ## This project uses
 
@@ -26,33 +15,70 @@
 - Material UI
 - NextAuth
 
-## Configuration
-
-Configure these environment variables in your .env.local file :
+## Public pages
 
 ```
-GRAPHQL_CONTENT_ENDPOINT=
+/                           (Redirects to /aulas)
+/aulas                      (Lead capture page)
+/apostilas                  (Free downloads with auth)
+/bio                        (Links for Instagram bio)
+/politica-de-privacidade
+/termos-de-uso
 ```
 
-These variables are for email authentication. The session data is stores in mongodb.
+## Endpoints
+
+Download documents - requires authentication
 
 ```
-NEXTAUTH_URL=
-NEXTAUTH_SECRET=
-MONGODB_URI=
-EMAIL_SERVER_USER=
-EMAIL_SERVER_PASSWORD=
-EMAIL_SERVER_HOST=
+/api/download/[slug]
+```
+
+Integration with email marketing services (Klicksend)
+
+```
+/api/subscribe
+```
+
+Integration with Facebook Ads Conversion API
+
+```
+/api/fbevent
+```
+
+Next.js webhook for ISR
+
+```
+/api/revalidate?path=/path/to/revalidate
+```
+
+## Environment Variables
+
+GraphQL:
+
+```
+GRAPHQL_CONTENT_ENDPOINT
+```
+
+Email authentication. The session data is stored in mongodb.
+
+```
+NEXTAUTH_URL
+NEXTAUTH_SECRET
+MONGODB_URI
+EMAIL_SERVER_USER
+EMAIL_SERVER_PASSWORD
+EMAIL_SERVER_HOST
 EMAIL_SERVER_PORT=587
-EMAIL_FROM=
+EMAIL_FROM
 ```
 
-Variables for marketing campaigns: Google Tag Manager, Facebook Pixel and Facebook Conversion API
+Marketing campaigns: Google Tag Manager, Facebook Pixel and Facebook Conversion API
 
 ```
-NEXT_PUBLIC_GTM_ID=
-NEXT_PUBLIC_FACEBOOK_PIXEL_ID=
-FB_CONVERSION_API_TOKEN=
+NEXT_PUBLIC_GTM_ID
+NEXT_PUBLIC_FACEBOOK_PIXEL_ID
+FB_CONVERSION_API_TOKEN
 ```
 
 Use this env variable to bypass certificate verification for email auth.
@@ -62,7 +88,7 @@ Don't do this in production as it will make TLS insecure.
 NODE_TLS_REJECT_UNAUTHORIZED=0
 ```
 
-### Optional
+## Optional configuration
 
 Add the file .graphqlconfig to the root of the project to run GraphQL queries in VSCode:
 
