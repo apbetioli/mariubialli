@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/lib/fpixel.js"  ],
   "exclude": [
     "node_modules"
   ]

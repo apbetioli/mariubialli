@@ -32,14 +32,27 @@ Configure these environment variables in your .env.local file :
 
 ```
 GRAPHQL_CONTENT_ENDPOINT=
+```
+
+These variables are for email authentication. The session data is stores in mongodb.
+
+```
 NEXTAUTH_URL=
 NEXTAUTH_SECRET=
+MONGODB_URI=
 EMAIL_SERVER_USER=
 EMAIL_SERVER_PASSWORD=
 EMAIL_SERVER_HOST=
 EMAIL_SERVER_PORT=587
 EMAIL_FROM=
-MONGODB_URI=
+```
+
+Variables for marketing campaigns: Google Tag Manager, Facebook Pixel and Facebook Conversion API
+
+```
+NEXT_PUBLIC_GTM_ID=
+NEXT_PUBLIC_FACEBOOK_PIXEL_ID=
+FB_CONVERSION_API_TOKEN=
 ```
 
 Use this env variable to bypass certificate verification for email auth.
@@ -49,7 +62,9 @@ Don't do this in production as it will make TLS insecure.
 NODE_TLS_REJECT_UNAUTHORIZED=0
 ```
 
-Optional: Add the file .graphqlconfig to the root of the project to run GraphQL queries in VSCode:
+### Optional
+
+Add the file .graphqlconfig to the root of the project to run GraphQL queries in VSCode:
 
 ```
 {

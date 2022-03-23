@@ -1,7 +1,10 @@
 import { Telegram, YouTube } from "@mui/icons-material";
 import { Box, Container, Grid, Paper, Typography } from "@mui/material";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import Footer from "../../components/Footer";
 import MyButton from "../../components/MyButton";
+import * as fbq from "../../lib/fpixel";
 
 const sxGridItem = {
   display: "flex",
@@ -12,6 +15,12 @@ const sxGridItem = {
 };
 
 export default function AulasObrigado() {
+  const router = useRouter();
+
+  useEffect(() => {
+    fbq.completeRegistration(router.query);
+  }, [router.query]);
+
   return (
     <>
       <Box
