@@ -1,5 +1,5 @@
-query SalesPage {
-  salesPage(where: { id: "cl0hf0pwa1qoh0alx0hxoa3lx" }) {
+query AulasPage {
+  salesPage(where: {id: "cl13p8ysm7sy90dlpamogai10"}) {
     seo {
       title
       description
@@ -8,16 +8,6 @@ query SalesPage {
       title
       subtitle
       cta
-      scrollTo
-      backgroundColor {
-        hex
-      }
-      color {
-        hex
-      }
-      backgroundImage {
-        url
-      }
       image {
         url
         height
@@ -41,19 +31,9 @@ query SalesPage {
           height
           width
         }
-        cta {
-          button
-          tag
-          url
-          checkout
-        }
         size
+        isCard
       }
-    }
-    whatsApp {
-      phone
-      tooltip
-      message
     }
   }
 }

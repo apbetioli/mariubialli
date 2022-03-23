@@ -26,9 +26,21 @@ const nextConfig = {
         source: '/clube',
         destination: '/',
         permanent: false
+      },
+    ]
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/aulas',
+        destination: '/aulas/og',
+      },
+      {
+        source: '/aulas/obrigado',
+        destination: '/aulas/obrigado/og',
       }
     ]
-  }
+  },
 
 }
 

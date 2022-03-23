@@ -13,8 +13,8 @@ export default function Section({
       component="section"
       id={id}
       sx={{
-        backgroundColor: backgroundColor?.hex ?? "#FFF",
-        color: color?.hex ?? "#000",
+        backgroundColor: backgroundColor?.hex ?? "inherit",
+        color: color?.hex ?? "inherit",
         ...sx,
       }}
     >

@@ -29,7 +29,6 @@ export default function Clube({ seo, hero, sections, whatsApp }) {
 export const getStaticProps: GetStaticProps = async () => {
   const { data } = await client.query({
     query: salesPageQuery,
-    variables: { id: "cl0hf0pwa1qoh0alx0hxoa3lx" },
   });
 
   return {
