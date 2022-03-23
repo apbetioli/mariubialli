@@ -48,7 +48,7 @@ export default function Apostilas({ apostilas }) {
                     <Button
                       variant="text"
                       size="small"
-                      href={`/api/download?slug=${apostila.slug}`}
+                      href={`/api/download/${apostila.slug}`}
                       target="_blank"
                     >
                       Download

@@ -9,7 +9,7 @@ import { sha256 } from "js-sha256";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import NumberFormat from "react-number-format";
-import subscribe, { getServer } from "../lib/subscribe";
+import subscribe from "../lib/subscribe";
 import MyButton from "./MyButton";
 
 const buildRedirectURL = (
@@ -19,7 +19,7 @@ const buildRedirectURL = (
   name: string,
   phone: string
 ): URL => {
-  const url = new URL(redirectTo, getServer());
+  const url = new URL(redirectTo, process.env.NEXT_PUBLIC_BASE_URL);
 
   const params = url.searchParams;
 

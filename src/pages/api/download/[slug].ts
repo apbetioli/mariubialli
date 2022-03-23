@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { Session } from "next-auth";
 import { getSession } from "next-auth/react";
-import apostilaQuery from "../../graphql/queries/apostila.graphql";
-import client from "../../lib/graphqlClient";
-import subscribe from "../../lib/subscribe";
+import apostilaQuery from "../../../graphql/queries/apostila.graphql";
+import client from "../../../lib/graphqlClient";
+import subscribe from "../../../lib/subscribe";
 
 export default async function handler(
   req: NextApiRequest,
@@ -16,9 +16,12 @@ export default async function handler(
   const session: Session = await getSession({ req });
 
   if (!session) {
-    const callbackUrl = encodeURI(`https://${req.headers.host}/apostilas`);
+    const callbackUrl = encodeURI(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/download/${req.query.slug}`
+    );
     return res.redirect(`/api/auth/signin?callbackUrl=${callbackUrl}`);
   }
+  console.log(`${process.env.NEXT_PUBLIC_BASE_URL}/api/download/${req.query.slug}`);
 
   const { data } = await client.query({
     query: apostilaQuery,

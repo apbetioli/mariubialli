@@ -112,8 +112,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     query: aulasPageQuery,
   });
 
-  console.log(data);
-
   return {
     props: {
       ...data.salesPage,
