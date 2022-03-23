@@ -21,7 +21,6 @@ export default async function handler(
     );
     return res.redirect(`/api/auth/signin?callbackUrl=${callbackUrl}`);
   }
-  console.log(`${process.env.NEXT_PUBLIC_BASE_URL}/api/download/${req.query.slug}`);
 
   const { data } = await client.query({
     query: apostilaQuery,
