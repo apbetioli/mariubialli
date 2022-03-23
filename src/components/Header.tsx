@@ -1,6 +1,6 @@
-import { useSession, signIn, signOut } from "next-auth/react";
-
+import { AccountCircle, AccountCircleOutlined } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { Tooltip } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -10,15 +10,14 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import { signIn, signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
-import Image from "next/image";
 import logo from "../../public/logo.webp";
-import { AccountCircle, AccountCircleOutlined } from "@mui/icons-material";
-import { Tooltip } from "@mui/material";
 
-const pages = ["Aulas gratuitas", "Apostilas gratuitas", "Cursos", "Loja"];
-const links = ["/", "/apostilas", "/clube", "https://lojamariubialli.com.br"];
+const pages = ["Aulas gratuitas", "Loja"];
+const links = ["/", "https://lojamariubialli.com.br"];
 
 export default function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
