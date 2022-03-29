@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  swcMinify: true,
   webpack: (config) => {
     config.module.rules.push({
       test: /\.(graphql|gql)$/,
@@ -25,6 +26,11 @@ const nextConfig = {
       {
         source: '/clube',
         destination: '/',
+        permanent: false
+      },
+      {
+        source: '/apostilas/:slug',
+        destination: '/api/download/:slug',
         permanent: false
       },
     ]
