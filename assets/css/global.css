@@ -1,3 +1,20 @@
+:root {
+  --rainbow: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.05) 0%,
+    rgba(255, 154, 0, 0.05) 10%,
+    rgba(208, 222, 33, 0.05) 20%,
+    rgba(79, 220, 74, 0.05) 30%,
+    rgba(63, 218, 216, 0.05) 40%,
+    rgba(47, 201, 226, 0.05) 50%,
+    rgba(28, 127, 238, 0.05) 60%,
+    rgba(95, 21, 242, 0.05) 70%,
+    rgba(186, 12, 248, 0.05) 80%,
+    rgba(251, 7, 217, 0.05) 90%,
+    rgba(255, 0, 0, 0.05) 100%
+  );
+}
+
 section {
   padding-bottom: 30px;
   padding-top: 30px;
@@ -13,6 +30,7 @@ section {
   font-style: italic;
   font-weight: bold;
   padding: 0 5px;
+  display: inline-block;
 }
 
 .highlightText {
@@ -50,19 +68,36 @@ section {
   color: red;
 }
 
-.rainbow-box {
-  background-image: linear-gradient(
-      90deg,
-      rgba(255, 0, 0, 0.05) 0%,
-      rgba(255, 154, 0, 0.05) 10%,
-      rgba(208, 222, 33, 0.05) 20%,
-      rgba(79, 220, 74, 0.05) 30%,
-      rgba(63, 218, 216, 0.05) 40%,
-      rgba(47, 201, 226, 0.05) 50%,
-      rgba(28, 127, 238, 0.05) 60%,
-      rgba(95, 21, 242, 0.05) 70%,
-      rgba(186, 12, 248, 0.05) 80%,
-      rgba(251, 7, 217, 0.05) 90%,
-      rgba(255, 0, 0, 0.05) 100%
-  );
+.rainbow {
+  background-image: var(--rainbow);
+}
+
+.bg-primary {
+  background-color: #fe6b8b;
+  color: white;
+}
+
+.bg-blue {
+  background-color: #009be5;
+  color: white;
+}
+
+.bg-secondary {
+  background-color: #6bfede;
+  color: black;
+}
+
+.hero-aulas h1,
+.hero-clube h1 {
+  display: inline;
+}
+
+.hero-aulas,
+.hero-clube {
+  background-image: var(--rainbow);
+}
+
+.backdrop {
+  z-index: 2;
+  color: white;
 }

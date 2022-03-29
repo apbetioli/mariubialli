@@ -1,11 +1,12 @@
 import { GetStaticProps } from "next";
 import React from "react";
 import Footer from "../components/Footer";
-import Hero from "../components/Hero";
+import MyButton from "../components/MyButton";
+import ScrollTo from "../components/ScrollTo";
 import Section from "../components/Section";
 import SEO from "../components/SEO";
 import WhatsAppButton from "../components/WhatsAppButton";
-import salesPageQuery from "../graphql/queries/salesPage.graphql";
+import clubePageQuery from "../graphql/queries/clubePage.graphql";
 import client from "../lib/graphqlClient";
 
 export default function Clube({ seo, hero, sections, whatsApp }) {
@@ -13,7 +14,11 @@ export default function Clube({ seo, hero, sections, whatsApp }) {
     <>
       {seo && <SEO {...seo} />}
 
-      <Hero {...hero} />
+      <Section {...hero}>
+        <ScrollTo target="#cl0hf0m2t1rx30bkekq62j6h6">
+          <MyButton>Quero fazer bonecas perfeitas</MyButton>
+        </ScrollTo>
+      </Section>
 
       {sections.map((section, index) => {
         return <Section id={section.name + index} key={index} {...section} />;
@@ -28,7 +33,7 @@ export default function Clube({ seo, hero, sections, whatsApp }) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const { data } = await client.query({
-    query: salesPageQuery,
+    query: clubePageQuery,
   });
 
   return {

@@ -45,6 +45,7 @@ export default function AulasObrigado() {
                 size="small"
                 href="https://youtube.com/mariubialli?sub_confirmation=1"
                 target="_blank"
+                rel="noopener"
               >
                 <YouTube sx={{ mr: 1 }} />
                 Inscrever no Youtube
@@ -63,6 +64,7 @@ export default function AulasObrigado() {
                 size="small"
                 href="https://t.me/mariubialli"
                 target="_blank"
+                rel="noopener"
               >
                 <Telegram sx={{ mr: 1 }} />
                 Entrar no Telegram

@@ -1,18 +1,15 @@
-import { ApolloProvider } from "@apollo/client";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import { SessionProvider } from "next-auth/react";
 import { AppProps } from "next/app";
 import Head from "next/head";
-import Script from "next/script";
+import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import "../../assets/css/global.css";
 import createEmotionCache from "../lib/createEmotionCache";
-import client from "../lib/graphqlClient";
-import theme from "../lib/theme";
 import * as fbq from "../lib/fpixel";
-import { useRouter } from "next/router";
+import theme from "../lib/theme";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache: EmotionCache = createEmotionCache();
@@ -65,11 +62,9 @@ export default function MyApp(props: MyAppProps) {
         <ThemeProvider theme={theme}>
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <CssBaseline />
-          <ApolloProvider client={client}>
-            <SessionProvider session={session}>
-              <Component {...pageProps} />
-            </SessionProvider>
-          </ApolloProvider>
+          <SessionProvider session={session}>
+            <Component {...pageProps} />
+          </SessionProvider>
         </ThemeProvider>
       </CacheProvider>
     </>

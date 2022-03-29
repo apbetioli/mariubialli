@@ -11,12 +11,15 @@ export default function GraphCMSPage({ seo, content, showHeader, showFooter }) {
   return (
     <>
       {seo && <SEO {...seo} />}
+
       {showHeader && <Header />}
+
       <main>
         <Container>
           <div dangerouslySetInnerHTML={{ __html: content.html }} />
         </Container>
       </main>
+
       {showFooter && <Footer />}
     </>
   );

@@ -24,11 +24,6 @@ const nextConfig = {
         permanent: false
       },
       {
-        source: '/clube',
-        destination: '/',
-        permanent: false
-      },
-      {
         source: '/apostilas/:slug',
         destination: '/api/download/:slug',
         permanent: false

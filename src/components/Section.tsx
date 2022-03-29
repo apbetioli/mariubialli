@@ -1,27 +1,17 @@
 import { Box, Container, Grid } from "@mui/material";
 import Column from "./Column";
 
-export default function Section({
-  id,
-  color,
-  backgroundColor,
-  columns = [],
-  sx = {},
-}) {
+export default function Section({ id, cssClass, columns = [], children }) {
   return (
-    <Box
-      component="section"
-      id={id}
-      sx={{
-        backgroundColor: backgroundColor?.hex ?? "inherit",
-        color: color?.hex ?? "inherit",
-        ...sx,
-      }}
-    >
+    <Box component="section" id={id} className={cssClass ?? ""}>
       <Container>
         <Grid container spacing={3}>
           {columns.map((column, index) => {
-            return <Column key={index} {...column} />;
+            return (
+              <Column key={index} {...column}>
+                {index == 0 && children}
+              </Column>
+            );
           })}
         </Grid>
       </Container>

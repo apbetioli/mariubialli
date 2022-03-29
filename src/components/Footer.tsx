@@ -7,7 +7,6 @@ export default function Footer() {
       id="footer"
       component="footer"
       sx={{
-        backgroundColor: "#f5f5f5",
         display: "flex",
         flexDirection: {
           md: "row",
@@ -17,11 +16,17 @@ export default function Footer() {
         justifyContent: "center",
         p: 3,
       }}
+      className="rainbow"
     >
-      <MUILink m={1} href="/politica-de-privacidade" target="_blank">
+      <MUILink
+        m={1}
+        href="/politica-de-privacidade"
+        target="_blank"
+        rel="noopener"
+      >
         Politica de Privacidade
       </MUILink>
-      <MUILink m={1} href="/termos-de-uso" target="_blank">
+      <MUILink m={1} href="/termos-de-uso" target="_blank" rel="noopener">
         Termos de Uso
       </MUILink>
     </Box>

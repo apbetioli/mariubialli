@@ -63,7 +63,7 @@ function html({ url, host, email }: Record<"url" | "host" | "email", string>) {
   <div style="font-family: Arial, Verdana, sans-serif;">
     <div style="max-width: 500px; margin: auto; background-color: #f9f9f9; padding: 20px;">
       <p>Confirme seu email <strong>${escapedEmail}</strong> clicando no botão abaixo. Assim você poderá baixar apostilas e conteúdos exclusivos no site <strong>${escapedHost}</strong> e receberá novidades e avisos por email.</p>
-      <a href="${url}" target="_blank" style="background-color: #fe6b8b; color: white; padding: 10px; border-radius: 5px; text-decoration: none; text-transform: uppercase; font-weight: bold; display: block; margin: 30px auto; width:80%; text-align: center;">Clique aqui para confirmar seu email</a>
+      <a href="${url}" target="_blank" rel="noopener" style="background-color: #fe6b8b; color: white; padding: 10px; border-radius: 5px; text-decoration: none; text-transform: uppercase; font-weight: bold; display: block; margin: 30px auto; width:80%; text-align: center;">Clique aqui para confirmar seu email</a>
       <p>Caso você não tenha cadastrado seu email no site <strong>${escapedHost}</strong>, favor desconsiderar esta mensagem.</p>
     </div>
   </div>

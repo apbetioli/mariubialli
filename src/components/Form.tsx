@@ -172,7 +172,7 @@ export default function Form(props) {
 
       <MyButton type="submit">{props.buttonText}</MyButton>
 
-      <Backdrop open={backdrop}>
+      <Backdrop open={backdrop} className="backdrop">
         <CircularProgress color="inherit" />
       </Backdrop>
     </form>

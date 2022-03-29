@@ -1,27 +1,28 @@
 query AulasPage {
-  salesPage(where: {id: "cl13p8ysm7sy90dlpamogai10"}) {
+  salesPage(where: { id: "cl13p8ysm7sy90dlpamogai10" }) {
     seo {
       title
       description
     }
     hero {
-      title
-      subtitle
-      cta
-      image {
-        url
-        height
-        width
+      id
+      cssClass
+      columns {
+        content {
+          html
+        }
+        image {
+          url
+          height
+          width
+        }
+        size
+        isCard
       }
     }
     sections {
       id
-      backgroundColor {
-        hex
-      }
-      color {
-        hex
-      }
+      cssClass
       columns {
         content {
           html

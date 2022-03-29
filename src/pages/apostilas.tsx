@@ -5,7 +5,7 @@ import {
   CardContent,
   CardMedia,
   Container,
-  Grid
+  Grid,
 } from "@mui/material";
 import { GetStaticProps } from "next";
 import Footer from "../components/Footer";
@@ -18,9 +18,12 @@ export default function Apostilas({ seo, title, apostilas }) {
   return (
     <>
       {seo && <SEO {...seo} />}
+
       <Header />
+
       <Container>
         <h2>{title}</h2>
+
         <Grid container spacing={3}>
           {apostilas.map((apostila, index) => {
             return (
@@ -44,6 +47,7 @@ export default function Apostilas({ seo, title, apostilas }) {
                       size="small"
                       href={apostila.videoUrl}
                       target="_blank"
+                      rel="noopener"
                     >
                       Assistir
                     </Button>
@@ -52,6 +56,7 @@ export default function Apostilas({ seo, title, apostilas }) {
                       size="small"
                       href={`/api/download/${apostila.slug}`}
                       target="_blank"
+                      rel="noopener"
                     >
                       Download
                     </Button>
@@ -62,6 +67,7 @@ export default function Apostilas({ seo, title, apostilas }) {
           })}
         </Grid>
       </Container>
+
       <Footer />
     </>
   );

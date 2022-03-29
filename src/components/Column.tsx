@@ -2,7 +2,14 @@ import { Box, Card, CardContent, CardMedia, Grid } from "@mui/material";
 import Image from "next/image";
 import CheckoutDialog from "./CheckoutDialog";
 
-export default function Column({ content, image, cta, size, isCard = false }) {
+export default function Column({
+  content,
+  image,
+  cta,
+  size,
+  isCard = false,
+  children,
+}) {
   return (
     <>
       <Grid
@@ -38,6 +45,7 @@ export default function Column({ content, image, cta, size, isCard = false }) {
             {content && (
               <div dangerouslySetInnerHTML={{ __html: content.html }} />
             )}
+            {children}
             {image && (
               <Box
                 sx={{

@@ -1,15 +1,5 @@
-import { EventAvailable } from "@mui/icons-material";
-import {
-  Box,
-  Card,
-  CardContent,
-  CardMedia,
-  Container,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { Box } from "@mui/material";
 import { GetStaticPaths, GetStaticProps } from "next";
-import Image from "next/image";
 import Footer from "../../components/Footer";
 import Form from "../../components/Form";
 import Section from "../../components/Section";
@@ -17,77 +7,24 @@ import SEO from "../../components/SEO";
 import aulasPageQuery from "../../graphql/queries/aulasPage.graphql";
 import client from "../../lib/graphqlClient";
 
-export default function Aulas({ seo, sections, origin }) {
+export default function Aulas({ seo, hero, sections, origin }) {
   return (
     <>
       <SEO {...seo} />
-      <main>
-        <Box component="section" className="rainbow-box">
-          <Container>
-            <Grid container spacing={3}>
-              <Grid
-                item
-                xs={12}
-                md={6}
-                lg={5}
-                sx={{
-                  textAlign: { xs: "center", md: "left" },
-                }}
-              >
-                <Typography
-                  component="h1"
-                  sx={{
-                    fontSize: { xs: "1.5em" },
-                    mb: 5,
-                  }}
-                >
-                  Seja avisada das melhores aulas de{" "}
-                  <span className="highlight">bonecas de feltro</span>
-                </Typography>
-                <p>
-                  <EventAvailable
-                    className="highlightText"
-                    sx={{ verticalAlign: "bottom" }}
-                  />{" "}
-                  Toda quinta às 16h
-                </p>
-                <Form
-                  buttonText="Quero ser avisada"
-                  redirectTo={`/aulas/obrigado/${origin}`}
-                  tag="AULAS"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                md={6}
-                lg={7}
-                sx={{
-                  margin: "auto",
-                  textAlign: "center",
-                }}
-              >
-                <Image
-                  src="/bonecas.webp"
-                  alt=""
-                  width="954"
-                  height="442"
-                  layout="intrinsic"
-                  className="image"
-                />
-              </Grid>
-            </Grid>
-          </Container>
-        </Box>
 
-        <Box className="rainbow-box">
-          {sections.map((section, index) => {
-            return (
-              <Section id={section.name + index} key={index} {...section} />
-            );
-          })}
-        </Box>
-      </main>
+      <Box component="main">
+        <Section {...hero}>
+          <Form
+            buttonText="Quero ser avisada"
+            redirectTo={`/aulas/obrigado/${origin}`}
+            tag="AULAS"
+          />
+        </Section>
+
+        {sections.map((section, index) => {
+          return <Section id={section.name + index} key={index} {...section} />;
+        })}
+      </Box>
 
       <Footer />
     </>
