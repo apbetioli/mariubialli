@@ -14,7 +14,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['media.graphcms.com']
+    domains: ['media.graphcms.com', 'media.graphassets.com']
   },
   async redirects() {
     return [
