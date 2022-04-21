@@ -1,5 +1,8 @@
 name: Cypress Tests
 
+env:
+  GRAPHQL_CONTENT_ENDPOINT: https://api-sa-east-1.graphcms.com/v2/cl0bfku7i416901xp2jqf8ogb/master
+
 on:
   push:
     branches: [ master ]
