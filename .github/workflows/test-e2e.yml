@@ -1,8 +1,8 @@
 name: Cypress Tests
 
 env:
-  GRAPHQL_CONTENT_ENDPOINT: ${{secrets.GRAPHQL_CONTENT_ENDPOINT}}
-  MONGODB_URI: ${{secrets.MONGODB_URI}}
+  GRAPHQL_CONTENT_ENDPOINT: '${{secrets.GRAPHQL_CONTENT_ENDPOINT}}'
+  MONGODB_URI: '${{secrets.MONGODB_URI}}'
 
 on:
   push:
