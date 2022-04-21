@@ -1,3 +1,4 @@
 {
-    "baseUrl": "http://mariubialli.com"
+    "baseUrl": "http://localhost:3000",
+    "projectId": "4u35y7"
 }
