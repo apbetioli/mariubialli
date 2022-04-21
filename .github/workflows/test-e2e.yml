@@ -3,6 +3,12 @@ name: Cypress Tests
 env:
   GRAPHQL_CONTENT_ENDPOINT: ${{ secrets.GRAPHQL_CONTENT_ENDPOINT }}
   MONGODB_URI: ${{ secrets.MONGODB_URI }}
+  NEXTAUTH_SECRET: ${{ secrets. NEXTAUTH_SECRET}}
+  EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+  EMAIL_SERVER_PORT: ${{ secrets.EMAIL_SERVER_PORT }}
+  EMAIL_SERVER_HOST: ${{ secrets.EMAIL_SERVER_HOST }}
+  EMAIL_SERVER_PASSWORD: ${{ secrets.EMAIL_SERVER_PASSWORD }}
+  EMAIL_SERVER_USER: ${{ secrets.EMAIL_SERVER_USER }}
 
 on:
   push:
