@@ -1,7 +1,8 @@
 name: Cypress Tests
 
 env:
-  GRAPHQL_CONTENT_ENDPOINT: https://api-sa-east-1.graphcms.com/v2/cl0bfku7i416901xp2jqf8ogb/master
+  GRAPHQL_CONTENT_ENDPOINT: ${{secrets.GRAPHQL_CONTENT_ENDPOINT}}
+  MONGODB_URI: ${{secrets.MONGODB_URI}}
 
 on:
   push:
