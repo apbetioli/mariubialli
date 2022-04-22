@@ -14,7 +14,7 @@ describe('Lead capture page', () => {
         cy.url({timeout: 20000}).should('include', REDIRECT)
     })
 
-    it.only('should not submit the form when the email is invalid', () => {
+    it('should not submit the form when the email is invalid', () => {
         cy.get('[data-test=email]').type('invalidemail')
         cy.get('[data-test=submit]').click()
         cy.get('[data-test=backdrop]').should('not.be.visible')
