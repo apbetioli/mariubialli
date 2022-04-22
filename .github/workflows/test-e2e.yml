@@ -3,7 +3,7 @@ name: Cypress Tests
 env:
   GRAPHQL_CONTENT_ENDPOINT: ${{ secrets.GRAPHQL_CONTENT_ENDPOINT }}
   MONGODB_URI: ${{ secrets.MONGODB_URI }}
-  NEXTAUTH_SECRET: ${{ secrets. NEXTAUTH_SECRET}}
+  NEXTAUTH_SECRET: ${{ secrets. NEXTAUTH_SECRET }}
   EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
   EMAIL_SERVER_PORT: ${{ secrets.EMAIL_SERVER_PORT }}
   EMAIL_SERVER_HOST: ${{ secrets.EMAIL_SERVER_HOST }}
@@ -35,7 +35,3 @@ jobs:
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Print Dashboard URL
-        run: |
-          echo Cypress finished with: ${{ steps.cypress.outcome }}
-          echo See results at ${{ steps.cypress.outputs.dashboardUrl }}
