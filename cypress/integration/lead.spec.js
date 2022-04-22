@@ -1,24 +1,22 @@
 describe('Lead capture page', () => {
+
+    const REDIRECT = '/aulas/obrigado'
+    const EMAIL = 'fake@email.com'
+
     beforeEach(() => {
-        cy.visit('/')
+        cy.visit('/aulas')
     })
 
     it('should show thank you page when submitting the form', () => {
-        cy.get('input[type=email]')
-            .type('fake@email.com')
-            .should('have.value', 'fake@email.com')
-
-        cy.get('button').click()
-
-        cy.url().should('include', '/aulas/obrigado')
+        cy.get('[data-test=email]').type(EMAIL)
+        cy.get('[data-test=submit]').click()
+        cy.get('[data-test=backdrop]').should('be.visible')
+        cy.url({timeout: 20000}).should('include', REDIRECT)
     })
 
-    it('should not submit the form when the email is invalid', () => {
-        cy.get('input[type=email]')
-            .type('invalidemail')
-
-        cy.get('button').click()
-
-        cy.url().should('not.include', '/aulas/obrigado')
+    it.only('should not submit the form when the email is invalid', () => {
+        cy.get('[data-test=email]').type('invalidemail')
+        cy.get('[data-test=submit]').click()
+        cy.get('[data-test=backdrop]').should('not.be.visible')
     })
 })

@@ -3,7 +3,7 @@ import {
   CircularProgress,
   Link,
   TextField,
-  Typography,
+  Typography
 } from "@mui/material";
 import { sha256 } from "js-sha256";
 import { useRouter } from "next/router";
@@ -110,6 +110,7 @@ export default function Form(props) {
         variant="outlined"
         value={values.email}
         onChange={handleChange("email")}
+        data-test="email"
       />
 
       {props.showName && (
@@ -126,6 +127,7 @@ export default function Form(props) {
           variant="outlined"
           value={values.name}
           onChange={handleChange("name")}
+          data-test="name"
         />
       )}
 
@@ -145,6 +147,7 @@ export default function Form(props) {
           variant="outlined"
           value={values.phone}
           onChange={handleChange("phone")}
+          data-test="phone"
         />
       )}
 
@@ -170,9 +173,11 @@ export default function Form(props) {
         </p>
       )}
 
-      <MyButton type="submit">{props.buttonText}</MyButton>
+      <MyButton type="submit" data-test="submit">
+        {props.buttonText}
+      </MyButton>
 
-      <Backdrop open={backdrop} className="backdrop">
+      <Backdrop open={backdrop} className="backdrop" data-test="backdrop">
         <CircularProgress color="inherit" />
       </Backdrop>
     </form>
