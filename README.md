@@ -1,10 +1,10 @@
-# [mariubialli.com](https://mariubialli.com)
+# [mariubialli.com.br](https://mariubialli.com.br)
 
-The main purpose of this website is to capture leads from marketing campaigns and sell a product.
+The main purpose of this website is to capture leads from marketing campaigns and sell courses.
 
 It also has a section for downloading documents for free that requires login and captures leads as well.
 
-Behind the scenes, the idea was to store data in GraphCMS and build the pages dynamically based on the data it receives.
+Behind the scenes, the idea was to store data in a headless CMS and build the pages dynamically based on the data it receives.
 
 ## This project uses
 
@@ -22,7 +22,7 @@ Behind the scenes, the idea was to store data in GraphCMS and build the pages dy
 /aulas                      (Lead capture page)
 /clube                      (Sales page - in construction)
 /apostilas                  (Free downloads with auth)
-/bio                        (Links for Instagram bio)
+/bio                        (Instagram bio links)
 /politica-de-privacidade
 /termos-de-uso
 ```
