@@ -8,12 +8,13 @@ Behind the scenes, the idea was to store data in a headless CMS and build the pa
 
 ## This project uses
 
-- Next.js
+- React
 - Typescript
-- GraphQL (Apollo client)
-- GraphCMS
 - Material UI
+- Next.js
 - NextAuth
+- Hygraph (Headless CMS)
+- GraphQL (Apollo client)
 
 ## Public pages
 
