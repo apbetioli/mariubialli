@@ -19,7 +19,7 @@ export default function ConfirmaInscricao() {
       <h1>Email confirmado com sucesso!</h1>
       <p>Você continuará recebendo nossos emails e avisos por email.</p>
       <p>
-        Adicione o email <b>contato@mariubialli.com</b> aos seus contatos para
+        Adicione o email <b>contato@mariubialli.com.br</b> aos seus contatos para
         não perder nenhuma novidade.
       </p>
     </div>

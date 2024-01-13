@@ -23,7 +23,7 @@ export default NextAuth({
   theme: {
     colorScheme: "light", // "auto" | "dark" | "light"
     brandColor: "#fe6b8b",
-    logo: "https://dev.mariubialli.com/logo.webp", // Absolute URL to image
+    logo: "https://mariubialli.com.br/logo.webp", // Absolute URL to image
   },
   pages: {
     signIn: "/auth/email-signin",
