@@ -12,7 +12,7 @@ export default async function handler(
  */
   try {
     const path = req.query.path?.toString() ?? "/";
-    await res.unstable_revalidate(path);
+    await res.revalidate(path);
 
     console.log("revalidate", path);
 

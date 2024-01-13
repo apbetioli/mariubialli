@@ -10,28 +10,16 @@ env:
   EMAIL_SERVER_PASSWORD: ${{ secrets.EMAIL_SERVER_PASSWORD }}
   EMAIL_SERVER_USER: ${{ secrets.EMAIL_SERVER_USER }}
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+on: [push]
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Cypress run
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v6
         with:
-          build: yarn build
-          start: yarn start
-          record: true
-          parallel: true
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          build: npm run build
+          start: npm run start

@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -17,14 +13,16 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "baseUrl": "."
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/lib/fpixel.js"  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "**/*.tsx",
+    "src/lib/fpixel.js",
+    "cypress/support/commands.js",
+    "cypress/support/e2e.js"
+  ],
+  "exclude": ["node_modules"]
 }
