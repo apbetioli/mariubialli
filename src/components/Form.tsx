@@ -3,12 +3,12 @@ import {
   CircularProgress,
   Link,
   TextField,
-  Typography
+  Typography,
 } from "@mui/material";
 import { sha256 } from "js-sha256";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import NumberFormat from "react-number-format";
+import { NumericFormat } from "react-number-format";
 import subscribe from "../lib/subscribe";
 import MyButton from "./MyButton";
 
@@ -132,9 +132,8 @@ export default function Form(props) {
       )}
 
       {props.showPhone && (
-        <NumberFormat
+        <NumericFormat
           customInput={TextField}
-          format="###########"
           id="phone"
           label="WhatsApp"
           placeholder="DDD + Número"
