@@ -15,6 +15,7 @@ export default function Footer() {
         fontSize: "0.7em",
         justifyContent: "center",
         p: 3,
+        mt: 4,
       }}
       className="rainbow"
     >
