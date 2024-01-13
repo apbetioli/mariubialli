@@ -56,6 +56,8 @@ Next.js webhook for ISR
 
 ## Environment Variables
 
+Create a `.env.local` file and configure all these environment variables.
+
 GraphQL:
 
 ```
@@ -83,39 +85,13 @@ NEXT_PUBLIC_FACEBOOK_PIXEL_ID
 FB_CONVERSION_API_TOKEN
 ```
 
-Use this env variable to bypass certificate verification for email auth.
-Don't do this in production as it will make TLS insecure.
-
-```
-NODE_TLS_REJECT_UNAUTHORIZED=0
-```
-
-## Optional configuration
-
-Add the file .graphqlconfig to the root of the project to run GraphQL queries in VSCode:
-
-```
-{
-    "projects": {
-        "src": {
-            "extensions": {
-                "endpoints": {
-                    "default": {
-                        "url": "CHANGE TO YOUR GRAPHQL ENDPOINT"
-                    }
-                }
-            }
-        }
-    }
-}
-```
-
 ## Getting Started
 
 First, run the development server:
 
 ```
-$ yarn dev
+$ npm install
+$ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
