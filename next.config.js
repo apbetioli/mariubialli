@@ -22,7 +22,7 @@ const nextConfig = {
     return [
       {
         source: '/',
-        destination: '/aulas',
+        destination: '/apostilas',
         permanent: false
       },
       {

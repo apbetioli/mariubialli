@@ -16,8 +16,8 @@ import Link from "next/link";
 import * as React from "react";
 import logo from "../../public/logo.webp";
 
-const pages = ["Aulas gratuitas", "Loja"];
-const links = ["/", "https://lojamariubialli.com.br"];
+const pages = ["Apostilas", "Aulas gratuitas"];
+const links = ["/apostilas", "/aulas"];
 
 export default function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
