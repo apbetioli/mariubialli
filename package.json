@@ -8,9 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "cypress open",
-    "test:headless": "cypress run",
-    "test:components": "cypress open-ct",
-    "test:components:headless": "cypress run-ct"
+    "test:headless": "cypress run"
   },
   "dependencies": {
     "@apollo/client": "^3.8.9",

@@ -1,7 +1,0 @@
-{
-    "baseUrl": "http://localhost:3000",
-    "chromeWebSecurity": false,
-    "projectId": "4u35y7",
-    "testFiles": "**/*.spec.{js,ts,jsx,tsx}",
-    "componentFolder": "cypress/pages"
-}
