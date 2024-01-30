@@ -4,10 +4,9 @@ const getCookie = (id) => {
     .filter((c) => c.includes(`_${id}=`))
     .map((c) => c.split(`_${id}=`)[1]);
   return (v.length && v[0]) || null;
-}
+};
 
 export const track = (eventName, options = {}) => {
-
   if (!process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID) return;
   if (!window) return;
 
@@ -25,7 +24,7 @@ export const track = (eventName, options = {}) => {
   const opt = {
     ...options,
     event_time: current_timestamp,
-    event_id: eventID
+    event_id: eventID,
   };
 
   window.fbq("track", eventName, opt, { eventID });
@@ -43,12 +42,9 @@ export const track = (eventName, options = {}) => {
       user_agent: navigator.userAgent,
       url: window.location.origin + window.location.pathname,
     }),
-  }).then(res => {
-    console.log(res);
-  })
-    .catch((error) => {
-      console.error(error);
-    });
+  }).catch((error) => {
+    console.error(error);
+  });
 };
 
 export const pageview = () => {
@@ -57,7 +53,7 @@ export const pageview = () => {
 
 export const completeRegistration = (query) => {
   if (!query.em) {
-    console.warn("No email passed to completeRegistration")
+    console.warn("No email passed to completeRegistration");
     return;
   }
 
