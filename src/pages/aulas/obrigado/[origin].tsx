@@ -3,6 +3,7 @@ import { Box, Container, Grid, Paper, Typography } from "@mui/material";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Footer from "../../../components/Footer";
 import MyButton from "../../../components/MyButton";
+import Header from "../../../components/Header";
 
 const sxGridItem = {
   display: "flex",
@@ -15,6 +16,8 @@ const sxGridItem = {
 export default function AulasObrigado() {
   return (
     <>
+      <Header />
+
       <Box>
         <Container component="section" className="center" maxWidth="md">
           <Typography component="h1" variant="h5" mb={3}>

@@ -8,11 +8,14 @@ import SEO from "../components/SEO";
 import WhatsAppButton from "../components/WhatsAppButton";
 import clubePageQuery from "../graphql/queries/clubePage.graphql";
 import client from "../lib/graphqlClient";
+import Header from "../components/Header";
 
 export default function Clube({ seo, hero, sections, whatsApp }) {
   return (
     <>
       {seo && <SEO {...seo} />}
+
+      <Header />
 
       <Section {...hero}>
         <ScrollTo target="#cl0hf0m2t1rx30bkekq62j6h6">

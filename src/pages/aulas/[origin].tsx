@@ -6,11 +6,14 @@ import Section from "../../components/Section";
 import SEO from "../../components/SEO";
 import aulasPageQuery from "../../graphql/queries/aulasPage.graphql";
 import client from "../../lib/graphqlClient";
+import Header from "../../components/Header";
 
 export default function Aulas({ seo, hero, sections, origin }) {
   return (
     <>
       <SEO {...seo} />
+
+      <Header />
 
       <Box component="main">
         <Section {...hero}>

@@ -16,8 +16,8 @@ import Link from "next/link";
 import * as React from "react";
 import logo from "../../public/logo.webp";
 
-const pages = ["Apostilas", "Aulas gratuitas"];
-const links = ["/apostilas", "/aulas"];
+const pages = ["Apostilas", "Aulas gratuitas", "Clube", "Links"];
+const links = ["/apostilas", "/aulas", "/clube", "/bio"];
 
 export default function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -112,7 +112,7 @@ export default function Header() {
                 </Tooltip>
               </Button>
             )}
-            {!session && (
+            {/* {!session && (
               <IconButton
                 sx={{ my: 2, color: "white", display: "block" }}
                 onClick={() => signIn()}
@@ -122,7 +122,7 @@ export default function Header() {
                   <AccountCircle />
                 </Tooltip>
               </IconButton>
-            )}
+            )} */}
           </Toolbar>
         </Container>
       </AppBar>
