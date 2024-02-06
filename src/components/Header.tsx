@@ -16,8 +16,14 @@ import Link from "next/link";
 import * as React from "react";
 import logo from "../../public/logo.webp";
 
-const pages = ["Apostilas", "Aulas gratuitas", "Clube", "Links"];
-const links = ["/apostilas", "/aulas", "/clube", "/bio"];
+const pages = ["Apostilas", "Aulas gratuitas", "Clube", "Links", "Youtube"];
+const links = [
+  "/apostilas",
+  "/aulas",
+  "/clube",
+  "/bio",
+  "https://www.youtube.com/mariubialli",
+];
 
 export default function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -34,7 +40,7 @@ export default function Header() {
   return (
     <header>
       <AppBar position="static">
-        <Container maxWidth="xl">
+        <Container>
           <Toolbar disableGutters>
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
               <IconButton
