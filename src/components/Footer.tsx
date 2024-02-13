@@ -17,7 +17,6 @@ export default function Footer() {
         p: 3,
         mt: 4,
       }}
-      className="rainbow"
     >
       <MUILink
         m={1}
