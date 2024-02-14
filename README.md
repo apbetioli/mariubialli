@@ -2,11 +2,16 @@
 
 The main purpose of this website is to capture leads from marketing campaigns and sell courses.
 
-It also has a section for downloading documents for free that requires login and captures leads as well.
+![image](https://github.com/apbetioli/mariubialli/assets/2829329/0ef78419-335d-4a72-b9de-fd9f32fce4d6)
 
-Behind the scenes, the idea was to store data in a headless CMS and build the pages dynamically based on the data it receives.
+It also has a section for downloading documents for free that requires login and captures leads.
 
-## This project uses
+![image](https://github.com/apbetioli/mariubialli/assets/2829329/081bcb48-57f9-4ffc-9132-258bdaa1355a)
+
+The data is stored in a headless CMS, and the pages are built dynamically.
+It uses server-side rendering (SSR) for optimal performance and SEO.
+
+## Tech stack
 
 - React
 - Typescript
