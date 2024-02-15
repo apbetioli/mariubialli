@@ -1,22 +1,19 @@
 # [mariubialli.com.br](https://mariubialli.com.br)
 
-The main purpose of this website is to capture leads from marketing campaigns and sell courses.
+A fast site to capture leads from marketing campaigns and sell courses for mariubialli.
+The data is stored in a headless CMS, and the pages are built dynamically with server-side rendering (SSR) for optimal performance and SEO.
+
+Here's a preview of a page for capturing email:
 
 ![image](https://github.com/apbetioli/mariubialli/assets/2829329/0ef78419-335d-4a72-b9de-fd9f32fce4d6)
 
-It also has a section for downloading documents for free that requires login and captures leads.
-
-![image](https://github.com/apbetioli/mariubialli/assets/2829329/081bcb48-57f9-4ffc-9132-258bdaa1355a)
-
-The data is stored in a headless CMS, and the pages are built dynamically.
-It uses server-side rendering (SSR) for optimal performance and SEO.
 
 ## Tech stack
 
 - React
+- Next.js
 - Typescript
 - Material UI
-- Next.js
 - NextAuth
 - Hygraph (Headless CMS)
 - GraphQL (Apollo client)
