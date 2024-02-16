@@ -1,4 +1,4 @@
-import { AccountCircle, AccountCircleOutlined } from "@mui/icons-material";
+import { AccountCircleOutlined } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Tooltip } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
@@ -10,7 +10,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";

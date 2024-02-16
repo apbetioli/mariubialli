@@ -1,4 +1,4 @@
-import { Container, TextField, Typography } from "@mui/material";
+import { Container, TextField } from "@mui/material";
 import { getCsrfToken } from "next-auth/react";
 import Image from "next/image";
 import MyButton from "../../components/MyButton";

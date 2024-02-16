@@ -26,12 +26,19 @@ export default function Column({
         {isCard && (
           <>
             <Card elevation={5} className="card">
-              <CardMedia
-                component="img"
-                sx={{ height: 200 }}
-                image={image.url}
-                alt=""
-              ></CardMedia>
+              <CardMedia component="div" sx={{ position: "relative" }}>
+                <Image
+                  src={image.url}
+                  alt=""
+                  height={image.height}
+                  width={image.width}
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                  }}
+                  priority
+                />
+              </CardMedia>
               <CardContent>
                 {content && (
                   <div dangerouslySetInnerHTML={{ __html: content.html }} />
@@ -58,6 +65,7 @@ export default function Column({
                   height={image.height}
                   width={image.width}
                   layout="responsive"
+                  priority
                 />
               </Box>
             )}
