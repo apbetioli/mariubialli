@@ -49,7 +49,7 @@ export default function MyApp(props: MyAppProps) {
   }, [router.events]);
 
   useEffect(() => {
-    fbq.pageview();
+    setTimeout(() => fbq.pageview(), 0);
   }, []);
 
   return (
