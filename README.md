@@ -1,7 +1,7 @@
 # [mariubialli.com.br](https://mariubialli.com.br)
 
 A fast site to capture leads from marketing campaigns and sell courses for mariubialli.
-The data is stored in a headless CMS, and the pages are built dynamically with server-side rendering (SSR) for optimal performance and SEO.
+The data is stored in a headless CMS, and the pages are statically generated (SSG) for optimal performance and SEO.
 
 Here's a preview of a page for capturing email:
 
