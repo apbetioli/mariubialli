@@ -32,17 +32,18 @@ export default function Apostilas({ seo, title, apostilas }) {
                 <Card
                   sx={{ height: 1, display: "flex", flexDirection: "column" }}
                 >
-                  <CardMedia component="div" sx={{ position: "relative" }}>
+                  <CardMedia
+                    component="div"
+                    sx={{ position: "relative", height: 200 }}
+                  >
                     <Image
                       src={apostila.cover.url}
                       alt={apostila.title}
-                      width={500}
-                      height={281}
+                      fill
                       style={{
-                        width: "100%",
-                        height: "auto",
+                        objectFit: "cover",
                       }}
-                      priority={index <= 1}
+                      priority={index == 0}
                     />
                   </CardMedia>
 
