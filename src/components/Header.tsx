@@ -16,9 +16,9 @@ import Link from "next/link";
 import * as React from "react";
 import logo from "../../public/logo.webp";
 
-const pages = ["Apostilas", "Aulas gratuitas", "Clube", "Links", "Youtube"];
+const pages = ["Apostilas", "Aulas", "Clube", "Links", "Youtube"];
 const links = [
-  "/apostilas",
+  "/",
   "/aulas",
   "/clube",
   "/bio",

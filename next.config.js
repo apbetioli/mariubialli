@@ -20,11 +20,6 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: "/",
-        destination: "/apostilas",
-        permanent: false,
-      },
-      {
         source: "/apostilas/:slug",
         destination: "/api/download/:slug",
         permanent: false,
