@@ -1,5 +1,4 @@
 import Head from "next/head";
-import "../../assets/css/global.css";
 
 export default function RootLayout({
   children,
