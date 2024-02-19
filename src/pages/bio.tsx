@@ -4,10 +4,13 @@ import Image from "next/image";
 import MyButton from "../components/MyButton";
 import bioQuery from "../graphql/queries/bio.graphql";
 import client from "../lib/graphqlClient";
+import SEO from "src/components/SEO";
 
-export default function Bio({ avatar, links }) {
+export default function Bio({ seo, avatar, links }) {
   return (
     <>
+      {seo && <SEO {...seo} />}
+
       <Box
         sx={{
           display: "flex",
@@ -17,7 +20,13 @@ export default function Bio({ avatar, links }) {
         }}
       >
         <Avatar sx={{ width: 100, height: 100, m: 1 }}>
-          <Image src={avatar.url} alt="Avatar" width={100} height={100} />
+          <Image
+            src={avatar.url}
+            alt="Avatar"
+            width={100}
+            height={100}
+            priority
+          />
         </Avatar>
 
         {links.map((link) => {

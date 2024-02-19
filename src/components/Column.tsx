@@ -36,7 +36,6 @@ export default function Column({
                     width: "100%",
                     height: "auto",
                   }}
-                  priority
                 />
               </CardMedia>
               <CardContent>

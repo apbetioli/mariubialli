@@ -1,5 +1,9 @@
 query Bio($slug: String!) {
   bio(where: { slug: $slug }) {
+    seo {
+      title
+      description
+    }
     avatar {
       url
     }

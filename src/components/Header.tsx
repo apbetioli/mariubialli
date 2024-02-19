@@ -83,18 +83,29 @@ export default function Header() {
               variant="h6"
               noWrap
               component="div"
-              sx={{ flexGrow: 1, display: { xs: "flex", md: "none", marginRight: '55px', padding: '10px' } }}
+              sx={{
+                flexGrow: 1,
+                display: {
+                  xs: "flex",
+                  md: "none",
+                  marginRight: "55px",
+                  padding: "10px",
+                },
+              }}
             >
-              <Image src={logo} width={60} height={60} alt="Logo" />
+              <Image src={logo} width={60} height={60} alt="Logo" priority />
             </Typography>
 
             <Typography
               variant="h6"
               noWrap
               component="div"
-              sx={{ mr: 3, display: { xs: "none", md: "flex", padding: '10px' } }}
+              sx={{
+                mr: 3,
+                display: { xs: "none", md: "flex", padding: "10px" },
+              }}
             >
-              <Image src={logo} width={60} height={60} alt="Logo" />
+              <Image src={logo} width={60} height={60} alt="Logo" priority />
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page, i) => (
