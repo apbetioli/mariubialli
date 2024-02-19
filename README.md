@@ -3,9 +3,7 @@
 A fast site to capture leads from marketing campaigns and sell courses for mariubialli.
 The data is stored in a headless CMS, and the pages are statically generated (SSG) for optimal performance and SEO.
 
-Here's a preview of a page for capturing email:
-
-![image](https://github.com/apbetioli/mariubialli/assets/2829329/0ef78419-335d-4a72-b9de-fd9f32fce4d6)
+![image](https://github.com/apbetioli/mariubialli/assets/2829329/3c7eba01-df50-41b4-afd5-f6903e84ea07)
 
 
 ## Tech stack
