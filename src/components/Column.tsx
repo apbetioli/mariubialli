@@ -26,15 +26,16 @@ export default function Column({
         {isCard && (
           <>
             <Card elevation={5} className="card">
-              <CardMedia component="div" sx={{ position: "relative" }}>
+              <CardMedia
+                component="div"
+                sx={{ position: "relative", height: 200 }}
+              >
                 <Image
                   src={image.url}
                   alt=""
-                  height={image.height}
-                  width={image.width}
+                  fill
                   style={{
-                    width: "100%",
-                    height: "auto",
+                    objectFit: "cover",
                   }}
                 />
               </CardMedia>

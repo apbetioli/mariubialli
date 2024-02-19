@@ -128,17 +128,6 @@ export default function Header() {
                 </Tooltip>
               </Button>
             )}
-            {/* {!session && (
-              <IconButton
-                sx={{ my: 2,  display: "block" }}
-                onClick={() => signIn()}
-                aria-label="Entrar"
-              >
-                <Tooltip title="Entrar">
-                  <AccountCircle />
-                </Tooltip>
-              </IconButton>
-            )} */}
           </Toolbar>
         </Container>
       </AppBar>
