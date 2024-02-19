@@ -6,7 +6,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt">
+    <>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <link rel="manifest" href="/manifest.json" />
@@ -14,6 +14,6 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <body>{children}</body>
-    </html>
+    </>
   );
 }
