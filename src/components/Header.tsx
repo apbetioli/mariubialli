@@ -93,7 +93,9 @@ export default function Header() {
                 },
               }}
             >
-              <Image src={logo} width={60} height={60} alt="Logo" priority />
+              <Link href="/">
+                <Image src={logo} width={60} height={60} alt="Logo" priority />
+              </Link>
             </Typography>
 
             <Typography
@@ -105,7 +107,9 @@ export default function Header() {
                 display: { xs: "none", md: "flex", padding: "10px" },
               }}
             >
-              <Image src={logo} width={60} height={60} alt="Logo" priority />
+              <Link href="/">
+                <Image src={logo} width={60} height={60} alt="Logo" priority />
+              </Link>
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page, i) => (

@@ -29,7 +29,7 @@ section {
 }
 
 .highlight {
-  background-color: #FE6B8B;
+  background-color: #016f57;
   color: white;
   font-style: italic;
   font-weight: bold;
@@ -38,7 +38,7 @@ section {
 }
 
 .highlightText {
-  color: #FE6B8B;
+  color: #016f57;
   font-weight: bold;
 }
 
@@ -77,7 +77,7 @@ section {
 }
 
 .bg-primary {
-  background-color: #FE6B8B;
+  background-color: #016f57;
   color: white;
 }
 

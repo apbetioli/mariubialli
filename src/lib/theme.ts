@@ -4,9 +4,9 @@ import { createTheme } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#FE6B8B",
-      light: "#FFE1E8",
-      dark: "#B90129",
+      main: "#016f57",
+      light: "#E1FFF8",
+      dark: "#016f57",
       contrastText: "#FFF",
     },
     secondary: {
@@ -16,10 +16,10 @@ const theme = createTheme({
       contrastText: "#FFF",
     },
     success: {
-      main: "#6BFEDE",
-      light: "#E1FFF8",
-      dark: "#01A27F",
-      contrastText: "#000",
+      main: "#FE6B8B",
+      light: "#FFE1E8",
+      dark: "#B90129",
+      contrastText: "#FFF",
     },
     error: {
       main: red.A400,
@@ -45,7 +45,7 @@ const theme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          color: "#FE6B8B",
+          color: "#016f57",
           backgroundColor: "white",
         },
       },
