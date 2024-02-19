@@ -1,7 +1,11 @@
 import Head from "next/head";
 import "../../assets/css/global.css";
 
-export default function Layout({ children }) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="pt">
       <Head>
