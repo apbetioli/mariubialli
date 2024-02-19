@@ -83,7 +83,7 @@ export default function Header() {
               variant="h6"
               noWrap
               component="div"
-              sx={{ flexGrow: 1, display: { xs: "flex", md: "none", marginRight: '40px', padding: '10px' } }}
+              sx={{ flexGrow: 1, display: { xs: "flex", md: "none", marginRight: '55px', padding: '10px' } }}
             >
               <Image src={logo} width={60} height={60} alt="Logo" />
             </Typography>
