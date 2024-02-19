@@ -7,7 +7,6 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { signOut, useSession } from "next-auth/react";
@@ -72,11 +71,11 @@ export default function Header() {
                 }}
               >
                 {pages.map((page, i) => (
-                  <MenuItem key={page}>
-                    <Link href={links[i]} passHref>
+                  <Link key={page} href={links[i]} passHref>
+                    <Button sx={{ my: 2, display: "block", width: "100%" }}>
                       <Typography textAlign="center">{page}</Typography>
-                    </Link>
-                  </MenuItem>
+                    </Button>
+                  </Link>
                 ))}
               </Menu>
             </Box>
@@ -84,23 +83,23 @@ export default function Header() {
               variant="h6"
               noWrap
               component="div"
-              sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
+              sx={{ flexGrow: 1, display: { xs: "flex", md: "none", marginRight: '40px', padding: '10px' } }}
             >
-              <Image src={logo} width={80} height={80} alt="Logo" />
+              <Image src={logo} width={60} height={60} alt="Logo" />
             </Typography>
 
             <Typography
               variant="h6"
               noWrap
               component="div"
-              sx={{ mr: 3, display: { xs: "none", md: "flex" } }}
+              sx={{ mr: 3, display: { xs: "none", md: "flex", padding: '10px' } }}
             >
-              <Image src={logo} width={80} height={80} alt="Logo" />
+              <Image src={logo} width={60} height={60} alt="Logo" />
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page, i) => (
                 <Link href={links[i]} passHref key={page}>
-                  <Button sx={{ my: 2, color: "white", display: "block" }}>
+                  <Button sx={{ my: 2, display: "block" }}>
                     <Typography textAlign="center">{page}</Typography>
                   </Button>
                 </Link>
@@ -109,7 +108,7 @@ export default function Header() {
 
             {session && (
               <Button
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, display: "block" }}
                 onClick={() => signOut()}
                 aria-label="Sair"
               >
@@ -120,7 +119,7 @@ export default function Header() {
             )}
             {/* {!session && (
               <IconButton
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2,  display: "block" }}
                 onClick={() => signIn()}
                 aria-label="Entrar"
               >

@@ -42,6 +42,14 @@ const theme = createTheme({
         },
       },
     },
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          color: "#FE6B8B",
+          backgroundColor: "white",
+        },
+      },
+    },
     MuiOutlinedInput: {
       styleOverrides: {
         root: {

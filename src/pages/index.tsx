@@ -23,7 +23,7 @@ export default function Apostilas({ seo, title, apostilas }) {
       <Header />
 
       <Container>
-        <h2>{title}</h2>
+        <h1>{title}</h1>
 
         <Grid container spacing={3}>
           {apostilas.map((apostila, index) => {
@@ -48,7 +48,13 @@ export default function Apostilas({ seo, title, apostilas }) {
                   </CardMedia>
 
                   <CardContent sx={{ flexGrow: 1 }}>
-                    <h4>{apostila.title}</h4>
+                    <h2
+                      style={{
+                        fontSize: "1.3rem",
+                      }}
+                    >
+                      {apostila.title}
+                    </h2>
                     <p>{apostila.subtitle}</p>
                   </CardContent>
                   <CardActions>
