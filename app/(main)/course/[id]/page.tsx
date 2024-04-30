@@ -1,12 +1,15 @@
 'use client'
 
-import { courses } from '@/app/data'
 import Video from '@/components/Video'
+import { useAppSelector } from '@/lib/hooks'
 import { useParams } from 'next/navigation'
 
 const CoursePage = () => {
   const { id } = useParams()
-  const course = courses.find((course) => id === course.id)
+
+  const course = useAppSelector((state) =>
+    state.courses.courses.find((course) => id === course.id),
+  )
 
   return (
     <div className="flex min-h-full w-full">
