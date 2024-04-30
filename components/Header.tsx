@@ -35,7 +35,7 @@ export default function Header() {
           </SignedIn>
         </div>
       </nav>
-      <div className="mb-12">&nbsp;</div>
+      <div className="mb-10">&nbsp;</div>
     </div>
   )
 }
