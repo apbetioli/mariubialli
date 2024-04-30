@@ -2,12 +2,12 @@ import './globals.css'
 
 import { ClerkProvider } from '@clerk/nextjs'
 
+import Footer from '@/components/Footer'
 import Header from '@/components/Header'
+import { ReactQueryClientProvider } from '@/components/ReactQueryClientProvider'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { ReactQueryClientProvider } from '@/components/ReactQueryClientProvider'
-import Navbar from '@/components/Header'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -42,9 +42,10 @@ export default function RootLayout({
         }}
       >
         <ReactQueryClientProvider>
-          <body className={`${inter.className} h-screen flex flex-col `}>
-            <Navbar />
+          <body className={`${inter.className} min-h-screen flex flex-col`}>
+            <Header />
             <main className="h-full grow">{children}</main>
+            <Footer />
             {gaId && <GoogleAnalytics gaId={gaId} />}
           </body>
         </ReactQueryClientProvider>

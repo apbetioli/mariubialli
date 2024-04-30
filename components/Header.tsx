@@ -4,13 +4,12 @@ import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { cn } from '@/lib/utils'
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import { Menu } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { PropsWithChildren } from 'react'
-import { MenuIcon } from './ui/icons'
-import { Menu, User } from 'lucide-react'
 
-export default function Navbar() {
+export default function Header() {
   return (
     <div>
       <nav className="fixed flex h-16 w-full items-center border-b border-gray-200 shrink-0 px-4 md:px-6 z-10 text-primary shadow-md bg-primary-foreground">
