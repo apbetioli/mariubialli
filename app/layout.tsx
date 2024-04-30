@@ -44,7 +44,9 @@ export default function RootLayout({
         <ReactQueryClientProvider>
           <body className={`${inter.className} min-h-screen flex flex-col`}>
             <Header />
-            <main className="h-full grow">{children}</main>
+            <main className="flex min-h-[calc(100%-5rem)] w-full grow">
+              {children}
+            </main>
             <Footer />
             {gaId && <GoogleAnalytics gaId={gaId} />}
           </body>

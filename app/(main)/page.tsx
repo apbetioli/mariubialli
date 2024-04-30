@@ -15,33 +15,31 @@ import { SignedIn } from '@clerk/nextjs'
 
 export default function HomePage() {
   return (
-    <main className="flex min-h-[calc(100%-5rem)] w-full justify-center">
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8 p-8 h-fit">
-        {courses.map((course) => (
-          <Card key={course.id} className="flex flex-col overflow-hidden">
-            <CardMedia src={course.image} alt={course.name} />
-            <CardHeader>
-              <CardTitle>{course.name}</CardTitle>
-              <CardDescription>{course.description}</CardDescription>
-            </CardHeader>
-            <CardContent className="grow"></CardContent>
-            <CardFooter className="flex justify-between gap-4">
-              <p className="text-primary font-semibold">
-                {course.completion > 0 && (
-                  <span>{course.completion}% completo</span>
-                )}
-              </p>
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8 p-8 h-fit">
+      {courses.map((course) => (
+        <Card key={course.id} className="flex flex-col overflow-hidden">
+          <CardMedia src={course.image} alt={course.name} />
+          <CardHeader>
+            <CardTitle>{course.name}</CardTitle>
+            <CardDescription>{course.description}</CardDescription>
+          </CardHeader>
+          <CardContent className="grow"></CardContent>
+          <CardFooter className="flex justify-between gap-4">
+            <p className="text-primary font-semibold">
+              {course.completion > 0 && (
+                <span>{course.completion}% completo</span>
+              )}
+            </p>
 
-              <Link href={`/course/${course.id}`}>
-                <Button>
-                  <Play />
-                  {course.completion > 0 ? 'Continuar' : 'Ver curso'}
-                </Button>
-              </Link>
-            </CardFooter>
-          </Card>
-        ))}
-      </div>
-    </main>
+            <Link href={`/course/${course.id}`}>
+              <Button>
+                <Play />
+                {course.completion > 0 ? 'Continuar' : 'Ver curso'}
+              </Button>
+            </Link>
+          </CardFooter>
+        </Card>
+      ))}
+    </div>
   )
 }

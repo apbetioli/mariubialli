@@ -1,8 +1,6 @@
-import { randomUUID } from 'crypto'
-
 export const courses = [
   {
-    id: randomUUID(),
+    id: '1',
     name: 'Quadro - Dia das Mães',
     description:
       'Aprenda a fazer quadro para decorar seu ateliê, presentear sua mãe ou se presentear',
@@ -26,7 +24,7 @@ export const courses = [
     completion: 0,
   },
   {
-    id: randomUUID(),
+    id: '2',
     name: 'Iniciantes em feltro',
     description: 'Aulas para iniciantes em feltro',
     image: 'https://media.graphassets.com/13BiFOg7REOVUW1WkKMG',
