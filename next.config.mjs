@@ -5,6 +5,12 @@ const nextConfig = {
       {
         hostname: 'mariubialli.s3.amazonaws.com',
       },
+      {
+        hostname: 'images.unsplash.com',
+      },
+      {
+        hostname: 'media.graphassets.com',
+      },
     ],
   },
 }

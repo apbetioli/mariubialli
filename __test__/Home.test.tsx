@@ -1,7 +1,7 @@
 import { expect, test, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 
-import HomePage from '@/app/page'
+import HomePage from '@/app/(main)/page'
 import { PropsWithChildren } from 'react'
 
 vi.mock('@clerk/nextjs', () => {

@@ -34,7 +34,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "prisma/index.js"
-  ],
+, "app/(main)/privacy/page.mdx"  ],
   "exclude": [
     "node_modules"
   ],

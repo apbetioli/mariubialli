@@ -7,6 +7,7 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ReactQueryClientProvider } from '@/components/ReactQueryClientProvider'
+import Navbar from '@/components/Header'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,9 +27,9 @@ export default function RootLayout({
     <html lang="en">
       <ClerkProvider
         appearance={{
-          variables: { colorPrimary: '#aaaaaa' },
+          variables: { colorPrimary: '#ccc' },
           elements: {
-            formButtonPrimary: 'bg-purple-500 hover:bg-purple-600',
+            formButtonPrimary: 'bg-primary hover:bg-primary/80',
             socialButtonsBlockButton:
               'bg-white border-gray-200 hover:bg-transparent hover:border-black text-gray-600 hover:text-black',
             socialButtonsBlockButtonText: 'font-semibold',
@@ -42,7 +43,7 @@ export default function RootLayout({
       >
         <ReactQueryClientProvider>
           <body className={`${inter.className} h-screen flex flex-col `}>
-            <Header />
+            <Navbar />
             <main className="h-full grow">{children}</main>
             {gaId && <GoogleAnalytics gaId={gaId} />}
           </body>

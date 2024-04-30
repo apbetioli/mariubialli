@@ -1,7 +1,7 @@
 'use client'
 
+import { Search } from 'lucide-react'
 import { PropsWithChildren } from 'react'
-import { SearchIcon } from './icons'
 
 type Props = {
   title: string
@@ -17,7 +17,7 @@ export default function Empty({
     <div className="mt-6 flex h-96 items-center rounded-lg border text-center dark:border-gray-700">
       <div className="mx-auto flex w-full max-w-sm flex-col px-4">
         <div className="mx-auto rounded-full bg-blue-100 p-3 text-blue-500 dark:bg-gray-800">
-          <SearchIcon />
+          <Search />
         </div>
         <h1 className="mt-3 text-lg text-gray-800 dark:text-white">{title}</h1>
         {text && (
