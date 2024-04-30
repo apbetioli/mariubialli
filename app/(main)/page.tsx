@@ -16,7 +16,7 @@ import { SignedIn } from '@clerk/nextjs'
 export default function HomePage() {
   return (
     <main className="flex min-h-[calc(100%-5rem)] w-full justify-center">
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8 p-8 h-fit">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8 h-fit">
         {courses.map((course) => (
           <Card key={course.id} className="flex flex-col overflow-hidden">
             <CardMedia src={course.image} alt={course.name} />
@@ -32,7 +32,7 @@ export default function HomePage() {
                 )}
               </p>
 
-              <Link href={`/courses/${course.id}`}>
+              <Link href={`/course/${course.id}`}>
                 <Button>
                   <Play />
                   {course.completion > 0 ? 'Continuar' : 'Ver curso'}
