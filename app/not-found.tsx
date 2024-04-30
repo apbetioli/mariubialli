@@ -5,7 +5,8 @@ import Link from 'next/link'
 export default function NotFound() {
   return (
     <div className="flex flex-col w-full h-full">
-      <Empty title="Oops!" text="Acho que esse link não existe mais.">
+      <Empty title="Oops!">
+        <p>Acho que esse link não existe mais</p>
         <Link href="/">
           <Button>Ir para Cursos</Button>
         </Link>

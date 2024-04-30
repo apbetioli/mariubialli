@@ -15,7 +15,8 @@ import { Play } from 'lucide-react'
 import Link from 'next/link'
 
 export default function HomePage() {
-  const courses = useAppSelector((state) => state.courses.courses)
+  const coursesMap = useAppSelector((state) => state.courses.courses)
+  const courses = Object.values(coursesMap)
 
   //TODO calculate for each course
   const completion = 0
