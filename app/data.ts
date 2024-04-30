@@ -23,6 +23,7 @@ export const courses = [
         ],
       },
     ],
+    completion: 0,
   },
   {
     id: randomUUID(),
@@ -72,5 +73,6 @@ export const courses = [
         ],
       },
     ],
+    completion: 23,
   },
 ]
