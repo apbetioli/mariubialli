@@ -63,3 +63,11 @@ export const useGroups = (courseId: string) => {
   const groups = course.groupIds.map((id) => groupsMap[id])
   return groups
 }
+
+export const useLessons = (courseId: string) => {
+  const coursesMap = useAppSelector((state) => state.courses.courses)
+  const lessonsMap = useAppSelector((state) => state.courses.lessons)
+  const course = coursesMap[courseId]
+  const lessons = course.lessonIds.map((id) => lessonsMap[id])
+  return lessons
+}

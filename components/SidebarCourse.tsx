@@ -1,25 +1,20 @@
-import { useAppSelector } from '@/lib/hooks'
 import Link from 'next/link'
-import { SidebarGroup } from './SidebarGroup'
+import { PropsWithChildren } from 'react'
 import { Progress } from './ui/progress'
 import { ScrollArea } from './ui/scroll-area'
 
-type SidebarProps = {
+type SidebarCourseProps = {
   className?: string
   course: Course
-  activeLesson: Lesson
   progress: number
 }
 
-export function Sidebar({
+export function SidebarCourse({
   className,
   course,
-  activeLesson,
   progress,
-}: SidebarProps) {
-  const groupsMap = useAppSelector((state) => state.courses.groups)
-  const groups = course.groupIds.map((id) => groupsMap[id])
-
+  children,
+}: PropsWithChildren<SidebarCourseProps>) {
   return (
     <ScrollArea className={className}>
       <aside className="pb-12">
@@ -32,14 +27,7 @@ export function Sidebar({
             <Progress value={progress} />
           </div>
         </Link>
-        {groups.map((group) => (
-          <SidebarGroup
-            key={group.id}
-            course={course}
-            group={group}
-            activeLesson={activeLesson}
-          />
-        ))}
+        {children}
       </aside>
     </ScrollArea>
   )

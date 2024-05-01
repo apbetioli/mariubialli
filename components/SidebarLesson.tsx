@@ -9,17 +9,17 @@ import { Checkbox } from './ui/checkbox'
 type SidebarLessonProps = {
   course: Course
   lesson: Lesson
-  activeLesson: Lesson
+  isActiveLesson: boolean
 }
 
 export const SidebarLesson = ({
   course,
   lesson,
-  activeLesson,
+  isActiveLesson,
 }: SidebarLessonProps) => {
   const dispatch = useAppDispatch()
   const user = useAppSelector((state) => state.user.user)
-  const completedId = useId()
+  const completedCheckboxId = useId()
 
   const markAsComplete = (lessonId: string, checked: boolean) => {
     dispatch(
@@ -33,7 +33,7 @@ export const SidebarLesson = ({
   return (
     <div className="gap-2 border-b w-full h-16 flex items-center">
       <Checkbox
-        id={completedId}
+        id={completedCheckboxId}
         checked={user.completedLessonIds.includes(lesson.id)}
         onCheckedChange={(checked) =>
           markAsComplete(lesson.id, Boolean(checked))
@@ -44,7 +44,7 @@ export const SidebarLesson = ({
         <Link href={`/course/${course.id}/lesson/${lesson.id}`}>
           <Button
             className={cn('w-full justify-start truncate py-8', {
-              'text-primary': activeLesson.id === lesson.id,
+              'text-primary': isActiveLesson,
             })}
             variant="ghost"
           >
