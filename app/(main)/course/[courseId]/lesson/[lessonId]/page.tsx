@@ -33,7 +33,7 @@ const LessonPage = () => {
     lessons.filter((lesson) => lesson.groupId === group.id)
 
   return (
-    <div className="flex flex-col-reverse md:flex-row h-[calc(100vh-6rem)] w-full">
+    <div className="flex flex-col-reverse md:flex-row min-h-[calc(100vh-6rem)] w-full">
       <SidebarCourse
         course={course}
         progress={progress}
@@ -54,7 +54,7 @@ const LessonPage = () => {
       </SidebarCourse>
 
       <div className="flex flex-col w-full items-center justify-center bg-black">
-        <div className="w-full max-w-screen-lg">
+        <div className="w-full max-w-screen-md">
           <Video src={activeLesson.video} />
           <p className="font-semibold py-4 px-2 bg-black text-white flex gap-4 items-center">
             <span className="grow">{activeLesson.name}</span>
@@ -81,7 +81,12 @@ const LessonPage = () => {
               </Link>
             ) : (
               <Link href={`/`}>
-                <Button variant="secondary">Fim! Ver outros cursos</Button>
+                <Button
+                  variant="secondary"
+                  onClick={() => markAsCompleted(activeLesson.id, true)}
+                >
+                  Fim! Ver outros cursos
+                </Button>
               </Link>
             )}
           </p>
