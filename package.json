@@ -15,7 +15,8 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.525.0",
+    "@aws-sdk/client-s3": "^3.567.0",
+    "@clerk/localizations": "^2.3.0",
     "@clerk/nextjs": "4.29.7",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",

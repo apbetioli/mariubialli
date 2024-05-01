@@ -26,10 +26,7 @@ export default function Header() {
         <MobileMenu>
           <Logo />
           <hr className="mt-6" />
-          <HeaderLinks
-            links={links}
-            className="flex flex-col gap-8 py-8"
-          />
+          <HeaderLinks links={links} className="flex flex-col gap-8 py-8" />
           <hr />
           <HeaderLinks
             links={mobileLinks}
@@ -47,7 +44,7 @@ export default function Header() {
         <div className="ml-8">
           <SignedOut>
             <Link href="/sign-in">
-              <Button>Login</Button>
+              <Button>Entrar</Button>
             </Link>
           </SignedOut>
 

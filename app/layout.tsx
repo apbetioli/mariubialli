@@ -9,6 +9,7 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import StoreProvider from '@/components/StoreProvider'
+import { ptBR } from '@clerk/localizations'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ClerkProvider
+        localization={ptBR}
         appearance={{
           variables: { colorPrimary: '#ccc' },
           elements: {
