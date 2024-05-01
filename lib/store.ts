@@ -1,13 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { coursesReducer } from './features/coursesSlice'
-import { playerReducer } from './features/playerSlice'
 import { userReducer } from './features/userSlice'
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       courses: coursesReducer,
-      player: playerReducer,
       user: userReducer,
     },
   })
