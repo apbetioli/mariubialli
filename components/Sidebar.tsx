@@ -17,10 +17,12 @@ export function Sidebar({ className, course, activeLesson }: SidebarProps) {
 
   return (
     <ScrollArea className={className}>
-      <aside className="space-y-4 pb-12">
-        <h2 className="p-4 text-lg font-semibold tracking-tight bg-slate-500 text-white">
-          Conteúdo
-        </h2>
+      <aside className="pb-12">
+        <Link href={`/course/${course.id}`}>
+          <h2 className="p-4 text-lg font-semibold tracking-tight bg-slate-500 text-white">
+            {course.name}
+          </h2>
+        </Link>
         {groups.map((group) => (
           <SidebarGroup
             key={group.id}

@@ -22,6 +22,7 @@ const CoursePage = () => {
     )
   }
 
+
   // Will redirect to the first lesson
   router.replace(`/course/${courseId}/lesson/${firstLessonId}`)
 }

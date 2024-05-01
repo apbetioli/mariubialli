@@ -146,7 +146,7 @@ export const courses: Course[] = [
   createCourse({
     name: 'Iniciantes em feltro',
     description: 'Aulas para iniciantes em feltro',
-    image: 'https://media.graphassets.com/13BiFOg7REOVUW1WkKMG',
+    image: 'https://media.graphassets.com/dsoPcycSP23gtJQMIK4i',
     groupIds: groupsCourse2.map((group) => group.id),
   }),
 ]

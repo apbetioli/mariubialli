@@ -21,14 +21,19 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    toggleCompletedLesson: (state, action: PayloadAction<Lesson['id']>) => {
+    toggleCompletedLesson: (
+      state,
+      action: PayloadAction<{ id: Lesson['id']; completed: boolean }>,
+    ) => {
       const index = state.user.completedLessonIds.findIndex(
-        (id) => id === action.payload,
+        (id) => id === action.payload.id,
       )
-      if (index >= 0) {
+      console.log(index, action.payload.completed)
+      if (index >= 0 && !action.payload.completed) {
         state.user.completedLessonIds.splice(index, 1)
-      } else {
-        state.user.completedLessonIds.push(action.payload)
+      }
+      if (index < 0 && action.payload.completed) {
+        state.user.completedLessonIds.push(action.payload.id)
       }
     },
   },
