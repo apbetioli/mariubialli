@@ -28,7 +28,6 @@ const userSlice = createSlice({
       const index = state.user.completedLessonIds.findIndex(
         (id) => id === action.payload.id,
       )
-      console.log(index, action.payload.completed)
       if (index >= 0 && !action.payload.completed) {
         state.user.completedLessonIds.splice(index, 1)
       }

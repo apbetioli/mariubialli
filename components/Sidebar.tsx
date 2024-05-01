@@ -1,17 +1,27 @@
-import { useAppSelector } from '@/lib/hooks'
+import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
 import { PlayCircleIcon } from 'lucide-react'
 import { Button } from './ui/button'
 import { ScrollArea } from './ui/scroll-area'
 import Link from 'next/link'
+import { Checkbox } from './ui/checkbox'
+import { toggleCompletedLesson } from '@/lib/features/userSlice'
+import { Progress } from './ui/progress'
+import { useId } from 'react'
 
 type SidebarProps = {
   className?: string
   course: Course
   activeLesson: Lesson
+  progress: number
 }
 
-export function Sidebar({ className, course, activeLesson }: SidebarProps) {
+export function Sidebar({
+  className,
+  course,
+  activeLesson,
+  progress,
+}: SidebarProps) {
   const groupsMap = useAppSelector((state) => state.courses.groups)
   const groups = course.groupIds.map((id) => groupsMap[id])
 
@@ -19,9 +29,13 @@ export function Sidebar({ className, course, activeLesson }: SidebarProps) {
     <ScrollArea className={className}>
       <aside className="pb-12">
         <Link href={`/course/${course.id}`}>
-          <h2 className="p-4 text-lg font-semibold tracking-tight bg-slate-500 text-white">
-            {course.name}
-          </h2>
+          <div className="p-4 bg-slate-500 text-white">
+            <h2 className="text-lg font-semibold tracking-tight mb-1">
+              {course.name}
+            </h2>
+            <p className="mb-1">Progresso {progress}%</p>
+            <Progress value={progress} />
+          </div>
         </Link>
         {groups.map((group) => (
           <SidebarGroup
@@ -47,7 +61,20 @@ export const SidebarGroup = ({
   group,
   activeLesson,
 }: SidebarGroupProps) => {
+  const dispatch = useAppDispatch()
   const lessonsMap = useAppSelector((state) => state.courses.lessons)
+  const user = useAppSelector((state) => state.user.user)
+  const completedId = useId()
+
+  const markAsComplete = (lessonId: string, checked: boolean) => {
+    dispatch(
+      toggleCompletedLesson({
+        id: lessonId,
+        completed: checked,
+      }),
+    )
+  }
+
   const lessons = course.lessonIds
     .map((id) => lessonsMap[id])
     .filter((lesson) => lesson.groupId === group.id)
@@ -58,22 +85,33 @@ export const SidebarGroup = ({
         {group.name}
       </h2>
       {lessons.map((lesson) => (
-        <Link
+        <div
           key={lesson.id}
-          href={`/course/${course.id}/lesson/${lesson.id}`}
-          className="gap-2 border-b w-full"
+          className="gap-2 border-b w-full h-16 flex items-center"
         >
-          <Button
-            className={cn('w-full justify-start truncate py-8', {
-              'text-primary': activeLesson.id === lesson.id,
-            })}
-            variant="secondary"
-          >
-            <PlayCircleIcon size={20} />
-            {lesson.name}
-          </Button>
-        </Link>
+          <Checkbox
+            id={completedId}
+            checked={user.completedLessonIds.includes(lesson.id)}
+            onCheckedChange={(checked) =>
+              markAsComplete(lesson.id, Boolean(checked))
+            }
+            className="h-5 w-5 ml-4 mr-2"
+          />
+          <div className="w-full">
+            <Link href={`/course/${course.id}/lesson/${lesson.id}`}>
+              <Button
+                className={cn('w-full justify-start truncate py-8', {
+                  'text-primary': activeLesson.id === lesson.id,
+                })}
+                variant="ghost"
+              >
+                {lesson.name}
+              </Button>
+            </Link>
+          </div>
+        </div>
       ))}
     </div>
   )
 }
+
