@@ -8,11 +8,8 @@ const CoursePage = () => {
   const { courseId } = useParams()
   const router = useRouter()
   const coursesMap = useAppSelector((state) => state.courses.courses)
-  const groupsMap = useAppSelector((state) => state.courses.groups)
 
   const course = coursesMap[String(courseId)]
-  const group = groupsMap[course.groupIds[0]]
-  const firstLessonId = group.lessonIds[0]
 
   if (!course) {
     return (
@@ -22,9 +19,8 @@ const CoursePage = () => {
     )
   }
 
-
   // Will redirect to the first lesson
-  router.replace(`/course/${courseId}/lesson/${firstLessonId}`)
+  router.replace(`/course/${courseId}/lesson/${course.lessonIds[0]}`)
 }
 
 export default CoursePage

@@ -11,12 +11,12 @@ type Lesson = {
   id: string
   name: string
   video: string
+  groupId: string
 }
 
 type Group = {
   id: string
   name: string
-  lessonIds: string[]
 }
 
 type Course = {
@@ -24,6 +24,7 @@ type Course = {
   name: string
   description: string
   image: string
+  lessonIds: string[]
   groupIds: string[]
   attachments?: Attachment[]
 }

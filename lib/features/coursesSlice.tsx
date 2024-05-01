@@ -16,10 +16,19 @@ export const createAttachment = (draft: Draft<Attachment>): Attachment => {
   return { ...draft, id: draft.id || nanoid() }
 }
 
+export const group1Course1 = createGroup({
+  name: 'Aulas',
+})
+
+export const group1Course2 = createGroup({
+  name: 'Aulas',
+})
+
 const lessonsCourse1: Lesson[] = [
   createLesson({
     name: 'Aula Quadro Dia das Mães',
     video: 'https://youtu.be/jX0vFKPB4SU',
+    groupId: group1Course1.id,
   }),
 ]
 
@@ -27,75 +36,93 @@ const lessonsCourse2: Lesson[] = [
   createLesson({
     name: 'Riscar e cortar o feltro',
     video: 'https://youtu.be/PCTICFNt2Os',
+    groupId: group1Course2.id,
   }),
   createLesson({
     name: 'Dica para cortar peças pequenas',
     video: 'https://youtu.be/XVXj3iREBUs',
+    groupId: group1Course2.id,
   }),
   createLesson({
     name: 'Dica para cortar peças pequenas 2',
     video: 'https://youtu.be/cuCF3_tJGGM',
+    groupId: group1Course2.id,
   }),
   createLesson({
     name: 'Como cortar moldes espelhados',
     video: 'https://youtu.be/K2w_kYcf7Wo',
+    groupId: group1Course2.id,
   }),
   createLesson({
     name: 'Como usar os gabaritos',
     video: 'https://youtu.be/r-Nw0KfdG-A',
+    groupId: group1Course2.id,
   }),
   createLesson({
     name: 'Como fazer ponto atrás',
     video: 'https://youtu.be/tlHJ0vrpcp8',
+    groupId: group1Course2.id,
   }),
   createLesson({
     name: 'Como fazer ponto caseado',
     video: 'https://youtu.be/H7ZUclfa7rs',
+    groupId: group1Course2.id,
   }),
   createLesson({
     name: 'Como fazer ponto palito',
     video: 'https://youtu.be/CDUQbqA47-0',
+    groupId: group1Course2.id,
   }),
   createLesson({
     name: 'Como fazer nó francês',
     video: 'https://youtu.be/U8N3X5tjRE8',
+    groupId: group1Course2.id,
   }),
   // REpeat
   createLesson({
     name: 'Riscar e cortar o feltro',
     video: 'https://youtu.be/PCTICFNt2Os',
+    groupId: group1Course2.id,
   }),
   createLesson({
     name: 'Dica para cortar peças pequenas',
     video: 'https://youtu.be/XVXj3iREBUs',
+    groupId: group1Course2.id,
   }),
   createLesson({
     name: 'Dica para cortar peças pequenas 2',
     video: 'https://youtu.be/cuCF3_tJGGM',
+    groupId: group1Course2.id,
   }),
   createLesson({
     name: 'Como cortar moldes espelhados',
     video: 'https://youtu.be/K2w_kYcf7Wo',
+    groupId: group1Course2.id,
   }),
   createLesson({
     name: 'Como usar os gabaritos',
     video: 'https://youtu.be/r-Nw0KfdG-A',
+    groupId: group1Course2.id,
   }),
   createLesson({
     name: 'Como fazer ponto atrás',
     video: 'https://youtu.be/tlHJ0vrpcp8',
+    groupId: group1Course2.id,
   }),
   createLesson({
     name: 'Como fazer ponto caseado',
     video: 'https://youtu.be/H7ZUclfa7rs',
+    groupId: group1Course2.id,
   }),
   createLesson({
     name: 'Como fazer ponto palito',
     video: 'https://youtu.be/CDUQbqA47-0',
+    groupId: group1Course2.id,
   }),
   createLesson({
     name: 'Como fazer nó francês',
     video: 'https://youtu.be/U8N3X5tjRE8',
+    groupId: group1Course2.id,
   }),
 ]
 
@@ -108,21 +135,7 @@ export const lessonsMap = lessons.reduce<Record<string, Lesson>>(
   {},
 )
 
-export const groupsCourse1: Group[] = [
-  createGroup({
-    name: 'Aulas',
-    lessonIds: lessonsCourse1.map((lesson) => lesson.id),
-  }),
-]
-
-export const groupsCourse2: Group[] = [
-  createGroup({
-    name: 'Aulas',
-    lessonIds: lessonsCourse2.map((lesson) => lesson.id),
-  }),
-]
-
-export const groups = [...groupsCourse1, ...groupsCourse2]
+export const groups = [group1Course1, group1Course2]
 export const groupsMap = groups.reduce<Record<string, Group>>((map, group) => {
   map[group.id] = group
   return map
@@ -134,7 +147,8 @@ export const courses: Course[] = [
     description:
       'Aprenda a fazer quadro para decorar seu ateliê, presentear sua mãe ou se presentear',
     image: 'https://media.graphassets.com/13BiFOg7REOVUW1WkKMG',
-    groupIds: groupsCourse1.map((group) => group.id),
+    groupIds: [group1Course1.id],
+    lessonIds: lessonsCourse1.map((lesson) => lesson.id),
     attachments: [
       createAttachment({
         name: 'Moldes',
@@ -147,7 +161,8 @@ export const courses: Course[] = [
     name: 'Iniciantes em feltro',
     description: 'Aulas para iniciantes em feltro',
     image: 'https://media.graphassets.com/dsoPcycSP23gtJQMIK4i',
-    groupIds: groupsCourse2.map((group) => group.id),
+    groupIds: [group1Course2.id],
+    lessonIds: lessonsCourse2.map((lesson) => lesson.id),
   }),
 ]
 

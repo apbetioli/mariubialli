@@ -8,6 +8,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { toggleCompletedLesson } from '@/lib/features/userSlice'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { ArrowRightIcon } from 'lucide-react'
+import Link from 'next/link'
 import { useParams } from 'next/navigation'
 
 const LessonPage = () => {
@@ -21,6 +22,21 @@ const LessonPage = () => {
 
   const course = coursesMap[String(courseId)]
   const lesson = lessonsMap[String(lessonId)]
+
+  const lessonIndex = course.lessonIds.findIndex((id) => id === lesson.id)
+  const nextLessonId =
+    lessonIndex < course.lessonIds.length - 1
+      ? course.lessonIds[lessonIndex + 1]
+      : null
+
+  const markAsComplete = (checked: boolean) => {
+    dispatch(
+      toggleCompletedLesson({
+        id: lesson.id,
+        completed: checked,
+      }),
+    )
+  }
 
   if (!course || !lesson) {
     return (
@@ -46,21 +62,22 @@ const LessonPage = () => {
             <span className="flex items-center gap-2">
               <Checkbox
                 id="completed"
-                onCheckedChange={(checked) =>
-                  dispatch(
-                    toggleCompletedLesson({
-                      id: lesson.id,
-                      completed: checked,
-                    }),
-                  )
-                }
+                onCheckedChange={(checked) => markAsComplete(Boolean(checked))}
               />
               <label htmlFor="completed">Marcar como concluído</label>
             </span>
 
-            <Button>
-              Próxima aula <ArrowRightIcon />
-            </Button>
+            {nextLessonId ? (
+              <Link href={`/course/${course.id}/lesson/${nextLessonId}`}>
+                <Button>
+                  Próxima aula <ArrowRightIcon />
+                </Button>
+              </Link>
+            ) : (
+              <Link href={`/`}>
+                <Button>Fim! Ver outros cursos</Button>
+              </Link>
+            )}
           </p>
         </div>
       </div>

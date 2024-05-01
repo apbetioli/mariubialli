@@ -48,7 +48,9 @@ export const SidebarGroup = ({
   activeLesson,
 }: SidebarGroupProps) => {
   const lessonsMap = useAppSelector((state) => state.courses.lessons)
-  const lessons = group.lessonIds.map((id) => lessonsMap[id])
+  const lessons = course.lessonIds
+    .map((id) => lessonsMap[id])
+    .filter((lesson) => lesson.groupId === group.id)
 
   return (
     <div key={group.id}>
