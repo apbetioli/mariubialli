@@ -15,8 +15,8 @@ export default function Header() {
   ]
   const mobileLinks = [
     { href: 'mailto:contato@mariubialli.com.br', label: 'Contato' },
-    { href: '/terms', label: 'Termos de serviço' },
-    { href: '/privacy', label: 'Política de privacidade' },
+    { href: '/termos-de-servico', label: 'Termos de serviço' },
+    { href: '/politica-de-privacidade', label: 'Política de privacidade' },
     { href: 'https://github.com/apbetioli/mariubialli', label: <GithubIcon /> },
   ]
 
