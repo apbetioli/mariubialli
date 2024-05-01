@@ -1,15 +1,14 @@
 'use client'
 
 import NotFound from '@/app/not-found'
-import { useAppSelector } from '@/lib/hooks'
+import { useCourse } from '@/lib/hooks'
 import { useParams, useRouter } from 'next/navigation'
 
 const CoursePage = () => {
-  const { courseId } = useParams()
   const router = useRouter()
-  const coursesMap = useAppSelector((state) => state.courses.courses)
+  const { courseId } = useParams<{ courseId: string }>()
 
-  const course = coursesMap[String(courseId)]
+  const { course } = useCourse(courseId)
 
   if (!course) {
     return (
