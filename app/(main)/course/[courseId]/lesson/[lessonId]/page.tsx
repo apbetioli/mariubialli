@@ -44,7 +44,7 @@ const LessonPage = () => {
       <Progress value={progress} />
 
       {course.attachment && (
-        <Link href={`/course/${course.id}`}>
+        <Link href={`/api/attachment/${course.id}`} target="blank">
           <Button variant="secondary" className="my-3 w-full">
             <DownloadIcon />
             Baixar moldes

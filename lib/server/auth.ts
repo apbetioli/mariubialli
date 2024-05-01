@@ -1,30 +1,31 @@
-import { auth, clerkClient } from '@clerk/nextjs/server'
+import { auth, clerkClient, currentUser } from '@clerk/nextjs/server'
 
 import { redirect } from 'next/navigation'
 import { prisma } from './db'
 
 /**
- * Uses Cleck id to retrieve user from database or create it if it doesn't exist.
+ * Uses Cleck to retrieve user from database or create it if it doesn't exist.
  */
 export const getUserByClerkId = async () => {
-  const { userId } = auth()
-  if (!userId) {
+  const authUser = await currentUser()
+  if (!authUser) {
     redirect('/sign-in')
   }
 
+  const email = authUser.emailAddresses[0].emailAddress
+
   const user = await prisma.user.findUnique({
     where: {
-      clerkId: userId,
+      email: email,
     },
   })
 
   if (!user) {
-    const clerkUser = await clerkClient.users.getUser(userId)
     return await prisma.user.create({
       data: {
-        clerkId: userId,
-        email: clerkUser.emailAddresses[0].emailAddress,
-        name: clerkUser.firstName + ' ' + clerkUser.lastName,
+        clerkId: authUser.id,
+        email,
+        name: authUser.firstName + ' ' + authUser.lastName,
       },
     })
   }
