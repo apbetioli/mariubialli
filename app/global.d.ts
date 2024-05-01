@@ -1,12 +1,5 @@
 type Draft<T> = Omit<T, 'id'> & { id?: string }
 
-type Attachment = {
-  id: string
-  name: string
-  url: string
-  price: number
-}
-
 type Lesson = {
   id: string
   name: string
@@ -19,6 +12,14 @@ type Group = {
   name: string
 }
 
+type Attachment = {
+  id: string
+  name: string
+  description: string
+  price: number
+  image: string
+}
+
 type Course = {
   id: string
   name: string
@@ -26,7 +27,7 @@ type Course = {
   image: string
   lessonIds: string[]
   groupIds: string[]
-  attachments?: Attachment[]
+  attachment?: Attachment
 }
 
 type User = {

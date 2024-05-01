@@ -6,8 +6,10 @@ import { SidebarLesson } from '@/components/SidebarLesson'
 import Video from '@/components/Video'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
+import { Progress } from '@/components/ui/progress'
 import { useCourse, useGroups, useLesson, useLessons } from '@/lib/hooks'
-import { ArrowRightIcon } from 'lucide-react'
+import { cn } from '@/lib/utils'
+import { ArrowRightIcon, DownloadIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useId } from 'react'
@@ -32,34 +34,54 @@ const LessonPage = () => {
   const lessonsOfGroup = (group: Group) =>
     lessons.filter((lesson) => lesson.groupId === group.id)
 
-  return (
-    <div className="flex flex-col-reverse md:flex-row min-h-[calc(100vh-6rem)] w-full">
-      <SidebarCourse
-        course={course}
-        progress={progress}
-        className="md:w-96 border-r"
-      >
-        {groups.map((group) => (
-          <SidebarGroup key={group.id} group={group}>
-            {lessonsOfGroup(group).map((lesson) => (
-              <SidebarLesson
-                key={lesson.id}
-                course={course}
-                lesson={lesson}
-                isActiveLesson={activeLesson.id === lesson.id}
-              />
-            ))}
-          </SidebarGroup>
-        ))}
-      </SidebarCourse>
+  const CourseHeader = ({ className }: { className?: string }) => (
+    <div className={cn('p-4 bg-slate-500 text-white', className)}>
+      <h2 className="text-lg font-semibold tracking-tight mb-1">
+        {course.name}
+      </h2>
 
-      <div className="flex flex-col w-full items-center justify-center bg-black">
+      <p className="mb-1">Progresso {progress}%</p>
+      <Progress value={progress} />
+
+      {course.attachment && (
+        <Link href={`/course/${course.id}`}>
+          <Button variant="secondary" className="my-3 w-full">
+            <DownloadIcon />
+            Baixar moldes
+          </Button>
+        </Link>
+      )}
+    </div>
+  )
+
+  return (
+    <div className="flex flex-col-reverse justify-end md:flex-row h-[calc(100vh-3rem)] md:h-[calc(100vh-6rem)] w-full">
+      <aside className="flex flex-col md:w-96 border-r md:shrink-0 overflow-auto">
+        <CourseHeader className="hidden md:block" />
+        <SidebarCourse>
+          <CourseHeader className="block md:hidden" />
+          {groups.map((group) => (
+            <SidebarGroup key={group.id} group={group}>
+              {lessonsOfGroup(group).map((lesson) => (
+                <SidebarLesson
+                  key={lesson.id}
+                  course={course}
+                  lesson={lesson}
+                  isActiveLesson={activeLesson.id === lesson.id}
+                />
+              ))}
+            </SidebarGroup>
+          ))}
+        </SidebarCourse>
+      </aside>
+
+      <main className="flex flex-col w-full items-center justify-center bg-black">
         <div className="w-full max-w-screen-md">
           <Video src={activeLesson.video} />
-          <p className="font-semibold py-4 px-2 bg-black text-white flex gap-4 items-center">
+          <div className="flex flex-col md:flex-row font-semibold py-4 px-2 bg-black text-white gap-4 items-center">
             <span className="grow">{activeLesson.name}</span>
 
-            <span className="flex items-center gap-2">
+            <div className="items-center gap-2 hidden md:flex">
               <Checkbox
                 id={completedCheckboxId}
                 checked={isCompleted}
@@ -68,30 +90,35 @@ const LessonPage = () => {
                 }
                 className="h-5 w-5"
               />
-              <label htmlFor={completedCheckboxId}>
-                {isCompleted ? 'Concluído' : 'Marcar como concluído'}
-              </label>
-            </span>
+              <label htmlFor={completedCheckboxId}>Concluído</label>
+            </div>
 
             {nextLessonId ? (
-              <Link href={`/course/${course.id}/lesson/${nextLessonId}`}>
-                <Button onClick={() => markAsCompleted(activeLesson.id, true)}>
+              <Link
+                href={`/course/${course.id}/lesson/${nextLessonId}`}
+                className="w-full md:w-fit"
+              >
+                <Button
+                  onClick={() => markAsCompleted(activeLesson.id, true)}
+                  className="w-full md:w-fit"
+                >
                   Próxima aula <ArrowRightIcon />
                 </Button>
               </Link>
             ) : (
-              <Link href={`/`}>
+              <Link href={`/`} className="w-full md:w-fit">
                 <Button
                   variant="secondary"
                   onClick={() => markAsCompleted(activeLesson.id, true)}
+                  className="w-full md:w-fit"
                 >
-                  Fim! Ver outros cursos
+                  Ver outros cursos
                 </Button>
               </Link>
             )}
-          </p>
+          </div>
         </div>
-      </div>
+      </main>
     </div>
   )
 }

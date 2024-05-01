@@ -145,17 +145,16 @@ export const courses: Course[] = [
   createCourse({
     name: 'Quadro - Dia das Mães',
     description:
-      'Aprenda a fazer quadro para decorar seu ateliê, presentear sua mãe ou se presentear',
+      'Aprenda a fazer quadro para decorar seu ateliê, presentear sua mãe ou se presentear.',
     image: 'https://media.graphassets.com/13BiFOg7REOVUW1WkKMG',
     groupIds: [group1Course1.id],
     lessonIds: lessonsCourse1.map((lesson) => lesson.id),
-    attachments: [
-      createAttachment({
-        name: 'Moldes',
-        url: 'https://mariubialli.s3.amazonaws.com/Apostilas/Mari+Ubialli+-+%C3%81lbum+Dia+das+M%C3%A3es.pdf',
-        price: 0,
-      }),
-    ],
+    attachment: createAttachment({
+      name: 'Apostila de moldes',
+      description: '',
+      image: '/quadro.jpg',
+      price: 0,
+    }),
   }),
   createCourse({
     name: 'Iniciantes em feltro',

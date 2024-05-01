@@ -10,7 +10,7 @@ export const SidebarGroup = ({
 }: PropsWithChildren<SidebarGroupProps>) => {
   return (
     <div>
-      <h2 className="px-4 text-lg font-semibold tracking-tight bg-primary text-primary-foreground">
+      <h2 className="px-4 text-lg font-semibold tracking-tight bg-primary/80 text-primary-foreground">
         {group.name}
       </h2>
       {children}

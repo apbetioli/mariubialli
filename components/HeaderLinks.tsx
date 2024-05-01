@@ -2,19 +2,25 @@
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { ReactNode } from 'react'
 
 type LinkProps = {
   href: string
-  label: string
+  label: string | ReactNode
   className?: string
 }
-export function Links(props: { className: string }) {
+
+export function HeaderLinks({
+  className,
+  links,
+}: {
+  className?: string
+  links: LinkProps[]
+}) {
   const pathname = usePathname()
 
-  const links: LinkProps[] = [{ href: '/', label: 'Cursos' }]
-
   return (
-    <div {...props}>
+    <div className={className}>
       {links.map((link) => {
         return (
           <Link

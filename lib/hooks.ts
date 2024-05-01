@@ -18,7 +18,16 @@ export const useCourse = (id: string) => {
     (completedLessonIds.length / course.lessonIds.length) * 100,
   )
 
-  return { course, progress }
+  const unwatchedLessonIds = course.lessonIds.filter(
+    (id) => !user.completedLessonIds.includes(id),
+  )
+
+  const nextLessonId =
+    unwatchedLessonIds.length === 0
+      ? course.lessonIds[0]
+      : unwatchedLessonIds[0]
+
+  return { course, progress, nextLessonId }
 }
 
 export const useLesson = (courseId: string, id: string) => {
