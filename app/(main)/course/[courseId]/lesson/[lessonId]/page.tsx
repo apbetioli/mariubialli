@@ -7,7 +7,12 @@ import Video from '@/components/Video'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Progress } from '@/components/ui/progress'
-import { useCourse, useGroups, useLesson, useLessons } from '@/lib/hooks'
+import {
+  useCourseDetails,
+  useGroupsOfCourse,
+  useLessonDetails,
+  useLessonsOfCourse,
+} from '@/lib/hooks'
 import { cn } from '@/lib/utils'
 import { ArrowRightIcon, DownloadIcon } from 'lucide-react'
 import Link from 'next/link'
@@ -20,16 +25,17 @@ const LessonPage = () => {
 
   const completedCheckboxId = useId()
 
-  const { course, progress } = useCourse(courseId)
-  const groups = useGroups(courseId)
-  const lessons = useLessons(courseId)
+  const { course, progress } = useCourseDetails(courseId)
+  const groups = useGroupsOfCourse(courseId)
+  const lessons = useLessonsOfCourse(courseId)
 
   const {
     lesson: activeLesson,
-    nextLessonId,
+    nextLesson,
+    isLastLesson,
     isCompleted,
     markAsCompleted,
-  } = useLesson(courseId, lessonId)
+  } = useLessonDetails(courseId, lessonId)
 
   const lessonsOfGroup = (group: Group) =>
     lessons.filter((lesson) => lesson.groupId === group.id)
@@ -93,19 +99,7 @@ const LessonPage = () => {
               <label htmlFor={completedCheckboxId}>Concluído</label>
             </div>
 
-            {nextLessonId ? (
-              <Link
-                href={`/course/${course.id}/lesson/${nextLessonId}`}
-                className="w-full md:w-fit"
-              >
-                <Button
-                  onClick={() => markAsCompleted(activeLesson.id, true)}
-                  className="w-full md:w-fit"
-                >
-                  Próxima aula <ArrowRightIcon />
-                </Button>
-              </Link>
-            ) : (
+            {isLastLesson ? (
               <Link href={`/`} className="w-full md:w-fit">
                 <Button
                   variant="secondary"
@@ -113,6 +107,18 @@ const LessonPage = () => {
                   className="w-full md:w-fit"
                 >
                   Ver outros cursos
+                </Button>
+              </Link>
+            ) : (
+              <Link
+                href={`/course/${course.slug}/lesson/${nextLesson.slug}`}
+                className="w-full md:w-fit"
+              >
+                <Button
+                  onClick={() => markAsCompleted(activeLesson.id, true)}
+                  className="w-full md:w-fit"
+                >
+                  Próxima aula <ArrowRightIcon />
                 </Button>
               </Link>
             )}

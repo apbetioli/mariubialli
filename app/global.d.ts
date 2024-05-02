@@ -1,8 +1,9 @@
-type Draft<T> = Omit<T, 'id'> & { id?: string }
+type Draft<T> = Omit<T, 'id' | 'slug'> & { id?: string; slug?: string }
 
 type Lesson = {
   id: string
   name: string
+  slug: string
   video: string
   groupId: string
 }
@@ -22,6 +23,7 @@ type Attachment = {
 
 type Course = {
   id: string
+  slug: string
   name: string
   description: string
   image: string

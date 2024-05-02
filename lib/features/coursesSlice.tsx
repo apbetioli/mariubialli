@@ -1,7 +1,12 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit'
+import { kebabCase } from 'lodash'
 
 export const createCourse = (draft: Draft<Course>): Course => {
-  return { ...draft, id: draft.id || nanoid() }
+  return {
+    ...draft,
+    id: draft.id || nanoid(),
+    slug: draft.slug || kebabCase(draft.name),
+  }
 }
 
 export const createGroup = (draft: Draft<Group>): Group => {
@@ -9,7 +14,11 @@ export const createGroup = (draft: Draft<Group>): Group => {
 }
 
 export const createLesson = (draft: Draft<Lesson>): Lesson => {
-  return { ...draft, id: draft.id || nanoid() }
+  return {
+    ...draft,
+    id: draft.id || nanoid(),
+    slug: draft.slug || kebabCase(draft.name),
+  }
 }
 
 export const createAttachment = (draft: Draft<Attachment>): Attachment => {

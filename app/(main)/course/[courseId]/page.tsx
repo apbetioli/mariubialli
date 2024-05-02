@@ -1,14 +1,8 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
-import { useCourse, useGroups, useLessons } from '@/lib/hooks'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { useCourse, useLesson } from '@/lib/hooks'
 import { DownloadIcon, PlayIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -16,8 +10,8 @@ import { useParams } from 'next/navigation'
 
 const CoursePage = () => {
   const { courseId } = useParams<{ courseId: string }>()
-
-  const { course } = useCourse(courseId)
+  const course = useCourse(courseId)
+  const firstLesson = useLesson(course.lessonIds[0])
 
   return (
     <div className="flex flex-col-reverse md:flex-row min-h-[calc(100vh-6rem)] w-full">
@@ -33,7 +27,7 @@ const CoursePage = () => {
                 <div className="space-y-3">
                   <p className="mb-4">{course.description}</p>
                   <Link
-                    href={`/course/${course.id}/lesson/${course.lessonIds[0]}`}
+                    href={`/course/${course.slug}/lesson/${firstLesson.slug}`}
                   >
                     <Button className="w-full" size="lg">
                       <PlayIcon />

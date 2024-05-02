@@ -9,35 +9,40 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { CardMedia } from '@/components/ui/card-media'
-import { useCourse } from '@/lib/hooks'
+import { useCourseDetails } from '@/lib/hooks'
 import { Play } from 'lucide-react'
 import Link from 'next/link'
+import { Progress } from './ui/progress'
 
 export function CourseCard({ id }: Pick<Course, 'id'>) {
-  const { course, progress, nextLessonId } = useCourse(id)
+  const { course, progress, nextLesson } = useCourseDetails(id)
 
   return (
-    <Link key={course.id} href={`/course/${course.id}/lesson/${nextLessonId}`}>
-      <Card className="flex flex-col overflow-hidden hover:scale-[1.02] transition duration-100 h-full">
-        <CardMedia src={course.image} alt={course.name} />
-        <CardHeader>
-          <CardTitle>{course.name}</CardTitle>
-        </CardHeader>
-        <CardContent className="grow">
-          <CardDescription>{course.description}</CardDescription>
-        </CardContent>
-        <CardFooter className="flex justify-between gap-4">
-          <p className="text-primary font-semibold">
-            {progress > 0 && <span>{progress}% completo</span>}
-          </p>
-          <Button variant="outline">
-            <Play />
-            {progress === 0 && 'Ver curso'}
-            {progress > 0 && progress < 100 && 'Continuar'}
-            {progress === 100 && 'Assistir novamente'}
-          </Button>
-        </CardFooter>
-      </Card>
-    </Link>
+    <Card className="flex flex-col overflow-hidden hover:shadow-md">
+      <CardMedia src={course.image} alt={course.name} />
+      <CardHeader>
+        <CardTitle>{course.name}</CardTitle>
+      </CardHeader>
+      <CardContent className="grow">
+        <CardDescription>{course.description}</CardDescription>
+      </CardContent>
+      <CardFooter className="flex gap-4">
+        <Link key={course.id} href={`/course/${course.slug}`}>
+          <Button variant={'outline'}>Ver curso</Button>
+        </Link>
+        {progress > 0 && progress < 100 && (
+          <Link
+            key={course.id}
+            href={`/course/${course.slug}/lesson/${nextLesson.slug}`}
+          >
+            <Button variant={progress > 0 ? 'default' : 'outline'}>
+              <Play />
+              Continuar assistindo
+            </Button>
+          </Link>
+        )}
+      </CardFooter>
+      <Progress value={progress} className="h-1" />
+    </Card>
   )
 }
