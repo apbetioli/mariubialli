@@ -9,5 +9,9 @@ export function SidebarCourse({
   className,
   children,
 }: PropsWithChildren<SidebarCourseProps>) {
-  return <ScrollArea className={className}>{children}</ScrollArea>
+  return (
+    <ScrollArea className={className}>
+      <div className="pb-12">{children}</div>
+    </ScrollArea>
+  )
 }

@@ -37,5 +37,5 @@ type User = {
   email: string
   name?: string
   completedLessonIds: string[]
-  paidCourseIds: string[]
+  paidAttachmentIds: string[]
 }

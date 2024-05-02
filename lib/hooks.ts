@@ -6,11 +6,15 @@ import { findByIdOrSlug } from './utils'
 export const useAppDispatch: () => AppDispatch = useDispatch
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
+export const useUser = () => {
+  return useAppSelector((state) => state.user.user)
+}
+
 export const useCourse = (idOrSlug: string) =>
   useAppSelector((state) => findByIdOrSlug(state.courses.courses, idOrSlug))
 
 export const useCourseDetails = (id: string) => {
-  const user = useAppSelector((state) => state.user.user)
+  const user = useUser()
   const course = useCourse(id)
 
   const completedLessonIds = course.lessonIds.filter((lessonId) =>
@@ -39,7 +43,7 @@ export const useLesson = (idOrSlug: string) =>
 
 export const useLessonDetails = (courseId: string, id: string) => {
   const dispatch = useAppDispatch()
-  const user = useAppSelector((state) => state.user.user)
+  const user = useUser()
   const course = useCourse(courseId)
   const lesson = useLesson(id)
 

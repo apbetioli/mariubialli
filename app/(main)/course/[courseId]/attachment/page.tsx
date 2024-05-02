@@ -1,48 +1,75 @@
 'use client'
 
+import { AttachmentMedia } from '@/components/AttachmentMedia'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { CardMedia } from '@/components/ui/card-media'
-import { useCourse, useLesson } from '@/lib/hooks'
-import { cn } from '@/lib/utils'
-import { DownloadIcon, PlayIcon } from 'lucide-react'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardTitle,
+} from '@/components/ui/card'
+import { buyAttachment } from '@/lib/features/userSlice'
+import { useCourse, useUser } from '@/lib/hooks'
+
+import toast, { Toaster } from 'react-hot-toast'
+import { DownloadIcon, ShoppingCartIcon } from 'lucide-react'
 import Link from 'next/link'
 import { notFound, useParams } from 'next/navigation'
+import { useDispatch } from 'react-redux'
 
 const AttachmentPage = () => {
+  const dispatch = useDispatch()
+  const user = useUser()
   const { courseId } = useParams<{ courseId: string }>()
   const course = useCourse(courseId)
+  const attachment = course.attachment
 
-  if (!course.attachment) {
+  if (!attachment) {
     notFound()
   }
 
-  //If user has paid or price === 0, redirect to direct download
+  const isPaid = user.paidAttachmentIds.includes(attachment.id)
 
-  //Add a button to go back to course, maybe Sidebar ?
+  const buy = () => {
+    dispatch(buyAttachment(attachment))
+    toast.success('Compra realizada com sucesso!')
+  }
 
   return (
-    <div className="flex min-h-[calc(100vh-6rem)] w-full">
-      <div
-        className={cn('grid grid-cols-1 gap-8 max-w-4xl m-auto', {
-          'md:grid-cols-2': !!course.attachment,
-        })}
-      >
-        <Card>
-          <CardMedia src={course.attachment.image} alt="" />
-          <CardHeader>
-            <CardTitle>{course.attachment.name}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-3">
-              <p className="mb-4">{course.attachment.description}</p>
-              <Link href={`/download/${course.attachment.id}`}>
-                <Button className="w-full" size="lg" variant="outline">
+    <div className="flex flex-col w-full">
+      <div className="max-w-4xl m-auto">
+        <Card className="md:flex-row">
+          <AttachmentMedia
+            src={attachment.image}
+            alt={attachment.name}
+            className="hidden md:inline-flex"
+          />
+
+          <CardContent className="flex flex-col gap-3 p-8">
+            <CardTitle>{attachment.name}</CardTitle>
+            <CardDescription className="mb-6">
+              {attachment.description}
+            </CardDescription>
+
+            {attachment.price > 0 && !isPaid ? (
+              <>
+                <span className="text-xl font-bold text-gray-700 dark:text-gray-200 md:text-3xl">
+                  R$ {new Intl.NumberFormat('pt-BR').format(attachment.price)}
+                </span>
+
+                <Button className="w-full" size="lg" onClick={() => buy()}>
+                  <ShoppingCartIcon />
+                  Comprar
+                </Button>
+              </>
+            ) : (
+              <Link href={`/api/attachment/${attachment.id}`} target="_blank">
+                <Button className="w-full" size="lg">
                   <DownloadIcon />
                   Baixar moldes
                 </Button>
               </Link>
-            </div>
+            )}
           </CardContent>
         </Card>
       </div>

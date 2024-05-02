@@ -160,9 +160,10 @@ export const courses: Course[] = [
     lessonIds: lessonsCourse1.map((lesson) => lesson.id),
     attachment: createAttachment({
       name: 'Apostila de moldes',
-      description: '',
+      description:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit In odit',
       image: '/quadro.jpg',
-      price: 0,
+      price: 1.99,
     }),
   }),
   createCourse({

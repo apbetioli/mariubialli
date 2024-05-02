@@ -45,6 +45,7 @@ export const SidebarLesson = ({
           <Button
             className={cn('w-full justify-start truncate py-8', {
               'text-primary': isActiveLesson,
+              'hover:text-primary': isActiveLesson,
             })}
             variant="ghost"
           >

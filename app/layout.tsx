@@ -5,11 +5,12 @@ import { ClerkProvider } from '@clerk/nextjs'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import { ReactQueryClientProvider } from '@/components/ReactQueryClientProvider'
+import StoreProvider from '@/components/StoreProvider'
+import { ptBR } from '@clerk/localizations'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import StoreProvider from '@/components/StoreProvider'
-import { ptBR } from '@clerk/localizations'
+import { Toaster } from 'react-hot-toast'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -46,9 +47,8 @@ export default function RootLayout({
       >
         <ReactQueryClientProvider>
           <StoreProvider>
-            <body
-              className={`${inter.className} min-h-screen flex flex-col bg-slate-50`}
-            >
+            <body className={`${inter.className} min-h-screen flex flex-col`}>
+              <Toaster />
               <Header />
               <main className="flex min-h-full w-full grow">{children}</main>
               <Footer />

@@ -13,7 +13,7 @@ const initialState: UserState = {
     name: 'Alexandre',
     email: 'apbetioli@gmail.com',
     completedLessonIds: [],
-    paidCourseIds: [],
+    paidAttachmentIds: [],
   }),
 }
 
@@ -35,10 +35,13 @@ const userSlice = createSlice({
         state.user.completedLessonIds.push(action.payload.id)
       }
     },
+    buyAttachment: (state, action: PayloadAction<Attachment>) => {
+      state.user.paidAttachmentIds.push(action.payload.id)
+    },
   },
 })
 
 export const userReducer = userSlice.reducer
-export const { toggleCompletedLesson } = userSlice.actions
+export const { toggleCompletedLesson, buyAttachment } = userSlice.actions
 
 export default userSlice
