@@ -1,3 +1,5 @@
+import { getUserByClerkId } from '@/lib/server/auth'
+import { prisma } from '@/lib/server/db'
 import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3'
 import { NextResponse } from 'next/server'
 
@@ -5,7 +7,19 @@ export const GET = async (
   request: Request,
   { params }: { params: { id: string } },
 ) => {
-  const filename = 'Mari Ubialli - Álbum Dia das Mães.pdf'
+  const user = await getUserByClerkId()
+
+  const asset = await prisma.asset.findUniqueOrThrow({
+    where: {
+      id: params.id,
+    },
+  })
+
+  if (asset.price > 0 && !user.paidAssetIds.includes(asset.id)) {
+    return new Response('Payment Required', { status: 402 })
+  }
+
+  const filename = asset.filename
 
   const getObjectParams = {
     Bucket: `${process.env.AWS_BUCKET_NAME}`,

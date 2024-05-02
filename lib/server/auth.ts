@@ -18,6 +18,14 @@ export const getUserByClerkId = async () => {
     where: {
       email: email,
     },
+    select: {
+      // Fields visible to the UI
+      id: true,
+      name: true,
+      email: true,
+      paidAssetIds: true,
+      completedLessonIds: true,
+    },
   })
 
   if (!user) {
