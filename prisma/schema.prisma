@@ -28,8 +28,9 @@ model Course {
   description String
   image       String
   groups      Group[]
-  asset       Asset     @relation(fields: [assetId], references: [id])
-  assetId     String    @db.ObjectId
+
+  asset   Asset?  @relation(fields: [assetId], references: [id])
+  assetId String? @db.ObjectId
 }
 
 model Group {
