@@ -4,7 +4,6 @@ import { ClerkProvider } from '@clerk/nextjs'
 
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
-import { ReactQueryClientProvider } from '@/components/ReactQueryClientProvider'
 import StoreProvider from '@/components/StoreProvider'
 import { ptBR } from '@clerk/localizations'
 import { GoogleAnalytics } from '@next/third-parties/google'
@@ -45,17 +44,15 @@ export default function RootLayout({
           },
         }}
       >
-        <ReactQueryClientProvider>
-          <StoreProvider>
-            <body className={`${inter.className} min-h-screen flex flex-col`}>
-              <Toaster />
-              <Header />
-              <main className="flex min-h-full w-full grow">{children}</main>
-              <Footer />
-              {gaId && <GoogleAnalytics gaId={gaId} />}
-            </body>
-          </StoreProvider>
-        </ReactQueryClientProvider>
+        <StoreProvider>
+          <body className={`${inter.className} min-h-screen flex flex-col`}>
+            <Toaster />
+            <Header />
+            <main className="flex min-h-full w-full grow">{children}</main>
+            <Footer />
+            {gaId && <GoogleAnalytics gaId={gaId} />}
+          </body>
+        </StoreProvider>
       </ClerkProvider>
     </html>
   )
