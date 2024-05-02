@@ -1,5 +1,4 @@
-import { toggleCompletedLesson } from '@/lib/features/userSlice'
-import { useAppDispatch, useAppSelector } from '@/lib/hooks'
+import { useMarkAsCompleted, useUser } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import { useId } from 'react'
@@ -17,18 +16,9 @@ export const SidebarLesson = ({
   lesson,
   isActiveLesson,
 }: SidebarLessonProps) => {
-  const dispatch = useAppDispatch()
-  const user = useAppSelector((state) => state.user.user)
+  const user = useUser()
   const completedCheckboxId = useId()
-
-  const markAsComplete = (lessonId: string, checked: boolean) => {
-    dispatch(
-      toggleCompletedLesson({
-        id: lessonId,
-        completed: checked,
-      }),
-    )
-  }
+  const markAsCompleted = useMarkAsCompleted()
 
   return (
     <div className="gap-2 border-b w-full h-16 flex items-center">
@@ -36,7 +26,7 @@ export const SidebarLesson = ({
         id={completedCheckboxId}
         checked={user.completedLessonIds.includes(lesson.id)}
         onCheckedChange={(checked) =>
-          markAsComplete(lesson.id, Boolean(checked))
+          markAsCompleted(lesson.id, Boolean(checked))
         }
         className="h-5 w-5 ml-4"
       />

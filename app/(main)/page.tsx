@@ -1,10 +1,18 @@
 'use client'
 
 import { CourseCard } from '@/components/CourseCard'
+import { useGetCoursesQuery } from '@/lib/features/apiSlice'
+import { useMemo } from 'react'
+import LoadingPage from '../loading'
 import { useCourses } from '@/lib/hooks'
 
 export default function HomePage() {
+  const { isLoading } = useGetCoursesQuery()
   const courses = useCourses()
+
+  if (isLoading) {
+    return <LoadingPage />
+  }
 
   return (
     <div className="w-full max-w-5xl mx-auto">

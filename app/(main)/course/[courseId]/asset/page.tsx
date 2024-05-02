@@ -1,5 +1,6 @@
 'use client'
 
+import LoadingPage from '@/app/loading'
 import { AssetImage } from '@/components/AssetImage'
 import { Button } from '@/components/ui/button'
 import {
@@ -11,10 +12,10 @@ import {
 import { buyAsset } from '@/lib/features/userSlice'
 import { useCourse, useUser } from '@/lib/hooks'
 
-import toast, { Toaster } from 'react-hot-toast'
 import { DownloadIcon, ShoppingCartIcon } from 'lucide-react'
 import Link from 'next/link'
 import { notFound, useParams } from 'next/navigation'
+import toast from 'react-hot-toast'
 import { useDispatch } from 'react-redux'
 
 const AssetPage = () => {
@@ -22,7 +23,12 @@ const AssetPage = () => {
   const user = useUser()
   const { courseId } = useParams<{ courseId: string }>()
   const course = useCourse(courseId)
-  const asset = course.asset
+
+  if (!course) {
+    return <LoadingPage />
+  }
+
+  const { asset } = course
 
   if (!asset) {
     notFound()

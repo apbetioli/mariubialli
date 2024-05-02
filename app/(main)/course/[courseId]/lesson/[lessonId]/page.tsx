@@ -3,7 +3,13 @@
 import Video from '@/components/Video'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
-import { useCourse, useLessonDetails } from '@/lib/hooks'
+import { toggleCompletedLesson } from '@/lib/features/userSlice'
+import {
+  useAppDispatch,
+  useCourse,
+  useLessonDetails,
+  useMarkAsCompleted,
+} from '@/lib/hooks'
 import { ArrowRightIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
@@ -14,16 +20,16 @@ const LessonPage = () => {
   const { lessonId } = useParams<{ lessonId: string }>()
 
   const completedCheckboxId = useId()
+  const markAsCompleted = useMarkAsCompleted()
 
-  const course = useCourse(courseId)
+  const course = useCourse(courseId)!
 
   const {
     lesson: activeLesson,
     nextLesson,
     isLastLesson,
     isCompleted,
-    markAsCompleted,
-  } = useLessonDetails(courseId, lessonId)
+  } = useLessonDetails(course, lessonId)
 
   return (
     <main className="flex flex-col w-full items-center justify-center bg-black">
@@ -56,7 +62,7 @@ const LessonPage = () => {
             </Link>
           ) : (
             <Link
-              href={`/course/${course.slug}/lesson/${nextLesson.slug}`}
+              href={`/course/${courseId}/lesson/${nextLesson.slug}`}
               className="w-full md:w-fit"
             >
               <Button

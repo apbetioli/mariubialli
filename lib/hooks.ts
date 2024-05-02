@@ -1,67 +1,68 @@
+import { GetCourse } from '@/app/types'
+import { Course, Lesson } from '@prisma/client'
+import { notFound } from 'next/navigation'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import { toggleCompletedLesson } from './features/userSlice'
 import type { AppDispatch, RootState } from './store'
-import { findByIdOrSlug } from './utils'
 
 export const useAppDispatch: () => AppDispatch = useDispatch
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
-export const useUser = () => {
-  return useAppSelector((state) => state.user.user)
-}
+export const useUser = () => useAppSelector((state) => state.user.user)
+
+const findByIdOrSlug = (idOrSlug: string) => (entity: Course | Lesson) =>
+  entity.id === idOrSlug || entity.slug === idOrSlug
 
 export const useCourse = (idOrSlug: string) =>
-  useAppSelector((state) => findByIdOrSlug(state.courses.courses, idOrSlug))
+  useAppSelector((state) =>
+    state.courses.entities.find(findByIdOrSlug(idOrSlug)),
+  )
 
 export const useCourseDetails = (id: string) => {
   const user = useUser()
   const course = useCourse(id)
 
-  const completedLessonIds = course.lessonIds.filter((lessonId) =>
-    user.completedLessonIds.includes(lessonId),
-  )
-  const progress = Math.round(
-    (completedLessonIds.length / course.lessonIds.length) * 100,
+  const lessons = course?.groups.map((group) => group.lessons).flat() || []
+  const completedLessons = lessons.filter((lesson) =>
+    user.completedLessonIds.includes(lesson.id),
   )
 
-  const unwatchedLessonIds = course.lessonIds.filter(
-    (lessonId) => !user.completedLessonIds.includes(lessonId),
-  )
+  const progress =
+    lessons.length === 0
+      ? 0
+      : Math.round((completedLessons.length / lessons.length) * 100)
 
-  const nextLessonId =
-    unwatchedLessonIds.length === 0
-      ? course.lessonIds[0]
-      : unwatchedLessonIds[0]
-
-  const nextLesson = useLesson(nextLessonId)
+  const nextLesson =
+    lessons.length === 0
+      ? null
+      : lessons.find(
+          (lesson) => !user.completedLessonIds.includes(lesson.id),
+        ) || lessons[0]
 
   return { course, progress, nextLesson }
 }
 
-export const useLesson = (idOrSlug: string) =>
-  useAppSelector((state) => findByIdOrSlug(state.courses.lessons, idOrSlug))
-
-export const useLessonDetails = (courseId: string, id: string) => {
-  const dispatch = useAppDispatch()
+export const useLessonDetails = (course: GetCourse, idOrSlug: string) => {
   const user = useUser()
-  const course = useCourse(courseId)
-  const lesson = useLesson(id)
+  const lessons = course.groups.map((group) => group.lessons).flat()
+  const lessonIndex = lessons.findIndex(findByIdOrSlug(idOrSlug))
+  const lesson = lessons[lessonIndex]
 
-  const isCompleted = user.completedLessonIds.includes(lesson.id)
+  const isCompleted = user.completedLessonIds.includes(lesson?.id)
+  const isLastLesson = lessonIndex + 1 == lessons.length
+  const nextLesson = isLastLesson ? lessons[0] : lessons[lessonIndex + 1]
 
-  const lessonIndex = course.lessonIds.findIndex(
-    (lessonId) => lessonId === lesson.id,
-  )
+  return {
+    lesson,
+    isCompleted,
+    nextLesson,
+    isLastLesson,
+  }
+}
 
-  const isLastLesson = lessonIndex + 1 == course.lessonIds.length
-
-  const nextLessonId = isLastLesson
-    ? course.lessonIds[0]
-    : course.lessonIds[lessonIndex + 1]
-
-  const nextLesson = useLesson(nextLessonId)
-
-  const markAsCompleted = (lessonId: string, checked: boolean) => {
+export const useMarkAsCompleted = () => {
+  const dispatch = useAppDispatch()
+  return (lessonId: string, checked: boolean) => {
     dispatch(
       toggleCompletedLesson({
         id: lessonId,
@@ -69,34 +70,7 @@ export const useLessonDetails = (courseId: string, id: string) => {
       }),
     )
   }
-
-  return {
-    lesson,
-    isCompleted,
-    nextLesson,
-    isLastLesson,
-    markAsCompleted,
-  }
 }
 
-export const useCourses = () => {
-  const coursesMap = useAppSelector((state) => state.courses.courses)
-  const courses = Object.values(coursesMap)
-  return courses
-}
-
-export const useGroupsOfCourse = (courseId: string) => {
-  const course = useCourse(courseId)
-
-  const groupsMap = useAppSelector((state) => state.courses.groups)
-  const groups = course.groupIds.map((id) => groupsMap[id])
-  return groups
-}
-
-export const useLessonsOfCourse = (courseId: string) => {
-  const course = useCourse(courseId)
-
-  const lessonsMap = useAppSelector((state) => state.courses.lessons)
-  const lessons = course.lessonIds.map((id) => lessonsMap[id])
-  return lessons
-}
+export const useCourses = () =>
+  useAppSelector((state) => state.courses.entities)

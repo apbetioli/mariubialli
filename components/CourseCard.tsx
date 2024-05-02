@@ -13,9 +13,14 @@ import { useCourseDetails } from '@/lib/hooks'
 import { Download, Play } from 'lucide-react'
 import Link from 'next/link'
 import { Progress } from './ui/progress'
+import { Course } from '@prisma/client'
 
 export function CourseCard({ id }: Pick<Course, 'id'>) {
-  const { course, progress, nextLesson } = useCourseDetails(id)
+  const { course, progress } = useCourseDetails(id)
+
+  if (!course) {
+    return null
+  }
 
   return (
     <Card>
@@ -27,10 +32,7 @@ export function CourseCard({ id }: Pick<Course, 'id'>) {
         <CardDescription>{course.description}</CardDescription>
       </CardContent>
       <CardFooter className="flex flex-col sm:flex-row gap-4">
-        <Link
-          href={`/course/${course.slug}/lesson/${nextLesson.slug}`}
-          className="w-full sm:w-auto"
-        >
+        <Link href={`/course/${course.slug}`} className="w-full sm:w-auto">
           <Button className="w-full sm:w-auto">
             <Play />
             {progress > 0 && progress < 100

@@ -1,31 +1,30 @@
 'use client'
 
+import LoadingPage from '@/app/loading'
 import { SidebarCourse } from '@/components/SidebarCourse'
 import { SidebarGroup } from '@/components/SidebarGroup'
 import { SidebarLesson } from '@/components/SidebarLesson'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
-import {
-  useCourseDetails,
-  useGroupsOfCourse,
-  useLessonsOfCourse,
-} from '@/lib/hooks'
+import { useGetCourseByIdQuery } from '@/lib/features/apiSlice'
+import { useCourseDetails } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
 import { DownloadIcon } from 'lucide-react'
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
+import { notFound, useParams } from 'next/navigation'
 import { ReactNode } from 'react'
 
 const CourseLayout = ({ children }: { children: ReactNode }) => {
   const { courseId } = useParams<{ courseId: string }>()
   const { lessonId } = useParams<{ lessonId: string }>()
 
+  const { isLoading } = useGetCourseByIdQuery(courseId)
   const { course, progress } = useCourseDetails(courseId)
-  const groups = useGroupsOfCourse(courseId)
-  const lessons = useLessonsOfCourse(courseId)
 
-  const lessonsOfGroup = (group: Group) =>
-    lessons.filter((lesson) => lesson.groupId === group.id)
+  if (!course) {
+    if (isLoading) return <LoadingPage />
+    else notFound()
+  }
 
   const CourseHeader = ({ className }: { className?: string }) => (
     <div className={cn('p-4 bg-slate-500 text-white', className)}>
@@ -53,9 +52,9 @@ const CourseLayout = ({ children }: { children: ReactNode }) => {
         <CourseHeader className="hidden md:block" />
         <SidebarCourse>
           <CourseHeader className="block md:hidden" />
-          {groups.map((group) => (
+          {course.groups.map((group) => (
             <SidebarGroup key={group.id} group={group}>
-              {lessonsOfGroup(group).map((lesson) => (
+              {group.lessons.map((lesson) => (
                 <SidebarLesson
                   key={lesson.id}
                   course={course}

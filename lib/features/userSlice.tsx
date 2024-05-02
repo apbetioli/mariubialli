@@ -1,20 +1,15 @@
+import { Asset, Lesson, User } from '@prisma/client'
 import { PayloadAction, createSlice, nanoid } from '@reduxjs/toolkit'
 
-export const createUser = (draft: Draft<User>): User => {
-  return { ...draft, id: draft.id || nanoid() }
-}
-
 type UserState = {
-  user: User
+  user: Partial<User> & Pick<User, 'completedLessonIds' | 'paidAssetIds'>
 }
 
 const initialState: UserState = {
-  user: createUser({
-    name: 'Alexandre',
-    email: 'apbetioli@gmail.com',
+  user: {
     completedLessonIds: [],
     paidAssetIds: [],
-  }),
+  },
 }
 
 const userSlice = createSlice({
