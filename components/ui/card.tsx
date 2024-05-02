@@ -1,4 +1,5 @@
 // https://ui.shadcn.com/docs/components/card
+// Customized
 
 import * as React from 'react'
 
@@ -11,7 +12,7 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      'rounded-lg border bg-card text-card-foreground shadow-sm',
+      'rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden flex flex-col w-full',
       className,
     )}
     {...props}

@@ -1,5 +1,5 @@
 // https://ui.shadcn.com/docs/components/button
-// With a bit of customization
+// Customized
 
 import * as React from 'react'
 import { Slot } from '@radix-ui/react-slot'

@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/card'
 import { CardMedia } from '@/components/ui/card-media'
 import { useCourseDetails } from '@/lib/hooks'
-import { Play } from 'lucide-react'
+import { Download, Play } from 'lucide-react'
 import Link from 'next/link'
 import { Progress } from './ui/progress'
 
@@ -18,7 +18,7 @@ export function CourseCard({ id }: Pick<Course, 'id'>) {
   const { course, progress, nextLesson } = useCourseDetails(id)
 
   return (
-    <Card className="flex flex-col overflow-hidden hover:shadow-md">
+    <Card>
       <CardMedia src={course.image} alt={course.name} />
       <CardHeader>
         <CardTitle>{course.name}</CardTitle>
@@ -26,18 +26,26 @@ export function CourseCard({ id }: Pick<Course, 'id'>) {
       <CardContent className="grow">
         <CardDescription>{course.description}</CardDescription>
       </CardContent>
-      <CardFooter className="flex gap-4">
-        <Link key={course.id} href={`/course/${course.slug}`}>
-          <Button variant={'outline'}>Ver curso</Button>
+      <CardFooter className="flex flex-col sm:flex-row gap-4">
+        <Link
+          href={`/course/${course.slug}/lesson/${nextLesson.slug}`}
+          className="w-full sm:w-auto"
+        >
+          <Button className="w-full sm:w-auto">
+            <Play />
+            {progress > 0 && progress < 100
+              ? 'Continuar assistindo'
+              : 'Assistir'}
+          </Button>
         </Link>
-        {progress > 0 && progress < 100 && (
+        {course.attachment && (
           <Link
-            key={course.id}
-            href={`/course/${course.slug}/lesson/${nextLesson.slug}`}
+            href={`/course/${course.slug}/attachment`}
+            className="w-full sm:w-auto"
           >
-            <Button variant={progress > 0 ? 'default' : 'outline'}>
-              <Play />
-              Continuar assistindo
+            <Button variant="outline" className="w-full sm:w-auto">
+              <Download />
+              Moldes
             </Button>
           </Link>
         )}
