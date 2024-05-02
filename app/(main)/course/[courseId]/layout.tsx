@@ -36,7 +36,7 @@ const CourseLayout = ({ children }: { children: ReactNode }) => {
       <p className="mb-1">Progresso {progress}%</p>
       <Progress value={progress} />
 
-      {course.asset && (
+      {course.asset && lessonId && (
         <Link href={`/course/${course.slug}/asset`}>
           <Button variant="secondary" className="my-3 w-full">
             <DownloadIcon />
