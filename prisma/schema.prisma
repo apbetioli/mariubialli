@@ -8,23 +8,56 @@ datasource db {
 }
 
 model User {
-  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
-  email              String   @unique
+  id                 String    @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt          DateTime? @default(now())
+  updatedAt          DateTime? @updatedAt
+  email              String    @unique
   name               String?
-  clerkId            String?  @unique
-  isAdmin            Boolean  @default(false)
+  clerkId            String?   @unique
+  isAdmin            Boolean   @default(false)
   completedLessonIds String[]
-  paidAttachmentIds  String[]
+  paidAssetIds       String[]
 }
 
 model Course {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt   DateTime? @default(now())
+  updatedAt   DateTime? @updatedAt
   name        String
-  slug        String
+  slug        String    @unique
   description String
   image       String
+  groups      Group[]
+  asset       Asset     @relation(fields: [assetId], references: [id])
+  assetId     String    @db.ObjectId
+}
+
+model Group {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  name    String
+  lessons Lesson[]
+
+  Course   Course? @relation(fields: [courseId], references: [id])
+  courseId String? @db.ObjectId
+}
+
+model Lesson {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  name  String
+  slug  String
+  video String
+
+  Group   Group?  @relation(fields: [groupId], references: [id])
+  groupId String? @db.ObjectId
+}
+
+model Asset {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String
+  image       String
+  price       Float
+  filename    String
+
+  Course Course[]
 }
