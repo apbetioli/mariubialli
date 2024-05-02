@@ -36,8 +36,8 @@ const CourseLayout = ({ children }: { children: ReactNode }) => {
       <p className="mb-1">Progresso {progress}%</p>
       <Progress value={progress} />
 
-      {course.attachment && (
-        <Link href={`/course/${course.slug}/attachment`}>
+      {course.asset && (
+        <Link href={`/course/${course.slug}/asset`}>
           <Button variant="secondary" className="my-3 w-full">
             <DownloadIcon />
             Moldes

@@ -21,7 +21,7 @@ export const createLesson = (draft: Draft<Lesson>): Lesson => {
   }
 }
 
-export const createAttachment = (draft: Draft<Attachment>): Attachment => {
+export const createAsset = (draft: Draft<Asset>): Asset => {
   return { ...draft, id: draft.id || nanoid() }
 }
 
@@ -158,7 +158,7 @@ export const courses: Course[] = [
     image: 'https://media.graphassets.com/13BiFOg7REOVUW1WkKMG',
     groupIds: [group1Course1.id],
     lessonIds: lessonsCourse1.map((lesson) => lesson.id),
-    attachment: createAttachment({
+    asset: createAsset({
       name: 'Apostila de moldes',
       description:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit In odit',

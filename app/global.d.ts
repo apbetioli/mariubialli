@@ -13,7 +13,7 @@ type Group = {
   name: string
 }
 
-type Attachment = {
+type Asset = {
   id: string
   name: string
   description: string
@@ -29,7 +29,7 @@ type Course = {
   image: string
   lessonIds: string[]
   groupIds: string[]
-  attachment?: Attachment
+  asset?: Asset
 }
 
 type User = {
@@ -37,5 +37,5 @@ type User = {
   email: string
   name?: string
   completedLessonIds: string[]
-  paidAttachmentIds: string[]
+  paidAssetIds: string[]
 }

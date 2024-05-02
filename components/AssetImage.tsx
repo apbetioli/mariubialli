@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import { AspectRatio } from './ui/aspect-ratio'
 
-export const AttachmentMedia = ({
+export const AssetImage = ({
   src,
   alt,
   className,

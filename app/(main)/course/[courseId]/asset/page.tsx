@@ -1,6 +1,6 @@
 'use client'
 
-import { AttachmentMedia } from '@/components/AttachmentMedia'
+import { AssetImage } from '@/components/AssetImage'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -8,7 +8,7 @@ import {
   CardDescription,
   CardTitle,
 } from '@/components/ui/card'
-import { buyAttachment } from '@/lib/features/userSlice'
+import { buyAsset } from '@/lib/features/userSlice'
 import { useCourse, useUser } from '@/lib/hooks'
 
 import toast, { Toaster } from 'react-hot-toast'
@@ -17,21 +17,21 @@ import Link from 'next/link'
 import { notFound, useParams } from 'next/navigation'
 import { useDispatch } from 'react-redux'
 
-const AttachmentPage = () => {
+const AssetPage = () => {
   const dispatch = useDispatch()
   const user = useUser()
   const { courseId } = useParams<{ courseId: string }>()
   const course = useCourse(courseId)
-  const attachment = course.attachment
+  const asset = course.asset
 
-  if (!attachment) {
+  if (!asset) {
     notFound()
   }
 
-  const isPaid = user.paidAttachmentIds.includes(attachment.id)
+  const isPaid = user.paidAssetIds.includes(asset.id)
 
   const buy = () => {
-    dispatch(buyAttachment(attachment))
+    dispatch(buyAsset(asset))
     toast.success('Compra realizada com sucesso!')
   }
 
@@ -39,22 +39,22 @@ const AttachmentPage = () => {
     <div className="flex flex-col w-full">
       <div className="max-w-4xl m-auto">
         <Card className="md:flex-row">
-          <AttachmentMedia
-            src={attachment.image}
-            alt={attachment.name}
+          <AssetImage
+            src={asset.image}
+            alt={asset.name}
             className="hidden md:inline-flex"
           />
 
           <CardContent className="flex flex-col gap-3 p-8">
-            <CardTitle>{attachment.name}</CardTitle>
+            <CardTitle>{asset.name}</CardTitle>
             <CardDescription className="mb-6">
-              {attachment.description}
+              {asset.description}
             </CardDescription>
 
-            {attachment.price > 0 && !isPaid ? (
+            {asset.price > 0 && !isPaid ? (
               <>
                 <span className="text-xl font-bold text-gray-700 dark:text-gray-200 md:text-3xl">
-                  R$ {new Intl.NumberFormat('pt-BR').format(attachment.price)}
+                  R$ {new Intl.NumberFormat('pt-BR').format(asset.price)}
                 </span>
 
                 <Button className="w-full" size="lg" onClick={() => buy()}>
@@ -63,7 +63,7 @@ const AttachmentPage = () => {
                 </Button>
               </>
             ) : (
-              <Link href={`/api/attachment/${attachment.id}`} target="_blank">
+              <Link href={`/api/asset/${asset.id}`} target="_blank">
                 <Button className="w-full" size="lg">
                   <DownloadIcon />
                   Baixar moldes
@@ -77,4 +77,4 @@ const AttachmentPage = () => {
   )
 }
 
-export default AttachmentPage
+export default AssetPage

@@ -38,9 +38,9 @@ export function CourseCard({ id }: Pick<Course, 'id'>) {
               : 'Assistir'}
           </Button>
         </Link>
-        {course.attachment && (
+        {course.asset && (
           <Link
-            href={`/course/${course.slug}/attachment`}
+            href={`/course/${course.slug}/asset`}
             className="w-full sm:w-auto"
           >
             <Button variant="outline" className="w-full sm:w-auto">
