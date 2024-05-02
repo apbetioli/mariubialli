@@ -14,7 +14,7 @@ export default function Video({ src }: VideoProps) {
   const newSrc = sanitize(src)
 
   return (
-    <AspectRatio ratio={16 / 9}>
+    <div className="relative h-0 pb-[50%]">
       <iframe
         width="100%"
         height="100%"
@@ -24,7 +24,8 @@ export default function Video({ src }: VideoProps) {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
+        className="absolute"
       ></iframe>
-    </AspectRatio>
+    </div>
   )
 }

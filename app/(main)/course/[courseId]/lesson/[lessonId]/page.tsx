@@ -27,7 +27,7 @@ const LessonPage = () => {
 
   return (
     <main className="flex flex-col w-full items-center justify-center bg-black">
-      <div className="w-full max-w-screen-md">
+      <div className="w-full">
         <Video src={activeLesson.video} />
         <div className="flex flex-col md:flex-row font-semibold py-4 px-2 bg-black text-white gap-4 items-center">
           <span className="grow">{activeLesson.name}</span>
