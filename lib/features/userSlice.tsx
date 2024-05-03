@@ -1,5 +1,5 @@
 import { DraftUser } from '@/app/types'
-import { Asset, Lesson, User } from '@prisma/client'
+import { Asset, Lesson } from '@prisma/client'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 type UserState = {
@@ -22,7 +22,7 @@ const userSlice = createSlice({
       action: PayloadAction<{ id: Lesson['id']; completed: boolean }>,
     ) => {
       const index = state.user.completedLessonIds.findIndex(
-        (id) => id === action.payload.id,
+        (id: string) => id === action.payload.id,
       )
       if (index >= 0 && !action.payload.completed) {
         state.user.completedLessonIds.splice(index, 1)

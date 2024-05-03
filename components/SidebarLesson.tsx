@@ -1,12 +1,14 @@
+import { CourseWithUserDetails } from '@/app/types'
 import { useMarkAsCompleted, useUser } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
+import { Lesson } from '@prisma/client'
 import Link from 'next/link'
 import { useId } from 'react'
 import { Button } from './ui/button'
 import { Checkbox } from './ui/checkbox'
 
 type SidebarLessonProps = {
-  course: Course
+  course: CourseWithUserDetails
   lesson: Lesson
   isActiveLesson: boolean
 }
