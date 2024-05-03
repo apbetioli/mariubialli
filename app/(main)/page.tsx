@@ -43,8 +43,8 @@ export default function HomePage() {
   if (isError) throw error
 
   return (
-    <div className="w-full max-w-5xl mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 h-fit">
+    <div className="w-full container">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-8 h-fit">
         {courses.map((course) => (
           <Card key={course.id} className="bg-primary-foreground shadow-md">
             <CardMedia src={course.image} alt={course.name} />
