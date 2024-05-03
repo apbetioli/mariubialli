@@ -1,4 +1,4 @@
-import { auth, clerkClient, currentUser } from '@clerk/nextjs/server'
+import { currentUser } from '@clerk/nextjs/server'
 
 import { redirect } from 'next/navigation'
 import { prisma } from './db'
@@ -17,14 +17,6 @@ export const getUserByClerkId = async () => {
   const user = await prisma.user.findUnique({
     where: {
       email: email,
-    },
-    select: {
-      // Fields visible to the UI
-      id: true,
-      name: true,
-      email: true,
-      paidAssetIds: true,
-      completedLessonIds: true,
     },
   })
 

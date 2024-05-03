@@ -1,6 +1,7 @@
 'use client'
 
 import LoadingPage from '@/app/loading'
+import { Sidebar } from '@/components/Sidebar'
 import Video from '@/components/Video'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
@@ -36,50 +37,54 @@ const LessonPage = () => {
   const nextLesson = isLastLesson ? lessons[0] : lessons[lessonIndex + 1]
 
   return (
-    <main className="flex flex-col w-full items-center justify-center bg-black">
-      <div className="w-full">
-        <Video src={activeLesson.video} />
-        <div className="flex flex-col md:flex-row font-semibold py-4 px-2 bg-black text-white gap-4 items-center">
-          <span className="grow">{activeLesson.name}</span>
+    <>
+      <Sidebar course={course} lessonSlug={lessonId} />
 
-          <div className="items-center gap-2 hidden md:flex">
-            <Checkbox
-              id={completedCheckboxId}
-              checked={isCompleted}
-              onCheckedChange={(checked) =>
-                markAsCompleted(activeLesson.id, Boolean(checked))
-              }
-              className="h-5 w-5"
-            />
-            <label htmlFor={completedCheckboxId}>Concluído</label>
+      <main className="flex flex-col w-full items-center justify-center bg-black">
+        <div className="w-full">
+          <Video src={activeLesson.video} />
+          <div className="flex flex-col md:flex-row font-semibold py-4 px-2 bg-black text-white gap-4 items-center">
+            <span className="grow">{activeLesson.name}</span>
+
+            <div className="items-center gap-2 hidden md:flex">
+              <Checkbox
+                id={completedCheckboxId}
+                checked={isCompleted}
+                onCheckedChange={(checked) =>
+                  markAsCompleted(activeLesson.id, Boolean(checked))
+                }
+                className="h-5 w-5"
+              />
+              <label htmlFor={completedCheckboxId}>Concluído</label>
+            </div>
+
+            {isLastLesson ? (
+              <Link href={`/`} className="w-full md:w-fit">
+                <Button
+                  variant="secondary"
+                  onClick={() => markAsCompleted(activeLesson.id, true)}
+                  className="w-full md:w-fit"
+                >
+                  Ver outros cursos
+                </Button>
+              </Link>
+            ) : (
+              <Link
+                href={`/course/${courseId}/lesson/${nextLesson.slug}`}
+                className="w-full md:w-fit"
+              >
+                <Button
+                  onClick={() => markAsCompleted(activeLesson.id, true)}
+                  className="w-full md:w-fit"
+                >
+                  Próxima aula <ArrowRightIcon />
+                </Button>
+              </Link>
+            )}
           </div>
-
-          {isLastLesson ? (
-            <Link href={`/`} className="w-full md:w-fit">
-              <Button
-                variant="secondary"
-                onClick={() => markAsCompleted(activeLesson.id, true)}
-                className="w-full md:w-fit"
-              >
-                Ver outros cursos
-              </Button>
-            </Link>
-          ) : (
-            <Link
-              href={`/course/${courseId}/lesson/${nextLesson.slug}`}
-              className="w-full md:w-fit"
-            >
-              <Button
-                onClick={() => markAsCompleted(activeLesson.id, true)}
-                className="w-full md:w-fit"
-              >
-                Próxima aula <ArrowRightIcon />
-              </Button>
-            </Link>
-          )}
         </div>
-      </div>
-    </main>
+      </main>
+    </>
   )
 }
 

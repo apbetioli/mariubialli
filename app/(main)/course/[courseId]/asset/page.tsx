@@ -2,6 +2,7 @@
 
 import LoadingPage from '@/app/loading'
 import { AssetImage } from '@/components/AssetImage'
+import { Sidebar } from '@/components/Sidebar'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -42,44 +43,48 @@ const AssetPage = () => {
   }
 
   return (
-    <div className="flex flex-col w-full">
-      <div className="max-w-4xl m-auto">
-        <Card className="md:flex-row">
-          <AssetImage
-            src={asset.image}
-            alt={asset.name}
-            className="hidden md:inline-flex"
-          />
+    <>
+      <Sidebar course={course} />
 
-          <CardContent className="flex flex-col gap-3 p-8">
-            <CardTitle>{asset.name}</CardTitle>
-            <CardDescription className="mb-6">
-              {asset.description}
-            </CardDescription>
+      <div className="flex flex-col w-full">
+        <div className="max-w-4xl m-auto">
+          <Card className="md:flex-row">
+            <AssetImage
+              src={asset.image}
+              alt={asset.name}
+              className="hidden md:inline-flex"
+            />
 
-            {asset.price > 0 && !userHasPaidForIt ? (
-              <>
-                <span className="text-xl font-bold text-gray-700 dark:text-gray-200 md:text-3xl">
-                  R$ {new Intl.NumberFormat('pt-BR').format(asset.price)}
-                </span>
+            <CardContent className="flex flex-col gap-3 p-8">
+              <CardTitle>{asset.name}</CardTitle>
+              <CardDescription className="mb-6">
+                {asset.description}
+              </CardDescription>
 
-                <Button className="w-full" size="lg" onClick={() => buy()}>
-                  <ShoppingCartIcon />
-                  Comprar
-                </Button>
-              </>
-            ) : (
-              <Link href={`/api/asset/${asset.id}`} target="_blank">
-                <Button className="w-full" size="lg">
-                  <DownloadIcon />
-                  Baixar moldes
-                </Button>
-              </Link>
-            )}
-          </CardContent>
-        </Card>
+              {asset.price > 0 && !userHasPaidForIt ? (
+                <>
+                  <span className="text-xl font-bold text-gray-700 dark:text-gray-200 md:text-3xl">
+                    R$ {new Intl.NumberFormat('pt-BR').format(asset.price)}
+                  </span>
+
+                  <Button className="w-full" size="lg" onClick={() => buy()}>
+                    <ShoppingCartIcon />
+                    Comprar
+                  </Button>
+                </>
+              ) : (
+                <Link href={`/api/asset/${asset.id}`} target="_blank">
+                  <Button className="w-full" size="lg">
+                    <DownloadIcon />
+                    Baixar moldes
+                  </Button>
+                </Link>
+              )}
+            </CardContent>
+          </Card>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
