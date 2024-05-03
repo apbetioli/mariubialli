@@ -18,10 +18,10 @@ import { notFound, useParams } from 'next/navigation'
 import toast from 'react-hot-toast'
 
 const AssetPage = () => {
-  const { courseId } = useParams<{ courseId: string }>()
+  const { courseSlug } = useParams<{ courseSlug: string }>()
 
   const user = useUser()
-  const { course, isLoading, isError, error } = useCourse(courseId)
+  const { course, isLoading, isError, error } = useCourse(courseSlug)
 
   if (isLoading) return <LoadingPage />
   if (isError) throw error

@@ -6,8 +6,8 @@ import { notFound, useParams, useRouter } from 'next/navigation'
 
 const CoursePage = () => {
   const router = useRouter()
-  const { courseId } = useParams<{ courseId: string }>()
-  const { course, isLoading, isError, error } = useCourse(courseId)
+  const { courseSlug } = useParams<{ courseSlug: string }>()
+  const { course, isLoading, isError, error } = useCourse(courseSlug)
 
   if (isLoading) return <LoadingPage />
   if (isError) throw error

@@ -2,7 +2,7 @@ import { CourseWithUserDetails, DraftUser, GetCourse } from '@/app/types'
 import { useMemo } from 'react'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import {
-  useGetCourseByIdQuery,
+  useGetCourseBySlugQuery,
   useGetCoursesQuery,
   useGetUserQuery,
   useToggleLessonCompletedMutation,
@@ -32,9 +32,9 @@ export const useCourses = () => {
   return { courses, ...query }
 }
 
-export const useCourse = (idOrSlug: string) => {
+export const useCourse = (slug: string) => {
   const user = useUser()
-  const { data, ...query } = useGetCourseByIdQuery(idOrSlug)
+  const { data, ...query } = useGetCourseBySlugQuery(slug)
   const course = useMemo(() => data && addUserDetails(data, user), [data, user])
   return { course, ...query }
 }

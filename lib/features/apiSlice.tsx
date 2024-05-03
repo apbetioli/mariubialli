@@ -13,8 +13,8 @@ export const apiSlice = createApi({
       providesTags: ['Course'],
     }),
 
-    getCourseById: builder.query<GetCourse, string>({
-      query: (id) => `course/${id}`,
+    getCourseBySlug: builder.query<GetCourse, string>({
+      query: (slug) => `course/${slug}`,
       providesTags: ['Course'],
     }),
 
@@ -28,7 +28,7 @@ export const apiSlice = createApi({
       { id: string; completed: boolean }
     >({
       query: ({ id, completed }) => ({
-        url: `lesson/${id}/completed`,
+        url: `user/completed/${id}/`,
         method: 'PATCH',
         body: { completed },
       }),
@@ -47,8 +47,7 @@ export const apiSlice = createApi({
         )
         try {
           await queryFulfilled
-        } catch (e) {
-          console.error(e)
+        } catch {
           patchResult.undo()
         }
       },
@@ -58,7 +57,7 @@ export const apiSlice = createApi({
 
 export const {
   useGetCoursesQuery,
-  useGetCourseByIdQuery,
+  useGetCourseBySlugQuery,
   useGetUserQuery,
   useToggleLessonCompletedMutation,
 } = apiSlice

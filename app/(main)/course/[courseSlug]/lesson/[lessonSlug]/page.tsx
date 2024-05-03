@@ -6,29 +6,26 @@ import Video from '@/components/Video'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { useCourse, useMarkAsCompleted, useUser } from '@/lib/hooks'
-import { findByIdOrSlug } from '@/lib/utils'
 import { ArrowRightIcon } from 'lucide-react'
 import Link from 'next/link'
 import { notFound, useParams } from 'next/navigation'
 import { useId } from 'react'
 
 const LessonPage = () => {
-  const { courseId } = useParams<{ courseId: string }>()
-  const { lessonId } = useParams<{ lessonId: string }>()
+  const { courseSlug } = useParams<{ courseSlug: string }>()
+  const { lessonSlug } = useParams<{ lessonSlug: string }>()
 
-  const user = useUser()
   const completedCheckboxId = useId()
-
   const markAsCompleted = useMarkAsCompleted()
-
-  const { course, isLoading, isError, error } = useCourse(courseId)
+  const user = useUser()
+  const { course, isLoading, isError, error } = useCourse(courseSlug)
 
   if (isLoading) return <LoadingPage />
   if (isError) throw error
   if (!course) notFound()
 
   const lessons = course.groups.map((group) => group.lessons).flat()
-  const lessonIndex = lessons.findIndex(findByIdOrSlug(lessonId))
+  const lessonIndex = lessons.findIndex((lesson) => lesson.slug === lessonSlug)
 
   if (lessonIndex < 0) notFound()
 
@@ -39,7 +36,7 @@ const LessonPage = () => {
 
   return (
     <>
-      <Sidebar course={course} lessonSlug={lessonId} />
+      <Sidebar course={course} lessonSlug={lessonSlug} />
 
       <main className="flex flex-col w-full items-center justify-center bg-black">
         <div className="w-full">
@@ -71,7 +68,7 @@ const LessonPage = () => {
               </Link>
             ) : (
               <Link
-                href={`/course/${courseId}/lesson/${nextLesson.slug}`}
+                href={`/course/${courseSlug}/lesson/${nextLesson.slug}`}
                 className="w-full md:w-fit"
               >
                 <Button

@@ -42,7 +42,9 @@ export default function HomePage() {
                 <Button className="w-full sm:w-auto">
                   <PlayIcon />
                   {course.progress === 0 && 'Assistir'}
-                  {course.progress > 0 && course.progress < 100 && 'Continuar assistindo'}
+                  {course.progress > 0 &&
+                    course.progress < 100 &&
+                    'Continuar assistindo'}
                   {course.progress === 100 && 'Assistir novamente'}
                 </Button>
               </Link>
