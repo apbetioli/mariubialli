@@ -46,7 +46,7 @@ export default function HomePage() {
     <div className="w-full max-w-5xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 h-fit">
         {courses.map((course) => (
-          <Card key={course.id} className="bg-primary-foreground/50 shadow-md">
+          <Card key={course.id} className="bg-primary-foreground shadow-md">
             <CardMedia src={course.image} alt={course.name} />
             <CardHeader>
               <CardTitle>{course.name}</CardTitle>
@@ -68,9 +68,9 @@ export default function HomePage() {
                   {course.progress === 100 && 'Assistir novamente'}
                 </Button>
               </Link>
-              {course.asset && (
+              {course.assets.length > 0 && (
                 <Link
-                  href={`/course/${course.slug}/asset`}
+                  href={`/course/${course.slug}/assets`}
                   className="w-full sm:w-auto"
                 >
                   <Button variant="outline" className="w-full sm:w-auto">

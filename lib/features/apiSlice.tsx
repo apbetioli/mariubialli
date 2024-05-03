@@ -1,4 +1,4 @@
-import { GetCourse } from '@/app/types'
+import { UICourse } from '@/app/types'
 import { User } from '@prisma/client'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { toggleLessonCompleted } from '../utils'
@@ -8,12 +8,12 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: '/api' }),
   tagTypes: ['Course', 'User'],
   endpoints: (builder) => ({
-    getCourses: builder.query<GetCourse[], void>({
+    getCourses: builder.query<UICourse[], void>({
       query: () => 'courses',
       providesTags: ['Course'],
     }),
 
-    getCourseBySlug: builder.query<GetCourse, string>({
+    getCourseBySlug: builder.query<UICourse, string>({
       query: (slug) => `course/${slug}`,
       providesTags: ['Course'],
     }),

@@ -19,12 +19,15 @@ export const GET = async (
     return new Response('Payment Required', { status: 402 })
   }
 
-  const filename = asset.filename
+  const Key = asset.url.replace(`s3://${process.env.AWS_BUCKET_NAME}/`, '')
+  console.log(asset.url, Key)
 
   const getObjectParams = {
     Bucket: `${process.env.AWS_BUCKET_NAME}`,
-    Key: `Apostilas/${filename}`,
+    Key,
   }
+
+  const filename = Key.replace(/.*\//gm, '')
 
   const s3Client = new S3Client()
   const { Body } = await s3Client.send(new GetObjectCommand(getObjectParams))

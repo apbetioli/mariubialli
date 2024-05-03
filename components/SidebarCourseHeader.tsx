@@ -18,8 +18,8 @@ export const SidebarCourseHeader = ({
     <p className="mb-1">Progresso {course.progress}%</p>
     <Progress className="mb-2" value={course.progress} />
 
-    {course.asset && (
-      <Link href={`/course/${course.slug}/asset`}>
+    {course.assets.length > 0 && (
+      <Link href={`/course/${course.slug}/assets`}>
         <Button variant="secondary" className="my-1 w-full">
           <DownloadIcon />
           Moldes

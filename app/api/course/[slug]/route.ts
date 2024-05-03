@@ -5,12 +5,16 @@ export const GET = async (
   request: Request,
   { params }: { params: { slug: string } },
 ) => {
-  const courses = await prisma.course.findFirstOrThrow({
+  const courses = await prisma.course.findUniqueOrThrow({
     where: {
       slug: params.slug,
     },
     include: {
-      asset: true,
+      assets: {
+        omit: {
+          url: true,
+        },
+      },
       groups: {
         include: {
           lessons: true,

@@ -1,8 +1,8 @@
-import { Asset } from '@prisma/client'
+import { UIAsset } from '@/app/types'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 type CartSlice = {
-  list: Asset[]
+  list: UIAsset[]
 }
 
 const initialState: CartSlice = {
@@ -13,10 +13,10 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<Asset>) => {
+    addToCart: (state, action: PayloadAction<UIAsset>) => {
       state.list.push(action.payload)
     },
-    removeFromCart: (state, action: PayloadAction<Asset>) => {
+    removeFromCart: (state, action: PayloadAction<UIAsset>) => {
       state.list = state.list.filter((asset) => asset.id !== action.payload.id)
     },
     clearCart: (state, action) => {

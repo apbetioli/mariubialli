@@ -1,4 +1,4 @@
-import { CourseWithUserDetails, DraftUser, GetCourse } from '@/app/types'
+import { CourseWithUserDetails, DraftUser, UICourse } from '@/app/types'
 import { ClassValue, clsx } from 'clsx'
 
 import { twMerge } from 'tailwind-merge'
@@ -23,7 +23,7 @@ export function toggleLessonCompleted(
 }
 
 export function enhanceCourseWithUserDetails(
-  course: GetCourse,
+  course: UICourse,
   user: DraftUser,
 ): CourseWithUserDetails {
   const lessons = course.groups.map((group) => group.lessons).flat() || []

@@ -3,9 +3,13 @@ import { Course, Lesson, Prisma } from '@prisma/client'
 export type DraftUser = Partial<User> &
   Pick<User, 'completedLessonIds' | 'paidAssetIds'>
 
-export type GetCourse = Prisma.CourseGetPayload<{
+export type UICourse = Prisma.CourseGetPayload<{
   include: {
-    asset: true
+    assets: {
+      omit: {
+        url: true
+      }
+    }
     groups: {
       include: {
         lessons: true
@@ -14,7 +18,9 @@ export type GetCourse = Prisma.CourseGetPayload<{
   }
 }>
 
-export type CourseWithUserDetails = GetCourse & {
+export type CourseWithUserDetails = UICourse & {
   progress: number
   nextLesson: Lesson
 }
+
+export type UIAsset = Omit<Asset, 'url'>

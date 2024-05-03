@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["omitApi"]
 }
 
 datasource db {
@@ -28,9 +29,8 @@ model Course {
   description String
   image       String
   groups      Group[]
-
-  asset   Asset?  @relation(fields: [assetId], references: [id])
-  assetId String? @db.ObjectId
+  published   Boolean   @default(false)
+  assets      Asset[]
 }
 
 model Group {
@@ -53,12 +53,14 @@ model Lesson {
 }
 
 model Asset {
-  id          String @id @default(auto()) @map("_id") @db.ObjectId
-  name        String
-  description String
-  image       String
-  price       Float
-  filename    String
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  description  String
+  image        String
+  price        Float
+  anchor_price Float?
+  url          String
 
-  Course Course[]
+  Course   Course? @relation(fields: [courseId], references: [id])
+  courseId String? @db.ObjectId
 }
