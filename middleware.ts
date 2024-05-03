@@ -7,6 +7,7 @@ export default authMiddleware({
     '/termos-de-servico',
     '/api/course/(.*)',
     '/api/courses',
+    '/api/user',
   ],
 })
 

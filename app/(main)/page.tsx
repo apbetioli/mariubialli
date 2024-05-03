@@ -11,13 +11,33 @@ import {
 } from '@/components/ui/card'
 import { CardMedia } from '@/components/ui/card-media'
 import { Progress } from '@/components/ui/progress'
-import { useCourses } from '@/lib/hooks'
+import { useAppDispatch, useCourses } from '@/lib/hooks'
 import { DownloadIcon, PlayIcon } from 'lucide-react'
 import Link from 'next/link'
 import LoadingPage from '../loading'
+import { useAuth } from '@clerk/nextjs'
+import { useEffect } from 'react'
+import { apiSlice } from '@/lib/features/apiSlice'
 
 export default function HomePage() {
   const { courses, isLoading, isError, error } = useCourses()
+
+  const dispatch = useAppDispatch()
+  const { isSignedIn } = useAuth()
+
+  useEffect(() => {
+    if (!isSignedIn) {
+      // On logout clear the user data
+      dispatch(
+        apiSlice.util.updateQueryData('getUser', undefined, (draft) => {
+          Object.assign(draft, {
+            completedLessonIds: [],
+            paidAssetIds: [],
+          })
+        }),
+      )
+    }
+  }, [isSignedIn, dispatch])
 
   if (isLoading) return <LoadingPage />
   if (isError) throw error
@@ -26,7 +46,7 @@ export default function HomePage() {
     <div className="w-full max-w-5xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 h-fit">
         {courses.map((course) => (
-          <Card key={course.id}>
+          <Card key={course.id} className="bg-primary-foreground/50 shadow-md">
             <CardMedia src={course.image} alt={course.name} />
             <CardHeader>
               <CardTitle>{course.name}</CardTitle>
@@ -60,7 +80,7 @@ export default function HomePage() {
                 </Link>
               )}
             </CardFooter>
-            <Progress value={course.progress} className="h-1" />
+            <Progress value={course.progress} className="h-2" />
           </Card>
         ))}
       </div>

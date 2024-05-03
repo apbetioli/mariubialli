@@ -1,4 +1,4 @@
-import { CourseWithUserDetails, DraftUser, GetCourse } from '@/app/types'
+import { DraftUser } from '@/app/types'
 import { useMemo } from 'react'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import {
@@ -8,6 +8,7 @@ import {
   useToggleLessonCompletedMutation,
 } from './features/apiSlice'
 import type { AppDispatch, RootState } from './store'
+import { enhanceCourseWithUserDetails } from './utils'
 
 export const useAppDispatch: () => AppDispatch = useDispatch
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
@@ -26,7 +27,7 @@ export const useCourses = () => {
   const user = useUser()
   const { data = [], ...query } = useGetCoursesQuery()
   const courses = useMemo(
-    () => data.map((course) => addUserDetails(course, user)),
+    () => data.map((course) => enhanceCourseWithUserDetails(course, user)),
     [data, user],
   )
   return { courses, ...query }
@@ -35,31 +36,11 @@ export const useCourses = () => {
 export const useCourse = (slug: string) => {
   const user = useUser()
   const { data, ...query } = useGetCourseBySlugQuery(slug)
-  const course = useMemo(() => data && addUserDetails(data, user), [data, user])
-  return { course, ...query }
-}
-
-function addUserDetails(
-  course: GetCourse,
-  user: DraftUser,
-): CourseWithUserDetails {
-  const lessons = course.groups.map((group) => group.lessons).flat() || []
-
-  const completedLessons = lessons.filter((lesson) =>
-    user.completedLessonIds.includes(lesson.id),
+  const course = useMemo(
+    () => data && enhanceCourseWithUserDetails(data, user),
+    [data, user],
   )
-
-  const progress = Math.round((completedLessons.length / lessons.length) * 100)
-
-  const nextLesson =
-    lessons.find((lesson) => !user.completedLessonIds.includes(lesson.id)) ||
-    lessons[0]
-
-  return {
-    ...course,
-    progress,
-    nextLesson,
-  }
+  return { course, ...query }
 }
 
 export const useMarkAsCompleted = () => {
