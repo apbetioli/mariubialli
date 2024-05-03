@@ -21,12 +21,13 @@ export const SidebarLesson = ({
   const user = useUser()
   const completedCheckboxId = useId()
   const markAsCompleted = useMarkAsCompleted()
+  const isCompleted = user.completedLessonIds.includes(lesson.id)
 
   return (
     <div className="gap-2 border-b w-full h-16 flex items-center">
       <Checkbox
         id={completedCheckboxId}
-        checked={user.completedLessonIds.includes(lesson.id)}
+        checked={isCompleted}
         onCheckedChange={(checked) =>
           markAsCompleted(lesson.id, Boolean(checked))
         }

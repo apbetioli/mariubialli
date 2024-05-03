@@ -10,21 +10,17 @@ import {
   CardDescription,
   CardTitle,
 } from '@/components/ui/card'
-import { buyAsset } from '@/lib/features/userSlice'
 import { useCourse, useUser } from '@/lib/hooks'
 
 import { DownloadIcon, ShoppingCartIcon } from 'lucide-react'
 import Link from 'next/link'
 import { notFound, useParams } from 'next/navigation'
 import toast from 'react-hot-toast'
-import { useDispatch } from 'react-redux'
 
 const AssetPage = () => {
   const { courseId } = useParams<{ courseId: string }>()
 
-  const dispatch = useDispatch()
   const user = useUser()
-
   const { course, isLoading, isError, error } = useCourse(courseId)
 
   if (isLoading) return <LoadingPage />
@@ -38,7 +34,7 @@ const AssetPage = () => {
   const userHasPaidForIt = user.paidAssetIds.includes(asset.id)
 
   const buy = () => {
-    dispatch(buyAsset(asset))
+    // TODO implement it
     toast.success('Compra realizada com sucesso!')
   }
 

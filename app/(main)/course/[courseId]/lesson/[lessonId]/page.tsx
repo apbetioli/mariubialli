@@ -18,6 +18,7 @@ const LessonPage = () => {
 
   const user = useUser()
   const completedCheckboxId = useId()
+
   const markAsCompleted = useMarkAsCompleted()
 
   const { course, isLoading, isError, error } = useCourse(courseId)

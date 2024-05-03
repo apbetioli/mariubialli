@@ -1,21 +1,30 @@
 import { CourseWithUserDetails, DraftUser, GetCourse } from '@/app/types'
 import { useMemo } from 'react'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
-import { useGetCourseByIdQuery, useGetCoursesQuery } from './features/apiSlice'
-import { toggleCompletedLesson } from './features/userSlice'
+import {
+  useGetCourseByIdQuery,
+  useGetCoursesQuery,
+  useGetUserQuery,
+  useToggleLessonCompletedMutation,
+} from './features/apiSlice'
 import type { AppDispatch, RootState } from './store'
-import { findByIdOrSlug } from './utils'
 
 export const useAppDispatch: () => AppDispatch = useDispatch
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
-export const useUser = () => useAppSelector((state) => state.user.user)
+export const useUser = () => {
+  const {
+    data = {
+      completedLessonIds: [],
+      paidAssetIds: [],
+    } as DraftUser,
+  } = useGetUserQuery()
+  return data
+}
 
 export const useCourses = () => {
   const user = useUser()
-  const stateCourses = useAppSelector((state) => state.courses.entities)
-  const query = useGetCoursesQuery()
-  const { data = stateCourses } = query
+  const { data = [], ...query } = useGetCoursesQuery()
   const courses = useMemo(
     () => data.map((course) => addUserDetails(course, user)),
     [data, user],
@@ -25,10 +34,7 @@ export const useCourses = () => {
 
 export const useCourse = (idOrSlug: string) => {
   const user = useUser()
-  const stateCourses = useAppSelector((state) => state.courses.entities)
-  const rawCourse = stateCourses.find(findByIdOrSlug(idOrSlug))
-  const query = useGetCourseByIdQuery(idOrSlug)
-  const { data = rawCourse } = query
+  const { data, ...query } = useGetCourseByIdQuery(idOrSlug)
   const course = useMemo(() => data && addUserDetails(data, user), [data, user])
   return { course, ...query }
 }
@@ -57,13 +63,9 @@ function addUserDetails(
 }
 
 export const useMarkAsCompleted = () => {
-  const dispatch = useAppDispatch()
-  return (lessonId: string, checked: boolean) => {
-    dispatch(
-      toggleCompletedLesson({
-        id: lessonId,
-        completed: checked,
-      }),
-    )
+  const [toggleCompleted] = useToggleLessonCompletedMutation()
+
+  return (id: string, completed: boolean) => {
+    return toggleCompleted({ id, completed })
   }
 }

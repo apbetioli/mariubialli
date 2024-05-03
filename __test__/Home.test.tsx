@@ -29,5 +29,5 @@ vi.mock('next/font/google', () => {
 
 test(`Home`, () => {
   render(HomePage())
-  expect(screen.getByText('MariUbialli')).toBeTruthy()
+  expect(screen.getByText('Cursos')).toBeTruthy()
 })
