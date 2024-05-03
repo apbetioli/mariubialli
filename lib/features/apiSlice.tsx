@@ -32,7 +32,6 @@ export const apiSlice = createApi({
         method: 'PATCH',
         body: { completed },
       }),
-      invalidatesTags: ['User'],
 
       // Optimistic update
       async onQueryStarted({ id, completed }, { dispatch, queryFulfilled }) {
