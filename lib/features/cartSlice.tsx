@@ -1,16 +1,31 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { Asset } from '@prisma/client'
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-type CartSlice = {}
+type CartSlice = {
+  list: Asset[]
+}
 
-const initialState: CartSlice = {}
+const initialState: CartSlice = {
+  list: [],
+}
 
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
-  reducers: {},
+  reducers: {
+    addToCart: (state, action: PayloadAction<Asset>) => {
+      state.list.push(action.payload)
+    },
+    removeFromCart: (state, action: PayloadAction<Asset>) => {
+      state.list = state.list.filter((asset) => asset.id !== action.payload.id)
+    },
+    clearCart: (state, action) => {
+      state.list = []
+    },
+  },
 })
 
 export const cartReducer = cartSlice.reducer
-export const {} = cartSlice.actions
+export const { addToCart, removeFromCart, clearCart } = cartSlice.actions
 
 export default cartSlice

@@ -10,7 +10,8 @@ import {
   CardDescription,
   CardTitle,
 } from '@/components/ui/card'
-import { useCourse, useUser } from '@/lib/hooks'
+import { addToCart } from '@/lib/features/cartSlice'
+import { useAppDispatch, useCourse, useUser } from '@/lib/hooks'
 
 import { DownloadIcon, ShoppingCartIcon } from 'lucide-react'
 import Link from 'next/link'
@@ -18,6 +19,7 @@ import { notFound, useParams } from 'next/navigation'
 import toast from 'react-hot-toast'
 
 const AssetPage = () => {
+  const dispatch = useAppDispatch()
   const { courseSlug } = useParams<{ courseSlug: string }>()
 
   const user = useUser()
@@ -33,9 +35,9 @@ const AssetPage = () => {
 
   const userHasPaidForIt = user.paidAssetIds.includes(asset.id)
 
-  const buy = () => {
-    // TODO implement it
-    toast.success('Compra realizada com sucesso!')
+  const buyAsset = () => {
+    dispatch(addToCart(asset))
+    toast.success('Produto adicionado ao carrinho!')
   }
 
   return (
@@ -63,7 +65,11 @@ const AssetPage = () => {
                     R$ {new Intl.NumberFormat('pt-BR').format(asset.price)}
                   </span>
 
-                  <Button className="w-full" size="lg" onClick={() => buy()}>
+                  <Button
+                    className="w-full"
+                    size="lg"
+                    onClick={() => buyAsset()}
+                  >
                     <ShoppingCartIcon />
                     Comprar
                   </Button>
