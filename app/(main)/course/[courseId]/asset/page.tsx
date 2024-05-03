@@ -19,22 +19,22 @@ import toast from 'react-hot-toast'
 import { useDispatch } from 'react-redux'
 
 const AssetPage = () => {
+  const { courseId } = useParams<{ courseId: string }>()
+
   const dispatch = useDispatch()
   const user = useUser()
-  const { courseId } = useParams<{ courseId: string }>()
-  const course = useCourse(courseId)
 
-  if (!course) {
-    return <LoadingPage />
-  }
+  const { course, isLoading, isError, error } = useCourse(courseId)
+
+  if (isLoading) return <LoadingPage />
+  if (isError) throw error
+  if (!course) notFound()
 
   const { asset } = course
 
-  if (!asset) {
-    notFound()
-  }
+  if (!asset) notFound()
 
-  const isPaid = user.paidAssetIds.includes(asset.id)
+  const userHasPaidForIt = user.paidAssetIds.includes(asset.id)
 
   const buy = () => {
     dispatch(buyAsset(asset))
@@ -57,7 +57,7 @@ const AssetPage = () => {
               {asset.description}
             </CardDescription>
 
-            {asset.price > 0 && !isPaid ? (
+            {asset.price > 0 && !userHasPaidForIt ? (
               <>
                 <span className="text-xl font-bold text-gray-700 dark:text-gray-200 md:text-3xl">
                   R$ {new Intl.NumberFormat('pt-BR').format(asset.price)}

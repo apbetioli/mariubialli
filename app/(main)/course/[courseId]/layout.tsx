@@ -6,8 +6,7 @@ import { SidebarGroup } from '@/components/SidebarGroup'
 import { SidebarLesson } from '@/components/SidebarLesson'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
-import { useGetCourseByIdQuery } from '@/lib/features/apiSlice'
-import { useCourseDetails } from '@/lib/hooks'
+import { useCourse } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
 import { DownloadIcon } from 'lucide-react'
 import Link from 'next/link'
@@ -18,13 +17,11 @@ const CourseLayout = ({ children }: { children: ReactNode }) => {
   const { courseId } = useParams<{ courseId: string }>()
   const { lessonId } = useParams<{ lessonId: string }>()
 
-  const { isLoading } = useGetCourseByIdQuery(courseId)
-  const { course, progress } = useCourseDetails(courseId)
+  const { course, isLoading, isError, error } = useCourse(courseId)
 
-  if (!course) {
-    if (isLoading) return <LoadingPage />
-    else notFound()
-  }
+  if (isLoading) return <LoadingPage />
+  if (isError) throw error
+  if (!course) notFound()
 
   const CourseHeader = ({ className }: { className?: string }) => (
     <div className={cn('p-4 bg-slate-500 text-white', className)}>
@@ -32,8 +29,8 @@ const CourseLayout = ({ children }: { children: ReactNode }) => {
         {course.name}
       </h2>
 
-      <p className="mb-1">Progresso {progress}%</p>
-      <Progress value={progress} />
+      <p className="mb-1">Progresso {course.progress}%</p>
+      <Progress value={course.progress} />
 
       {course.asset && lessonId && (
         <Link href={`/course/${course.slug}/asset`}>

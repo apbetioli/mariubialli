@@ -28,7 +28,7 @@ const coursesSlice = createSlice({
           (course) => course.id === action.payload.id,
         )
         if (index < 0) state.entities.push(action.payload)
-        else state.entities.splice(index, 1, action.payload)
+        else state.entities[index] = action.payload
       },
     )
   },

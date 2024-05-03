@@ -1,62 +1,58 @@
-import { GetCourse } from '@/app/types'
-import { Course, Lesson } from '@prisma/client'
-import { notFound } from 'next/navigation'
+import { CourseWithUserDetails, DraftUser, GetCourse } from '@/app/types'
+import { useMemo } from 'react'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
+import { useGetCourseByIdQuery, useGetCoursesQuery } from './features/apiSlice'
 import { toggleCompletedLesson } from './features/userSlice'
 import type { AppDispatch, RootState } from './store'
+import { findByIdOrSlug } from './utils'
 
 export const useAppDispatch: () => AppDispatch = useDispatch
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
 export const useUser = () => useAppSelector((state) => state.user.user)
 
-const findByIdOrSlug = (idOrSlug: string) => (entity: Course | Lesson) =>
-  entity.id === idOrSlug || entity.slug === idOrSlug
-
-export const useCourse = (idOrSlug: string) =>
-  useAppSelector((state) =>
-    state.courses.entities.find(findByIdOrSlug(idOrSlug)),
-  )
-
-export const useCourseDetails = (id: string) => {
+export const useCourses = () => {
   const user = useUser()
-  const course = useCourse(id)
+  const stateCourses = useAppSelector((state) => state.courses.entities)
+  const query = useGetCoursesQuery()
+  const { data = stateCourses } = query
+  const courses = useMemo(
+    () => data.map((course) => addUserDetails(course, user)),
+    [data, user],
+  )
+  return { courses, ...query }
+}
 
-  const lessons = course?.groups.map((group) => group.lessons).flat() || []
+export const useCourse = (idOrSlug: string) => {
+  const user = useUser()
+  const stateCourses = useAppSelector((state) => state.courses.entities)
+  const rawCourse = stateCourses.find(findByIdOrSlug(idOrSlug))
+  const query = useGetCourseByIdQuery(idOrSlug)
+  const { data = rawCourse } = query
+  const course = useMemo(() => data && addUserDetails(data, user), [data, user])
+  return { course, ...query }
+}
+
+function addUserDetails(
+  course: GetCourse,
+  user: DraftUser,
+): CourseWithUserDetails {
+  const lessons = course.groups.map((group) => group.lessons).flat() || []
+
   const completedLessons = lessons.filter((lesson) =>
     user.completedLessonIds.includes(lesson.id),
   )
 
-  const progress =
-    lessons.length === 0
-      ? 0
-      : Math.round((completedLessons.length / lessons.length) * 100)
+  const progress = Math.round((completedLessons.length / lessons.length) * 100)
 
   const nextLesson =
-    lessons.length === 0
-      ? null
-      : lessons.find(
-          (lesson) => !user.completedLessonIds.includes(lesson.id),
-        ) || lessons[0]
-
-  return { course, progress, nextLesson }
-}
-
-export const useLessonDetails = (course: GetCourse, idOrSlug: string) => {
-  const user = useUser()
-  const lessons = course.groups.map((group) => group.lessons).flat()
-  const lessonIndex = lessons.findIndex(findByIdOrSlug(idOrSlug))
-  const lesson = lessons[lessonIndex]
-
-  const isCompleted = user.completedLessonIds.includes(lesson?.id)
-  const isLastLesson = lessonIndex + 1 == lessons.length
-  const nextLesson = isLastLesson ? lessons[0] : lessons[lessonIndex + 1]
+    lessons.find((lesson) => !user.completedLessonIds.includes(lesson.id)) ||
+    lessons[0]
 
   return {
-    lesson,
-    isCompleted,
+    ...course,
+    progress,
     nextLesson,
-    isLastLesson,
   }
 }
 
@@ -71,6 +67,3 @@ export const useMarkAsCompleted = () => {
     )
   }
 }
-
-export const useCourses = () =>
-  useAppSelector((state) => state.courses.entities)

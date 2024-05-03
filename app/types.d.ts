@@ -1,4 +1,7 @@
-import { Course, Prisma } from '@prisma/client'
+import { Course, Lesson, Prisma } from '@prisma/client'
+
+export type DraftUser = Partial<User> &
+  Pick<User, 'completedLessonIds' | 'paidAssetIds'>
 
 export type GetCourse = Prisma.CourseGetPayload<{
   include: {
@@ -10,3 +13,8 @@ export type GetCourse = Prisma.CourseGetPayload<{
     }
   }
 }>
+
+export type CourseWithUserDetails = GetCourse & {
+  progress: number
+  nextLesson: Lesson
+}

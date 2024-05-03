@@ -1,35 +1,39 @@
 'use client'
 
+import LoadingPage from '@/app/loading'
 import Video from '@/components/Video'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
-import { toggleCompletedLesson } from '@/lib/features/userSlice'
-import {
-  useAppDispatch,
-  useCourse,
-  useLessonDetails,
-  useMarkAsCompleted,
-} from '@/lib/hooks'
+import { useCourse, useMarkAsCompleted, useUser } from '@/lib/hooks'
+import { findByIdOrSlug } from '@/lib/utils'
 import { ArrowRightIcon } from 'lucide-react'
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
+import { notFound, useParams } from 'next/navigation'
 import { useId } from 'react'
 
 const LessonPage = () => {
   const { courseId } = useParams<{ courseId: string }>()
   const { lessonId } = useParams<{ lessonId: string }>()
 
+  const user = useUser()
   const completedCheckboxId = useId()
   const markAsCompleted = useMarkAsCompleted()
 
-  const course = useCourse(courseId)!
+  const { course, isLoading, isError, error } = useCourse(courseId)
 
-  const {
-    lesson: activeLesson,
-    nextLesson,
-    isLastLesson,
-    isCompleted,
-  } = useLessonDetails(course, lessonId)
+  if (isLoading) return <LoadingPage />
+  if (isError) throw error
+  if (!course) notFound()
+
+  const lessons = course.groups.map((group) => group.lessons).flat()
+  const lessonIndex = lessons.findIndex(findByIdOrSlug(lessonId))
+
+  if (lessonIndex < 0) notFound()
+
+  const activeLesson = lessons[lessonIndex]
+  const isCompleted = user.completedLessonIds.includes(activeLesson.id)
+  const isLastLesson = lessonIndex + 1 == lessons.length
+  const nextLesson = isLastLesson ? lessons[0] : lessons[lessonIndex + 1]
 
   return (
     <main className="flex flex-col w-full items-center justify-center bg-black">

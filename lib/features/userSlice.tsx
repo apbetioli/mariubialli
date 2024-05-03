@@ -1,8 +1,9 @@
+import { DraftUser } from '@/app/types'
 import { Asset, Lesson, User } from '@prisma/client'
-import { PayloadAction, createSlice, nanoid } from '@reduxjs/toolkit'
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 type UserState = {
-  user: Partial<User> & Pick<User, 'completedLessonIds' | 'paidAssetIds'>
+  user: DraftUser
 }
 
 const initialState: UserState = {
