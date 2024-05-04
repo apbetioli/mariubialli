@@ -6,7 +6,7 @@ import { GithubIcon } from './ui/icons'
 export default function Footer() {
   const footerLinks = [
     { href: 'mailto:contato@mariubialli.com.br', label: 'Contato' },
-    { href: '/termos-de-servico', label: 'Termos de serviço' },
+    { href: '/termos-de-uso', label: 'Termos de serviço' },
     { href: '/politica-de-privacidade', label: 'Política de privacidade' },
     { href: 'https://github.com/apbetioli/mariubialli', label: <GithubIcon /> },
   ]

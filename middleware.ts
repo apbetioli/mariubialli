@@ -4,7 +4,7 @@ export default authMiddleware({
   publicRoutes: [
     '/',
     '/politica-de-privacidade',
-    '/termos-de-servico',
+    '/termos-de-uso',
     '/api/course/(.*)',
     '/api/courses',
     '/api/user',
