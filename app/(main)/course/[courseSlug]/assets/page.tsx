@@ -50,13 +50,13 @@ const AssetPage = () => {
       <Sidebar course={course} />
 
       <div className="flex flex-col w-full">
-        <div className="max-w-4xl flex flex-col m-auto gap-4">
+        <div className="max-w-4xl flex flex-col m-auto gap-4 p-4">
           {assets.map((asset) => (
-            <Card key={asset.id} className="flex-row shadow-md">
+            <Card key={asset.id} className="flex-col md:flex-row shadow-md">
               <AssetImage
                 src={asset.image}
                 alt={asset.name}
-                className="inline-flex shrink-0"
+                className="inline-flex shrink-0 m-auto"
               />
 
               <CardContent className="flex flex-col gap-3 p-8">
