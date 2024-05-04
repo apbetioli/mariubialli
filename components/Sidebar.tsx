@@ -12,7 +12,7 @@ export const Sidebar = ({
   lessonSlug?: string
 }) => {
   return (
-    <aside className="flex flex-col md:w-96 border-r md:shrink-0 overflow-auto">
+    <aside className="flex flex-col md:w-96 border-r md:shrink-0 overflow-auto bg-white">
       <SidebarCourseHeader course={course} className="hidden md:block" />
       <ScrollArea>
         <div className="pb-12">

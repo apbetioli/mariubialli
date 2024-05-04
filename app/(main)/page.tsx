@@ -43,10 +43,10 @@ export default function HomePage() {
   if (isError) throw error
 
   return (
-    <div className="w-full container">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-8 h-fit">
+    <div className="w-full md:container pb-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-4 h-fit">
         {courses.map((course) => (
-          <Card key={course.id} className="bg-primary-foreground shadow-md">
+          <Card key={course.id} className="shadow-md">
             <CardMedia src={course.image} alt={course.name} />
             <CardHeader>
               <CardTitle>{course.name}</CardTitle>
@@ -54,12 +54,15 @@ export default function HomePage() {
             <CardContent className="grow">
               <CardDescription>{course.description}</CardDescription>
             </CardContent>
-            <CardFooter className="flex flex-col sm:flex-row gap-4">
+            <CardFooter className="flex flex-col lg:flex-row gap-4">
               <Link
                 href={`/course/${course.slug}`}
-                className="w-full sm:w-auto"
+                className="w-full lg:w-auto"
               >
-                <Button className="w-full sm:w-auto">
+                <Button
+                  className="w-full lg:w-auto"
+                  variant={course.progress < 100 ? 'default' : 'outline'}
+                >
                   <PlayIcon />
                   {course.progress === 0 && 'Assistir'}
                   {course.progress > 0 &&
@@ -71,9 +74,9 @@ export default function HomePage() {
               {course.assets.length > 0 && (
                 <Link
                   href={`/course/${course.slug}/assets`}
-                  className="w-full sm:w-auto"
+                  className="w-full lg:w-auto"
                 >
-                  <Button variant="outline" className="w-full sm:w-auto">
+                  <Button variant="outline" className="w-full lg:w-auto">
                     <DownloadIcon />
                     Moldes
                   </Button>

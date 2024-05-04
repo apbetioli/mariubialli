@@ -45,7 +45,9 @@ export default function RootLayout({
         }}
       >
         <StoreProvider>
-          <body className={`${inter.className} min-h-screen flex flex-col`}>
+          <body
+            className={`${inter.className} min-h-screen flex flex-col bg-primary-foreground/50`}
+          >
             <Toaster />
             <Header />
             <main className="flex min-h-full w-full grow">{children}</main>

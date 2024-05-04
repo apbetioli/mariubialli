@@ -52,10 +52,7 @@ const AssetPage = () => {
       <div className="flex flex-col w-full">
         <div className="max-w-4xl flex flex-col m-auto gap-4">
           {assets.map((asset) => (
-            <Card
-              key={asset.id}
-              className="flex-row shadow-md bg-primary-foreground"
-            >
+            <Card key={asset.id} className="flex-row shadow-md">
               <AssetImage
                 src={asset.image}
                 alt={asset.name}
