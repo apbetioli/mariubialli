@@ -1,3 +1,5 @@
+'use client'
+
 import { Button } from '@/components/ui/button'
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import Link from 'next/link'
@@ -5,6 +7,7 @@ import { HeaderLinks } from './HeaderLinks'
 import { Logo } from './Logo'
 import { MobileMenu } from './MobileMenu'
 import { GithubIcon } from './ui/icons'
+import { useState } from 'react'
 
 export default function Header() {
   const links = [
@@ -20,17 +23,24 @@ export default function Header() {
     { href: 'https://github.com/apbetioli/mariubialli', label: <GithubIcon /> },
   ]
 
+  const [menuOpen, setMenuOpen] = useState(false)
+
   return (
     <div>
       <nav className="fixed flex h-12 w-full items-center border-b border-gray-200 shrink-0 px-4 z-10 text-primary shadow-md bg-primary-foreground">
-        <MobileMenu>
-          <Logo />
+        <MobileMenu open={menuOpen} onOpenChange={setMenuOpen}>
+          <Logo onClick={() => setMenuOpen(false)} />
           <hr className="mt-6" />
-          <HeaderLinks links={links} className="flex flex-col gap-8 py-8" />
+          <HeaderLinks
+            links={links}
+            className="flex flex-col gap-8 py-8"
+            onClick={() => setMenuOpen(false)}
+          />
           <hr />
           <HeaderLinks
             links={mobileLinks}
             className="flex flex-col gap-8 py-8"
+            onClick={() => setMenuOpen(false)}
           />
         </MobileMenu>
 

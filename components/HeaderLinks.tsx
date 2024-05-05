@@ -13,9 +13,11 @@ type LinkProps = {
 export function HeaderLinks({
   className,
   links,
+  onClick,
 }: {
   className?: string
   links: LinkProps[]
+  onClick?: () => void
 }) {
   const pathname = usePathname()
 
@@ -33,6 +35,7 @@ export function HeaderLinks({
                 underline: pathname === link.href,
               },
             )}
+            onClick={onClick}
           >
             {link.label}
           </Link>
