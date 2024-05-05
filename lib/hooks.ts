@@ -6,9 +6,9 @@ import {
   useGetCoursesQuery,
   useGetUserQuery,
   useToggleLessonCompletedMutation,
-} from './features/apiSlice'
-import type { AppDispatch, RootState } from './store'
-import { enhanceCourseWithUserDetails } from './utils'
+} from '@/lib/features/apiSlice'
+import type { AppDispatch, RootState } from '@/lib/store'
+import { enhanceCourseWithUserDetails } from '@/lib/utils'
 
 export const useAppDispatch: () => AppDispatch = useDispatch
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
