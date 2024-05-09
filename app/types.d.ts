@@ -24,3 +24,9 @@ export type CourseWithUserDetails = UICourse & {
 }
 
 export type UIAsset = Omit<Asset, 'url'>
+
+export type CheckoutRequest = {
+  assetId: string
+  priceId: string
+  redirect: string
+}

@@ -20,7 +20,6 @@ export const GET = async (
   }
 
   const Key = asset.url.replace(`s3://${process.env.AWS_BUCKET_NAME}/`, '')
-  console.log(asset.url, Key)
 
   const getObjectParams = {
     Bucket: `${process.env.AWS_BUCKET_NAME}`,

@@ -8,6 +8,7 @@ export default authMiddleware({
     '/api/course/(.*)',
     '/api/courses',
     '/api/user',
+    '/api/stripe/webhook',
   ],
 })
 
