@@ -64,3 +64,19 @@ model Asset {
   Course   Course? @relation(fields: [courseId], references: [id])
   courseId String? @db.ObjectId
 }
+
+model Event {
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt       DateTime  @default(now())
+  type            EventType
+  userId          String    @db.ObjectId
+  assetId         String?   @db.ObjectId
+  lessonId        String?   @db.ObjectId
+  stripeSessionId String?
+}
+
+enum EventType {
+  PAY
+  DOWNLOAD
+  WATCH
+}

@@ -61,7 +61,6 @@ const AssetPage = () => {
       },
       body: JSON.stringify({
         assetId: asset.id,
-        priceId: 'price_1PEWJ1HtZjx8TEfAFQhjRXP3',
         redirect: path,
       } satisfies CheckoutRequest),
     })

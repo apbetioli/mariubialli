@@ -1,4 +1,5 @@
 import { prisma } from '@/lib/server/db'
+import { EventType } from '@prisma/client'
 import Stripe from 'stripe'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
@@ -11,22 +12,9 @@ const corsHeaders = {
 }
 
 export const POST = async (request: Request) => {
-  const rawBody = await request.text()
-
-  let event: Stripe.Event
-
   try {
-    const stripeWebhookSecret = process.env.STRIPE_WEBHOOK_SECRET
-    if (!stripeWebhookSecret) {
-      throw new Error('STRIPE_WEBHOOK_SECRET not set')
-    }
-
-    const sig = request.headers.get('Stripe-Signature')
-    if (!sig) {
-      throw new Error('Stripe Signature missing')
-    }
-
-    event = stripe.webhooks.constructEvent(rawBody, sig, stripeWebhookSecret)
+    var event = await constructEvent(request)
+    console.log('Webhook received event:', event.type, event.id)
   } catch (error: any) {
     console.log(error)
     return new Response(`Webhook Error: ${error.message}`, {
@@ -35,11 +23,8 @@ export const POST = async (request: Request) => {
     })
   }
 
-  console.log('Webhook received event:', event.type, event.id)
-
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object
-    console.log(session)
     const assetId = session.metadata!['asset_id']
 
     const user = await prisma.user.findUniqueOrThrow({
@@ -47,14 +32,25 @@ export const POST = async (request: Request) => {
         email: session.customer_email!,
       },
     })
-    await prisma.user.update({
-      data: {
-        paidAssetIds: user.paidAssetIds.concat(assetId),
-      },
-      where: {
-        id: user.id,
-      },
-    })
+
+    await Promise.all([
+      prisma.user.update({
+        data: {
+          paidAssetIds: user.paidAssetIds.concat(assetId),
+        },
+        where: {
+          id: user.id,
+        },
+      }),
+      prisma.event.create({
+        data: {
+          userId: user.id,
+          type: EventType.PAY,
+          assetId,
+          stripeSessionId: session.id,
+        },
+      }),
+    ])
 
     console.log('✅ Success. User bougth asset:', user.email, assetId)
 
@@ -65,4 +61,20 @@ export const POST = async (request: Request) => {
     status: 200,
     headers: corsHeaders,
   })
+}
+
+async function constructEvent(request: Request) {
+  const rawBody = await request.text()
+
+  const stripeWebhookSecret = process.env.STRIPE_WEBHOOK_SECRET
+  if (!stripeWebhookSecret) {
+    throw new Error('STRIPE_WEBHOOK_SECRET not set')
+  }
+
+  const sig = request.headers.get('Stripe-Signature')
+  if (!sig) {
+    throw new Error('Stripe Signature missing')
+  }
+
+  return stripe.webhooks.constructEvent(rawBody, sig, stripeWebhookSecret)
 }

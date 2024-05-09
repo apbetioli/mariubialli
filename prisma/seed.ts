@@ -89,7 +89,7 @@ const courseData: Prisma.CourseCreateInput[] = [
     assets: {
       create: [
         {
-          name: 'Apostila de moldes',
+          name: 'Moldes - Pingentes de Natal',
           description:
             'Nessa apostila eu vou te ensinar a fazer 8 pingentes lindos para decorar a sua árvore de natal. Vamos aprender a fazer uma estrela, um casal de duendes, um boneco de neve, uma biscoita, uma rena, um papai e uma mamãe noel.',
           image:
@@ -126,7 +126,7 @@ const courseData: Prisma.CourseCreateInput[] = [
     assets: {
       create: [
         {
-          name: 'Apostila de moldes',
+          name: 'Moldes - Jogo da Velha Dinossauros',
           description:
             'Faça comigo este lindo jogo da velha com tema de dinossauro. Este jogo é capaz de desenvolver várias habilidades nas crianças como raciocínio lógico, concentração, memória, motricidade e tato. Além de ser super atrativo visualmente para as crianças por ser super colorido e é claro, de dinos.',
           image:
@@ -163,7 +163,7 @@ const courseData: Prisma.CourseCreateInput[] = [
     assets: {
       create: [
         {
-          name: 'Apostila de moldes',
+          name: 'Moldes - Álbum Dia das Mães',
           description:
             'Apostila de moldes digital contendo todos os elementos necessários para criar o álbum em feltro com o tema dia das mães.',
           image:
@@ -200,7 +200,7 @@ const courseData: Prisma.CourseCreateInput[] = [
     assets: {
       create: [
         {
-          name: 'Apostila de moldes',
+          name: 'Moldes - Quadro Dia das Mães',
           description:
             'Apostila de moldes digital contendo todos os elementos necessários para criar o quadro em feltro com o tema dia das mães.',
           image:

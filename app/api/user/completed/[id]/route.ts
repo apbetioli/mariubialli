@@ -1,6 +1,7 @@
 import { getUserByClerkId } from '@/lib/server/auth'
 import { prisma } from '@/lib/server/db'
 import { toggleLessonCompleted } from '@/lib/utils'
+import { EventType } from '@prisma/client'
 import { NextResponse } from 'next/server'
 
 export const PATCH = async (
@@ -16,14 +17,23 @@ export const PATCH = async (
     completed,
   )
 
-  const updated = await prisma.user.update({
-    data: {
-      completedLessonIds,
-    },
-    where: {
-      id: user.id,
-    },
-  })
+  await Promise.all([
+    prisma.user.update({
+      data: {
+        completedLessonIds,
+      },
+      where: {
+        id: user.id,
+      },
+    }),
+    prisma.event.create({
+      data: {
+        userId: user.id,
+        type: EventType.WATCH,
+        lessonId: params.id,
+      },
+    }),
+  ])
 
-  return NextResponse.json(updated.completedLessonIds)
+  return NextResponse.json(completedLessonIds)
 }
