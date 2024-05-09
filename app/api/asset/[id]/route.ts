@@ -1,6 +1,7 @@
 import { getUserByClerkId } from '@/lib/server/auth'
 import { prisma } from '@/lib/server/db'
 import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3'
+import { EventType } from '@prisma/client'
 import { NextResponse } from 'next/server'
 
 export const GET = async (
@@ -18,6 +19,14 @@ export const GET = async (
   if (asset.price > 0 && !user.paidAssetIds.includes(asset.id)) {
     return new Response('Payment Required', { status: 402 })
   }
+
+  await prisma.event.create({
+    data: {
+      userId: user.id,
+      type: EventType.DOWNLOAD,
+      assetId: asset.id,
+    },
+  })
 
   const Key = asset.url.replace(`s3://${process.env.AWS_BUCKET_NAME}/`, '')
 
