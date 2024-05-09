@@ -1,7 +1,7 @@
 'use client'
 
 import LoadingPage from '@/app/loading'
-import { UIAsset } from '@/app/types'
+import { CheckoutRequest, UIAsset } from '@/app/types'
 import { AssetImage } from '@/components/AssetImage'
 import { Sidebar } from '@/components/Sidebar'
 import { Button } from '@/components/ui/button'
@@ -11,26 +11,38 @@ import {
   CardDescription,
   CardTitle,
 } from '@/components/ui/card'
-import { ScrollArea } from '@/components/ui/scroll-area'
-import { addToCart } from '@/lib/features/cartSlice'
-import { useAppDispatch, useCourse, useUser } from '@/lib/hooks'
-import { Asset } from '@prisma/client'
+import getStripe from '@/lib/get-stripe'
+import { useCourse, useUser } from '@/lib/hooks'
 
-import {
-  DownloadIcon,
-  ShoppingBasketIcon,
-  ShoppingCartIcon,
-} from 'lucide-react'
+import { DownloadIcon, ShoppingBasketIcon } from 'lucide-react'
 import Link from 'next/link'
-import { notFound, useParams } from 'next/navigation'
+import {
+  notFound,
+  useParams,
+  usePathname,
+  useRouter,
+  useSearchParams,
+} from 'next/navigation'
+import { useEffect } from 'react'
 import toast from 'react-hot-toast'
 
 const AssetPage = () => {
-  const dispatch = useAppDispatch()
   const { courseSlug } = useParams<{ courseSlug: string }>()
-
-  const user = useUser()
   const { course, isLoading, isError, error } = useCourse(courseSlug)
+  const user = useUser()
+  const path = usePathname()
+  const searchParams = useSearchParams()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (searchParams.get('success')) {
+      toast.success('Compra realizada com sucesso!')
+    }
+    if (searchParams.get('canceled')) {
+      toast.error('Compra cancelada!')
+    }
+    router.replace(path)
+  }, [path, router, searchParams])
 
   if (isLoading) return <LoadingPage />
   if (isError) throw error
@@ -40,9 +52,21 @@ const AssetPage = () => {
 
   if (!assets) notFound()
 
-  const buyAsset = (asset: UIAsset) => {
-    dispatch(addToCart(asset))
-    toast.success('Produto adicionado ao carrinho!')
+  const buyNow = async (asset: UIAsset) => {
+    const stripe = await getStripe()
+    const response = await fetch(`/api/checkout`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        assetId: asset.id,
+        priceId: 'price_1PEWJ1HtZjx8TEfAFQhjRXP3',
+        redirect: path,
+      } satisfies CheckoutRequest),
+    })
+    const session = await response.json()
+    await stripe?.redirectToCheckout({ sessionId: session.id })
   }
 
   return (
@@ -74,15 +98,7 @@ const AssetPage = () => {
                     <Button
                       className="w-full"
                       size="lg"
-                      onClick={() => buyAsset(asset)}
-                    >
-                      <ShoppingCartIcon />
-                      Adicionar ao carrinho
-                    </Button>
-                    <Button
-                      className="w-full"
-                      size="lg"
-                      onClick={() => buyAsset(asset)}
+                      onClick={() => buyNow(asset)}
                     >
                       <ShoppingBasketIcon />
                       Comprar agora
