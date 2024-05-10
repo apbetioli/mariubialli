@@ -14,6 +14,7 @@ The app and content are only available in Portuguese-BR, as the audience is from
 - [ ] WIP: Allow selling digital assets related to each course, integrated to Stripe
 - [ ] Have an admin area to create courses and lessons, upload digital assets, etc.
 - [ ] Have a dashboard with indicators like the number of active users, revenue, most watched courses, most downloaded assets
+- [ ] Build a landing page
 
 ## Screenshots
 
