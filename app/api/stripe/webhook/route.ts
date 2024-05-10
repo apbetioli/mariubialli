@@ -57,6 +57,10 @@ export const POST = async (request: Request) => {
     // TODO Send confirmation email
   }
 
+  if (event.type === 'checkout.session.expired') {
+    // TODO send an abandoned cart email
+  }
+
   return new Response('OK', {
     status: 200,
     headers: corsHeaders,

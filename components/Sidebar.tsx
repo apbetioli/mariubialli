@@ -3,16 +3,24 @@ import { SidebarCourseHeader } from './SidebarCourseHeader'
 import { SidebarGroup } from './SidebarGroup'
 import { SidebarLesson } from './SidebarLesson'
 import { ScrollArea } from './ui/scroll-area'
+import { cn } from '@/lib/utils'
 
 export const Sidebar = ({
   course,
   lessonSlug,
+  className,
 }: {
   course: CourseWithUserDetails
   lessonSlug?: string
+  className?: string
 }) => {
   return (
-    <aside className="flex flex-col md:w-96 border-r md:shrink-0 overflow-auto bg-white">
+    <aside
+      className={cn(
+        'flex flex-col md:w-96 border-r md:shrink-0 overflow-auto bg-white',
+        className,
+      )}
+    >
       <SidebarCourseHeader course={course} className="hidden md:block" />
       <ScrollArea>
         <div className="pb-12">
