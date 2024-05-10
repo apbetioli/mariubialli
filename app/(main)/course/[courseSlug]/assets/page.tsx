@@ -4,6 +4,7 @@ import LoadingPage from '@/app/loading'
 import { CheckoutRequest, UIAsset } from '@/app/types'
 import { AssetImage } from '@/components/AssetImage'
 import { Sidebar } from '@/components/Sidebar'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -14,7 +15,12 @@ import {
 import getStripe from '@/lib/get-stripe'
 import { useCourse, useUser } from '@/lib/hooks'
 
-import { DownloadIcon, ShoppingBasketIcon } from 'lucide-react'
+import {
+  ArrowLeftIcon,
+  DownloadIcon,
+  ShoppingBasketIcon,
+  TerminalIcon,
+} from 'lucide-react'
 import Link from 'next/link'
 import {
   notFound,
@@ -23,8 +29,7 @@ import {
   useRouter,
   useSearchParams,
 } from 'next/navigation'
-import { useEffect } from 'react'
-import toast from 'react-hot-toast'
+import { useEffect, useState } from 'react'
 
 const AssetPage = () => {
   const { courseSlug } = useParams<{ courseSlug: string }>()
@@ -33,13 +38,11 @@ const AssetPage = () => {
   const path = usePathname()
   const searchParams = useSearchParams()
   const router = useRouter()
+  const [success, setSuccess] = useState(false)
 
   useEffect(() => {
     if (searchParams.get('success')) {
-      toast.success('Compra realizada com sucesso!')
-    }
-    if (searchParams.get('canceled')) {
-      toast.error('Compra cancelada!')
+      setSuccess(true)
     }
     router.replace(path)
   }, [path, router, searchParams])
@@ -49,7 +52,6 @@ const AssetPage = () => {
   if (!course) notFound()
 
   const { assets } = course
-
   if (!assets) notFound()
 
   const buyNow = async (asset: UIAsset) => {
@@ -70,10 +72,29 @@ const AssetPage = () => {
 
   return (
     <>
-      <Sidebar course={course} />
+      <Sidebar course={course} className="hidden md:flex" />
 
       <div className="flex flex-col w-full">
         <div className="max-w-4xl flex flex-col m-auto gap-4 p-4">
+          <div>
+            <Button
+              variant="outline"
+              onClick={() => router.back()}
+              className="inline-flex md:hidden"
+            >
+              <ArrowLeftIcon />
+              Voltar
+            </Button>
+          </div>
+          {success && (
+            <Alert className="bg-green-100">
+              <TerminalIcon className="h-4 w-4" />
+              <AlertTitle>Compra realizada com sucesso!</AlertTitle>
+              <AlertDescription>
+                Faça o download clicando no botão abaixo
+              </AlertDescription>
+            </Alert>
+          )}
           {assets.map((asset) => (
             <Card key={asset.id} className="flex-col md:flex-row shadow-md">
               <AssetImage
