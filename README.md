@@ -1,6 +1,6 @@
 # [mariubialli.com.br](https://mariubialli.com.br)
 
-It used to be a fast site for capturing leads from marketing campaigns and selling online courses. The data was stored in a headless CMS, and the pages were statically generated (SSG) for optimal performance and SEO.
+It was a fast site for capturing leads from marketing campaigns and selling online courses. The data was stored in a headless CMS, and the pages were statically generated (SSG) for optimal performance and SEO.
 
 Now, it is being rewritten as a platform for watching online courses and selling digital assets (PDF).
 
@@ -11,10 +11,11 @@ The app and content are only available in Portuguese-BR, as the audience is from
 - [x] Allow users to watch courses with embedded YouTube videos
 - [x] Track user progress on watching lessons
 - [x] Allow users to download digital assets (PDF) related to each course.
-- [ ] WIP: Allow selling digital assets related to each course, integrated to Stripe
-- [ ] Have an admin area to create courses and lessons, upload digital assets, etc.
+- [x] Allow selling digital assets related to each course, integrated to Stripe
+- [ ] WIP: Have an admin area to create courses and lessons, upload digital assets, etc.
 - [ ] Have a dashboard with indicators like the number of active users, revenue, most watched courses, most downloaded assets
 - [ ] Build a landing page
+- [ ] Send email after purchase
 
 ## Screenshots
 
