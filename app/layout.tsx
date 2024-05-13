@@ -2,9 +2,9 @@ import './globals.css'
 
 import { ClerkProvider } from '@clerk/nextjs'
 
-import Footer from '@/components/Footer'
-import Header from '@/components/Header'
-import StoreProvider from '@/components/StoreProvider'
+import Footer from '@/components/footer'
+import Header from '@/components/header'
+import StoreProvider from '@/components/store-provider'
 import { ptBR } from '@clerk/localizations'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Metadata } from 'next'

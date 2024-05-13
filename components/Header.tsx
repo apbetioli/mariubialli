@@ -3,9 +3,9 @@
 import { Button } from '@/components/ui/button'
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import Link from 'next/link'
-import { HeaderLinks } from './HeaderLinks'
-import { Logo } from './Logo'
-import { MobileMenu } from './MobileMenu'
+import { HeaderLinks } from './header-links'
+import { Logo } from './logo'
+import { MobileMenu } from './mobile-menu'
 import { GithubIcon } from './ui/icons'
 import { useState } from 'react'
 

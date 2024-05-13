@@ -17,7 +17,7 @@ import Link from 'next/link'
 import LoadingPage from '../loading'
 import { useAuth } from '@clerk/nextjs'
 import { useEffect } from 'react'
-import { apiSlice } from '@/lib/features/apiSlice'
+import { apiSlice } from '@/lib/features/api-slice'
 
 export default function HomePage() {
   const { courses, isLoading, isError, error } = useCourses()
