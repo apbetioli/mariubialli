@@ -1,4 +1,3 @@
-import { UIAsset } from '@/app/types'
 import { describe, expect, it } from 'vitest'
 import { addToCart, cartReducer } from './cart-slice'
 
