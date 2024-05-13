@@ -14,7 +14,7 @@ export const apiSlice = createApi({
     }),
 
     getCourseBySlug: builder.query<UICourse, string>({
-      query: (slug) => `course/${slug}`,
+      query: (slug) => `courses/${slug}`,
       providesTags: ['Course'],
     }),
 

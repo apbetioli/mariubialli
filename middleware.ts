@@ -5,7 +5,7 @@ export default authMiddleware({
     '/',
     '/politica-de-privacidade',
     '/termos-de-uso',
-    '/api/course/(.*)',
+    '/api/courses/(.*)',
     '/api/courses',
     '/api/user',
     '/api/stripe/webhook',

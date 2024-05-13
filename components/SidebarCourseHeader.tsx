@@ -19,7 +19,7 @@ export const SidebarCourseHeader = ({
     <Progress className="mb-2 hidden md:inline-flex" value={course.progress} />
 
     {course.assets.length > 0 && (
-      <Link href={`/course/${course.slug}/assets`}>
+      <Link href={`/courses/${course.slug}/assets`}>
         <Button variant="secondary" className="my-1 w-full">
           <DownloadIcon />
           Moldes

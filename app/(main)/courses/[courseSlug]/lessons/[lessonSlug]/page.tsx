@@ -68,7 +68,7 @@ const LessonPage = () => {
               </Link>
             ) : (
               <Link
-                href={`/course/${courseSlug}/lesson/${nextLesson.slug}`}
+                href={`/courses/${courseSlug}/lessons/${nextLesson.slug}`}
                 className="w-full md:w-fit"
               >
                 <Button
