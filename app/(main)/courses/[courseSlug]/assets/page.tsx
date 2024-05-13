@@ -2,8 +2,8 @@
 
 import LoadingPage from '@/app/loading'
 import { CheckoutRequest, UIAsset } from '@/app/types'
-import { AssetImage } from '@/components/AssetImage'
-import { Sidebar } from '@/components/Sidebar'
+import { AssetImage } from '@/components/asset-image'
+import { Sidebar } from '@/components/sidebar'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import {

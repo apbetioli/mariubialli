@@ -1,8 +1,8 @@
 'use client'
 
 import LoadingPage from '@/app/loading'
-import { Sidebar } from '@/components/Sidebar'
-import Video from '@/components/Video'
+import { Sidebar } from '@/components/sidebar'
+import Video from '@/components/video'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { useCourse, useMarkAsCompleted, useUser } from '@/lib/hooks'

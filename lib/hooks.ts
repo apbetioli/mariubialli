@@ -6,7 +6,7 @@ import {
   useGetCoursesQuery,
   useGetUserQuery,
   useToggleLessonCompletedMutation,
-} from '@/lib/features/apiSlice'
+} from '@/lib/features/api-slice'
 import type { AppDispatch, RootState } from '@/lib/store'
 import { enhanceCourseWithUserDetails } from '@/lib/utils'
 

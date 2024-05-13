@@ -1,7 +1,7 @@
 import { CourseWithUserDetails } from '@/app/types'
-import { SidebarCourseHeader } from './SidebarCourseHeader'
-import { SidebarGroup } from './SidebarGroup'
-import { SidebarLesson } from './SidebarLesson'
+import { SidebarCourseHeader } from './sidebar-course-header'
+import { SidebarGroup } from './sidebar-group'
+import { SidebarLesson } from './sidebar-lesson'
 import { ScrollArea } from './ui/scroll-area'
 import { cn } from '@/lib/utils'
 

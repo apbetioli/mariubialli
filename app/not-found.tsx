@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import Empty from '@/components/Empty'
+import Empty from '@/components/empty'
 import Link from 'next/link'
 
 export default function NotFound() {
