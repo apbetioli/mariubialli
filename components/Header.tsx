@@ -27,7 +27,7 @@ export default function Header() {
 
   return (
     <div>
-      <nav className="fixed flex h-12 w-full items-center border-b border-gray-200 shrink-0 px-4 z-10 text-primary shadow-md bg-primary-foreground">
+      <nav className="fixed flex h-12 w-full items-center border-b border-gray-200 shrink-0 px-3 z-10 text-primary shadow-md bg-primary-foreground">
         <MobileMenu open={menuOpen} onOpenChange={setMenuOpen}>
           <Logo onClick={() => setMenuOpen(false)} />
           <hr className="mt-6" />
