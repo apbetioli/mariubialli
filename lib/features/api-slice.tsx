@@ -1,5 +1,5 @@
 import { UICourse } from '@/app/types'
-import { User } from '@prisma/client'
+import { Course, User } from '@prisma/client'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { toggleLessonCompleted } from '../utils'
 
@@ -16,6 +16,27 @@ export const apiSlice = createApi({
     getCourseBySlug: builder.query<UICourse, string>({
       query: (slug) => `courses/${slug}`,
       providesTags: ['Course'],
+    }),
+
+    addCourse: builder.mutation<Course, Partial<UICourse>>({
+      query: (course) => ({
+        url: 'admin/courses',
+        method: 'POST',
+        body: course,
+      }),
+      invalidatesTags: ['Course'],
+    }),
+
+    updateCourse: builder.mutation<
+      Course,
+      Partial<UICourse> & Pick<UICourse, 'id'>
+    >({
+      query: (course) => ({
+        url: `admin/courses/${course.id}`,
+        method: 'PUT',
+        body: course,
+      }),
+      invalidatesTags: ['Course'],
     }),
 
     getUser: builder.query<User, void>({
@@ -59,4 +80,6 @@ export const {
   useGetCourseBySlugQuery,
   useGetUserQuery,
   useToggleLessonCompletedMutation,
+  useAddCourseMutation,
+  useUpdateCourseMutation,
 } = apiSlice

@@ -10,6 +10,7 @@ import { ArrowRightIcon } from 'lucide-react'
 import Link from 'next/link'
 import { notFound, useParams } from 'next/navigation'
 import { useId } from 'react'
+import { Lesson } from '@prisma/client'
 
 const LessonPage = () => {
   const { courseSlug } = useParams<{ courseSlug: string }>()
@@ -29,7 +30,7 @@ const LessonPage = () => {
 
   if (lessonIndex < 0) notFound()
 
-  const activeLesson = lessons[lessonIndex]
+  const activeLesson = lessons[lessonIndex] as Lesson
   const isCompleted = user.completedLessonIds.includes(activeLesson.id)
   const isLastLesson = lessonIndex + 1 == lessons.length
   const nextLesson = isLastLesson ? lessons[0] : lessons[lessonIndex + 1]
