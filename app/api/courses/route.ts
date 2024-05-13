@@ -18,6 +18,9 @@ export const GET = async (request: Request) => {
     where: {
       published: true,
     },
+    orderBy: {
+      updatedAt: 'desc',
+    },
   })
 
   return NextResponse.json(courses)
