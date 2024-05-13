@@ -14,7 +14,7 @@ const CoursePage = () => {
   if (!course) notFound()
 
   // Will redirect to the first lesson
-  router.replace(`/course/${course.slug}/lesson/${course.nextLesson.slug}`)
+  router.replace(`/courses/${course.slug}/lessons/${course.nextLesson.slug}`)
 
   return <LoadingPage />
 }

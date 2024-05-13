@@ -6,14 +6,14 @@ import { NextResponse } from 'next/server'
 
 export const PATCH = async (
   request: Request,
-  { params }: { params: { id: string } },
+  { params }: { params: { lessonId: string } },
 ) => {
   const user = await getUserByClerkId()
   const { completed } = await request.json()
 
   const completedLessonIds = toggleLessonCompleted(
     user.completedLessonIds,
-    params.id,
+    params.lessonId,
     completed,
   )
 
@@ -30,7 +30,7 @@ export const PATCH = async (
       data: {
         userId: user.id,
         type: EventType.WATCH,
-        lessonId: params.id,
+        lessonId: params.lessonId,
       },
     }),
   ])

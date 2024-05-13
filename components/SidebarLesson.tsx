@@ -34,7 +34,7 @@ export const SidebarLesson = ({
         className="h-5 w-5 ml-4"
       />
       <div className="w-full">
-        <Link href={`/course/${course.slug}/lesson/${lesson.slug}`}>
+        <Link href={`/courses/${course.slug}/lessons/${lesson.slug}`}>
           <Button
             className={cn('w-full justify-start truncate py-8', {
               'text-primary': isActiveLesson,

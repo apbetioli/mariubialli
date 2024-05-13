@@ -5,7 +5,7 @@ export const GET = async (
   request: Request,
   { params }: { params: { slug: string } },
 ) => {
-  const courses = await prisma.course.findUniqueOrThrow({
+  const course = await prisma.course.findUniqueOrThrow({
     where: {
       slug: params.slug,
     },
@@ -22,5 +22,5 @@ export const GET = async (
       },
     },
   })
-  return NextResponse.json(courses)
+  return NextResponse.json(course)
 }

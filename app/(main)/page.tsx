@@ -56,7 +56,7 @@ export default function HomePage() {
             </CardContent>
             <CardFooter className="flex flex-col lg:flex-row gap-4">
               <Link
-                href={`/course/${course.slug}`}
+                href={`/courses/${course.slug}`}
                 className="w-full lg:w-auto"
               >
                 <Button
@@ -73,7 +73,7 @@ export default function HomePage() {
               </Link>
               {course.assets.length > 0 && (
                 <Link
-                  href={`/course/${course.slug}/assets`}
+                  href={`/courses/${course.slug}/assets`}
                   className="w-full lg:w-auto"
                 >
                   <Button variant="outline" className="w-full lg:w-auto">

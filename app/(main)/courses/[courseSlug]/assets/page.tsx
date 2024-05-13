@@ -44,6 +44,7 @@ const AssetPage = () => {
     if (searchParams.get('success')) {
       setSuccess(true)
     }
+    // Removes searchParams from the url
     router.replace(path)
   }, [path, router, searchParams])
 
@@ -56,7 +57,7 @@ const AssetPage = () => {
 
   const buyNow = async (asset: UIAsset) => {
     const stripe = await getStripe()
-    const response = await fetch(`/api/checkout`, {
+    const response = await fetch(`/api/stripe/checkout`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -77,7 +78,7 @@ const AssetPage = () => {
       <div className="flex flex-col w-full">
         <div className="max-w-4xl flex flex-col m-auto gap-4 p-4">
           <div>
-            <Link href={`/course/${courseSlug}`}>
+            <Link href={`/courses/${courseSlug}`}>
               <Button variant="outline" className="inline-flex md:hidden">
                 <ArrowLeftIcon />
                 Ir ao curso
