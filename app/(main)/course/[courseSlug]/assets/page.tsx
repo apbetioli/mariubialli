@@ -77,14 +77,12 @@ const AssetPage = () => {
       <div className="flex flex-col w-full">
         <div className="max-w-4xl flex flex-col m-auto gap-4 p-4">
           <div>
-            <Button
-              variant="outline"
-              onClick={() => router.back()}
-              className="inline-flex md:hidden"
-            >
-              <ArrowLeftIcon />
-              Voltar
-            </Button>
+            <Link href={`/course/${courseSlug}`}>
+              <Button variant="outline" className="inline-flex md:hidden">
+                <ArrowLeftIcon />
+                Ir ao curso
+              </Button>
+            </Link>
           </div>
           {success && (
             <Alert className="bg-green-100">
