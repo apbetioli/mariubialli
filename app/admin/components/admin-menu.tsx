@@ -26,26 +26,26 @@ export default function AdminMenu() {
       icon: <LineChartIcon className="h-5 w-5" />,
       name: 'Dashboard',
     },
-    {
+    /*  {
       href: '/admin/orders',
       icon: <ShoppingCartIcon className="h-5 w-5" />,
       name: 'Orders',
-    },
+    }, */
     {
       href: '/admin/courses',
       icon: <PackageIcon className="h-5 w-5" />,
       name: 'Courses',
     },
-    {
+    /* {
       href: '/admin/customers',
       icon: <Users2Icon className="h-5 w-5" />,
       name: 'Customers',
-    },
-    {
+    }, */
+    /* {
       href: '/admin/settings',
       icon: <SettingsIcon className="h-5 w-5" />,
       name: 'Settings',
-    },
+    }, */
   ]
 
   return (
@@ -60,7 +60,7 @@ export default function AdminMenu() {
                   'flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8',
                   {
                     'bg-primary text-primary-foreground hover:text-white':
-                      path === link.href,
+                      path.startsWith(link.href),
                   },
                 )}
               >

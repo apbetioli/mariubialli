@@ -12,7 +12,7 @@ export function Logo({
 }) {
   return (
     <Link
-      className={cn('font-bold flex items-center gap-2', className)}
+      className={cn('font-bold flex items-center gap-3', className)}
       href="/"
       onClick={onClick}
     >
