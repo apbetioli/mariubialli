@@ -1,29 +1,25 @@
-import { Course, Lesson, Prisma } from '@prisma/client'
+import { Course, Group, Lesson, Prisma } from '@prisma/client'
 
 export type DraftUser = Partial<User> &
   Pick<User, 'completedLessonIds' | 'paidAssetIds'>
 
-export type UICourse = Prisma.CourseGetPayload<{
-  include: {
-    assets: {
-      omit: {
-        url: true
-      }
-    }
-    groups: {
-      include: {
-        lessons: true
-      }
-    }
-  }
-}>
+export type UIAsset = Omit<Asset, 'url'>
+
+export type UILesson = Omit<Lesson, 'groupId'>
+
+export type UIGroup = Omit<Group, 'courseId'> & {
+  lessons: UILesson[]
+}
+
+export type UICourse = Omit<Course, 'createdAt' | 'updatedAt'> & {
+  assets: UIAsset[]
+  groups: UIGroup[]
+}
 
 export type CourseWithUserDetails = UICourse & {
   progress: number
-  nextLesson: Lesson
+  nextLesson: UILesson
 }
-
-export type UIAsset = Omit<Asset, 'url'>
 
 export type CheckoutRequest = {
   assetId: string

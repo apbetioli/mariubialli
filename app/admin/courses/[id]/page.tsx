@@ -1,4 +1,3 @@
-import { UICourse } from '@/app/types'
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -16,37 +15,16 @@ import {
 } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { prisma } from '@/lib/server/db'
-import { notFound } from 'next/navigation'
 import { CourseForm } from './course-form'
+import { UICourse } from '@/app/types'
+import Link from 'next/link'
 
 export default async function AdminCoursePage({
   params,
 }: {
   params: { id: string }
 }) {
-  const course =
-    params.id === 'new'
-      ? {
-          id: '',
-          name: '',
-          slug: '',
-          description: '',
-          image: '',
-          published: false,
-          groups: [],
-          assets: [],
-          createdAt: null,
-          updatedAt: null,
-        }
-      : await prisma.course.findUnique({
-          where: {
-            id: params.id,
-          },
-        })
-
-  if (!course) {
-    notFound()
-  }
+  const course = await getCourse(params.id)
 
   return (
     <div className="p-4 md:p-8">
@@ -55,9 +33,9 @@ export default async function AdminCoursePage({
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
-                <BreadcrumbLink href="/admin/courses">
+                <Link href="/admin/courses">
                   <CardTitle>Courses</CardTitle>
-                </BreadcrumbLink>
+                </Link>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
@@ -79,4 +57,22 @@ export default async function AdminCoursePage({
       </Card>
     </div>
   )
+}
+
+async function getCourse(id: string) {
+  if (id === 'new') return undefined
+
+  return (await prisma.course.findUnique({
+    where: {
+      id,
+    },
+    include: {
+      assets: true,
+      groups: {
+        include: {
+          lessons: true,
+        },
+      },
+    },
+  })) as UICourse
 }

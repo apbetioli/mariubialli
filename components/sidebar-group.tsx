@@ -1,8 +1,9 @@
+import { UIGroup } from '@/app/types'
 import { Group } from '@prisma/client'
 import { PropsWithChildren } from 'react'
 
 type SidebarGroupProps = {
-  group: Group
+  group: UIGroup
 }
 
 export const SidebarGroup = ({

@@ -1,61 +1,89 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
+import { UICourse, UILesson } from '@/app/types'
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form'
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
+import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Course } from '@prisma/client'
-import { useForm } from 'react-hook-form'
-import toast from 'react-hot-toast'
-import { z } from 'zod'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { PlusCircleIcon } from 'lucide-react'
+import { useState } from 'react'
+import { CourseFormDetails } from './course-form-details'
 
-const courseFormSchema = z.object({
-  name: z.string().min(2, {
-    message: 'Name must be at least 2 characters.',
-  }),
-  slug: z.string({
-    required_error: 'A slug is required.',
-  }),
-})
+export function CourseForm({ course }: { course?: UICourse }) {
+  return (
+    <div className="space-y-8">
+      <Tabs defaultValue="details">
+        <div className="flex justify-between items-center">
+          <TabsList>
+            <TabsTrigger value="details">Details</TabsTrigger>
+            <TabsTrigger value="lessons" disabled={!course?.id}>
+              Lessons
+            </TabsTrigger>
+            <TabsTrigger value="assets" disabled={!course?.id}>
+              Assets
+            </TabsTrigger>
+          </TabsList>
+        </div>
+        <TabsContent value="details">
+          <CourseFormDetails course={course} />
+        </TabsContent>
+        <TabsContent value="lessons">
+          {course && <GroupsForm course={course} />}
+        </TabsContent>
+        <TabsContent value="assets">TODO</TabsContent>
+      </Tabs>
+    </div>
+  )
+}
 
-type CourseFormValues = z.infer<typeof courseFormSchema>
-
-export function CourseForm({ course }: { course: Course }) {
-  const form = useForm<CourseFormValues>({
-    resolver: zodResolver(courseFormSchema),
-    defaultValues: course,
-  })
-
-  function onSubmit(data: CourseFormValues) {
-    toast(JSON.stringify(data, null, 2))
-  }
+function GroupsForm({ course }: { course: UICourse }) {
+  const [newGroupName, setNewGroupName] = useState('')
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Name</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+    <div>
+      <Accordion type="multiple">
+        {course.groups.map((group) => (
+          <AccordionItem key={group.id} value={group.id}>
+            <AccordionTrigger className="bg-slate-100 px-2">
+              {group.name}
+            </AccordionTrigger>
+            <AccordionContent className="p-4 pl-8">
+              {group.lessons.map((lesson) => (
+                <LessonForm key={lesson.id} lesson={lesson} />
+              ))}
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+      <div className="flex items-center gap-4 p-4 bg-slate-100">
+        <label className="shrink-0">New module name</label>
+        <Input
+          required
+          onChange={(event) => setNewGroupName(event.target.value)}
         />
+        <Button size="sm" className="h-8 gap-1" type="button">
+          <PlusCircleIcon className="h-3.5 w-3.5" />
+          <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+            Add Group
+          </span>
+        </Button>
+      </div>
+    </div>
+  )
+}
 
-        <Button type="submit">Save</Button>
-      </form>
-    </Form>
+function LessonForm({ lesson }: { lesson: UILesson }) {
+  return (
+    <div className="flex items-center gap-4">
+      <label className="shrink-0">Lesson name</label>
+      <Input value={lesson.name} required />
+      <label className="shrink-0">Video URL</label>
+      <Input />
+    </div>
   )
 }
