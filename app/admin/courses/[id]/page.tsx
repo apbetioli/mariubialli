@@ -1,10 +1,10 @@
+import { UICourse } from '@/app/types'
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator,
+  BreadcrumbSeparator
 } from '@/components/ui/breadcrumb'
 import {
   Card,
@@ -15,9 +15,8 @@ import {
 } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { prisma } from '@/lib/server/db'
-import { CourseForm } from './course-form'
-import { UICourse } from '@/app/types'
 import Link from 'next/link'
+import { CourseForm } from './course-form'
 
 export default async function AdminCoursePage({
   params,
