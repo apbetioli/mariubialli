@@ -1,4 +1,4 @@
-import { Course, Group, Lesson, Prisma } from '@prisma/client'
+import { Course, Group, Lesson } from '@prisma/client'
 
 export type DraftUser = Partial<User> &
   Pick<User, 'completedLessonIds' | 'paidAssetIds'>

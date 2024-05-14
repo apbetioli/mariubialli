@@ -1,5 +1,3 @@
-import { AspectRatio } from './ui/aspect-ratio'
-
 type VideoProps = {
   src: string
 }
