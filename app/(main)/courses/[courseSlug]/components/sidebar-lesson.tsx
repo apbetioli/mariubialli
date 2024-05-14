@@ -1,10 +1,10 @@
 import { CourseWithUserDetails, UILesson } from '@/app/types'
+import { Button } from '@/components/ui/button'
+import { Checkbox } from '@/components/ui/checkbox'
 import { useMarkAsCompleted, useUser } from '@/lib/hooks'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import { useId } from 'react'
-import { Button } from './ui/button'
-import { Checkbox } from './ui/checkbox'
 
 type SidebarLessonProps = {
   course: CourseWithUserDetails

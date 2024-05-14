@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
-import { AspectRatio } from './ui/aspect-ratio'
+import { AspectRatio } from '../../../../../components/ui/aspect-ratio'
 
 export const AssetImage = ({
   src,
