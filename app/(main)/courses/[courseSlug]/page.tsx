@@ -1,22 +1,35 @@
-'use client'
+import { getUserByClerkId } from '@/lib/server/auth'
+import { prisma } from '@/lib/server/db'
+import { enhanceCourseWithUserDetails } from '@/lib/utils'
+import { notFound, redirect } from 'next/navigation'
 
-import LoadingPage from '@/app/loading'
-import { useCourse } from '@/lib/hooks'
-import { notFound, useParams, useRouter } from 'next/navigation'
+const CoursePage = async ({ params }: { params: { courseSlug: string } }) => {
+  const course = await prisma.course.findUnique({
+    where: {
+      slug: params.courseSlug,
+    },
+    include: {
+      assets: true,
+      groups: {
+        include: {
+          lessons: true,
+        },
+      },
+    },
+  })
 
-const CoursePage = () => {
-  const router = useRouter()
-  const { courseSlug } = useParams<{ courseSlug: string }>()
-  const { course, isLoading, isError, error } = useCourse(courseSlug)
+  if (!course) {
+    notFound()
+  }
 
-  if (isLoading) return <LoadingPage />
-  if (isError) throw error
-  if (!course) notFound()
+  const user = await getUserByClerkId()
 
-  // Will redirect to the first lesson
-  router.replace(`/courses/${course.slug}/lessons/${course.nextLesson.slug}`)
+  console.log(user)
 
-  return <LoadingPage />
+  const courseDetailed = enhanceCourseWithUserDetails(course, user)
+  redirect(
+    `/courses/${courseDetailed.slug}/lessons/${courseDetailed.nextLesson.slug}`,
+  )
 }
 
 export default CoursePage
