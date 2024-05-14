@@ -1,77 +1,27 @@
-import { UICourse } from '@/app/types'
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
-import { Separator } from '@/components/ui/separator'
-import { prisma } from '@/lib/server/db'
-import Link from 'next/link'
+'use client'
+
+import LoadingPage from '@/app/loading'
+import { useGetAdminCourseByIdQuery } from '@/lib/features/api-slice'
 import { CourseForm } from './course-form'
 
-export default async function AdminCoursePage({
+export default function AdminCoursePage({
   params,
 }: {
   params: { id: string }
 }) {
-  const course = await getCourse(params.id)
+  const { isLoading } = useGetAdminCourseByIdQuery(params.id)
+
+  if (isLoading) {
+    return (
+      <div className="h-screen">
+        <LoadingPage />
+      </div>
+    )
+  }
 
   return (
     <div className="p-4 md:p-8">
-      <Card>
-        <CardHeader>
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <Link href="/admin/courses">
-                  <CardTitle>Courses</CardTitle>
-                </Link>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>
-                  <CardTitle>{params.id === 'new' ? 'New' : 'Edit'}</CardTitle>
-                </BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-
-          <CardDescription>
-            Configure your course with modules and lessons.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <Separator />
-          <CourseForm course={course} />
-        </CardContent>
-      </Card>
+      <CourseForm />
     </div>
   )
-}
-
-async function getCourse(id: string) {
-  if (id === 'new') return undefined
-
-  return (await prisma.course.findUnique({
-    where: {
-      id,
-    },
-    include: {
-      assets: true,
-      groups: {
-        include: {
-          lessons: true,
-        },
-      },
-    },
-  })) as UICourse
 }

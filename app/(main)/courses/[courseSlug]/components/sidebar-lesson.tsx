@@ -28,7 +28,7 @@ export const SidebarLesson = ({
         id={completedCheckboxId}
         checked={isCompleted}
         onCheckedChange={(checked) =>
-          markAsCompleted(lesson.id, Boolean(checked))
+          markAsCompleted(lesson.id!, Boolean(checked))
         }
         className="h-5 w-5 ml-4"
       />

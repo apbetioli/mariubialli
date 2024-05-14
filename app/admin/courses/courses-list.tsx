@@ -29,6 +29,7 @@ export default function CoursesList({ courses }: { courses: UICourse[] }) {
           <TableHead>Status</TableHead>
           <TableHead className="hidden md:table-cell">Modules</TableHead>
           <TableHead className="hidden md:table-cell">Lessons</TableHead>
+          <TableHead className="hidden md:table-cell">Assets</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -40,7 +41,7 @@ export default function CoursesList({ courses }: { courses: UICourse[] }) {
           >
             <TableCell className="hidden sm:table-cell">
               <Image
-                alt="Product image"
+                alt="Course image preview"
                 className="aspect-square rounded-md object-cover"
                 height="64"
                 src={course.image}
@@ -61,6 +62,9 @@ export default function CoursesList({ courses }: { courses: UICourse[] }) {
                 (acc, group) => acc + group.lessons.length,
                 0,
               )}
+            </TableCell>
+            <TableCell className="hidden md:table-cell">
+              {course.assets.length}
             </TableCell>
           </TableRow>
         ))}

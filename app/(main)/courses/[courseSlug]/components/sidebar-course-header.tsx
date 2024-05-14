@@ -12,7 +12,7 @@ export const SidebarCourseHeader = ({
   course: CourseWithUserDetails
   className?: string
 }) => (
-  <div className={cn('p-4 bg-slate-500 text-white', className)}>
+  <div className={cn('p-4 bg-gray-500 text-white', className)}>
     <h2 className="text-lg font-semibold tracking-tight mb-1">{course.name}</h2>
 
     <p className="mb-1 hidden md:inline-flex">Progresso {course.progress}%</p>

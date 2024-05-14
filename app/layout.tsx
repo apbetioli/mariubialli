@@ -48,7 +48,7 @@ export default function RootLayout({
           <body
             className={`${inter.className} min-h-screen flex flex-col bg-primary-foreground/50`}
           >
-            <Toaster position="top-right" />
+            <Toaster position="top-center" />
             <Header />
             <main className="flex min-h-full w-full grow">{children}</main>
             <Footer />
