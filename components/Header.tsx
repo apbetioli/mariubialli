@@ -8,14 +8,22 @@ import { Logo } from './logo'
 import { MobileMenu } from './mobile-menu'
 import { GithubIcon } from './ui/icons'
 import { useState } from 'react'
+import { useUser } from '@/lib/hooks'
 
 export default function Header() {
+  const user = useUser()
+
   const links = [
     {
       href: '/',
       label: 'Cursos',
     },
   ]
+
+  if (user.isAdmin) {
+    links.push({ label: 'Admin', href: '/admin' })
+  }
+
   const mobileLinks = [
     { href: 'mailto:contato@mariubialli.com.br', label: 'Contato' },
     { href: '/termos-de-uso', label: 'Termos de serviço' },
