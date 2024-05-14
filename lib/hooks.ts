@@ -1,6 +1,4 @@
 import { DraftUser } from '@/app/types'
-import { useMemo } from 'react'
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import {
   useGetCourseBySlugQuery,
   useGetCoursesQuery,
@@ -9,6 +7,8 @@ import {
 } from '@/lib/features/api-slice'
 import type { AppDispatch, RootState } from '@/lib/store'
 import { enhanceCourseWithUserDetails } from '@/lib/utils'
+import { useMemo } from 'react'
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 
 export const useAppDispatch: () => AppDispatch = useDispatch
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
