@@ -2,8 +2,8 @@
 
 import LoadingPage from '@/app/loading'
 import { CheckoutRequest, UIAsset } from '@/app/types'
-import { AssetImage } from '@/components/asset-image'
-import { Sidebar } from '@/components/sidebar'
+import { AssetImage } from './asset-image'
+
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import {
@@ -30,6 +30,7 @@ import {
   useSearchParams,
 } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { Sidebar } from '../components/sidebar'
 
 const AssetPage = () => {
   const { courseSlug } = useParams<{ courseSlug: string }>()

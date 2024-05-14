@@ -1,16 +1,16 @@
 'use client'
 
 import LoadingPage from '@/app/loading'
-import { Sidebar } from '@/components/sidebar'
-import Video from '@/components/video'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
+import Video from '@/components/video'
 import { useCourse, useMarkAsCompleted, useUser } from '@/lib/hooks'
+import { Lesson } from '@prisma/client'
 import { ArrowRightIcon } from 'lucide-react'
 import Link from 'next/link'
 import { notFound, useParams } from 'next/navigation'
 import { useId } from 'react'
-import { Lesson } from '@prisma/client'
+import { Sidebar } from '../../components/sidebar'
 
 const LessonPage = () => {
   const { courseSlug } = useParams<{ courseSlug: string }>()

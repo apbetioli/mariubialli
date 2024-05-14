@@ -1,9 +1,9 @@
 import { CourseWithUserDetails } from '@/app/types'
+import { Button } from '@/components/ui/button'
+import { Progress } from '@/components/ui/progress'
 import { cn } from '@/lib/utils'
 import { DownloadIcon } from 'lucide-react'
 import Link from 'next/link'
-import { Button } from './ui/button'
-import { Progress } from './ui/progress'
 
 export const SidebarCourseHeader = ({
   course,

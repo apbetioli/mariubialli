@@ -26,6 +26,8 @@ export const getUserByClerkId = async () => {
         clerkId: authUser.id,
         email,
         name: authUser.firstName + ' ' + authUser.lastName,
+        completedLessonIds: [],
+        paidAssetIds: [],
       },
     })
   }
