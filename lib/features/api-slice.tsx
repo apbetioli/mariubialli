@@ -18,6 +18,11 @@ export const apiSlice = createApi({
       providesTags: ['Course'],
     }),
 
+    getAdminCourseById: builder.query<UICourse, string>({
+      query: (id) => `admin/courses/${id}`,
+      providesTags: ['Course'],
+    }),
+
     addCourse: builder.mutation<Course, Partial<UICourse>>({
       query: (course) => ({
         url: 'admin/courses',
@@ -78,6 +83,8 @@ export const apiSlice = createApi({
 export const {
   useGetCoursesQuery,
   useGetCourseBySlugQuery,
+  useGetAdminCourseByIdQuery,
+  useLazyGetAdminCourseByIdQuery,
   useGetUserQuery,
   useToggleLessonCompletedMutation,
   useAddCourseMutation,

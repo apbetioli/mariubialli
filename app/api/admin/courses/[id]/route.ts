@@ -18,10 +18,44 @@ export const PUT = async (
   // TODO temporary fix
   const { id, assets, groups, ...data } = await request.json()
 
+  /* for (const group of groups) {
+    await prisma.group.upsert({
+      create: {
+        ...group,
+      },
+      update: {
+        ...group,
+      },
+      where: {
+        id: group.id,
+      },
+    })
+  } */
   const course = await prisma.course.update({
     data,
     where: {
       id: params.id,
+    },
+  })
+
+  return NextResponse.json(course)
+}
+
+export const GET = async (
+  request: Request,
+  { params }: { params: { id: string } },
+) => {
+  const course = await prisma.course.findUniqueOrThrow({
+    where: {
+      id: params.id,
+    },
+    include: {
+      assets: true,
+      groups: {
+        include: {
+          lessons: true,
+        },
+      },
     },
   })
   return NextResponse.json(course)
