@@ -11,13 +11,13 @@ import {
 } from '@/components/ui/card'
 import { CardMedia } from '@/components/ui/card-media'
 import { Progress } from '@/components/ui/progress'
+import { apiSlice } from '@/lib/features/api-slice'
 import { useAppDispatch, useCourses } from '@/lib/hooks'
+import { useAuth } from '@clerk/nextjs'
 import { DownloadIcon, PlayIcon } from 'lucide-react'
 import Link from 'next/link'
-import LoadingPage from '../loading'
-import { useAuth } from '@clerk/nextjs'
 import { useEffect } from 'react'
-import { apiSlice } from '@/lib/features/api-slice'
+import LoadingPage from '../loading'
 
 export default function HomePage() {
   const { courses, isLoading, isError, error } = useCourses()

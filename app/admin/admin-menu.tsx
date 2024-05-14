@@ -7,13 +7,7 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
-import {
-  LineChartIcon,
-  PackageIcon,
-  SettingsIcon,
-  ShoppingCartIcon,
-  Users2Icon,
-} from 'lucide-react'
+import { LineChartIcon, PackageIcon } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
