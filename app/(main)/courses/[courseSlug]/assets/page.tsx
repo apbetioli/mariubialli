@@ -1,7 +1,7 @@
 'use client'
 
 import LoadingPage from '@/app/loading'
-import { CheckoutRequest, UIAsset } from '@/app/types'
+import { UIAsset } from '@/app/types'
 import { AssetImage } from './asset-image'
 
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
@@ -12,9 +12,9 @@ import {
   CardDescription,
   CardTitle,
 } from '@/components/ui/card'
-import getStripe from '@/lib/get-stripe'
 import { useCourse, useUser } from '@/lib/hooks'
 
+import useStripe from '@/lib/get-stripe'
 import {
   ArrowLeftIcon,
   DownloadIcon,
@@ -40,6 +40,7 @@ const AssetPage = () => {
   const searchParams = useSearchParams()
   const router = useRouter()
   const [success, setSuccess] = useState(false)
+  const { checkout } = useStripe()
 
   useEffect(() => {
     if (searchParams.get('success')) {
@@ -57,19 +58,7 @@ const AssetPage = () => {
   if (!assets) notFound()
 
   const buyNow = async (asset: UIAsset) => {
-    const stripe = await getStripe()
-    const response = await fetch(`/api/stripe/checkout`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        assetId: asset.id,
-        redirect: path,
-      } satisfies CheckoutRequest),
-    })
-    const session = await response.json()
-    await stripe?.redirectToCheckout({ sessionId: session.id })
+    await checkout(asset.id, path)
   }
 
   return (

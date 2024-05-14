@@ -1,3 +1,4 @@
+import { CheckoutRequest } from '@/app/types'
 import { Stripe, loadStripe } from '@stripe/stripe-js'
 
 let stripePromise: Promise<Stripe | null>
@@ -8,4 +9,24 @@ const getStripe = () => {
   return stripePromise
 }
 
-export default getStripe
+const useStripe = () => {
+  const checkout = async (assetId: string, redirect: string) => {
+    const stripe = await getStripe()
+    const response = await fetch(`/api/stripe/checkout`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        assetId,
+        redirect,
+      } satisfies CheckoutRequest),
+    })
+    const session = await response.json()
+    await stripe?.redirectToCheckout({ sessionId: session.id })
+  }
+
+  return { checkout }
+}
+
+export default useStripe
