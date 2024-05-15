@@ -47,12 +47,12 @@ export const POST = async (request: Request) => {
             id,
           },
         })
-        console.log('Created lesson', newLesson.id)
+        console.log('Updated lesson', newLesson.id)
       } else {
         var newLesson = await prisma.lesson.create({
           data: { name, slug, video, groupId: newGroup.id },
         })
-        console.log('Updated lesson', newLesson.id)
+        console.log('Created lesson', newLesson.id)
       }
     }
   }
