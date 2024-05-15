@@ -1,54 +1,60 @@
 'use client'
+
 import { Input } from '@/components/ui/input'
-import { handleFieldChange } from '@/lib/features/course-slice'
+import { Label } from '@/components/ui/label'
+import { updateCourseField } from '@/lib/features/course-slice'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import Image from 'next/image'
+import { ChangeEvent } from 'react'
 
 export function CourseFormDetails() {
   const course = useAppSelector((state) => state.course.value)
   const dispatch = useAppDispatch()
 
-  const handleInputChange = (field: string, value: any) => {
-    dispatch(handleFieldChange({ field, value }))
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    dispatch(updateCourseField(event.target))
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 mt-6">
       <div className="flex flex-col gap-2">
-        <label>Name</label>
+        <Label>Name</Label>
         <Input
+          name="name"
           value={course.name}
           required
-          onChange={(event) => handleInputChange('name', event.target.value)}
+          onChange={(event) => handleInputChange(event)}
         />
       </div>
 
       <div className="flex flex-col gap-2">
-        <label>Slug</label>
+        <Label>Slug</Label>
         <Input
+          name="slug"
+          disabled={course.published}
           value={course.slug}
           required
-          onChange={(event) => handleInputChange('slug', event.target.value)}
+          onChange={(event) => handleInputChange(event)}
         />
       </div>
 
       <div className="flex flex-col gap-2">
-        <label>Description</label>
+        <Label>Description</Label>
         <Input
+          name="description"
           value={course.description}
           required
-          onChange={(event) =>
-            handleInputChange('description', event.target.value)
-          }
+          onChange={(event) => handleInputChange(event)}
         />
       </div>
 
       <div className="flex flex-col gap-2">
-        <label>Image URL</label>
+        <Label>Image URL</Label>
         <Input
+          name="image"
           value={course.image}
           required
-          onChange={(event) => handleInputChange('image', event.target.value)}
+          onChange={(event) => handleInputChange(event)}
         />
         {course.image && (
           <Image

@@ -3,7 +3,7 @@ import { Course, Group, Lesson } from '@prisma/client'
 export type DraftUser = Partial<User> &
   Pick<User, 'completedLessonIds' | 'paidAssetIds'>
 
-export type Draft<T> = Omit<T, 'id'> & { id?: string }
+export type Draft<T> = Omit<T, 'id'> & { id?: string; uiId?: string }
 
 export type UIAsset = Omit<Draft<Asset>, 'url'>
 

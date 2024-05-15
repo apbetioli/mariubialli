@@ -17,47 +17,36 @@ import {
 } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import {
-  useAddCourseMutation,
-  useUpdateCourseMutation,
-} from '@/lib/features/api-slice'
-import { handleFieldChange } from '@/lib/features/course-slice'
+import { useSaveCourseMutation } from '@/lib/features/api-slice'
+import { updateCourseField } from '@/lib/features/course-slice'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 
-import { Checkbox } from '@/components/ui/checkbox'
-import { Loader2Icon, SaveIcon } from 'lucide-react'
+import {
+  EyeIcon,
+  Loader2Icon,
+  LockIcon,
+  RocketIcon,
+  SaveIcon,
+} from 'lucide-react'
 import Link from 'next/link'
-import { FormEvent, useId } from 'react'
 import toast from 'react-hot-toast'
 import { CourseFormDetails } from './course-form-details'
-import { CourseFormGroup } from './course-form-group'
+import { CourseFormGroups } from './course-form-groups'
 
 export function CourseForm() {
-  const [addCourse, resultAdd] = useAddCourseMutation()
-  const [updateCourse, resultUpdate] = useUpdateCourseMutation()
+  const [saveCourse, { isLoading }] = useSaveCourseMutation()
 
   const course = useAppSelector((state) => state.course.value)
   const dispatch = useAppDispatch()
 
-  const publishedId = useId()
-
   const save = async () => {
-    if (course.id) {
-      await updateCourse({ ...course, id: course.id })
-    } else {
-      await addCourse(course)
-    }
-    toast.success('Saved!')
-  }
+    // TODO validate
 
-  const isSaving = resultAdd.isLoading || resultUpdate.isLoading
-
-  const onSubmit = (event: FormEvent) => {
-    console.log('onSubmit')
-
-    event.preventDefault()
-    event.stopPropagation()
-    save()
+    toast.promise(saveCourse(course), {
+      loading: 'Saving...',
+      success: <b>Saved!</b>,
+      error: <b>Could not save.</b>,
+    })
   }
 
   return (
@@ -86,9 +75,9 @@ export function CourseForm() {
       <CardContent className="space-y-6">
         <Separator />
 
-        <form onSubmit={onSubmit} className="space-y-8">
+        <div className="space-y-8">
           <Tabs defaultValue="details">
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center flex-col sm:flex-row gap-4">
               <TabsList>
                 <TabsTrigger value="details">Details</TabsTrigger>
                 <TabsTrigger value="lessons" disabled={!course?.id}>
@@ -99,25 +88,50 @@ export function CourseForm() {
                 </TabsTrigger>
               </TabsList>
 
-              <div className="flex items-center gap-3 justify-end w-full">
-                <div className="flex items-center gap-1">
-                  <Checkbox
-                    id={publishedId}
-                    checked={course.published}
-                    onCheckedChange={(value) =>
-                      dispatch(handleFieldChange({ field: 'published', value }))
-                    }
-                  />
-                  <label htmlFor={publishedId}>Published</label>
-                </div>
+              <div className="flex items-center gap-3 justify-center sm:justify-end w-full">
+                <Button
+                  size="sm"
+                  variant={course.published ? 'outline' : 'default'}
+                  onClick={() =>
+                    dispatch(
+                      updateCourseField({
+                        name: 'published',
+                        value: !course.published,
+                      }),
+                    )
+                  }
+                >
+                  {course.published ? (
+                    <LockIcon className="h-4 w-4" />
+                  ) : (
+                    <RocketIcon className="h-4 w-4" />
+                  )}
+                  <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                    {course.published ? 'Unpublish' : 'Publish'}
+                  </span>
+                </Button>
 
-                <Button type="submit" size="sm" disabled={isSaving}>
-                  {isSaving ? (
+                {course.id && (
+                  <Link href={`/courses/${course.slug}`} target="_blank">
+                    <Button size="sm" variant="outline">
+                      <EyeIcon className="h-4 w-4" />
+
+                      <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                        Preview
+                      </span>
+                    </Button>
+                  </Link>
+                )}
+
+                <Button size="sm" disabled={isLoading} onClick={() => save()}>
+                  {isLoading ? (
                     <Loader2Icon className="animate-spin" />
                   ) : (
                     <SaveIcon className="h-4 w-4" />
                   )}
-                  Save
+                  <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                    Save
+                  </span>
                 </Button>
               </div>
             </div>
@@ -125,11 +139,11 @@ export function CourseForm() {
               <CourseFormDetails />
             </TabsContent>
             <TabsContent value="lessons">
-              {course && <CourseFormGroup />}
+              <CourseFormGroups />
             </TabsContent>
             <TabsContent value="assets">TODO</TabsContent>
           </Tabs>
-        </form>
+        </div>
       </CardContent>
     </Card>
   )

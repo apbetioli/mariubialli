@@ -24,9 +24,12 @@ const CoursePage = async ({ params }: { params: { courseSlug: string } }) => {
 
   const user = await getUserByClerkId()
 
-  console.log(user)
-
   const courseDetailed = enhanceCourseWithUserDetails(course, user)
+
+  if (!courseDetailed.nextLesson) {
+    throw new Error(`Course doesn't have lessons yet`)
+  }
+
   redirect(
     `/courses/${courseDetailed.slug}/lessons/${courseDetailed.nextLesson.slug}`,
   )
