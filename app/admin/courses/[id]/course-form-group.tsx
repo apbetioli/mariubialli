@@ -13,7 +13,7 @@ import { Button } from '@/components/ui/button'
 import { deleteGroup, updateGroup } from '@/lib/features/course-slice'
 import { useAppDispatch } from '@/lib/hooks'
 import { Trash2Icon } from 'lucide-react'
-import { GroupFormLessons } from './course-form-lessons'
+import { CourseFormLessons } from './course-form-lessons'
 import { EditGroupDialog } from './edit-group-dialog'
 
 export function CourseFormGroup({ group }: { group: UIGroup }) {
@@ -44,7 +44,7 @@ export function CourseFormGroup({ group }: { group: UIGroup }) {
           </ConfirmationDialog>
         </AccordionHeader>
         <AccordionContent className="flex flex-col p-3 pl-8 gap-2">
-          <GroupFormLessons group={group} />
+          <CourseFormLessons group={group} />
         </AccordionContent>
       </AccordionItem>
     </Accordion>

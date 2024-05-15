@@ -11,7 +11,7 @@ import { useAppDispatch } from '@/lib/hooks'
 import toast from 'react-hot-toast'
 import { CourseFormLesson } from './course-form-lesson'
 
-export function GroupFormLessons({ group }: { group: UIGroup }) {
+export function CourseFormLessons({ group }: { group: UIGroup }) {
   const dispatch = useAppDispatch()
 
   const onAddLesson = (group: UIGroup, lesson: UILesson) => {

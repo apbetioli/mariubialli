@@ -23,6 +23,7 @@ export const POST = async (request: Request) => {
     },
   })
 
+  // TODO improve this logic
   for (const { id, lessons, name, deleted: groupDeleted } of groups) {
     if (groupDeleted) {
       var newGroup = await prisma.group.delete({
