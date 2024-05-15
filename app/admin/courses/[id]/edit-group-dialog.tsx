@@ -10,8 +10,7 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { DialogDescription } from '@radix-ui/react-dialog'
-import { EditIcon } from 'lucide-react'
+import { EditIcon, SaveIcon } from 'lucide-react'
 import { FormEvent, useEffect, useId, useState } from 'react'
 
 export function EditGroupDialog({
@@ -50,16 +49,13 @@ export function EditGroupDialog({
         <form onSubmit={onSubmit}>
           <DialogHeader>
             <DialogTitle>Edit group</DialogTitle>
-            <DialogDescription>Change group details</DialogDescription>
           </DialogHeader>
 
-          <div className="grid grid-cols-4 items-center gap-4 my-4">
-            <Label htmlFor={nameId} className="text-right">
-              Name
-            </Label>
+          <div className="flex flex-col gap-4 my-6">
+            <Label htmlFor={nameId}>Name</Label>
             <Input
               id={nameId}
-              className="col-span-3"
+              className="col-span-4"
               required
               value={name}
               onChange={(event) => setName(event.target.value)}
@@ -67,7 +63,9 @@ export function EditGroupDialog({
           </div>
 
           <DialogFooter>
-            <Button type="submit">Apply</Button>
+            <Button type="submit">
+              <SaveIcon className="h-4 w-4" /> Apply
+            </Button>
           </DialogFooter>
         </form>
       </DialogContent>

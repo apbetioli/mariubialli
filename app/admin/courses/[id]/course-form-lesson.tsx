@@ -1,27 +1,33 @@
 'use client'
 
 import { UILesson } from '@/app/types'
+import { ConfirmationDialog } from '@/components/confirmation-dialog'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { kebabCase } from 'lodash'
-import { PlusIcon, Trash2Icon } from 'lucide-react'
+import { EditIcon, PlusIcon, SaveIcon, Trash2Icon, XIcon } from 'lucide-react'
 import { ChangeEvent, FormEvent, useState } from 'react'
+
+const initialState = {
+  name: '',
+  slug: '',
+  video: '',
+  delete: false,
+}
 
 export function CourseFormLesson({
   lesson,
   onAdd,
-  onRemove,
+  onDelete,
+  onSave,
 }: {
   lesson?: UILesson
   onAdd?: (lesson: UILesson) => void
-  onRemove?: (lesson: UILesson) => void
+  onDelete?: (lesson: UILesson) => void
+  onSave?: (lesson: UILesson) => void
 }) {
-  const initialState = {
-    name: '',
-    slug: '',
-    video: '',
-  }
   const [current, setCurrent] = useState(lesson || initialState)
+  const [isEditing, setEditing] = useState(false)
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
@@ -43,42 +49,88 @@ export function CourseFormLesson({
   }
 
   const remove = () => {
-    if (lesson && onRemove) {
-      onRemove(lesson)
+    if (lesson && onDelete) {
+      onDelete(lesson)
     }
   }
 
+  const save = () => {
+    if (onSave) {
+      onSave(current)
+      setEditing(false)
+    }
+  }
+
+  const cancel = () => {
+    setEditing(false)
+    setCurrent(lesson!)
+  }
+
+  if (lesson?.deleted) {
+    return null
+  }
+
   return (
-    <form onSubmit={add} className="flex items-center gap-4">
-      <Input
-        name="name"
-        placeholder="Name"
-        value={current.name}
-        required
-        onChange={(event) => handleInputChange(event)}
-      />
-      <Input
-        name="slug"
-        placeholder="Slug"
-        value={current.slug}
-        required
-        onChange={(event) => handleInputChange(event)}
-      />
-      <Input
-        name="video"
-        placeholder="Video URL"
-        value={current.video}
-        required
-        onChange={(event) => handleInputChange(event)}
-      />
-      {lesson ? (
-        <Button size="sm" type="button" onClick={remove}>
-          <Trash2Icon className="h-3.5 w-3.5" />
+    <form onSubmit={add} className="flex items-center gap-1">
+      <div className="grid grid-cols-3 w-full gap-1">
+        <Input
+          name="name"
+          placeholder="Name"
+          value={current.name}
+          required
+          disabled={lesson && !isEditing}
+          onChange={(event) => handleInputChange(event)}
+        />
+        <Input
+          name="slug"
+          placeholder="Slug"
+          value={current.slug}
+          required
+          disabled={lesson && !isEditing}
+          onChange={(event) => handleInputChange(event)}
+        />
+        <Input
+          name="video"
+          placeholder="Video URL"
+          value={current.video}
+          required
+          disabled={lesson && !isEditing}
+          onChange={(event) => handleInputChange(event)}
+        />
+      </div>
+
+      {!lesson && (
+        <Button size="sm" variant="default" className="w-[5.5rem]">
+          <PlusIcon className="h-4 w-4" />
         </Button>
-      ) : (
-        <Button size="sm" variant="secondary">
-          <PlusIcon className="h-3.5 w-3.5" />
-        </Button>
+      )}
+
+      {isEditing && (
+        <>
+          <Button size="sm" variant="default" onClick={save}>
+            <SaveIcon className="h-4 w-4" />
+          </Button>
+          <Button size="sm" variant="secondary" onClick={cancel}>
+            <XIcon className="h-4 w-4" />
+          </Button>
+        </>
+      )}
+
+      {!isEditing && lesson && (
+        <>
+          <Button
+            size="sm"
+            variant="secondary"
+            onClick={() => setEditing(true)}
+          >
+            <EditIcon className="h-4 w-4" />
+          </Button>
+          <ConfirmationDialog onConfirm={remove}>
+            <Button size="sm" type="button" variant="secondary">
+              <Trash2Icon className="h-4 w-4" />
+            </Button>
+          </ConfirmationDialog>
+        </>
       )}
     </form>
   )

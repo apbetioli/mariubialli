@@ -2,7 +2,11 @@
 
 import { UIGroup, UILesson } from '@/app/types'
 import { Separator } from '@/components/ui/separator'
-import { addLessonToGroup } from '@/lib/features/course-slice'
+import {
+  addLesson,
+  deleteLesson,
+  updateLesson,
+} from '@/lib/features/course-slice'
 import { useAppDispatch } from '@/lib/hooks'
 import toast from 'react-hot-toast'
 import { CourseFormLesson } from './course-form-lesson'
@@ -12,16 +16,23 @@ export function GroupFormLessons({ group }: { group: UIGroup }) {
 
   const onAddLesson = (group: UIGroup, lesson: UILesson) => {
     try {
-      dispatch(addLessonToGroup({ group, lesson }))
+      dispatch(addLesson({ group, lesson }))
     } catch (err: any) {
       toast.error(err.message)
     }
   }
 
-  const onRemoveLesson = (group: UIGroup, lesson: UILesson) => {
+  const onDeleteLesson = (group: UIGroup, lesson: UILesson) => {
     try {
-      throw new Error('NotImplemented')
-      // TODO dispatch(removeLessonFromGroup(group, lesson))
+      dispatch(deleteLesson({ group, lesson }))
+    } catch (err: any) {
+      toast.error(err.message)
+    }
+  }
+
+  const onUpdateLesson = (group: UIGroup, lesson: UILesson) => {
+    try {
+      dispatch(updateLesson({ group, lesson }))
     } catch (err: any) {
       toast.error(err.message)
     }
@@ -33,7 +44,8 @@ export function GroupFormLessons({ group }: { group: UIGroup }) {
         <CourseFormLesson
           key={lesson.name}
           lesson={lesson}
-          onRemove={() => onRemoveLesson(group, lesson)}
+          onDelete={() => onDeleteLesson(group, lesson)}
+          onSave={(updated) => onUpdateLesson(group, updated)}
         />
       ))}
       {group.lessons.length > 0 && <Separator />}

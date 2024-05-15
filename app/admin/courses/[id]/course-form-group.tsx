@@ -27,10 +27,14 @@ export function CourseFormGroup({ group }: { group: UIGroup }) {
     dispatch(deleteGroup(group))
   }
 
+  if (group.deleted) {
+    return null
+  }
+
   return (
     <Accordion type="multiple">
       <AccordionItem value={group.name}>
-        <AccordionHeader className="px-2 bg-gray-50">
+        <AccordionHeader className="px-2 bg-gray-100">
           <AccordionTrigger className="gap-2">{group.name}</AccordionTrigger>
           <EditGroupDialog group={group} onGroupChange={onGroupChange} />
           <ConfirmationDialog onConfirm={onGroupDelete}>
@@ -39,7 +43,7 @@ export function CourseFormGroup({ group }: { group: UIGroup }) {
             </Button>
           </ConfirmationDialog>
         </AccordionHeader>
-        <AccordionContent className="flex flex-col p-4 pl-8 gap-2">
+        <AccordionContent className="flex flex-col p-3 pl-8 gap-2">
           <GroupFormLessons group={group} />
         </AccordionContent>
       </AccordionItem>
