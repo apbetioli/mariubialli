@@ -30,6 +30,7 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import toast from 'react-hot-toast'
+import { CourseFormAssets } from './course-form-assets'
 import { CourseFormDetails } from './course-form-details'
 import { CourseFormGroups } from './course-form-groups'
 
@@ -141,7 +142,9 @@ export function CourseForm() {
             <TabsContent value="lessons">
               <CourseFormGroups />
             </TabsContent>
-            <TabsContent value="assets">TODO</TabsContent>
+            <TabsContent value="assets">
+              <CourseFormAssets />
+            </TabsContent>
           </Tabs>
         </div>
       </CardContent>
