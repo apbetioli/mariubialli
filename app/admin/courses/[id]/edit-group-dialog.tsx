@@ -12,7 +12,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { DialogDescription } from '@radix-ui/react-dialog'
 import { EditIcon } from 'lucide-react'
-import { FormEvent, useId, useState } from 'react'
+import { FormEvent, useEffect, useId, useState } from 'react'
 
 export function EditGroupDialog({
   group,
@@ -24,6 +24,10 @@ export function EditGroupDialog({
   const [name, setName] = useState(group.name)
   const [open, setOpen] = useState(false)
   const nameId = useId()
+
+  useEffect(() => {
+    setName(group.name)
+  }, [group])
 
   const onSubmit = (event: FormEvent) => {
     event.preventDefault()
@@ -37,10 +41,11 @@ export function EditGroupDialog({
   return (
     <Dialog open={open} onOpenChange={(value) => setOpen(value)}>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="sm">
+        <Button variant="ghost" size="sm" title="Edit group">
           <EditIcon className="h-4 w-4" />
         </Button>
       </DialogTrigger>
+
       <DialogContent>
         <form onSubmit={onSubmit}>
           <DialogHeader>

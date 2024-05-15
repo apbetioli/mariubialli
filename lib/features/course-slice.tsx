@@ -68,11 +68,17 @@ const courseSlice = createSlice({
         createGroup({ name: action.payload, lessons: [] }),
       )
     },
-    changeGroup: (state, action: PayloadAction<UIGroup>) => {
+    updateGroup: (state, action: PayloadAction<UIGroup>) => {
       const index = state.value.groups.findIndex(
         (group) => group.uiId === action.payload.uiId,
       )
       state.value.groups.splice(index, 1, action.payload)
+    },
+    deleteGroup: (state, action: PayloadAction<UIGroup>) => {
+      const index = state.value.groups.findIndex(
+        (group) => group.uiId === action.payload.uiId,
+      )
+      state.value.groups.splice(index, 1)
     },
     addLessonToGroup: (
       state,
@@ -92,6 +98,12 @@ const courseSlice = createSlice({
       apiSlice.endpoints.getAdminCourseById.matchFulfilled,
       (state, { payload }) => {
         state.value = payload
+        state.value.groups.forEach((group) => {
+          group.uiId = group.id
+          group.lessons.forEach((lesson) => {
+            lesson.uiId = lesson.id
+          })
+        })
       },
     )
     builder.addMatcher(
@@ -108,7 +120,8 @@ export const {
   initializeCourse,
   updateCourseField,
   addGroup,
-  changeGroup,
+  updateGroup,
+  deleteGroup,
   addLessonToGroup,
 } = courseSlice.actions
 
