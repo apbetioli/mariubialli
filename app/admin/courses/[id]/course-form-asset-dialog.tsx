@@ -81,6 +81,7 @@ export function CourseFormAssetDialog({
             />
             {current.image && (
               <Image
+                className="aspect-auto rounded-md object-cover"
                 src={current.image}
                 width={100}
                 height={100}

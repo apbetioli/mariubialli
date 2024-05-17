@@ -36,20 +36,25 @@ import { CourseFormDetails } from './course-form-details'
 import { CourseFormGroups } from './course-form-groups'
 
 export function CourseForm() {
+  const router = useRouter()
+  const dispatch = useAppDispatch()
+  const course = useAppSelector((state) => state.course.value)
   const [saveCourse, { isLoading }] = useSaveCourseMutation()
 
-  const course = useAppSelector((state) => state.course.value)
-  const dispatch = useAppDispatch()
-  const router = useRouter()
-
-  const save = () => {
+  const save = async () => {
     // TODO validate
 
-    toast.promise(saveCourse(course), {
-      loading: 'Saving...',
-      success: <b>Saved!</b>,
-      error: <b>Could not save.</b>,
-    })
+    try {
+      const result = await saveCourse(course).unwrap()
+
+      if (!course.id) {
+        router.push(`/admin/courses/${result.id}`)
+      }
+      toast.success('Saved!')
+    } catch (error) {
+      console.error(error)
+      toast.error('Could not save!')
+    }
   }
 
   const remove = () => {

@@ -29,9 +29,8 @@ const initialState: UIAsset = {
 
 export function CourseFormAssets() {
   const dispatch = useAppDispatch()
-  const assets = useAppSelector((state) =>
-    state.course.value.assets.filter((asset) => !asset.deleted),
-  )
+  const assets = useAppSelector((state) => state.course.value.assets)
+  const fileredAssets = assets.filter((asset) => !asset.deleted)
 
   const onAddAsset = (asset: UIAsset) => {
     try {
@@ -50,8 +49,8 @@ export function CourseFormAssets() {
           </Button>
         </CourseFormAssetDialog>
       </div>
-      {assets.length === 0 && <Empty title="No assets yet" />}
-      {assets.length > 0 && (
+      {fileredAssets.length === 0 && <Empty title="No assets yet" />}
+      {fileredAssets.length > 0 && (
         <Table>
           <TableHeader>
             <TableRow>
@@ -66,7 +65,7 @@ export function CourseFormAssets() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {assets.map((asset) => (
+            {fileredAssets.map((asset) => (
               <CourseFormAsset key={asset.uiId} asset={asset} />
             ))}
           </TableBody>

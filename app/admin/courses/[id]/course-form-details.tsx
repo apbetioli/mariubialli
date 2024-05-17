@@ -11,7 +11,8 @@ export function CourseFormDetails() {
   const dispatch = useAppDispatch()
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    dispatch(updateCourseField(event.target))
+    const { name, value } = event.target
+    dispatch(updateCourseField({ name, value }))
   }
 
   return (
@@ -46,6 +47,7 @@ export function CourseFormDetails() {
         />
         {course.image && (
           <Image
+            className="aspect-auto rounded-md object-cover"
             src={course.image}
             width={100}
             height={100}

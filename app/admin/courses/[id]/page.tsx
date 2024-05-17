@@ -19,13 +19,7 @@ export default function AdminCoursePage({
     dispatch(initializeCourse(data))
   }, [data, dispatch])
 
-  if (isLoading) {
-    return (
-      <div className="h-screen">
-        <LoadingPage />
-      </div>
-    )
-  }
+  if (isLoading) return <LoadingPage className="h-screen" />
 
   return (
     <div className="p-4 md:p-8">
