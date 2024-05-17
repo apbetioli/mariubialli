@@ -5,7 +5,7 @@ import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import Link from 'next/link'
 import { useState } from 'react'
 import { HeaderLinks } from './header-links'
-import { Logo } from './temp-logo'
+import { Logo } from './logo'
 import { MobileMenu } from './mobile-menu'
 import { GithubIcon } from './ui/icons'
 
