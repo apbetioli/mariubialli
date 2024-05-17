@@ -17,7 +17,7 @@ export type UIGroup = Omit<Draft<Group>, 'courseId'> & {
   lessons: UILesson[]
 }
 
-export type UICourse = Omit<Course, 'createdAt' | 'updatedAt'> & {
+export type UICourse = Omit<Draft<Course>, 'createdAt' | 'updatedAt'> & {
   assets: UIAsset[]
   groups: UIGroup[]
 }

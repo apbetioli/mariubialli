@@ -1,10 +1,10 @@
-import { Draft, UIAsset, UICourse, UIGroup, UILesson } from '@/app/types'
+import { UIAsset, UICourse, UIGroup, UILesson } from '@/app/types'
 import { PayloadAction, createSlice, nanoid } from '@reduxjs/toolkit'
 import { kebabCase } from 'lodash'
 import { apiSlice } from './api-slice'
 
 type CourseSliceState = {
-  value: Draft<UICourse>
+  value: UICourse
 }
 
 type FormFieldAction = {
@@ -14,7 +14,6 @@ type FormFieldAction = {
 
 const initialState: CourseSliceState = {
   value: {
-    id: undefined,
     name: '',
     slug: '',
     description: '',

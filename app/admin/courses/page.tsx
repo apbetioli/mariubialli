@@ -1,4 +1,4 @@
-import { PlusCircleIcon } from 'lucide-react'
+import { PlusIcon } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -36,7 +36,7 @@ export default async function AdminCourses() {
             <div className="ml-auto flex items-center gap-2">
               <Link href="/admin/courses/new">
                 <Button className="h-8 gap-1">
-                  <PlusCircleIcon className="h-5 w-5" />
+                  <PlusIcon className="h-5 w-5" />
                   <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
                     Add Course
                   </span>
