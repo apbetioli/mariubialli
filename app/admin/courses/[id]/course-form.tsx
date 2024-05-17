@@ -29,6 +29,7 @@ import {
   SaveIcon,
 } from 'lucide-react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
 import { CourseFormAssets } from './course-form-assets'
 import { CourseFormDetails } from './course-form-details'
@@ -39,8 +40,9 @@ export function CourseForm() {
 
   const course = useAppSelector((state) => state.course.value)
   const dispatch = useAppDispatch()
+  const router = useRouter()
 
-  const save = async () => {
+  const save = () => {
     // TODO validate
 
     toast.promise(saveCourse(course), {
@@ -48,6 +50,11 @@ export function CourseForm() {
       success: <b>Saved!</b>,
       error: <b>Could not save.</b>,
     })
+  }
+
+  const remove = () => {
+    router.push('/admin/courses')
+    toast.success('Course removed')
   }
 
   return (
