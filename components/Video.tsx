@@ -1,4 +1,4 @@
-type VideoProps = {
+type Props = {
   src: string
 }
 
@@ -8,7 +8,7 @@ const sanitize = (src: string) => {
   }
 }
 
-export default function Video({ src }: VideoProps) {
+export default function Video({ src }: Props) {
   const newSrc = sanitize(src)
 
   return (

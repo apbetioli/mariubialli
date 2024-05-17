@@ -1,136 +1,199 @@
 'use client'
 
-import { UILesson } from '@/app/types'
+import { UIGroup, UILesson } from '@/app/types'
 import { ConfirmationDialog } from '@/components/confirmation-dialog'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import {
+  addLesson,
+  deleteLesson,
+  moveLessonDown,
+  moveLessonUp,
+  updateLesson,
+} from '@/lib/features/course-slice'
+import { useAppDispatch } from '@/lib/hooks'
 import { kebabCase } from 'lodash'
-import { EditIcon, PlusIcon, SaveIcon, Trash2Icon, XIcon } from 'lucide-react'
-import { ChangeEvent, FormEvent, useState } from 'react'
-
-const initialState = {
-  name: '',
-  slug: '',
-  video: '',
-  delete: false,
-}
+import {
+  ArrowDownIcon,
+  ArrowUpIcon,
+  EditIcon,
+  PlusIcon,
+  SaveIcon,
+  Trash2Icon,
+  XIcon,
+} from 'lucide-react'
+import { FormEvent, useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
 
 export function CourseFormLesson({
   lesson,
-  onAdd,
-  onDelete,
-  onSave,
+  group,
 }: {
-  lesson?: UILesson
-  onAdd?: (lesson: UILesson) => void
-  onDelete?: (lesson: UILesson) => void
-  onSave?: (lesson: UILesson) => void
+  group: UIGroup
+  lesson: UILesson
 }) {
-  const [current, setCurrent] = useState(lesson || initialState)
+  const dispatch = useAppDispatch()
+
+  const [current, setCurrent] = useState(lesson)
+  const isNew = !lesson.uiId
   const [isEditing, setEditing] = useState(false)
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target
+  useEffect(() => {
+    setCurrent(lesson)
+  }, [lesson])
 
-    if (!lesson && name === 'name') {
+  const handleInputChange = (name: string, value: any) => {
+    if (isNew && name === 'name') {
       setCurrent({ ...current, [name]: value, slug: kebabCase(value) })
     } else {
       setCurrent({ ...current, [name]: value })
     }
   }
 
-  const add = (event: FormEvent) => {
-    event.preventDefault()
-
-    if (onAdd) {
-      onAdd(current)
-      setCurrent(initialState)
-    }
-  }
-
-  const remove = () => {
-    if (lesson && onDelete) {
-      onDelete(lesson)
+  const add = () => {
+    try {
+      dispatch(addLesson({ group, lesson: current }))
+      setCurrent(lesson)
+    } catch (err: any) {
+      toast.error(err.message)
     }
   }
 
   const save = () => {
-    if (onSave) {
-      onSave(current)
+    try {
+      dispatch(updateLesson({ group, lesson: current }))
       setEditing(false)
+    } catch (err: any) {
+      toast.error(err.message)
+    }
+  }
+
+  const onSubmit = (event: FormEvent) => {
+    event.preventDefault()
+
+    if (current.uiId) save()
+    else add()
+  }
+
+  const remove = () => {
+    try {
+      dispatch(deleteLesson({ group, lesson: current }))
+    } catch (err: any) {
+      toast.error(err.message)
     }
   }
 
   const cancel = () => {
     setEditing(false)
-    setCurrent(lesson!)
+    setCurrent(lesson)
   }
 
-  if (lesson?.deleted) {
+  const onMoveUp = () => {
+    dispatch(moveLessonUp({ group, lesson: current }))
+  }
+
+  const onMoveDown = () => {
+    dispatch(moveLessonDown({ group, lesson: current }))
+  }
+
+  if (lesson.deleted) {
     return null
   }
 
   return (
-    <form onSubmit={add} className="flex items-center gap-1">
+    <form onSubmit={onSubmit} className="flex items-center gap-1">
       <div className="grid grid-cols-3 w-full gap-1">
         <Input
           name="name"
           placeholder="Name"
           value={current.name}
           required
-          disabled={lesson && !isEditing}
-          onChange={(event) => handleInputChange(event)}
+          disabled={!isNew && !isEditing}
+          onChange={(event) =>
+            handleInputChange(event.target.name, event.target.value)
+          }
         />
         <Input
           name="slug"
           placeholder="Slug"
           value={current.slug}
           required
-          disabled={lesson && !isEditing}
-          onChange={(event) => handleInputChange(event)}
+          disabled={!isNew && !isEditing}
+          onChange={(event) =>
+            handleInputChange(event.target.name, event.target.value)
+          }
         />
         <Input
           name="video"
           placeholder="Video URL"
           value={current.video}
           required
-          disabled={lesson && !isEditing}
-          onChange={(event) => handleInputChange(event)}
+          disabled={!isNew && !isEditing}
+          onChange={(event) =>
+            handleInputChange(event.target.name, event.target.value)
+          }
         />
       </div>
 
-      {!lesson && (
-        <Button size="sm" variant="default" className="w-[5.5rem]">
+      {isNew && (
+        <Button
+          size="sm"
+          variant="default"
+          className="w-[5.5rem]"
+          type="submit"
+        >
           <PlusIcon className="h-4 w-4" />
         </Button>
       )}
 
-      {isEditing && (
+      {!isNew && isEditing && (
         <>
-          <Button size="sm" variant="default" onClick={save}>
+          <Button size="sm" variant="default" type="submit">
             <SaveIcon className="h-4 w-4" />
           </Button>
-          <Button size="sm" variant="secondary" onClick={cancel}>
+          <Button size="sm" variant="secondary" type="button" onClick={cancel}>
             <XIcon className="h-4 w-4" />
           </Button>
         </>
       )}
 
-      {!isEditing && lesson && (
+      {!isNew && !isEditing && (
         <>
           <Button
             size="sm"
             variant="secondary"
+            type="button"
             onClick={() => setEditing(true)}
           >
             <EditIcon className="h-4 w-4" />
           </Button>
           <ConfirmationDialog onConfirm={remove}>
-            <Button size="sm" type="button" variant="secondary">
+            <Button size="sm" variant="secondary" type="button">
               <Trash2Icon className="h-4 w-4" />
             </Button>
           </ConfirmationDialog>
         </>
+      )}
+
+      {!isNew && (
+        <div className="flex items-center gap-1">
+          <Button
+            type="button"
+            size="sm"
+            variant="secondary"
+            onClick={onMoveUp}
+          >
+            <ArrowUpIcon className="h-4 w-4" />
+          </Button>
+          <Button
+            size="sm"
+            variant="secondary"
+            type="button"
+            onClick={onMoveDown}
+          >
+            <ArrowDownIcon className="h-4 w-4" />
+          </Button>
+        </div>
       )}
     </form>
   )

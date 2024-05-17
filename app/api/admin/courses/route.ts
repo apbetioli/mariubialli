@@ -24,7 +24,7 @@ export const POST = async (request: Request) => {
   })
 
   // TODO improve this logic
-  for (const { id, lessons, name, deleted: groupDeleted } of groups) {
+  for (const { id, lessons, name, order, deleted: groupDeleted } of groups) {
     if (groupDeleted) {
       var newGroup = await prisma.group.delete({
         where: {
@@ -35,7 +35,7 @@ export const POST = async (request: Request) => {
     } else {
       if (id) {
         var newGroup = await prisma.group.update({
-          data: { name, courseId: course.id },
+          data: { name, order, courseId: course.id },
           where: {
             id,
           },
@@ -43,13 +43,13 @@ export const POST = async (request: Request) => {
         console.log('Updated group', newGroup.id)
       } else {
         var newGroup = await prisma.group.create({
-          data: { name, courseId: course.id },
+          data: { name, order, courseId: course.id },
         })
         console.log('Created group', newGroup.id)
       }
     }
 
-    for (const { id, name, slug, video, deleted } of lessons) {
+    for (const { id, name, slug, video, deleted, order } of lessons) {
       if (deleted || groupDeleted) {
         var newLesson = await prisma.lesson.delete({
           where: {
@@ -60,7 +60,7 @@ export const POST = async (request: Request) => {
       } else {
         if (id) {
           var newLesson = await prisma.lesson.update({
-            data: { name, slug, video, groupId: newGroup.id },
+            data: { name, slug, video, order, groupId: newGroup.id },
             where: {
               id,
             },
@@ -68,7 +68,7 @@ export const POST = async (request: Request) => {
           console.log('Updated lesson', newLesson.id)
         } else {
           var newLesson = await prisma.lesson.create({
-            data: { name, slug, video, groupId: newGroup.id },
+            data: { name, slug, video, order, groupId: newGroup.id },
           })
           console.log('Created lesson', newLesson.id)
         }

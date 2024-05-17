@@ -11,7 +11,14 @@ export const GET = async (request: Request) => {
       },
       groups: {
         include: {
-          lessons: true,
+          lessons: {
+            orderBy: {
+              order: 'asc',
+            },
+          },
+        },
+        orderBy: {
+          order: 'asc',
         },
       },
     },
