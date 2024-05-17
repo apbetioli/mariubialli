@@ -18,9 +18,8 @@ const initialState: UIGroup = {
 
 export function CourseFormGroups() {
   const dispatch = useAppDispatch()
-  const groups = useAppSelector((state) =>
-    state.course.value.groups.filter((group) => !group.deleted),
-  )
+  const groups = useAppSelector((state) => state.course.value.groups)
+  const filteredGroups = groups.filter((group) => !group.deleted)
 
   const onAddGroup = (newGroup: UIGroup) => {
     try {
@@ -39,8 +38,8 @@ export function CourseFormGroups() {
           </Button>
         </CourseFormGroupDialog>
       </div>
-      {groups.length === 0 && <Empty title="No groups yet" />}
-      {groups.map((group) => (
+      {filteredGroups.length === 0 && <Empty title="No groups yet" />}
+      {filteredGroups.map((group) => (
         <CourseFormGroup key={group.uiId} group={group} />
       ))}
     </div>
