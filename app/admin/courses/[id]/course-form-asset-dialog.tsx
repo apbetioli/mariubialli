@@ -101,6 +101,7 @@ export function CourseFormAssetDialog({
             <InputWithLabel
               type="number"
               step={0.01}
+              min={0}
               required
               label="Price"
               name="price"
@@ -113,6 +114,7 @@ export function CourseFormAssetDialog({
             <InputWithLabel
               type="number"
               step={0.01}
+              min={0}
               required
               label="Anchor price"
               name="anchor_price"

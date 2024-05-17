@@ -11,7 +11,7 @@ import { ArrowRightIcon } from 'lucide-react'
 import Link from 'next/link'
 import { notFound, useParams } from 'next/navigation'
 import { useId } from 'react'
-import { Sidebar } from '../../components/sidebar'
+import { Sidebar } from '../../sidebar'
 
 const LessonPage = () => {
   const { courseSlug } = useParams<{ courseSlug: string }>()

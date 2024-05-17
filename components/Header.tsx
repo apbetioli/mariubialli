@@ -1,5 +1,4 @@
 'use client'
-
 import { Button } from '@/components/ui/button'
 import { useUser } from '@/lib/hooks'
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
