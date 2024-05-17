@@ -30,7 +30,7 @@ import {
   useSearchParams,
 } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { Sidebar } from '../components/sidebar'
+import { Sidebar } from '../sidebar'
 
 const AssetPage = () => {
   const { courseSlug } = useParams<{ courseSlug: string }>()
