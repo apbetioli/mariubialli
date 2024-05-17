@@ -1,7 +1,7 @@
 'use client'
 
 import { UIAsset } from '@/app/types'
-import Empty from '@/components/empty'
+import { Empty } from '@/components/empty'
 import { Button } from '@/components/ui/button'
 import {
   Table,

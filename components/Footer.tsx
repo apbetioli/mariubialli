@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { GithubIcon } from './ui/icons'
 
-export default function Footer() {
+export function Footer() {
   const footerLinks = [
     { href: 'mailto:contato@mariubialli.com.br', label: 'Contato' },
     { href: '/termos-de-uso', label: 'Termos de serviço' },
