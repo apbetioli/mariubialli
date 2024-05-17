@@ -2,6 +2,31 @@ import { getUserByClerkId } from '@/lib/server/auth'
 import { prisma } from '@/lib/server/db'
 import { NextResponse } from 'next/server'
 
+export const GET = async (request: Request) => {
+  const courses = await prisma.course.findMany({
+    include: {
+      assets: true,
+      groups: {
+        include: {
+          lessons: {
+            orderBy: {
+              order: 'asc',
+            },
+          },
+        },
+        orderBy: {
+          order: 'asc',
+        },
+      },
+    },
+    orderBy: {
+      updatedAt: 'desc',
+    },
+  })
+
+  return NextResponse.json(courses)
+}
+
 export const POST = async (request: Request) => {
   const user = await getUserByClerkId()
 
@@ -15,13 +40,20 @@ export const POST = async (request: Request) => {
 
   const { id, assets, groups, ...data } = await request.json()
 
-  const course = await prisma.course.upsert({
-    create: data,
-    update: data,
-    where: {
-      id,
-    },
-  })
+  if (id) {
+    var course = await prisma.course.update({
+      data,
+      where: {
+        id,
+      },
+    })
+    console.log('Updated course', course.id)
+  } else {
+    var course = await prisma.course.create({
+      data,
+    })
+    console.log('Created course', course.id)
+  }
 
   // TODO improve this logic
   for (const { id, lessons, name, order, deleted: groupDeleted } of groups) {
@@ -127,11 +159,5 @@ export const POST = async (request: Request) => {
     }
   }
 
-  const updatedCourse = await prisma.course.findUnique({
-    where: {
-      id,
-    },
-  })
-
-  return NextResponse.json(updatedCourse)
+  return NextResponse.json(course)
 }

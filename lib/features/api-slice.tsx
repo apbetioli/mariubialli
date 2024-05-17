@@ -18,6 +18,11 @@ export const apiSlice = createApi({
       providesTags: ['Course'],
     }),
 
+    getAdminCourses: builder.query<UICourse[], void>({
+      query: () => 'admin/courses',
+      providesTags: ['Course'],
+    }),
+
     getAdminCourseById: builder.query<UICourse, string>({
       query: (id) => `admin/courses/${id}`,
       providesTags: ['Course'],
@@ -28,6 +33,14 @@ export const apiSlice = createApi({
         url: 'admin/courses',
         method: 'POST',
         body: course,
+      }),
+      invalidatesTags: ['Course'],
+    }),
+
+    deleteCourse: builder.mutation<Course, string>({
+      query: (id) => ({
+        url: `admin/courses/${id}`,
+        method: 'DELETE',
       }),
       invalidatesTags: ['Course'],
     }),
@@ -71,8 +84,10 @@ export const apiSlice = createApi({
 export const {
   useGetCoursesQuery,
   useGetCourseBySlugQuery,
+  useGetAdminCoursesQuery,
   useGetAdminCourseByIdQuery,
   useGetUserQuery,
   useToggleLessonCompletedMutation,
   useSaveCourseMutation,
+  useDeleteCourseMutation,
 } = apiSlice

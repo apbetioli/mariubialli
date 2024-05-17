@@ -11,7 +11,7 @@ const AdminLayout = async ({ children }: { children: ReactNode }) => {
   }
 
   return (
-    <div className="flex flex-col-reverse justify-end md:flex-row h-[calc(100vh-3rem)] md:h-[calc(100vh-6rem)] w-full">
+    <div className="flex flex-col-reverse justify-end md:flex-row md:h-[calc(100vh-6rem)] w-full">
       <aside className="flex flex-col w-14 border-r md:shrink-0 overflow-auto bg-white">
         <AdminMenu />
       </aside>
