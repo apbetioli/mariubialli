@@ -1,4 +1,4 @@
-import { Draft, UICourse, UIGroup, UILesson } from '@/app/types'
+import { Draft, UIAsset, UICourse, UIGroup, UILesson } from '@/app/types'
 import { PayloadAction, createSlice, nanoid } from '@reduxjs/toolkit'
 import { kebabCase } from 'lodash'
 import { apiSlice } from './api-slice'
@@ -23,6 +23,13 @@ const initialState: CourseSliceState = {
     groups: [],
     assets: [],
   },
+}
+
+export const createAsset = (asset: UIAsset): UIAsset => {
+  return {
+    uiId: nanoid(),
+    ...asset,
+  }
 }
 
 export const createGroup = (group: UIGroup): UIGroup => {
@@ -64,6 +71,7 @@ const courseSlice = createSlice({
     initializeCourse: (state, action: PayloadAction<UICourse | undefined>) => {
       state.value = action.payload || initialState.value
     },
+
     updateCourseField: (state, action: PayloadAction<FormFieldAction>) => {
       state.value = {
         ...state.value,
@@ -74,6 +82,7 @@ const courseSlice = createSlice({
         state.value.slug = kebabCase(state.value.name)
       }
     },
+
     addGroup: (state, action: PayloadAction<string>) => {
       const exists = state.value.groups.find(
         (group) => group.name === action.payload,
@@ -90,12 +99,14 @@ const courseSlice = createSlice({
         }),
       )
     },
+
     updateGroup: (state, action: PayloadAction<UIGroup>) => {
       const index = state.value.groups.findIndex(
         (group) => group.uiId === action.payload.uiId,
       )
       state.value.groups.splice(index, 1, action.payload)
     },
+
     deleteGroup: (state, action: PayloadAction<UIGroup>) => {
       const index = state.value.groups.findIndex(
         (group) => group.uiId === action.payload.uiId,
@@ -109,6 +120,32 @@ const courseSlice = createSlice({
         state.value.groups.splice(index, 1)
       }
     },
+
+    addAsset: (state, action: PayloadAction<UIAsset>) => {
+      state.value.assets.push(createAsset(action.payload))
+    },
+
+    updateAsset: (state, action: PayloadAction<UIAsset>) => {
+      const index = state.value.assets.findIndex(
+        (asset) => asset.uiId === action.payload.uiId,
+      )
+      state.value.assets.splice(index, 1, action.payload)
+    },
+
+    deleteAsset: (state, action: PayloadAction<UIAsset>) => {
+      const index = state.value.assets.findIndex(
+        (asset) => asset.uiId === action.payload.uiId,
+      )
+      if (action.payload.id) {
+        state.value.assets.splice(index, 1, {
+          ...action.payload,
+          deleted: true,
+        })
+      } else {
+        state.value.assets.splice(index, 1)
+      }
+    },
+
     addLesson: (
       state,
       action: PayloadAction<{ group: UIGroup; lesson: UILesson }>,
@@ -122,6 +159,7 @@ const courseSlice = createSlice({
         }),
       )
     },
+
     updateLesson: (
       state,
       action: PayloadAction<{ group: UIGroup; lesson: UILesson }>,
@@ -132,6 +170,7 @@ const courseSlice = createSlice({
 
       groupToUpdate.lessons.splice(index, 1, action.payload.lesson)
     },
+
     deleteLesson: (
       state,
       action: PayloadAction<{ group: UIGroup; lesson: UILesson }>,
@@ -149,6 +188,7 @@ const courseSlice = createSlice({
         groupToUpdate.lessons.splice(index, 1)
       }
     },
+
     moveLessonUp: (
       state,
       action: PayloadAction<{
@@ -169,6 +209,7 @@ const courseSlice = createSlice({
       groupToUpdate.lessons[index].order = index
       groupToUpdate.lessons[index - 1].order = index - 1
     },
+
     moveLessonDown: (
       state,
       action: PayloadAction<{
@@ -220,6 +261,9 @@ export const {
   addGroup,
   updateGroup,
   deleteGroup,
+  addAsset,
+  updateAsset,
+  deleteAsset,
   addLesson,
   updateLesson,
   deleteLesson,

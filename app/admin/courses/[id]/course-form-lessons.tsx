@@ -13,12 +13,13 @@ const initialState = {
 }
 
 export function CourseFormLessons({ group }: { group: UIGroup }) {
+  const lessons = group.lessons.filter((lesson) => !lesson.deleted)
   return (
     <div className="space-y-2">
-      {group.lessons.map((lesson) => (
+      {lessons.map((lesson) => (
         <CourseFormLesson key={lesson.name} group={group} lesson={lesson} />
       ))}
-      {group.lessons.length > 0 && <Separator />}
+      {lessons.length > 0 && <Separator />}
       <CourseFormLesson group={group} lesson={initialState} />
     </div>
   )

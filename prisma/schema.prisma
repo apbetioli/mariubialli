@@ -60,7 +60,7 @@ model Asset {
   description  String
   image        String
   price        Float
-  anchor_price Float?
+  anchor_price Float  @default(0)
   url          String
 
   Course   Course? @relation(fields: [courseId], references: [id])

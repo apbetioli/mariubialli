@@ -76,6 +76,57 @@ export const POST = async (request: Request) => {
     }
   }
 
+  for (const {
+    id,
+    name,
+    description,
+    image,
+    url,
+    price,
+    anchor_price,
+    deleted,
+  } of assets) {
+    if (deleted) {
+      const newAsset = await prisma.asset.delete({
+        where: {
+          id,
+        },
+      })
+      console.log('Deleted asset', newAsset.id)
+    } else {
+      if (id) {
+        const newAsset = await prisma.asset.update({
+          data: {
+            name,
+            description,
+            image,
+            url,
+            price,
+            anchor_price,
+            courseId: course.id,
+          },
+          where: {
+            id,
+          },
+        })
+        console.log('Updated asset', newAsset.id)
+      } else {
+        const newAsset = await prisma.asset.create({
+          data: {
+            name,
+            description,
+            image,
+            url,
+            price,
+            anchor_price,
+            courseId: course.id,
+          },
+        })
+        console.log('Created asset', newAsset.id)
+      }
+    }
+  }
+
   const updatedCourse = await prisma.course.findUnique({
     where: {
       id,

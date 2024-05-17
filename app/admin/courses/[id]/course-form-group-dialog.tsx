@@ -8,21 +8,21 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { EditIcon, SaveIcon } from 'lucide-react'
-import { FormEvent, useEffect, useId, useState } from 'react'
-
-export function EditGroupDialog({
+import { InputWithLabel } from '@/components/ui/input'
+import { SaveIcon } from 'lucide-react'
+import { FormEvent, ReactNode, useEffect, useId, useState } from 'react'
+export function CourseFormGroupDialog({
+  children,
   group,
-  onGroupChange,
+  onApply,
 }: {
+  children: ReactNode
   group: UIGroup
-  onGroupChange: (group: UIGroup) => void
+  onApply: (group: UIGroup) => void
 }) {
   const [name, setName] = useState(group.name)
   const [open, setOpen] = useState(false)
-  const nameId = useId()
+  const nameFieldId = useId()
 
   useEffect(() => {
     setName(group.name)
@@ -30,7 +30,7 @@ export function EditGroupDialog({
 
   const onSubmit = (event: FormEvent) => {
     event.preventDefault()
-    onGroupChange({
+    onApply({
       ...group,
       name,
     })
@@ -39,24 +39,20 @@ export function EditGroupDialog({
 
   return (
     <Dialog open={open} onOpenChange={(value) => setOpen(value)}>
-      <DialogTrigger asChild>
-        <Button variant="ghost" size="sm" title="Edit group">
-          <EditIcon className="h-4 w-4" />
-        </Button>
-      </DialogTrigger>
+      <DialogTrigger asChild>{children}</DialogTrigger>
 
       <DialogContent>
         <form onSubmit={onSubmit}>
           <DialogHeader>
-            <DialogTitle>Edit group</DialogTitle>
+            <DialogTitle>{group.uiId ? 'Edit group' : 'Add group'}</DialogTitle>
           </DialogHeader>
 
           <div className="flex flex-col gap-4 my-6">
-            <Label htmlFor={nameId}>Name</Label>
-            <Input
-              id={nameId}
-              className="col-span-4"
+            <InputWithLabel
+              id={nameFieldId}
               required
+              name="name"
+              label="Name"
               value={name}
               onChange={(event) => setName(event.target.value)}
             />

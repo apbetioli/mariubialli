@@ -3,6 +3,7 @@
 import LoadingPage from '@/app/loading'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '@/components/ui/label'
 import Video from '@/components/video'
 import { useCourse, useMarkAsCompleted, useUser } from '@/lib/hooks'
 import { Lesson } from '@prisma/client'
@@ -54,7 +55,7 @@ const LessonPage = () => {
                 }
                 className="h-5 w-5"
               />
-              <label htmlFor={completedCheckboxId}>Concluído</label>
+              <Label htmlFor={completedCheckboxId}>Concluído</Label>
             </div>
 
             {isLastLesson ? (

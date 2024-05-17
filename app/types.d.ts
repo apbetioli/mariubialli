@@ -9,7 +9,7 @@ export type Draft<T> = Omit<T, 'id'> & {
   deleted?: boolean
 }
 
-export type UIAsset = Omit<Draft<Asset>, 'url'>
+export type UIAsset = Omit<Draft<Asset>, 'courseId'>
 
 export type UILesson = Omit<Draft<Lesson>, 'groupId'>
 
