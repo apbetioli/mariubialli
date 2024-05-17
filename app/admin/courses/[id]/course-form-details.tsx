@@ -1,7 +1,6 @@
 'use client'
 
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import { InputWithLabel } from '@/components/ui/input'
 import { updateCourseField } from '@/lib/features/course-slice'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import Image from 'next/image'
@@ -18,9 +17,9 @@ export function CourseFormDetails() {
   return (
     <div className="space-y-8 mt-6">
       <div className="flex flex-col gap-2">
-        <Label>Name</Label>
-        <Input
+        <InputWithLabel
           name="name"
+          label="Name"
           value={course.name}
           required
           onChange={(event) => handleInputChange(event)}
@@ -28,20 +27,9 @@ export function CourseFormDetails() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <Label>Slug</Label>
-        <Input
-          name="slug"
-          disabled={course.published}
-          value={course.slug}
-          required
-          onChange={(event) => handleInputChange(event)}
-        />
-      </div>
-
-      <div className="flex flex-col gap-2">
-        <Label>Description</Label>
-        <Input
+        <InputWithLabel
           name="description"
+          label="Description"
           value={course.description}
           required
           onChange={(event) => handleInputChange(event)}
@@ -49,9 +37,9 @@ export function CourseFormDetails() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <Label>Image URL</Label>
-        <Input
+        <InputWithLabel
           name="image"
+          label="Image URL"
           value={course.image}
           required
           onChange={(event) => handleInputChange(event)}
@@ -59,8 +47,8 @@ export function CourseFormDetails() {
         {course.image && (
           <Image
             src={course.image}
-            width={64}
-            height={64}
+            width={100}
+            height={100}
             alt="Course cover image"
           />
         )}

@@ -32,6 +32,10 @@ export const SidebarLesson = ({
         }
         className="h-5 w-5 ml-4"
       />
+      <label htmlFor={completedCheckboxId} className="sr-only">
+        Concluído
+      </label>
+
       <div className="w-full">
         <Link href={`/courses/${course.slug}/lessons/${lesson.slug}`}>
           <Button

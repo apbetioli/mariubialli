@@ -92,7 +92,7 @@ const AssetPage = () => {
                 className="inline-flex shrink-0 m-auto"
               />
 
-              <CardContent className="flex flex-col gap-3 p-8">
+              <CardContent className="flex flex-col gap-3 p-8 grow">
                 <CardTitle>{asset.name}</CardTitle>
                 <CardDescription className="mb-6">
                   {asset.description}

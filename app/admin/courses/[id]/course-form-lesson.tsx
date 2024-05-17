@@ -96,27 +96,13 @@ export function CourseFormLesson({
     dispatch(moveLessonDown({ group, lesson: current }))
   }
 
-  if (lesson.deleted) {
-    return null
-  }
-
   return (
     <form onSubmit={onSubmit} className="flex items-center gap-1">
-      <div className="grid grid-cols-3 w-full gap-1">
+      <div className="grid grid-cols-2 w-full gap-1">
         <Input
           name="name"
           placeholder="Name"
           value={current.name}
-          required
-          disabled={!isNew && !isEditing}
-          onChange={(event) =>
-            handleInputChange(event.target.name, event.target.value)
-          }
-        />
-        <Input
-          name="slug"
-          placeholder="Slug"
-          value={current.slug}
           required
           disabled={!isNew && !isEditing}
           onChange={(event) =>
@@ -136,12 +122,7 @@ export function CourseFormLesson({
       </div>
 
       {isNew && (
-        <Button
-          size="sm"
-          variant="default"
-          className="w-[5.5rem]"
-          type="submit"
-        >
+        <Button size="sm" variant="default" className="w-52" type="submit">
           <PlusIcon className="h-4 w-4" />
         </Button>
       )}
@@ -175,6 +156,7 @@ export function CourseFormLesson({
         </>
       )}
 
+      {/* TODO drag and drop */}
       {!isNew && (
         <div className="flex items-center gap-1">
           <Button

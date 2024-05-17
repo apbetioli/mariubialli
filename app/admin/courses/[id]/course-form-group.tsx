@@ -12,14 +12,14 @@ import {
 import { Button } from '@/components/ui/button'
 import { deleteGroup, updateGroup } from '@/lib/features/course-slice'
 import { useAppDispatch } from '@/lib/hooks'
-import { Trash2Icon } from 'lucide-react'
+import { EditIcon, Trash2Icon } from 'lucide-react'
+import { CourseFormGroupDialog } from './course-form-group-dialog'
 import { CourseFormLessons } from './course-form-lessons'
-import { EditGroupDialog } from './edit-group-dialog'
 
 export function CourseFormGroup({ group }: { group: UIGroup }) {
   const dispatch = useAppDispatch()
 
-  const onGroupChange = (group: UIGroup) => {
+  const onGroupUpdate = (group: UIGroup) => {
     dispatch(updateGroup(group))
   }
 
@@ -27,16 +27,16 @@ export function CourseFormGroup({ group }: { group: UIGroup }) {
     dispatch(deleteGroup(group))
   }
 
-  if (group.deleted) {
-    return null
-  }
-
   return (
     <Accordion type="multiple">
       <AccordionItem value={group.name}>
         <AccordionHeader className="px-2 bg-gray-100">
           <AccordionTrigger className="gap-2">{group.name}</AccordionTrigger>
-          <EditGroupDialog group={group} onGroupChange={onGroupChange} />
+          <CourseFormGroupDialog group={group} onApply={onGroupUpdate}>
+            <Button variant="ghost" size="sm" title="Edit group">
+              <EditIcon className="h-4 w-4" />
+            </Button>
+          </CourseFormGroupDialog>
           <ConfirmationDialog onConfirm={onGroupDelete}>
             <Button variant="ghost" title="Delete group">
               <Trash2Icon className="w-4 h-4" />
