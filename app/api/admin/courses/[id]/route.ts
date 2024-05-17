@@ -13,7 +13,14 @@ export const GET = async (
       assets: true,
       groups: {
         include: {
-          lessons: true,
+          lessons: {
+            orderBy: {
+              order: 'asc',
+            },
+          },
+        },
+        orderBy: {
+          order: 'asc',
         },
       },
     },

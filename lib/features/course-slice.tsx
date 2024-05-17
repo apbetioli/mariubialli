@@ -47,6 +47,16 @@ const findGroup = (state: CourseSliceState, group: UIGroup) => {
   return found
 }
 
+const findLessonIndex = (groupToUpdate: UIGroup, lesson: UILesson) => {
+  const index = groupToUpdate.lessons.findIndex(
+    (_lesson) => _lesson.uiId === lesson.uiId,
+  )
+  if (index < 0) {
+    throw new Error(`Lesson not found ${lesson.name}`)
+  }
+  return index
+}
+
 const courseSlice = createSlice({
   name: 'course',
   initialState,
@@ -73,7 +83,11 @@ const courseSlice = createSlice({
       }
 
       state.value.groups.push(
-        createGroup({ name: action.payload, lessons: [] }),
+        createGroup({
+          name: action.payload,
+          lessons: [],
+          order: state.value.groups.length,
+        }),
       )
     },
     updateGroup: (state, action: PayloadAction<UIGroup>) => {
@@ -99,48 +113,33 @@ const courseSlice = createSlice({
       state,
       action: PayloadAction<{ group: UIGroup; lesson: UILesson }>,
     ) => {
-      const groupToAdd = state.value.groups.find(
-        (_group) => _group.uiId === action.payload.group.uiId,
+      const groupToAdd = findGroup(state, action.payload.group)
+
+      groupToAdd.lessons.push(
+        createLesson({
+          ...action.payload.lesson,
+          order: groupToAdd.lessons.length,
+        }),
       )
-      if (!groupToAdd) {
-        throw new Error(`Group not found ${action.payload.group.name}`)
-      }
-      groupToAdd.lessons.push(createLesson(action.payload.lesson))
     },
     updateLesson: (
       state,
       action: PayloadAction<{ group: UIGroup; lesson: UILesson }>,
     ) => {
-      const groupToUpdate = state.value.groups.find(
-        (_group) => _group.uiId === action.payload.group.uiId,
-      )
-      if (!groupToUpdate) {
-        throw new Error(`Group not found ${action.payload.group.name}`)
-      }
-      const index = groupToUpdate.lessons.findIndex(
-        (_lesson) => _lesson.uiId === action.payload.lesson.uiId,
-      )
-      if (index < 0) {
-        throw new Error(`Lesson not found ${action.payload.lesson.name}`)
-      }
+      const groupToUpdate = findGroup(state, action.payload.group)
+
+      const index = findLessonIndex(groupToUpdate, action.payload.lesson)
+
       groupToUpdate.lessons.splice(index, 1, action.payload.lesson)
     },
     deleteLesson: (
       state,
       action: PayloadAction<{ group: UIGroup; lesson: UILesson }>,
     ) => {
-      const groupToUpdate = state.value.groups.find(
-        (_group) => _group.uiId === action.payload.group.uiId,
-      )
-      if (!groupToUpdate) {
-        throw new Error(`Group not found ${action.payload.group.name}`)
-      }
-      const index = groupToUpdate.lessons.findIndex(
-        (_lesson) => _lesson.uiId === action.payload.lesson.uiId,
-      )
-      if (index < 0) {
-        throw new Error(`Lesson not found ${action.payload.lesson.name}`)
-      }
+      const groupToUpdate = findGroup(state, action.payload.group)
+
+      const index = findLessonIndex(groupToUpdate, action.payload.lesson)
+
       if (action.payload.lesson.id) {
         groupToUpdate.lessons.splice(index, 1, {
           ...action.payload.lesson,
@@ -150,6 +149,46 @@ const courseSlice = createSlice({
         groupToUpdate.lessons.splice(index, 1)
       }
     },
+    moveLessonUp: (
+      state,
+      action: PayloadAction<{
+        group: UIGroup
+        lesson: UILesson
+      }>,
+    ) => {
+      const groupToUpdate = findGroup(state, action.payload.group)
+
+      const index = findLessonIndex(groupToUpdate, action.payload.lesson)
+
+      if (index === 0) return
+
+      const aux = groupToUpdate.lessons[index]
+      groupToUpdate.lessons[index] = groupToUpdate.lessons[index - 1]
+      groupToUpdate.lessons[index - 1] = aux
+
+      groupToUpdate.lessons[index].order = index
+      groupToUpdate.lessons[index - 1].order = index - 1
+    },
+    moveLessonDown: (
+      state,
+      action: PayloadAction<{
+        group: UIGroup
+        lesson: UILesson
+      }>,
+    ) => {
+      const groupToUpdate = findGroup(state, action.payload.group)
+
+      const index = findLessonIndex(groupToUpdate, action.payload.lesson)
+
+      if (index + 1 === groupToUpdate.lessons.length) return
+
+      const aux = groupToUpdate.lessons[index]
+      groupToUpdate.lessons[index] = groupToUpdate.lessons[index + 1]
+      groupToUpdate.lessons[index + 1] = aux
+
+      groupToUpdate.lessons[index].order = index
+      groupToUpdate.lessons[index + 1].order = index + 1
+    },
   },
   extraReducers: (builder) => {
     builder.addMatcher(
@@ -158,8 +197,9 @@ const courseSlice = createSlice({
         state.value = payload
         state.value.groups.forEach((group) => {
           group.uiId = group.id
-          group.lessons.forEach((lesson) => {
+          group.lessons.forEach((lesson, index) => {
             lesson.uiId = lesson.id
+            lesson.order |= index
           })
         })
       },
@@ -183,6 +223,8 @@ export const {
   addLesson,
   updateLesson,
   deleteLesson,
+  moveLessonUp,
+  moveLessonDown,
 } = courseSlice.actions
 
 export default courseSlice

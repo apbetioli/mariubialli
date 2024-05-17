@@ -5,12 +5,12 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Menu } from 'lucide-react'
 import { PropsWithChildren } from 'react'
 
-type MobileMenuState = {
+type Props = {
   open: boolean
   onOpenChange: (open: boolean) => void
 }
 
-export function MobileMenu(props: PropsWithChildren<MobileMenuState>) {
+export function MobileMenu(props: PropsWithChildren<Props>) {
   const { children, ...sheetProps } = props
   return (
     <Sheet {...sheetProps}>

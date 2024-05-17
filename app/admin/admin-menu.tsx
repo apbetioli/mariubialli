@@ -20,26 +20,11 @@ export default function AdminMenu() {
       icon: <LineChartIcon className="h-5 w-5" />,
       name: 'Dashboard',
     },
-    /*  {
-      href: '/admin/orders',
-      icon: <ShoppingCartIcon className="h-5 w-5" />,
-      name: 'Orders',
-    }, */
     {
       href: '/admin/courses',
       icon: <PackageIcon className="h-5 w-5" />,
       name: 'Courses',
     },
-    /* {
-      href: '/admin/customers',
-      icon: <Users2Icon className="h-5 w-5" />,
-      name: 'Customers',
-    }, */
-    /* {
-      href: '/admin/settings',
-      icon: <SettingsIcon className="h-5 w-5" />,
-      name: 'Settings',
-    }, */
   ]
 
   return (

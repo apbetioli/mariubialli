@@ -36,6 +36,7 @@ model Course {
 model Group {
   id      String   @id @default(auto()) @map("_id") @db.ObjectId
   name    String
+  order   Int      @default(0)
   lessons Lesson[]
 
   Course   Course? @relation(fields: [courseId], references: [id])
@@ -47,6 +48,7 @@ model Lesson {
   name  String
   slug  String
   video String
+  order Int    @default(0)
 
   Group   Group?  @relation(fields: [groupId], references: [id])
   groupId String? @db.ObjectId
