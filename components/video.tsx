@@ -4,9 +4,12 @@ type Props = {
 }
 
 const sanitize = (src: string) => {
-  if (src.startsWith('https://youtu.be/')) {
-    return src.replace('https://youtu.be/', 'https://www.youtube.com/embed/')
-  }
+  return src
+    .replace('https://youtu.be/', 'https://www.youtube.com/embed/')
+    .replace(
+      'https://www.youtube.com/watch?v=',
+      'https://www.youtube.com/embed/',
+    )
 }
 
 export function Video({ src }: Props) {
