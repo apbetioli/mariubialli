@@ -10,7 +10,7 @@ import { Logo } from './logo'
 import { MobileMenu } from './mobile-menu'
 import { GithubIcon } from './ui/icons'
 
-export default function Header() {
+export function Header() {
   const user = useUser()
 
   const links = [

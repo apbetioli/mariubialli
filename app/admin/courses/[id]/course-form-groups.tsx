@@ -1,7 +1,7 @@
 'use client'
 
 import { UIGroup } from '@/app/types'
-import Empty from '@/components/empty'
+import { Empty } from '@/components/empty'
 import { Button } from '@/components/ui/button'
 import { addGroup } from '@/lib/features/course-slice'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'

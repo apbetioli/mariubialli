@@ -8,7 +8,7 @@ const sanitize = (src: string) => {
   }
 }
 
-export default function Video({ src }: Props) {
+export function Video({ src }: Props) {
   const newSrc = sanitize(src)
 
   return (
