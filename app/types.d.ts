@@ -22,11 +22,6 @@ export type UICourse = Omit<Draft<Course>, 'createdAt' | 'updatedAt'> & {
   groups: UIGroup[]
 }
 
-export type CourseWithUserDetails = UICourse & {
-  progress: number
-  nextLesson: UILesson
-}
-
 export type CheckoutRequest = {
   assetId: string
   redirect: string

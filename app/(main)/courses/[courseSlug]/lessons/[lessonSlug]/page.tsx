@@ -5,7 +5,12 @@ import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
 import { Video } from '@/components/video'
-import { useCourse, useMarkAsCompleted, useUser } from '@/lib/hooks'
+import {
+  useGetCourseBySlugQuery,
+  useToggleLessonCompletedMutation,
+} from '@/lib/features/api-slice'
+import { useUser } from '@/lib/hooks'
+import { userCompletedLesson } from '@/lib/utils'
 import { Lesson } from '@prisma/client'
 import { ArrowRightIcon } from 'lucide-react'
 import Link from 'next/link'
@@ -18,9 +23,14 @@ const LessonPage = () => {
   const { lessonSlug } = useParams<{ lessonSlug: string }>()
 
   const completedCheckboxId = useId()
-  const markAsCompleted = useMarkAsCompleted()
+  const [markAsCompleted] = useToggleLessonCompletedMutation()
   const user = useUser()
-  const { course, isLoading, isError, error } = useCourse(courseSlug)
+  const {
+    data: course,
+    isLoading,
+    isError,
+    error,
+  } = useGetCourseBySlugQuery(courseSlug)
 
   if (isLoading) return <LoadingPage />
   if (isError) throw error
@@ -32,7 +42,7 @@ const LessonPage = () => {
   if (lessonIndex < 0) notFound()
 
   const activeLesson = lessons[lessonIndex] as Lesson
-  const isCompleted = user.completedLessonIds.includes(activeLesson.id)
+  const isCompleted = userCompletedLesson(user)(activeLesson)
   const isLastLesson = lessonIndex + 1 == lessons.length
   const nextLesson = isLastLesson ? lessons[0] : lessons[lessonIndex + 1]
 
@@ -51,7 +61,10 @@ const LessonPage = () => {
                 id={completedCheckboxId}
                 checked={isCompleted}
                 onCheckedChange={(checked) =>
-                  markAsCompleted(activeLesson.id, Boolean(checked))
+                  markAsCompleted({
+                    id: activeLesson.id,
+                    completed: Boolean(checked),
+                  })
                 }
                 className="h-5 w-5"
               />
@@ -62,7 +75,9 @@ const LessonPage = () => {
               <Link href={`/`} className="w-full md:w-fit">
                 <Button
                   variant="secondary"
-                  onClick={() => markAsCompleted(activeLesson.id, true)}
+                  onClick={() =>
+                    markAsCompleted({ id: activeLesson.id, completed: true })
+                  }
                   className="w-full md:w-fit"
                 >
                   Ver outros cursos
@@ -74,7 +89,9 @@ const LessonPage = () => {
                 className="w-full md:w-fit"
               >
                 <Button
-                  onClick={() => markAsCompleted(activeLesson.id, true)}
+                  onClick={() =>
+                    markAsCompleted({ id: activeLesson.id, completed: true })
+                  }
                   className="w-full md:w-fit"
                 >
                   Próxima aula <ArrowRightIcon />

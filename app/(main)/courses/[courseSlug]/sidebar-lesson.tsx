@@ -1,13 +1,14 @@
-import { CourseWithUserDetails, UILesson } from '@/app/types'
+import { UICourse, UILesson } from '@/app/types'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
-import { useMarkAsCompleted, useUser } from '@/lib/hooks'
-import { cn } from '@/lib/utils'
+import { useToggleLessonCompletedMutation } from '@/lib/features/api-slice'
+import { useUser } from '@/lib/hooks'
+import { cn, userCompletedLesson } from '@/lib/utils'
 import Link from 'next/link'
 import { useId } from 'react'
 
 type SidebarLessonProps = {
-  course: CourseWithUserDetails
+  course: UICourse
   lesson: UILesson
   isActiveLesson: boolean
 }
@@ -19,8 +20,8 @@ export const SidebarLesson = ({
 }: SidebarLessonProps) => {
   const user = useUser()
   const completedCheckboxId = useId()
-  const markAsCompleted = useMarkAsCompleted()
-  const isCompleted = user.completedLessonIds.includes(lesson.id)
+  const [markAsCompleted] = useToggleLessonCompletedMutation()
+  const isCompleted = userCompletedLesson(user)(lesson)
 
   return (
     <div className="gap-2 border-b w-full h-16 flex items-center">
@@ -28,7 +29,7 @@ export const SidebarLesson = ({
         id={completedCheckboxId}
         checked={isCompleted}
         onCheckedChange={(checked) =>
-          markAsCompleted(lesson.id!, Boolean(checked))
+          markAsCompleted({ id: lesson.id!, completed: Boolean(checked) })
         }
         className="h-5 w-5 ml-4"
       />

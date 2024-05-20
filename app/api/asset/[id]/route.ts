@@ -2,6 +2,7 @@ import { getUserByClerkId } from '@/lib/server/auth'
 import { prisma } from '@/lib/server/db'
 import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3'
 import { EventType } from '@prisma/client'
+import { notFound } from 'next/navigation'
 import { NextResponse } from 'next/server'
 
 export const GET = async (
@@ -10,11 +11,12 @@ export const GET = async (
 ) => {
   const user = await getUserByClerkId()
 
-  const asset = await prisma.asset.findUniqueOrThrow({
+  const asset = await prisma.asset.findUnique({
     where: {
       id: params.id,
     },
   })
+  if (!asset) notFound()
 
   if (asset.price > 0 && !user.paidAssetIds.includes(asset.id)) {
     return new Response('Payment Required', { status: 402 })

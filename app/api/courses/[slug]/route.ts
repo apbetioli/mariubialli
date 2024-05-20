@@ -1,33 +1,12 @@
-import { prisma } from '@/lib/server/db'
+import { findCourseBySlug } from '@/lib/server/queries'
+import { notFound } from 'next/navigation'
 import { NextResponse } from 'next/server'
 
 export const GET = async (
   request: Request,
   { params }: { params: { slug: string } },
 ) => {
-  const course = await prisma.course.findUniqueOrThrow({
-    where: {
-      slug: params.slug,
-    },
-    include: {
-      assets: {
-        omit: {
-          url: true,
-        },
-      },
-      groups: {
-        include: {
-          lessons: {
-            orderBy: {
-              order: 'asc',
-            },
-          },
-        },
-        orderBy: {
-          order: 'asc',
-        },
-      },
-    },
-  })
+  const course = await findCourseBySlug(params.slug)
+  if (!course) notFound()
   return NextResponse.json(course)
 }

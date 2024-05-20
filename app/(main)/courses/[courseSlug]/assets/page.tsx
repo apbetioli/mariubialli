@@ -12,8 +12,9 @@ import {
   CardDescription,
   CardTitle,
 } from '@/components/ui/card'
-import { useCourse, useUser } from '@/lib/hooks'
+import { useUser } from '@/lib/hooks'
 
+import { useGetCourseBySlugQuery } from '@/lib/features/api-slice'
 import useStripe from '@/lib/use-stripe'
 import {
   ArrowLeftIcon,
@@ -34,7 +35,12 @@ import { Sidebar } from '../sidebar'
 
 const AssetPage = () => {
   const { courseSlug } = useParams<{ courseSlug: string }>()
-  const { course, isLoading, isError, error } = useCourse(courseSlug)
+  const {
+    data: course,
+    isLoading,
+    isError,
+    error,
+  } = useGetCourseBySlugQuery(courseSlug)
   const user = useUser()
   const path = usePathname()
   const searchParams = useSearchParams()

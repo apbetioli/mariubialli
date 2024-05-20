@@ -1,4 +1,4 @@
-import { CourseWithUserDetails } from '@/app/types'
+import { UICourse } from '@/app/types'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { cn } from '@/lib/utils'
 import { SidebarCourseHeader } from './sidebar-course-header'
@@ -10,7 +10,7 @@ export const Sidebar = ({
   lessonSlug,
   className,
 }: {
-  course: CourseWithUserDetails
+  course: UICourse
   lessonSlug?: string
   className?: string
 }) => {

@@ -1,5 +1,6 @@
 import { prisma } from '@/lib/server/db'
 import { EventType } from '@prisma/client'
+import { notFound } from 'next/navigation'
 import Stripe from 'stripe'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
@@ -27,11 +28,12 @@ export const POST = async (request: Request) => {
     const session = event.data.object
     const assetId = session.metadata!['asset_id']
 
-    const user = await prisma.user.findUniqueOrThrow({
+    const user = await prisma.user.findUnique({
       where: {
         email: session.customer_email!,
       },
     })
+    if (!user) notFound()
 
     await Promise.all([
       prisma.user.update({

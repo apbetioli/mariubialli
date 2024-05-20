@@ -1,7 +1,8 @@
-import { CourseWithUserDetails } from '@/app/types'
+import { UICourse } from '@/app/types'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
-import { cn } from '@/lib/utils'
+import { useUser } from '@/lib/hooks'
+import { calculateProgress, cn } from '@/lib/utils'
 import { DownloadIcon } from 'lucide-react'
 import Link from 'next/link'
 
@@ -9,22 +10,29 @@ export const SidebarCourseHeader = ({
   course,
   className,
 }: {
-  course: CourseWithUserDetails
+  course: UICourse
   className?: string
-}) => (
-  <div className={cn('p-4 bg-gray-500 text-white', className)}>
-    <h2 className="text-lg font-semibold tracking-tight mb-1">{course.name}</h2>
+}) => {
+  const user = useUser()
+  const progress = calculateProgress(user, course)
 
-    <p className="mb-1 hidden md:inline-flex">Progresso {course.progress}%</p>
-    <Progress className="mb-2 hidden md:inline-flex" value={course.progress} />
+  return (
+    <div className={cn('p-4 bg-gray-500 text-white', className)}>
+      <h2 className="text-lg font-semibold tracking-tight mb-1">
+        {course.name}
+      </h2>
 
-    {course.assets.length > 0 && (
-      <Link href={`/courses/${course.slug}/assets`}>
-        <Button variant="secondary" className="my-1 w-full">
-          <DownloadIcon />
-          Moldes
-        </Button>
-      </Link>
-    )}
-  </div>
-)
+      <p className="mb-1 hidden md:inline-flex">Progresso {progress}%</p>
+      <Progress className="mb-2 hidden md:inline-flex" value={progress} />
+
+      {course.assets.length > 0 && (
+        <Link href={`/courses/${course.slug}/assets`}>
+          <Button variant="secondary" className="my-1 w-full">
+            <DownloadIcon />
+            Moldes
+          </Button>
+        </Link>
+      )}
+    </div>
+  )
+}

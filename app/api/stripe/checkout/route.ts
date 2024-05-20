@@ -1,6 +1,7 @@
 import { CheckoutRequest } from '@/app/types'
 import { getUserByClerkId } from '@/lib/server/auth'
 import { prisma } from '@/lib/server/db'
+import { notFound } from 'next/navigation'
 import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
 
@@ -13,11 +14,12 @@ export const POST = async (request: Request) => {
   const origin = request.headers.get('origin')!
   const path = body.redirect
 
-  const asset = await prisma.asset.findUniqueOrThrow({
+  const asset = await prisma.asset.findUnique({
     where: {
       id: body.assetId,
     },
   })
+  if (!asset) notFound()
 
   try {
     const session = await stripe.checkout.sessions.create({

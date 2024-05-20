@@ -1,22 +1,12 @@
 import { getUserByClerkId } from '@/lib/server/auth'
-import { prisma } from '@/lib/server/db'
-import { enhanceCourseWithUserDetails } from '@/lib/utils'
+import { findCourseBySlug } from '@/lib/server/queries'
+import { getNextLesson } from '@/lib/utils'
 import { notFound, redirect } from 'next/navigation'
 
+export const dynamic = 'force-dynamic'
+
 const CoursePage = async ({ params }: { params: { courseSlug: string } }) => {
-  const course = await prisma.course.findUnique({
-    where: {
-      slug: params.courseSlug,
-    },
-    include: {
-      assets: true,
-      groups: {
-        include: {
-          lessons: true,
-        },
-      },
-    },
-  })
+  const course = await findCourseBySlug(params.courseSlug)
 
   if (!course) {
     notFound()
@@ -24,15 +14,13 @@ const CoursePage = async ({ params }: { params: { courseSlug: string } }) => {
 
   const user = await getUserByClerkId()
 
-  const courseDetailed = enhanceCourseWithUserDetails(course, user)
+  const nextLesson = getNextLesson(user, course)
 
-  if (!courseDetailed.nextLesson) {
+  if (!nextLesson) {
     throw new Error(`Course doesn't have lessons yet`)
   }
 
-  redirect(
-    `/courses/${courseDetailed.slug}/lessons/${courseDetailed.nextLesson.slug}`,
-  )
+  redirect(`/courses/${course.slug}/lessons/${nextLesson.slug}`)
 }
 
 export default CoursePage

@@ -1,5 +1,6 @@
 import { getUserByClerkId } from '@/lib/server/auth'
 import { prisma } from '@/lib/server/db'
+import { notFound } from 'next/navigation'
 import { NextResponse } from 'next/server'
 
 export const GET = async (
@@ -23,7 +24,7 @@ export const GET = async (
     })
   }
 
-  const course = await prisma.course.findUniqueOrThrow({
+  const course = await prisma.course.findUnique({
     where: {
       id: params.id,
     },
@@ -43,6 +44,7 @@ export const GET = async (
       },
     },
   })
+  if (!course) notFound()
   return NextResponse.json(course)
 }
 
