@@ -26,7 +26,7 @@ export function CourseFormGroupDialog({
 
   useEffect(() => {
     setName(group.name)
-  }, [group])
+  }, [group, open])
 
   const onSubmit = (event: FormEvent) => {
     event.preventDefault()

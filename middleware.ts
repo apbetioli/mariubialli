@@ -12,6 +12,8 @@ export default authMiddleware({
   ],
 })
 
+// TODO protect admin pages and api routes
+
 export const config = {
   matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
 }

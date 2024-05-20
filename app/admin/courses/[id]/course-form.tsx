@@ -48,18 +48,13 @@ export function CourseForm() {
       const result = await saveCourse(course).unwrap()
 
       if (!course.id) {
-        router.push(`/admin/courses/${result.id}`)
+        router.replace(`/admin/courses/${result.id}`)
       }
       toast.success('Saved!')
     } catch (error) {
       console.error(error)
       toast.error('Could not save!')
     }
-  }
-
-  const remove = () => {
-    router.push('/admin/courses')
-    toast.success('Course removed')
   }
 
   return (

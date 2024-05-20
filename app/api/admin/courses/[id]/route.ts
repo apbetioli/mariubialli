@@ -1,3 +1,4 @@
+import { getUserByClerkId } from '@/lib/server/auth'
 import { prisma } from '@/lib/server/db'
 import { NextResponse } from 'next/server'
 
@@ -5,6 +6,11 @@ export const GET = async (
   request: Request,
   { params }: { params: { id: string } },
 ) => {
+  const user = await getUserByClerkId()
+  if (!user.isAdmin) {
+    return NextResponse.json({ message: 'Forbidden' }, { status: 403 })
+  }
+
   if (params.id === 'new') {
     return NextResponse.json({
       name: '',
@@ -44,6 +50,11 @@ export const DELETE = async (
   request: Request,
   { params }: { params: { id: string } },
 ) => {
+  const user = await getUserByClerkId()
+  if (!user.isAdmin) {
+    return NextResponse.json({ message: 'Forbidden' }, { status: 403 })
+  }
+
   const course = await prisma.course.delete({
     where: {
       id: params.id,

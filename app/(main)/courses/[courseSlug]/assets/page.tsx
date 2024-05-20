@@ -14,7 +14,7 @@ import {
 } from '@/components/ui/card'
 import { useCourse, useUser } from '@/lib/hooks'
 
-import useStripe from '@/lib/get-stripe'
+import useStripe from '@/lib/use-stripe'
 import {
   ArrowLeftIcon,
   DownloadIcon,

@@ -3,6 +3,11 @@ import { prisma } from '@/lib/server/db'
 import { NextResponse } from 'next/server'
 
 export const GET = async (request: Request) => {
+  const user = await getUserByClerkId()
+  if (!user.isAdmin) {
+    return NextResponse.json({ message: 'Forbidden' }, { status: 403 })
+  }
+
   const courses = await prisma.course.findMany({
     include: {
       assets: true,
@@ -29,13 +34,8 @@ export const GET = async (request: Request) => {
 
 export const POST = async (request: Request) => {
   const user = await getUserByClerkId()
-
-  // TODO protect with middleware?
   if (!user.isAdmin) {
-    return NextResponse.json(
-      { message: 'Only admins can create courses' },
-      { status: 403 },
-    )
+    return NextResponse.json({ message: 'Forbidden' }, { status: 403 })
   }
 
   const { id, assets, groups, ...data } = await request.json()

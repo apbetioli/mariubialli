@@ -122,8 +122,8 @@ export function CourseFormLesson({
       </div>
 
       {isNew && (
-        <Button size="sm" variant="default" className="w-52" type="submit">
-          <PlusIcon className="h-4 w-4" />
+        <Button size="sm" variant="default" type="submit">
+          <PlusIcon className="h-4 w-4" /> Add lesson
         </Button>
       )}
 
@@ -157,7 +157,7 @@ export function CourseFormLesson({
       )}
 
       {/* TODO drag and drop */}
-      {!isNew && (
+      {!isNew && isEditing && (
         <div className="flex items-center gap-1">
           <Button
             type="button"
