@@ -3,8 +3,8 @@ import { PayloadAction, createSlice, nanoid } from '@reduxjs/toolkit'
 import { kebabCase } from 'lodash'
 import { apiSlice } from './api-slice'
 
-type CourseSliceState = {
-  value: UICourse
+type State = {
+  course: UICourse
 }
 
 type FormFieldAction = {
@@ -12,8 +12,8 @@ type FormFieldAction = {
   value: string | number | boolean
 }
 
-const initialState: CourseSliceState = {
-  value: {
+const initialState: State = {
+  course: {
     name: '',
     slug: '',
     description: '',
@@ -45,8 +45,8 @@ export const createLesson = (lesson: UILesson): UILesson => {
   }
 }
 
-const findGroup = (state: CourseSliceState, group: UIGroup) => {
-  const found = state.value.groups.find((_group) => _group.uiId === group.uiId)
+const findGroup = (state: State, group: UIGroup) => {
+  const found = state.course.groups.find((_group) => _group.uiId === group.uiId)
   if (!found) {
     throw new Error(`Group not found ${group.name}`)
   }
@@ -63,85 +63,85 @@ const findLessonIndex = (groupToUpdate: UIGroup, lesson: UILesson) => {
   return index
 }
 
-const courseSlice = createSlice({
+const adminSlice = createSlice({
   name: 'course',
   initialState,
   reducers: {
     initializeCourse: (state, action: PayloadAction<UICourse | undefined>) => {
-      state.value = action.payload || initialState.value
+      state.course = action.payload || initialState.course
     },
 
     updateCourseField: (state, action: PayloadAction<FormFieldAction>) => {
-      state.value = {
-        ...state.value,
+      state.course = {
+        ...state.course,
         [action.payload.name]: action.payload.value,
       }
 
-      if (action.payload.name === 'name' && !state.value.id) {
-        state.value.slug = kebabCase(state.value.name)
+      if (action.payload.name === 'name' && !state.course.id) {
+        state.course.slug = kebabCase(state.course.name)
       }
     },
 
     addGroup: (state, action: PayloadAction<string>) => {
-      const exists = state.value.groups.find(
+      const exists = state.course.groups.find(
         (group) => group.name === action.payload,
       )
       if (exists) {
         throw new Error('Group with the same name already exists')
       }
 
-      state.value.groups.push(
+      state.course.groups.push(
         createGroup({
           name: action.payload,
           lessons: [],
-          order: state.value.groups.length,
+          order: state.course.groups.length,
         }),
       )
     },
 
     updateGroup: (state, action: PayloadAction<UIGroup>) => {
-      const index = state.value.groups.findIndex(
+      const index = state.course.groups.findIndex(
         (group) => group.uiId === action.payload.uiId,
       )
-      state.value.groups.splice(index, 1, action.payload)
+      state.course.groups.splice(index, 1, action.payload)
     },
 
     deleteGroup: (state, action: PayloadAction<UIGroup>) => {
-      const index = state.value.groups.findIndex(
+      const index = state.course.groups.findIndex(
         (group) => group.uiId === action.payload.uiId,
       )
       if (action.payload.id) {
-        state.value.groups.splice(index, 1, {
+        state.course.groups.splice(index, 1, {
           ...action.payload,
           deleted: true,
         })
       } else {
-        state.value.groups.splice(index, 1)
+        state.course.groups.splice(index, 1)
       }
     },
 
     addAsset: (state, action: PayloadAction<UIAsset>) => {
-      state.value.assets.push(createAsset(action.payload))
+      state.course.assets.push(createAsset(action.payload))
     },
 
     updateAsset: (state, action: PayloadAction<UIAsset>) => {
-      const index = state.value.assets.findIndex(
+      const index = state.course.assets.findIndex(
         (asset) => asset.uiId === action.payload.uiId,
       )
-      state.value.assets.splice(index, 1, action.payload)
+      state.course.assets.splice(index, 1, action.payload)
     },
 
     deleteAsset: (state, action: PayloadAction<UIAsset>) => {
-      const index = state.value.assets.findIndex(
+      const index = state.course.assets.findIndex(
         (asset) => asset.uiId === action.payload.uiId,
       )
       if (action.payload.id) {
-        state.value.assets.splice(index, 1, {
+        state.course.assets.splice(index, 1, {
           ...action.payload,
           deleted: true,
         })
       } else {
-        state.value.assets.splice(index, 1)
+        state.course.assets.splice(index, 1)
       }
     },
 
@@ -234,8 +234,8 @@ const courseSlice = createSlice({
     builder.addMatcher(
       apiSlice.endpoints.getAdminCourseById.matchFulfilled,
       (state, { payload }) => {
-        state.value = payload
-        state.value.groups.forEach((group) => {
+        state.course = payload
+        state.course.groups.forEach((group) => {
           group.uiId = group.id
           group.lessons.forEach((lesson, index) => {
             lesson.uiId = lesson.id
@@ -247,13 +247,13 @@ const courseSlice = createSlice({
     builder.addMatcher(
       apiSlice.endpoints.getAdminCourseById.matchRejected,
       (state) => {
-        state.value = initialState.value
+        state.course = initialState.course
       },
     )
   },
 })
 
-export const courseReducer = courseSlice.reducer
+export const adminReducer = adminSlice.reducer
 export const {
   initializeCourse,
   updateCourseField,
@@ -268,6 +268,6 @@ export const {
   deleteLesson,
   moveLessonUp,
   moveLessonDown,
-} = courseSlice.actions
+} = adminSlice.actions
 
-export default courseSlice
+export default adminSlice

@@ -1,11 +1,11 @@
 import { UIAsset } from '@/app/types'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-type CartSlice = {
+type State = {
   list: UIAsset[]
 }
 
-const initialState: CartSlice = {
+const initialState: State = {
   list: [],
 }
 

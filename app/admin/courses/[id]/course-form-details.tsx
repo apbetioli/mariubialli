@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import { InputWithLabel } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import Upload from '@/components/ui/upload'
-import { updateCourseField } from '@/lib/features/course-slice'
+import { updateCourseField } from '@/lib/features/admin-slice'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { useUpload } from '@/lib/use-upload'
 import { Trash2Icon } from 'lucide-react'
@@ -14,7 +14,7 @@ import { ChangeEvent } from 'react'
 import toast from 'react-hot-toast'
 
 export function CourseFormDetails() {
-  const course = useAppSelector((state) => state.course.value)
+  const course = useAppSelector((state) => state.admin.course)
   const dispatch = useAppDispatch()
   const [upload] = useUpload()
 

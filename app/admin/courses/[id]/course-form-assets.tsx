@@ -10,7 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { addAsset } from '@/lib/features/course-slice'
+import { addAsset } from '@/lib/features/admin-slice'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { PlusIcon } from 'lucide-react'
 import toast from 'react-hot-toast'
@@ -29,7 +29,7 @@ const initialState: UIAsset = {
 
 export function CourseFormAssets() {
   const dispatch = useAppDispatch()
-  const assets = useAppSelector((state) => state.course.value.assets)
+  const assets = useAppSelector((state) => state.admin.course.assets)
   const fileredAssets = assets.filter((asset) => !asset.deleted)
 
   const onAddAsset = (asset: UIAsset) => {

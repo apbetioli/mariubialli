@@ -10,7 +10,7 @@ import {
   moveLessonDown,
   moveLessonUp,
   updateLesson,
-} from '@/lib/features/course-slice'
+} from '@/lib/features/admin-slice'
 import { useAppDispatch } from '@/lib/hooks'
 import { kebabCase } from 'lodash'
 import {

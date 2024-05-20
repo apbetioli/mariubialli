@@ -3,7 +3,7 @@
 import { UIGroup } from '@/app/types'
 import { Empty } from '@/components/empty'
 import { Button } from '@/components/ui/button'
-import { addGroup } from '@/lib/features/course-slice'
+import { addGroup } from '@/lib/features/admin-slice'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { PlusIcon } from 'lucide-react'
 import toast from 'react-hot-toast'
@@ -18,7 +18,7 @@ const initialState: UIGroup = {
 
 export function CourseFormGroups() {
   const dispatch = useAppDispatch()
-  const groups = useAppSelector((state) => state.course.value.groups)
+  const groups = useAppSelector((state) => state.admin.course.groups)
   const filteredGroups = groups.filter((group) => !group.deleted)
 
   const onAddGroup = (newGroup: UIGroup) => {

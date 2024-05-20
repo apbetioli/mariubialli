@@ -10,7 +10,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import { Button } from '@/components/ui/button'
-import { deleteGroup, updateGroup } from '@/lib/features/course-slice'
+import { deleteGroup, updateGroup } from '@/lib/features/admin-slice'
 import { useAppDispatch } from '@/lib/hooks'
 import { EditIcon, Trash2Icon } from 'lucide-react'
 import { CourseFormGroupDialog } from './course-form-group-dialog'

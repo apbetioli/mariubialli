@@ -24,7 +24,7 @@ import {
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 
 import LoadingPage from '@/app/loading'
-import { updateCourseField } from '@/lib/features/course-slice'
+import { updateCourseField } from '@/lib/features/admin-slice'
 import {
   EyeIcon,
   Loader2Icon,
@@ -42,7 +42,7 @@ import { CourseFormGroups } from './course-form-groups'
 export default function CourseFormPage({ params }: { params: { id: string } }) {
   const router = useRouter()
   const dispatch = useAppDispatch()
-  const course = useAppSelector((state) => state.course.value)
+  const course = useAppSelector((state) => state.admin.course)
   const { isLoading } = useGetAdminCourseByIdQuery(params.id)
   const [saveCourse, { isLoading: isSaving }] = useSaveCourseMutation()
 
