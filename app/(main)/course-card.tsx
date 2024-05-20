@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/card'
 import { CardMedia } from '@/components/ui/card-media'
 import { Progress } from '@/components/ui/progress'
-import { useUser } from '@/lib/hooks'
+import { useUser } from '@/lib/use-user'
 import { calculateProgress } from '@/lib/utils'
 import { DownloadIcon, PlayIcon } from 'lucide-react'
 import Link from 'next/link'

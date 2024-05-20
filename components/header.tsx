@@ -1,6 +1,6 @@
 'use client'
 import { Button } from '@/components/ui/button'
-import { useUser } from '@/lib/hooks'
+import { useUser } from '@/lib/use-user'
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import Link from 'next/link'
 import { useState } from 'react'

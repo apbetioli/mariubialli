@@ -1,7 +1,7 @@
 import { UICourse } from '@/app/types'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
-import { useUser } from '@/lib/hooks'
+import { useUser } from '@/lib/use-user'
 import { calculateProgress, cn } from '@/lib/utils'
 import { DownloadIcon } from 'lucide-react'
 import Link from 'next/link'

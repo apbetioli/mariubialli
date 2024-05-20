@@ -9,7 +9,7 @@ import {
   useGetCourseBySlugQuery,
   useToggleLessonCompletedMutation,
 } from '@/lib/features/api-slice'
-import { useUser } from '@/lib/hooks'
+import { useUser } from '@/lib/use-user'
 import { userCompletedLesson } from '@/lib/utils'
 import { Lesson } from '@prisma/client'
 import { ArrowRightIcon } from 'lucide-react'

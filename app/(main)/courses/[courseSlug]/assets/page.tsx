@@ -12,7 +12,7 @@ import {
   CardDescription,
   CardTitle,
 } from '@/components/ui/card'
-import { useUser } from '@/lib/hooks'
+import { useUser } from '@/lib/use-user'
 
 import { useGetCourseBySlugQuery } from '@/lib/features/api-slice'
 import useStripe from '@/lib/use-stripe'
