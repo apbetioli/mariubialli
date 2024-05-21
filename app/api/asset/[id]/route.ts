@@ -43,11 +43,13 @@ export const GET = async (
   const { Body } = await s3Client.send(new GetObjectCommand(getObjectParams))
   const stream = Body?.transformToWebStream()
 
+  console.log(filename)
+
   const response = new NextResponse(stream, {
     status: 200,
     headers: new Headers({
-      'content-disposition': `attachment; filename="${filename}"`,
-      'content-type': 'application/pdf',
+      'Content-Disposition': `attachment; filename="${filename}"`,
+      'Content-Type': 'application/pdf',
     }),
   })
   return response
