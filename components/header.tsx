@@ -20,7 +20,7 @@ export function Header() {
   ]
 
   if (user.isAdmin) {
-    links.push({ label: 'Dashboard', href: '/admin' })
+    links.push({ label: 'Config', href: '/admin' })
   }
 
   const mobileLinks = [
