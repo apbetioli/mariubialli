@@ -10,7 +10,7 @@ import {
   useToggleLessonCompletedMutation,
 } from '@/lib/features/api-slice'
 import { useUser } from '@/lib/use-user'
-import { userCompletedLesson } from '@/lib/utils'
+import { hasUserCompletedLesson } from '@/lib/utils'
 import { Lesson } from '@prisma/client'
 import { ArrowRightIcon } from 'lucide-react'
 import Link from 'next/link'
@@ -42,7 +42,7 @@ const LessonPage = () => {
   if (lessonIndex < 0) notFound()
 
   const activeLesson = lessons[lessonIndex] as Lesson
-  const isCompleted = userCompletedLesson(user)(activeLesson)
+  const isCompleted = hasUserCompletedLesson(user)(activeLesson)
   const isLastLesson = lessonIndex + 1 == lessons.length
   const nextLesson = isLastLesson ? lessons[0] : lessons[lessonIndex + 1]
 

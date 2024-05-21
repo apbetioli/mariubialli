@@ -12,14 +12,14 @@ import {
 import { CardMedia } from '@/components/ui/card-media'
 import { Progress } from '@/components/ui/progress'
 import { useUser } from '@/lib/use-user'
-import { calculateProgress } from '@/lib/utils'
+import { calculateCourseProgress } from '@/lib/utils'
 import { DownloadIcon, PlayIcon } from 'lucide-react'
 import Link from 'next/link'
 import { UICourse } from '../types'
 
 export default function CourseCard({ course }: { course: UICourse }) {
   const user = useUser()
-  const progress = calculateProgress(user, course)
+  const progress = calculateCourseProgress(user, course)
 
   return (
     <Card key={course.id} className="shadow-md">

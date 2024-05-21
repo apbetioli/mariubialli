@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { useToggleLessonCompletedMutation } from '@/lib/features/api-slice'
 import { useUser } from '@/lib/use-user'
-import { cn, userCompletedLesson } from '@/lib/utils'
+import { cn, hasUserCompletedLesson } from '@/lib/utils'
 import Link from 'next/link'
 import { useId } from 'react'
 
@@ -21,7 +21,7 @@ export const SidebarLesson = ({
   const user = useUser()
   const completedCheckboxId = useId()
   const [markAsCompleted] = useToggleLessonCompletedMutation()
-  const isCompleted = userCompletedLesson(user)(lesson)
+  const isCompleted = hasUserCompletedLesson(user)(lesson)
 
   return (
     <div className="gap-2 border-b w-full h-16 flex items-center">

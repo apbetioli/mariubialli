@@ -2,7 +2,7 @@ import { UICourse } from '@/app/types'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
 import { useUser } from '@/lib/use-user'
-import { calculateProgress, cn } from '@/lib/utils'
+import { calculateCourseProgress, cn } from '@/lib/utils'
 import { DownloadIcon } from 'lucide-react'
 import Link from 'next/link'
 
@@ -14,7 +14,7 @@ export const SidebarCourseHeader = ({
   className?: string
 }) => {
   const user = useUser()
-  const progress = calculateProgress(user, course)
+  const progress = calculateCourseProgress(user, course)
 
   return (
     <div className={cn('p-4 bg-gray-500 text-white', className)}>

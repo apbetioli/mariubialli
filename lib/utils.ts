@@ -22,15 +22,15 @@ export function toggleLessonCompleted(
   return completedLessonIds
 }
 
-export const userCompletedLesson =
+export const hasUserCompletedLesson =
   (user: DraftUser) =>
   (lesson: UILesson): boolean =>
     user.completedLessonIds.includes(lesson.id)
 
-export function calculateProgress(user: DraftUser, course: UICourse) {
+export function calculateCourseProgress(user: DraftUser, course: UICourse) {
   const lessons = course.groups.map((group) => group.lessons).flat() || []
 
-  const completedLessons = lessons.filter(userCompletedLesson(user))
+  const completedLessons = lessons.filter(hasUserCompletedLesson(user))
 
   return Math.round((completedLessons.length / lessons.length) * 100)
 }
@@ -39,6 +39,7 @@ export function getNextLesson(user: DraftUser, course: UICourse) {
   const lessons = course.groups.map((group) => group.lessons).flat() || []
 
   return (
-    lessons.find((lesson) => !userCompletedLesson(user)(lesson)) || lessons[0]
+    lessons.find((lesson) => !hasUserCompletedLesson(user)(lesson)) ||
+    lessons[0]
   )
 }
