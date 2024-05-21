@@ -38,19 +38,16 @@ export const GET = async (
     Key,
   }
 
-  // const filename = Key.replace(/.*\//gm, '')
-  const filename = kebabCase(asset.name) + '.pdf'
+  const filename = kebabCase(asset.name)
 
   const s3Client = new S3Client()
   const { Body } = await s3Client.send(new GetObjectCommand(getObjectParams))
   const stream = Body!.transformToWebStream()
 
-  console.log(filename)
-
   const response = new NextResponse(stream, {
     status: 200,
     headers: new Headers({
-      'Content-Disposition': `attachment; filename="${filename}"`,
+      'Content-Disposition': `attachment; filename="${filename}.pdf"`,
       'Content-Type': 'application/pdf',
     }),
   })
