@@ -2,6 +2,7 @@ import { getUserByClerkId } from '@/lib/server/auth'
 import { prisma } from '@/lib/server/db'
 import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3'
 import { EventType } from '@prisma/client'
+import { kebabCase } from 'lodash'
 import { notFound } from 'next/navigation'
 import { NextResponse } from 'next/server'
 
@@ -37,11 +38,12 @@ export const GET = async (
     Key,
   }
 
-  const filename = Key.replace(/.*\//gm, '')
+  // const filename = Key.replace(/.*\//gm, '')
+  const filename = kebabCase(asset.name) + '.pdf'
 
   const s3Client = new S3Client()
   const { Body } = await s3Client.send(new GetObjectCommand(getObjectParams))
-  const stream = Body?.transformToWebStream()
+  const stream = Body!.transformToWebStream()
 
   console.log(filename)
 
