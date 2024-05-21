@@ -7,7 +7,7 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
-import { LineChartIcon, PackageIcon } from 'lucide-react'
+import { LineChartIcon, PackageIcon, UsersIcon } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -19,12 +19,17 @@ export default function AdminMenu() {
     {
       href: '/admin/dashboard',
       icon: <LineChartIcon className="h-5 w-5" />,
-      name: 'Dashboard',
+      name: 'Analytics',
     },
     {
       href: '/admin/courses',
       icon: <PackageIcon className="h-5 w-5" />,
       name: 'Courses',
+    },
+    {
+      href: '/admin/users',
+      icon: <UsersIcon className="h-5 w-5" />,
+      name: 'Users',
     },
   ]
 
@@ -35,7 +40,7 @@ export default function AdminMenu() {
           <Tooltip key={link.href}>
             <TooltipTrigger asChild>
               <Link href={link.href}>
-                <div className="flex items-center gap-4 hover:bg-primary-foreground px-4 py-2">
+                <div className="flex items-center gap-2 hover:bg-primary-foreground px-4 py-2">
                   <span
                     className={cn(
                       'flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8',
@@ -47,7 +52,9 @@ export default function AdminMenu() {
                   >
                     {link.icon}
                   </span>
-                  <span className="sr-only md:not-sr-only">{link.name}</span>
+                  <span className="sr-only md:not-sr-only text-sm font-semibold">
+                    {link.name}
+                  </span>
                 </div>
               </Link>
             </TooltipTrigger>

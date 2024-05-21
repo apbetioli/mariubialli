@@ -50,12 +50,20 @@ export const apiSlice = createApi({
       providesTags: ['User'],
     }),
 
+    adminUpdateUser: builder.mutation<User, User>({
+      query: ({ id, ...user }) => ({
+        url: `admin/user/${id}`,
+        method: 'PUT',
+        body: user,
+      }),
+    }),
+
     toggleLessonCompleted: builder.mutation<
       User,
       { id: string; completed: boolean }
     >({
       query: ({ id, completed }) => ({
-        url: `user/completed/${id}/`,
+        url: `user/completed/${id}`,
         method: 'PATCH',
         body: { completed },
       }),
@@ -87,6 +95,7 @@ export const {
   useGetAdminCoursesQuery,
   useGetAdminCourseByIdQuery,
   useGetUserQuery,
+  useAdminUpdateUserMutation,
   useToggleLessonCompletedMutation,
   useSaveCourseMutation,
   useDeleteCourseMutation,
