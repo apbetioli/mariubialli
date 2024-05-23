@@ -1,5 +1,6 @@
 'use client'
 
+import { UICourse } from '@/app/types'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -15,7 +16,6 @@ import { useUser } from '@/lib/use-user'
 import { calculateCourseProgress } from '@/lib/utils'
 import { DownloadIcon, PlayIcon } from 'lucide-react'
 import Link from 'next/link'
-import { UICourse } from '../types'
 
 export default function CourseCard({ course }: { course: UICourse }) {
   const user = useUser()
