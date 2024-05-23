@@ -5,7 +5,7 @@ import { Problem } from './problem'
 
 export default async function HomePage() {
   return (
-    <main>
+    <main className="w-full">
       <Hero />
       <Problem />
       <Authority />
