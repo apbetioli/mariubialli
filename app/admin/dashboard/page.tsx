@@ -1,9 +1,9 @@
-import { TotalRevenueCard } from './total-revenue-card'
 import { ActiveUsersCard } from './active-users-card'
 import { OverviewCard } from './overview-card'
 import { RecentSalesCard } from './recent-sales-card'
 import { SalesCard } from './sales-card'
 import { SubscriptionsCard } from './subscriptions-card'
+import { TotalRevenueCard } from './total-revenue-card'
 
 export default function Dashboard() {
   return (
