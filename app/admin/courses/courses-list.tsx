@@ -4,9 +4,9 @@ import Image from 'next/image'
 
 import { Badge } from '@/components/ui/badge'
 
-import LoadingPage from '@/app/loading'
 import { UICourse } from '@/app/types'
 import { ConfirmationDialog } from '@/components/confirmation-dialog'
+import { ListCardSkeleton } from '@/components/list-card-skeleton'
 import { Button } from '@/components/ui/button'
 import {
   Table,
@@ -28,7 +28,7 @@ export default function CoursesList() {
   const { data: courses = [], isLoading } = useGetAdminCoursesQuery()
   const [deleteCourse] = useDeleteCourseMutation()
 
-  if (isLoading) return <LoadingPage className="min-h-[300px]" />
+  if (isLoading) return <ListCardSkeleton />
 
   const remove = async (course: UICourse) => {
     await deleteCourse(course.id!)

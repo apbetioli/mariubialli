@@ -1,7 +1,11 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-export function RecentSalesCard() {
+export async function RecentSalesCard() {
+  await new Promise((resolve) => {
+    setTimeout(resolve, 750)
+  })
+
   return (
     <Card>
       <CardHeader>
