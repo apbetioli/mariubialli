@@ -24,6 +24,7 @@ import {
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 
 import LoadingPage from '@/app/loading'
+import { UICourse } from '@/app/types'
 import { updateCourseField } from '@/lib/features/admin-slice'
 import {
   EyeIcon,
@@ -48,9 +49,7 @@ export default function CourseFormPage({ params }: { params: { id: string } }) {
 
   if (isLoading) return <LoadingPage className="h-screen" />
 
-  const onSave = async (draft = course) => {
-    // TODO validate
-
+  const save = async (draft: UICourse) => {
     try {
       const result = await toast.promise(saveCourse(draft).unwrap(), {
         loading: 'Saving...',
@@ -69,8 +68,13 @@ export default function CourseFormPage({ params }: { params: { id: string } }) {
     }
   }
 
+  const onSave = async () => {
+    // TODO validate
+    save(course)
+  }
+
   const onPublish = async () => {
-    onSave({
+    save({
       ...course,
       published: true,
     })
