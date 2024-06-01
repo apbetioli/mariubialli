@@ -7,6 +7,7 @@ export type Draft<T> = Omit<T, 'id'> & {
   id?: string
   uiId?: string
   deleted?: boolean
+  changed?: boolean
 }
 
 export type UIAsset = Omit<Draft<Asset>, 'courseId'>

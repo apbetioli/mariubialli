@@ -103,6 +103,7 @@ const adminSlice = createSlice({
       const index = state.course.groups.findIndex(
         (group) => group.uiId === action.payload.uiId,
       )
+      action.payload.changed = true
       state.course.groups.splice(index, 1, action.payload)
     },
 
@@ -128,6 +129,7 @@ const adminSlice = createSlice({
       const index = state.course.assets.findIndex(
         (asset) => asset.uiId === action.payload.uiId,
       )
+      action.payload.changed = true
       state.course.assets.splice(index, 1, action.payload)
     },
 
@@ -149,12 +151,13 @@ const adminSlice = createSlice({
       state,
       action: PayloadAction<{ group: UIGroup; lesson: UILesson }>,
     ) => {
-      const groupToAdd = findGroup(state, action.payload.group)
+      const groupToUpdate = findGroup(state, action.payload.group)
+      groupToUpdate.changed = true
 
-      groupToAdd.lessons.push(
+      groupToUpdate.lessons.push(
         createLesson({
           ...action.payload.lesson,
-          order: groupToAdd.lessons.length,
+          order: groupToUpdate.lessons.length,
         }),
       )
     },
@@ -164,10 +167,13 @@ const adminSlice = createSlice({
       action: PayloadAction<{ group: UIGroup; lesson: UILesson }>,
     ) => {
       const groupToUpdate = findGroup(state, action.payload.group)
-
       const index = findLessonIndex(groupToUpdate, action.payload.lesson)
+      groupToUpdate.changed = true
 
-      groupToUpdate.lessons.splice(index, 1, action.payload.lesson)
+      groupToUpdate.lessons.splice(index, 1, {
+        ...action.payload.lesson,
+        changed: true,
+      })
     },
 
     deleteLesson: (
@@ -175,6 +181,7 @@ const adminSlice = createSlice({
       action: PayloadAction<{ group: UIGroup; lesson: UILesson }>,
     ) => {
       const groupToUpdate = findGroup(state, action.payload.group)
+      groupToUpdate.changed = true
 
       const index = findLessonIndex(groupToUpdate, action.payload.lesson)
 
@@ -207,6 +214,8 @@ const adminSlice = createSlice({
 
       groupToUpdate.lessons[index].order = index
       groupToUpdate.lessons[index - 1].order = index - 1
+
+      groupToUpdate.changed = true
     },
 
     moveLessonDown: (
@@ -228,6 +237,8 @@ const adminSlice = createSlice({
 
       groupToUpdate.lessons[index].order = index
       groupToUpdate.lessons[index + 1].order = index + 1
+
+      groupToUpdate.changed = true
     },
   },
   extraReducers: (builder) => {

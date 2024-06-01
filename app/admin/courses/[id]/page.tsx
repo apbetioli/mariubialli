@@ -111,8 +111,12 @@ export default function CourseFormPage({ params }: { params: { id: string } }) {
               <div className="flex justify-between items-center flex-col sm:flex-row gap-4">
                 <TabsList>
                   <TabsTrigger value="details">Details</TabsTrigger>
-                  <TabsTrigger value="lessons">Lessons</TabsTrigger>
-                  <TabsTrigger value="assets">Assets</TabsTrigger>
+                  <TabsTrigger value="lessons" disabled={!course.id}>
+                    Lessons
+                  </TabsTrigger>
+                  <TabsTrigger value="assets" disabled={!course.id}>
+                    Assets
+                  </TabsTrigger>
                 </TabsList>
 
                 <div className="flex items-center gap-3 justify-center sm:justify-end w-full">

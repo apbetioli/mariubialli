@@ -8,7 +8,6 @@ const initialState = {
   name: '',
   slug: '',
   video: '',
-  delete: false,
   order: 0,
 }
 

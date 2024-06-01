@@ -1,3 +1,4 @@
+import { UIAsset, UICourse, UIGroup, UILesson } from '@/app/types'
 import { getUserByClerkId } from '@/lib/server/auth'
 import { prisma } from '@/lib/server/db'
 import { NextResponse } from 'next/server'
@@ -38,77 +39,29 @@ export const POST = async (request: Request) => {
     return NextResponse.json({ message: 'Forbidden' }, { status: 403 })
   }
 
-  const { id, assets, groups, ...data } = await request.json()
+  const draftCourse = await request.json()
 
-  if (id) {
-    var course = await prisma.course.update({
-      data,
-      where: {
-        id,
-      },
-    })
-    console.log('Updated course', course.id)
-  } else {
-    var course = await prisma.course.create({
-      data,
-    })
-    console.log('Created course', course.id)
-  }
+  const course = await upsertCourse(draftCourse)
 
-  // TODO improve this logic
-  for (const { id, lessons, name, order, deleted: groupDeleted } of groups) {
-    if (groupDeleted) {
-      var newGroup = await prisma.group.delete({
-        where: {
-          id,
-        },
-      })
-      console.log('Deleted group', newGroup.id)
-    } else {
-      if (id) {
-        var newGroup = await prisma.group.update({
-          data: { name, order, courseId: course.id },
-          where: {
-            id,
-          },
-        })
-        console.log('Updated group', newGroup.id)
-      } else {
-        var newGroup = await prisma.group.create({
-          data: { name, order, courseId: course.id },
-        })
-        console.log('Created group', newGroup.id)
-      }
-    }
+  for (const draftGroup of draftCourse.groups) {
+    const group = await upsertGroup(course.id, draftGroup)
 
-    for (const { id, name, slug, video, deleted, order } of lessons) {
-      if (deleted || groupDeleted) {
-        var newLesson = await prisma.lesson.delete({
-          where: {
-            id,
-          },
-        })
-        console.log('Deleted lesson', newLesson.id)
-      } else {
-        if (id) {
-          var newLesson = await prisma.lesson.update({
-            data: { name, slug, video, order, groupId: newGroup.id },
-            where: {
-              id,
-            },
-          })
-          console.log('Updated lesson', newLesson.id)
-        } else {
-          var newLesson = await prisma.lesson.create({
-            data: { name, slug, video, order, groupId: newGroup.id },
-          })
-          console.log('Created lesson', newLesson.id)
-        }
-      }
+    for (const draftLesson of draftGroup.lessons) {
+      draftLesson.deleted ||= draftGroup.deleted
+
+      await upsertLesson(group.id, draftLesson)
     }
   }
 
-  for (const {
+  for (const asset of draftCourse.assets) {
+    await upsertAssets(course.id, asset)
+  }
+
+  return NextResponse.json(course)
+}
+
+async function upsertAssets(courseId: string, asset: UIAsset) {
+  const {
     id,
     name,
     description,
@@ -117,47 +70,124 @@ export const POST = async (request: Request) => {
     price,
     anchor_price,
     deleted,
-  } of assets) {
-    if (deleted) {
-      const newAsset = await prisma.asset.delete({
-        where: {
-          id,
-        },
-      })
-      console.log('Deleted asset', newAsset.id)
-    } else {
-      if (id) {
-        const newAsset = await prisma.asset.update({
-          data: {
-            name,
-            description,
-            image,
-            url,
-            price,
-            anchor_price,
-            courseId: course.id,
-          },
-          where: {
-            id,
-          },
-        })
-        console.log('Updated asset', newAsset.id)
-      } else {
-        const newAsset = await prisma.asset.create({
-          data: {
-            name,
-            description,
-            image,
-            url,
-            price,
-            anchor_price,
-            courseId: course.id,
-          },
-        })
-        console.log('Created asset', newAsset.id)
-      }
-    }
+    changed,
+  } = asset
+
+  if (deleted) {
+    return await prisma.asset.delete({
+      where: {
+        id,
+      },
+    })
   }
 
-  return NextResponse.json(course)
+  if (!id) {
+    return await prisma.asset.create({
+      data: {
+        name,
+        description,
+        image,
+        url,
+        price,
+        anchor_price,
+        courseId,
+      },
+    })
+  }
+
+  if (!changed) {
+    return { id }
+  }
+
+  return await prisma.asset.update({
+    data: {
+      name,
+      description,
+      image,
+      url,
+      price,
+      anchor_price,
+      courseId,
+    },
+    where: {
+      id,
+    },
+  })
+}
+
+async function upsertLesson(
+  groupId: string,
+  { id, name, slug, video, deleted, order, changed }: UILesson,
+) {
+  if (deleted) {
+    return await prisma.lesson.delete({
+      where: {
+        id,
+      },
+    })
+  }
+
+  if (!id) {
+    return await prisma.lesson.create({
+      data: { name, slug, video, order, groupId },
+    })
+  }
+
+  if (!changed) {
+    return { id }
+  }
+
+  return await prisma.lesson.update({
+    data: { name, slug, video, order, groupId },
+    where: {
+      id,
+    },
+  })
+}
+
+async function upsertGroup(
+  courseId: string,
+  { id, name, order, deleted, changed }: UIGroup,
+) {
+  if (deleted) {
+    return await prisma.group.delete({
+      where: {
+        id,
+      },
+    })
+  }
+
+  if (!id) {
+    return await prisma.group.create({
+      data: { name, order, courseId },
+    })
+  }
+
+  if (!changed) {
+    return { id }
+  }
+
+  return await prisma.group.update({
+    data: { name, order, courseId },
+    where: {
+      id,
+    },
+  })
+}
+
+async function upsertCourse(course: UICourse) {
+  const { id, assets, groups, ...data } = course
+
+  if (!id) {
+    return await prisma.course.create({
+      data,
+    })
+  }
+
+  return await prisma.course.update({
+    data,
+    where: {
+      id,
+    },
+  })
 }
