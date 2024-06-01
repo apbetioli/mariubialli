@@ -54,7 +54,7 @@ export default function CourseFormPage({ params }: { params: { id: string } }) {
       const result = await toast.promise(saveCourse(draft).unwrap(), {
         loading: 'Saving...',
         success: 'Saved!',
-        error: 'Failed to save.',
+        error: 'Could not save!',
       })
 
       if (!course.id) {
@@ -64,7 +64,6 @@ export default function CourseFormPage({ params }: { params: { id: string } }) {
       }
     } catch (error) {
       console.error(error)
-      toast.error('Could not save!')
     }
   }
 
