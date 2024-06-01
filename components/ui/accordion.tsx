@@ -69,8 +69,8 @@ AccordionContent.displayName = AccordionPrimitive.Content.displayName
 
 export {
   Accordion,
-  AccordionItem,
-  AccordionHeader,
-  AccordionTrigger,
   AccordionContent,
+  AccordionHeader,
+  AccordionItem,
+  AccordionTrigger,
 }
