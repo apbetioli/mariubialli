@@ -107,7 +107,10 @@ const AssetPage = () => {
                 {asset.price > 0 && !user.paidAssetIds.includes(asset.id) ? (
                   <>
                     <span className="text-xl font-bold text-gray-700 dark:text-gray-200 md:text-3xl">
-                      R$ {new Intl.NumberFormat('pt-BR').format(asset.price)}
+                      R${' '}
+                      {`${new Intl.NumberFormat('pt-BR', {
+                        minimumFractionDigits: 2,
+                      }).format(asset.price)}`}
                     </span>
 
                     <Button
