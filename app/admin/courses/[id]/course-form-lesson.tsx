@@ -22,7 +22,7 @@ import {
   Trash2Icon,
   XIcon,
 } from 'lucide-react'
-import { FormEvent, useEffect, useState } from 'react'
+import { FormEvent, useEffect, useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 
 export function CourseFormLesson({
@@ -37,6 +37,7 @@ export function CourseFormLesson({
   const [current, setCurrent] = useState(lesson)
   const isNew = !lesson.uiId
   const [isEditing, setEditing] = useState(false)
+  const nameInput = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     setCurrent(lesson)
@@ -73,6 +74,8 @@ export function CourseFormLesson({
 
     if (current.uiId) save()
     else add()
+
+    nameInput.current?.focus()
   }
 
   const remove = () => {
@@ -100,6 +103,7 @@ export function CourseFormLesson({
     <form onSubmit={onSubmit} className="flex items-center gap-1">
       <div className="grid grid-cols-2 w-full gap-1">
         <Input
+          ref={nameInput}
           name="name"
           placeholder="Name"
           value={current.name}
