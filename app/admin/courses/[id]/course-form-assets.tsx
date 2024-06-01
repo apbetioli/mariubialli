@@ -66,7 +66,7 @@ export function CourseFormAssets() {
           </TableHeader>
           <TableBody>
             {fileredAssets.map((asset) => (
-              <CourseFormAsset key={asset.uiId} asset={asset} />
+              <CourseFormAsset key={asset.name} asset={asset} />
             ))}
           </TableBody>
         </Table>
