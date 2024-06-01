@@ -48,19 +48,19 @@ export default function CourseFormPage({ params }: { params: { id: string } }) {
 
   if (isLoading) return <LoadingPage className="h-screen" />
 
-  const onSave = async () => {
+  const onSave = async (draft = course) => {
     // TODO validate
 
     try {
-      const result = await toast.promise(saveCourse(course).unwrap(), {
+      const result = await toast.promise(saveCourse(draft).unwrap(), {
         loading: 'Saving...',
         success: 'Saved!',
         error: 'Failed to save.',
       })
-      dispatch(updateCourseField({ name: 'id', value: result.id }))
 
       if (!course.id) {
         // is new
+        dispatch(updateCourseField({ name: 'id', value: result.id }))
         router.replace(`/admin/courses/${result.id}`)
       }
     } catch (error) {
@@ -70,14 +70,10 @@ export default function CourseFormPage({ params }: { params: { id: string } }) {
   }
 
   const onPublish = async () => {
-    dispatch(
-      updateCourseField({
-        name: 'published',
-        value: !course.published,
-      }),
-    )
-
-    onSave()
+    onSave({
+      ...course,
+      published: true,
+    })
   }
 
   return (
