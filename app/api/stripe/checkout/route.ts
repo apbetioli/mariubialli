@@ -32,7 +32,7 @@ export const POST = async (request: Request) => {
         {
           price_data: {
             currency: 'BRL',
-            unit_amount: asset.price * 100,
+            unit_amount: Math.round(asset.price * 100),
             product_data: {
               name: asset.name,
               description: asset.description,
