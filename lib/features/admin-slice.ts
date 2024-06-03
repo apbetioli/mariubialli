@@ -253,6 +253,9 @@ const adminSlice = createSlice({
             lesson.order |= index
           })
         })
+        state.course.assets.forEach((asset) => {
+          asset.uiId = asset.id
+        })
       },
     )
     builder.addMatcher(
