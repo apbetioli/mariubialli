@@ -40,7 +40,9 @@ export const GET = async (
 
   const filename = kebabCase(asset.name)
 
-  const s3Client = new S3Client()
+  const s3Client = new S3Client({
+    region: process.env.AWS_REGION,
+  })
   const { Body } = await s3Client.send(new GetObjectCommand(getObjectParams))
   const stream = Body!.transformToWebStream()
 

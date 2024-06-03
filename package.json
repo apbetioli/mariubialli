@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.567.0",
+    "@aws-sdk/s3-request-presigner": "^3.588.0",
     "@clerk/localizations": "^2.3.0",
     "@clerk/nextjs": "^4.29.7",
     "@next/mdx": "^14.2.3",
