@@ -154,6 +154,15 @@ const adminSlice = createSlice({
       const groupToUpdate = findGroup(state, action.payload.group)
       groupToUpdate.changed = true
 
+      const exists = groupToUpdate.lessons.find(
+        (lesson) => lesson.slug === action.payload.lesson.slug,
+      )
+      if (exists) {
+        throw new Error(
+          'Lesson slug already exists! Please choose another name.',
+        )
+      }
+
       groupToUpdate.lessons.push(
         createLesson({
           ...action.payload.lesson,
@@ -169,6 +178,17 @@ const adminSlice = createSlice({
       const groupToUpdate = findGroup(state, action.payload.group)
       const index = findLessonIndex(groupToUpdate, action.payload.lesson)
       groupToUpdate.changed = true
+
+      const exists = groupToUpdate.lessons.find(
+        (lesson) =>
+          lesson.slug === action.payload.lesson.slug &&
+          lesson.uiId !== action.payload.lesson.uiId,
+      )
+      if (exists) {
+        throw new Error(
+          'Lesson slug already exists! Please choose another name.',
+        )
+      }
 
       groupToUpdate.lessons.splice(index, 1, {
         ...action.payload.lesson,

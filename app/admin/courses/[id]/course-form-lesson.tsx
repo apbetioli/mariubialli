@@ -44,10 +44,17 @@ export function CourseFormLesson({
   }, [lesson])
 
   const handleInputChange = (name: string, value: any) => {
-    if (isNew && name === 'name') {
-      setCurrent({ ...current, [name]: value, slug: kebabCase(value) })
+    if (name === 'name') {
+      setCurrent({
+        ...current,
+        [name]: value,
+        slug: kebabCase(group.name + value),
+      })
     } else {
-      setCurrent({ ...current, [name]: value })
+      setCurrent({
+        ...current,
+        [name]: value,
+      })
     }
   }
 
