@@ -1,12 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { adminReducer } from './features/admin-slice'
 import { apiSlice } from './features/api-slice'
-import { cartReducer } from './features/cart-slice'
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      cart: cartReducer,
       admin: adminReducer,
       [apiSlice.reducerPath]: apiSlice.reducer,
     },
