@@ -11,17 +11,17 @@ The app and content are only available in Portuguese-BR, as the audience is from
 - [x] Allow users to watch courses with embedded YouTube videos
 - [x] Track user progress on watching lessons
 - [x] Allow users to download digital assets (PDF) related to each course.
-- [x] Allow selling digital assets related to each course, integrated to Stripe
-- [ ] WIP: Have an admin area to create courses and lessons, upload digital assets, etc.
-- [ ] Have a dashboard with indicators like the number of active users, revenue, most watched courses, most downloaded assets
-- [ ] Build a landing page
-- [ ] Send email after purchase
+- [x] Allow selling digital assets related to each course, integrated with Stripe
+- [x] Build a landing page
+- [x] Have an admin area to create courses and lessons, upload digital assets, etc.
+- [ ] WIP: Have a dashboard with indicators like the number of active users, revenue, most watched courses, most downloaded assets
 
 ## Screenshots
 
 ![image](https://github.com/apbetioli/mariubialli/assets/2829329/e455fafa-96c2-4978-8309-c3ed374ee475)
 ![image](https://github.com/apbetioli/mariubialli/assets/2829329/b5eeaa2d-f5d8-4620-808d-790813000c30)
-![image](https://github.com/apbetioli/mariubialli/assets/2829329/e990d6a3-506a-4f21-848d-130057be4586)
+![image](https://github.com/apbetioli/mariubialli/assets/2829329/42f896bc-2b25-4a1e-beb0-dc51a8ce28c2)
+
 
 ## Tech stack
 
@@ -30,11 +30,12 @@ The app and content are only available in Portuguese-BR, as the audience is from
 - Typescript
 - TailwindCSS
 - Shadcn UI components
-- Clerk (Auth)
+- Clerk authentication
 - Redux-Toolkit Query
 - Prisma ORM
 - MongoDB Atlas
 - AWS S3
+- Stripe
 - GitHub Actions
 - Vite, Prettier, Eslint
 
