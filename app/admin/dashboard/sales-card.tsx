@@ -1,7 +1,21 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { prisma } from '@/lib/server/db'
+import { EventType } from '@prisma/client'
 import { CreditCard } from 'lucide-react'
 
-export function SalesCard() {
+export async function SalesCard({ from }: { from: Date }) {
+  const count = await prisma.event.count({
+    where: {
+      type: EventType.PAY,
+      value: {
+        gt: 0,
+      },
+      createdAt: {
+        gte: from,
+      },
+    },
+  })
+
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -9,8 +23,8 @@ export function SalesCard() {
         <CreditCard className="h-4 w-4 text-muted-foreground" />
       </CardHeader>
       <CardContent>
-        <div className="text-2xl font-bold">+12,234</div>
-        <p className="text-xs text-muted-foreground">+19% from last month</p>
+        <div className="text-2xl font-bold">{count}</div>
+        <p className="text-xs text-muted-foreground">last 30 days</p>
       </CardContent>
     </Card>
   )

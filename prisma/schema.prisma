@@ -18,6 +18,7 @@ model User {
   isAdmin            Boolean   @default(false)
   completedLessonIds String[]
   paidAssetIds       String[]
+  Event              Event[]
 }
 
 model Course {
@@ -50,8 +51,8 @@ model Lesson {
   video String
   order Int    @default(0)
 
-  Group   Group?  @relation(fields: [groupId], references: [id])
-  groupId String? @db.ObjectId
+  Group   Group  @relation(fields: [groupId], references: [id])
+  groupId String @db.ObjectId
 }
 
 model Asset {
@@ -63,8 +64,8 @@ model Asset {
   anchor_price Float  @default(0)
   url          String
 
-  Course   Course? @relation(fields: [courseId], references: [id])
-  courseId String? @db.ObjectId
+  Course   Course @relation(fields: [courseId], references: [id])
+  courseId String @db.ObjectId
 }
 
 model Event {
@@ -75,6 +76,9 @@ model Event {
   assetId         String?   @db.ObjectId
   lessonId        String?   @db.ObjectId
   stripeSessionId String?
+  value           Float?
+
+  user User @relation(fields: [userId], references: [id])
 }
 
 enum EventType {

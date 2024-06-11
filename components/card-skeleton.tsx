@@ -10,8 +10,8 @@ export function CardSkeleton() {
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-2">
-        <Skeleton className="h-[30px] w-[250px] rounded-md" />
-        <Skeleton className="h-5 w-[200px]" />
+        <Skeleton className="h-[30px] w-max-[250px] w-full rounded-md" />
+        <Skeleton className="h-5 w-max-[200px] w-full" />
       </CardContent>
     </Card>
   )

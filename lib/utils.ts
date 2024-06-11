@@ -43,3 +43,17 @@ export function getNextLesson(user: DraftUser, course: UICourse) {
     lessons[0]
   )
 }
+
+export function getDate30DaysAgo(today = new Date()) {
+  const pastDate = new Date(today)
+  pastDate.setDate(today.getDate() - 30)
+  return pastDate
+}
+
+export function getDate12MonthsAgo() {
+  const today = new Date()
+  const pastDate = new Date(today)
+  pastDate.setDate(1)
+  pastDate.setFullYear(today.getFullYear() - 1)
+  return pastDate
+}

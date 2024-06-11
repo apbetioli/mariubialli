@@ -35,6 +35,12 @@ export const POST = async (request: Request) => {
     })
     if (!user) notFound()
 
+    const asset = await prisma.asset.findUniqueOrThrow({
+      where: {
+        id: assetId,
+      },
+    })
+
     await Promise.all([
       prisma.user.update({
         data: {
@@ -50,6 +56,7 @@ export const POST = async (request: Request) => {
           type: EventType.PAY,
           assetId,
           stripeSessionId: session.id,
+          value: asset.price,
         },
       }),
     ])
