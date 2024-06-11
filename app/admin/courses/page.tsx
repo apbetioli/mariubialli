@@ -1,11 +1,13 @@
 import { PlusIcon } from 'lucide-react'
 
+import { ListCardSkeleton } from '@/components/list-card-skeleton'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import Link from 'next/link'
+import { Suspense } from 'react'
 import CoursesList from './courses-list'
 
-export default function AdminCourses() {
+export default async function AdminCourses() {
   return (
     <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 md:p-8">
       <Card>
@@ -25,7 +27,9 @@ export default function AdminCourses() {
           </div>
         </CardHeader>
         <CardContent>
-          <CoursesList />
+          <Suspense fallback={<ListCardSkeleton />}>
+            <CoursesList />
+          </Suspense>
         </CardContent>
       </Card>
     </main>
