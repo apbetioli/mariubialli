@@ -9,7 +9,7 @@ type CardMediaType = {
 
 const CardMedia = ({ className, src, alt }: CardMediaType) => {
   return (
-    <div className={cn('relative h-52 md:h-96', className)}>
+    <div className={cn('relative aspect-video', className)}>
       <Image
         src={src}
         alt={alt}
