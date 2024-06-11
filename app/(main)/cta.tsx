@@ -9,7 +9,7 @@ export function CTA() {
         <h2 className="text-2xl font-bold mb-4">Pronta para começar?</h2>
         <Link href="/courses">
           <Button size="lg" className="my-4">
-            Ver cursos gratuitamente
+            Assistir gratuitamente
           </Button>
         </Link>
       </div>

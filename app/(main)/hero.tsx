@@ -18,7 +18,7 @@ export function Hero() {
         <div className="w-full text-center lg:text-left">
           <Link href="/courses">
             <Button size="lg" className="my-4">
-              Ver cursos gratuitamente
+              Assistir gratuitamente
             </Button>
           </Link>
         </div>
