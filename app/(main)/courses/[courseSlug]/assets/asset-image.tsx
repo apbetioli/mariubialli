@@ -11,7 +11,7 @@ export const AssetImage = ({
   alt: string
   className?: string
 }) => (
-  <div className={cn('w-48 relative', className)}>
+  <div className={cn('w-48 h-full relative', className)}>
     <AspectRatio ratio={1 / 1.41}>
       <Image
         src={src}
