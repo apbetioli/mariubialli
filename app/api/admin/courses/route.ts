@@ -1,10 +1,10 @@
 import { UIAsset, UICourse, UIGroup, UILesson } from '@/app/types'
-import { getUserByClerkId } from '@/lib/server/auth'
+import { getCurrentUser } from '@/lib/server/auth'
 import { prisma } from '@/lib/server/db'
 import { NextResponse } from 'next/server'
 
 export const GET = async (request: Request) => {
-  const user = await getUserByClerkId()
+  const user = await getCurrentUser()
   if (!user.isAdmin) {
     return NextResponse.json({ message: 'Forbidden' }, { status: 403 })
   }
@@ -34,7 +34,7 @@ export const GET = async (request: Request) => {
 }
 
 export const POST = async (request: Request) => {
-  const user = await getUserByClerkId()
+  const user = await getCurrentUser()
   if (!user.isAdmin) {
     return NextResponse.json({ message: 'Forbidden' }, { status: 403 })
   }

@@ -1,4 +1,4 @@
-import { getUserByClerkId } from '@/lib/server/auth'
+import { getCurrentUser } from '@/lib/server/auth'
 import { prisma } from '@/lib/server/db'
 import { NextResponse } from 'next/server'
 
@@ -6,7 +6,7 @@ export const PUT = async (
   request: Request,
   { params }: { params: { id: string } },
 ) => {
-  const user = await getUserByClerkId()
+  const user = await getCurrentUser()
   if (!user.isAdmin) {
     return NextResponse.json({ message: 'Forbidden' }, { status: 403 })
   }

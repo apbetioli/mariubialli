@@ -1,4 +1,4 @@
-import { getUserByClerkId } from '@/lib/server/auth'
+import { getCurrentUser } from '@/lib/server/auth'
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3'
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
 import { kebabCase } from 'lodash'
@@ -9,7 +9,7 @@ import { NextResponse } from 'next/server'
  * We won't receive it here because the file can be big and Vercel will refuse files bigger than 4.5mb.
  */
 export async function POST(request: Request) {
-  const user = await getUserByClerkId()
+  const user = await getCurrentUser()
   if (!user.isAdmin) {
     return NextResponse.json({ message: 'Forbidden' }, { status: 403 })
   }

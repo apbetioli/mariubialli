@@ -1,4 +1,4 @@
-import { getUserByClerkId } from '@/lib/server/auth'
+import { getCurrentUser } from '@/lib/server/auth'
 import { prisma } from '@/lib/server/db'
 import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3'
 import { EventType } from '@prisma/client'
@@ -10,7 +10,7 @@ export const GET = async (
   request: Request,
   { params }: { params: { id: string } },
 ) => {
-  const user = await getUserByClerkId()
+  const user = await getCurrentUser()
 
   const asset = await prisma.asset.findUnique({
     where: {

@@ -1,4 +1,4 @@
-import { getUserByClerkId } from '@/lib/server/auth'
+import { getCurrentUser } from '@/lib/server/auth'
 import { findCourseBySlug } from '@/lib/server/queries'
 import { getNextLesson } from '@/lib/utils'
 import { notFound, redirect } from 'next/navigation'
@@ -12,7 +12,7 @@ const CoursePage = async ({ params }: { params: { courseSlug: string } }) => {
     notFound()
   }
 
-  const user = await getUserByClerkId()
+  const user = await getCurrentUser()
 
   const nextLesson = getNextLesson(user, course)
 

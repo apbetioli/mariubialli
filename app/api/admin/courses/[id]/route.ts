@@ -1,4 +1,4 @@
-import { getUserByClerkId } from '@/lib/server/auth'
+import { getCurrentUser } from '@/lib/server/auth'
 import { prisma } from '@/lib/server/db'
 import { notFound } from 'next/navigation'
 import { NextResponse } from 'next/server'
@@ -7,7 +7,7 @@ export const GET = async (
   request: Request,
   { params }: { params: { id: string } },
 ) => {
-  const user = await getUserByClerkId()
+  const user = await getCurrentUser()
   if (!user.isAdmin) {
     return NextResponse.json({ message: 'Forbidden' }, { status: 403 })
   }
@@ -52,7 +52,7 @@ export const DELETE = async (
   request: Request,
   { params }: { params: { id: string } },
 ) => {
-  const user = await getUserByClerkId()
+  const user = await getCurrentUser()
   if (!user.isAdmin) {
     return NextResponse.json({ message: 'Forbidden' }, { status: 403 })
   }

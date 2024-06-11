@@ -6,7 +6,7 @@ import { prisma } from './db'
 /**
  * Uses Cleck to retrieve user from database or create it if it doesn't exist.
  */
-export const getUserByClerkId = async () => {
+export const getCurrentUser = async () => {
   const authUser = await currentUser()
   if (!authUser) {
     redirect('/sign-in')

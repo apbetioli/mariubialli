@@ -1,4 +1,4 @@
-import { getUserByClerkId } from '@/lib/server/auth'
+import { getCurrentUser } from '@/lib/server/auth'
 import { prisma } from '@/lib/server/db'
 import { toggleLessonCompleted } from '@/lib/utils'
 import { EventType } from '@prisma/client'
@@ -8,7 +8,7 @@ export const PATCH = async (
   request: Request,
   { params }: { params: { lessonId: string } },
 ) => {
-  const user = await getUserByClerkId()
+  const user = await getCurrentUser()
   const { completed } = await request.json()
 
   const completedLessonIds = toggleLessonCompleted(

@@ -1,4 +1,4 @@
-import { getUserByClerkId } from '@/lib/server/auth'
+import { getCurrentUser } from '@/lib/server/auth'
 import { ObjectCannedACL, PutObjectCommand, S3Client } from '@aws-sdk/client-s3'
 import { kebabCase } from 'lodash'
 import { NextResponse } from 'next/server'
@@ -8,7 +8,7 @@ import sharp from 'sharp'
  * This service will resize the image and store it directly into AWS S3
  */
 export async function POST(request: Request) {
-  const user = await getUserByClerkId()
+  const user = await getCurrentUser()
   if (!user.isAdmin) {
     return NextResponse.json({ message: 'Forbidden' }, { status: 403 })
   }

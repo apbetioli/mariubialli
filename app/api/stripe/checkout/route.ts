@@ -1,5 +1,5 @@
 import { CheckoutRequest } from '@/app/types'
-import { getUserByClerkId } from '@/lib/server/auth'
+import { getCurrentUser } from '@/lib/server/auth'
 import { prisma } from '@/lib/server/db'
 import { notFound } from 'next/navigation'
 import { NextResponse } from 'next/server'
@@ -8,7 +8,7 @@ import Stripe from 'stripe'
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
 
 export const POST = async (request: Request) => {
-  const user = await getUserByClerkId()
+  const user = await getCurrentUser()
 
   const body: CheckoutRequest = await request.json()
   const origin = request.headers.get('origin')!
