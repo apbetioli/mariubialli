@@ -3,7 +3,7 @@ import { prisma } from '@/lib/server/db'
 import { EventType } from '@prisma/client'
 import { Users } from 'lucide-react'
 
-export async function SubscriptionsCard({ from }: { from: Date }) {
+export async function LessonsWatchedCard({ from }: { from: Date }) {
   const watched = await prisma.event.aggregate({
     where: {
       type: EventType.WATCH,

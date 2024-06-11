@@ -1,8 +1,8 @@
 import { CardSkeleton } from '@/components/card-skeleton'
 import { Suspense } from 'react'
 import { ActiveUsersCard } from './active-users-card'
+import { LessonsWatchedCard } from './lessons-watched-card'
 import { SalesCard } from './sales-card'
-import { SubscriptionsCard } from './subscriptions-card'
 import { TotalRevenueCard } from './total-revenue-card'
 
 export async function CardsWrapper() {
@@ -16,7 +16,7 @@ export async function CardsWrapper() {
         <SalesCard from={from} />
       </Suspense>
       <Suspense fallback={<CardSkeleton />}>
-        <SubscriptionsCard from={from} />
+        <LessonsWatchedCard from={from} />
       </Suspense>
       <Suspense fallback={<CardSkeleton />}>
         <ActiveUsersCard from={from} />
