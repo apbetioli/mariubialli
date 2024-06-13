@@ -21,7 +21,7 @@ The app and content are only available in Portuguese-BR, as the audience is from
 ![image](https://github.com/apbetioli/mariubialli/assets/2829329/e455fafa-96c2-4978-8309-c3ed374ee475)
 ![image](https://github.com/apbetioli/mariubialli/assets/2829329/b5eeaa2d-f5d8-4620-808d-790813000c30)
 ![image](https://github.com/apbetioli/mariubialli/assets/2829329/42f896bc-2b25-4a1e-beb0-dc51a8ce28c2)
-
+![image](https://github.com/apbetioli/mariubialli/assets/2829329/bdb29974-818e-4f22-89b0-f709da08ee41)
 
 ## Tech stack
 
