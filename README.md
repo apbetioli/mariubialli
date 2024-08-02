@@ -1,10 +1,8 @@
 # [mariubialli.com.br](https://mariubialli.com.br)
 
-It was a fast site for capturing leads from marketing campaigns and selling online courses. The data was stored in a headless CMS, and the pages were statically generated (SSG) for optimal performance and SEO.
+A platform for watching online courses and selling digital assets (PDF).
 
-Now, it is being rewritten as a platform for watching online courses and selling digital assets (PDF).
-
-The app and content are only available in Portuguese-BR, as the audience is from Brazil.
+The app's UI and content are only available in Portuguese-BR, as the audience is from Brazil.
 
 ## Roadmap
 
