@@ -50,8 +50,7 @@ export function getDate30DaysAgo(today = new Date()) {
   return pastDate
 }
 
-export function getDate12MonthsAgo() {
-  const today = new Date()
+export function getDate12MonthsAgo(today = new Date()) {
   const pastDate = new Date(today)
   pastDate.setDate(1)
   pastDate.setFullYear(today.getFullYear() - 1)
