@@ -16,7 +16,9 @@ export default function UsersList({ users }: { users: User[] }) {
           <TableRow>
             <TableHead>Email</TableHead>
             <TableHead>Name</TableHead>
-            <TableHead>Admin</TableHead>
+            <TableHead>Lessons watched</TableHead>
+            <TableHead>Last updated</TableHead>
+            <TableHead>Is admin</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>

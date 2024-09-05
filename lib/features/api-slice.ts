@@ -58,6 +58,13 @@ export const apiSlice = createApi({
       }),
     }),
 
+    adminDeleteUser: builder.mutation<User, string>({
+      query: (id) => ({
+        url: `admin/user/${id}`,
+        method: 'DELETE',
+      }),
+    }),
+
     toggleLessonCompleted: builder.mutation<
       User,
       { id: string; completed: boolean }
@@ -96,6 +103,7 @@ export const {
   useGetAdminCourseByIdQuery,
   useGetUserQuery,
   useAdminUpdateUserMutation,
+  useAdminDeleteUserMutation,
   useToggleLessonCompletedMutation,
   useSaveCourseMutation,
   useDeleteCourseMutation,

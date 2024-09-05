@@ -23,7 +23,7 @@ export default function AdminMenu() {
     {
       href: '/admin/users',
       icon: <UsersIcon className="h-5 w-5" />,
-      name: 'Customers',
+      name: 'Users',
     },
   ]
 

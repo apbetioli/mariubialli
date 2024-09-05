@@ -1,4 +1,4 @@
-import { currentUser } from '@clerk/nextjs/server'
+import { currentUser, User } from '@clerk/nextjs/server'
 
 import { redirect } from 'next/navigation'
 import { prisma } from './db'
@@ -25,7 +25,7 @@ export const getCurrentUser = async () => {
       data: {
         clerkId: authUser.id,
         email,
-        name: authUser.firstName + ' ' + authUser.lastName,
+        name: formatName(authUser),
         completedLessonIds: [],
         paidAssetIds: [],
       },
@@ -33,4 +33,12 @@ export const getCurrentUser = async () => {
   }
 
   return user
+}
+
+function formatName(authUser: User) {
+  if (!authUser.firstName && !authUser.lastName) {
+    return null
+  }
+
+  return [authUser.firstName || '', authUser.lastName || ''].join(' ').trim()
 }

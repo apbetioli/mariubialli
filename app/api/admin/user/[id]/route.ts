@@ -24,3 +24,20 @@ export const PUT = async (
 
   return NextResponse.json(updated)
 }
+
+export const DELETE = async (
+  request: Request,
+  { params }: { params: { id: string } },
+) => {
+  const user = await getCurrentUser()
+  if (!user.isAdmin) {
+    return NextResponse.json({ message: 'Forbidden' }, { status: 403 })
+  }
+
+  const course = await prisma.user.delete({
+    where: {
+      id: params.id,
+    },
+  })
+  return NextResponse.json(course)
+}
