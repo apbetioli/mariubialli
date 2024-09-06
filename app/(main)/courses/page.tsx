@@ -1,8 +1,8 @@
-import { findPublishedCourses } from '@/lib/server/queries'
+import { usePublishedCourses } from '@/lib/queries/usePublishedCourses'
 import CourseCard from './course-card'
 
 export default async function CoursesPage() {
-  const courses = await findPublishedCourses()
+  const courses = await usePublishedCourses()
 
   return (
     <div className="w-full md:container pb-20">
