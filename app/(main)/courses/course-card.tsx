@@ -23,7 +23,9 @@ export default function CourseCard({ course }: { course: UICourse }) {
 
   return (
     <Card key={course.id} className="shadow-md">
-      <CardMedia src={course.image} alt={course.name} />
+      <Link href={`/courses/${course.slug}`} className="w-full lg:w-auto">
+        <CardMedia src={course.image} alt={course.name} />
+      </Link>
       <CardHeader>
         <CardTitle>{course.name}</CardTitle>
       </CardHeader>
