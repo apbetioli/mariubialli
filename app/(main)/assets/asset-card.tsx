@@ -9,35 +9,34 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { CardMedia } from '@/components/ui/card-media'
-import { addToCart, removeFromCart } from '@/lib/features/cart-slice'
+import { addToCart } from '@/lib/features/cart-slice'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { useUser } from '@/lib/use-user'
 import { redirectToSignIn } from '@clerk/nextjs'
 import { DownloadIcon, ShoppingBasketIcon } from 'lucide-react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
+
 export default function AssetCard({ asset }: { asset: UIAsset }) {
   const user = useUser()
   const path = usePathname()
+  const router = useRouter()
 
   const dispatch = useAppDispatch()
   const inCart = useAppSelector((state) =>
     state.cart.assets.some((a) => a.id === asset.id),
   )
 
-  const buyNow = async (asset: UIAsset) => {
+  const addAsset = async (asset: UIAsset) => {
     if (!user?.id) {
       redirectToSignIn({ returnBackUrl: path })
     }
-
-    if (inCart) {
-      dispatch(removeFromCart(asset.id!))
-      toast(`"${asset.name}" removido do carrinho!`)
-    } else {
+    if (!inCart) {
       dispatch(addToCart(asset))
       toast(`"${asset.name}" adicionado ao carrinho!`)
     }
+    router.push('/cart')
   }
 
   return (
@@ -66,12 +65,10 @@ export default function AssetCard({ asset }: { asset: UIAsset }) {
               variant={inCart ? 'default' : 'outline'}
               className="w-full"
               size="lg"
-              onClick={() => buyNow(asset)}
+              onClick={() => addAsset(asset)}
             >
               <ShoppingBasketIcon />
-              <span>
-                {inCart ? 'Remover do carrinho ' : 'Adicionar ao carrinho'}
-              </span>
+              <span>{inCart ? 'Ver carrinho' : 'Adicionar ao carrinho'}</span>
             </Button>
           </>
         ) : (
