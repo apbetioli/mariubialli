@@ -64,7 +64,7 @@ const AssetPage = () => {
   if (!assets) notFound()
 
   const buyNow = async (asset: UIAsset) => {
-    await checkout(asset.id, path)
+    await checkout(asset.id!, path)
   }
 
   return (
@@ -104,7 +104,7 @@ const AssetPage = () => {
                   {asset.description}
                 </CardDescription>
 
-                {asset.price > 0 && !user.paidAssetIds.includes(asset.id) ? (
+                {asset.price > 0 && !user.paidAssetIds.includes(asset.id!) ? (
                   <>
                     <span className="text-xl font-bold text-gray-700 dark:text-gray-200 md:text-3xl">
                       R${' '}

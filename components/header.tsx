@@ -1,4 +1,5 @@
 'use client'
+
 import { Button } from '@/components/ui/button'
 import { useUser } from '@/lib/use-user'
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
@@ -7,6 +8,7 @@ import { useState } from 'react'
 import { HeaderLinks } from './header-links'
 import { Logo } from './logo'
 import { MobileMenu } from './mobile-menu'
+import ShoppingCartButton from './shopping-cart-button'
 import { GithubIcon } from './ui/icons'
 
 export function Header() {
@@ -16,6 +18,14 @@ export function Header() {
     {
       href: '/courses',
       label: 'Cursos',
+    },
+    {
+      href: '/assets',
+      label: 'Moldes',
+    },
+    {
+      href: '/cart',
+      label: <ShoppingCartButton />,
     },
   ]
 

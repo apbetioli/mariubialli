@@ -1,4 +1,4 @@
-import { Course, Group, Lesson } from '@prisma/client'
+import { Asset, Course, Group, Lesson, User } from '@prisma/client'
 
 export type DraftUser = Partial<User> &
   Pick<User, 'completedLessonIds' | 'paidAssetIds'>
@@ -10,7 +10,7 @@ export type Draft<T> = Omit<T, 'id'> & {
   changed?: boolean
 }
 
-export type UIAsset = Omit<Draft<Asset>, 'courseId'>
+export type UIAsset = Omit<Draft<Asset>, 'url'>
 
 export type UILesson = Omit<Draft<Lesson>, 'groupId'>
 

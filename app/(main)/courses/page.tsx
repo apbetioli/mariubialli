@@ -6,7 +6,7 @@ export default async function CoursesPage() {
 
   return (
     <div className="w-full md:container pb-20">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-4 h-fit">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 p-4 h-fit">
         {courses.map((course) => (
           <CourseCard key={course.id} course={course} />
         ))}
