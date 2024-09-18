@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { adminReducer } from './features/admin-slice'
 import { apiSlice } from './features/api-slice'
+import { cartReducer } from './features/cart-slice'
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       admin: adminReducer,
+      cart: cartReducer,
       [apiSlice.reducerPath]: apiSlice.reducer,
     },
     // Adding the api middleware enables caching, invalidation, polling,

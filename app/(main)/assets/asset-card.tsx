@@ -9,23 +9,35 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { CardMedia } from '@/components/ui/card-media'
-import useStripe from '@/lib/use-stripe'
+import { addToCart, removeFromCart } from '@/lib/features/cart-slice'
+import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { useUser } from '@/lib/use-user'
 import { redirectToSignIn } from '@clerk/nextjs'
 import { DownloadIcon, ShoppingBasketIcon } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-
+import toast from 'react-hot-toast'
 export default function AssetCard({ asset }: { asset: UIAsset }) {
   const user = useUser()
   const path = usePathname()
-  const { checkout } = useStripe()
+
+  const dispatch = useAppDispatch()
+  const inCart = useAppSelector((state) =>
+    state.cart.assets.some((a) => a.id === asset.id),
+  )
 
   const buyNow = async (asset: UIAsset) => {
     if (!user?.id) {
       redirectToSignIn({ returnBackUrl: path })
     }
-    await checkout(asset.id!, path)
+
+    if (inCart) {
+      dispatch(removeFromCart(asset.id!))
+      toast(`"${asset.name}" removido do carrinho!`)
+    } else {
+      dispatch(addToCart(asset))
+      toast(`"${asset.name}" adicionado ao carrinho!`)
+    }
   }
 
   return (
@@ -34,14 +46,12 @@ export default function AssetCard({ asset }: { asset: UIAsset }) {
 
       <CardContent className="flex flex-col gap-3 p-8 grow">
         <CardTitle>{asset.name}</CardTitle>
-        <CardDescription className="mb-6 grow">
-          <div>{asset.description}</div>
-          <Link className="mt-2" href={`/courses/${asset.courseId}`}>
-            <Button className="pl-0" variant={'link'}>
-              Ver curso
-            </Button>
-          </Link>
-        </CardDescription>
+        <CardDescription>{asset.description}</CardDescription>
+        <Link className="mb-6 grow" href={`/courses/${asset.courseId}`}>
+          <Button className="pl-0" variant={'link'}>
+            Ver curso
+          </Button>
+        </Link>
 
         {asset.price > 0 && !user.paidAssetIds.includes(asset.id!) ? (
           <>
@@ -53,13 +63,15 @@ export default function AssetCard({ asset }: { asset: UIAsset }) {
             </span>
 
             <Button
-              variant="outline"
+              variant={inCart ? 'default' : 'outline'}
               className="w-full"
               size="lg"
               onClick={() => buyNow(asset)}
             >
               <ShoppingBasketIcon />
-              Adicionar ao carrinho
+              <span>
+                {inCart ? 'Remover do carrinho ' : 'Adicionar ao carrinho'}
+              </span>
             </Button>
           </>
         ) : (

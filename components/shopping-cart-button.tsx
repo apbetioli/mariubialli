@@ -1,9 +1,9 @@
+import { useAppSelector } from '@/lib/hooks'
 import { ShoppingCartIcon } from 'lucide-react'
-import { useState } from 'react'
 import { Badge } from './ui/badge'
 
 export default function ShoppingCartButton() {
-  const [itemCount, setItemCount] = useState(3)
+  const itemCount = useAppSelector((state) => state.cart.assets.length)
 
   return (
     <div

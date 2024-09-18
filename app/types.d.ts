@@ -10,7 +10,7 @@ export type Draft<T> = Omit<T, 'id'> & {
   changed?: boolean
 }
 
-export type UIAsset = Omit<Draft<Asset>, 'url'>
+export type UIAsset = Draft<Asset>
 
 export type UILesson = Omit<Draft<Lesson>, 'groupId'>
 
