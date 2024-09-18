@@ -5,6 +5,7 @@ export default authMiddleware({
     '/',
     '/courses',
     '/assets',
+    '/cart',
     '/politica-de-privacidade',
     '/termos-de-uso',
     '/api/courses/(.*)',

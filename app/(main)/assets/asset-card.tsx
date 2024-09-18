@@ -12,15 +12,13 @@ import { CardMedia } from '@/components/ui/card-media'
 import { addToCart } from '@/lib/features/cart-slice'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { useUser } from '@/lib/use-user'
-import { redirectToSignIn } from '@clerk/nextjs'
 import { DownloadIcon, ShoppingBasketIcon } from 'lucide-react'
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
 
 export default function AssetCard({ asset }: { asset: UIAsset }) {
   const user = useUser()
-  const path = usePathname()
   const router = useRouter()
 
   const dispatch = useAppDispatch()
@@ -29,9 +27,6 @@ export default function AssetCard({ asset }: { asset: UIAsset }) {
   )
 
   const addAsset = async (asset: UIAsset) => {
-    if (!user?.id) {
-      redirectToSignIn({ returnBackUrl: path })
-    }
     if (!inCart) {
       dispatch(addToCart(asset))
       toast(`"${asset.name}" adicionado ao carrinho!`)
