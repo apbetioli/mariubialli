@@ -7,7 +7,7 @@ export default function NotFound() {
     <div className="flex flex-col w-full h-full">
       <Empty title="Oops!">
         <p>Acho que esse link não existe</p>
-        <Link href="/">
+        <Link href="/courses">
           <Button>Ir para Cursos</Button>
         </Link>
       </Empty>
