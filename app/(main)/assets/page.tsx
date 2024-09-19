@@ -1,8 +1,8 @@
-import { useAssets } from '@/lib/queries/useAssets'
+import { findAssets } from '@/lib/server/queries'
 import AssetCard from './asset-card'
 
 export default async function AssetsPage() {
-  const assets = await useAssets()
+  const assets = await findAssets()
 
   return (
     <div className="w-full md:container pb-20 pt-8">

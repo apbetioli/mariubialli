@@ -1,12 +1,15 @@
-import { useCourseBySlug } from '@/lib/queries/useCourseBySlug'
 import { getCurrentUser } from '@/lib/server/auth'
+import { findCourseById, findCourseBySlug } from '@/lib/server/queries'
 import { getNextLesson } from '@/lib/utils'
 import { notFound, redirect } from 'next/navigation'
 
 export const dynamic = 'force-dynamic'
 
 const CoursePage = async ({ params }: { params: { courseSlug: string } }) => {
-  const course = await useCourseBySlug(params.courseSlug)
+  let course = await findCourseBySlug(params.courseSlug)
+  if (!course) {
+    course = await findCourseById(params.courseSlug)
+  }
 
   if (!course) {
     notFound()
