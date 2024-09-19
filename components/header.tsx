@@ -23,10 +23,6 @@ export function Header() {
       href: '/assets',
       label: 'Moldes',
     },
-    {
-      href: '/cart',
-      label: <ShoppingCartButton />,
-    },
   ]
 
   if (user.isAdmin) {
@@ -66,6 +62,16 @@ export function Header() {
         <HeaderLinks
           links={links}
           className="items-center gap-8 hidden sm:flex"
+        />
+
+        <HeaderLinks
+          links={[
+            {
+              href: '/cart',
+              label: <ShoppingCartButton />,
+            },
+          ]}
+          className="ml-8"
         />
 
         <div className="ml-8">

@@ -58,22 +58,24 @@ export default function CartPage() {
   return (
     <div className="w-full md:container pb-20 pt-8">
       <div className="flex flex-col gap-8 p-4 h-fit">
-        <div className="flex items-center gap-4">
-          <h1 className="text-2xl font-bold grow">Carrinho</h1>
+        <h1 className="text-2xl font-bold grow">Carrinho</h1>
+        <div className="flex justify-end">
           {assets.length > 0 && (
-            <>
+            <div className="flex flex-wrap items-center gap-4 justify-end">
               <span className="font-bold">
                 Total: R${' '}
                 {`${new Intl.NumberFormat('pt-BR', {
                   minimumFractionDigits: 2,
                 }).format(total)}`}
               </span>
-              <Button onClick={buyNow}>Comprar Agora</Button>
-            </>
+              <div className="flex grow justify-between gap-4">
+                <Link href="/assets">
+                  <Button variant="outline">Continuar Comprando</Button>
+                </Link>
+                <Button onClick={buyNow}>Finalizar Compra</Button>
+              </div>
+            </div>
           )}
-          <Link href="/assets">
-            <Button variant="outline">Continuar Comprando</Button>
-          </Link>
         </div>
 
         {assets.length == 0 && (

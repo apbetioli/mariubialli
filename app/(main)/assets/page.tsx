@@ -6,6 +6,7 @@ export default async function AssetsPage() {
 
   return (
     <div className="w-full md:container pb-20 pt-8">
+      <h1 className="text-2xl font-bold grow p-4">Moldes</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 p-4 h-fit">
         {assets.map((asset) => (
           <AssetCard key={asset.id} asset={asset}></AssetCard>
