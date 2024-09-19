@@ -26,7 +26,7 @@ export const POST = async (request: Request) => {
 
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object
-    const assetId = session.metadata!['asset_id']
+    const assetIds = JSON.parse(session.metadata!['asset_ids'])
 
     const user = await prisma.user.findUnique({
       where: {
@@ -35,33 +35,36 @@ export const POST = async (request: Request) => {
     })
     if (!user) notFound()
 
-    const asset = await prisma.asset.findUniqueOrThrow({
+    const assets = await prisma.asset.findMany({
       where: {
-        id: assetId,
+        id: { in: assetIds },
       },
     })
 
-    await Promise.all([
-      prisma.user.update({
-        data: {
-          paidAssetIds: user.paidAssetIds.concat(assetId),
-        },
-        where: {
-          id: user.id,
-        },
-      }),
-      prisma.event.create({
-        data: {
-          userId: user.id,
-          type: EventType.PAY,
-          assetId,
-          stripeSessionId: session.id,
-          value: asset.price,
-        },
-      }),
-    ])
+    await prisma.user.update({
+      data: {
+        paidAssetIds: user.paidAssetIds.concat(...assetIds),
+      },
+      where: {
+        id: user.id,
+      },
+    })
 
-    console.log('✅ Success. User bougth asset:', user.email, assetId)
+    await Promise.all(
+      assets.map((asset) =>
+        prisma.event.create({
+          data: {
+            userId: user.id,
+            type: EventType.PAY,
+            assetId: asset.id,
+            stripeSessionId: session.id,
+            value: asset.price,
+          },
+        }),
+      ),
+    )
+
+    console.log('✅ Success. User bougth assets:', user.email, assetIds)
 
     // TODO Send confirmation email
   }

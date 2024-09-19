@@ -26,6 +26,6 @@ export type UICourse = Omit<Draft<Course>, 'createdAt' | 'updatedAt'> & {
 }
 
 export type CheckoutRequest = {
-  assetId: string
+  assetIds: string[]
   redirect: string
 }

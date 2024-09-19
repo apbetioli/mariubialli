@@ -64,7 +64,7 @@ const AssetPage = () => {
   if (!assets) notFound()
 
   const buyNow = async (asset: UIAsset) => {
-    await checkout(asset.id!, path)
+    await checkout([asset.id!], path)
   }
 
   return (

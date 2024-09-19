@@ -6,9 +6,11 @@ type State = {
 }
 
 const initialState = (): State => {
-  const saved = localStorage.getItem('cart')
-  if (saved) {
-    return JSON.parse(saved)
+  if (typeof window !== 'undefined') {
+    const saved = localStorage.getItem('cart')
+    if (saved) {
+      return JSON.parse(saved)
+    }
   }
   return {
     assets: [],
@@ -29,10 +31,14 @@ const cartSlice = createSlice({
       state.assets = state.assets.filter((asset) => asset.id !== action.payload)
       localStorage.setItem('cart', JSON.stringify(state))
     },
+    emptyCart: (state) => {
+      state.assets = []
+      localStorage.setItem('cart', JSON.stringify(state))
+    },
   },
 })
 
 export const cartReducer = cartSlice.reducer
-export const { addToCart, removeFromCart } = cartSlice.actions
+export const { addToCart, removeFromCart, emptyCart } = cartSlice.actions
 
 export default cartSlice

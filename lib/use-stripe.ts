@@ -10,7 +10,7 @@ const getStripe = () => {
 }
 
 const useStripe = () => {
-  const checkout = async (assetId: string, redirect: string) => {
+  const checkout = async (assetIds: string[], redirect: string) => {
     const stripe = await getStripe()
     const response = await fetch(`/api/stripe/checkout`, {
       method: 'POST',
@@ -18,7 +18,7 @@ const useStripe = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        assetId,
+        assetIds,
         redirect,
       } satisfies CheckoutRequest),
     })

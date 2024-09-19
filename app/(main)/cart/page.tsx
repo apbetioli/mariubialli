@@ -8,22 +8,33 @@ import {
   CardDescription,
   CardTitle,
 } from '@/components/ui/card'
-import { removeFromCart } from '@/lib/features/cart-slice'
+import { emptyCart, removeFromCart } from '@/lib/features/cart-slice'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import useStripe from '@/lib/use-stripe'
 import { useUser } from '@/lib/use-user'
 import { Trash2Icon } from 'lucide-react'
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useEffect } from 'react'
+import toast from 'react-hot-toast'
 import { AssetImage } from '../courses/[courseSlug]/assets/asset-image'
 
 export default function CartPage() {
   const user = useUser()
-  const assets = useAppSelector((state) => state.cart.assets)
   const dispatch = useAppDispatch()
+  const assets = useAppSelector((state) => state.cart.assets)
   const { checkout } = useStripe()
   const path = usePathname()
   const router = useRouter()
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    if (searchParams.get('success')) {
+      dispatch(emptyCart())
+      toast.success('Compra realizada com sucesso!')
+      router.push('/assets')
+    }
+  }, [path, router, searchParams, dispatch])
 
   const remove = (id: String) => {
     dispatch(removeFromCart(id))
@@ -33,7 +44,10 @@ export default function CartPage() {
     if (!user?.id) {
       router.push(`/sign-in?redirect_url=${path}`)
     } else {
-      // await checkout()
+      await checkout(
+        assets.map((asset) => asset.id!),
+        path,
+      )
     }
   }
 

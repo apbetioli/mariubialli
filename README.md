@@ -41,6 +41,17 @@ The app's UI and content are only available in Portuguese-BR, as the audience is
 
 Copy `.env.template` to `.env.local` and configure all the environment variables.
 
+## Testing sales
+
+For testing buying assets with Stripe locally, start the webhook listener with stripe CLI:
+
+```
+stripe listen --forward-to localhost:3003/api/stripe/webhook
+```
+
+Use the card number 4242 4242 4242 4242
+
+
 ## Getting Started
 
 First, run the development server:

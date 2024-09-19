@@ -14,22 +14,22 @@ export const POST = async (request: Request) => {
   const origin = request.headers.get('origin')!
   const path = body.redirect
 
-  const asset = await prisma.asset.findUnique({
+  const assets = await prisma.asset.findMany({
     where: {
-      id: body.assetId,
+      id: { in: body.assetIds },
     },
   })
-  if (!asset) notFound()
+  if (!assets.length) notFound()
 
   try {
     const session = await stripe.checkout.sessions.create({
       metadata: {
-        asset_id: body.assetId,
+        asset_ids: JSON.stringify(body.assetIds),
       },
       customer_email: user.email,
       payment_method_types: ['card'],
-      line_items: [
-        {
+      line_items: assets.map((asset) => {
+        return {
           price_data: {
             currency: 'BRL',
             unit_amount: Math.round(asset.price * 100),
@@ -40,8 +40,8 @@ export const POST = async (request: Request) => {
             },
           },
           quantity: 1,
-        },
-      ],
+        }
+      }),
       mode: 'payment',
       success_url: `${origin}${path}?success=true&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}${path}?cancel=true&session_id={CHECKOUT_SESSION_ID}`,
