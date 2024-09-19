@@ -4,22 +4,25 @@ A platform for watching online courses and selling digital assets (PDF).
 
 The app's UI and content are only available in Portuguese-BR, as the audience is from Brazil.
 
-## Roadmap
-
-- [x] Allow users to watch courses with embedded YouTube videos
-- [x] Track user progress on watching lessons
-- [x] Allow users to download digital assets (PDF) related to each course.
-- [x] Allow selling digital assets related to each course, integrated with Stripe
-- [x] Build a landing page
-- [x] Have an admin area to create courses and lessons, upload digital assets, etc.
-- [x] Have a dashboard with indicators like the number of active users, revenue, most watched courses, most downloaded assets
-
 ## Screenshots
 
-![image](https://github.com/apbetioli/mariubialli/assets/2829329/e455fafa-96c2-4978-8309-c3ed374ee475)
-![image](https://github.com/apbetioli/mariubialli/assets/2829329/b5eeaa2d-f5d8-4620-808d-790813000c30)
-![image](https://github.com/apbetioli/mariubialli/assets/2829329/42f896bc-2b25-4a1e-beb0-dc51a8ce28c2)
-![image](https://github.com/apbetioli/mariubialli/assets/2829329/bdb29974-818e-4f22-89b0-f709da08ee41)
+Courses:
+![Courses page](https://github.com/apbetioli/mariubialli/assets/2829329/e455fafa-96c2-4978-8309-c3ed374ee475)
+
+Watching a course:
+![Watching a course](https://github.com/apbetioli/mariubialli/assets/2829329/b5eeaa2d-f5d8-4620-808d-790813000c30)
+
+Buy assets from a course:
+![Course's assets](https://github.com/apbetioli/mariubialli/assets/2829329/42f896bc-2b25-4a1e-beb0-dc51a8ce28c2)
+
+All assets page:
+![Assets page](https://github.com/user-attachments/assets/9ee9f14d-9b3d-4195-9fd4-8c44e9bca596)
+
+Shopping cart:
+![Shopping cart](https://github.com/user-attachments/assets/fb16e20d-685d-4064-86e9-0decee4c4624)
+
+Admin dashboard:
+![Admin dashboard](https://github.com/apbetioli/mariubialli/assets/2829329/bdb29974-818e-4f22-89b0-f709da08ee41)
 
 ## Tech stack
 
