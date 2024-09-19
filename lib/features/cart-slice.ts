@@ -23,7 +23,7 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action: PayloadAction<UIAsset>) => {
       if (!state.assets.find((asset) => asset.id === action.payload.id)) {
-        state.assets.push(action.payload)
+        state.assets.unshift(action.payload)
         localStorage.setItem('cart', JSON.stringify(state))
       }
     },
