@@ -15,7 +15,6 @@ import { useUser } from '@/lib/use-user'
 import { DownloadIcon, ShoppingBasketIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import toast from 'react-hot-toast'
 
 export default function AssetCard({ asset }: { asset: UIAsset }) {
   const user = useUser()
@@ -29,7 +28,6 @@ export default function AssetCard({ asset }: { asset: UIAsset }) {
   const addAsset = async (asset: UIAsset) => {
     if (!inCart) {
       dispatch(addToCart(asset))
-      toast(`"${asset.name}" adicionado ao carrinho!`)
     }
     router.push('/cart')
   }
