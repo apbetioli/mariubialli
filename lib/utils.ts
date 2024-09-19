@@ -25,7 +25,7 @@ export function toggleLessonCompleted(
 export const hasUserCompletedLesson =
   (user: DraftUser) =>
   (lesson: UILesson): boolean =>
-    user.completedLessonIds.includes(lesson.id)
+    user.completedLessonIds.includes(lesson.id!)
 
 export function calculateCourseProgress(user: DraftUser, course: UICourse) {
   const lessons = course.groups.map((group) => group.lessons).flat() || []

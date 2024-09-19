@@ -25,6 +25,7 @@ const initialState: UIAsset = {
   anchor_price: 0.0,
   price: 0.0,
   deleted: false,
+  courseId: '',
 }
 
 export function CourseFormAssets() {

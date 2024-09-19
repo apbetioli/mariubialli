@@ -94,7 +94,7 @@ export default function CartPage() {
               <Button
                 variant="outline"
                 className="w-fit"
-                onClick={() => remove(asset.id)}
+                onClick={() => remove(asset.id!)}
               >
                 <Trash2Icon />
                 Remover do carrinho

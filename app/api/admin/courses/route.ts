@@ -81,6 +81,10 @@ async function upsertAssets(courseId: string, asset: UIAsset) {
     })
   }
 
+  if (!url) {
+    throw new Error('URL is required!')
+  }
+
   if (!id) {
     return await prisma.asset.create({
       data: {

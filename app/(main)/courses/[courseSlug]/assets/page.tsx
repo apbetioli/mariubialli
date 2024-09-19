@@ -1,7 +1,6 @@
 'use client'
 
 import LoadingPage from '@/app/loading'
-import { UIAsset } from '@/app/types'
 import { AssetImage } from './asset-image'
 
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
@@ -14,6 +13,7 @@ import {
 } from '@/components/ui/card'
 import { useUser } from '@/lib/use-user'
 
+import { UIAsset } from '@/app/types'
 import { useGetCourseBySlugQuery } from '@/lib/features/api-slice'
 import useStripe from '@/lib/use-stripe'
 import {
