@@ -35,6 +35,13 @@ export const getCurrentUser = async () => {
   return user
 }
 
+export const ensureUserIsAdmin = async () => {
+  const admin = await getCurrentUser()
+  if (!admin.isAdmin) {
+    throw new Error('Forbidden: must be an admin')
+  }
+}
+
 function formatName(authUser: User) {
   if (!authUser.firstName && !authUser.lastName) {
     return null
