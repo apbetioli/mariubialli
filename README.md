@@ -38,7 +38,7 @@ Admin dashboard:
 - AWS S3
 - Stripe
 - GitHub Actions
-- Vite, Prettier, Eslint
+- Vitest, Prettier, Eslint
 
 ## Environment Variables
 
