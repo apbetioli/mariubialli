@@ -24,10 +24,10 @@ export async function RecentSalesCard() {
       <CardHeader>
         <CardTitle>Recent Sales</CardTitle>
       </CardHeader>
-      <CardContent className="grid gap-8">
+      <CardContent className="flex flex-col gap-8">
         {events.map((event) => (
-          <div key={event.id} className="flex items-center gap-4">
-            <div className="grid gap-1">
+          <div key={event.id} className="grid items-center gap-4">
+            <div className="gap-1">
               <p className="text-sm font-medium leading-none">
                 {event.createdAt.toLocaleString()}
               </p>
